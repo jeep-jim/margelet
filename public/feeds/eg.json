@@ -1,7 +1,7 @@
 {
   "countryCode": "eg",
-  "updatedAt": "2026-07-27T03:45:48.146Z",
-  "totalPosts": 92,
+  "updatedAt": "2026-07-27T07:51:03.675Z",
+  "totalPosts": 77,
   "chunks": 1,
   "items": [
     {
@@ -21,10 +21,10 @@
       "fallbackReason": null,
       "text": "📊 ورقة غش (Cheat Sheet) لمقابلة محلل بيانات\n\n✅ ١. أساسيات SQL\nالمفاهيم الأساسية:\n• SELECT، WHERE، GROUP BY، HAVING\n• عمليات الدمج (JOINs) (INNER، LEFT، RIGHT، FULL)\n• دوال النوافذ (ROW_NUMBER، RANK، LEAD/LAG)\n• الاستعلامات الفرعية و CTEs\n• التجميع والتصفية\n\nاستعلامات للممارسة:\n• أفضل ٣ عملاء من حيث الإيرادات\n• المستخدمون النشطون شهريًا\n• المجموع التراكمي أو المتوسط المتحرك\n• المنتجات التي لم تُبَع أبدًا\n\n✅ ٢. مهارات Excel / جداول البيانات\nالمفاهيم الأساسية:\n• VLOOKUP، XLOOKUP، INDEX-MATCH\n• المنطق IF، AND، OR\n• الجداول المحورية والمخططات\n• التنسيق الشرطي\n• دوال تنظيف البيانات (TRIM، CLEAN، TEXTSPLIT)\n\n✅ ٣. تصور البيانات\nالأدوات: Tableau، Power BI، Excel\nالمخططات الرئيسية:\n• المخطط الخطي – للاتجاهات\n• المخطط العمودي – للمقارنة\n• المخطط الدائري – للتوزيع\n• المخطط المبعثر – للارتباط\n• الخرائط الحرارية\n\nأفضل الممارسات:\n• اجعل المرئيات بسيطة وواضحة\n• استخدم الألوان بشكل مقصود\n• أضف عناوين وتسميات وتلميحات أدوات\n\n✅ ٤. الإحصاء ومفاهيم التحليل\nالمفاهيم الأساسية:\n• المتوسط، الوسيط، المنوال\n• الانحراف المعياري، التباين\n• الارتباط مقابل السببية\n• اختبار الفرضيات (القيمة الاحتمالية p-value، اختبار t)\n• أساسيات اختبار أ/ب\n• فترات الثقة\n\n✅ ٥. بايثون لتحليل البيانات\nالمكتبات الرئيسية:\n• Pandas – لمعالجة البيانات\n• NumPy – للعمليات العددية\n• Matplotlib/Seaborn – للتصور\n• SQLAlchemy – للوصول إلى قواعد البيانات\n\nالمهام الشائعة:\n• قراءة ملفات CSV/Excel\n• عمليات GroupBy والتجميع\n• التعامل مع البيانات المفقودة\n• دمج/ضم مجموعات البيانات\n• إنشاء المخططات\n\n✅ ٦. الفطنة التجارية والتواصل\nالمهارات الرئيسية:\n• طرح الأسئلة الصحيحة\n• ترجمة البيانات إلى رؤى\n• سرد القصص باستخدام البيانات\n• بناء لوحات معلومات مع مؤشرات الأداء الرئيسية (KPIs)\n• التواصل مع أصحاب المصلحة غير التقنيين\n\n✅ ٧. الأدوات التي يجب معرفتها\n• Excel / Google Sheets\n• SQL (MySQL، PostgreSQL، إلخ.)\n• Tableau / Power BI\n• Python / R\n• Jupyter / VS Code\n\n👍 اضغط ❤️ للمزيد!",
       "links": [],
-      "createdAt": "2026-07-27T03:06:06.190Z",
-      "expiresAt": "2026-07-29T03:06:06.190Z",
+      "createdAt": "2026-07-27T07:06:09.666Z",
+      "expiresAt": "2026-07-29T07:06:09.666Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:06.190Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:09.666Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -43,17 +43,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:06.190Z"
+        "reviewedAt": "2026-07-27T07:06:09.666Z"
       }
     },
     {
-      "id": 3296190378,
-      "postUrl": "https://t.me/tradsempire/4449?single",
+      "id": 3443746244,
+      "postUrl": "https://t.me/tradsempire/4450?single",
       "source": {
         "title": "Trade Empire",
         "handle": "tradsempire",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/vZ-uFPTULzL7GA3S5Ge2XmQcbO77H4UcX9GdFj48WAtJl319bxSgJRePhMGROr0JyshfitdJTdOlkcA9My7NvJuLe6zM1FVrdzmLrTHs8bRsIkyJ5pucri2CbaW4XRx8wCBuHEvJklcpEHQq0WtEm4VG8FMY3rc7NSSnNYgfbdP6KyZgiUmSqi2_bvfcn5sJ9GOX2wtsxv3sw_4Vd24bpslZVyQ0EM3SMOZJGNXVXgsA035NsUydi4rkUggovL13wcQDYQD9LSpuzkxEWenjCpAII0mAMVNwROOL7yamIDv-4at53MUSw-I4zKbGporIEYg0_y25VzGLlGlEqtHEIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/nYn9gEq6KtxhosIYdcXR3NtwbhidatgvDuxvkGuAeZ-FZeDJxoszgF0Bs1kuO2qHBytYe06bokI8Mg2QLUOxyozATWlvPeT33rIcXr-W_FG3bBMpApNhgZXLhz0-KvvfF0vUpZlw8CVJlYhnbr-DDAgAjVtM4c6XIAoDwQBxy4z4BJd0KJxw5x1V_TRIJ6j8f0tjSyXAEsh8rLZSJPTaelvwRPwXCZ72kf1oN-TcyjCgT2JRUdkTcCv-_Xrw6nQW0qaCqMf_acmeQqxDmuPzG7Ivb9dpdNsZa63sVebUEhtEbgXjVV8J94_YmBm-i20RPO4Pb-GdwmpDVJ61CEaImA.jpg"
       },
       "sourceId": "eg:tradsempire",
       "sourceCountryCode": "eg",
@@ -61,12 +61,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "XAUUSD BUY NOW 4090 \nSl : 4080\nTp : 4100",
+      "text": "Tp hit ✅✅✅ +100 pip",
       "links": [],
-      "createdAt": "2026-07-27T03:06:05.183Z",
-      "expiresAt": "2026-07-29T03:06:05.183Z",
+      "createdAt": "2026-07-27T07:06:08.893Z",
+      "expiresAt": "2026-07-29T07:06:08.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:05.183Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.893Z",
       "tag": "other",
       "tags": [
         "other"
@@ -84,7 +84,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:05.183Z"
+        "reviewedAt": "2026-07-27T07:06:08.893Z"
       }
     },
     {
@@ -104,10 +104,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-27T03:06:04.385Z",
-      "expiresAt": "2026-07-29T03:06:04.385Z",
+      "createdAt": "2026-07-27T07:06:08.219Z",
+      "expiresAt": "2026-07-29T07:06:08.219Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:04.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.219Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -127,7 +127,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:04.385Z"
+        "reviewedAt": "2026-07-27T07:06:08.219Z"
       }
     },
     {
@@ -137,7 +137,7 @@
         "title": "SeedOSS • foss, privacy, gems.",
         "handle": "seedoss",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/cGmLTgYX1x918uiQPldmAeZiFOb64ufROi7abcG2_tRXObu2p8wLms3ZMLXTuvnGNlJgEzz6Up4_gzkmOHciOySYvRmCWQm17kEsw11UKu5p8uLTAeP2ImC1IXStRYUfewBYHHMxsH8o6078c6_poC7JXOQbl_x3CX_o13MJEutwNS9N90UGQMjujrbCFdlO8XzacbAx_iZIZ2xr-lkBd1pK4r8sTNI0vCkRLJKByC21_HszQ9J8WA0fm70dyj_XEdOkleBF52jkb2kXCOYXSXWauuOFcSD054Ag6D15p8B4-dIdBa_-m_jydP4RTDkOw96hozIIkR53esqG0pGW8g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ArQxs2_jMEwm1OngdNPLcAPl2TD5hP7JID_cTAA94IKpyMKVY3JKOnI6XxVpMPtE6whOq-59p7md7cygFh6K1zUMZrDRaMv43a1yquT4D1dQhPCjjfPzrlRlGVV6HuRXiNUqmvQSouct_-quBTmsF5B-fP8cov3V5DaKkiSf_H_gMhj4v5RO3uEUUVfqXbQBMh51xm_ot19SToFjt0Ca2w1CPU24-4HrvFFakeVr3cCRKYjU3K4zVh4BctgpFYnfyqCCBplbKhkXsXRpr-sHm2Y9iV3G1cfVKa3DTNNX-KsPS856bt_4z3tE1h4WXw9kfqy8VriH2K0VBP8eXSolow.jpg"
       },
       "sourceId": "eg:seedoss",
       "sourceCountryCode": "eg",
@@ -174,10 +174,10 @@
           "url": "https://t.me/SeedOSS"
         }
       ],
-      "createdAt": "2026-07-27T03:06:03.503Z",
-      "expiresAt": "2026-07-29T03:06:03.503Z",
+      "createdAt": "2026-07-27T07:06:07.520Z",
+      "expiresAt": "2026-07-29T07:06:07.520Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:03.503Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:07.520Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -196,12 +196,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:03.503Z"
+        "reviewedAt": "2026-07-27T07:06:07.520Z"
       }
     },
     {
-      "id": 2996504250,
-      "postUrl": "https://t.me/rusembeg/10798?single",
+      "id": 2644228307,
+      "postUrl": "https://t.me/rusembeg/10799?single",
       "source": {
         "title": "Russian Embassy in Egypt",
         "handle": "rusembeg",
@@ -210,82 +210,21 @@
       },
       "sourceId": "eg:rusembeg",
       "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/EKI79G_Q01kjPaoLn-ADTQvIF9z7OBXcOefx1zv4xGrX0Adfehu_kFtrI1kSjYe_8yVLCPuUmclLsVIJU4diOWeKb0wuTFYqKYjz65DSOwsqhyjn5u-iCZgU8dEoiWggPphQERmyE6nwA13FeRh_j3ZcjGPSt9eUREUsbTu6JwVeLuIOifv6TF_Y1QrSopRwRMjrDOo0LWWVyL4_4EhyDZ1L3QiU2bNyyntRBQ2I8c8tJb6QAXpzvLzjSW-CCk-_GuJjOLMcSaoQDAByK6FR6ug6bE1mUNWkNiqkrW2xXUnGWyMzDM2sxD9fYGBM5u1f2UdSHMPEVcWpBMPJ-fvcGQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "​🤖🌾 للمرة الأولى في مصر: انطلاق المسابقة الدولية \"أجرو إن تي آر إي - 2026\" \n\n​يدعو البيت الروسي بالقاهرة طلاب المدارس للمشاركة في المسابقة الدولية \"أجرو إن تي آر إي - 2026\" في فئة \"الروبوتات الزراعية\" (AgroRobots).\n\n​في عام 2026م  وبمبادرة من وزارة الزراعة بروسيا الاتحادية اكتسبت المسابقة الطابع الدولي، وتُقام لأول مرة على الأراضي المصرية. يتيح هذا المشروع للطلاب من مختلف الدول فرصة الانخراط في مشروعات زراعية عالية التقنية، الأمر الذي يسهم في سد الفجوة بين المنظومة التعليمية والتقنيات الزراعية الحديثة. وتتمثل رسالة هذا المشروع في إعداد جيل جديد من المبتكرين القادرين على معالجة قضايا الأمن الغذائي العالمي والتنمية المستدامة في المناطق الريفية.\n\n​📅 تاريخ انعقاد المسابقة: 10 أغسطس 2026م \n🕛 موعد انعقاد المسابقة: الساعة 12:00 ظهراً\n📍 مكان انعقاد المسابقة: البيت الروسي بالقاهرة (127 شارع التحرير، الدقي، الجيزة) \n\n​📅 تاريخ انعقاد المسابقة: 11 أغسطس 2026م \n🕛 موعد انعقاد المسابقة: الساعة 12:00 ظهراً\n📍 مكان انعقاد المسابقة: البيت الروسي بالإسكندرية (5 شارع البطالسة، باب شرقي،  الإسكندرية) \n\n​👨‍🎓 يُدعَى للمشاركة في هذه المسابقة طلاب المدارس ممن تتراوح أعمارهم بين 10 و17 عاماً. للتسجيل يُرجى إحضار مستند تحقيق الشخصية. يُسمح بحضور أولياء الأمور والمرافقين مع ذويهم. \n\n​🚜 خلال المنافسات التي تُقام بدعم من الخبراء والأكاديميين بجامعة ستافروبول الحكومية للزراعة سيُكلف المشاركون بتنفيذ مهام باستخدام روبوت زراعي متخصص يحاكي العمليات الزراعية الفعلية، مثل: غرس البذور، وحصد المحاصيل، ونقل المنتجات الزراعية، وتربية الماشية، وتهيئة التربة، بالإضافة إلى تخطي العقبات في مضمار الاختبار الميداني.\n\n​🏆 سيحصل الفائزون في مرحلة المنافسات التي تُجْرى بمصر على فرصة لتمثيل البلاد في مرحلة \"النهائيات الدولية\" المقرر إقامتها في الفترة من 7 إلى 11 أكتوبر 2026م بالعاصمة الروسية موسكو، وذلك على هامش معرض الزراعة والصناعة الروسي باسم \"الخريف الذهبي\"، حيث تلتقي أفضل الفرق المنافسة من 12 دولة حول العالم. كما سيحصل المشاركون على هدايا تذكارية مقدمة من جامعة ستافروبول الحكومية للزراعة.\n\n​🌍 يشارك في مسابقة \"أجرو إن تي آر إي\" طلاب المدارس من 12 دولة، هي: روسيا، بيلاروسيا (روسيا البيضاء)، كازاخستان، قيرغيزستان، أوزبكستان، طاجيكستان، منغوليا، أبخازيا، الهند، مصر، تنزانيا، غانا. وتُقام المنافسات على المستوى الدولي ضمن ثلاث فئات رئيسية: \"الفضاء الزراعي\" (البيانات الفضائية ونظم المعلومات الجغرافية)، و\"المسيرات الزراعية\" (الطائرات بدون طيار في القطاع الزراعي والصناعي)،  و\"الروبوتات الزراعية\" (أنظمة التحكم الآلي في المعدات).\n\n​📲 لمتابعة المستجدات تفضلوا بزيارة: \n🌐 الموقع الرسمي\n💬 VK Telegram\n\n​🇷🇺 الشريك العام للمسابقة الدولية \"أجرو إن تي آر إي\" هو المجمع الزراعي \"لابينسكي\" (إقليم كراسنودار).\n\n​يتولى تنفيذ هذا المشروع كل من \"صندوق دعم الابتكارات\"، و\"جمعية المؤسسات التعليمية للقطاع الزراعي الصناعي والثروة السمكية\"، ومجموعة شركات \"سنتر بروجرام سيستم\"، وذلك بدعم من وزارة الزراعة ووزارة التعليم بروسيا الاتحادية. \n\n​🚜🤖🌱 سنكون  بانتظار مهندسي الغد، والمخترعين، وصُنّاع التقنيات الزراعة في المستقبل.",
-      "links": [
-        {
-          "label": "الموقع الرسمي",
-          "url": "https://kids.agronti.ru/"
-        },
-        {
-          "label": "VK",
-          "url": "https://m.vk.ru/agronti.kids"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/agronti"
-        }
-      ],
-      "createdAt": "2026-07-27T03:06:02.460Z",
-      "expiresAt": "2026-07-29T03:06:02.460Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:02.460Z",
-      "tag": "telegram_ton",
-      "tags": [
-        "telegram_ton",
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:02.460Z"
-      }
-    },
-    {
-      "id": 2208660907,
-      "postUrl": "https://t.me/rassd/199862?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
       "contentType": "text",
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🎶🚫بث مباشر #نابلس الأن 👇\n\ngoawl.com/p/nablus-live.html",
+      "text": "​​❗️لفتنا الانتباه إلى الاتهامات الباطلة التي لا أساس لها من الصحة والتي وجهها ممثلو أوكرانيا ضد بلادنا بشأن الهجمات على سفنها وبنيتها التحتية التي يُزعم أنها مدنية. منذ بداية العملية العسكرية الخاصة، لم تستهدف روسيا سوى أهداف عسكرية أو بنية تحتية مستخدمة لإمداد القوات المسلحة الأوكرانية. وان الهدف من هذه التصريحات هو صرف الأنظار عن الأعمال الإرهابية الممنهجة التي يشنها نظام كييف في البحر الأسود وبحر آزوف، التي تضر بالملاحة البحرية.\n\n☝️يجب أن تخضع هذه الهجمات على السفن باستخدام الطائرات بدون طيار وقارب بدون طاقم لتحقيق شامل ونزيه، وأن يُصدر بشأنها رد فعل شعبي واضح، وأن تُدان بشدة. يجب معاقبة منظمي ومنفذي هذه الهجمات الإرهابية عقابا رادعا.\n\n‼️علاوة على ذلك، ليست هذه المرة الأولى التي يحاول فيها الأوكرانيون استغلال قضايا الأمن الغذائي في الدول النامية لأغراض دعائية وتضليل سكان الشرق الأوسط وأفريقيا. كان هذا هو الحال أيضا خلال \"مبادرة البحر الأسود\" في عامي 2022 و2023، حين كانت كييف، التي تدّعي الدفاع عن مصالح القارة الأفريقية، تُصدّر في الواقع معظم محاصيلها من الحبوب إلى أوروبا، مقابل حصولها على أسلحة غربية.\n\n🌾في الوقت نفسه، يُفاقم الأوكرانيون وداعموهم الغربيون الوضع في سوق الغذاء بإجراءاتهم ضد السفن التي تحمل منتجات زراعية من روسيا، مما يؤدي إلى ارتفاع الأسعار العالمية وانخفاض المعروض. ونظرا لأن بلادنا هي أكبر مُصدر للسلع الزراعية في العالم، وخاصة للدول النامية، فلا يمكن إخفاء الضرر الذي يلحق بأمنها الغذائي بادعاءات كاذبة عن هجمات روسية.\n\n#الامن_الغذائي\n#الحق_مع_روسيا",
       "links": [
         {
-          "label": "goawl.com/p/nablus-live.html",
-          "url": "https://goawl.com/p/nablus-live.html"
+          "label": "​​",
+          "url": "https://telegraph.controller.bot/files/5214312729/AgACAgQAAxkBAAIR42pm8_J4oJOF4irj-s6K2ILrD1dXAAK1DGsbWKs5U6ypaxXkMWUvAQADAgADdwADPQQ"
         }
       ],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
+      "createdAt": "2026-07-27T07:06:06.673Z",
+      "expiresAt": "2026-07-29T07:06:06.673Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:06.673Z",
       "tag": "other",
       "tags": [
         "other"
@@ -303,7 +242,65 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
+        "reviewedAt": "2026-07-27T07:06:06.673Z"
+      }
+    },
+    {
+      "id": 1297947636,
+      "postUrl": "https://t.me/rassd/199865?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/a0a22f0ee2.mp4?token=WtpWN6UPq3XhTPNB3r9GuNgn1uNBVr7bgyMJgShKjmobY5I1PuFzWZO3Sd4TJHGQz_WA61iRFam_Mcd7bwS55r9uOgrZ11EChTzp-s7y-yBoJiyG7MQE55nGuSgwcYFFPsSj64glkkFOYidUGOcvWLqrVQku3Z-eKTYq7JfmaFB3QMVq3dCMczn9fXR1Et4l7k2Q50LvCkMkjNMhnKc6LcgBQuzUXLqIqzTR1_MhE1xwcWaz2Wls64NxHSYElts6h_7o3uYYG0RZfh3NVvaCX_i3m2dfHUCNQi5KSoxEjADnR_Pr4En1DL8b3Zgh8V3gkRf4bHybXWvIcEPTpKS1yg",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "😊🔴لنشر اعلانك على رصد نابلس 🔴😊\nعروض واسعار رمزية . اسعار مناسبة لجميع المشاريع ❤️\n\nتواصل معنا عبر \n\nتيلجرام : 👈 @rassd1\nواتساب: 👇\n\nhttps://wa.link/y0njnn",
+      "links": [
+        {
+          "label": "@rassd1",
+          "url": "https://t.me/rassd1"
+        },
+        {
+          "label": "https://wa.link/y0njnn",
+          "url": "https://wa.link/y0njnn"
+        }
+      ],
+      "createdAt": "2026-07-27T07:06:05.739Z",
+      "expiresAt": "2026-07-29T07:06:05.739Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-27T07:06:05.739Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-27T07:06:05.739Z"
       }
     },
     {
@@ -328,10 +325,10 @@
           "url": "https://rafahnow.com/?p=51092"
         }
       ],
-      "createdAt": "2026-07-27T03:05:59.385Z",
-      "expiresAt": "2026-07-29T03:05:59.385Z",
+      "createdAt": "2026-07-27T07:06:05.035Z",
+      "expiresAt": "2026-07-29T07:06:05.035Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:59.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:05.035Z",
       "tag": "other",
       "tags": [
         "other"
@@ -349,7 +346,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:59.385Z"
+        "reviewedAt": "2026-07-27T07:06:05.035Z"
       }
     },
     {
@@ -359,7 +356,7 @@
         "title": "Nimrod for apps",
         "handle": "nimrodforapps",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ua4IFtkWBdWATsaIIxmAZV5wSXOysMcrKZ-k2gllc5t_zGp2MtAtt1dIT2XyNzBHuOf4WoAR5mUlARnqh_EVLg_dUdPDgHnqzgBfWnUcC0D03SQGwgt0PcF7HCumtUQLqem35-eTIvMndDqYDc7Km5jrkLwEE-HM-knLIHZlTZzhAAhNf8kOLYpKUB-mVcZXBrjiblnWTsYrZbgiVB_ys9Vg0qpEO6NYmryAntS3_zpY8wibJkJNLK9njG7aac169ZDh6ELxgSQsKOfMO6dbmLN633qEBCxiTz-ghAEkGyqRZt8N5PG1UuIFBmdF2PPDubYH59m5DTyp7vvmwu7esQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/R-mAwP3RtREou7-Wc4xx-iWU_3Mb1DWj6DJhfHavRcYPvDT33HrCb4SLrvKOvrg4EDPhziJh9Z6W90P8RrUsDlfwtaOSuSe356mE5eizSiXTvcaVZSmD-e52bDBEe2a5_xZQ1978xfRwCbvoZ85yGp0c1zirxjUvbWaVPlR_DGAtLS88HWydoCr0UMHZQyZE4Lr3bKxjRn370xw13ObbBJYpyKlPy0LZwR1z5NCAISQiHLnvhUw0QYNbeuILglE_-BT5oLmhmoajAd5blm7YGCSshe3NQ17THvChGJ4ws7dMIw0IN0cpzaTJCuWPFGREQijZNRhoJDF3zZk7cyLMWQ.jpg"
       },
       "sourceId": "eg:nimrodforapps",
       "sourceCountryCode": "eg",
@@ -368,7 +365,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/frvqEuMWvzLdz7Clt3Qb2l3m6Rv8kOLQhCMZhv2SJ-eccwCOTpMTFlV1LwnbQvN1tNf4tllKCqXyYpNQrJjScoWBWfVUywyhCPVbbokip_Db-w5oXCSj86GHRS8koVPcU3VQWwZempTLfWzrFYibWgxPisFzXCqYCXgRn_gKAwx8K7E8xTkn1koFNauH7tYQ932Zx_6ESqiMBTfjW2UxgmhEeEspZTDUcchHVhRNh2TiPsYSBd0Ov73wutxv5opv47BQYc58c43Kk57cLN9I8-EJkgkBa3NJ3K7hK9PuVSiDravEdNI-wyhkJyzBDyjQvBQonYEN_NJDvsXM4XsUxg.jpg"
+          "url": "https://cdn4.telesco.pe/file/Q7N2LYHl770kg3d5FnB-TJxa6G8E7lhswvjS663k8oxjrIC2YzpEGOXIyE7InFI6v6uJ2hiuY01cLW9sZ8FIKSyRcHbUKg3Q0iEIl9v-ZSP8S-RbrdXb_1SZZqdDI76wYI3LD73uCqz5caTJ56lYcfOM15Oo0qqPUD6UfuKmqIJpdFTky0lmwFYa9W2MXuryh9vuedci9zOZ_mcjpGhYyV395NvDXwQ-01WU4lEIWiOp1tFL1GpBSM0IWtg6zJuToDASoOZfhk6w8bNnCt_5EbaPZ9jslnNbWd0XCtKoTDTe5nMBihgRNVNo1cNE61-4LXAJHEpV4378nP5JlSYmkA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -384,10 +381,10 @@
           "url": "https://rebrand.ly/r3xw4fd"
         }
       ],
-      "createdAt": "2026-07-27T03:05:58.568Z",
-      "expiresAt": "2026-07-29T03:05:58.568Z",
+      "createdAt": "2026-07-27T07:06:04.363Z",
+      "expiresAt": "2026-07-29T07:06:04.363Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:58.568Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:04.363Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -407,12 +404,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:58.568Z"
+        "reviewedAt": "2026-07-27T07:06:04.363Z"
       }
     },
     {
-      "id": 3997683486,
-      "postUrl": "https://t.me/ngmsr/15051?single",
+      "id": 3514467119,
+      "postUrl": "https://t.me/ngmsr/15058?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -421,22 +418,21 @@
       },
       "sourceId": "eg:ngmsr",
       "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "رحيل داروين نونيز عن الهلال بات وشيكًا! 🇺🇾✨  \nووفقًا لمصادر سعودية، قد ينتقل على سبيل الإعارة إلى الدوري البرتغالي لمدة موسم واحد فقط.  \nوفي نفس الوقت، يبرز بيدرو نيتو كخيار مرتقب لتدعيم الجناح الأيمن بعد تألقه مع تشيلسي 🔥⚽️  \nهل نشهد “صفقة مزدوجة” تغيّر شكل هجوم الزعيم؟ 🤔👀  \n#الهلال #داروين_نونيز #بيدرو_نيتو\n\nhttps://www.ngmisr.com/?p=3863155",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Vh48yGjY2JbaSFI6OJX_TBuO9xs6IwgbRf-sCIvQEYRJbpTKtizAdBnQrn5NdDrrHvUlNXRSV9NgIWeS_v3I1Qe00CYmz9pszdw-cS3QlfEtkgvUVU-8twSBc0XkQerKQho4-ZqD3zfZP5VH2IZZedUHmmkIOoPe395p7Sxnf-ch-7MndPkgyDhpYjUB8AzXaQk5jYksBRUpRvGtjmoZOpePBFwtL21wVrulkYElrvz0jYznwU7JyggVPGotj0Ngk2edAXz98t6-zzYP_YsQ7BtP-V_8-HpqWQEyc6vd90doTBaRyrzqYYFrJ6ucyMuk5ZknP54uzCqVwV-uMRVk4w.jpg"
+          "label": "https://www.ngmisr.com/?p=3863155",
+          "url": "https://www.ngmisr.com/?p=3863155"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🚨 النينو وإيراد النيل\n\n🌧️ الأرصاد توضح أن ظاهرة النينو قد تؤثر على أمطار منابع النيل، لكن تأثيرها يبقى محدودًا وغير مباشر\n\n🌍 النينو ظاهرة مناخية طبيعية تتكرر كل عامين إلى 7 أعوام، وترتبط بارتفاع حرارة سطح مياه المحيط الهادئ\n\n⚠️ التأثير الأقوى للنينو يكون في الدول المطلة على الهادئ، عبر أمطار غزيرة وفيضانات وأعاصير، بينما قد تسبب جفافًا في مناطق بعيدة\n\n📉 ذروة تأثير الظاهرة تكون عادة في ديسمبر، وقد تسهم في تقليل الأمطار على منابع النيل، لكنها ليست السبب الرئيسي في التراجع\n\n#الأرصاد #النينو #النيل",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -454,7 +450,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
@@ -464,7 +460,7 @@
         "title": "‎أخبار شمال إفريقيا / Northern Africa News",
         "handle": "nanafrica",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/jYfZWzjlt3iSt1jxGQL7vIlt_stGEvffcMT5OZT3Q3aJ4uxAQqceja7eAmnsc9x9mI0H82T6H-zQYhw3cLwObsh1mOlwO037iPdaZPb4B9lBetnjekprJoWdL8ljQNbtdrDl6AqdF344vAVBQcX4QJ0-CPJhzJrXNft3Fnm6izWZ1ZzpaEUSx85EV5uWWC4JFMnuh4h6OciSQ8UfN54sAoeQocJsMkfKg9hQu6bzx3tD2Tt08WuT45WbBDMFm-tTsOpn50FikoRM791sipqRGhkVi8646lv-_NULoSMJXmh9N9Z98bGlU6Cyoic2skiB3NZ9yHnktGqDIQ3o335dhg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ntlGLX_NOQT52O8sSpi7a84b_eHQzNZUDHmZIZiM5yhKmBjkD-Pr-xUEsntUOT2fwb8VKLOI9f_4TaKWH0G9B6pYIbDerX6oETnfazGpavgzqOoRixTjwFqcnqZMf_C1gabKurN-xVWOcDPwxEzJsWimsZPUEjs1Epf9H9jgfUzKoKMxoZy5BnfHqL31xwn_yU6C3R8ZXXQz1r3nBF4hvBeVK86h9XhH0mmvHxPMf3AdPzQ02Otj_Ws_vbDjT8eUeGmVRE7LVvkuDbvwRBW2hZC3VZvypMeNQePpOB4bkp1W2Px5MxqX5LgPr9KxNrRMKB-X8o7cstiR76Vj-Eneng.jpg"
       },
       "sourceId": "eg:nanafrica",
       "sourceCountryCode": "eg",
@@ -480,10 +476,10 @@
       "fallbackReason": null,
       "text": "🗯 سجلت تعاملات العرب والأجانب في السوق الثانوية للدين الحكومي المصري صافي شراء قدره 9.3 مليون دولار خلال تعاملات اليوم الأحد، بحسب بيانات البورصة المصرية.\n\nوجاءت العودة المحدودة لتدفقات الأموال الساخنة في مصر بعد صافي خروج خلال الأسبوع الماضي بلغ 459.2 مليون دولار، مقابل صافي خروج أيضاً بلغ 1.46 مليار دولار خلال تعاملات الأسبوع قبل الماضي.\n\n#مصر",
       "links": [],
-      "createdAt": "2026-07-27T03:05:55.642Z",
-      "expiresAt": "2026-07-29T03:05:55.642Z",
+      "createdAt": "2026-07-27T07:06:00.669Z",
+      "expiresAt": "2026-07-29T07:06:00.669Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:55.642Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:00.669Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -502,12 +498,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:55.642Z"
+        "reviewedAt": "2026-07-27T07:06:00.669Z"
       }
     },
     {
-      "id": 2798497481,
-      "postUrl": "https://t.me/naf3_ch/2884?single",
+      "id": 2913169544,
+      "postUrl": "https://t.me/naf3_ch/2885?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -520,12 +516,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "﴿ وَاللَّهُ خَلَقَكُم ثُمَّ يَتَوَفَّاكُم وَمِنكُم مَن يُرَدُّ إِلى أَرذَلِ العُمُرِ لِكَي لا يَعلَمَ بَعدَ عِلمٍ شَيئًا إِنَّ اللَّهَ عَليمٌ قَديرٌ ﴾",
+      "text": "﴿ إِنَّما أَمرُهُ إِذا أَرادَ شَيئًا أَن يَقولَ لَهُ كُن فَيَكونُ ﴾",
       "links": [],
-      "createdAt": "2026-07-27T03:05:54.817Z",
-      "expiresAt": "2026-07-29T03:05:54.817Z",
+      "createdAt": "2026-07-27T07:05:59.996Z",
+      "expiresAt": "2026-07-29T07:05:59.996Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.817Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.996Z",
       "tag": "other",
       "tags": [
         "other"
@@ -543,12 +539,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.817Z"
+        "reviewedAt": "2026-07-27T07:05:59.996Z"
       }
     },
     {
-      "id": 2507518980,
-      "postUrl": "https://t.me/n1nnnn3/51991?single",
+      "id": 4225886605,
+      "postUrl": "https://t.me/n1nnnn3/51998?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
@@ -561,17 +557,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚠️ 10 علامات تدل على ضعف الشخصية:\n1️⃣تسعى لإرضاء الجميع حتى على حساب نفسك\n2️⃣لا تستطيع قول لـا خوفاً من خسارة الآخرين\n...قراءة المزيد",
+      "text": "- كل شيء يخص الصباح 🌻💛 .",
       "links": [
         {
-          "label": "قراءة المزيد",
-          "url": "https://t.me/addlist/RHl3ids8f4A5Yjc0"
+          "label": "- كل شيء يخص الصباح 🌻💛 .",
+          "url": "https://t.me/addlist/iutew7T-DGQ5YjE0"
         }
       ],
-      "createdAt": "2026-07-27T03:05:54.033Z",
-      "expiresAt": "2026-07-29T03:05:54.033Z",
+      "createdAt": "2026-07-27T07:05:59.366Z",
+      "expiresAt": "2026-07-29T07:05:59.366Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.033Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.366Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -591,7 +587,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.033Z"
+        "reviewedAt": "2026-07-27T07:05:59.366Z"
       }
     },
     {
@@ -619,10 +615,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-27T03:05:53.197Z",
-      "expiresAt": "2026-07-29T03:05:53.197Z",
+      "createdAt": "2026-07-27T07:05:58.655Z",
+      "expiresAt": "2026-07-29T07:05:58.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:53.197Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:58.655Z",
       "tag": "other",
       "tags": [
         "other"
@@ -640,7 +636,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:53.197Z"
+        "reviewedAt": "2026-07-27T07:05:58.655Z"
       }
     },
     {
@@ -675,10 +671,10 @@
           "url": "https://t.me/M_iraculousLR"
         }
       ],
-      "createdAt": "2026-07-27T03:05:52.336Z",
-      "expiresAt": "2026-07-29T03:05:52.336Z",
+      "createdAt": "2026-07-27T07:05:57.968Z",
+      "expiresAt": "2026-07-29T07:05:57.968Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:52.336Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:57.968Z",
       "tag": "other",
       "tags": [
         "other"
@@ -696,45 +692,39 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:52.336Z"
+        "reviewedAt": "2026-07-27T07:05:57.968Z"
       }
     },
     {
-      "id": 3594693928,
-      "postUrl": "https://t.me/medmannews/42893?single",
+      "id": 2558372852,
+      "postUrl": "https://t.me/medmannews/42897?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/dAw4b2-MDLNZczAPW76HkXPZwGbLflMsz91rgWW-khvLav5k9viHLZb6aOZrvIVdk2PkgjgNCfK5p8GdgHI-YjLILMEGP1cxQWbctwOo9rhqBSu90ocmbFyMZaVWKUZQ57aYx82MLM6toD8rGBucwhF2yvum1AzAoCg6nsiUUr6W_EeRlOFwfvEV3zP5UcS3ygNBVuru6imq8-waQ7YgXevtv3J_PUM6OQVKCxdyBFESB55gJpUMTBPsvA77B9EZkqhDyajVc4q2V-ozolKdlC9qdiH4TLS7Kzyoqpdst5ec0De0eLxJ4fI4gaQF2Lees8iOI05rEVfhQQ-puDrWxA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/hh9Y2XNmNS1Nx54u_hEyUPIrYgqBymyeQMKepc87IxT0QfdECsEdH2flJVrIMzbNzQXcxUANZ_wTHlX0BqR0imzn4gkreL8WHQzWkCRFZEQIc_T__Gss_SrDDYGI3zoibnbNe3czk9_qjl0Z3coV922B00hTn5DDkzhWVuZZaEFDnudIVWXOwIir9GAGlH_xAwOm8e5EFSYX1uN1cmy2hEdWNUiSTB_AXDdFb8Q0bPwcSUL6A2Yrs93MdSNabyy2tYk7lMwXX96KplOrbdhKVNvpd33d9be2ixBzLV3uI4iNTpERQt0lRTeVwthJkC5aODfhsAH6tMFakf7soz-tAQ.jpg"
       },
       "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/V609oLHoBKM6hO6Ct9tYASbG7W3t45yz3Z3F7kn-DD1iLgojP3OrEraYRW6zGTB39yKiUz_Hdb1iURJZCbdtWdo38tWct6gk6AIvz_xnYJCxaMTciIIEVQ1nhAoTKGD8zYQyeRuItad1hTAJnySTTA_rImHyKIXfFP_UVTjMKJ2YP6RjYsRFL8DudOe6Qw9-A0nEnPHXP1xqOWZ1524Ga55pl0Ka0AAuEdsHWZDs8UbA4ZEeb0iBc3nZ188-YN9EX7A7IAQxFaeZnXPyfgOrS4DuTXFIBe7C8jVxlikoAbN8XwPXrleP1yp-UTvxbIEW56u0bCxttuAoyiOr3mJBgg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚡ 🇸🇩 The SAF and their allies, the Joint Forces, managed to recapture 5 towns in Sudan's North Kordofan after they were under RSF control for months.\nThe towns are Bara, Um Garfa, Gabrat El Sheikh, Al-Baraka, and Umm Sayyalah\n\n@medmannews",
+      "text": "⚡️🇮🇷 The Artesh randomly released an announcement saying they are ready to defend Iran and are ready to respond to any threat (they have been doing that for literally months).\n\n@medmannews",
       "links": [
         {
           "label": "@medmannews",
           "url": "https://t.me/medmannews"
         }
       ],
-      "createdAt": "2026-07-27T03:05:50.907Z",
-      "expiresAt": "2026-07-29T03:05:50.907Z",
+      "createdAt": "2026-07-27T07:05:56.845Z",
+      "expiresAt": "2026-07-29T07:05:56.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:50.907Z",
-      "tag": "electronics_trends",
+      "mediaRefreshedAt": "2026-07-27T07:05:56.845Z",
+      "tag": "news_all",
       "tags": [
-        "electronics_trends",
-        "electronics"
+        "news_all",
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -749,7 +739,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:50.907Z"
+        "reviewedAt": "2026-07-27T07:05:56.845Z"
       }
     },
     {
@@ -759,7 +749,7 @@
         "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
         "handle": "life_in_sharm",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Nic_ggtpevDMjOyuCA_uae-favSdJhywb1dNhVm52wkEPTXuNNUcmH7UoWge39Q_CWj4N7VsQ3nWlq03z8N0q_0piIqvxUhZGDKckgsdEm5xiqgMfg2Y_7AvDv7N16wWz0A6YB-F_q2NSFmqfESZq5IbOsfsHruxcxAPlepqzwrUbtFs_urt2Wylv1OZyafFowCtwxjSeeII6-_tMd7jklJ7JEa1Tb29x0RJIhivH0LVyxUyJB0ee-wT2rggYu5zaamropIObZlzU95JxPJtFPj_GueTYPMbyc3zuAg8wpgnI0M51zw2Hntf7eAiNm6qGHkw5VpSV-DIQzSrwOIxMA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/PQFFAFuUpuMRnVivJUbA4Uve_0sETcfLXPE7qV5-kMM3yXnxw2LlYFMTSLhNMVIC6-Ext0zJW5FUn8lZBgF1H0XSjfHp0z4B_NAeR4nG327pI668iQ8DIKWkj85eASZNOG4HSpyhcS4m3Qrq3cWuX4u8R3kbmnuFTuF1WPiHW3NU0hW4oAS1rifiTtrMqiubJ3fmIVg0mQIoMZAqyQO8j5vQcSaEyswFqTaK8lxvmy-ZCwUXLZzhzCpPNFqUuTQTOwiPRED838Kfna-g_H32HhxMH7Eo_nnmvi_H5YLsRxoNHYNu9424Gf481TIHbIYfqvltF7J-TCeKi_WPxXfn5g.jpg"
       },
       "sourceId": "eg:life_in_sharm",
       "sourceCountryCode": "eg",
@@ -825,10 +815,10 @@
           "url": "https://maps.app.goo.gl/sBZtJQmeWsjXgpis5"
         }
       ],
-      "createdAt": "2026-07-27T03:05:49.562Z",
-      "expiresAt": "2026-07-29T03:05:49.562Z",
+      "createdAt": "2026-07-27T07:05:55.729Z",
+      "expiresAt": "2026-07-29T07:05:55.729Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:49.562Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:55.729Z",
       "tag": "recipes",
       "tags": [
         "recipes",
@@ -847,7 +837,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:49.562Z"
+        "reviewedAt": "2026-07-27T07:05:55.729Z"
       }
     },
     {
@@ -866,22 +856,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/FFbRBm82oU1GDjfow2BwhWB3YGQlp8ovR9sU366XElGRZlsqBq73Jbi63IJH9dvur_qhYnOBngYfgGgOt48DF60SVw7A1wvOkZDMPP0Jj7o2Sv-0mcz3uYZpP2pJVFRo7oD-uNl7b7dZPbhCMVYc5dhAoV1raLwlI3PfDVp_l_Owp2qVKdUKRBJiCSzzaUsL8fdAAv2s3_vYEstT7-GxT4lZl-3EeuGdxFUzlx1j0IIZq153BEEt5Lx3BU_1qLnglv3t9urak5WZHA_8rXx0Qz8m_KxRzmJT26JpFMKkjBfp2ACjN4suGZpMiVe5DusLzLMofJXHGuDgKr-5wy_zoQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/dUv1o_atKyNoVJD81vW-4rVnP8EvPAbNj_z-x_2BM1CmfdZz2UzvWAwsIlm80DXAJEwoGRkYOp6TAeQvfHnZM_cefZE_h8zpQ56GOV0CRFa4E1eR-0q2ZrxjBsMQ_H6LuEUd8VvhU5MOavNoxggLMwlc1CqbKly0shmheseQjKeOydfcFwEYltdgBxGWsT8cFiA0tcg6E2MwY58ep_SEzljDJN_73OrDsJrluAyonZRb1HC4rS10vqxfb88IKRcVIsR_EAoeioq8UjaLHt4B_6J4wDXKorVaNx2A4zeoVVPNuJGTw1n9DBGcL6O1766_wHZ3JVOJXg_sq2WQunoSdw.jpg"
         },
         {
           "id": "image-2",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/EWGrhC48klUBDFGZwj6-5-LbIsgXdyOpJ4_c0drZzGhMV81a0uKPwwn4cXeZVTCfobzvwpBl4pQGJbvBEFtp64r-TP5V71GOsxhNsLiPcUOXeRf1TbUqLLHQqePkfkbPHXtC2SeRk9gtO5udB00dP__VOMc12ZWJD9fpAlPOGGqvYqPNpqe4AtJ80n3YdeVwlRGUYYqF5t2ERc70iYcDu9mdIKUIlXvN1dJFfXkkxufJVtB9mTK-rZ-ImUChko-PSD1ZS185q5XlRiGYdPY2ezb4aPBC7KSwfHBiRg0Eln92vlVjOippTzz4rqRgi_ZfIvk1-LFZ149E6Ras7BUHGw.jpg"
+          "url": "https://cdn4.telesco.pe/file/eshFpsT3HgfRk2_43upSmpd9ruB2GEKFYF_paF17iVZkRcGR9NoPcq52aSzmAlgPMU3WwWssE6C10Fp_eZBnT-X3zw_rXEo1fr9f-gCPDvFOAby5JvA3wwcDc6YGmP2wIrutv0_-VGVA2dfFx6dN2GvxFph8hyeNkenchei2y-twB4q6VUuRlE6-P3Ag94rMQCmLc7Npv6CHkOjO2sd3bKYd1vLRjVDSPtw_hbY5oBnyqcsinbl2kfQVaMbEpPaoarCxYvppOOfSGQcEVrR2I8v_huSHKvOsnqqzh1LgWsvrUrpZmJzKJhVenpp5K2ruuu-ResUb8Z2ZgI04t3IH5w.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "شهادات العملاء حقيقية، فنحن أفضل شركة للاستثمار معها وتحقيق أرباح مضمونة. نهنئكم على أرباحكم، ونتمنى لكم المزيد من التوفيق والنجاح.",
       "links": [],
-      "createdAt": "2026-07-27T03:05:47.185Z",
-      "expiresAt": "2026-07-29T03:05:47.185Z",
+      "createdAt": "2026-07-27T07:05:54.102Z",
+      "expiresAt": "2026-07-29T07:05:54.102Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:47.185Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:54.102Z",
       "tag": "other",
       "tags": [
         "other"
@@ -899,30 +889,41 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:47.185Z"
+        "reviewedAt": "2026-07-27T07:05:54.102Z"
       }
     },
     {
-      "id": 1528793678,
-      "postUrl": "https://t.me/kero_875/79775?single",
+      "id": 1614980660,
+      "postUrl": "https://t.me/kero_875/79777?single",
       "source": {
         "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
         "handle": "kero_875",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/V3XVhtwnFP0LfHSGmcUiQF3e4e4082ClXOYCt-WWJ_BkOoBS_6iPPypiT376g-edogQJTaDDECrz2Ox_uAd5a9766Tb5BdzbCRgAbGdXsWjbfmuyXdZuayluqjSDB7_PNSUt9nNVjq2K89ACXyYzo06rbc8TkxxK9JMR9tGuPRzEpUtFuFrjQnjtzr-4t1Rtdq-f688sOnnSU9I6wO3sr5MCoSiygaDip4rdXkdbOHW8K-v9SUHnc9XUhx70H--XJ_LsxmAt5Mqrga1VQQjMTsjzXIg6aWuRSM0rEVSpDs4EGNndWt5IEHEhew46nsXkankgFBKFBhq4R-5-HI0Q6A.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/DldsgLarAemX351RgP7OYThI4TFJPlno5TdqDp2lNuumFyytbfZhR9gdSG5tYI-D096D950DN16oe-JAmpPyzguypuMXTEoUo1xRd3Mq8hGfK3A_PlBvSVe8XEfGISARgFYSEk6gerKrItONNtQgkLz4_YbtWpkZ1nar95dYFw2uWbp6KRZv-mhh5bTB0dq-FMF5YQPrfFop5iNN10p4KesNePKgHtIiXKquL10P_RuUhrjXrkN7fG6WDQwmOKlClXwrg4g41PmDGcuxhRaBBS3MUeGbzAc3tpQ-9HJNuAKGdV_YZHy_U3Efrqca4OVfbV7HWnkB7Upd_ovvJ_HcGg.jpg"
       },
       "sourceId": "eg:kero_875",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/oQLI6HCJku7ycwpmyiIXWHWA0dw49o5En2D6vXv_Lbfh7JF5zCHzcZwCUwDFOpiXiR5vb1igFUpUUHWUFEX_NBO5tM302-M_FoHTNY_UIJWVOco_IkZ2WJp1qK0Ga4vkskqqsxz1WzK6kM8nABa__r8nIP-dA7mm6ePgM7wMEe3k2pBY6Gf3kPieqJfLIwVkis17kAa73tRdV-hR3NvVkaPhWwd7_k1tHdcHHUyRnuUml3kpHQV_IudM_ij-EowKUMJrUZKjbUUOqBxeb1jusbXkeFCEHYbSs7wAvlTW8NCAHQHaPP8KGfXDWoVQDb2Et2Lib-x7To5cr0sR7Qs0GQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "⭕ ذكرت يباشا ؟؟؟؟!\n\n💡 تعالي بقي شوف درجتك ومستوي مذاكرتك \n\n👈 وشد حيلك عايز درجه حلوه منك \n\n✍️ طالما موجود هنا يبقي لازم تذاكر \n\n👇 اضغط علي .. معرفه درجتي 👇\nواضغط علي طريقه المذاكره عشان تعرف تذاكر معانا",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:46.005Z",
-      "expiresAt": "2026-07-29T03:05:46.005Z",
+      "text": "🟥❤️  لكل مقدم في مسابقه الجهاز المركزي للتنظيم والإدارة 💥 \n⚠️ ومش عارف تبدا منين وتذاكر منين   ⚠️\n\n📌 اقرا وركز وافهم عشان تعرف تحل في الامتحان \n\n🔔 امتحانك عباره عن مجموعه اسئله علي اكتر من محور + تخصصك \n\n🔴 المحاور 🔴\nعربي & انجليزي & حاسب الي & معلومات عامه & سلوكيه $ اسئله الذكاء ( IQ ) \n+ محور التربوي لمسابقات المعلمين ➡️\n\n🔶🔶 فالمهم  \nدا كله لازم تذاكره عشان تعرف تحل في الامتحان وربنا يوفقك فيه \n\n🤍🩷 وانا جمعتلك كل حاجه لكل محور + كل التخصصات 🔽 هنا في البوت \n\n💥💥 احدث تسريببات الاسئله \n\n+ ملفات & فيديوهات & اسئله & امتحانات الكترونيه  & .... كل حاجه لا يخرج عنها الامتحان \n\nاستخدم لوحه المفاتيح الخاصه بالبوت عشان تعرف توصل لكل دا ⬇️⬇️\n💥❤️\nhttps://t.me/Kero_567_bot?start",
+      "links": [
+        {
+          "label": "https://t.me/Kero_567_bot?start",
+          "url": "https://t.me/Kero_567_bot?start"
+        }
+      ],
+      "createdAt": "2026-07-27T07:05:53.463Z",
+      "expiresAt": "2026-07-29T07:05:53.463Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:46.005Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:53.463Z",
       "tag": "other",
       "tags": [
         "other"
@@ -940,17 +941,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:46.005Z"
+        "reviewedAt": "2026-07-27T07:05:53.463Z"
       }
     },
     {
-      "id": 2969572306,
-      "postUrl": "https://t.me/hv_ty158/1169?single",
+      "id": 3083988636,
+      "postUrl": "https://t.me/hv_ty158/1170?single",
       "source": {
         "title": "مسلسل حلمٌ إليك",
         "handle": "hv_ty158",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/UqGFY1fBvyFvFa9IIXSkIXHaYfu5JtzpXwwqmdsfM1TwCxB3Hat3DmbMSZQ9sLPAga4BTJhncczatsAKv0cGx3QPGtjjF80dwAZ-QkOXBS5ULf9at1YWYwc56pZkkX2J-9xI73HWLB2O1ZCeT2FVJXMVPtn2v9_JgIU7eJK4-G_3hj1JpD9hGzTOZnuo-iImbynizCuToZzCR7pUY-baZ_onmBnXg7Nr8N0lumL3RbuAHsDfMcsubMsW0P50Q8wa18-PmvDXW3Gd4oMxwfLiCqSYkgPm4JD9K84b_XTHJj_iLUT-EFE76-CY1hFr_t_kGO_K4g6zZA--5rHWHAhEVA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/EdC5Fye9pskHwEFmk88pw4f0RnNKsOc36b9KnlhkTWV5s4TZHntl4RXIeUlaMup21LxDCaaIHri9H6mM8SJn0BTFgQe14VHC5f6LWXq1BLPiC2U7hKYTwX6QV9pDcLLPDgwjhOG9VH6hwnnNQX_e5ywGvkE-OxGg8ytTKFUr4ykDR9bzdi9z0s_zGEzqGd9ZBWrYxscAAcqqGlBpoDFHJ21c5hA4E4g_9yTCY6UK0rpp3S3m6a232ShaCXA8CDfenbJFhdjC2lv_QMzPuRGh9OQqBAvx_QnMtptmjaC4q3svMJUWvXdR3_-RleKura2jkFP7nGHLsvGjk5TueQ8sMQ.jpg"
       },
       "sourceId": "eg:hv_ty158",
       "sourceCountryCode": "eg",
@@ -958,12 +959,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🎬 مسلسل \" حلم اليك - الحلقة ( 05 ) مترجمة 🔥  📺 متاح بجودات متعددة (720p - 480p) لمشاهدة أفضل 👌  📲 تم رفع الحلقة على التطبيق بسبب حقوق النشر 📥 حمّـ.ـل التطبيق مجـ.ـاناً وشـ.ـاهد الحلقة كاملة من هنا 👇🏻  https://link.mysophon.io/l/0UJZTI https://link.mysophon.io/l/0UJZTI…",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:45.107Z",
-      "expiresAt": "2026-07-29T03:05:45.107Z",
+      "text": "🎬 مسلسل \" حلم اليك - الحلقة ( 05 ) مترجمة 🔥\n\n📺 متاح بجودات متعددة (720p - 480p) لمشاهدة أفضل 👌\n\n📲 تم رفع الحلقة على التطبيق بسبب حقوق النشر\n📥 حمّـ.ـل التطبيق مجـ.ـاناً وشـ.ـاهد الحلقة كاملة من هنا 👇🏻\n\nhttps://link.mysophon.io/l/0UJZTI\nhttps://link.mysophon.io/l/0UJZTI\n\n🎯 طريقة المشاهدة:\nافتح الرابط، اختر \"العرض في التطبيق\"، ثم قم بتحـ.ـميل التطبيق لمتابعة الحلقة بكل سهولة ✅",
+      "links": [
+        {
+          "label": "https://link.mysophon.io/l/0UJZTI",
+          "url": "https://link.mysophon.io/l/0UJZTI"
+        },
+        {
+          "label": "https://link.mysophon.io/l/0UJZTI",
+          "url": "https://link.mysophon.io/l/0UJZTI"
+        }
+      ],
+      "createdAt": "2026-07-27T07:05:52.737Z",
+      "expiresAt": "2026-07-29T07:05:52.737Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:45.107Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:52.737Z",
       "tag": "other",
       "tags": [
         "other"
@@ -981,7 +991,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:45.107Z"
+        "reviewedAt": "2026-07-27T07:05:52.737Z"
       }
     },
     {
@@ -1020,10 +1030,10 @@
           "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
         }
       ],
-      "createdAt": "2026-07-27T03:05:44.175Z",
-      "expiresAt": "2026-07-29T03:05:44.175Z",
+      "createdAt": "2026-07-27T07:05:51.953Z",
+      "expiresAt": "2026-07-29T07:05:51.953Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:44.175Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:51.953Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1041,7 +1051,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:44.175Z"
+        "reviewedAt": "2026-07-27T07:05:51.953Z"
       }
     },
     {
@@ -1067,10 +1077,10 @@
       "fallbackReason": null,
       "text": "BTC ✅",
       "links": [],
-      "createdAt": "2026-07-27T03:05:42.753Z",
-      "expiresAt": "2026-07-29T03:05:42.753Z",
+      "createdAt": "2026-07-27T07:05:50.848Z",
+      "expiresAt": "2026-07-29T07:05:50.848Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:42.753Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.848Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -1089,7 +1099,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:42.753Z"
+        "reviewedAt": "2026-07-27T07:05:50.848Z"
       }
     },
     {
@@ -1099,7 +1109,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/imJhf3pYKCg3ANNcR4Lfb0sETYt-0BLA_N48gS5nx5nR_YaOmaNgn3q5kxLMCS3JUQtvnmDWWzu26_wlB6rL0sEFSQkTNegrKHUkzfmXeVMZw9ggexPK0_ERLFcwRON9owrQW5HV8PZ4dEHeOYriatmOziiR-eXP0SKeLiCDx_s7j0v_pcHUK4d_3uC4mCjG2iarRaMxoRyNk_wHP1H8AB8OnlFlyhFBrAVWyRLfxY5jCBQ8oa3QqRMQtCm37c2vOnWUtm0jeoJeozXSJSraFklLZz__Zo88CEpdae4uSkQETibJ4JUTf52C85Fv5xpBdM6riI8vOv1QwjNeOlLa4Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/K7bx6JWDxqxpT4GubHtf8TIuJzrC0e7b3Pjh5zHwvRVLTFRbcH5eK-oyVfeOrTKCs3-rGBgzoqjXj032DEYvkZYYnVXRd-pbh9bNXRFZrwGcqRFNz5vfoIgVklvvXLwHb3jOUL3WPIh6KKXhZXmrEsHofiOo9qwPpuxrC8ctas2oVA9VR759dPr0ulfzDJDdVM-dSeYj_gl3hJd1-QIyVHbl7BezU0YY1jfSPA_1pkcen6KJhn2VH9o_NLqQ-3p6ST2ALLtBcau3Y-yjBZqr6ea4P0plwReidENimGNg-6zXUvzWrSj36vhnnjebsZ1f9SJcEKEaDKohM3ECVz70BQ.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -1109,10 +1119,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-27T03:05:41.943Z",
-      "expiresAt": "2026-07-29T03:05:41.943Z",
+      "createdAt": "2026-07-27T07:05:50.177Z",
+      "expiresAt": "2026-07-29T07:05:50.177Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:41.943Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.177Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1130,7 +1140,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:41.943Z"
+        "reviewedAt": "2026-07-27T07:05:50.177Z"
       }
     },
     {
@@ -1169,10 +1179,10 @@
           "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
         }
       ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
+      "createdAt": "2026-07-27T07:05:48.940Z",
+      "expiresAt": "2026-07-29T07:05:48.940Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.940Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1190,7 +1200,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
+        "reviewedAt": "2026-07-27T07:05:48.940Z"
       }
     },
     {
@@ -1210,10 +1220,10 @@
       "fallbackReason": null,
       "text": "طريقة المشاهدة والتحميل والبحث من خلال البوت",
       "links": [],
-      "createdAt": "2026-07-27T03:05:38.670Z",
-      "expiresAt": "2026-07-29T03:05:38.670Z",
+      "createdAt": "2026-07-27T07:05:48.005Z",
+      "expiresAt": "2026-07-29T07:05:48.005Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:38.670Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.005Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1231,7 +1241,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:38.670Z"
+        "reviewedAt": "2026-07-27T07:05:48.005Z"
       }
     },
     {
@@ -1256,10 +1266,10 @@
           "url": "https://Data.gov/"
         }
       ],
-      "createdAt": "2026-07-27T03:06:06.190Z",
-      "expiresAt": "2026-07-29T03:06:06.190Z",
+      "createdAt": "2026-07-27T07:06:09.666Z",
+      "expiresAt": "2026-07-29T07:06:09.666Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:06.190Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:09.666Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1278,17 +1288,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:06.190Z"
+        "reviewedAt": "2026-07-27T07:06:09.666Z"
       }
     },
     {
-      "id": 2634348291,
-      "postUrl": "https://t.me/tradsempire/4448?single",
+      "id": 3296190378,
+      "postUrl": "https://t.me/tradsempire/4449?single",
       "source": {
         "title": "Trade Empire",
         "handle": "tradsempire",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/vZ-uFPTULzL7GA3S5Ge2XmQcbO77H4UcX9GdFj48WAtJl319bxSgJRePhMGROr0JyshfitdJTdOlkcA9My7NvJuLe6zM1FVrdzmLrTHs8bRsIkyJ5pucri2CbaW4XRx8wCBuHEvJklcpEHQq0WtEm4VG8FMY3rc7NSSnNYgfbdP6KyZgiUmSqi2_bvfcn5sJ9GOX2wtsxv3sw_4Vd24bpslZVyQ0EM3SMOZJGNXVXgsA035NsUydi4rkUggovL13wcQDYQD9LSpuzkxEWenjCpAII0mAMVNwROOL7yamIDv-4at53MUSw-I4zKbGporIEYg0_y25VzGLlGlEqtHEIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/nYn9gEq6KtxhosIYdcXR3NtwbhidatgvDuxvkGuAeZ-FZeDJxoszgF0Bs1kuO2qHBytYe06bokI8Mg2QLUOxyozATWlvPeT33rIcXr-W_FG3bBMpApNhgZXLhz0-KvvfF0vUpZlw8CVJlYhnbr-DDAgAjVtM4c6XIAoDwQBxy4z4BJd0KJxw5x1V_TRIJ6j8f0tjSyXAEsh8rLZSJPTaelvwRPwXCZ72kf1oN-TcyjCgT2JRUdkTcCv-_Xrw6nQW0qaCqMf_acmeQqxDmuPzG7Ivb9dpdNsZa63sVebUEhtEbgXjVV8J94_YmBm-i20RPO4Pb-GdwmpDVJ61CEaImA.jpg"
       },
       "sourceId": "eg:tradsempire",
       "sourceCountryCode": "eg",
@@ -1296,12 +1306,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "XAUUSD BUY NOW 4104 \nSl : 4094\nTp : 4114",
+      "text": "XAUUSD BUY NOW 4090 \nSl : 4080\nTp : 4100",
       "links": [],
-      "createdAt": "2026-07-27T03:06:05.183Z",
-      "expiresAt": "2026-07-29T03:06:05.183Z",
+      "createdAt": "2026-07-27T07:06:08.893Z",
+      "expiresAt": "2026-07-29T07:06:08.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:05.183Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.893Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1319,7 +1329,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:05.183Z"
+        "reviewedAt": "2026-07-27T07:06:08.893Z"
       }
     },
     {
@@ -1344,10 +1354,10 @@
           "url": "https://youtu.be/slQKY-FcoGU"
         }
       ],
-      "createdAt": "2026-07-27T03:06:04.385Z",
-      "expiresAt": "2026-07-29T03:06:04.385Z",
+      "createdAt": "2026-07-27T07:06:08.219Z",
+      "expiresAt": "2026-07-29T07:06:08.219Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:04.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.219Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -1367,7 +1377,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:04.385Z"
+        "reviewedAt": "2026-07-27T07:06:08.219Z"
       }
     },
     {
@@ -1377,7 +1387,7 @@
         "title": "SeedOSS • foss, privacy, gems.",
         "handle": "seedoss",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/cGmLTgYX1x918uiQPldmAeZiFOb64ufROi7abcG2_tRXObu2p8wLms3ZMLXTuvnGNlJgEzz6Up4_gzkmOHciOySYvRmCWQm17kEsw11UKu5p8uLTAeP2ImC1IXStRYUfewBYHHMxsH8o6078c6_poC7JXOQbl_x3CX_o13MJEutwNS9N90UGQMjujrbCFdlO8XzacbAx_iZIZ2xr-lkBd1pK4r8sTNI0vCkRLJKByC21_HszQ9J8WA0fm70dyj_XEdOkleBF52jkb2kXCOYXSXWauuOFcSD054Ag6D15p8B4-dIdBa_-m_jydP4RTDkOw96hozIIkR53esqG0pGW8g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ArQxs2_jMEwm1OngdNPLcAPl2TD5hP7JID_cTAA94IKpyMKVY3JKOnI6XxVpMPtE6whOq-59p7md7cygFh6K1zUMZrDRaMv43a1yquT4D1dQhPCjjfPzrlRlGVV6HuRXiNUqmvQSouct_-quBTmsF5B-fP8cov3V5DaKkiSf_H_gMhj4v5RO3uEUUVfqXbQBMh51xm_ot19SToFjt0Ca2w1CPU24-4HrvFFakeVr3cCRKYjU3K4zVh4BctgpFYnfyqCCBplbKhkXsXRpr-sHm2Y9iV3G1cfVKa3DTNNX-KsPS856bt_4z3tE1h4WXw9kfqy8VriH2K0VBP8eXSolow.jpg"
       },
       "sourceId": "eg:seedoss",
       "sourceCountryCode": "eg",
@@ -1414,10 +1424,10 @@
           "url": "https://t.me/SeedOSS"
         }
       ],
-      "createdAt": "2026-07-27T03:06:03.503Z",
-      "expiresAt": "2026-07-29T03:06:03.503Z",
+      "createdAt": "2026-07-27T07:06:07.520Z",
+      "expiresAt": "2026-07-29T07:06:07.520Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:03.503Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:07.520Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1436,12 +1446,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:03.503Z"
+        "reviewedAt": "2026-07-27T07:06:07.520Z"
       }
     },
     {
-      "id": 351913589,
-      "postUrl": "https://t.me/rusembeg/10797?single",
+      "id": 2996504250,
+      "postUrl": "https://t.me/rusembeg/10798?single",
       "source": {
         "title": "Russian Embassy in Egypt",
         "handle": "rusembeg",
@@ -1455,38 +1465,34 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/oU16FXDUXngZxEGDs1f2llpgwNel644Bu1J2nV54_IOFGxQPUsWI-b0rme0kjF2q8Vo-WHTt7fGLD_4tg7Yoby0TlFhqENsVY5u8nqUGlyIN38gKgEE6ejNmEQyniMyc8504Gn4Q7-d0-2tHT3uOtdBG0m4q1brS_QHsRWXjLNgwWsrU1a7ssUm6CBziMgsL-CbBs-dZRYQKPVsp5saoUT3y37GEz6jcJDrX1s9B6-rX0CvOsaub0JjpFm3qYA04km6fwQQvvghGDBqMmLW3zCw91tC5bD1MRlE6HpbJIX2982XNZULPcx0yuun4-DexHfQrtrpcCuSLR16_5KF-2g.jpg"
+          "url": "https://cdn4.telesco.pe/file/EKI79G_Q01kjPaoLn-ADTQvIF9z7OBXcOefx1zv4xGrX0Adfehu_kFtrI1kSjYe_8yVLCPuUmclLsVIJU4diOWeKb0wuTFYqKYjz65DSOwsqhyjn5u-iCZgU8dEoiWggPphQERmyE6nwA13FeRh_j3ZcjGPSt9eUREUsbTu6JwVeLuIOifv6TF_Y1QrSopRwRMjrDOo0LWWVyL4_4EhyDZ1L3QiU2bNyyntRBQ2I8c8tJb6QAXpzvLzjSW-CCk-_GuJjOLMcSaoQDAByK6FR6ug6bE1mUNWkNiqkrW2xXUnGWyMzDM2sxD9fYGBM5u1f2UdSHMPEVcWpBMPJ-fvcGQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🤖🌾 Впервые в Египте пройдёт международный конкурс «АгроНТРИ-2026»!\n\nРусский дом в Каире приглашает школьников принять участие в международном конкурсе «АгроНТРИ-2026» в номинации «АгроРоботы».\n\n🇪🇬 В 2026 году по инициативе Министерства сельского хозяйства России конкурс получил международный статус и впервые пройдёт в Египте. Проект даёт возможность учащимся из разных стран заниматься высокотехнологичными аграрными проектами, преодолевая разрыв между образованием и современными агротехнологиями. Его миссия — воспитание нового поколения инноваторов, посвящённых решению задач глобальной продовольственной безопасности и устойчивого развития сельских территорий.\n\n📅 10 августа\n🕛 12:00\n📍 Русский дом в Каире: Гиза, Докки, улица Тахрир, дом 127\n\n📅 11 августа\n🕛 12:00\n📍 Русский дом в Александрии: Александрия, Баб-Шарки, улица Батальса, дом 5\n\n👨‍🎓 К участию приглашаются школьники от 10 до 17 лет включительно. Для регистрации необходимо иметь при себе документ, удостоверяющий личность. Родители и сопровождающие лица могут присутствовать на мероприятии.\n\n🚜 В ходе соревнований, которые пройдут при поддержке сотрудников Ставропольского государственного аграрного университета, участники выполнят задания с использованием специализированного агроробота, моделирующего реальные сельскохозяйственные процессы: посадку и уборку урожая, перемещение сельскохозяйственной продукции, уход за животными, обработку почвы, а также преодоление препятствий на испытательном полигоне.\n\n🏆 Победители египетского этапа получат возможность представить страну на Международном суперфинале, который состоится с 7 по 11 октября 2026 года в Москве в рамках Российской агропромышленной выставки «Золотая осень», где встретятся лучшие команды из 12 стран. Также участники получат подарки от Ставропольского государственного аграрного университета.\n\n🌍 Конкурс «АгроНТРИ» объединяет школьников из 12 стран: России, Беларуси, Казахстана, Кыргызстана, Узбекистана, Таджикистана, Монголии, Абхазии, Индии, Египта, Танзании и Ганы. На международном уровне соревнования проходят в трёх номинациях: АгроКосмос (спутниковые данные и ГИС), АгроКоптеры (беспилотники в АПК) и АгроРоботы (автоматизированные системы управления техникой).\n\n📲 Следите за новостями:\n🌐 Официальный сайт\n💬 VK и Telegram\n\n🇷🇺 Генеральный партнёр Международного конкурса «АгроНТРИ» — Агрокомплекс «Лабинский» (Краснодарский край).\n\nПроект реализуется Фондом содействия инновациям, Ассоциацией образовательных учреждений АПК и рыболовства и ГК «ЦентрПрограммСистем» при поддержке Министерства сельского хозяйства России и Министерства просвещения России.\n\n🚜🤖🌱 Ждём будущих инженеров, изобретателей и создателей технологий сельского хозяйства будущего!\n\n#АгроНТРИ #МеждународныйСуперфинал #AgroInterSchool #AgroNTRI #InternationalSuperfinal",
+      "text": "​🤖🌾 للمرة الأولى في مصر: انطلاق المسابقة الدولية \"أجرو إن تي آر إي - 2026\" \n\n​يدعو البيت الروسي بالقاهرة طلاب المدارس للمشاركة في المسابقة الدولية \"أجرو إن تي آر إي - 2026\" في فئة \"الروبوتات الزراعية\" (AgroRobots).\n\n​في عام 2026م  وبمبادرة من وزارة الزراعة بروسيا الاتحادية اكتسبت المسابقة الطابع الدولي، وتُقام لأول مرة على الأراضي المصرية. يتيح هذا المشروع للطلاب من مختلف الدول فرصة الانخراط في مشروعات زراعية عالية التقنية، الأمر الذي يسهم في سد الفجوة بين المنظومة التعليمية والتقنيات الزراعية الحديثة. وتتمثل رسالة هذا المشروع في إعداد جيل جديد من المبتكرين القادرين على معالجة قضايا الأمن الغذائي العالمي والتنمية المستدامة في المناطق الريفية.\n\n​📅 تاريخ انعقاد المسابقة: 10 أغسطس 2026م \n🕛 موعد انعقاد المسابقة: الساعة 12:00 ظهراً\n📍 مكان انعقاد المسابقة: البيت الروسي بالقاهرة (127 شارع التحرير، الدقي، الجيزة) \n\n​📅 تاريخ انعقاد المسابقة: 11 أغسطس 2026م \n🕛 موعد انعقاد المسابقة: الساعة 12:00 ظهراً\n📍 مكان انعقاد المسابقة: البيت الروسي بالإسكندرية (5 شارع البطالسة، باب شرقي،  الإسكندرية) \n\n​👨‍🎓 يُدعَى للمشاركة في هذه المسابقة طلاب المدارس ممن تتراوح أعمارهم بين 10 و17 عاماً. للتسجيل يُرجى إحضار مستند تحقيق الشخصية. يُسمح بحضور أولياء الأمور والمرافقين مع ذويهم. \n\n​🚜 خلال المنافسات التي تُقام بدعم من الخبراء والأكاديميين بجامعة ستافروبول الحكومية للزراعة سيُكلف المشاركون بتنفيذ مهام باستخدام روبوت زراعي متخصص يحاكي العمليات الزراعية الفعلية، مثل: غرس البذور، وحصد المحاصيل، ونقل المنتجات الزراعية، وتربية الماشية، وتهيئة التربة، بالإضافة إلى تخطي العقبات في مضمار الاختبار الميداني.\n\n​🏆 سيحصل الفائزون في مرحلة المنافسات التي تُجْرى بمصر على فرصة لتمثيل البلاد في مرحلة \"النهائيات الدولية\" المقرر إقامتها في الفترة من 7 إلى 11 أكتوبر 2026م بالعاصمة الروسية موسكو، وذلك على هامش معرض الزراعة والصناعة الروسي باسم \"الخريف الذهبي\"، حيث تلتقي أفضل الفرق المنافسة من 12 دولة حول العالم. كما سيحصل المشاركون على هدايا تذكارية مقدمة من جامعة ستافروبول الحكومية للزراعة.\n\n​🌍 يشارك في مسابقة \"أجرو إن تي آر إي\" طلاب المدارس من 12 دولة، هي: روسيا، بيلاروسيا (روسيا البيضاء)، كازاخستان، قيرغيزستان، أوزبكستان، طاجيكستان، منغوليا، أبخازيا، الهند، مصر، تنزانيا، غانا. وتُقام المنافسات على المستوى الدولي ضمن ثلاث فئات رئيسية: \"الفضاء الزراعي\" (البيانات الفضائية ونظم المعلومات الجغرافية)، و\"المسيرات الزراعية\" (الطائرات بدون طيار في القطاع الزراعي والصناعي)،  و\"الروبوتات الزراعية\" (أنظمة التحكم الآلي في المعدات).\n\n​📲 لمتابعة المستجدات تفضلوا بزيارة: \n🌐 الموقع الرسمي\n💬 VK Telegram\n\n​🇷🇺 الشريك العام للمسابقة الدولية \"أجرو إن تي آر إي\" هو المجمع الزراعي \"لابينسكي\" (إقليم كراسنودار).\n\n​يتولى تنفيذ هذا المشروع كل من \"صندوق دعم الابتكارات\"، و\"جمعية المؤسسات التعليمية للقطاع الزراعي الصناعي والثروة السمكية\"، ومجموعة شركات \"سنتر بروجرام سيستم\"، وذلك بدعم من وزارة الزراعة ووزارة التعليم بروسيا الاتحادية. \n\n​🚜🤖🌱 سنكون  بانتظار مهندسي الغد، والمخترعين، وصُنّاع التقنيات الزراعة في المستقبل.",
       "links": [
         {
-          "label": "сайт",
+          "label": "الموقع الرسمي",
           "url": "https://kids.agronti.ru/"
         },
         {
           "label": "VK",
-          "url": "https://vk.com/agronti.kids"
+          "url": "https://m.vk.ru/agronti.kids"
         },
         {
           "label": "Telegram",
           "url": "https://t.me/agronti"
         }
       ],
-      "createdAt": "2026-07-27T03:06:02.460Z",
-      "expiresAt": "2026-07-29T03:06:02.460Z",
+      "createdAt": "2026-07-27T07:06:06.673Z",
+      "expiresAt": "2026-07-29T07:06:06.673Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:02.460Z",
-      "tag": "recipes",
+      "mediaRefreshedAt": "2026-07-27T07:06:06.673Z",
+      "tag": "telegram_ton",
       "tags": [
-        "recipes",
-        "food",
-        "space",
-        "science",
-        "transport_auto",
-        "auto"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1501,12 +1507,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:02.460Z"
+        "reviewedAt": "2026-07-27T07:06:06.673Z"
       }
     },
     {
-      "id": 3564684457,
-      "postUrl": "https://t.me/rassd/199859?single",
+      "id": 834055474,
+      "postUrl": "https://t.me/rassd/199863?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -1520,27 +1526,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Ok5083gAPNCUr_TzNsDngmvIAud3tHmIlheOj1JIM6CH84nvXP0k0pzcz--4zYbE3OBr4kxWNZpHSG11Rt2rGjjaYL2UP3ice0PRFq69BE2L6m1m-GFCKMY01pc-hAjjePCTboQZEO8yAsCKtxQuzNs8woIK6QxpKDNnr044a5-u9OS0WJDyEDI9_T8Qhjv9_s5Kbat8aTGiJ_dvrDcKPocp3cRt6WH9ynwU_WbQm3byhgPV5badxVsj9_cDaJc4z4MNk6InBw1t-z_H0tZyX4-44F9_QP81GUONqqGNf14uRBMJqyoNLQPM9D26oqhCdiaOgzxIrYaccwSm64EpGg.jpg"
+          "url": "https://cdn4.telesco.pe/file/qu9y7hK5E7h1dAsJlTwVLbvbEgKvATUE4KAs0anXQElhQs-Wt3H1B7-Mq76CQVTTm4YdUilIX_h37YX-zjd6iJq57Vv_GChn11wLHR_hwPIKgqIFnMrIjGWb-xlWG5OAh_4kl6ARltqh1Nf5CKu9kb3PHYj2u-VzUhJJCqigfJeHwQw2G9mM_O1oSg1sdRhK5A6pjqUT_9v6NiljSRs6aQ9dmiKxwDisGeF6TNbfuh7OP3IOopB3T3ERefNVCome97j6vw0vNophWXfrcLZZjpDrQSDaDgdjiYHQJVbx_MKVZPBcO34d7UzyMYTQTMxbRAbO_oRQBHTKsRa8jGubaw.jpg"
         },
         {
           "id": "image-2",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/NVwOpUNkVU0yH4Cmu8rELu4NNXm5drdIrlnZbv4vTXcdiUw7ZwNu8O6K5V4QCiZ_NNCW2rrWS-Xrv3hn5ORMiETZasmqKhKObYU9bj-cfGAdwEr18iae0fTS1HBPIn5bLfn0WuKh3fZk8oXAKCa1ttgw-YgMyrgFGF5gyaTo6UL9fevPRCDEwvD_Nb5h7X_zVBR7A4i-XV-3WjdBBbLh9MsqjJLNh4xHfRDQ1281fhmdqLtJ5CJPo24-aLS3su4jA1qTuD7Z5TnFPtf2PxVAwzAaOHDHdmyueQCfL6VUi0wFBhqlqUiF2py1wzuQc6Blkyho_Xj0dJ5cWbaOpC2u9g.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ZGlgwUWcmmdbMWzUGStiV0tXNM-rMA6TtKj3T7EugbB_k5hlG_gTm2V-0Z8fGx0vh3RbQzgXsWhcAzvytmzjpi6vyyDA0nKhui1QccalCosszr95PO37Dh6BSsrARkX2DStqE0A4utWl8pwDtpdCP4a3mZEDXqWyI1VwCYXWoNdz7MAuwY7-bhkgTBhL3fEkNJ6B24Gly8R0TnUXDNibyPBcEqkoiTYfQl0q3Tzk1mYddDII3qw8DAOOG4h1wzJ98XfvN8U7B0jmxSnG_4fFvdYZvbrNanhM_rHFzUr45oY1-aoWcC8tq1OVK5EDB4e8TiVGWpYCM8qVcKGMP0Q6LA.jpg"
+          "url": "https://cdn4.telesco.pe/file/POqrkQVIYxT9UCuHLkRWulsBcXpEC0Y9RgR-1cL_a6Hv7_IfDoOVYbbSyRq6jcE8CNzBD_Wj896avRL2v3ELsWYA65FUy0fYdmT5j_FEm--lh50mqmcAjreEQyjy5tkk3zk2LbI_ssSk9fbFaR5C2hP7nC_i78iC3dRbw-oLGRNggCNOY87hmhiiN4dKH_WLKBmul-9fGmpg-AXaHCbryoJiLPz4LLtuzXztwIdKqLTzyrP8eB-vW1ouMzNXt6C1_qw2BpaKFdjLc_ErNQILZ_nID4MYC4ib2INtmTrL4hX73Ch5hZC6Xlzojk7o5k6BMoU9bMvvZuXkXM6cApTctg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "قوات الاحتلال تعتقل 3 شبان خلال اقتحام مخيم بلاطة شرق نابلس، وهم: \n- عبد فرسان أبو مصطفى. \n- عبد بسام الحوتري.\n- محمود قرعان.",
+      "text": "عاجل | وفاة جنين وإنقاذ حياة الأم نتيجة إغلاق حواجز الاحتلال محيط نابلس.\n\nحيث تعرّضت سيدة حامل في شهرها السادس من بلدة قريوت لتأخير على أحد الحواجز، قبل أن يُسمح لها بالمرور بعد إطفاء مركبة الاسعاف بالكامل، ما أدى إلى فقدان الجنين، فيما تم إنقاذ حياة الأم",
       "links": [],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
+      "createdAt": "2026-07-27T07:06:05.739Z",
+      "expiresAt": "2026-07-29T07:06:05.739Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:05.739Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1558,7 +1559,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
+        "reviewedAt": "2026-07-27T07:06:05.739Z"
       }
     },
     {
@@ -1627,10 +1628,10 @@
           "url": "https://rafahnow.com/?p=51087"
         }
       ],
-      "createdAt": "2026-07-27T03:05:59.385Z",
-      "expiresAt": "2026-07-29T03:05:59.385Z",
+      "createdAt": "2026-07-27T07:06:05.035Z",
+      "expiresAt": "2026-07-29T07:06:05.035Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:59.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:05.035Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1648,7 +1649,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:59.385Z"
+        "reviewedAt": "2026-07-27T07:06:05.035Z"
       }
     },
     {
@@ -1658,7 +1659,7 @@
         "title": "Nimrod for apps",
         "handle": "nimrodforapps",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ua4IFtkWBdWATsaIIxmAZV5wSXOysMcrKZ-k2gllc5t_zGp2MtAtt1dIT2XyNzBHuOf4WoAR5mUlARnqh_EVLg_dUdPDgHnqzgBfWnUcC0D03SQGwgt0PcF7HCumtUQLqem35-eTIvMndDqYDc7Km5jrkLwEE-HM-knLIHZlTZzhAAhNf8kOLYpKUB-mVcZXBrjiblnWTsYrZbgiVB_ys9Vg0qpEO6NYmryAntS3_zpY8wibJkJNLK9njG7aac169ZDh6ELxgSQsKOfMO6dbmLN633qEBCxiTz-ghAEkGyqRZt8N5PG1UuIFBmdF2PPDubYH59m5DTyp7vvmwu7esQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/R-mAwP3RtREou7-Wc4xx-iWU_3Mb1DWj6DJhfHavRcYPvDT33HrCb4SLrvKOvrg4EDPhziJh9Z6W90P8RrUsDlfwtaOSuSe356mE5eizSiXTvcaVZSmD-e52bDBEe2a5_xZQ1978xfRwCbvoZ85yGp0c1zirxjUvbWaVPlR_DGAtLS88HWydoCr0UMHZQyZE4Lr3bKxjRn370xw13ObbBJYpyKlPy0LZwR1z5NCAISQiHLnvhUw0QYNbeuILglE_-BT5oLmhmoajAd5blm7YGCSshe3NQ17THvChGJ4ws7dMIw0IN0cpzaTJCuWPFGREQijZNRhoJDF3zZk7cyLMWQ.jpg"
       },
       "sourceId": "eg:nimrodforapps",
       "sourceCountryCode": "eg",
@@ -1675,10 +1676,10 @@
       "fallbackReason": null,
       "text": "اسم التطبيق :- Kira TV 📲\n\nتطبيق TV مجاني لمشاهدة جميع القنوات الرياضية والعربية مجانا - bein sport ☑️\nكود التفعيل : 1111\n\nمجاني وبدون اعلانات 💎",
       "links": [],
-      "createdAt": "2026-07-27T03:05:58.568Z",
-      "expiresAt": "2026-07-29T03:05:58.568Z",
+      "createdAt": "2026-07-27T07:06:04.363Z",
+      "expiresAt": "2026-07-29T07:06:04.363Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:58.568Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:04.363Z",
       "tag": "sports_news",
       "tags": [
         "sports_news",
@@ -1697,12 +1698,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:58.568Z"
+        "reviewedAt": "2026-07-27T07:06:04.363Z"
       }
     },
     {
-      "id": 1674408599,
-      "postUrl": "https://t.me/ngmsr/15050?single",
+      "id": 2071404280,
+      "postUrl": "https://t.me/ngmsr/15057?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -1716,17 +1717,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qP1nsB5n_QLOdHE-tMm7Re5dyGgDzmkqUFS1UyTOKbtliDASozisPxI1KEZp_jex3mf-bxkAVvYtBHXNgU2T-pUAyfhtahnMq2lA1Q6NpFmL22aQnG3S8edg7mcB0sBlslD1A4x3TH57rdj-w7SHpdskHIQl1u-eIzEkTFwcr5BoKg5wYgJUJsbTd3sDSDrNhNI-GRkdr9WjqtRF_L0SObtlLOihxNV0ULlg6149m3Z6XWRlETD4DMi7blF6zOOCfLpKKI2C-cuo2go7ERsbzWPtjd4ItdTlzlDkZ7HK60ZmHtcF4Q5BIKIVknZbXPGhKYzHv_GM5ImI4Jw0qWgGpw.jpg"
+          "url": "https://cdn4.telesco.pe/file/lGG1EnX_AAo__bZ7Fg_b90tBAhx1AmHvRdLYoCm4uGo7d_wo2RmFFnrdQHnQKJUDBvU7bsp1NruOwdx2_cdcjAxC735UC9ViBAYWMKMjRvMEy7tA75K0Sh4g2U5tYbYg5-WFR-YD_uigoxacHSyC8YdydB5ZdHfM3fyUkF5G27JgvaOQXUBblDTC2-z-DHKWGgOEdbfRSsDgQYRnS-aK58dT3yaIgmjYSrcG-EgfUJMX02tm4YnhtRf5TS2WEckdGPMmHnyyecr2n6pWw7_QL5zkdSGGwocJA2sa5IY5Yqbu0iUQZYCBJAiU4wT5Rz7v3w24SDCCjobL0rzPOiAvSQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 اقتحامات واسعة بالضفة\n\n🚨 الجيش الإسرائيلي يوسع حملة الاقتحامات في الضفة الغربية، مع مداهمات طالت عدة مدن وبلدات خلال فجر الاثنين\n\n👥 اعتقال عشرات الفلسطينيين بعد تفتيش منازل في رام الله ونابلس والخليل وقلقيلية وجنين ومناطق شمال شرقي القدس\n\n🕌 التصعيد جاء عقب هجمات لمستوطنين على مسجدين، شملت إحراقاً جزئياً وكتابة شعارات عنصرية على الجدران\n\n🔥 أضرار مادية لحقت بأحد المسجدين، في وقت تشهد فيه الضفة تصاعداً واضحاً في الاقتحامات واعتداءات المستوطنين\n\n#الضفة_الغربية #فلسطين #إسرائيل",
+      "text": "🚨 2898 قطعة أرض\n\n🏡 بدأت وزارة الإسكان اليوم استقبال طلبات حجز 2898 قطعة أرض سكنية ضمن برنامج مسكن في 17 مدينة جديدة، والتقديم مستمر حتى الخميس 10 سبتمبر 2026.\n📌 الطرح الجديد يهدف لتوسيع فرص التملك وتوفير بدائل سكنية متنوعة تناسب شرائح مختلفة من المواطنين، ضمن منظومة تعتمد على الشفافية وتكافؤ الفرص.\n📊 الأراضي المطروحة موزعة على محورين: 2263 قطعة متوسطة و635 قطعة مميزة، في مدن أبرزها العبور الجديدة، حدائق العاشر، السادات، قنا الجديدة، وبني سويف الجديدة.\n🌆 محور الأراضي المميزة يشمل مدن الشروق وبدر والعبور الجديدة و15 مايو وناصر الجديدة وطيبة الجديدة وقنا الجديدة، بينما تتوزع الأراضي المتوسطة على مدن مثل حدائق أكتوبر وبرج العرب وأسيوط الجديدة وأسوان الجديدة.\n#وزارة_الإسكان #مسكن #الأراضي_السكنية",
       "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1744,7 +1745,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
@@ -1754,7 +1755,7 @@
         "title": "‎أخبار شمال إفريقيا / Northern Africa News",
         "handle": "nanafrica",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/jYfZWzjlt3iSt1jxGQL7vIlt_stGEvffcMT5OZT3Q3aJ4uxAQqceja7eAmnsc9x9mI0H82T6H-zQYhw3cLwObsh1mOlwO037iPdaZPb4B9lBetnjekprJoWdL8ljQNbtdrDl6AqdF344vAVBQcX4QJ0-CPJhzJrXNft3Fnm6izWZ1ZzpaEUSx85EV5uWWC4JFMnuh4h6OciSQ8UfN54sAoeQocJsMkfKg9hQu6bzx3tD2Tt08WuT45WbBDMFm-tTsOpn50FikoRM791sipqRGhkVi8646lv-_NULoSMJXmh9N9Z98bGlU6Cyoic2skiB3NZ9yHnktGqDIQ3o335dhg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ntlGLX_NOQT52O8sSpi7a84b_eHQzNZUDHmZIZiM5yhKmBjkD-Pr-xUEsntUOT2fwb8VKLOI9f_4TaKWH0G9B6pYIbDerX6oETnfazGpavgzqOoRixTjwFqcnqZMf_C1gabKurN-xVWOcDPwxEzJsWimsZPUEjs1Epf9H9jgfUzKoKMxoZy5BnfHqL31xwn_yU6C3R8ZXXQz1r3nBF4hvBeVK86h9XhH0mmvHxPMf3AdPzQ02Otj_Ws_vbDjT8eUeGmVRE7LVvkuDbvwRBW2hZC3VZvypMeNQePpOB4bkp1W2Px5MxqX5LgPr9KxNrRMKB-X8o7cstiR76Vj-Eneng.jpg"
       },
       "sourceId": "eg:nanafrica",
       "sourceCountryCode": "eg",
@@ -1775,10 +1776,10 @@
           "url": "https://nan.media/%d8%b9%d9%82%d9%88%d8%a8%d8%a7%d8%aa-%d8%a7%d9%84%d9%83%d9%8a%d9%85%d8%a7%d9%88%d9%8a-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d8%b3%d9%88%d8%af%d8%a7%d9%86-%d9%85%d8%b3%d8%a7%d8%a1%d9%84%d8%a9-%d8%b6/"
         }
       ],
-      "createdAt": "2026-07-27T03:05:55.642Z",
-      "expiresAt": "2026-07-29T03:05:55.642Z",
+      "createdAt": "2026-07-27T07:06:00.669Z",
+      "expiresAt": "2026-07-29T07:06:00.669Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:55.642Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:00.669Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -1797,12 +1798,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:55.642Z"
+        "reviewedAt": "2026-07-27T07:06:00.669Z"
       }
     },
     {
-      "id": 2128437230,
-      "postUrl": "https://t.me/naf3_ch/2883?single",
+      "id": 2798497481,
+      "postUrl": "https://t.me/naf3_ch/2884?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -1815,12 +1816,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "&rlm;﴿يَا أَيُّهَا الْإِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ﴾",
+      "text": "﴿ وَاللَّهُ خَلَقَكُم ثُمَّ يَتَوَفَّاكُم وَمِنكُم مَن يُرَدُّ إِلى أَرذَلِ العُمُرِ لِكَي لا يَعلَمَ بَعدَ عِلمٍ شَيئًا إِنَّ اللَّهَ عَليمٌ قَديرٌ ﴾",
       "links": [],
-      "createdAt": "2026-07-27T03:05:54.817Z",
-      "expiresAt": "2026-07-29T03:05:54.817Z",
+      "createdAt": "2026-07-27T07:05:59.996Z",
+      "expiresAt": "2026-07-29T07:05:59.996Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.817Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.996Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1838,12 +1839,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.817Z"
+        "reviewedAt": "2026-07-27T07:05:59.996Z"
       }
     },
     {
-      "id": 2895700565,
-      "postUrl": "https://t.me/n1nnnn3/51990?single",
+      "id": 1170438466,
+      "postUrl": "https://t.me/n1nnnn3/51997?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
@@ -1856,17 +1857,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚨 قنوات رائجة",
+      "text": "لعشاق الادب ❤️🗞",
       "links": [
         {
-          "label": "قنوات رائجة",
-          "url": "https://t.me/addlist/RHl3ids8f4A5Yjc0"
+          "label": "لعشاق الادب ❤️🗞",
+          "url": "https://t.me/B_X_B4/568"
         }
       ],
-      "createdAt": "2026-07-27T03:05:54.033Z",
-      "expiresAt": "2026-07-29T03:05:54.033Z",
+      "createdAt": "2026-07-27T07:05:59.366Z",
+      "expiresAt": "2026-07-29T07:05:59.366Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.033Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.366Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -1886,7 +1887,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.033Z"
+        "reviewedAt": "2026-07-27T07:05:59.366Z"
       }
     },
     {
@@ -1911,10 +1912,10 @@
           "url": "https://t.me/m/FJwAhhLhNGY0"
         }
       ],
-      "createdAt": "2026-07-27T03:05:53.197Z",
-      "expiresAt": "2026-07-29T03:05:53.197Z",
+      "createdAt": "2026-07-27T07:05:58.655Z",
+      "expiresAt": "2026-07-29T07:05:58.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:53.197Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:58.655Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1932,7 +1933,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:53.197Z"
+        "reviewedAt": "2026-07-27T07:05:58.655Z"
       }
     },
     {
@@ -1961,10 +1962,10 @@
           "url": "https://t.me/M_iraculousLR"
         }
       ],
-      "createdAt": "2026-07-27T03:05:52.336Z",
-      "expiresAt": "2026-07-29T03:05:52.336Z",
+      "createdAt": "2026-07-27T07:05:57.968Z",
+      "expiresAt": "2026-07-29T07:05:57.968Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:52.336Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:57.968Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1982,40 +1983,39 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:52.336Z"
+        "reviewedAt": "2026-07-27T07:05:57.968Z"
       }
     },
     {
-      "id": 1317050857,
-      "postUrl": "https://t.me/medmannews/42892?single",
+      "id": 2133276869,
+      "postUrl": "https://t.me/medmannews/42896?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/dAw4b2-MDLNZczAPW76HkXPZwGbLflMsz91rgWW-khvLav5k9viHLZb6aOZrvIVdk2PkgjgNCfK5p8GdgHI-YjLILMEGP1cxQWbctwOo9rhqBSu90ocmbFyMZaVWKUZQ57aYx82MLM6toD8rGBucwhF2yvum1AzAoCg6nsiUUr6W_EeRlOFwfvEV3zP5UcS3ygNBVuru6imq8-waQ7YgXevtv3J_PUM6OQVKCxdyBFESB55gJpUMTBPsvA77B9EZkqhDyajVc4q2V-ozolKdlC9qdiH4TLS7Kzyoqpdst5ec0De0eLxJ4fI4gaQF2Lees8iOI05rEVfhQQ-puDrWxA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/hh9Y2XNmNS1Nx54u_hEyUPIrYgqBymyeQMKepc87IxT0QfdECsEdH2flJVrIMzbNzQXcxUANZ_wTHlX0BqR0imzn4gkreL8WHQzWkCRFZEQIc_T__Gss_SrDDYGI3zoibnbNe3czk9_qjl0Z3coV922B00hTn5DDkzhWVuZZaEFDnudIVWXOwIir9GAGlH_xAwOm8e5EFSYX1uN1cmy2hEdWNUiSTB_AXDdFb8Q0bPwcSUL6A2Yrs93MdSNabyy2tYk7lMwXX96KplOrbdhKVNvpd33d9be2ixBzLV3uI4iNTpERQt0lRTeVwthJkC5aODfhsAH6tMFakf7soz-tAQ.jpg"
       },
       "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "By the way, you can literally just message me at @MedManTG and just talk to me about whatever, preferably not sending Generic Meme #13 that I get every day, you can totally tell me how your day went or if you wanna discuss something that troubles you, honest, really.",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/oWtlGsd5g-8pZuT2lQyrEuxs440vE5KJBxzIzPlUmyti9YotKfU2PfVBapD63kHW_6EuD8Kz3uqdEnUrOcDj0e03rXDML7hkogjMjyHv2iuhWrdXEojquXZciGOZeEjKt2QeUdfxKHyvcaY0eSQ3vg27cQ864L0i34kPseCzl94YY8ggpQt1Y5FqXe4NMua63zV-GGu4e0XBYTrS7vm7-3wnjzCinvhlk2zAtIKLCkj4acqoVqn4zCNiDtuE4C40AeQsOLru6UgUCXpT8FXAJUpkDFazArZqKWsHkvxQPfSlPlWRPg0k1xpSTM_x7o7CV3Y0zrD1JJVkmWNkl5GNOQ.jpg"
+          "label": "@MedManTG",
+          "url": "https://t.me/MedManTG"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "⚡️🇺🇸🇮🇷 Surely this is NOT a productive thing to do when you want to negotiate.  @medmannews",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:50.907Z",
-      "expiresAt": "2026-07-29T03:05:50.907Z",
+      "createdAt": "2026-07-27T07:05:56.845Z",
+      "expiresAt": "2026-07-29T07:05:56.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:50.907Z",
-      "tag": "news_all",
+      "mediaRefreshedAt": "2026-07-27T07:05:56.845Z",
+      "tag": "crypto",
       "tags": [
-        "news_all",
-        "news"
+        "crypto",
+        "finance"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2030,7 +2030,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:50.907Z"
+        "reviewedAt": "2026-07-27T07:05:56.845Z"
       }
     },
     {
@@ -2040,7 +2040,7 @@
         "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
         "handle": "life_in_sharm",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Nic_ggtpevDMjOyuCA_uae-favSdJhywb1dNhVm52wkEPTXuNNUcmH7UoWge39Q_CWj4N7VsQ3nWlq03z8N0q_0piIqvxUhZGDKckgsdEm5xiqgMfg2Y_7AvDv7N16wWz0A6YB-F_q2NSFmqfESZq5IbOsfsHruxcxAPlepqzwrUbtFs_urt2Wylv1OZyafFowCtwxjSeeII6-_tMd7jklJ7JEa1Tb29x0RJIhivH0LVyxUyJB0ee-wT2rggYu5zaamropIObZlzU95JxPJtFPj_GueTYPMbyc3zuAg8wpgnI0M51zw2Hntf7eAiNm6qGHkw5VpSV-DIQzSrwOIxMA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/PQFFAFuUpuMRnVivJUbA4Uve_0sETcfLXPE7qV5-kMM3yXnxw2LlYFMTSLhNMVIC6-Ext0zJW5FUn8lZBgF1H0XSjfHp0z4B_NAeR4nG327pI668iQ8DIKWkj85eASZNOG4HSpyhcS4m3Qrq3cWuX4u8R3kbmnuFTuF1WPiHW3NU0hW4oAS1rifiTtrMqiubJ3fmIVg0mQIoMZAqyQO8j5vQcSaEyswFqTaK8lxvmy-ZCwUXLZzhzCpPNFqUuTQTOwiPRED838Kfna-g_H32HhxMH7Eo_nnmvi_H5YLsRxoNHYNu9424Gf481TIHbIYfqvltF7J-TCeKi_WPxXfn5g.jpg"
       },
       "sourceId": "eg:life_in_sharm",
       "sourceCountryCode": "eg",
@@ -2142,10 +2142,10 @@
           "url": "https://maps.app.goo.gl/sBZtJQmeWsjXgpis5"
         }
       ],
-      "createdAt": "2026-07-27T03:05:49.562Z",
-      "expiresAt": "2026-07-29T03:05:49.562Z",
+      "createdAt": "2026-07-27T07:05:55.729Z",
+      "expiresAt": "2026-07-29T07:05:55.729Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:49.562Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:55.729Z",
       "tag": "recipes",
       "tags": [
         "recipes",
@@ -2166,7 +2166,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:49.562Z"
+        "reviewedAt": "2026-07-27T07:05:55.729Z"
       }
     },
     {
@@ -2186,10 +2186,10 @@
       "fallbackReason": null,
       "text": "هنا هو استلام الدفع الخاص بي الآن، وأنا أرسل التفاصيل.",
       "links": [],
-      "createdAt": "2026-07-27T03:05:47.185Z",
-      "expiresAt": "2026-07-29T03:05:47.185Z",
+      "createdAt": "2026-07-27T07:05:54.102Z",
+      "expiresAt": "2026-07-29T07:05:54.102Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:47.185Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:54.102Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2207,17 +2207,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:47.185Z"
+        "reviewedAt": "2026-07-27T07:05:54.102Z"
       }
     },
     {
-      "id": 550988295,
-      "postUrl": "https://t.me/kero_875/79774?single",
+      "id": 1655815685,
+      "postUrl": "https://t.me/kero_875/79776?single",
       "source": {
         "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
         "handle": "kero_875",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/V3XVhtwnFP0LfHSGmcUiQF3e4e4082ClXOYCt-WWJ_BkOoBS_6iPPypiT376g-edogQJTaDDECrz2Ox_uAd5a9766Tb5BdzbCRgAbGdXsWjbfmuyXdZuayluqjSDB7_PNSUt9nNVjq2K89ACXyYzo06rbc8TkxxK9JMR9tGuPRzEpUtFuFrjQnjtzr-4t1Rtdq-f688sOnnSU9I6wO3sr5MCoSiygaDip4rdXkdbOHW8K-v9SUHnc9XUhx70H--XJ_LsxmAt5Mqrga1VQQjMTsjzXIg6aWuRSM0rEVSpDs4EGNndWt5IEHEhew46nsXkankgFBKFBhq4R-5-HI0Q6A.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/DldsgLarAemX351RgP7OYThI4TFJPlno5TdqDp2lNuumFyytbfZhR9gdSG5tYI-D096D950DN16oe-JAmpPyzguypuMXTEoUo1xRd3Mq8hGfK3A_PlBvSVe8XEfGISARgFYSEk6gerKrItONNtQgkLz4_YbtWpkZ1nar95dYFw2uWbp6KRZv-mhh5bTB0dq-FMF5YQPrfFop5iNN10p4KesNePKgHtIiXKquL10P_RuUhrjXrkN7fG6WDQwmOKlClXwrg4g41PmDGcuxhRaBBS3MUeGbzAc3tpQ-9HJNuAKGdV_YZHy_U3Efrqca4OVfbV7HWnkB7Upd_ovvJ_HcGg.jpg"
       },
       "sourceId": "eg:kero_875",
       "sourceCountryCode": "eg",
@@ -2225,12 +2225,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❤️❤️ كل مسابقات الجهاز المركزي للتنظيم والإدارة 💥💥 \n 🟢 مسابقات الحصه ➡️\n🤔 مسابقات التربيه والتعليم\n🤔 مسابقات الازهر كله\nا\n🤔 مسابقات الوظائف الإداريه\n\n\n\n🤔 مسابقه الخارجيه كل التخصصات \n🤔 مسابقه الإسعاف\n🤔 مسابقه الطب البيطري \n\n🗣️ مسابقات الحصه 🗣️\n\nوكل المسابقات🎤🎤",
+      "text": "📌    اهم اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة ❤️.  لازم تذاكرها قبل متدخل الامتحان 📌   متكرره كتير\n➖️➖️➖️➖️➖️➖️➖️➖️➖️➖️\nتابع معانا يوميا اول باول عشان متتراكمش عليك المذاكره \n➖️➖️➖️➖️➖️➖️➖️➖️\n️\n❤️  يوميا بينزل اكتر من 200 سوال مهمين جدا جدا ❤️\n❤️  بالاضافه الي.. ملفات.. امتحانات الكترونيه... فيديوهات.... ❤️\n🔢 كل ال عليك تعرف طريقه الحل\n🔢 بعدها تعرف درجتك ومستواك في المذاكره",
       "links": [],
-      "createdAt": "2026-07-27T03:05:46.005Z",
-      "expiresAt": "2026-07-29T03:05:46.005Z",
+      "createdAt": "2026-07-27T07:05:53.463Z",
+      "expiresAt": "2026-07-29T07:05:53.463Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:46.005Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:53.463Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2248,17 +2248,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:46.005Z"
+        "reviewedAt": "2026-07-27T07:05:53.463Z"
       }
     },
     {
-      "id": 2264018891,
-      "postUrl": "https://t.me/hv_ty158/1168?single",
+      "id": 3027879237,
+      "postUrl": "https://t.me/hv_ty158/1153?single",
       "source": {
         "title": "مسلسل حلمٌ إليك",
         "handle": "hv_ty158",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/UqGFY1fBvyFvFa9IIXSkIXHaYfu5JtzpXwwqmdsfM1TwCxB3Hat3DmbMSZQ9sLPAga4BTJhncczatsAKv0cGx3QPGtjjF80dwAZ-QkOXBS5ULf9at1YWYwc56pZkkX2J-9xI73HWLB2O1ZCeT2FVJXMVPtn2v9_JgIU7eJK4-G_3hj1JpD9hGzTOZnuo-iImbynizCuToZzCR7pUY-baZ_onmBnXg7Nr8N0lumL3RbuAHsDfMcsubMsW0P50Q8wa18-PmvDXW3Gd4oMxwfLiCqSYkgPm4JD9K84b_XTHJj_iLUT-EFE76-CY1hFr_t_kGO_K4g6zZA--5rHWHAhEVA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/EdC5Fye9pskHwEFmk88pw4f0RnNKsOc36b9KnlhkTWV5s4TZHntl4RXIeUlaMup21LxDCaaIHri9H6mM8SJn0BTFgQe14VHC5f6LWXq1BLPiC2U7hKYTwX6QV9pDcLLPDgwjhOG9VH6hwnnNQX_e5ywGvkE-OxGg8ytTKFUr4ykDR9bzdi9z0s_zGEzqGd9ZBWrYxscAAcqqGlBpoDFHJ21c5hA4E4g_9yTCY6UK0rpp3S3m6a232ShaCXA8CDfenbJFhdjC2lv_QMzPuRGh9OQqBAvx_QnMtptmjaC4q3svMJUWvXdR3_-RleKura2jkFP7nGHLsvGjk5TueQ8sMQ.jpg"
       },
       "sourceId": "eg:hv_ty158",
       "sourceCountryCode": "eg",
@@ -2266,21 +2266,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🎬 مسلسل \" حلم اليك - الحلقة ( 05 ) مترجمة 🔥\n\n📺 متاح بجودات متعددة (720p - 480p) لمشاهدة أفضل 👌\n\n📲 تم رفع الحلقة على التطبيق بسبب حقوق النشر\n📥 حمّـ.ـل التطبيق مجـ.ـاناً وشـ.ـاهد الحلقة كاملة من هنا 👇🏻\n\nhttps://link.mysophon.io/l/0UJZTI\nhttps://link.mysophon.io/l/0UJZTI\n\n🎯 طريقة المشاهدة:\nافتح الرابط، اختر \"العرض في التطبيق\"، ثم قم بتحـ.ـميل التطبيق لمتابعة الحلقة بكل سهولة ✅",
-      "links": [
-        {
-          "label": "https://link.mysophon.io/l/0UJZTI",
-          "url": "https://link.mysophon.io/l/0UJZTI"
-        },
-        {
-          "label": "https://link.mysophon.io/l/0UJZTI",
-          "url": "https://link.mysophon.io/l/0UJZTI"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:45.107Z",
-      "expiresAt": "2026-07-29T03:05:45.107Z",
+      "text": "تفاعل لنستمر بنشر الحلقات 🫶🔥",
+      "links": [],
+      "createdAt": "2026-07-27T07:05:52.737Z",
+      "expiresAt": "2026-07-29T07:05:52.737Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:45.107Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:52.737Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2298,7 +2289,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:45.107Z"
+        "reviewedAt": "2026-07-27T07:05:52.737Z"
       }
     },
     {
@@ -2333,10 +2324,10 @@
           "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
         }
       ],
-      "createdAt": "2026-07-27T03:05:44.175Z",
-      "expiresAt": "2026-07-29T03:05:44.175Z",
+      "createdAt": "2026-07-27T07:05:51.953Z",
+      "expiresAt": "2026-07-29T07:05:51.953Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:44.175Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:51.953Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2354,7 +2345,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:44.175Z"
+        "reviewedAt": "2026-07-27T07:05:51.953Z"
       }
     },
     {
@@ -2374,10 +2365,10 @@
       "fallbackReason": null,
       "text": "نتائج توصياتنا هذا الأسبوع | 20/7 - 26/7\n\nBTCUSD 1,300 pips ✅\nBTCUSD 320 pips ✅\nGBPUSD 130 pips ✅\nXAUUSD BE ➖\nBTCUSD 3,000 pips ✅\nXAUUSD 160 pips ✅\nBTCUSD 600 pips ✅\nXAUUSD 60 pips ✅\nXAUUSD 50 pips ✅\nXAUUSD 50 pips ❌\nXAUUSD 1,400 pips ✅\nXAUUSD 1,070 pips ✅\nXAUUSD 50 pips ❌\nXAUUSD 100 pips ✅\nXAUUSD 50 pips ✅\nXAUUSD BE ➖\nXAUUSD 200 pips ✅\nBTCUSD 300 pips ✅\nBTCUSD 100 pips ✅\nBTCUSD 200 pips ✅\nXAUUSD 120 pips ✅\nBTCUSD 1,100 pips ✅\n\nBTCUSD 8/8 ✅\nXAUUSD 9/11 ✅\nGBPUSD 1/1 ✅\nBREAK EVEN = 2 ➖\n\nTOTAL PROFIT = 10,260 pips ✅\nTOTAL LOSS = 100 pips ❌\nNET PROFIT = 10,160 pips ✅✅\nWIN RATE = 90.00% ✅\nWINNING TRADES = 18/20✅",
       "links": [],
-      "createdAt": "2026-07-27T03:05:42.753Z",
-      "expiresAt": "2026-07-29T03:05:42.753Z",
+      "createdAt": "2026-07-27T07:05:50.848Z",
+      "expiresAt": "2026-07-29T07:05:50.848Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:42.753Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.848Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2396,7 +2387,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:42.753Z"
+        "reviewedAt": "2026-07-27T07:05:50.848Z"
       }
     },
     {
@@ -2406,7 +2397,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/imJhf3pYKCg3ANNcR4Lfb0sETYt-0BLA_N48gS5nx5nR_YaOmaNgn3q5kxLMCS3JUQtvnmDWWzu26_wlB6rL0sEFSQkTNegrKHUkzfmXeVMZw9ggexPK0_ERLFcwRON9owrQW5HV8PZ4dEHeOYriatmOziiR-eXP0SKeLiCDx_s7j0v_pcHUK4d_3uC4mCjG2iarRaMxoRyNk_wHP1H8AB8OnlFlyhFBrAVWyRLfxY5jCBQ8oa3QqRMQtCm37c2vOnWUtm0jeoJeozXSJSraFklLZz__Zo88CEpdae4uSkQETibJ4JUTf52C85Fv5xpBdM6riI8vOv1QwjNeOlLa4Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/K7bx6JWDxqxpT4GubHtf8TIuJzrC0e7b3Pjh5zHwvRVLTFRbcH5eK-oyVfeOrTKCs3-rGBgzoqjXj032DEYvkZYYnVXRd-pbh9bNXRFZrwGcqRFNz5vfoIgVklvvXLwHb3jOUL3WPIh6KKXhZXmrEsHofiOo9qwPpuxrC8ctas2oVA9VR759dPr0ulfzDJDdVM-dSeYj_gl3hJd1-QIyVHbl7BezU0YY1jfSPA_1pkcen6KJhn2VH9o_NLqQ-3p6ST2ALLtBcau3Y-yjBZqr6ea4P0plwReidENimGNg-6zXUvzWrSj36vhnnjebsZ1f9SJcEKEaDKohM3ECVz70BQ.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -2415,17 +2406,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/CTMuZvbb8aiJsIWSoAyZGp1kctJzhq_KmtgykwCZQz6_6PuEbMPJFXGHc0kQhP_yYgDxjWTum2nyApKXzUqfSdtALUGZydaietfmA3uPvDio6YgQVnQMKMIqHKrwyy7XF2Qlx3bulUKlFoQ5xxNzGCDgDjL5Pqbyx53TFwnWqjc0lMn3RrdlO1gwOjemp6jj7LghjGj_z8xuZsu7qArx1iFyCFuRsxbqYIPeuhd5CUxswX-wWXjMazDZMyZ-vg8sEi4Vp4uSgKBOH1AtDnzHxpw6e0zMBjNUWUbaTPMkepu_JD9vuvKh45cwdo-lCkQTusDuWx8gJOJyTSyM_q-BMA.jpg"
+          "url": "https://cdn4.telesco.pe/file/rG9CuuEeofwrABZJjVFJY8DtV-xOQSIP5V0tuROZIpqtF60iadKRjM-9tpikS5ZvpYfGTa4dk665IlT_KYddhWSJlE73JTPD-dUPQCFkAUcBWMXKDkPhceyadfxVPaAVU8pSvkE_3eojD516EkWp8BLTi720zxMP59FsH9tzREyinMuD4LDGy2W_Dyl5pWZYQGBYjV0ZlhHJruRD7IhwLd3mCvP4htigkF-YhcLLQcjkf8Z9BWL2ShmHayOuu760AFDBSCJ5OIyj7PbopQlG_IrAKCTMN9bwgHS5EtcD9HAdOgSdhxTduIZMY6MsFDMwlJBJJHoMdG_kgpB_QAwNgw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "Thursday 25/06/2026  Free single   17:00 Jyvaskyla 🆚 Inter II   Total odds: 1.44  Bet Responsibly",
       "links": [],
-      "createdAt": "2026-07-27T03:05:41.943Z",
-      "expiresAt": "2026-07-29T03:05:41.943Z",
+      "createdAt": "2026-07-27T07:05:50.177Z",
+      "expiresAt": "2026-07-29T07:05:50.177Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:41.943Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.177Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2443,7 +2434,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:41.943Z"
+        "reviewedAt": "2026-07-27T07:05:50.177Z"
       }
     },
     {
@@ -2478,10 +2469,10 @@
           "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
         }
       ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
+      "createdAt": "2026-07-27T07:05:48.940Z",
+      "expiresAt": "2026-07-29T07:05:48.940Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.940Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2499,7 +2490,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
+        "reviewedAt": "2026-07-27T07:05:48.940Z"
       }
     },
     {
@@ -2530,10 +2521,10 @@
           "url": "https://t.me/Etfarag5bot/home"
         }
       ],
-      "createdAt": "2026-07-27T03:05:38.670Z",
-      "expiresAt": "2026-07-29T03:05:38.670Z",
+      "createdAt": "2026-07-27T07:05:48.005Z",
+      "expiresAt": "2026-07-29T07:05:48.005Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:38.670Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.005Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2551,7 +2542,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:38.670Z"
+        "reviewedAt": "2026-07-27T07:05:48.005Z"
       }
     },
     {
@@ -2571,10 +2562,10 @@
       "fallbackReason": null,
       "text": "✅ كيفية الحصول على وظيفة محلل بيانات كخريج جديد في 2025 📊💼\n\n🔹 كيف هو سوق العمل في 2025؟\n• طلب مرتفع في قطاعات BFSI (الخدمات المصرفية والمالية والتأمين)، الرعاية الصحية، البيع بالتجزئة، والتكنولوجيا\n• الشركات تتوقع مهارات في Excel و SQL وأدوات ذكاء الأعمال وسرد القصص\n• بايثون وتصور البيانات يعطيان ميزة قوية\n• الوظائف عن بُعد أقل، لكن فرص العمل الحر والتدريب الداخلي في ازدياد\n\n🔹 المهارات التي يجب أن تتقنها:\n1️⃣ Excel – الجداول المحورية، الصيغ، لوحات المعلومات\n2️⃣ SQL – عمليات الدمج (JOINs)، الاستعلامات الفرعية، CTEs، دوال النوافذ\n3️⃣ Power BI / Tableau – للوحات المعلومات التفاعلية\n4️⃣ Python – تنظيف البيانات وتحليلها (Pandas، Matplotlib)\n5️⃣ الإحصاء – المتوسط، الوسيط، الارتباط، اختبار الفرضيات\n6️⃣ فهم الأعمال – مؤشرات الأداء الرئيسية (KPIs)، الإيرادات، معدل التوقف، إلخ.\n\n🔹 بناء ملف شخصي قوي:\n✔️ اعمل على مشاريع واقعية (بيانات المبيعات، الموارد البشرية، التجارة الإلكترونية)\n✔️ انشر لوحات المعلومات على Tableau Public / Power BI\n✔️ شارك أعمالك على GitHub و LinkedIn\n✔️ احصل على شهادات معتمدة (شهادة تحليل بيانات جوجل، Power BI، SQL)\n✔️ تدرب على مقابلات محاكاة ودراسات حالة\n\n🔹 منصات الممارسة:\n• Kaggle\n• StrataScratch\n• DataLemur\n\n🔹 المسميات الوظيفية المناسبة للخريجين الجدد:\n• محلل بيانات مبتدئ (Junior Data Analyst)\n• محلل أعمال (Business Analyst)\n• تنفيذي نظم معلومات إدارية (MIS Executive)\n• محلل تقارير (Reporting Analyst)\n\n🔹 الشركات التي توظف خريجين جدد في 2025:\n• TCS\n• Infosys\n• Wipro\n• Cognizant\n• Fractal Analytics\n• EY، KPMG\n• الشركات الناشئة وشركات التكنولوجيا التعليمية (EdTech)\n\n📝 نصيحة: إذا كان في الوصف الوظيفي \"١-٢ سنوات خبرة\"، قدم طلبك على أي حال إذا كانت مهاراتك ومشاريعك متطابقة!\n\n👍 اضغط ❤️ إذا وجدت هذا مفيدًا!",
       "links": [],
-      "createdAt": "2026-07-27T03:06:06.190Z",
-      "expiresAt": "2026-07-29T03:06:06.190Z",
+      "createdAt": "2026-07-27T07:06:09.666Z",
+      "expiresAt": "2026-07-29T07:06:09.666Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:06.190Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:09.666Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2593,17 +2584,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:06.190Z"
+        "reviewedAt": "2026-07-27T07:06:09.666Z"
       }
     },
     {
-      "id": 2033825812,
-      "postUrl": "https://t.me/tradsempire/4447?single",
+      "id": 2634348291,
+      "postUrl": "https://t.me/tradsempire/4448?single",
       "source": {
         "title": "Trade Empire",
         "handle": "tradsempire",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/vZ-uFPTULzL7GA3S5Ge2XmQcbO77H4UcX9GdFj48WAtJl319bxSgJRePhMGROr0JyshfitdJTdOlkcA9My7NvJuLe6zM1FVrdzmLrTHs8bRsIkyJ5pucri2CbaW4XRx8wCBuHEvJklcpEHQq0WtEm4VG8FMY3rc7NSSnNYgfbdP6KyZgiUmSqi2_bvfcn5sJ9GOX2wtsxv3sw_4Vd24bpslZVyQ0EM3SMOZJGNXVXgsA035NsUydi4rkUggovL13wcQDYQD9LSpuzkxEWenjCpAII0mAMVNwROOL7yamIDv-4at53MUSw-I4zKbGporIEYg0_y25VzGLlGlEqtHEIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/nYn9gEq6KtxhosIYdcXR3NtwbhidatgvDuxvkGuAeZ-FZeDJxoszgF0Bs1kuO2qHBytYe06bokI8Mg2QLUOxyozATWlvPeT33rIcXr-W_FG3bBMpApNhgZXLhz0-KvvfF0vUpZlw8CVJlYhnbr-DDAgAjVtM4c6XIAoDwQBxy4z4BJd0KJxw5x1V_TRIJ6j8f0tjSyXAEsh8rLZSJPTaelvwRPwXCZ72kf1oN-TcyjCgT2JRUdkTcCv-_Xrw6nQW0qaCqMf_acmeQqxDmuPzG7Ivb9dpdNsZa63sVebUEhtEbgXjVV8J94_YmBm-i20RPO4Pb-GdwmpDVJ61CEaImA.jpg"
       },
       "sourceId": "eg:tradsempire",
       "sourceCountryCode": "eg",
@@ -2611,12 +2602,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "XAUUSD BUY NOW 4089  Sl : 4079 Tp : 4099",
+      "text": "XAUUSD BUY NOW 4104 \nSl : 4094\nTp : 4114",
       "links": [],
-      "createdAt": "2026-07-27T03:06:05.183Z",
-      "expiresAt": "2026-07-29T03:06:05.183Z",
+      "createdAt": "2026-07-27T07:06:08.893Z",
+      "expiresAt": "2026-07-29T07:06:08.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:05.183Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.893Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2634,7 +2625,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:05.183Z"
+        "reviewedAt": "2026-07-27T07:06:08.893Z"
       }
     },
     {
@@ -2654,10 +2645,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-27T03:06:04.385Z",
-      "expiresAt": "2026-07-29T03:06:04.385Z",
+      "createdAt": "2026-07-27T07:06:08.219Z",
+      "expiresAt": "2026-07-29T07:06:08.219Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:04.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:08.219Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -2677,7 +2668,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:04.385Z"
+        "reviewedAt": "2026-07-27T07:06:08.219Z"
       }
     },
     {
@@ -2687,7 +2678,7 @@
         "title": "SeedOSS • foss, privacy, gems.",
         "handle": "seedoss",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/cGmLTgYX1x918uiQPldmAeZiFOb64ufROi7abcG2_tRXObu2p8wLms3ZMLXTuvnGNlJgEzz6Up4_gzkmOHciOySYvRmCWQm17kEsw11UKu5p8uLTAeP2ImC1IXStRYUfewBYHHMxsH8o6078c6_poC7JXOQbl_x3CX_o13MJEutwNS9N90UGQMjujrbCFdlO8XzacbAx_iZIZ2xr-lkBd1pK4r8sTNI0vCkRLJKByC21_HszQ9J8WA0fm70dyj_XEdOkleBF52jkb2kXCOYXSXWauuOFcSD054Ag6D15p8B4-dIdBa_-m_jydP4RTDkOw96hozIIkR53esqG0pGW8g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ArQxs2_jMEwm1OngdNPLcAPl2TD5hP7JID_cTAA94IKpyMKVY3JKOnI6XxVpMPtE6whOq-59p7md7cygFh6K1zUMZrDRaMv43a1yquT4D1dQhPCjjfPzrlRlGVV6HuRXiNUqmvQSouct_-quBTmsF5B-fP8cov3V5DaKkiSf_H_gMhj4v5RO3uEUUVfqXbQBMh51xm_ot19SToFjt0Ca2w1CPU24-4HrvFFakeVr3cCRKYjU3K4zVh4BctgpFYnfyqCCBplbKhkXsXRpr-sHm2Y9iV3G1cfVKa3DTNNX-KsPS856bt_4z3tE1h4WXw9kfqy8VriH2K0VBP8eXSolow.jpg"
       },
       "sourceId": "eg:seedoss",
       "sourceCountryCode": "eg",
@@ -2728,10 +2719,10 @@
           "url": "https://t.me/SeedOSS"
         }
       ],
-      "createdAt": "2026-07-27T03:06:03.503Z",
-      "expiresAt": "2026-07-29T03:06:03.503Z",
+      "createdAt": "2026-07-27T07:06:07.520Z",
+      "expiresAt": "2026-07-29T07:06:07.520Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:03.503Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:07.520Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2749,12 +2740,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:03.503Z"
+        "reviewedAt": "2026-07-27T07:06:07.520Z"
       }
     },
     {
-      "id": 3967078308,
-      "postUrl": "https://t.me/rusembeg/10796?single",
+      "id": 351913589,
+      "postUrl": "https://t.me/rusembeg/10797?single",
       "source": {
         "title": "Russian Embassy in Egypt",
         "handle": "rusembeg",
@@ -2763,33 +2754,43 @@
       },
       "sourceId": "eg:rusembeg",
       "sourceCountryCode": "eg",
-      "contentType": "video",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/a95a938011.mp4?token=fM-GFnq5inoco6YJ0lVtWLhLv1btTXcRjT91TZ9psQarEZCTNvSZDgYTkxNaLxmUCULhHqTYQuiQzdamQ1AM7K7ocj5lWQ-BGgPgdHIpk7Wt06atOFhE6veWWmd0Rx0uO72BG0_3-0MjBKKmAy4xnqYlJo_qKhsAzJ1dwJTbgsX0vDJ3q9qaKrzSA9rxUQP2yoVeXQCWd-pQA6C9sJ70NVxEeemLkZHJzQzGoUhTa8rM7d-Ah_9l0prevF44DWQXGrrHOIveXOF3HpvleY44FQFzOBqsJTvhIjwddLdbsJSlramcCTjpQrmmujWBVPwGHZ7YdlRTZrECdP-nDIDMdw",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/oU16FXDUXngZxEGDs1f2llpgwNel644Bu1J2nV54_IOFGxQPUsWI-b0rme0kjF2q8Vo-WHTt7fGLD_4tg7Yoby0TlFhqENsVY5u8nqUGlyIN38gKgEE6ejNmEQyniMyc8504Gn4Q7-d0-2tHT3uOtdBG0m4q1brS_QHsRWXjLNgwWsrU1a7ssUm6CBziMgsL-CbBs-dZRYQKPVsp5saoUT3y37GEz6jcJDrX1s9B6-rX0CvOsaub0JjpFm3qYA04km6fwQQvvghGDBqMmLW3zCw91tC5bD1MRlE6HpbJIX2982XNZULPcx0yuun4-DexHfQrtrpcCuSLR16_5KF-2g.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Верховный Главнокомандующий: Попытки изолировать Россию даже в такой чувствительной сфере, как оборона и безопасность, терпят полное фиаско\n\nЕсть большое количество стран, дружественно относящихся к России, понимающих те задачи, которые мы решаем с точки зрения обеспечения своей безопасности и укрепления многополярного мира. И это важно для подавляющего количества участников международной деятельности. И то, что у нас растёт количество совместных учений, о многом говорит.\n\nПодробнее – на сайте Кремля.",
+      "text": "🤖🌾 Впервые в Египте пройдёт международный конкурс «АгроНТРИ-2026»!\n\nРусский дом в Каире приглашает школьников принять участие в международном конкурсе «АгроНТРИ-2026» в номинации «АгроРоботы».\n\n🇪🇬 В 2026 году по инициативе Министерства сельского хозяйства России конкурс получил международный статус и впервые пройдёт в Египте. Проект даёт возможность учащимся из разных стран заниматься высокотехнологичными аграрными проектами, преодолевая разрыв между образованием и современными агротехнологиями. Его миссия — воспитание нового поколения инноваторов, посвящённых решению задач глобальной продовольственной безопасности и устойчивого развития сельских территорий.\n\n📅 10 августа\n🕛 12:00\n📍 Русский дом в Каире: Гиза, Докки, улица Тахрир, дом 127\n\n📅 11 августа\n🕛 12:00\n📍 Русский дом в Александрии: Александрия, Баб-Шарки, улица Батальса, дом 5\n\n👨‍🎓 К участию приглашаются школьники от 10 до 17 лет включительно. Для регистрации необходимо иметь при себе документ, удостоверяющий личность. Родители и сопровождающие лица могут присутствовать на мероприятии.\n\n🚜 В ходе соревнований, которые пройдут при поддержке сотрудников Ставропольского государственного аграрного университета, участники выполнят задания с использованием специализированного агроробота, моделирующего реальные сельскохозяйственные процессы: посадку и уборку урожая, перемещение сельскохозяйственной продукции, уход за животными, обработку почвы, а также преодоление препятствий на испытательном полигоне.\n\n🏆 Победители египетского этапа получат возможность представить страну на Международном суперфинале, который состоится с 7 по 11 октября 2026 года в Москве в рамках Российской агропромышленной выставки «Золотая осень», где встретятся лучшие команды из 12 стран. Также участники получат подарки от Ставропольского государственного аграрного университета.\n\n🌍 Конкурс «АгроНТРИ» объединяет школьников из 12 стран: России, Беларуси, Казахстана, Кыргызстана, Узбекистана, Таджикистана, Монголии, Абхазии, Индии, Египта, Танзании и Ганы. На международном уровне соревнования проходят в трёх номинациях: АгроКосмос (спутниковые данные и ГИС), АгроКоптеры (беспилотники в АПК) и АгроРоботы (автоматизированные системы управления техникой).\n\n📲 Следите за новостями:\n🌐 Официальный сайт\n💬 VK и Telegram\n\n🇷🇺 Генеральный партнёр Международного конкурса «АгроНТРИ» — Агрокомплекс «Лабинский» (Краснодарский край).\n\nПроект реализуется Фондом содействия инновациям, Ассоциацией образовательных учреждений АПК и рыболовства и ГК «ЦентрПрограммСистем» при поддержке Министерства сельского хозяйства России и Министерства просвещения России.\n\n🚜🤖🌱 Ждём будущих инженеров, изобретателей и создателей технологий сельского хозяйства будущего!\n\n#АгроНТРИ #МеждународныйСуперфинал #AgroInterSchool #AgroNTRI #InternationalSuperfinal",
       "links": [
         {
-          "label": "сайте Кремля",
-          "url": "https://kremlin.ru/events/president/news/80341"
+          "label": "сайт",
+          "url": "https://kids.agronti.ru/"
+        },
+        {
+          "label": "VK",
+          "url": "https://vk.com/agronti.kids"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/agronti"
         }
       ],
-      "createdAt": "2026-07-27T03:06:02.460Z",
-      "expiresAt": "2026-07-29T03:06:02.460Z",
+      "createdAt": "2026-07-27T07:06:06.673Z",
+      "expiresAt": "2026-07-29T07:06:06.673Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:02.460Z",
-      "tag": "animals",
+      "mediaRefreshedAt": "2026-07-27T07:06:06.673Z",
+      "tag": "recipes",
       "tags": [
-        "animals",
-        "nature"
+        "recipes",
+        "food",
+        "space",
+        "science",
+        "transport_auto",
+        "auto"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2804,12 +2805,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:02.460Z"
+        "reviewedAt": "2026-07-27T07:06:06.673Z"
       }
     },
     {
-      "id": 58890984,
-      "postUrl": "https://t.me/rassd/199858?single",
+      "id": 2208660907,
+      "postUrl": "https://t.me/rassd/199862?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -2822,12 +2823,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "شرف كبير الي اتعرف على اصحاب الفجر \n\nمن كان من أهل الفجر اليوم فليحمد الله 🩵 وضع ❤️ لنعرف كم شخص 🥰",
-      "links": [],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
+      "text": "🎶🚫بث مباشر #نابلس الأن 👇\n\ngoawl.com/p/nablus-live.html",
+      "links": [
+        {
+          "label": "goawl.com/p/nablus-live.html",
+          "url": "https://goawl.com/p/nablus-live.html"
+        }
+      ],
+      "createdAt": "2026-07-27T07:06:05.739Z",
+      "expiresAt": "2026-07-29T07:06:05.739Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:05.739Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2845,7 +2851,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
+        "reviewedAt": "2026-07-27T07:06:05.739Z"
       }
     },
     {
@@ -2870,10 +2876,10 @@
           "url": "https://rafahnow.com/?p=51087"
         }
       ],
-      "createdAt": "2026-07-27T03:05:59.385Z",
-      "expiresAt": "2026-07-29T03:05:59.385Z",
+      "createdAt": "2026-07-27T07:06:05.035Z",
+      "expiresAt": "2026-07-29T07:06:05.035Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:59.385Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:05.035Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2891,7 +2897,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:59.385Z"
+        "reviewedAt": "2026-07-27T07:06:05.035Z"
       }
     },
     {
@@ -2901,7 +2907,7 @@
         "title": "Nimrod for apps",
         "handle": "nimrodforapps",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ua4IFtkWBdWATsaIIxmAZV5wSXOysMcrKZ-k2gllc5t_zGp2MtAtt1dIT2XyNzBHuOf4WoAR5mUlARnqh_EVLg_dUdPDgHnqzgBfWnUcC0D03SQGwgt0PcF7HCumtUQLqem35-eTIvMndDqYDc7Km5jrkLwEE-HM-knLIHZlTZzhAAhNf8kOLYpKUB-mVcZXBrjiblnWTsYrZbgiVB_ys9Vg0qpEO6NYmryAntS3_zpY8wibJkJNLK9njG7aac169ZDh6ELxgSQsKOfMO6dbmLN633qEBCxiTz-ghAEkGyqRZt8N5PG1UuIFBmdF2PPDubYH59m5DTyp7vvmwu7esQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/R-mAwP3RtREou7-Wc4xx-iWU_3Mb1DWj6DJhfHavRcYPvDT33HrCb4SLrvKOvrg4EDPhziJh9Z6W90P8RrUsDlfwtaOSuSe356mE5eizSiXTvcaVZSmD-e52bDBEe2a5_xZQ1978xfRwCbvoZ85yGp0c1zirxjUvbWaVPlR_DGAtLS88HWydoCr0UMHZQyZE4Lr3bKxjRn370xw13ObbBJYpyKlPy0LZwR1z5NCAISQiHLnvhUw0QYNbeuILglE_-BT5oLmhmoajAd5blm7YGCSshe3NQ17THvChGJ4ws7dMIw0IN0cpzaTJCuWPFGREQijZNRhoJDF3zZk7cyLMWQ.jpg"
       },
       "sourceId": "eg:nimrodforapps",
       "sourceCountryCode": "eg",
@@ -2910,7 +2916,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/cAZgzMWHejaAGIeNRG6D3q9OcrcZV3kkadd1o3XiSoCop6xUdp65cZ8gGjN_SZ8dUw3Zom_R8enNblNTtIJD4w2vCxcUTJTMMy8Yn1HNu2TS-9Quwg_V48wKz1tY6lF32yuNlmSwpFJAFGD6UPKb1knzSaEQeK48lNZFyUbnk6m6Ez8_y92QhY7o3aevIB-ZVaBS6TM0yeBXh5pD0oIsV_uioCCFeijNCdPfoqGXodUeXDVfwa9sUQwaqOVra6Gt7idHuRwRevqql-KyBqCa03avnmwswd8AejnhS_2tBIosJJev_K2eFGv443Dc-ZuPKni1h5MMETSM9ixAevkAyg.jpg"
+          "url": "https://cdn4.telesco.pe/file/QdjHgTHx-UvB07SzRQriy4a8W4hbDQbWsvrJ1aQ83-AX8EHikUtk4MNzqMi243u5XJ9KLAI6y1UKgFuGZtt5HK_Yn5RR33_keg2S2UqeINJE3Z2b-FsiQY96MSMbnEHnngqJI_Ytt3pijbeaxb6xLko4XGJ56RzCD-OFaQqrMml79QRnCl2T5oDWCGmx7BuUt6QXH-FAft-yTXTUhjCB7T4uXnLxLAEL8-Ya9oCDR_1PB9b3zaYnwf-zfyUWb0YMloS2jNbIBt4vuhTuMzYiH3L-O5bQvdLiTiI8Ia_f44HVq13fdmSwb5t25UtVf3fYl_ScGmD1zGSjjL8lEJAqVQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -2926,10 +2932,10 @@
           "url": "https://rebrand.ly/ricmymu"
         }
       ],
-      "createdAt": "2026-07-27T03:05:58.568Z",
-      "expiresAt": "2026-07-29T03:05:58.568Z",
+      "createdAt": "2026-07-27T07:06:04.363Z",
+      "expiresAt": "2026-07-29T07:06:04.363Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:58.568Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:04.363Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2949,12 +2955,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:58.568Z"
+        "reviewedAt": "2026-07-27T07:06:04.363Z"
       }
     },
     {
-      "id": 2436875801,
-      "postUrl": "https://t.me/ngmsr/15049?single",
+      "id": 1350798073,
+      "postUrl": "https://t.me/ngmsr/15056?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -2963,21 +2969,22 @@
       },
       "sourceId": "eg:ngmsr",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "كواليس الهلال تشتعل! 🔥  \nكريم بنزيما رفض مقترحًا من الإدارة بالانتقال لأحد الأندية الصاعدة في دوري روشن خلال الصيف.  \nوبحسب ما ورد، طالب بالحصول على كامل مستحقاته المالية عن العام الأخير ليضمن حرية قراره القادم بعيدًا عن أي تدخل.  \nبنزيما شارك مع الهلال في 13 مباراة وسجل 9 أهداف وصنع 5 قبل أن تتصاعد الانتقادات بسبب أداء الفريق الهجومي. ⚽️🤔  \nهل يقترب “القرار الكبير” من بنزيما؟ 👀  \n#الهلال #بنزيما #دوري_روشن\n\nhttps://www.ngmisr.com/?p=3863149",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "https://www.ngmisr.com/?p=3863149",
-          "url": "https://www.ngmisr.com/?p=3863149"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/MY771EDo8TVPYNC0Tk-sotbpWs-VjjOdrkRwyj0vMnf7zsoxNVPvSFRJwp_d8X5-j7c0u7hU91owAsvhFHsXmta-dw7Rw4mcrG7OeNVw6b-bjbJ_GiYwUL3D7GD0-zvcZNO4cYfWH5CGNJ6PIa8FjCfQCoPlbVZ0jbuOZPMy8-xLhkQaPNzRp6pqGdZ_qax4zxEljyZdLJydAjzybEOTZEPcWs05aKS9F1KUaj6mortVXEbQEBZlhvx0l3MCK9mroME97SJALPKB0WPxLh_45JgLVL7BSq-b5ZK5CSPS_bfnbPmY1Mt_crFKSgCSP7VpoVPaFyGTt2XWi7LTB_vQAw.jpg"
         }
       ],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 جريمة العين السخنة\n\n🔴 جريمة هزّت طريق العين السخنة عام 2014.. العثور على جثتي سيدة وابنتها بجانب الطريق أشعل تحقيقات مكثفة لكشف القاتل.\n🕵️‍♂️ التحريات قادت سريعًا إلى الزوج، بعدما كشفت الأدلة أنه استدرج الضحيتين إلى منطقة نائية ونفذ الجريمة بوحشية.\n💍 الدافع كان السرقة، إذ استهدف المتهم المشغولات الذهبية، قبل أن ينهال على زوجته وابنتها بأداة صلبة حتى الموت.\n⚖️ الطب الشرعي وتقارير المباحث حسمت تفاصيل الواقعة، لتنتهي القضية بإحالة أوراق المتهم إلى مفتي الجمهورية تمهيدًا للحكم النهائي.\n#جريمة #السويس #العين_السخنة",
+      "links": [],
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2995,7 +3002,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
@@ -3005,7 +3012,7 @@
         "title": "‎أخبار شمال إفريقيا / Northern Africa News",
         "handle": "nanafrica",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/jYfZWzjlt3iSt1jxGQL7vIlt_stGEvffcMT5OZT3Q3aJ4uxAQqceja7eAmnsc9x9mI0H82T6H-zQYhw3cLwObsh1mOlwO037iPdaZPb4B9lBetnjekprJoWdL8ljQNbtdrDl6AqdF344vAVBQcX4QJ0-CPJhzJrXNft3Fnm6izWZ1ZzpaEUSx85EV5uWWC4JFMnuh4h6OciSQ8UfN54sAoeQocJsMkfKg9hQu6bzx3tD2Tt08WuT45WbBDMFm-tTsOpn50FikoRM791sipqRGhkVi8646lv-_NULoSMJXmh9N9Z98bGlU6Cyoic2skiB3NZ9yHnktGqDIQ3o335dhg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ntlGLX_NOQT52O8sSpi7a84b_eHQzNZUDHmZIZiM5yhKmBjkD-Pr-xUEsntUOT2fwb8VKLOI9f_4TaKWH0G9B6pYIbDerX6oETnfazGpavgzqOoRixTjwFqcnqZMf_C1gabKurN-xVWOcDPwxEzJsWimsZPUEjs1Epf9H9jgfUzKoKMxoZy5BnfHqL31xwn_yU6C3R8ZXXQz1r3nBF4hvBeVK86h9XhH0mmvHxPMf3AdPzQ02Otj_Ws_vbDjT8eUeGmVRE7LVvkuDbvwRBW2hZC3VZvypMeNQePpOB4bkp1W2Px5MxqX5LgPr9KxNrRMKB-X8o7cstiR76Vj-Eneng.jpg"
       },
       "sourceId": "eg:nanafrica",
       "sourceCountryCode": "eg",
@@ -3021,10 +3028,10 @@
       "fallbackReason": null,
       "text": "🗯 صدام حفتر وديبي يبحثان تأمين الحدود وتعزيز التعاون الأمني بين ليبيا وتشاد\n\nبحث نائب القائد العام للقوات المسلحة العربية الليبية، الفريق أول ركن صدام حفتر، مع رئيس تشاد محمد إدريس ديبي، خلال لقاء عقد في العاصمة التشادية أنجمينا، عدداً من الملفات الأمنية المشتركة، وفي مقدمتها تأمين الحدود وتعزيز التعاون بين البلدين.\n\nوتناول اللقاء سير عمل القوات المشتركة المكلفة بتأمين وضبط الحدود الليبية التشادية، إلى جانب مناقشة سبل تعزيز التعاون في مكافحة الهجرة غير الشرعية، ورفع مستوى التنسيق الأمني بما يدعم الاستقرار في منطقة الساحل ويعزز مواجهة التهديدات الأمنية المشتركة.\n\n#ليبيا #تشاد",
       "links": [],
-      "createdAt": "2026-07-27T03:05:55.642Z",
-      "expiresAt": "2026-07-29T03:05:55.642Z",
+      "createdAt": "2026-07-27T07:06:00.669Z",
+      "expiresAt": "2026-07-29T07:06:00.669Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:55.642Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:00.669Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -3043,12 +3050,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:55.642Z"
+        "reviewedAt": "2026-07-27T07:06:00.669Z"
       }
     },
     {
-      "id": 2275843239,
-      "postUrl": "https://t.me/naf3_ch/2882?single",
+      "id": 2128437230,
+      "postUrl": "https://t.me/naf3_ch/2883?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -3061,12 +3068,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "&rlm;﴿ يَوْمَ تَجِدُ كُلُّ نَفْسٍ مَّا عَمِلَتْ مِنْ خَيْرٍ مُّحْضَرًا ﴾",
+      "text": "&rlm;﴿يَا أَيُّهَا الْإِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ﴾",
       "links": [],
-      "createdAt": "2026-07-27T03:05:54.817Z",
-      "expiresAt": "2026-07-29T03:05:54.817Z",
+      "createdAt": "2026-07-27T07:05:59.996Z",
+      "expiresAt": "2026-07-29T07:05:59.996Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.817Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.996Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3084,12 +3091,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.817Z"
+        "reviewedAt": "2026-07-27T07:05:59.996Z"
       }
     },
     {
-      "id": 3682776006,
-      "postUrl": "https://t.me/n1nnnn3/51988?single",
+      "id": 3608694843,
+      "postUrl": "https://t.me/n1nnnn3/51996?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
@@ -3102,17 +3109,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "طمأنينة لقلبك: 🍃🤍...",
+      "text": "طمأنينة لقلبك: 🍃🤍... *",
       "links": [
         {
           "label": "طمأنينة لقلبك: 🍃🤍...",
           "url": "https://t.me/+NDly0rfeJzBiMmI8"
         }
       ],
-      "createdAt": "2026-07-27T03:05:54.033Z",
-      "expiresAt": "2026-07-29T03:05:54.033Z",
+      "createdAt": "2026-07-27T07:05:59.366Z",
+      "expiresAt": "2026-07-29T07:05:59.366Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:54.033Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:59.366Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -3132,7 +3139,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:54.033Z"
+        "reviewedAt": "2026-07-27T07:05:59.366Z"
       }
     },
     {
@@ -3151,17 +3158,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/P46mk9LZm_guSHAO3BRLxEq1cy69OxqF5bCOboQYN0LHFexCjDBhSIQWAts9H-4fvEcqeelHiX4QLVY6s4J8rT1NOtXR5kQjzsvD0BAw9USn5GIh4BL0OmFKsRsWScP4erhahwgRT5AzWPJsToQLHFb2tFJYakSHXVb8VOawD_LbcxK_25yMY8c-HeaJzw1SfAWhOnIGxgMg0RFEYxmJujwTYvfTX-1GS-udDeMuKLtX8aDWBBAenIxUHobfpaUEsei3B4HBU6j0gLLrnQdg7jFXJsg8pQg9JyRcxEdoGIzsocCgXB-JT4F1c-Z3m6jQz3l7X2f0nBnt889nQ2cizQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/aK8QFXylOoFNmcEZts3rYTJ2TtZKEQfX08vwDjf1zp47l452l-ASzGW32_0JobI8w9WACViqAnA3NNHSQYEDTv6QMMt6f4roIwoiRuWcRyCtGOlckv2VI1mwggAkvaNkRB2UKgTHon9gb5Q-KTbyizFhD8GP72G-q0oHFLpBNJDK3GkzXJNe9cO981vVW-U1SSRZ9au4mbNRREFgtOTrxURVDR2meqJJ96cwdqq0lk-1xbXGRI06dU0F6cfJEBDps-a-kZZtMteteheDKffgmuQ05B3Q5NcU88jw_DaA9-aECp8Ghr_pbxKE5ADgkP41gCGnM0WCsKBfjQmoH15sEw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "نتائج القناه VIP خلال الأسبوع الماضى 👍\n\nXAUUSD 200 PIP 👍\nXAUUSD 800 PIP 👍\nXAUUSD 100 PIP 👍\nXAUUSD 300 PIP 👍\nXAUUSD 100 PIP 👍\nXAUUSD 320 PIP 👍\nXAUUSD 120 PIP 👍\nXAUUSD  70  PIP 👍\nXAUUSD 200 PIP 👍\n\n\nXAUUSD 200 PIP ✅\nXAUUSD 150 PIP ✅\n\nنسبه دقه الصفقات 95% ✔️\nنسبه نجاح الصفقات 95% ✔️",
       "links": [],
-      "createdAt": "2026-07-27T03:05:53.197Z",
-      "expiresAt": "2026-07-29T03:05:53.197Z",
+      "createdAt": "2026-07-27T07:05:58.655Z",
+      "expiresAt": "2026-07-29T07:05:58.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:53.197Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:58.655Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3179,7 +3186,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:53.197Z"
+        "reviewedAt": "2026-07-27T07:05:58.655Z"
       }
     },
     {
@@ -3216,10 +3223,10 @@
           "url": "https://t.me/M_iraculousLR"
         }
       ],
-      "createdAt": "2026-07-27T03:05:52.336Z",
-      "expiresAt": "2026-07-29T03:05:52.336Z",
+      "createdAt": "2026-07-27T07:05:57.968Z",
+      "expiresAt": "2026-07-29T07:05:57.968Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:52.336Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:57.968Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3237,17 +3244,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:52.336Z"
+        "reviewedAt": "2026-07-27T07:05:57.968Z"
       }
     },
     {
-      "id": 2094480690,
-      "postUrl": "https://t.me/medmannews/42891?single",
+      "id": 1347847694,
+      "postUrl": "https://t.me/medmannews/42895?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/dAw4b2-MDLNZczAPW76HkXPZwGbLflMsz91rgWW-khvLav5k9viHLZb6aOZrvIVdk2PkgjgNCfK5p8GdgHI-YjLILMEGP1cxQWbctwOo9rhqBSu90ocmbFyMZaVWKUZQ57aYx82MLM6toD8rGBucwhF2yvum1AzAoCg6nsiUUr6W_EeRlOFwfvEV3zP5UcS3ygNBVuru6imq8-waQ7YgXevtv3J_PUM6OQVKCxdyBFESB55gJpUMTBPsvA77B9EZkqhDyajVc4q2V-ozolKdlC9qdiH4TLS7Kzyoqpdst5ec0De0eLxJ4fI4gaQF2Lees8iOI05rEVfhQQ-puDrWxA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/hh9Y2XNmNS1Nx54u_hEyUPIrYgqBymyeQMKepc87IxT0QfdECsEdH2flJVrIMzbNzQXcxUANZ_wTHlX0BqR0imzn4gkreL8WHQzWkCRFZEQIc_T__Gss_SrDDYGI3zoibnbNe3czk9_qjl0Z3coV922B00hTn5DDkzhWVuZZaEFDnudIVWXOwIir9GAGlH_xAwOm8e5EFSYX1uN1cmy2hEdWNUiSTB_AXDdFb8Q0bPwcSUL6A2Yrs93MdSNabyy2tYk7lMwXX96KplOrbdhKVNvpd33d9be2ixBzLV3uI4iNTpERQt0lRTeVwthJkC5aODfhsAH6tMFakf7soz-tAQ.jpg"
       },
       "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
@@ -3255,21 +3262,16 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚡🇩🇪 The German government is pulling back two navy ships from the Gulf of Aden sent there weeks ago to support an eventual post-war Strait of Hormuz security mission, as hope is fading in Berlin that the conflict in Iran will end anytime soon.\n\nThe mine hunter Fulda and the support vessel Mosel were ordered to redeploy from Djibouti to the eastern Mediterranean, the Ministry of Defense announced on Thursday\n\n@medmannews",
-      "links": [
-        {
-          "label": "@medmannews",
-          "url": "https://t.me/medmannews"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:50.907Z",
-      "expiresAt": "2026-07-29T03:05:50.907Z",
+      "text": "God Forbid if you are ever in a toxic relationship, you ask something from your partner and they make it seem like you killed them, they deride you in ways that are subtle, and ways that are not. Perhaps they gaslight you, they know that you yearn for emotional connections and therefore they abuse you through this pressure point.\n\nWe all need love, that is true, but never make it at the cost of yourself.",
+      "links": [],
+      "createdAt": "2026-07-27T07:05:56.845Z",
+      "expiresAt": "2026-07-29T07:05:56.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:50.907Z",
-      "tag": "war",
+      "mediaRefreshedAt": "2026-07-27T07:05:56.845Z",
+      "tag": "crypto",
       "tags": [
-        "war",
-        "politics"
+        "crypto",
+        "finance"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3284,7 +3286,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:50.907Z"
+        "reviewedAt": "2026-07-27T07:05:56.845Z"
       }
     },
     {
@@ -3294,7 +3296,7 @@
         "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
         "handle": "life_in_sharm",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Nic_ggtpevDMjOyuCA_uae-favSdJhywb1dNhVm52wkEPTXuNNUcmH7UoWge39Q_CWj4N7VsQ3nWlq03z8N0q_0piIqvxUhZGDKckgsdEm5xiqgMfg2Y_7AvDv7N16wWz0A6YB-F_q2NSFmqfESZq5IbOsfsHruxcxAPlepqzwrUbtFs_urt2Wylv1OZyafFowCtwxjSeeII6-_tMd7jklJ7JEa1Tb29x0RJIhivH0LVyxUyJB0ee-wT2rggYu5zaamropIObZlzU95JxPJtFPj_GueTYPMbyc3zuAg8wpgnI0M51zw2Hntf7eAiNm6qGHkw5VpSV-DIQzSrwOIxMA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/PQFFAFuUpuMRnVivJUbA4Uve_0sETcfLXPE7qV5-kMM3yXnxw2LlYFMTSLhNMVIC6-Ext0zJW5FUn8lZBgF1H0XSjfHp0z4B_NAeR4nG327pI668iQ8DIKWkj85eASZNOG4HSpyhcS4m3Qrq3cWuX4u8R3kbmnuFTuF1WPiHW3NU0hW4oAS1rifiTtrMqiubJ3fmIVg0mQIoMZAqyQO8j5vQcSaEyswFqTaK8lxvmy-ZCwUXLZzhzCpPNFqUuTQTOwiPRED838Kfna-g_H32HhxMH7Eo_nnmvi_H5YLsRxoNHYNu9424Gf481TIHbIYfqvltF7J-TCeKi_WPxXfn5g.jpg"
       },
       "sourceId": "eg:life_in_sharm",
       "sourceCountryCode": "eg",
@@ -3315,10 +3317,10 @@
       "fallbackReason": null,
       "text": "⚡️ Внимание, завтра, 25 июля, с 09:00 утра и до 12:00 в Хайнуре (район вилл) пройдут временные отключения света.\nГородская служба электричества проводит технические работы в рамках планового обслуживания электросети.",
       "links": [],
-      "createdAt": "2026-07-27T03:05:49.562Z",
-      "expiresAt": "2026-07-29T03:05:49.562Z",
+      "createdAt": "2026-07-27T07:05:55.729Z",
+      "expiresAt": "2026-07-29T07:05:55.729Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:49.562Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:55.729Z",
       "tag": "news_regions",
       "tags": [
         "news_regions",
@@ -3337,7 +3339,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:49.562Z"
+        "reviewedAt": "2026-07-27T07:05:55.729Z"
       }
     },
     {
@@ -3356,17 +3358,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/MK4KYPkAALQFhUIB_JUCMG9CjfcthBNENBY1TQkG5DP3O0Zgs7K4RbhAxM2qPYxSZIdIyFzrQ5g6x-r8fIYGo1R3hiA5HfnhgOlhJWlnBmuIkniWHRne_OjmjtxK5-4Nce_abNcQRxiRjpg47FP2bzX0Xou62RnsguxnOWAVnvL-uJcKg2RqaWXgQhkZHxlsUjNEZOESMqfcHVczv3DTgayF4MbUWZ0Gk6oPaQg6gHITJgvWTs_y7qXWbRXEYmjTyzl2l4D5CuWMSdU0hhSJsMB94WgoiTCv6erp4SKBtteBx2ZNQ_Ina1SRR856JNLtaC8ws3SmDsxPzGjSt6DoOA.jpg"
+          "url": "https://cdn4.telesco.pe/file/Iqxi2G27y-leCHFCGN_15tiNIUP-Hagxmc9cHzH9WwqCGHzPgGFkvtbWgCGhdv74puIwX3gF6FhI4Lj0kKoajxEmsxAFZrOJ44jBSLEeiU-HdOlGNM93tbwy98NCYdoW8hHjv4acIG_zP_GUjpNg418yWJzMn-Jy4Rnb6SOgU6ZK3x3Jn9cy1392WTv5XX1DQQ5AK3eFHK0gxViVw_XTESsIlV5uTsooHyXCoGdRjIdblpyTphj6y6r9pK-y7ayLEOvW6jye7ei9iYPpPXxDHUT5WdqLjPLNg8nn3hlu7B95WYirdOr7rsbyqVfTd8-nbOsOTrI-VhulF6pxVHIUCw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-27T03:05:47.185Z",
-      "expiresAt": "2026-07-29T03:05:47.185Z",
+      "createdAt": "2026-07-27T07:05:54.102Z",
+      "expiresAt": "2026-07-29T07:05:54.102Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:47.185Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:54.102Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3384,17 +3386,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:47.185Z"
+        "reviewedAt": "2026-07-27T07:05:54.102Z"
       }
     },
     {
-      "id": 2605146984,
-      "postUrl": "https://t.me/kero_875/79773?single",
+      "id": 1528793678,
+      "postUrl": "https://t.me/kero_875/79775?single",
       "source": {
         "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
         "handle": "kero_875",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/V3XVhtwnFP0LfHSGmcUiQF3e4e4082ClXOYCt-WWJ_BkOoBS_6iPPypiT376g-edogQJTaDDECrz2Ox_uAd5a9766Tb5BdzbCRgAbGdXsWjbfmuyXdZuayluqjSDB7_PNSUt9nNVjq2K89ACXyYzo06rbc8TkxxK9JMR9tGuPRzEpUtFuFrjQnjtzr-4t1Rtdq-f688sOnnSU9I6wO3sr5MCoSiygaDip4rdXkdbOHW8K-v9SUHnc9XUhx70H--XJ_LsxmAt5Mqrga1VQQjMTsjzXIg6aWuRSM0rEVSpDs4EGNndWt5IEHEhew46nsXkankgFBKFBhq4R-5-HI0Q6A.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/DldsgLarAemX351RgP7OYThI4TFJPlno5TdqDp2lNuumFyytbfZhR9gdSG5tYI-D096D950DN16oe-JAmpPyzguypuMXTEoUo1xRd3Mq8hGfK3A_PlBvSVe8XEfGISARgFYSEk6gerKrItONNtQgkLz4_YbtWpkZ1nar95dYFw2uWbp6KRZv-mhh5bTB0dq-FMF5YQPrfFop5iNN10p4KesNePKgHtIiXKquL10P_RuUhrjXrkN7fG6WDQwmOKlClXwrg4g41PmDGcuxhRaBBS3MUeGbzAc3tpQ-9HJNuAKGdV_YZHy_U3Efrqca4OVfbV7HWnkB7Upd_ovvJ_HcGg.jpg"
       },
       "sourceId": "eg:kero_875",
       "sourceCountryCode": "eg",
@@ -3402,12 +3404,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "",
+      "text": "⭕ ذكرت يباشا ؟؟؟؟!\n\n💡 تعالي بقي شوف درجتك ومستوي مذاكرتك \n\n👈 وشد حيلك عايز درجه حلوه منك \n\n✍️ طالما موجود هنا يبقي لازم تذاكر \n\n👇 اضغط علي .. معرفه درجتي 👇\nواضغط علي طريقه المذاكره عشان تعرف تذاكر معانا",
       "links": [],
-      "createdAt": "2026-07-27T03:05:46.005Z",
-      "expiresAt": "2026-07-29T03:05:46.005Z",
+      "createdAt": "2026-07-27T07:05:53.463Z",
+      "expiresAt": "2026-07-29T07:05:53.463Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:46.005Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:53.463Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3425,17 +3427,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:46.005Z"
+        "reviewedAt": "2026-07-27T07:05:53.463Z"
       }
     },
     {
-      "id": 3027879237,
-      "postUrl": "https://t.me/hv_ty158/1153?single",
+      "id": 3452975220,
+      "postUrl": "https://t.me/hv_ty158/1152?single",
       "source": {
         "title": "مسلسل حلمٌ إليك",
         "handle": "hv_ty158",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/UqGFY1fBvyFvFa9IIXSkIXHaYfu5JtzpXwwqmdsfM1TwCxB3Hat3DmbMSZQ9sLPAga4BTJhncczatsAKv0cGx3QPGtjjF80dwAZ-QkOXBS5ULf9at1YWYwc56pZkkX2J-9xI73HWLB2O1ZCeT2FVJXMVPtn2v9_JgIU7eJK4-G_3hj1JpD9hGzTOZnuo-iImbynizCuToZzCR7pUY-baZ_onmBnXg7Nr8N0lumL3RbuAHsDfMcsubMsW0P50Q8wa18-PmvDXW3Gd4oMxwfLiCqSYkgPm4JD9K84b_XTHJj_iLUT-EFE76-CY1hFr_t_kGO_K4g6zZA--5rHWHAhEVA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/EdC5Fye9pskHwEFmk88pw4f0RnNKsOc36b9KnlhkTWV5s4TZHntl4RXIeUlaMup21LxDCaaIHri9H6mM8SJn0BTFgQe14VHC5f6LWXq1BLPiC2U7hKYTwX6QV9pDcLLPDgwjhOG9VH6hwnnNQX_e5ywGvkE-OxGg8ytTKFUr4ykDR9bzdi9z0s_zGEzqGd9ZBWrYxscAAcqqGlBpoDFHJ21c5hA4E4g_9yTCY6UK0rpp3S3m6a232ShaCXA8CDfenbJFhdjC2lv_QMzPuRGh9OQqBAvx_QnMtptmjaC4q3svMJUWvXdR3_-RleKura2jkFP7nGHLsvGjk5TueQ8sMQ.jpg"
       },
       "sourceId": "eg:hv_ty158",
       "sourceCountryCode": "eg",
@@ -3443,12 +3445,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "تفاعل لنستمر بنشر الحلقات 🫶🔥",
+      "text": ".",
       "links": [],
-      "createdAt": "2026-07-27T03:05:45.107Z",
-      "expiresAt": "2026-07-29T03:05:45.107Z",
+      "createdAt": "2026-07-27T07:05:52.737Z",
+      "expiresAt": "2026-07-29T07:05:52.737Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:45.107Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:52.737Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3466,7 +3468,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:45.107Z"
+        "reviewedAt": "2026-07-27T07:05:52.737Z"
       }
     },
     {
@@ -3501,10 +3503,10 @@
           "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
         }
       ],
-      "createdAt": "2026-07-27T03:05:44.175Z",
-      "expiresAt": "2026-07-29T03:05:44.175Z",
+      "createdAt": "2026-07-27T07:05:51.953Z",
+      "expiresAt": "2026-07-29T07:05:51.953Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:44.175Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:51.953Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3522,7 +3524,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:44.175Z"
+        "reviewedAt": "2026-07-27T07:05:51.953Z"
       }
     },
     {
@@ -3548,10 +3550,10 @@
       "fallbackReason": null,
       "text": "📌 ملخص الأسبوع | لماذا استفاد الدولار أكثر من الذهب؟\n\nالأسبوع الماضي قدّم مفارقة قوية:\n\nالتوترات الجيوسياسية تصاعدت، والنفط تجاوز **100 دولار**… لكن الذهب لم يصعد كما توقع كثيرون، بينما استعاد الدولار قوته.\n\nالسبب أن السوق لم يتداول الحرب وحدها، بل ركّز على تأثيرها في التضخم والفائدة الأمريكية.\n\n🛢️ ارتفاع النفط أعاد مخاوف التضخم، ودفع عوائد السندات للصعود، وزاد احتمالات استمرار تشدد الفيدرالي.\n\nالنتيجة:\n\n🇺🇸 الدولار استفاد من ارتفاع العوائد والطلب على الملاذ الآمن، ووصل مؤشره قرب 101.14.\n\n🟡 الذهب تحرك بعنف؛ ارتفع قرب 4,166 دولارًا مع ضعف مؤقت للدولار، ثم تراجع قرب 4,043 دولارًا بعدما عادت رهانات الفائدة للارتفاع.\n\nالمعادلة أصبحت واضحة:\n\nهبوط النفط والعوائد = دعم للذهب.\nصعود النفط والعوائد = قوة للدولار وضغط على الذهب.\n\n👁️ الأسواق تراقب الآن:\n\nقرار الفيدرالي ولهجة التصريحات، تحركات النفط، عوائد السندات، وأي تطورات جديدة في مضيق هرمز والبحر الأحمر.\n\n⚖️ الخلاصة:\n\nالذهب ما زال مدعومًا بالخوف السياسي، لكنه يحتاج ضعفًا حقيقيًا في الدولار والعوائد لتأكيد الصعود.\n\nالدرس الأهم: السوق لا يتداول الحرب نفسها… بل يتداول تأثيرها على التضخم والفائدة.\n\n⚠️ قراءة اقتصادية تعليمية وليست توصية استثمارية.",
       "links": [],
-      "createdAt": "2026-07-27T03:05:42.753Z",
-      "expiresAt": "2026-07-29T03:05:42.753Z",
+      "createdAt": "2026-07-27T07:05:50.848Z",
+      "expiresAt": "2026-07-29T07:05:50.848Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:42.753Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.848Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3569,7 +3571,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:42.753Z"
+        "reviewedAt": "2026-07-27T07:05:50.848Z"
       }
     },
     {
@@ -3579,7 +3581,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/imJhf3pYKCg3ANNcR4Lfb0sETYt-0BLA_N48gS5nx5nR_YaOmaNgn3q5kxLMCS3JUQtvnmDWWzu26_wlB6rL0sEFSQkTNegrKHUkzfmXeVMZw9ggexPK0_ERLFcwRON9owrQW5HV8PZ4dEHeOYriatmOziiR-eXP0SKeLiCDx_s7j0v_pcHUK4d_3uC4mCjG2iarRaMxoRyNk_wHP1H8AB8OnlFlyhFBrAVWyRLfxY5jCBQ8oa3QqRMQtCm37c2vOnWUtm0jeoJeozXSJSraFklLZz__Zo88CEpdae4uSkQETibJ4JUTf52C85Fv5xpBdM6riI8vOv1QwjNeOlLa4Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/K7bx6JWDxqxpT4GubHtf8TIuJzrC0e7b3Pjh5zHwvRVLTFRbcH5eK-oyVfeOrTKCs3-rGBgzoqjXj032DEYvkZYYnVXRd-pbh9bNXRFZrwGcqRFNz5vfoIgVklvvXLwHb3jOUL3WPIh6KKXhZXmrEsHofiOo9qwPpuxrC8ctas2oVA9VR759dPr0ulfzDJDdVM-dSeYj_gl3hJd1-QIyVHbl7BezU0YY1jfSPA_1pkcen6KJhn2VH9o_NLqQ-3p6ST2ALLtBcau3Y-yjBZqr6ea4P0plwReidENimGNg-6zXUvzWrSj36vhnnjebsZ1f9SJcEKEaDKohM3ECVz70BQ.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -3588,17 +3590,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/EZEBqjqa2j7FykxCUW3B0e_W846GX6YldYXWIWgC8H9ENu3cLImQT1p1s9qg_QtyuXKDsB2GP8a3LqDzHF5_VFHBYPHXna7uL5BvopebwoHLnANPhUw0eHs6_R1uP96_UHAsCRO3O6InDSOs39QBHUZxPonRuO-kpS9VqDS_AWEXNGj7OlCBVemSrbgZJubH_8kknNwiiC9QQqIzw2oyzZZsAeT4ahAsTqH59dJsx3Zv5Dk-1V45F65rU5qX_K8S7uVpzuYKXyvnKIyo936lCEyJ2mwmjRcQVRsnSFRWrT1599MFmrxKJ4Fkhu6Qs2nD8USvq8YQ3-g9ngLxvTOFMA.jpg"
+          "url": "https://cdn4.telesco.pe/file/UN-MY2PgI5edkIZkZt4D7AIq2U-XEIVc7Elmh8xLBpaBTYOoOLWZGb1CmerTSc0RMOe9G77caaC0f9RE_9_IyaKaXDOI02zMCEBX3pS0jJZWjFd2KthUUNmHfyJPK84Cip6R-C8zb9AZUkDHKYm8G9GI02j8QVJqf4crn8_9GM4Or95kiSHcH7VVtMq0BRNyjv6EhzIWMTtQcY59NlqZxywcZ0UdVz4o4t4m8xi23Fa04975RvdkBZ0DzBYyBp0gDmQK0eHROlMA1c4mepdDX3DuTLCw4F7pB0inDVH_raerAvfTH0JHSgnsCI3TxrMI1anOmZZWAxB5iAUo0APB4g.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "Thursday 25/06/2026  Free single   15:00 Grobina 🆚 Auda  Total odds: 1.38  Bet Responsibly",
       "links": [],
-      "createdAt": "2026-07-27T03:05:41.943Z",
-      "expiresAt": "2026-07-29T03:05:41.943Z",
+      "createdAt": "2026-07-27T07:05:50.177Z",
+      "expiresAt": "2026-07-29T07:05:50.177Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:41.943Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:50.177Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3616,7 +3618,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:41.943Z"
+        "reviewedAt": "2026-07-27T07:05:50.177Z"
       }
     },
     {
@@ -3651,10 +3653,10 @@
           "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
         }
       ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
+      "createdAt": "2026-07-27T07:05:48.940Z",
+      "expiresAt": "2026-07-29T07:05:48.940Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.940Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3672,7 +3674,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
+        "reviewedAt": "2026-07-27T07:05:48.940Z"
       }
     },
     {
@@ -3692,10 +3694,10 @@
       "fallbackReason": null,
       "text": "طريقة البحث 🙈\n\nافتح البوت وروح إلى أيقونة العدسة الموجودة فوق، اللي هي خانة البحث، واكتب اسم الكرتون بيظهرلك في النتائج...\nلو واجهت أي مشاكل، سيها في التعليقات وبنساعدك. 💙✨️",
       "links": [],
-      "createdAt": "2026-07-27T03:05:38.670Z",
-      "expiresAt": "2026-07-29T03:05:38.670Z",
+      "createdAt": "2026-07-27T07:05:48.005Z",
+      "expiresAt": "2026-07-29T07:05:48.005Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:38.670Z",
+      "mediaRefreshedAt": "2026-07-27T07:05:48.005Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3713,58 +3715,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:38.670Z"
+        "reviewedAt": "2026-07-27T07:05:48.005Z"
       }
     },
     {
-      "id": 3626283103,
-      "postUrl": "https://t.me/rassd/199857?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "اقتحام مستمر لمخيم بلاطة ومحيطة\n\n✨ البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
-      "links": [
-        {
-          "label": "goawl.com/p/nablus-live.html",
-          "url": "https://goawl.com/p/nablus-live.html"
-        }
-      ],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 3581939480,
-      "postUrl": "https://t.me/ngmsr/15048?single",
+      "id": 1154413634,
+      "postUrl": "https://t.me/ngmsr/15055?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -3778,17 +3734,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/pYUqUvWTENZTgsgJpXhEPJ2olo8TA1d2O8VQFUVSHyTKYWKW07Xn-pw1v2QfmJ_aVEiMmLtX6KAsRSd_-btMWGXGgA8B-MRhFFZfm2Vb0ac-KUKvsssWc5D0bQugvAEXWlJjNaEgVElyRZP-DOYvJzprp3tlFTP80zKmkZGehLswtxwFla6stZ8cn9Qal2_jy7D2tiS_rrj0KnjkUa7thZE7z2JbM4nBERtsgYJnJrMgWDaTC5EV1VG6773VjWbkNx3U4efa3mZI631iuGRBGt6TKPicoi3aQ1eci_2Jv3BMmu3f2nQu1DAba7VpRJF-Iy92zXRYxlFQfdw4V6rwRg.jpg"
+          "url": "https://cdn4.telesco.pe/file/fqVtvnzbz7VnMZw0Q9ICLzVpI8j_xxe24BS8KmVCNqoXUgbv5pzDAm4bTno4O6IgqlM7yaG6pj3pwVNf13Z0dthtOsn0SvP2UrcPM8QS7XWgywvXNwsD4bu55GP8JupB4s8Qj1YC2IEZHAYL0ZDei80U7sfN1zERo1qi1JW377zlUnKrTxkUveVcAEuJXPFn0O9f1fndlHbRJQq82pzjiP64KJcAsGpAnxyFzzR61JNyrKX9oqNnxW7BwGAp6Sm4GiWsaoyXzOeZiFsrw2BWzAUujHrs0bVdoiBBpvTS4gLwgMesKnBPgEYgi8J4UgMnZu7CpYbUO9z-Jt8TB3wSqg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 تقدم كردفاني حاسم\n\n🪖 القوة المشتركة تعلن تدمير أكثر من 62 عربة قتالية للدعم السريع والاستيلاء على 54 أخرى في شمال كردفان\n\n📍 الجيش والقوات المتحالفة معه يحققون تقدماً في عدة محاور، مع السيطرة على منطقتي أم قرفة وجريجخ\n\n⚔️ المعارك أسفرت عن مقتل عدد من عناصر الدعم السريع وفرار آخرين، مع ترك معدات عسكرية في مواقع القتال\n\n🛣️ الجيش يعلن أيضاً إحكام السيطرة على طريق الصادرات بين الأبيّض وأم درمان، بعد استعادة بارا وجبرة الشيخ وأم سيالة\n\n#السودان #شمال_كردفان #الجيش_السوداني",
+      "text": "🚨 حادث في هرمز\n\n🚨 التلفزيون الإيراني: سفينة تعرضت لحادث أثناء محاولة عبور مضيق هرمز عبر مسار وصفته طهران بغير الآمن\n\n⚓ إيران تقول إنها أعادت 5 سفن إلى الخليج بعد محاولة المرور في مسار غير قانوني جنوب المضيق\n\n🛰️ طهران تزعم أن 6 سفن أطفأت أنظمة الملاحة وحاولت العبور دون الالتزام بالمسار المحدد\n\n💥 الحادث يأتي بعد إعلان سابق عن انفجار ناقلة نفط في هرمز إثر الاصطدام بلغم بحري\n\n#مضيق_هرمز #إيران #الملاحة",
       "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3806,89 +3762,39 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
-      "id": 1815973161,
-      "postUrl": "https://t.me/kero_875/79772?single",
+      "id": 2241392327,
+      "postUrl": "https://t.me/medmannews/42894?single",
       "source": {
-        "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
-        "handle": "kero_875",
+        "title": "Mediterranean Man",
+        "handle": "medmannews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/V3XVhtwnFP0LfHSGmcUiQF3e4e4082ClXOYCt-WWJ_BkOoBS_6iPPypiT376g-edogQJTaDDECrz2Ox_uAd5a9766Tb5BdzbCRgAbGdXsWjbfmuyXdZuayluqjSDB7_PNSUt9nNVjq2K89ACXyYzo06rbc8TkxxK9JMR9tGuPRzEpUtFuFrjQnjtzr-4t1Rtdq-f688sOnnSU9I6wO3sr5MCoSiygaDip4rdXkdbOHW8K-v9SUHnc9XUhx70H--XJ_LsxmAt5Mqrga1VQQjMTsjzXIg6aWuRSM0rEVSpDs4EGNndWt5IEHEhew46nsXkankgFBKFBhq4R-5-HI0Q6A.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/hh9Y2XNmNS1Nx54u_hEyUPIrYgqBymyeQMKepc87IxT0QfdECsEdH2flJVrIMzbNzQXcxUANZ_wTHlX0BqR0imzn4gkreL8WHQzWkCRFZEQIc_T__Gss_SrDDYGI3zoibnbNe3czk9_qjl0Z3coV922B00hTn5DDkzhWVuZZaEFDnudIVWXOwIir9GAGlH_xAwOm8e5EFSYX1uN1cmy2hEdWNUiSTB_AXDdFb8Q0bPwcSUL6A2Yrs93MdSNabyy2tYk7lMwXX96KplOrbdhKVNvpd33d9be2ixBzLV3uI4iNTpERQt0lRTeVwthJkC5aODfhsAH6tMFakf7soz-tAQ.jpg"
       },
-      "sourceId": "eg:kero_875",
+      "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
       "contentType": "text",
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "تلات صور مع بعض",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:46.005Z",
-      "expiresAt": "2026-07-29T03:05:46.005Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:46.005Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:46.005Z"
-      }
-    },
-    {
-      "id": 1965322566,
-      "postUrl": "https://t.me/deals_trackers/14179?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DUETKEfvf9LrlSC-5sPoZZTeyGxCtOM0zts3zz6UR2Wt_o3pwI4bF4-Jrcr8Idz60HR7-PL5obGc3BndyAg-gNRqI_LSxv4VrwmmRlK3UZaW2PexIvGJPPFHzoCQBluuN1Ml9XE2SrcbsBfQ-XJUoPzCUIiLvXHD1_6G7M7tW88rEoydSHt6Febl585-9TjjGq5PcmErgIBZld0DkTkYo948uWNcwG2_XKs5wOeygfUs-5gsJBPB_80Cy4Tj3dOMg6dKP333CrQKNkJTFa1283JWeQcMZSPk3g5BKyPhvpS8-Byr5FPMtEOpukZHhxt3ZYj0TKemsG4WmmPQxdtAbQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/KngtIA1LGzlZ-Mbub_KX626aHvHwTxqLC91v3Yh0SVDFbUZIa_-uiDWR_SzRJgy_F-BrmlbceYn-jkch3oViWhPBGCIfaQy7TjCzGFzIytbwhkEYXJvgg0DQqSdA5g_JeXmqB_2TYuVNyufgl1eEk90hb6RIYBuuKn1SQ1vZdLBLlhXMZRjy8c_k_EAXXOQAhHJ8al5A-j8kMXrz8zSuhMp0v46Jes5L-Kx10oJkzHX54HTSjDiuqcFiV2OlcjQ0-t-YqK53Ev-JOQORzE7H7lPZEIUmkfmAxAGzylNb3zI0tn_nq3DzPO74c0UrySvfADJ6D_BVuH4DfZNjQENSIQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "لقطة اتوفر تاني🔥\n⚡️ عرض على مكمل بروتين الشوفان بكريمة الفراولة 900 جم من ريد ريكس\nبسعر 531.00 جنيه فقط !😱🔥\nللشراء : https://amazn.im/s/dkeEuX\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
+      "text": "⚡️🇱🇧 Speaker of the Parliament, Berri, states that he is personally against any direct Lebanese-Israeli negotiations and that he has zero faith in the negotiations yielding anything positive for Lebanon, and that only a complete Israeli withdraw from Southern Lebanon will be sufficient, but, considering \"recent regional developments\", his hope is \"zero.\"\n\n@medmannews",
       "links": [
         {
-          "label": "https://amazn.im/s/dkeEuX",
-          "url": "https://amazn.im/s/dkeEuX"
-        },
-        {
-          "label": "تابعنا علي واتساب",
-          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
+          "label": "@medmannews",
+          "url": "https://t.me/medmannews"
         }
       ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
+      "createdAt": "2026-07-27T07:05:56.845Z",
+      "expiresAt": "2026-07-29T07:05:56.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-07-27T07:05:56.845Z",
+      "tag": "politics_government",
       "tags": [
-        "other"
+        "politics_government",
+        "politics"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3903,61 +3809,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
+        "reviewedAt": "2026-07-27T07:05:56.845Z"
       }
     },
     {
-      "id": 3828666886,
-      "postUrl": "https://t.me/rassd/199856?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/c91e9b8b73.mp4?token=OyRtBYj3g9-aeDEvcBFx5ADGdxx8tasVttONh6GfGWmSNZrrwx9qC7hrnEdFuywTR-M-Vdz9DFPkNxTY9vEm6hkXg1hQ_b4ZM5Mz09xIBaZRDDM1f3u1xWyDCo-aJyHRsmV6O1xfSZly5WfHS8e_0sBFmrYU19ALxQRy10jR94bak67eXFkZY8OXBBoqC_Dzy8NQUQWDy1NqDHHM3ZPqc1Z1yMLWqIyyHLet2_x50xOpADjmuLKoTxGaeEvOI6f6ttpZiOyR3hGZgJmhYFLfhBnrPnZURs7-fZmvTh22JkjdGfq0J_XG8nvoHrM3riM7Rvcf39Uh-u1mbD-XkXCxAA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "انسحاب بعض الاليات من المخيم تجاه سهل روجيب",
-      "links": [],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 4267347151,
-      "postUrl": "https://t.me/ngmsr/15047?single",
+      "id": 3592670011,
+      "postUrl": "https://t.me/ngmsr/15054?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -3971,17 +3828,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/hoo1VLVQmcIyIqtVAvizR7UjeWy-ohTbMMgocapQqx-fsfbkYgkue6SgWgtQTcO0mjLfUL3BORqSK0zTW3_aKrsCnEwyJme-wLzw_zyhP3eGxZ1t1gdH_pQn__YWBfl5ouSiWvVKmEobCN3stIRn6fSDuyROYuc2KFvFV7YcbZc61jmWCkVwXxMRtuFGmpujf5zJ_B8mdsd-vzGZNuKxtEl_YfbQiSwAH8GFcMzV5BpiAlqpIkc7X-ONghvPMw08PSxfU5EBrmGT8rVEXEHUL4cFM_XEjvwu_Ghac9f4wwycpI_lk-u76PxbPyNFUP1bS8pEfvDZ_MrpswW2Cqv1Rw.jpg"
+          "url": "https://cdn4.telesco.pe/file/TfK1MI_-YRI255ObUsqKOItLBfO3JFQ5rNkig0-9q_GqQ1P3anNJ4-OBYO48FALCVdlYy2jv_VzHA9H_FqVIGxsP_K36ytxTz3f7AsXFeqtlYel4TylB3YiEpPisPzpWLeS1w64Ec-Akf4l5O9jyLdSqon070rRJgwfmUEMmK6v-oM1-ebSocvb6HuVj1P7ZdmrBF37mHrz9NbpeoZtUlhvgCCLuGL3kknBrdzQgcP8hRVtZHNJpcpNcLyy-mcLG_NtbssS0a-K5PvGBcYUSclssIR4Pc8z_c_rFquDO-TLSotmWlAHcgJs2N3fTPGbINgSOjzvAZF2iwe5s7nCcAQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 نتنياهو يرفض الانسحاب؟\n\n🚨 نتنياهو يلوّح برفض المطلب الأمريكي بالانسحاب من غزة ولبنان وسوريا، بحسب تقارير إسرائيلية\n\n🗣️ رئيس الوزراء الإسرائيلي أبلغ وزراءه بنيته عدم الاستجابة للطلب الأمريكي، في خطوة قد تزيد التوتر مع واشنطن\n\n✈️ الملف سيُطرح خلال زيارته المرتقبة إلى واشنطن، حيث سيبحث مع ترامب قضايا إيران وغزة ولبنان وسوريا والضفة الغربية وتركيا\n\n⚠️ نتنياهو يسعى أيضاً لإقناع ترامب بتوسيع المواجهة مع إيران، محذراً طهران من أي هجمات مباشرة أو عبر وكلائها\n\n#نتنياهو #غزة #إيران",
+      "text": "🚨 الهلال يطارد ندياي\n\n⚽️ الهلال بدأ تحركاته لضم إيليمان ندياي من إيفرتون خلال الميركاتو الصيفي الحالي، في صفقة ما زالت في مراحلها الأولى\n\n🟢 فابريزيو رومانو أكد أن النادي السعودي يضع اللاعب ضمن قائمة مختصرة، بعد سعيه لإضافة اسم جديد عقب سامرفيل\n\n🎯 ندياي يُعد خياراً متعدد الأدوار، إذ يجيد اللعب على الجناحين وفي الوسط الهجومي، ويمكنه أيضاً شغل مركز المهاجم\n\n📊 اللاعب شارك في 34 مباراة الموسم الماضي مع إيفرتون، سجل 6 أهداف وصنع 3، كما تألق مع السنغال في كأس العالم 2026\n\n💰 الصفقة تبقى مرتبطة بموقف إيفرتون، بينما يُظهر اللاعب انفتاحاً مبدئياً على النقاشات، وعقده يمتد حتى 2029 بقيمة سوقية تصل إلى 55 مليون يورو\n\n#الهلال #إيليمان_ندياي #إيفرتون",
       "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3999,155 +3856,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
-      "id": 128550258,
-      "postUrl": "https://t.me/kero_875/79771?single",
-      "source": {
-        "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
-        "handle": "kero_875",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/V3XVhtwnFP0LfHSGmcUiQF3e4e4082ClXOYCt-WWJ_BkOoBS_6iPPypiT376g-edogQJTaDDECrz2Ox_uAd5a9766Tb5BdzbCRgAbGdXsWjbfmuyXdZuayluqjSDB7_PNSUt9nNVjq2K89ACXyYzo06rbc8TkxxK9JMR9tGuPRzEpUtFuFrjQnjtzr-4t1Rtdq-f688sOnnSU9I6wO3sr5MCoSiygaDip4rdXkdbOHW8K-v9SUHnc9XUhx70H--XJ_LsxmAt5Mqrga1VQQjMTsjzXIg6aWuRSM0rEVSpDs4EGNndWt5IEHEhew46nsXkankgFBKFBhq4R-5-HI0Q6A.jpg"
-      },
-      "sourceId": "eg:kero_875",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:46.005Z",
-      "expiresAt": "2026-07-29T03:05:46.005Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:46.005Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:46.005Z"
-      }
-    },
-    {
-      "id": 347342376,
-      "postUrl": "https://t.me/deals_trackers/14177?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DUETKEfvf9LrlSC-5sPoZZTeyGxCtOM0zts3zz6UR2Wt_o3pwI4bF4-Jrcr8Idz60HR7-PL5obGc3BndyAg-gNRqI_LSxv4VrwmmRlK3UZaW2PexIvGJPPFHzoCQBluuN1Ml9XE2SrcbsBfQ-XJUoPzCUIiLvXHD1_6G7M7tW88rEoydSHt6Febl585-9TjjGq5PcmErgIBZld0DkTkYo948uWNcwG2_XKs5wOeygfUs-5gsJBPB_80Cy4Tj3dOMg6dKP333CrQKNkJTFa1283JWeQcMZSPk3g5BKyPhvpS8-Byr5FPMtEOpukZHhxt3ZYj0TKemsG4WmmPQxdtAbQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/gHeJFADr09FNtN6YNUYNcAnjPQ9kdKW2bC_YBpViVWIQ39sHg5gfDR_-tBRu-OBgh2zCTMMkV96F-jA_gGDC-lDXsB0td_ltLJ4JHO2MxuXRMBm4GENA5fx_ad35pn0dmgLZ7sz4yzhjCteJPWVxpFDo2vHpbPQWgTcnbLBGLvv945GlggNDf822n61xYNnKqUNMePSjKdZiej04l6qR2OdnYb_JtEyZm85utjNWrn-GqGh2CSPCusZMRqSzJdhFDmcxSKC18D7Q6zm0BxEKSOaOo6Eip_JcZIUyrTzAGznLm4HPqEUeQp92gtTSs6VSCheQGrvu3MXG34mB58SJJA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "⚡️بسعر لقطة  عرض على فرشاة تصفيف الشعر الاسفنجية السحرية من ريوراند، فرشاة حلاقة ملتوية لتجعيد الشعر أداة العناية بمشط لف أفريقى \nبسعر 33.93 جنيه فقط ! 🔥🔥\nللشراء : https://amazn.im/s/jROh06\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
-      "links": [
-        {
-          "label": "https://amazn.im/s/jROh06",
-          "url": "https://amazn.im/s/jROh06"
-        },
-        {
-          "label": "تابعنا علي واتساب",
-          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
-      }
-    },
-    {
-      "id": 2038944189,
-      "postUrl": "https://t.me/rassd/199855?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "عاجل : قوات الاحتلال تشن حملة مداهمات واعتقالات خلال اقتحام مخيم بلاطة شرق نابلس\n\n✨ البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
-      "links": [
-        {
-          "label": "goawl.com/p/nablus-live.html",
-          "url": "https://goawl.com/p/nablus-live.html"
-        }
-      ],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 582969206,
-      "postUrl": "https://t.me/ngmsr/15046?single",
+      "id": 2491494148,
+      "postUrl": "https://t.me/ngmsr/15053?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -4161,17 +3875,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/WgGizohOJEq_5UGbDT11dbea3VRUEbAYqCYFqpZ5PXEevLft0DohRKeMv9WRlB3x0sBUYLA9u1gMyvgMkMHRUHtS5C3mq_VrS6DtVKkpz9H3eSGMuu1MAM81R6hA2Dfwke6ivQusWnrhoCD6oEyQQYQGQK4IWS3c8suUAfEUOmCF_t4icITOwlGtAfT-2kCI4WEbkkwMjOrN34TR7onXlYyB7dDNKf7_Wn4BOYGbA7It8oTCVG3M79_Ir5dpT5TfdUoqyXMVALSo1dacuRZAPfwlMgJlLc05iZSEh2r0TDsPpiA0jcUBnvUGPfHgmDOJTxm3WMKGU820vy5ayciB6A.jpg"
+          "url": "https://cdn4.telesco.pe/file/fydwVflOHcqybeROUAAR1IVlhkLWZjRa8AdE3u-cPoW0iP2IFnkRoOLv2UtmYf5bcBJcmEqKqy2vOZZcbFf9mvCRBNFj2_Oa0pSTpPDvH7n_bVpaWqWHBqDny6s1Dz5oTUo8jHJ-vPaA0rz27hygZ6cd7ParcVlhYLL2AxqYW1LXc1JuXfEpHsYg1zt32NnVnwTwSOBfNUIr4R9HcRbkeZ0nBow-oxqtg1Mq4bV4p-g3KMyDQJsC1NxXjSq-lWOwxU2TB108fxa2f4djFpq6DaAFhQQ35wVfJh7EPUOiFfOjt4qHPnvD-G8LSx7gMT1FpRt1r4Fyq-HnuyONUzKHvQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 عصيان يشتعل في طرابلس\n\n⚡️ عصيان مدني بدأ فجر الاثنين في عدد من مناطق طرابلس، وسط مشاركة مجموعات أغلبها شبابية\n\n🪧 محتجون أغلقوا مقر شركة ليبيانا في سوق الجمعة ورفعوا شعارات ترفض سياسات حكومة عبد الحميد الدبيبة\n\n🏢 التحرك امتد إلى وزارة الخارجية، مع إعلان الحراك دخول المنطقة في عصيان شامل وإقفال مؤسسات الدولة والشركات العامة\n\n🔥 مناطق أخرى مثل تاجوراء وجنزور أعلنت الانضمام، بالتزامن مع احتجاجات على انقطاع الكهرباء وإغلاق بعض الطرق بالإطارات المشتعلة\n\n📣 التحرك يأتي مع تصاعد الغضب الشعبي من تردي الخدمات وغلاء المعيشة والفساد والانقسام السياسي\n\n#طرابلس #ليبيا #العصيان_المدني",
+      "text": "🚨 سانشو بين الريان ودورتموند\n\n⚽ الريان القطري دخل بقوة على خط التعاقد مع جادون سانشو في صفقة انتقال حر بعد نهاية عقده مع مانشستر يونايتد\n🔄 اللاعب الإنجليزي يعيش حيرة بين العرض القطري وإمكانية العودة إلى بوروسيا دورتموند، وسط مفاضلة بين أكثر من خيار\n📉 سانشو يطوي صفحة غير ناجحة مع يونايتد، بعدما اكتفى بـ12 هدفاً و9 تمريرات حاسمة خلال 83 مباراة\n🧭 الجناح البالغ 25 عاماً يبحث عن تحدٍ جديد بعد ثلاث فترات إعارة متتالية إلى دورتموند وتشيلسي وأستون فيلا\n#سانشو #الريان #مانشستر_يونايتد",
       "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4189,114 +3903,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     },
     {
-      "id": 2364666601,
-      "postUrl": "https://t.me/deals_trackers/14176?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DUETKEfvf9LrlSC-5sPoZZTeyGxCtOM0zts3zz6UR2Wt_o3pwI4bF4-Jrcr8Idz60HR7-PL5obGc3BndyAg-gNRqI_LSxv4VrwmmRlK3UZaW2PexIvGJPPFHzoCQBluuN1Ml9XE2SrcbsBfQ-XJUoPzCUIiLvXHD1_6G7M7tW88rEoydSHt6Febl585-9TjjGq5PcmErgIBZld0DkTkYo948uWNcwG2_XKs5wOeygfUs-5gsJBPB_80Cy4Tj3dOMg6dKP333CrQKNkJTFa1283JWeQcMZSPk3g5BKyPhvpS8-Byr5FPMtEOpukZHhxt3ZYj0TKemsG4WmmPQxdtAbQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XY4MYIbeiu9p_XLph92mgyTzA1rpk6Zx4UqXZVavIDH2phcE8pqLleUIoss2Pzkonzq2MzBp5j4qA0Q6R5RCPj5OLaQ7IOxq-7y6DGo3AlRvsXix7ruNP61ZwFYtvta0LlhUtxdXFnZHx0onblAES0ZsV_Et861aC9viWJZUMhdemf5MaVaUopQSLIP7ZfJ3UldEIIbRdDPJejHtzt19kqvsmE03IXbQRJNxo2EkoCllxV_dIUull7Ozi1oEJsqc0UO1q-vE8stHHvUbE2fh9dvQOT4tfxfr1wtA7oWinJvbHbKa3wllIgVH4LSK4asQI-Al_zilCqB7AdwyFKM0ZQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "الحق لقطة🔥\n⚡️ عرض على كورونا شوكولاتة حليب بالبندق ستيفيا - عبوة 6 قطع\nبسعر 63.00 جنيه فقط !😱🔥\nللشراء : https://amazn.im/s/DKSB3X\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
-      "links": [
-        {
-          "label": "https://amazn.im/s/DKSB3X",
-          "url": "https://amazn.im/s/DKSB3X"
-        },
-        {
-          "label": "تابعنا علي واتساب",
-          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
-      }
-    },
-    {
-      "id": 2151942412,
-      "postUrl": "https://t.me/rassd/199854?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "عاجل : قوات الاحتلال تداهم منزلًا خلال اقتحام مخيم بلاطة شرق نابلس.\n\n✨ البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
-      "links": [
-        {
-          "label": "goawl.com/p/nablus-live.html",
-          "url": "https://goawl.com/p/nablus-live.html"
-        }
-      ],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 284893741,
-      "postUrl": "https://t.me/ngmsr/15045?single",
+      "id": 2879675733,
+      "postUrl": "https://t.me/ngmsr/15052?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -4310,17 +3922,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/PW0s3TDnPkeRua4Kj_TcfFc4xJPtzVJyFQu3c-vWm4pvYvZAn3PfT2AE9HbGuVZLwgOXWxEqFlHqizJ4A_Qc-WlJ4HF3TfSHpACV7rxShf_U2TzR2PMtOpieb4joeW7wGqgOBA7IwkfOQYJPH4ixi1sYHIV_QhIs3EnjCY8jWPtF7CoNtHV_DpsKXGkAKpVHFRNB100aurJ5H1Q9pQ6DGZiB2RVNJ1btXNjCCfM_qiG8mG6As8d6GvUpPUVRFfXGn4y3lv79UvDliODLy8jR3WVsYyucErtsWeb1TKAo2vPp5B_J7c7Bniz6YcZDTZCLmmLMwpylE7MOHTY5PT4z7Q.jpg"
+          "url": "https://cdn4.telesco.pe/file/eCTVja5w9QqZcEMFBYI8SOwRyOLFTi8_BCAknwbvpL0nFRYgOZjBoatkMdAGFAFHT-wC0yR5vW8yyUT4V4qM4qOjU2tkskG5DLDb2KtBzfin8WZ-u6iPIxpTN7z2uNinjrEpwwngcYdeaAtMOWJ9PBwjQSCIn5r2fCLYPMJ8YDZksA3URtMflZZOZv1v_SnJ89_XG3vrOcs5H7_d-vfAatLm18a4kpCP7APNB32JAF2uo2iq9yhuNKDuMyNgUt5kOExaapcT_1ueY9V3NsjTpyeo-igWxWUO3SCjKaUccN1E5dms_AOWqT6DVKgQilSIYDXzsfiM6glIAIVYWFBS0w.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 صلاح نحو بشكتاش\n\n⚽ مستشار تسويق رياضي يؤكد أن محمد صلاح أنهى إجراءات انتقاله إلى بشكتاش التركي، في صفقة تمتد لموسم واحد مع خيار التجديد.\n💰 القيمة المتداولة للصفقة تصل إلى 10 ملايين يورو، مع 2.5 مليون يورو حوافز مرتبطة بالأداء داخل الملعب.\n🇹🇷 الراوي يرى أن الدوري التركي قوي جدًا، وأن صلاح سيمنحه دفعة فنية وتسويقية كبيرة، وليس فقط لبشكتاش.\n🔄 الخيارات أمام صلاح كانت بين البقاء في إنجلترا أو الذهاب للسعودية أو خوض تجربة تركيا، قبل أن يميل للخيار التركي.\n🏆 الصفقة تُعد محطة بارزة في مسيرة النجم المصري، مع تأكيد أنه سيظل أحد أعظم لاعبي الكرة العربية والعالمية.\n#محمد_صلاح #بشكتاش #الدوري_التركي",
+      "text": "🚨 طرابلس تغلي بالكهرباء\n\n⚡ طرابلس تشهد موجة احتجاجات وعصيان مدني بعد تفاقم أزمة الكهرباء وانقطاعها لساعات طويلة مع ارتفاع درجات الحرارة.\n\n🚧 محتجون أغلقوا طرقا ومؤسسات حكومية في جنزور وسوق الجمعة وتاجوراء، وسط تصاعد الغضب الشعبي على تردي الخدمات.\n\n🏢 مجموعات شبابية نفذت إغلاقات لمقار شركة ليبيانا ووزارة الخارجية، فيما رفع المحتجون شعارات تطالب بمحاسبة الفاسدين وإنهاء الأجسام السياسية القائمة.\n\n🌡️ الأزمة جاءت مع انقطاعات يومية قد تصل إلى 10 ساعات، بالتوازي مع تحركات سياسية دولية تؤكد دعم جهود توحيد ليبيا.\n\n#طرابلس #ليبيا #أزمة_الكهرباء",
       "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
+      "createdAt": "2026-07-27T07:06:01.374Z",
+      "expiresAt": "2026-07-29T07:06:01.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
+      "mediaRefreshedAt": "2026-07-27T07:06:01.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4338,331 +3950,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
-      }
-    },
-    {
-      "id": 3142096434,
-      "postUrl": "https://t.me/deals_trackers/14175?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DUETKEfvf9LrlSC-5sPoZZTeyGxCtOM0zts3zz6UR2Wt_o3pwI4bF4-Jrcr8Idz60HR7-PL5obGc3BndyAg-gNRqI_LSxv4VrwmmRlK3UZaW2PexIvGJPPFHzoCQBluuN1Ml9XE2SrcbsBfQ-XJUoPzCUIiLvXHD1_6G7M7tW88rEoydSHt6Febl585-9TjjGq5PcmErgIBZld0DkTkYo948uWNcwG2_XKs5wOeygfUs-5gsJBPB_80Cy4Tj3dOMg6dKP333CrQKNkJTFa1283JWeQcMZSPk3g5BKyPhvpS8-Byr5FPMtEOpukZHhxt3ZYj0TKemsG4WmmPQxdtAbQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/TPH8eiNk9jsf3P3UGZDlVj31Y12uvDz1YKGuIjms9Hg-YlVEuzQlRta9K259Ayi9YSFYVrryWs6JZmfwoEwPxSVk0nGD_0FrcWzSsvGV7Cr8r4iRVkiLFluuaOHigL7DDrWIXm48g2Tjiv5IlyRoKDTtP41hafLnxtPP8DtmxKHHdf7l4I2becDrOtWiDiUTpU1TDCSGs9gOrjh5MZ6vE_PNxTHbV3NdCxOUmbXmaDrnMc9Sxj53_yvzeslMMlbIW99JLPuqqrTGzXZVAiXRjBLlagFScMPoShnqN5YNfiOQNIbjWCIjlFitpvI89kOno-oyOlWAvNykar1ZfYMJeA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "الحق دا بسرعه🔥\n⚡️ عرض على 3 قطع من مناشف غسيل الاطباق السلكية متعددة الاغراض - قماش تنظيف من المايكروفايبر \nبسعر 8.00 جنيه فقط !😱🔥\nللشراء : https://amazn.im/s/LTUu5l\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
-      "links": [
-        {
-          "label": "https://amazn.im/s/LTUu5l",
-          "url": "https://amazn.im/s/LTUu5l"
-        },
-        {
-          "label": "تابعنا علي واتساب",
-          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:39.899Z",
-      "expiresAt": "2026-07-29T03:05:39.899Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:39.899Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:39.899Z"
-      }
-    },
-    {
-      "id": 2475642019,
-      "postUrl": "https://t.me/rassd/199853?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "عاجل : التعزيزات تقتحم مخيم بلاطة الأن \n\n✨ البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
-      "links": [
-        {
-          "label": "goawl.com/p/nablus-live.html",
-          "url": "https://goawl.com/p/nablus-live.html"
-        }
-      ],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 364550652,
-      "postUrl": "https://t.me/ngmsr/15044?single",
-      "source": {
-        "title": "نجوم مصرية",
-        "handle": "ngmsr",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/AW3mJ6mB52UU83ueinhSk7Df5VXAjmMcMoRFZUDaGMfWHlIPlM3ETYUcyvDWPW5XO4u5OJen5aTBQcFCPdM4fHrIBx9DJVS2jDe4-OVB_JjJGgb_7_nV3Kzvh6Z-JHI4HX58kdTToUM7MKr6XmyPOC8rnz3F1vdioyEqMQy6PPIYEPb-0KP3oPFsXxCg7Kcp4vbwUDtquQcTGUssRyS_XFt4dDFfUYKSZIqkQaxX1WD5B3uOZrhWDBKWnoAMOzqNRpIUFM-MNI6ui3vZJAiMt7dFfGSLEUq-vL-s35ijDIffu1CirdWaMDSPYqvzfoYE7EM927AHasetxD794L_VQQ.jpg"
-      },
-      "sourceId": "eg:ngmsr",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "أدانت سنغافورة الاعتداءات الحوثية الأخيرة على السعودية، بما في ذلك هجمات البحر الأحمر واستهداف البنية التحتية للطاقة 🇸🇬🇸🇦.  \nودعت إلى احترام حقوق وحرية الملاحة الدولية وفق القانون الدولي، مع التحلي بالصبر وضبط النفس لتجنب تصعيد التوترات ⚖️.  \nوفي المقابل، تحدثت تقارير عن استهداف مواقع تابعة لشركة أرامكو في ينبع وجازان، وسط استمرار المخاوف من تأثيرات على الإمدادات والطاقة ⛽️.  \n#سنغافورة #اليمن #البحر_الأحمر\n\nhttps://www.ngmisr.com/?p=3863147",
-      "links": [
-        {
-          "label": "https://www.ngmisr.com/?p=3863147",
-          "url": "https://www.ngmisr.com/?p=3863147"
-        }
-      ],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
-      }
-    },
-    {
-      "id": 1773300554,
-      "postUrl": "https://t.me/rassd/199852?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "عاجل : اقتحام جديد من حاجز حوارة الأن",
-      "links": [],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 2663854803,
-      "postUrl": "https://t.me/ngmsr/15043?single",
-      "source": {
-        "title": "نجوم مصرية",
-        "handle": "ngmsr",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/AW3mJ6mB52UU83ueinhSk7Df5VXAjmMcMoRFZUDaGMfWHlIPlM3ETYUcyvDWPW5XO4u5OJen5aTBQcFCPdM4fHrIBx9DJVS2jDe4-OVB_JjJGgb_7_nV3Kzvh6Z-JHI4HX58kdTToUM7MKr6XmyPOC8rnz3F1vdioyEqMQy6PPIYEPb-0KP3oPFsXxCg7Kcp4vbwUDtquQcTGUssRyS_XFt4dDFfUYKSZIqkQaxX1WD5B3uOZrhWDBKWnoAMOzqNRpIUFM-MNI6ui3vZJAiMt7dFfGSLEUq-vL-s35ijDIffu1CirdWaMDSPYqvzfoYE7EM927AHasetxD794L_VQQ.jpg"
-      },
-      "sourceId": "eg:ngmsr",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/bfQ8Rc-I22VD6q22IiI4In5C4gGTW2ac_f16EWAicDRIncXEKQ_Xmccwkme7RdkcoFNNUHWer8ESN3Jga8FBoqeX3DRYFubbKv4q72OM1s285iLF3O1wBYy01UUaWVjBvmZrT0GDF_qWnyEYjuqZXnJjtOcwCW427PBImoFmvEqWCsYbBTLAVYzVt9a7s5iVZXK-PfiMB92QvwmGDa1aTUtGhoKzA9zTpXyC782qt-t9mPSbdR2dOcOlHojj6g_ZHXMA9cHU7-bqqnmH5WS5Xkr3Q1tvvdGE4BKAJ_6_DgZ2-vi-_5ASNHjs-m49yle-zyTKW-3k16-rgCzWg652Mw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🚨 الببتيدات تحت الاختبار\n\n🧪 رحاب أمين: الببتيدات قد تكون واعدة، لكن نتائج المعمل لا تكفي للحكم على البشر\n\n⚠️ شددت على أن العلم الحقيقي يحتاج تجارب سريرية على البشر قبل الترويج لأي علاج جديد\n\n🧬 أوضحت أن جسم الإنسان منظومة دقيقة، وأي تدخل غير محسوب قد يربك الهرمونات ويسبب آثارًا جانبية\n\n👩‍⚕️ أكدت أن استخدام الببتيدات يجب أن يكون تحت إشراف طبي متخصص، لا وفق “الترند” أو الترويج على السوشيال ميديا\n\n#الببتيدات #التغذية #الصحة",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
-      }
-    },
-    {
-      "id": 2781524033,
-      "postUrl": "https://t.me/rassd/199851?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/bBhg_IhgvQdfYJ3WdUa4OMimbfdLrywGQqI82gO98ZjwiiGhUDWXDgLP7MjK2m2wGMk-25yY3gfJMRh1kMVfDii5oWnPlCIhi3UgE_3qhVisG__SvYgtXkFCsKodgjD5wwy3tmLOwEHr6xsrUBh3-xma-gLw_sggSguEDSB0feWvxpRcYK-zDYEdcAPL9scl8lsQg0l_LpErO8BLqCt4MDuqmsKieWvsYAjs7k3GTsZkMft-MTT_KmuVRb9Suteibv9A78k6OkFMe3JbzNaxxE58miymOsHcAT89MpBoT50vzX7JwvmxNqyVq6Tf90cuJPUFhHcmNQGIVUywiq1FSw.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "عاجل : اقتحام مخيم بلاطة الأن",
-      "links": [],
-      "createdAt": "2026-07-27T03:06:00.180Z",
-      "expiresAt": "2026-07-29T03:06:00.180Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:06:00.180Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:06:00.180Z"
-      }
-    },
-    {
-      "id": 3016130746,
-      "postUrl": "https://t.me/ngmsr/15042?single",
-      "source": {
-        "title": "نجوم مصرية",
-        "handle": "ngmsr",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/AW3mJ6mB52UU83ueinhSk7Df5VXAjmMcMoRFZUDaGMfWHlIPlM3ETYUcyvDWPW5XO4u5OJen5aTBQcFCPdM4fHrIBx9DJVS2jDe4-OVB_JjJGgb_7_nV3Kzvh6Z-JHI4HX58kdTToUM7MKr6XmyPOC8rnz3F1vdioyEqMQy6PPIYEPb-0KP3oPFsXxCg7Kcp4vbwUDtquQcTGUssRyS_XFt4dDFfUYKSZIqkQaxX1WD5B3uOZrhWDBKWnoAMOzqNRpIUFM-MNI6ui3vZJAiMt7dFfGSLEUq-vL-s35ijDIffu1CirdWaMDSPYqvzfoYE7EM927AHasetxD794L_VQQ.jpg"
-      },
-      "sourceId": "eg:ngmsr",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/pek9DIMJjcPJmDZ6XH_SKyTN9a2g18PUCPuLRerW3Z2JJERNiMZ3Xq7oazkCPYC15CKpZNoz0DaXrLhBBIQJyl6Kh0Q5xMXO5Z-8XF8nmoqjMwN7HotooR_8zYqmybHlx6BxymSly42Qqh4zQQXSq_FRMK681qsQ5z_mIAWQ51wBP2vrxIaLOWaPZBQ2XBs38EtJoRpAdpOWOBpvHLDL9NsCF5OpF6aqsjUi83U-IzmwMYsPUgUJvZiq1n6zjF2yqxvtsGwM1HwstdgsgXG-yFthpaEqHsiAIWXaj7owoMY1dUI6Qg54ZNRytF6zLXGQi7VqopOCNzoP5lDFXKwyLA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🚨 طرابلس تشتعل احتجاجًا\n\n🚨 تصعيد جديد في طرابلس بعد إغلاق محتجين مقر وزارة الخارجية الليبية، ضمن موجة احتجاجات تتسع ضد حكومة الوحدة الوطنية\n\n🪧 المتظاهرون أغلقوا أيضًا مقر وزارة الشباب، بالتزامن مع تحركات شعبية في شوارع ومفترقات رئيسية بالعاصمة\n\n🔥 إغلاق طرق وإشعال إطارات في عدة مناطق، بينها عين زارة والنبراس والغيران، ما تسبب في شلل مروري واسع\n\n⚡ الاحتجاجات تتغذى من أزمة الكهرباء وتدهور الخدمات والمعيشة، وسط مطالب متزايدة بإصلاحات جذرية\n\n#طرابلس #ليبيا #احتجاجات",
-      "links": [],
-      "createdAt": "2026-07-27T03:05:56.484Z",
-      "expiresAt": "2026-07-29T03:05:56.484Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-27T03:05:56.484Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-27T03:05:56.484Z"
+        "reviewedAt": "2026-07-27T07:06:01.374Z"
       }
     }
   ]
