@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/934596058" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/934596058" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-07-27T12:38:29.679Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"科技圈🎗在花频道📮","item":"https://www.margelet.space/zaihuapd"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68…","description":"Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health.","articleBody":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用…","text":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用…","keywords":"margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health","url":"https://www.margelet.space/post/934596058","mainEntityOfPage":"https://www.margelet.space/post/934596058","datePublished":"2026-07-27T12:38:29.679Z","dateModified":"2026-07-27T12:38:29.679Z","image":["https://www.margelet.space/icon-512.png"],"inLanguage":"zh","about":[{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"科技圈🎗在花频道📮","url":"https://www.margelet.space/zaihuapd","logo":"https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/zaihuapd/42797?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+      <h1>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68…</h1>
+      <p>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞  安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。  Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用…</p>
+      
+      <p class="meta"><time datetime="2026-07-27T12:38:29.679Z">Jul 27, 2026, 12:38 PM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · 科技圈🎗在花频道📮 · health / research · health. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/zaihuapd/42797">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/zaihuapd/42797?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/3232974613">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        
+        <h3>中方驳美方拟制裁中国 AI 企业：美企同样在蒸馏中国模型 商务部 7 月 27 日表示，反对美方以所谓“蒸馏”美国前沿模型、窃取知识产权等理由调查…</h3>
+        <p>中方驳美方拟制裁中国 AI 企业：美企同样在蒸馏中国模型 商务部 7 月 27 日表示，反对美方以所谓“蒸馏”美国前沿模型、窃取知识产权等理由调查并制裁中国人工智能企业，称相关指控缺乏事实和法律依据。商务部指出，模型蒸馏是行业广泛使用的技术，部分美国企业也在研发和训练中使用中国模型，近 200 家美国初创企业已呼吁政府不要限制访问中国开源模型。中方敦促美方停止抹黑和制裁威胁，并表示对于实质性损害中方利益的行为，将采取必要措施维护中国企业合法权益。 商务部 🌸 在花频道 · 茶馆水群 · 投稿通道</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:38:29.679Z">Jul 27, 2026, 12:38 PM</time> · <a href="/post/3232974613">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2718791283">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        
+        <h3>科技圈🎗在花频道📮 text snapshot</h3>
+        
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:38:29.679Z">Jul 27, 2026, 12:38 PM</time> · <a href="/post/2718791283">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2376115344">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        <img src="https://cdn1.telesco.pe/file/W_AKkn4WehibZEMkSuJQAZ9pTlRA-ZyD4YXD5CU925XKErw1VReHLksam3cTUJzG-TfhYZPZ7qQjlXqhKSvRmQo39NykvmBAluJ3rbGNtD-GOm0TKVRuNNL6JIoDdluOVs9i_BZD0X5X2EAl0Lqwg2hCerhWYEcKv2elPcuWCtVJwa1iTXHMKDn4lKcbrQbO0hex9BWrdZM_k2WAbGDW7MPzP6zidIyTRh2VU1zcdXgIQx2reoyvekd4Hjg1ydXfZe0T_0sUrKsGvMHzSC1SKX0EWMkoUOdAWaKGcOeNkfUJ5DFqtI-fSP4avDDD-uYQbcqu1mFf9znoKCjTTJfx2A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>苹果发布 AppleCare One 服务，整合多设备保修计划 苹果公司于 7 月 23 日发布全新订阅服务 AppleCare One，旨在将多…</h3>
+        <p>苹果发布 AppleCare One 服务，整合多设备保修计划 苹果公司于 7 月 23 日发布全新订阅服务 AppleCare One，旨在将多个苹果产品的保修整合至单一计划。该服务将于次日在美国率先推出，用户每月支付 19.99 美元即可为最多三台设备提供保障，每增加一台设备额外收费 5.99 美元。 AppleCare One 包含 AppleCare+ 的所有权益，如无限次意外损坏维修和 24/7 专家支持。新计划还将盗窃与丢失保障的范围从 iPhone 扩展到了 iPad 和 Apple W…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:38:29.679Z">Jul 27, 2026, 12:38 PM</time> · <a href="/post/2376115344">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/869051921">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Oj98zcNFp_xumo4z1PRX6TNBpuiIeqMhEPatoPxOacouRxfo-pyq2iF4pp6dmiMZtrnBQ2pZAXz_T8AbEl1qYycshrwDbmR-dhJfDn5NNnbpv_CbzlcUryHq4wGEKynvZOOLQMeWpwxv8asyRJCXIvj1T3UH7B67piS4rG9gxYNDP6tooDfGm_FldtNclGAIjmjxx0BCYJ7yNOB5xYAvRiScL-OUslajTj84EOwah4D0ejUb1Xt0j9AMNeGr6GYr6vIdVBssLzgBsHEKZIaQETpqMKV88hWcD4g0o6K4xx3njolPhLDcwLR-ewc2LHwFFMG53NFqS4OeUmyFfVHpkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/p-pkt-R6cpYwS6pJzwFKCbMYR8A59FYz2jlfS9BJarJ_sNCwFrWADvytgq4qfq5K-rm-Ag08zrxKxT8bw2_pmHcJvZE7Zagcd31oBGUa7bqdZ3YCoZityJKf1sSNG1Fk4ZyArPHH3bsEOsghJRS77NL-5yGKhwKu3xMwXkYM2RO63oq8j7PHuywqJHBTkIaRfaCAAl26ZDO1odc-sml-EupOoJqOCaX8_lCvnUA_KwqQSzeVp6OptyJevXaFebWYbJFlGR6Om4MI7AOTZUjGqiYd_Rc2OcGnQaZUlFpSZnEU0CdcBDF8ospOULXWNfRIVZlFjusK99RsAf1eiP7dSA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>日本作家东野圭吾因大肠癌去世，享年 68 岁 以《嫌疑人 X 的献身》等作品引领日本推理文坛的作家东野圭吾于 7 月 23 日因大肠癌去世，享年…</h3>
+        <p>日本作家东野圭吾因大肠癌去世，享年 68 岁 以《嫌疑人 X 的献身》等作品引领日本推理文坛的作家东野圭吾于 7 月 23 日因大肠癌去世，享年 68 岁。 东野圭吾出生于大阪市，1985 年凭《放学后》获江户川乱步奖出道，此后相继发表《秘密》《白夜行》等作品，2006 年以《嫌疑人 X 的献身》获直木奖。以物理学家为主角的「伽利略」系列等多部作品被影视化，其作品在中国、韩国等地也广泛翻译出版，日本国内累计发行超过 1 亿册。他于 2023 年获菊池宽奖，2025 年获日本推理文学大奖。 朝日新聞 | NHK �…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:38:29.679Z">Jul 27, 2026, 12:38 PM</time> · <a href="/post/869051921">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/536195134">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/JboUEBOTEv0M1hlqQmHmOGXds93FwUL69bH5lklEKFkcmji8Ck03h8SHiVQrD4lsVO1dK9faJXkvlMkopdquB0jsYH1hEjBw60Kj_fGlvZBx_3MOCbBvtlHvF-WgpJOFPX32nYHXQPg7qbkBl4tgC17Cwz1WdgHRu1dkALS2WJEvERW6PXt8AfZVnM8cdDMveKXSCSjeStoEu1J0w6m1-lYNLp1Yw14XX8pImKkFHcUK40qKWlzeqJBdAC6beEmst612W72CoCkesKH8xN0fr0coi0YB0vFHlDabjoHDa9M84vxacpNn1FNNKzT5qgZYBPSpzyb_B5xpsomvkjM15g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">DeJob—Web3招聘求职频道📮</strong></span>
+          <span>@dejob_official</span>
+        </span>
+      </p>
+        
+        <h3>#招聘 🏡 ForeGate #Prediction·Market 🐇 简介： https://www.foregate.com/ 一个前沿的…</h3>
+        <p>#招聘 🏡 ForeGate #Prediction·Market 🐇 简介： https://www.foregate.com/ 一个前沿的去中心化预测市场平台，赋能用户创建和交易真实世界事件的结果。 🛵 合作方式：#全职 #远程 📚 待招岗位：#高级量化策略研究员 #研究 💰 薪酬福利：$4000 - $6000 / month，提成/分红 🌱 岗位职责： 1️⃣ 对金融交易领域市场数据进行深入探索、分析与研究，识别链上及链下 Alpha 信号。 2️⃣ 深入研究金融交易市场数据，包括传统金融市场…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:49:20.438Z">Jul 27, 2026, 12:49 PM</time> · <a href="/post/536195134">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3340291072">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/K_Xj6AjY1Dzi_W_p005wWbUeZwGFBbdLDWiZbnW0Z0jcgyPKscpV_Pc-O_pXZE1yPvbLYsfgUQfZB215V3p-3-iNvx4gII8VpV2X2hrZa15qSyq7ITWAUWOtVieIBmXHZe-ToJ-CP78dedGp1piFnyW_jgcpB0MdeMv0C5SFmmjEj0M64K-V7B1nysgn6ka58pPoeomXyLHiD4MMHrLJ1EI_UEaRix4UOTpB0MAr8I_C8UjxE-WfH8O5SYS7kvzCzsTL2_VGI0lL1x2-N3pALPxTv7JYtVnaUKOcZKQWngWmAGpU_UEtWH3rF3ut3jQq-hZ3kpP_h5-GRdaXkzZAww.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Btok News</strong></span>
+          <span>@btokmedia</span>
+        </span>
+      </p>
+        
+        <h3>Cointime今日要闻： 1.全球股市总市值升至全球GDP的137%，接近历史最高水平 2.加密恐慌指数降至26，市场情绪维持「恐慌」 3.Hy…</h3>
+        <p>Cointime今日要闻： 1.全球股市总市值升至全球GDP的137%，接近历史最高水平 2.加密恐慌指数降至26，市场情绪维持「恐慌」 3.Hyperliquid已累计销毁4727万枚HYPE，占最大供应量4.73% 4.剑桥初步研究：比特币挖矿年耗电量增至 190 TWh，低碳能源占比升至 59.4%</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:49:10.589Z">Jul 27, 2026, 12:49 PM</time> · <a href="/post/3340291072">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3547110119">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/VfM_Enl9SBK5l23IybP7E0i7_DpBRhbj15G4P9GuLZceCuOeIvKnPTCXgEsAKrNbZAsDYnUBlcKYyrMBLDR-DHXo2AgMr6U3nL-p45lDwh2qXZSj2gkCLBnmjNySZ7o_wUpu2_jrnBmGk9gzprtk4A1uBmKmi8CwAMOQBpk250C23DKRE8nOvPwdmvN4nM5-upKmOFqdOvvVhVoTf1xHAG3ee7qvlPsRo6JW9XiDQNsugo1VP8YxQmhUX0S_k8wmh3YL32UymgIV5DysMzmWZ79zL9dniYQfRU2PVvbX_Cypi_WIu2pcfEkDtornxRtCDM2GeiwQK7TfLtnwNovj3A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">头条事件</strong></span>
+          <span>@w9519</span>
+        </span>
+      </p>
+        
+        <h3>兄弟们，听我一句劝——老婆不能光看颜值！我年轻不懂事，就想着“娶个漂亮的回家，天天赏心悦目”，结果……现在天天提心吊胆。 出去上班吧，不放心她一个…</h3>
+        <p>兄弟们，听我一句劝——老婆不能光看颜值！我年轻不懂事，就想着“娶个漂亮的回家，天天赏心悦目”，结果……现在天天提心吊胆。 出去上班吧，不放心她一个人在家， 放家里吧，她又嫌无聊。 逛街、买衣服、做美甲，样样精通，就是不愿碰家务。 为了养得起我这“艺术品”一样的老婆，我以前也是到处找活干。 风吹日晒不怕，熬夜加班也扛过，关键就是想让日子过得轻松一点，还能多陪陪她。 后来朋友跟我说，别整天忙得像陀螺，有空不如多看看外面的变化。 于是我开始了新的生活方式——每天刷刷大事件，看看全球新闻，了解行业风向，到处观察机会。 不…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:48:35.327Z">Jul 27, 2026, 12:48 PM</time> · <a href="/post/3547110119">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/941585161">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/VfM_Enl9SBK5l23IybP7E0i7_DpBRhbj15G4P9GuLZceCuOeIvKnPTCXgEsAKrNbZAsDYnUBlcKYyrMBLDR-DHXo2AgMr6U3nL-p45lDwh2qXZSj2gkCLBnmjNySZ7o_wUpu2_jrnBmGk9gzprtk4A1uBmKmi8CwAMOQBpk250C23DKRE8nOvPwdmvN4nM5-upKmOFqdOvvVhVoTf1xHAG3ee7qvlPsRo6JW9XiDQNsugo1VP8YxQmhUX0S_k8wmh3YL32UymgIV5DysMzmWZ79zL9dniYQfRU2PVvbX_Cypi_WIu2pcfEkDtornxRtCDM2GeiwQK7TfLtnwNovj3A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">头条事件</strong></span>
+          <span>@w9519</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/gjzfJiMnVPBtpX44U-RTWZL24MHpSz83a4uucFO-U-7G9bYSG2aAjwjzMmckhIgzLQeTF24CuOcnJdkaKDjq29-WNsUQqMi0951GVgwo-9VPHz_rIkvW05FS9SFbBi61X-ETCy-pYRPiCjyoNpIe7tRC8zXqJJPtQXJXsseXLZiWjXKVb8G6CpUpHbIyev7ibzdz7tjczwzCBtbkCyZs42N8yO1OJhRhI8-pGBrAF_VRyNYJKphiwGFha3Xvpoh6smzrrE6E6M_PnJ0VR1NTE64PGpqPwkP8S3Wx45FHxZfqnv6f7ecX_rpHgSKBw-N3gdTknC9fRn3JuxBHf9ThiQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>美宣称拟对中国人工智能企业开展调查并实施制裁，商务部回应 商务部新闻发言人就美宣称拟对中国人工智能企业开展调查并实施制裁答记者问。 创新不是任何一…</h3>
+        <p>美宣称拟对中国人工智能企业开展调查并实施制裁，商务部回应 商务部新闻发言人就美宣称拟对中国人工智能企业开展调查并实施制裁答记者问。 创新不是任何一方的专利。中国人工智能企业长期深耕基础研究，坚持科技自立自强与开放合作并重，秉持共商、共建、共享理念，推动人工智能技术快速发展，在前端代码能力等越来越多的领域取得喜人成就。据了解，很多美国人工智能企业在研发和训练中蒸馏了中国的模型。值得注意的是，美业界众多企业公开反对美国威胁制裁中国人工智能企业。近200家美国初创企业敦促美国政府不要切断对中国开源模型的访问，认为这将削…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-27T12:48:35.327Z">Jul 27, 2026, 12:48 PM</time> · <a href="/post/941585161">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
