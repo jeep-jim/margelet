@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研… — XP Digital Lab, China ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from XP Digital Lab in China. Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道… Topics: ai, technology, health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, XP Digital Lab, rocchl, ai, technology, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/3936659620" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研… — XP Digital Lab, China ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from XP Digital Lab in China. Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道… Topics: ai, technology, health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/3936659620" />
+  <meta property="og:image" content="https://cdn5.telesco.pe/file/VIEizlHI1sT8aBFNVD3qtNsvTd2W9lwtT-3o9Rqq6MHNk65Zgn3lR3HN9DA34immM-wFA3bY_3rkeO3Qs_pTWzW_Y65FFxdQ_irMEaCNShBWskO2IXsStV6q5YCbdEPoqcsx485hPPiHVp1MZ_3CfAzgXzCamoUwawGYo4zr3BqZFb_sQdDJkUs00V38vTyYHmWlQkCjCYdN9IcNj1CorsSz05A_MEv9_RGansgR0uXl_Syjr04wjkuPIs3AYxYQlQya_fbhjT7s_Ay4ViyiFvytjD9XwsWA_k95BnTlpLKiHYmjgLyFVuJPHJPCdKRlbz2bUcJCSUIfyzcUvDWLIg.jpg" />
+  <meta property="og:updated_time" content="2026-07-28T06:12:01.573Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研… — XP Digital Lab, China ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from XP Digital Lab in China. Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道… Topics: ai, technology, health research, health." />
+  <meta name="twitter:image" content="https://cdn5.telesco.pe/file/VIEizlHI1sT8aBFNVD3qtNsvTd2W9lwtT-3o9Rqq6MHNk65Zgn3lR3HN9DA34immM-wFA3bY_3rkeO3Qs_pTWzW_Y65FFxdQ_irMEaCNShBWskO2IXsStV6q5YCbdEPoqcsx485hPPiHVp1MZ_3CfAzgXzCamoUwawGYo4zr3BqZFb_sQdDJkUs00V38vTyYHmWlQkCjCYdN9IcNj1CorsSz05A_MEv9_RGansgR0uXl_Syjr04wjkuPIs3AYxYQlQya_fbhjT7s_Ay4ViyiFvytjD9XwsWA_k95BnTlpLKiHYmjgLyFVuJPHJPCdKRlbz2bUcJCSUIfyzcUvDWLIg.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"XP Digital Lab","item":"https://www.margelet.space/rocchl"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研…","description":"Fresh Telegram snapshot from XP Digital Lab in China. Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道… Topics: ai, technology, health research, health.","articleBody":"Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道:@rocCHL 官方群组:@roctech 官方合作:@rocmmbot","text":"Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。 标签:#claude Created by RocM 官方频道:@rocCHL 官方群组:@roctech 官方合作:@rocmmbot","keywords":"margeleT, Telegram, China, XP Digital Lab, rocchl, ai, technology, health research, health","url":"https://www.margelet.space/post/3936659620","mainEntityOfPage":"https://www.margelet.space/post/3936659620","datePublished":"2026-07-28T06:12:01.573Z","dateModified":"2026-07-28T06:12:01.573Z","image":["https://cdn5.telesco.pe/file/VIEizlHI1sT8aBFNVD3qtNsvTd2W9lwtT-3o9Rqq6MHNk65Zgn3lR3HN9DA34immM-wFA3bY_3rkeO3Qs_pTWzW_Y65FFxdQ_irMEaCNShBWskO2IXsStV6q5YCbdEPoqcsx485hPPiHVp1MZ_3CfAzgXzCamoUwawGYo4zr3BqZFb_sQdDJkUs00V38vTyYHmWlQkCjCYdN9IcNj1CorsSz05A_MEv9_RGansgR0uXl_Syjr04wjkuPIs3AYxYQlQya_fbhjT7s_Ay4ViyiFvytjD9XwsWA_k95BnTlpLKiHYmjgLyFVuJPHJPCdKRlbz2bUcJCSUIfyzcUvDWLIg.jpg"],"inLanguage":"zh","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"XP Digital Lab","url":"https://www.margelet.space/rocchl","logo":"https://cdn5.telesco.pe/file/CyXY1Kxl0YU2IkTy5B-If5RjQAT3XBbdp-tu6cG4FcSXEFKA1NY4aIoghpx1frJnrw7FdCMbYpvYlN-QAFC7ujE2o1g6enlKgeec7nrf-w8uhzw6_Q0Twh0IoLnfZ0MEsFE9SyBmdPE5wNOXjCWlyuWi9JwU9sTKqCmJ9WY7Bj78zCqARhNV4yR2uhTVoi282J5paImk_2YkgRKt9nlLzHSZzscZpaHRL5YZG44FBQQonkwDUAQuekE1eDduUPa-u0O1Y8I06YtmQdYLOxa75tjpheujspE2gGzOMqoavzFrYpKmO2SmbXNcs-E-m0p9FO-vgCl1aBNFW8gCW2smdQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/rocchl/12470?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/CyXY1Kxl0YU2IkTy5B-If5RjQAT3XBbdp-tu6cG4FcSXEFKA1NY4aIoghpx1frJnrw7FdCMbYpvYlN-QAFC7ujE2o1g6enlKgeec7nrf-w8uhzw6_Q0Twh0IoLnfZ0MEsFE9SyBmdPE5wNOXjCWlyuWi9JwU9sTKqCmJ9WY7Bj78zCqARhNV4yR2uhTVoi282J5paImk_2YkgRKt9nlLzHSZzscZpaHRL5YZG44FBQQonkwDUAQuekE1eDduUPa-u0O1Y8I06YtmQdYLOxa75tjpheujspE2gGzOMqoavzFrYpKmO2SmbXNcs-E-m0p9FO-vgCl1aBNFW8gCW2smdQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">XP Digital Lab</strong></span>
+          <span>@rocchl</span>
+        </span>
+      </p>
+      <h1>Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研…</h1>
+      <p>Anthropic 的 Claude Cowork 被曝有安全漏洞，可能让攻击者从 Linux 虚拟机沙箱逃逸，直接读写 Mac 任意位置文件。研究人员说，借助内核漏洞可拿到 root 权限，甚至有机会泄露登录凭据，受影响的本地用户大约有 50 万。随后新版默认改成云端运行，本地用的人还得自己加固配置。
+
+标签:#claude
+Created by RocM
+官方频道:@rocCHL
+官方群组:@roctech
+官方合作:@rocmmbot</p>
+      <img src="https://cdn5.telesco.pe/file/VIEizlHI1sT8aBFNVD3qtNsvTd2W9lwtT-3o9Rqq6MHNk65Zgn3lR3HN9DA34immM-wFA3bY_3rkeO3Qs_pTWzW_Y65FFxdQ_irMEaCNShBWskO2IXsStV6q5YCbdEPoqcsx485hPPiHVp1MZ_3CfAzgXzCamoUwawGYo4zr3BqZFb_sQdDJkUs00V38vTyYHmWlQkCjCYdN9IcNj1CorsSz05A_MEv9_RGansgR0uXl_Syjr04wjkuPIs3AYxYQlQya_fbhjT7s_Ay4ViyiFvytjD9XwsWA_k95BnTlpLKiHYmjgLyFVuJPHJPCdKRlbz2bUcJCSUIfyzcUvDWLIg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-28T06:12:01.573Z">Jul 28, 2026, 6:12 AM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/ai">ai</a>
+<a class="pill" href="/country/cn/tag/technology">technology</a>
+<a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · XP Digital Lab · ai · technology · health / research. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/rocchl/12470">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/rocchl/12470?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/1439502654">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/CyXY1Kxl0YU2IkTy5B-If5RjQAT3XBbdp-tu6cG4FcSXEFKA1NY4aIoghpx1frJnrw7FdCMbYpvYlN-QAFC7ujE2o1g6enlKgeec7nrf-w8uhzw6_Q0Twh0IoLnfZ0MEsFE9SyBmdPE5wNOXjCWlyuWi9JwU9sTKqCmJ9WY7Bj78zCqARhNV4yR2uhTVoi282J5paImk_2YkgRKt9nlLzHSZzscZpaHRL5YZG44FBQQonkwDUAQuekE1eDduUPa-u0O1Y8I06YtmQdYLOxa75tjpheujspE2gGzOMqoavzFrYpKmO2SmbXNcs-E-m0p9FO-vgCl1aBNFW8gCW2smdQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">XP Digital Lab</strong></span>
+          <span>@rocchl</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/TOIlZm40UuJOpbVVNjNoTuZ_y0pPeC0EqfE3Xz1Cm2wThCLicmJI73pDtOy_Apg_fGCM_SvjlPwjj8Te-IJhuDtYcKOhLLtz4zhL21-35Oy9yeDctmCJ4MM_HQF8OHynUEH4ztXYPL1AObTx_-mRBkagLsiGNM443S-NGFTDjO--jkO4wBI9i7AQSOkCv6FRIcYRafcHDyoCKfevIvJrhfs91teGAZeU_LMqa2MexkXN2ppAmLtBhr7O1h_pmqtp-8sI16trTUiM9jSyZk_Ntq0-Tw268gqHcB9A4vDy31zVmd6_7YYojQF1ZoD8l4I8glPotQJ-RUJYwhYwjlg6_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Open Minis 已开源，iOS 和 Android 代码都放出来了。它像手机里的 AI 代理，能用本地 Linux、浏览器和系统权限帮你干活…</h3>
+        <p>Open Minis 已开源，iOS 和 Android 代码都放出来了。它像手机里的 AI 代理，能用本地 Linux、浏览器和系统权限帮你干活，还带记忆。现在没内置模型，得自己接 AI API。 https://openminis.app 标签:#openminis Created by RocM 官方频道:@rocCHL 官方群组:@roctech 官方合作:@rocmmbot</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:12:01.573Z">Jul 28, 2026, 6:12 AM</time> · <a href="/post/1439502654">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/236055452">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/fqBnewSle4XdCAa4ErHkx_uzR7yaEhWWojNnRG8dLSK7QGu4_E1wPCcyB38d_QhwPQCia7x2p70pyR19QBNSB0nKjcjWlPTby2ZYue-KOxbP-15ICFSr7BM_2Efzj4Z96G1yYbMw1h7xNuelEMyltsmqeC3w9N8gIUJtc_qZM7NpHA_GvW0ceCpRbxIi4yFVydsQ4qJHjrhFt6d6f2MYTokazL6FPsRCvKeCqt-bjQd6t1Ntdy_ifDHksbrJlrtPvl0b1ESpS_PpJpMstZYHF1LX73B17x5sKpJaOrGORGFTm8dbO_u2I42OR8duZCxBU2yv0MefMEOgTzYxz4PfLg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+        
+        <h3>推荐一个独立开发者必备的 GitHub 仓库：Marketing for Founders。 特别适合：产品已经做出来，但还不知道怎么拿前 10…</h3>
+        <p>推荐一个独立开发者必备的 GitHub 仓库：Marketing for Founders。 特别适合：产品已经做出来，但还不知道怎么拿前 10 / 100 / 1000 个用户的人 如果你是会做产品、不会获客的创始人，这几乎就是现成的营销执行手册。 里面把早期获客最关键的模块都教了一遍： - launch 渠道 - Product Hunt - Social media - 冷启动销售 - SEO - LLM SEO / AEO / GEO - Reddit - Email - 内容营销 - 广告 - Infl…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:13:13.538Z">Jul 28, 2026, 6:13 AM</time> · <a href="/post/236055452">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/4068551843">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lElDovYaMMvlabv3T64HJ87CO4z0u5FCH6lyqQXXTeSqUcRaKtkk52YWZv74H_zfuMTutd0rnPckaa_ldJDzmaxdGfgwFWgRU_XHrEVVEfqTAM4AZotMdglbR_zB4Zfd5Q2JFnPegggju_CbBN_7oLWOyfA-YMX9ocfD0Z6kFXBcm4NwAG42O2cJbhpabhF5O7DY7imR3VOASKNDJCgVrIvSrTnNnjlTEAeHcMvZwxUlGG1m2ToT2grBYI58GnQIEoMK6ktWK9pAJ9z4fL_6HJzes7gdHSroMtIe013xcIE30AA9qOK1op49WMjUG29yvZm9Vjyt-yGmINQHTIE4EA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技&amp;趣闻&amp;杂记</strong></span>
+          <span>@kejiqu</span>
+        </span>
+      </p>
+        <img src="https://cdn1.telesco.pe/file/as5ydoTKElBJgAsOvNpEyynQyBE_IjosQJDUszuFJt9V3_Wp3HoROGDHwknqrYX2NaRDJr-MARfIDRV2WvIOKeYcxm6BuprtQv6UR9TNSrwn4Arx1jnFlDoIyQT6KDzdI9NlpZDDFERnFE-cmZpka9KeANxCHOqtzQSqaPBWsRxIxg3xHL8eFhwWonyHa4ecHSYqAXMA5GEMqfBuCkAHe19rcdZ1OpTu02fYuXzMlqgdVBWUMIvcOCTTCkkhrwaPyQKf_MSi5QWB2HE_TYk9xTj_yRwqjag4i9l9fxUUGIy0-tuw3i7jTEFRcOziAgotBEqPa1R2q-CiD3t0XZWSeQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Adaptavist 调查：近三分之二白领怀念“前 AI 时代”的工作方式 英国《金融时报》7月26日报道，咨询公司Adaptavist调查显示，…</h3>
+        <p>Adaptavist 调查：近三分之二白领怀念“前 AI 时代”的工作方式 英国《金融时报》7月26日报道，咨询公司Adaptavist调查显示，约65%的白领经常怀念AI出现前的工作方式。约三分之一受访者因其削弱创造力而愿意放弃生成式AI，约三分之一担忧AI遭到滥用。近一半受访者表示，核实AI生成内容的准确性增加了工作时间。沃顿商学院等研究指出，AI虽提高创意质量，但削弱了多样性，导致创意趋同。此外，因企业改为按Token收费，员工被要求减少使用AI以控制成本。IT之家 🏷 #生成式AI #白领 #创造力 �…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:10:01.275Z">Jul 28, 2026, 6:10 AM</time> · <a href="/post/4068551843">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/145796835">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/k9ke8xxgzdagzUcPGgI1yKMv4_9Z1RWWdKi0o3im3td95nOVuO8oRsEFgJ3Ao6ed96HAhJBI156pvVMrZgXvkA0wscboXjjFt_n6t3JDCnZweoH2BY0wexSn03YIEKOcZokQNZiSuS5zrhSAMz7cFxEJDAHKtH_HwOlr-iuTXxWMa2oDgEFdws_fEiaCHOdWeE7CIvcB82j9CzOL_9IsozROobI9WxQE9uyCik8XT2FtbkJa8QriEqOMyEmVcmudzbdQiVA_f8ODKJmdEfUbU1vzWnTPsekvkJepPu6K9HUcZkaWcYitnGTjj1JXKCOdhJVejTf4sj6l0zVk4NtKPQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/UdrAfTpI5UXJhUOg0DBmbbft3wcJugB-zkSo4hU2ci20t5tvmkX7BkqZJY6J094biqeRKsWs40FnjcpE9DJ_2fCgw2HttlEEgRgekqoKmaDSLtfaiQoBk_Ger6hKZXB0zVIGVA7QiCHi0zSh2N4E3bNfGSQFWkLa6Ljtv7zdtDm2m3QCn2OmcELaWQHerkqtiVePUnfm1Pan2k_WRD1KlsJehl72iS3VsjhAkoKXbe7DCUllrNl4LKfixjGNi-uNG9XXyIltLR9fpkG_5BMgxoKRZBmrRPQq-ua8t3ASkmC0Y5rQy3fFZTuZM-hbcLR-EczYTWvHD7hNzFs39yb72w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>OpenAI CEO自曝沉迷 TikTok：周末一刷就是 3 小时，最终不得不删除 App 7 月 28 日，OpenAI CEO 萨姆 · 奥尔…</h3>
+        <p>OpenAI CEO自曝沉迷 TikTok：周末一刷就是 3 小时，最终不得不删除 App 7 月 28 日，OpenAI CEO 萨姆 · 奥尔特曼表示，自己曾因研究 TikTok 的产品机制而逐渐沉迷，甚至在一个周六下午连续刷了约 3 个小时，最终不得不删除这款应用。 奥尔特曼在《Relentless》播客节目中称，OpenAI 此前筹备一款类似 TikTok、以 AI 生成视频为主要内容的社交应用 Sora。为了了解短视频平台的运行方式及用户体验，他开始主动使用 TikTok，并一度认为自己能够控制使用时间…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:08:08.946Z">Jul 28, 2026, 6:08 AM</time> · <a href="/post/145796835">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/516364771">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/k9ke8xxgzdagzUcPGgI1yKMv4_9Z1RWWdKi0o3im3td95nOVuO8oRsEFgJ3Ao6ed96HAhJBI156pvVMrZgXvkA0wscboXjjFt_n6t3JDCnZweoH2BY0wexSn03YIEKOcZokQNZiSuS5zrhSAMz7cFxEJDAHKtH_HwOlr-iuTXxWMa2oDgEFdws_fEiaCHOdWeE7CIvcB82j9CzOL_9IsozROobI9WxQE9uyCik8XT2FtbkJa8QriEqOMyEmVcmudzbdQiVA_f8ODKJmdEfUbU1vzWnTPsekvkJepPu6K9HUcZkaWcYitnGTjj1JXKCOdhJVejTf4sj6l0zVk4NtKPQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        
+        <h3>黄仁勋首条推文：25家机构为开源AI站台 英伟达、微软、Meta、IBM、Hugging Face、Mistral、a16z 和 Y Combin…</h3>
+        <p>黄仁勋首条推文：25家机构为开源AI站台 英伟达、微软、Meta、IBM、Hugging Face、Mistral、a16z 和 Y Combinator 等 25 家公司与机构发布公开信，为开源模型站台。英伟达 CEO 黄仁勋将其作为自己的首条 X 帖文分享。公开信称，美国既需要顶尖闭源模型，也需要顶尖开源模型，政府不应过早限制开源 AI。 开源模型允许用户下载、检查、修改，并部署在自己的服务器。联署方认为，这能降低使用成本、避免被单一供应商锁定，也让研究人员更容易测试漏洞和改进安全。 公开信还专…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:08:08.946Z">Jul 28, 2026, 6:08 AM</time> · <a href="/post/516364771">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/792782428">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/V3XgGDwPpiKPqKrNXQIXowRrO38pr3XTd2O89bLRPF1XXuNiDAQTDLYHfgx30kEwa7QLjtJ5SRsnwZ4nDxtocaJGlfmdtPrfQKKyF8oAwYQGiH1awEIZjuDxSEKWjsu5cs9SYGT0CnuP7ZSFe0LKTLJJZAUcUWOxTGH8O-Ho4tJD-ejPokaoiQ8tW889xfP6J2j8Q2J1xFTaIbOLder0Vv40A1434FwOLjeTkJmKFWeo4AXLRYjac6veAhYCVUQtaI3bw9l5oRGNdR7-1R4yYrp2a2rxhU5FG69YWArS3DU3j1rEzKZWi45UKpOS4jDxyouimJ36Lh1xjXrHpu0DSQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">LoopDNS资讯播报</strong></span>
+          <span>@dnspodt</span>
+        </span>
+      </p>
+        
+        <h3>25家科技巨头联名签署公开信，力挺开放权重AI模型 包括IBM、Meta Platforms、英伟达、微软在内的25家美国科技公司联名签署公开信，…</h3>
+        <p>25家科技巨头联名签署公开信，力挺开放权重AI模型 包括IBM、Meta Platforms、英伟达、微软在内的25家美国科技公司联名签署公开信，呼吁开放权重AI模型。该公开信指出，开源权重模型对健康的AI生态系统至关重要。美国在人工智能领域面临开放权重的选择。诚然，开放权重模型确实存在真实且独特的风险。但事实上，开放可能是实现AI安全与保障的最重要路径之一。仅仅依赖封闭模型本身并非安全：它们可能被攻破、被滥用，或以外部无法察觉的方式失效。开放权重模型则允许更广泛的研究人员和开发者社区检查其行为、识别漏…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:06:02.321Z">Jul 28, 2026, 6:06 AM</time> · <a href="/post/792782428">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1287131481">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/I8Cp2UeexE9ypPJUUqnk1XxeMlKLoFMLMtLPwo7P0cNvwnHOyH9eebqmfM3Q241fEIFzUcxzWXG7cn0KnzWV7wileJkWpMnU6S0b0iMQkjzvc2XjKKLKuNGgyLp5oTcBp2zs3ZFD0sM8W683Jz15Na_S6Kj339UrBffNjwPaDP70TrlA-u5Saqo1bTz8D1J-0Ossk9kRi_SPga_Qu_BIipfrqq6YoSUh3B9WRlSjeiOysWnR3GC4Q-wWkigbUIhnoiWsTNYOn1C_F4lE8xzXVWpufN4E-LcMAHxcOC8dD2SGtXTBKfK70FReDZBvR8TKPdhpAoscjvHomkOscLdMKQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">资源公社 ｜CXSNS Resource Hub</strong></span>
+          <span>@zygs123</span>
+        </span>
+      </p>
+        
+        <h3>📢 资源公社 · 每日热点早报 📅 2026年7月28日 星期二 ⚡ 今日头条 Top3 ──────────────── 📈【长鑫科技上市…</h3>
+        <p>📢 资源公社 · 每日热点早报 📅 2026年7月28日 星期二 ⚡ 今日头条 Top3 ──────────────── 📈【长鑫科技上市登顶“新股王”】存储芯片巨头长鑫科技科创板上市首日暴涨 465%，市值突破 3.28 万亿元大关，超越工商银行问鼎 A 股市值最高公司。 🐧【时隔8年 QQ宠物回归】腾讯宣布经典 IP“QQ宠物”在手机 QQ 重启回归，新版全面升级 3D 建模并接入混元 Hy3 大模型，取消死亡机制并推出 AI 智能陪伴玩法。 🐖【异种移植破纪录】我国异种器官移植研究迎来重大突破：…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:03:54.923Z">Jul 28, 2026, 6:03 AM</time> · <a href="/post/1287131481">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3023794104">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lz6F6-PBRH6WYo3fnXBhjpxc0XClcm9adA_ONX9nWpbi6V8o_HcvGx9czDVdq5dFqZ5GSr5vQSGjVQbGl1iB5aZ9ZlpsubdUsNsT6zcW1SsjUlxNj57_2kBp3Ox0dIfCb8OPlwPzg4OTWrAc6Lm0wevCdQ1DkeIXpl_qA32f80j-lR_WV98VESwbSNbEH6Eg7otx0eGkw3Y_ZVZD-Kn9B2sWEGoj6U2FZ_tgeOPfcPYiddeV_qEzT9QFOc_vx4pBEKZ7i5tcussyUHiXJ1mSSVzZpcD4IIkmtDLZ3-JUAD-_XP-mfbmbgkKwKim_ECXhGk5QMIVynJr8wQXDRSvxNw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">风向旗参考快讯</strong></span>
+          <span>@xhqcankao</span>
+        </span>
+      </p>
+        
+        <h3>数据显示：谷歌的AI搜索正迅速成为默认选项 无论用户是否喜欢，AI搜索正迅速成为默认选项。根据一份新报告，在短短一年的时间里，谷歌搜索中的AI生成…</h3>
+        <p>数据显示：谷歌的AI搜索正迅速成为默认选项 无论用户是否喜欢，AI搜索正迅速成为默认选项。根据一份新报告，在短短一年的时间里，谷歌搜索中的AI生成答案，即AI概览，已从出现在15%的搜索中上升到43%，这推动了网络用户在线消费信息方式的转变。 在最近一次对生成式格局的分析中，市场情报公司Similarweb指出，最初作为搜索之上的一个AI层，如今已成为搜索过程本身不可或缺的一部分，因为谷歌将用户直接引入“AI概览”，然后用户可以通过谷歌更具对话性的AI模式继续他们的研究。而同一时期，AI模式的访问量从2025年6…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-28T06:02:32.660Z">Jul 28, 2026, 6:02 AM</time> · <a href="/post/3023794104">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
