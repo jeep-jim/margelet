@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology." />
   <meta property="og:url" content="https://www.margelet.space/post/3212911513" />
   <meta property="og:image" content="https://www.margelet.space/hero.webp" />
-  <meta property="og:updated_time" content="2026-07-29T15:27:54.471Z" />
+  <meta property="og:updated_time" content="2026-07-30T09:51:48.001Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасно… — ZeroDay | Кибербезопасность, Russia technology software | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology." />
   <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасно…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology.","articleBody":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его до выполнения. Даже если атакующий получил контроль над процессом, запрещённый вызов просто не пройдёт. ⏺Два режима на практике: strict разрешает только read, write, exit и sigreturn - подходит для простых утилит. Filter режим гибкий, задаёшь точный whitelist или blacklist для конкретного приложения через BPF-фильтр. ⏺Главное правило перед написанием профиля - сначала посмотреть, что приложение реально использует, а не гадать: strace -c -f -p $(pgrep nginx) & sleep 30 && kill %1 Вывод покажет список syscall’ов с количеством вызовов - только они идут в whitelist. Всё остальное блокируется. ⏺Минимальный профиль для nginx на основе реального профилирования: { \"defaultAction\": \"SCMP_ACT_ERRNO\", \"syscalls\": [ { \"names\": [ \"accept4\", \"bind\", \"close\", \"connect\", \"epoll_ctl\", \"epoll_wait\", \"epoll_create1\", \"exit_group\", \"fstat\", \"futex\", \"getdents64\", \"getrandom\", \"getsockname\", \"listen\", \"mmap\", \"mprotect\", \"munmap\", \"open\", \"openat\", \"read\", \"recvfrom\", \"sendfile\", \"sendto\", \"setsockopt\", \"socket\", \"stat\",…","text":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его до выполнения. Даже если атакующий получил контроль над процессом, запрещённый вызов просто не пройдёт. ⏺Два режима на практике: strict разрешает только read, write, exit и sigreturn - подходит для простых утилит. Filter режим гибкий, задаёшь точный whitelist или blacklist для конкретного приложения через BPF-фильтр. ⏺Главное правило перед написанием профиля - сначала посмотреть, что приложение реально использует, а не гадать: strace -c -f -p $(pgrep nginx) & sleep 30 && kill %1 Вывод покажет список syscall’ов с количеством вызовов - только они идут в whitelist. Всё остальное блокируется. ⏺Минимальный профиль для nginx на основе реального профилирования: { \"defaultAction\": \"SCMP_ACT_ERRNO\", \"syscalls\": [ { \"names\": [ \"accept4\", \"bind\", \"close\", \"connect\", \"epoll_ctl\", \"epoll_wait\", \"epoll_create1\", \"exit_group\", \"fstat\", \"futex\", \"getdents64\", \"getrandom\", \"getsockname\", \"listen\", \"mmap\", \"mprotect\", \"munmap\", \"open\", \"openat\", \"read\", \"recvfrom\", \"sendfile\", \"sendto\", \"setsockopt\", \"socket\", \"stat\", \"write\", \"writev\" ], \"action\": \"SCMP_ACT_ALLOW\" } ] } ⏺Применяем к Docker-контейнеру: docker run --security-opt seccomp=/path/to/nginx-seccomp.json nginx ⏺Для systemd-сервиса ещё проще - без внешнего файла: [Service] SystemCallFilter=read write open close fstat mmap socket connect accept SystemCallErrorNumber=EPERM ⏺Отладка, когда что-то сломалось после применения профиля: вместо SCMP_ACT_ERRNO ставим SCMP_ACT_LOG - профиль только логирует заблокированные вызовы без реальной блокировки, можно спокойно смотреть, что не хватает: journalctl -k | grep seccomp ausearch -m SECCOMP ZeroDay | Белый Хакер | #seccomp","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, technology software, technology","url":"https://www.margelet.space/post/3212911513","mainEntityOfPage":"https://www.margelet.space/post/3212911513","datePublished":"2026-07-29T15:27:54.471Z","dateModified":"2026-07-29T15:27:54.471Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасно…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-29T15:27:54.471Z","contentUrl":"https://cdn4.telesco.pe/file/1a1bb1aecf.mp4?token=QT_TXeLkXD_IU-US89zi1GZ1bOcIahxNQh25MlC4n7dkTEQfxEgxml7atUfwK9itXK_b4sygAzkAptagMKRffOrgOptY-JVBFvrEzLec0pg_hoI5JFAmlqp9Cda9d8LuUqgoAmJ9VrzhqvXv3ouI_4wx7xSHsU78ewxmIqZqyiCzHAn7piDfGPlxnihwcMdSItSuA6e6CkeVJHj2DdWa2kcP0tASDXfh4JpWoBVeyfbf5-zS0-G69H4mTmebhqWOR1cO3MncKNFgNW61peJUMnOoWw5MjF-d5mmczV3bq7cc59RzjK9PvJAvDM--_x3bqTVK-rZrvcpfKWtWT1W1LQ"},"inLanguage":"ru","about":[{"@type":"Thing","name":"technology software"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/dZ_WGhEmCWbfKFdhbQAf_gcp8J3Pjof8JK1L-mgub0dTz4dOEHBEafh0DV97uHCIaPKIA5OmRwwEMlDOJfEawPc8BDvFoq2mPnwCUtdw-OI-e-LS31BLp5y8zznXBOlCiLF9g1UK7Cd-KXtdUT-yXQm4xOedi4ZHKcLDuEEBUYI9U2h9goGZLRxpFNrlQEy-AmsPJ3CLJbyYP3S6htmyogR-iwPAA9-wuP2xH33zfNL9nGvdArELdoI9Mqv-Lc2fbfBSb-KaB9KqYm8OVTnFV_vn_UIX9Ux29f0EKNpyCtMJCz2vjzLEElKnlIYCMal72o-4C7aDcZlIrKaVCtR2sw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1985?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасно…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology.","articleBody":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его до выполнения. Даже если атакующий получил контроль над процессом, запрещённый вызов просто не пройдёт. ⏺Два режима на практике: strict разрешает только read, write, exit и sigreturn - подходит для простых утилит. Filter режим гибкий, задаёшь точный whitelist или blacklist для конкретного приложения через BPF-фильтр. ⏺Главное правило перед написанием профиля - сначала посмотреть, что приложение реально использует, а не гадать: strace -c -f -p $(pgrep nginx) & sleep 30 && kill %1 Вывод покажет список syscall’ов с количеством вызовов - только они идут в whitelist. Всё остальное блокируется. ⏺Минимальный профиль для nginx на основе реального профилирования: { \"defaultAction\": \"SCMP_ACT_ERRNO\", \"syscalls\": [ { \"names\": [ \"accept4\", \"bind\", \"close\", \"connect\", \"epoll_ctl\", \"epoll_wait\", \"epoll_create1\", \"exit_group\", \"fstat\", \"futex\", \"getdents64\", \"getrandom\", \"getsockname\", \"listen\", \"mmap\", \"mprotect\", \"munmap\", \"open\", \"openat\", \"read\", \"recvfrom\", \"sendfile\", \"sendto\", \"setsockopt\", \"socket\", \"stat\",…","text":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его до выполнения. Даже если атакующий получил контроль над процессом, запрещённый вызов просто не пройдёт. ⏺Два режима на практике: strict разрешает только read, write, exit и sigreturn - подходит для простых утилит. Filter режим гибкий, задаёшь точный whitelist или blacklist для конкретного приложения через BPF-фильтр. ⏺Главное правило перед написанием профиля - сначала посмотреть, что приложение реально использует, а не гадать: strace -c -f -p $(pgrep nginx) & sleep 30 && kill %1 Вывод покажет список syscall’ов с количеством вызовов - только они идут в whitelist. Всё остальное блокируется. ⏺Минимальный профиль для nginx на основе реального профилирования: { \"defaultAction\": \"SCMP_ACT_ERRNO\", \"syscalls\": [ { \"names\": [ \"accept4\", \"bind\", \"close\", \"connect\", \"epoll_ctl\", \"epoll_wait\", \"epoll_create1\", \"exit_group\", \"fstat\", \"futex\", \"getdents64\", \"getrandom\", \"getsockname\", \"listen\", \"mmap\", \"mprotect\", \"munmap\", \"open\", \"openat\", \"read\", \"recvfrom\", \"sendfile\", \"sendto\", \"setsockopt\", \"socket\", \"stat\", \"write\", \"writev\" ], \"action\": \"SCMP_ACT_ALLOW\" } ] } ⏺Применяем к Docker-контейнеру: docker run --security-opt seccomp=/path/to/nginx-seccomp.json nginx ⏺Для systemd-сервиса ещё проще - без внешнего файла: [Service] SystemCallFilter=read write open close fstat mmap socket connect accept SystemCallErrorNumber=EPERM ⏺Отладка, когда что-то сломалось после применения профиля: вместо SCMP_ACT_ERRNO ставим SCMP_ACT_LOG - профиль только логирует заблокированные вызовы без реальной блокировки, можно спокойно смотреть, что не хватает: journalctl -k | grep seccomp ausearch -m SECCOMP ZeroDay | Белый Хакер | #seccomp","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, technology software, technology","url":"https://www.margelet.space/post/3212911513","mainEntityOfPage":"https://www.margelet.space/post/3212911513","datePublished":"2026-07-30T09:51:48.001Z","dateModified":"2026-07-30T09:51:48.001Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасно…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Как правильно настроить seccomp? 👋 Приветствую в мире цифровой безопасности! Seccomp работает, как фильтр между процессом и ядром Linux - если syscall не разрешён, ядро блокирует его… Topics: technology software, technology.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-30T09:51:48.001Z","contentUrl":"https://cdn4.telesco.pe/file/1a1bb1aecf.mp4?token=gvOUzwqCqAuXbMeYLvfwN-zeb9v_acXIDPEnqobioFAckRD0Khl9sBRyp_vd6oZvvyz_8ZmYIrc_r6Ydk4Y252GK1MtT-s-zeHrtYZlkt0Doui53BaarkA9XPDNZWAXezprNzWZZBNVejD1y3hOJzF55oZh_OJFqR_CvrZyKLUeUngsgiRxReR-29UGSxt0RnDomW6GnAkcOpJ1co4U1plPHjnXVg0VWERI8NRihBiAGUde9pEfVc0g5fRQnrj6xm7YqJLH-DZSKM3PfQ88ZQzfXM75YRqmW1CFeOpfXT2c14NGKmyk258oAIhw064jHG6iEeD0djFfpE0XYM85IlA"},"inLanguage":"ru","about":[{"@type":"Thing","name":"technology software"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/dZ_WGhEmCWbfKFdhbQAf_gcp8J3Pjof8JK1L-mgub0dTz4dOEHBEafh0DV97uHCIaPKIA5OmRwwEMlDOJfEawPc8BDvFoq2mPnwCUtdw-OI-e-LS31BLp5y8zznXBOlCiLF9g1UK7Cd-KXtdUT-yXQm4xOedi4ZHKcLDuEEBUYI9U2h9goGZLRxpFNrlQEy-AmsPJ3CLJbyYP3S6htmyogR-iwPAA9-wuP2xH33zfNL9nGvdArELdoI9Mqv-Lc2fbfBSb-KaB9KqYm8OVTnFV_vn_UIX9Ux29f0EKNpyCtMJCz2vjzLEElKnlIYCMal72o-4C7aDcZlIrKaVCtR2sw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1985?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -90,7 +90,7 @@ ausearch -m SECCOMP
 
 ZeroDay | Белый Хакер | #seccomp</p>
       <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
-      <p class="meta"><time datetime="2026-07-29T15:27:54.471Z">Jul 29, 2026, 3:27 PM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-07-30T09:51:48.001Z">Jul 30, 2026, 9:51 AM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/technology/software">technology / software</a>
 <a class="pill" href="/country/ru/tag/technology">technology</a>
@@ -106,7 +106,7 @@ ZeroDay | Белый Хакер | #seccomp</p>
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/3974720460">
+      <a class="post-link" href="/post/1330662370">
         <p class="source">
         <img class="source-avatar" src="https://cdn4.telesco.pe/file/dZ_WGhEmCWbfKFdhbQAf_gcp8J3Pjof8JK1L-mgub0dTz4dOEHBEafh0DV97uHCIaPKIA5OmRwwEMlDOJfEawPc8BDvFoq2mPnwCUtdw-OI-e-LS31BLp5y8zznXBOlCiLF9g1UK7Cd-KXtdUT-yXQm4xOedi4ZHKcLDuEEBUYI9U2h9goGZLRxpFNrlQEy-AmsPJ3CLJbyYP3S6htmyogR-iwPAA9-wuP2xH33zfNL9nGvdArELdoI9Mqv-Lc2fbfBSb-KaB9KqYm8OVTnFV_vn_UIX9Ux29f0EKNpyCtMJCz2vjzLEElKnlIYCMal72o-4C7aDcZlIrKaVCtR2sw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
@@ -114,11 +114,11 @@ ZeroDay | Белый Хакер | #seccomp</p>
           <span>@cybersec_academy</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/JF05EyEix7aUVJe28A7bmHw16xzgmWXQRbe6GssRNJueblcGaDY1cS_YSU-QIsqoQbIY0eBG-ySI3NFQSOJonPRmn_1ygrE4zFmDl7TAdvrlsGmd0QdxJ04zeTygblArXdxefce0r3HLB9pPx0ivNhJIFrMaskLxzdDA329ytxJU8KzZyG91_J06n0uc3NtN8bKTlYKOK9sX6TC9571eTm74Dw1KBYYy1MuIxALOn0U0ufVgroRQsshYAyXsbBRviK7OaXxZpml_-wCA7zqIdFbjppdnJAcH7Jn2lTtwrta126lPGqCP1Lbb9RX4ZnvAZVFLm05xWrnNqV1rirs-DQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Современный антифрод: что изменилось за последние годы 👋 Приветствую в м…</h3>
-        <p>Современный антифрод: что изменилось за последние годы 👋 Приветствую в мире цифровой безопасности! Раньше защита от мошенничества часто строилась вокруг отдельных правил: нашли подозрительное действие и добавили проверку. Но с ростом сервисов такой подход пе…</p>
+        <img src="https://cdn4.telesco.pe/file/mX52jP2zYfWtYLBl-bWjFVwf6A4ATYVGzh1V7akCUEDTQO_VeLJc2d2ZEZ9hbS7xZWnJWTGnNSP6eUihkcJwBKFxotK7EdLRtkK2EvOUxiTopZwj77gfy8GXbxh_PWXN6B1h6ooWOLHO2ovydXxo_DTJJ9fc1bFEgMCcWuPocouSU0MmsKxQEcHPQs9If5LIRsyziCa0Sm8wbz1Qj1GBKaRAj7nP7Fm0Vn2lQt8U2-vtxZqQ1xo9dY5arCTwFVs1lFvUZ-oSPSf16SbtsL8-L-hL8JbBFqkvpdhiutz0GAwmzbmTJS5_kggqaNzStQckuWnOkwlvOD3O4ZA3JRQFnQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>ТОП каналов для тех, кто увлекается хакингом и анонимностью Этичный Хакер…</h3>
+        <p>ТОП каналов для тех, кто увлекается хакингом и анонимностью Этичный Хакер — Один из крупнейших ресурсов по информационной безопасности в СНГ. Лаборатория Хакера — полезные github-инструменты для пентеста, сетевой разведки, xss, криптографии. Mr.Robot — OSINT,…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:27:54.471Z">Jul 29, 2026, 3:27 PM</time> · <a href="/post/3974720460">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T09:51:48.001Z">Jul 30, 2026, 9:51 AM</time> · <a href="/post/1330662370">View post on margeleT</a></p>
     </article>
 <article class="post">
       <a class="post-link" href="/post/1517454879">
@@ -129,101 +129,116 @@ ZeroDay | Белый Хакер | #seccomp</p>
           <span>@cybersec_academy</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/R5ksnWA9QvAZoIni1jM12TQTxnzqx6tnwCJftfFcBnGOA6WMXrKvKkHQNVQow4HyrsdfOatGIK8xQ_5zffmnWzCHwMK_1bQ9pIsdoZEYgEIXoEzqu11UmOIbAfOMUfGz8unBKfyTpCErGWU_MZRcPvnqusBzN28PRYSe_ljfqgLwgOi1SB097RcFf8oZ0aNbBaKUcbHnqo-vM1IZ-0P7RVk-5gD1pWmi0Vxl05dRh1Q7EU1ek5wKboeM5uQ_ZUGgO3Bx8M6X5ieAckZFSCs2L2gQUGS3rU63DAXM7NwWr458zH7yV5cvnNwGdJWDAEv32efKsXRFd8qTFOWJ8RVqwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img src="https://cdn4.telesco.pe/file/h8WfJX3AT44fD_5yudJiXUbzVrhK9sJtnM50gOzbQhGQr2rluj6XniCi1N4rCY3Ya6-7U8zzDS3ER9P-2lFaY4HZhR7r5UaMDSL6oAlhUi59vVs-L_GcuKxWklWihUn7Dowj6ovRpH1MRUri5_wzSCCSn3D1-qoHord4SBzKYpkrgNF0_oNhj_NPTlcbZidfPUker0rceNB8A9pg1NxLFxlw-YVnDYsBn8BTwVDWYvvk20t5BvbH4QLGRyvaXc65Ms2zFr0plGyKZMr2KzEmq-pIxieRua1smgBNBMKJe1xhFYUPc6XaQOamW-gzd9EPxZsEFrMdyWk-LWNGsQ_vUA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <h3>Т-Банк готовится к кибератакам С июня по сентябрь проходят Кибериспытания…</h3>
         <p>Т-Банк готовится к кибератакам С июня по сентябрь проходят Кибериспытания, чтобы протестировать защищенность инфраструктуры банка. Здесь можно легально строить цепочки атак и попробовать реализовать критический сценарий: проникнуть в базу данных или найти спо…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:27:54.471Z">Jul 29, 2026, 3:27 PM</time> · <a href="/post/1517454879">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T09:51:48.001Z">Jul 30, 2026, 9:51 AM</time> · <a href="/post/1517454879">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/9032379">
+      <a class="post-link" href="/post/3960256819">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/jZfs1RUTDE2CawKZtNsQW9TpO2S1YZG-yBkg5k0QQS9LtqnSd6x_TkwyhM-h7lJDWM-MyNakWR25ItwiH5WimWL45uI-yU0LlGJsVZ0yyqL-RUxWIzDyCUv2DUzVlUdQOGqolPkhmHK8sjj-fMTdU8jCnDHYOny4s1KWNIKPSpwHOMe00rSo9YU0pBTSyR6EOMeKP5O4OUxkJ665c-HBEbZCVEAjGehiVjsrKOl1zP1X4Q4SyYtviZ90gz0A9UqQ77BfxSYloreuqixmAnhFCcmjH7TjJa2wioarwxUHhG2InlAlrwetcCDyTmCs0CE6gSd-p9paLhwQfVDyhDv4Dg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/KOzY2Ou79yF98rV0AyQ-TTs3C5al5xiKl9r371bUf-VMKJ8T84VuzMY92ISxHMflWov8icbSWCiSm61YVAFoNorzCZz7KwfEWEvmZTsBtbDCXt0TslhaQ_ZTyvb6pHDVbwvuV-nW9FXTJhv0KdS1nWAT2tBaH5-aEXuv8ujPbsIQbZ8dQKp6wJ0BvPODi_NlleZlNYC2s9gXJwfJkwafBwBECc_5ehxilWEioGWrOiZ7eetU2ICXQ15BFixGCnNHRBwbPxR5oQL2Vrb_RXZ819VY_ZwlG6P4yFxbgGYiaFvlVL3YvGiRh6CY7zShnuCFvZ07XRFA0In3Ti5pKV5QRg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">ДПС 12</strong></span>
-          <span>@dps12</span>
+          <span class="source-title-row"><strong class="source-title">CIS News</strong></span>
+          <span>@foxnewsrf</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/Xc-E1rjV7SuyxqhSR7uRGWwaW5BITEFxE3jfdmhDU0LPh2UoEBZ_SA2tQ_qs7iXolvFduDPEbQtyMKeodH0BqSiLKLtqp6MC60dyoIT9xT45MDfBe8KLfiYBV_p_B_vD-nIrcC3GlqHg_3DRYn2tkOwuwASYhyn2ZjgYBBc-ln45C2O1I3LPuVSBxHXPBxQTGvi-HWBYosKOTizPtffzrZoOW83juGVrOXaUkOVTiQ5WyuZUo0BxTOf5CAFvq_UxRUmQ8I5qyTBxK0CKmpTMRYnOLUBPgvqJTwidbJvO0Y4i_67DQjjpbsK1g2u6udSWnGlIAGnrm0R70YtaW4d7Dw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡️Минцифры предложило установить обязательное требование для иностранных…</h3>
+        <p>⚡️Минцифры предложило установить обязательное требование для иностранных сайтов и приложений разрешать доступ пользователям на территории России лишь по номеру телефона, — сообщают СМИ. Эти предложения были включены в проект третьего пакета инициатив по борьб…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:14:54.204Z">Jul 30, 2026, 10:14 AM</time> · <a href="/post/3960256819">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2007196739">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/sBgZ3-fO-PCSNdetv4pgQrKZo0FUN7z5CRRNosy3ATndqc9k46BTtnUgtu6mVS-J6k_Rc16U3YuP5j0XSTx376PX2vJMkn9LW7lpMZTCjmoypsZVUvoXCMN7HAf7z6eluf8x5b5gmx4-SJ1AvXlGnf8BQEsEyrN6odV6CXuh3QEQDWnFbZB4X7vcsqtlmnJUnyMh1mPBOBVSto9MKikACVk1mbPb6aB6ZO87RKZLmG_YlL7pv5iIdrc9xBNKtK1KrDmwMf4FvWzx8p6GjZcStVc2_7u19-GAnYJza-iFj-_IE-uGuAJVegsVvkCfoxFh8isG0X_Ms99EqnUPXTcovg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Bloomberg</strong></span>
+          <span>@bioomberg</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/SMofE1rcbHYB27v52COvICd4rJnWl5G8l0CoP9HO8oe2--tGVxYuDElVxNRIClJUp2_rQHxWBDqyUi9ZDw6ZtGJgHYPe1cOJhixGXAdwj5uD9zh8in5ExwPu2XkvMkTsiF-9E5eKnDWRiolArEk0IhSvksIBUnoD0yDAk_54HPnP3r0dNASqcXkMhLk537KiTcK-apXP_Li9ZS9l33HCO7FwS8v60QIAVd5ZS-MDhPLggCwEPKBEzlUcjLdlxs8RcVPaEkTLxZq3n4waFSFT2w_AzWuIqOqwJ140ZO11KUshoXJvgLs6p96rKHr00dc79sbtkg4ChLVVbz-z2100Kg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>❗️🇦🇺АВСТРАЛИЯ ПОДАЛА В СУД НА TELEGRAM. ⨯ [Bloomberg] .................…</h3>
+        <p>❗️🇦🇺АВСТРАЛИЯ ПОДАЛА В СУД НА TELEGRAM. ⨯ [Bloomberg] ............................................................. 🤍Австралийский регулятор по электронной безопасности начал судебное разбирательство против Telegram, обвинив платформу в неспособности своев…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:13:04.748Z">Jul 30, 2026, 10:13 AM</time> · <a href="/post/2007196739">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3260781590">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/b5YWZBx88WclQcb-FdWcNrYQMR1VmsTcs3_Oagu8IAE93rXd_2bZYdDRQD7A594H80tXC82drrOqXuRuCc6Z3SK5_3k0bgAEdvDC--nyD8N4AUXx6JsgWQXMLg7NdNU1Ce8dNQyfiPuQ_qpdAi7fNkR3nk5ta2tfC0QZxu7wNAKGFyKhjvqzOrAisFHyGpT0KUTN0NOns43zRBPa7auLbQRVpQ0BSWfcGHZFw6iLp3YIJhCPtF8IPGM-MiQsUq5KZLEHaYZQBXkpLt9oB6JzGCSqEp_5ra-f7OkU-5yUfLDuGYFOBLt4M3WIJmledwhv5hqT0xsgRrY7B9wciSimQQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Лента</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@lentacom</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/nUvy1mkzOqfkuAAT9dfQtHArqTZTbwi79nye8daZx10H4CzvT42JsjMw1yqTHwRWJ8mhhqj3tsht7CxSnrU7cxjF2WIWoA1QrjrgyMF51e1u6EuamiaNcl8SmkaIHWfgGPzhFApA8GT8T2DBNGuCV3TM2n2WJvNmBh3dOIwYEOGHQ2uVZfh9DvjKLCCmK8NTGAoE3yaLAM2YGNwATdV0bdjK36BfYMjIoOcMqO9-ALOva_fU82j6u2GgbDW9hjHyPTICzHInNvkl0H5L6hTCwLHnrLbvZo2JxmOAFdlLOMb51S9vQjhO5vzNDIH3x8AfhROgJ19T0AxardTGOhf9ag.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>«Лента» работает даже без приложения! Все персональные скидки, история по…</h3>
+        <p>«Лента» работает даже без приложения! Все персональные скидки, история покупок, баллы и фишки доступны в веб-версии сайта. Установите всего за 3 шага: 1. Откройте lenta.com в Safari. 2. Нажмите на кнопку «Поделиться». 3. Выберите «Добавить на экран Домой». По…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:12:10.202Z">Jul 30, 2026, 10:12 AM</time> · <a href="/post/3260781590">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1606341266">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/i47mzps8Qfy4trKBxc0F7qQ6-E1ZEy-txNRxASc-qo8ect-KPSH9ZXERBr32MVwW_SK7lUxOE6NDS-chP9ryAMjDvadG9C77HsNS0hBAjmniPmRu7yM8njRAbtD3yFuOZItm6CMkx6Mj_tVmH_OOfL3Kir7fdR8zb--7i5folIZr-E6pwvmBTodBHuXIkMwsvckGfDXD3pwg88EBkAypAFFA40c-BDDSxaiusQoolYFdLuYD8IlNx9oynt1ucVNry0qImBdnurZmwHKquR-nSWWvnYTYzuwoXuN0Chc6CPCcUuBDpwiZCEYGXmfJOTCO94DiLMUwcK0WTiHVGonWgQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Халявщики</strong></span>
+          <span>@halyavshiki</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/IrTB_g5dMzpluJAI2ApNz04L4pVCMPcyxRfcH2GBKcm9ZXe94ty7JaJOrt63aaniYhfWklNwZNNTILwXuEay7kP-KMq0pkhJzxACOtB6BAQg-fzky5Qrr7DnL5K59d_NWiqFpEYkuifFFy7jTjMhNqbG3_avNvYLUVtujj-dikgNwe006GQCne-n45KIneuRAokvNvGQukFylKZjM5FehodNduE-nn_LYZS_p5IJ1VZZic4U2P2qLUKn67WVnmM-SVkhcyasYWaKo-bEIO131sWX0gcLn6mKOogJirRyG_SWfSe3vFW3Hpbzm0TowyyvK6JlqxP36NvkDWHo8lC2pQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Скидки до 17% ВСЕМ в Дикси Чтобы выгодно закупиться, ловите код на семь П…</h3>
+        <p>Скидки до 17% ВСЕМ в Дикси Чтобы выгодно закупиться, ловите код на семь ПОВТОРНЫХ заказов, он скинет 7% при покупке от 1500₽ и 17%, если корзина будет от 2700₽. Переходи сюда Промокод: BLADV6175 Не действует на лотерейные билеты, соцтовары, алкогольную и таба…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:10:28.762Z">Jul 30, 2026, 10:10 AM</time> · <a href="/post/1606341266">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/215696422">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/uQy8--A0p_C0XuZC6VbYFvMMEWNUht7RZBz7cLDeKrg0Jdg5fA6KMJ6GXeOoDE3ibFzh243AiV-BguNceGOi335bpiFE-TTK-Ff_8ihJms1RKTCiG-wZlYoXAHX2e4Ga9RqHahPhKjFlZS1i6TXNf-MFxC5p7xmFhA2NX0h9GDtjELz1bPx7A9Muzt_1CUjJXaFohXlq6nC1OV5F_nHKEoJg4mnT2X97--bIZZ8vyV78YRAagXfquHkzUl7poPIiFk0zIFH2GEx9GtpnpUSR7ZmGUvy2W9tIYTcBMKxXPzK2O-0nlAACTG7831vDjuLbOHj1p6YnMKwtalwU6LajdQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Базар</strong></span>
+          <span>@bazaar_live</span>
         </span>
       </p>
         
-        <h3>Шкода по шб</h3>
-        <p>Шкода по шб</p>
+        <h3>🤝🤝🤝🤝🤝🤝🤝🤝 👉 Подписывайся на «Базар» -----------------------------…</h3>
+        <p>🤝🤝🤝🤝🤝🤝🤝🤝 👉 Подписывайся на «Базар» --------------------------------- YouFast VPN™ | AML бот | Шерлок</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:34:09.134Z">Jul 29, 2026, 3:34 PM</time> · <a href="/post/9032379">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T10:08:35.719Z">Jul 30, 2026, 10:08 AM</time> · <a href="/post/215696422">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2798851110">
+      <a class="post-link" href="/post/3863790027">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/YdLg665LCjpcPGm2gQumZlhMaF1WhatexqvEph2Y57vyzWSnk2Ic6bsr4BpDr7Miei4pbrTTjDDz5J5UqnR43--9YSYVbJvJ4-2O9OqaYZt-i1nkhkhRDi_h2tcikA7c3KPSg0F-MgAwD7dh8SygGUsjVEm3BC6E66ET4cLA95dwlQDJNbeJ0BwbqgpidwKCn1gF7Z4JO_fVfAV6wDkTQqYOs5FSGTW6uy_CbEy8u7wNvKVd-MkVK550I2_j1bRBcvew7TkwwKlIuuOW2pjNhMJb0sIDfvM_oDxWJIoHL5Gb9GE84nAPxBlEr8AUw17SoEOuTZKY98IpGDlmPNgDJw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/bZJMjNzz9ewjeV5CSCJApuQNcr0YN8Q2Rc7nTT5orxzrNrFJzANOXviGjr5a552InQ4yFuSzL5zSLzmyRTrM8oRJcW3T7iLoGP7YmM62S3iSSUmy4l-SQtvEPFghZLK44AO8TSxLakcyIgzTgZm9v4VFkLCwFVhtCdKOP5GDHGo17BthBCsBpuElzRDWcxAqvoLdX7BmWew9J3E1dtBUmfX2k0M8-ihx4WqPtFhwTdx5jkxVzhar8rykbo2qmaiLs_vKDxloZZTW3epbSqc_mBkwIZhOW29N4sgTMUm36NJ4guk44bIA2UzasDU5u7x5Poa8M3R0xHhTUr70d6OdcQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">BMW / БМВ</strong></span>
-          <span>@bmw_autooo</span>
+          <span class="source-title-row"><strong class="source-title">#МОНТЯН!</strong></span>
+          <span>@montyan2</span>
         </span>
       </p>
-        
-        <h3>​​Девушка показала как выглядит НИШЕВАЯ поездка в такси. Не знаю как вы,…</h3>
-        <p>​​Девушка показала как выглядит НИШЕВАЯ поездка в такси. Не знаю как вы, но я хочу чтобы он ко мне приехал на заявку ⁣⁣🐬Skip VPN — протоколы нового поколения. Бесплатно для всех. Кроме агентов РКН😉 🥰 Нативка</p>
+        <img src="https://cdn4.telesco.pe/file/oqp9ddW3SbwwbmFdcD8nhMlEbXYPVDxrPVANbXdU4D2mONLZk0fMnIgd0QPygPFQ7Le4psEgoO_oAjLK7I2PctMoSo65Tl5wVWAhRiqdqaEDuc6lTgM-qy65_K1EMgJfQwa3UylHim9e3yrCu5V2dfa-Pc8hUHwDm-r6xMCCDlY-rC3NEffSQyUcMQrJUOy2GxraVllcD-Akgwm0PMJ0FYEJ0WFmBbzsBe5dRxpMBg16-MYnfzL2epc7iVTb3mKMz1dQ9mBUBtaL7DBB4TaGUlHObbdGfZymfsW__RdvBQMCjsZGxPx66o1nNIa_UjkMKt1w3LTE8HAzMOs6HaDB6w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Китай запускает серийное производство летающих ветрогенераторов Китайская…</h3>
+        <p>Китай запускает серийное производство летающих ветрогенераторов Китайская компания Linyi Yunchuan заявила о начале серийного производства летающих ветряных электростанций SAWES S2000. Гибрид традиционного ветряка и аэростата парит на высоте в 2 километра, выр…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:33:37.400Z">Jul 29, 2026, 3:33 PM</time> · <a href="/post/2798851110">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/217156971">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UOMm881-Jjs3cBt7CuQNs9-ANOmgEJQvYAClpC-VbXuLjU1ttlbAx2jA9RvO4qkDdL0FiA_wwucK51p9_cuONfQjfFjzDWqsiDytL6dTeeHf5L608fPfp2Pz-bXJvMpRSQ63Ct8-FMl-oE2MCvX_thdiYqBBGZYLer5Jv8-emhvXyQZBNAbnmvFRofBKWx3cYeN62P5Iogg08WWwBCL-PBcHbpkWDiSOv8T3Zmz8tcOyq9D098PQGBW3BE7VLe5O808HfcOLLBMozPJ7hSfDj__e-cDiHNulKbHBo2Xwnd6UvycFYwyGSGNWUa1-A9R_dTwPE2NA3-HBu_rcndFLKw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Не баг, а фича</strong></span>
-          <span>@bugnotfeature</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/Ri66AfxyWM4tCrJ_fraTPodQH2qKQyZmJT_Wn72OzlLte5mjstKsaUfFERWVKMC4AmMRU5Pe6krDSiHiyBwCd3HvRirqyU49BOVTVEi2qD8gfhOywBcyV-i4LfBRDb7Yi46pSku7-q0gwCUhNc1ccx1e647l3HKObBvw8oFsyLHAn5BWTBswP70ImZpfn2p68d8AY51Fvji1088P_dJI94JYRqi3seS6dM7J_gBetKZxh6XdeymA3bCWjVu352SRklFdtmdVXFDlBnkTqCULJOH6dJlHyNfOVMlYmwdmTtyQSVaNuJANVP4hXSDMnKM3g8NCVQO3LW1DcVp8vEeG5A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>На Госуслуги завезли новую фичу для вайбкодеров. На «вайбе» больше не код…</h3>
-        <p>На Госуслуги завезли новую фичу для вайбкодеров. На «вайбе» больше не кодим. 🙂 Не баг, а фича</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:31:43.966Z">Jul 29, 2026, 3:31 PM</time> · <a href="/post/217156971">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1648452046">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UOMm881-Jjs3cBt7CuQNs9-ANOmgEJQvYAClpC-VbXuLjU1ttlbAx2jA9RvO4qkDdL0FiA_wwucK51p9_cuONfQjfFjzDWqsiDytL6dTeeHf5L608fPfp2Pz-bXJvMpRSQ63Ct8-FMl-oE2MCvX_thdiYqBBGZYLer5Jv8-emhvXyQZBNAbnmvFRofBKWx3cYeN62P5Iogg08WWwBCL-PBcHbpkWDiSOv8T3Zmz8tcOyq9D098PQGBW3BE7VLe5O808HfcOLLBMozPJ7hSfDj__e-cDiHNulKbHBo2Xwnd6UvycFYwyGSGNWUa1-A9R_dTwPE2NA3-HBu_rcndFLKw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Не баг, а фича</strong></span>
-          <span>@bugnotfeature</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/pUJr_rHzcozjH3ichitFOzSHFAp5jf0eSMOg5sG4sWj-r9BmD3p5zQS5TW2Hs-ocHJ5wsuBJmYUwEr2JV10x2XYmDLfhHe9fgHxY57AsVx1Hd-W0CfGyUsbbZFGuN9-4UURn9yd1h5TrQLgS3ZNbDouc-fXo9GersBSRoi_3ab3U1fTakyl5EHKqtSk4fy8VcHEhAqwxQOlbIezDWXQfqPfuKrJ8HIjsXhI57iGJ5cSeoWk1JIUbfdKw0nKvlEuJE6zFltbBFO5wzH0mdvj4JN6MGT7ix78nOhcc4KktbVkYwPvfezWa3nUssEOdx8JtFXFhFR1IWllcW5lpWJKTtQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>⚡️ В России БЛОКНУЛИ ещё 2️⃣ зарубежных мессенджера — возможно. В корейск…</h3>
-        <p>⚡️ В России БЛОКНУЛИ ещё 2️⃣ зарубежных мессенджера — возможно. В корейском KakaoTalk и турецком BiP без VPN не проходят сообщения и звонки. При этом сообщений о блокировке от РКН пока не было... Видимо, ждём. 🙂 Не баг, а фича</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:31:43.966Z">Jul 29, 2026, 3:31 PM</time> · <a href="/post/1648452046">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2871812796">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rtB_Na-jf7kbLXlzeD0inVnmvQ_8xl7gZe9Ci8i7lAh8KTlJzzoOhlwjWNjylyH_cpXw0NEwtapVAOXOMtvbdpW1oQW-6ng2aGN3nuwMbFpKvxkNxzrT4t9cJrGHpne3eIyXgLmanzZIKjPJYHL5DyjGPSY0NK8WvV1qVJvt9I8s3bMb2vahztByihep2lr5uuNSaUK42MATCWzWwGmPkrQP3dXdAM0DdaxHmFsqlXv2lvfknYEvJlm5udROO1oskgAPjBjTi0fszizeyjFbsCCR46UZq6M77RPieqFj8A0sjjHl-FWCP6ibV4by-_tkvlAFmOfKbb6BKX3m4saemQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Colonelcassad</strong></span>
-          <span>@boris_rozhin</span>
-        </span>
-      </p>
-        
-        <h3>Относительно споров на тему того, что вот сейчас Телеграм совсем закроют…</h3>
-        <p>Относительно споров на тему того, что вот сейчас Телеграм совсем закроют после выдвижения обвинений Дурову. Полагаю, что он как работал через VPN (с периодическими сбоями из-за блокировок VPN и собственных глюков) так и продолжит работать. Формально он заблок…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:31:38.481Z">Jul 29, 2026, 3:31 PM</time> · <a href="/post/2871812796">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3268301915">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/pun2TdrIown7O3yMLlry0HiJTRZHz8fto62uU2FJI072Ydy_DrDr5YD813VfdZKrFtink-XXhgWIGmrVkTc_WXtHYztTFQauqlJuL1nLxdBfv-uu8BJogZh6lH6tE5sq8ZhNl_oOFABaALCJwpHmHoFE0Pba5LD48v-G2hkPz7vAOQsgbF0rU3_ssJ4OFjet2Mejtdg4fzbx6mIN0YbynOhRU-rUevNQf1szz6qD69w2p1S0SQNaIBfVzmPWDNVUslLUIITthO5dxJYxsOcSWlpuVBvL1UkkpCJRcDjpVxowGRHscrz1abr2P4NkSMPnCOEiOGrSRIVeOFVbKvyMyg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">натуральный маркетинг</strong></span>
-          <span>@nature_marketing</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/Ys_TLCHVpyIzztDV9xSo5UK38dUV7k7sCRNernJDnPZkJlGpNipJiVlZQFFQMDrGkkTZ8mV0OeDFsXDXTEKeQS5rICBFgIAdFBQP6SaEKndvRqZixr1ghzKB_TY9dWlPU037GazBkG0VcL7pjr_AdSs3a6snaNwMzJrzUsHOrFHrLsOFn8uQSM90ITTQBkxu_RwSki8qqUeUDkNxu216iiUCl8LwCsECtIeHwehUNmWQvCroQhEPdF_oQYQR8o61jJ4buqV0PR8bWPNi80cRHAK7LzaqweQbIaI6XcuV4tXBTt0SxHNnH7OJd17wx4QFt46j0cZKlaqMrNh1w3jdOg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>❗️ KakaoTalk и BiP перестали работать без VPN: сообщают пользователи из Р…</h3>
-        <p>❗️ KakaoTalk и BiP перестали работать без VPN: сообщают пользователи из России. Причастен ли к этому РКН пока неизвестно 🕊 — Дядя Паша, помоги 🥦 Натуральный маркетинг</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:30:35.771Z">Jul 29, 2026, 3:30 PM</time> · <a href="/post/3268301915">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T10:08:08.087Z">Jul 30, 2026, 10:08 AM</time> · <a href="/post/3863790027">View post on margeleT</a></p>
     </article>
     </section>
   </main>

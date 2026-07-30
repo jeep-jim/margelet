@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from Kali Linux in Russia. 🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локал… Topics: ai, technology, transport reviews, auto." />
   <meta property="og:url" content="https://www.margelet.space/post/94078180" />
   <meta property="og:image" content="https://cdn4.telesco.pe/file/Ua5Qd7ptDD5Lu6LYjh3U_xxLE9aelwlD8yDrAHGdER9115QALw1tSjv0viyvXc1bIjbEMg9ikl16EsN__PonpeDg1k8I5u9Gd6TOAOizfGbLnfcc9E3JA8wKYJPMzmVcEksqsg612NgZyqBZJoRYPcuo-7GMYqZmL9J3Qzj5tNBjlnul9-TpIxsSf2qAAtAbs_TWbJcOapUTe_xq7kvCBAWoR3adlnUsdmRRSYzdl-M8P1Qjl7H0ibDs_AoUI2GcG09MXAXvq-vnyrQrTnmPrCGi9dIQXBv1dsYsZoBPCIk50anamwgSCq-LGSGCmzQ_RfR7ZNgXGfCBR-V4OJGgdg.jpg" />
-  <meta property="og:updated_time" content="2026-07-29T15:29:53.009Z" />
+  <meta property="og:updated_time" content="2026-07-30T09:53:37.401Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из… — Kali Linux, Russia ai | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Kali Linux in Russia. 🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локал… Topics: ai, technology, transport reviews, auto." />
   <meta name="twitter:image" content="https://cdn4.telesco.pe/file/Ua5Qd7ptDD5Lu6LYjh3U_xxLE9aelwlD8yDrAHGdER9115QALw1tSjv0viyvXc1bIjbEMg9ikl16EsN__PonpeDg1k8I5u9Gd6TOAOizfGbLnfcc9E3JA8wKYJPMzmVcEksqsg612NgZyqBZJoRYPcuo-7GMYqZmL9J3Qzj5tNBjlnul9-TpIxsSf2qAAtAbs_TWbJcOapUTe_xq7kvCBAWoR3adlnUsdmRRSYzdl-M8P1Qjl7H0ibDs_AoUI2GcG09MXAXvq-vnyrQrTnmPrCGi9dIQXBv1dsYsZoBPCIk50anamwgSCq-LGSGCmzQ_RfR7ZNgXGfCBR-V4OJGgdg.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из…","description":"Fresh Telegram snapshot from Kali Linux in Russia. 🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локал… Topics: ai, technology, transport reviews, auto.","articleBody":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локальных сессий Claude Cowork на macOS. Cowork запускает агента внутри Linux-VM, но исследователи обнаружили опасную деталь: вся файловая система Mac была подключена внутрь VM в режиме read-write, хотя увидеть её мог только guest-root. Дальше цепочка выглядела так: • агент получает дополнительные привилегии внутри VM • через Linux-уязвимость CVE-2026-46331 повышает права до root • root внутри VM получает доступ к общему mount • после этого можно читать и изменять файлы за пределами папки, которую пользователь разрешил Claude В зоне риска оказываются SSH-ключи, cloud credentials и другие файлы, доступные аккаунту пользователя. Исследователи утверждают, что до изменений потенциально были затронуты около 500 000 пользователей macOS. Исследователи считают архитектурной проблемой решение монтировать весь host filesystem внутрь VM: следующая privilege-escalation уязвимость потенциально может снова открыть похожую цепочку. Anthropic закрыла баг-репорт как *Informative*. Сейчас Cowork по умолчанию использует clo…","text":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локальных сессий Claude Cowork на macOS. Cowork запускает агента внутри Linux-VM, но исследователи обнаружили опасную деталь: вся файловая система Mac была подключена внутрь VM в режиме read-write, хотя увидеть её мог только guest-root. Дальше цепочка выглядела так: • агент получает дополнительные привилегии внутри VM • через Linux-уязвимость CVE-2026-46331 повышает права до root • root внутри VM получает доступ к общему mount • после этого можно читать и изменять файлы за пределами папки, которую пользователь разрешил Claude В зоне риска оказываются SSH-ключи, cloud credentials и другие файлы, доступные аккаунту пользователя. Исследователи утверждают, что до изменений потенциально были затронуты около 500 000 пользователей macOS. Исследователи считают архитектурной проблемой решение монтировать весь host filesystem внутрь VM: следующая privilege-escalation уязвимость потенциально может снова открыть похожую цепочку. Anthropic закрыла баг-репорт как *Informative*. Сейчас Cowork по умолчанию использует cloud execution, где эта локальная цепочка, судя по исследованию, не работает. 🔗 https://thehackernews.com/2026/07/claude-cowork-flaw-could-let-ai-agent.html","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, ai, technology, transport reviews, auto, health research, health","url":"https://www.margelet.space/post/94078180","mainEntityOfPage":"https://www.margelet.space/post/94078180","datePublished":"2026-07-29T15:29:53.009Z","dateModified":"2026-07-29T15:29:53.009Z","image":["https://cdn4.telesco.pe/file/Ua5Qd7ptDD5Lu6LYjh3U_xxLE9aelwlD8yDrAHGdER9115QALw1tSjv0viyvXc1bIjbEMg9ikl16EsN__PonpeDg1k8I5u9Gd6TOAOizfGbLnfcc9E3JA8wKYJPMzmVcEksqsg612NgZyqBZJoRYPcuo-7GMYqZmL9J3Qzj5tNBjlnul9-TpIxsSf2qAAtAbs_TWbJcOapUTe_xq7kvCBAWoR3adlnUsdmRRSYzdl-M8P1Qjl7H0ibDs_AoUI2GcG09MXAXvq-vnyrQrTnmPrCGi9dIQXBv1dsYsZoBPCIk50anamwgSCq-LGSGCmzQ_RfR7ZNgXGfCBR-V4OJGgdg.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"transport reviews"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/d98XAGSyS5FxdhzI8PlvivaR78YfPmCMHk3ZZhx7m6OFHn3cahH_ExjXSQQkK30gS8lhcWYlt4YWuGtT8xSqgtrS2ApX8oAtGenhnzP3Srio_bNc6jAZuPRjXhDvhr5oS93ToTqIv7_5Jk6KTZd7myDczfkjTSeVavnzLYYIbHJehEU8Vb3VFQVaDQm4VeC2yR1aXPbVy14I8ZjvCiscAWFTRY0fjnPqfbkURpYPiVGGHcgA-n-FjWHG6y_tJbAUOvbrzSMq5rJFjXUsmwzbo2jAuAUTHkwQjVpCc2IE1OgSTbCTIpc5xvey4yt54DyECBjWtRwkbPZqDn9MYjzmhw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2128?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из…","description":"Fresh Telegram snapshot from Kali Linux in Russia. 🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локал… Topics: ai, technology, transport reviews, auto.","articleBody":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локальных сессий Claude Cowork на macOS. Cowork запускает агента внутри Linux-VM, но исследователи обнаружили опасную деталь: вся файловая система Mac была подключена внутрь VM в режиме read-write, хотя увидеть её мог только guest-root. Дальше цепочка выглядела так: • агент получает дополнительные привилегии внутри VM • через Linux-уязвимость CVE-2026-46331 повышает права до root • root внутри VM получает доступ к общему mount • после этого можно читать и изменять файлы за пределами папки, которую пользователь разрешил Claude В зоне риска оказываются SSH-ключи, cloud credentials и другие файлы, доступные аккаунту пользователя. Исследователи утверждают, что до изменений потенциально были затронуты около 500 000 пользователей macOS. Исследователи считают архитектурной проблемой решение монтировать весь host filesystem внутрь VM: следующая privilege-escalation уязвимость потенциально может снова открыть похожую цепочку. Anthropic закрыла баг-репорт как *Informative*. Сейчас Cowork по умолчанию использует clo…","text":"🚨 Одного сообщения оказалось достаточно, чтобы Claude Cowork выбрался из своей Linux-VM и получил доступ к файлам Mac Исследователи Accomplish AI показали цепочку SharedRoot для локальных сессий Claude Cowork на macOS. Cowork запускает агента внутри Linux-VM, но исследователи обнаружили опасную деталь: вся файловая система Mac была подключена внутрь VM в режиме read-write, хотя увидеть её мог только guest-root. Дальше цепочка выглядела так: • агент получает дополнительные привилегии внутри VM • через Linux-уязвимость CVE-2026-46331 повышает права до root • root внутри VM получает доступ к общему mount • после этого можно читать и изменять файлы за пределами папки, которую пользователь разрешил Claude В зоне риска оказываются SSH-ключи, cloud credentials и другие файлы, доступные аккаунту пользователя. Исследователи утверждают, что до изменений потенциально были затронуты около 500 000 пользователей macOS. Исследователи считают архитектурной проблемой решение монтировать весь host filesystem внутрь VM: следующая privilege-escalation уязвимость потенциально может снова открыть похожую цепочку. Anthropic закрыла баг-репорт как *Informative*. Сейчас Cowork по умолчанию использует cloud execution, где эта локальная цепочка, судя по исследованию, не работает. 🔗 https://thehackernews.com/2026/07/claude-cowork-flaw-could-let-ai-agent.html","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, ai, technology, transport reviews, auto, health research, health","url":"https://www.margelet.space/post/94078180","mainEntityOfPage":"https://www.margelet.space/post/94078180","datePublished":"2026-07-30T09:53:37.401Z","dateModified":"2026-07-30T09:53:37.401Z","image":["https://cdn4.telesco.pe/file/Ua5Qd7ptDD5Lu6LYjh3U_xxLE9aelwlD8yDrAHGdER9115QALw1tSjv0viyvXc1bIjbEMg9ikl16EsN__PonpeDg1k8I5u9Gd6TOAOizfGbLnfcc9E3JA8wKYJPMzmVcEksqsg612NgZyqBZJoRYPcuo-7GMYqZmL9J3Qzj5tNBjlnul9-TpIxsSf2qAAtAbs_TWbJcOapUTe_xq7kvCBAWoR3adlnUsdmRRSYzdl-M8P1Qjl7H0ibDs_AoUI2GcG09MXAXvq-vnyrQrTnmPrCGi9dIQXBv1dsYsZoBPCIk50anamwgSCq-LGSGCmzQ_RfR7ZNgXGfCBR-V4OJGgdg.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"transport reviews"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/rVcIhDRxi_D_6orcU9-EMfI_atuHq1ad82Hl0vrN4ua2bGOMLany6mP7vPpOd7jL7_MYTJ04lPfu6E7KzQvJ93qT1ZkwEU4DvM0zyBi61DFDHwgOXAZO4X-w2pRi4AxEXuUKXLcrTaHjjGHQs-DKl-Sab7XHjv3r_RXZm7BZeJgvKVCJ-Q46rKR8EGky0J3_ceJNTdE86RuI66cFtg-bYGYSmYxQidzUmqvD0q-wyNy8I4FUYAIND529FhdrJjFYTZycjlKlfoAvQO3iWbOwKmYlPIOdgJ0fYQPwfRy0waMcrOaxd-oapQPLRBV6V4skh1HAEQL7h0JAfeJSYsqW-w.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2128?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/d98XAGSyS5FxdhzI8PlvivaR78YfPmCMHk3ZZhx7m6OFHn3cahH_ExjXSQQkK30gS8lhcWYlt4YWuGtT8xSqgtrS2ApX8oAtGenhnzP3Srio_bNc6jAZuPRjXhDvhr5oS93ToTqIv7_5Jk6KTZd7myDczfkjTSeVavnzLYYIbHJehEU8Vb3VFQVaDQm4VeC2yR1aXPbVy14I8ZjvCiscAWFTRY0fjnPqfbkURpYPiVGGHcgA-n-FjWHG6y_tJbAUOvbrzSMq5rJFjXUsmwzbo2jAuAUTHkwQjVpCc2IE1OgSTbCTIpc5xvey4yt54DyECBjWtRwkbPZqDn9MYjzmhw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rVcIhDRxi_D_6orcU9-EMfI_atuHq1ad82Hl0vrN4ua2bGOMLany6mP7vPpOd7jL7_MYTJ04lPfu6E7KzQvJ93qT1ZkwEU4DvM0zyBi61DFDHwgOXAZO4X-w2pRi4AxEXuUKXLcrTaHjjGHQs-DKl-Sab7XHjv3r_RXZm7BZeJgvKVCJ-Q46rKR8EGky0J3_ceJNTdE86RuI66cFtg-bYGYSmYxQidzUmqvD0q-wyNy8I4FUYAIND529FhdrJjFYTZycjlKlfoAvQO3iWbOwKmYlPIOdgJ0fYQPwfRy0waMcrOaxd-oapQPLRBV6V4skh1HAEQL7h0JAfeJSYsqW-w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
           <span>@linuxkalii</span>
@@ -58,7 +58,7 @@ Anthropic закрыла баг-репорт как *Informative*. Сейчас 
 
 🔗 https://thehackernews.com/2026/07/claude-cowork-flaw-could-let-ai-agent.html</p>
       <img src="https://cdn4.telesco.pe/file/Ua5Qd7ptDD5Lu6LYjh3U_xxLE9aelwlD8yDrAHGdER9115QALw1tSjv0viyvXc1bIjbEMg9ikl16EsN__PonpeDg1k8I5u9Gd6TOAOizfGbLnfcc9E3JA8wKYJPMzmVcEksqsg612NgZyqBZJoRYPcuo-7GMYqZmL9J3Qzj5tNBjlnul9-TpIxsSf2qAAtAbs_TWbJcOapUTe_xq7kvCBAWoR3adlnUsdmRRSYzdl-M8P1Qjl7H0ibDs_AoUI2GcG09MXAXvq-vnyrQrTnmPrCGi9dIQXBv1dsYsZoBPCIk50anamwgSCq-LGSGCmzQ_RfR7ZNgXGfCBR-V4OJGgdg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-07-29T15:29:53.009Z">Jul 29, 2026, 3:29 PM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-07-30T09:53:37.401Z">Jul 30, 2026, 9:53 AM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/ai">ai</a>
 <a class="pill" href="/country/ru/tag/technology">technology</a>
@@ -78,11 +78,86 @@ Anthropic закрыла баг-репорт как *Informative*. Сейчас 
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/3951527899">
+      <a class="post-link" href="/post/458728227">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/cR1uyCUMBZIg5UDnXVO9VGW_vkKL1SoZzZdRBTkNr_ZmvZSM6UkwmQqPGKNCD7OfMGaAXkQDiAHWH4NYv9_A3EWq82lKGcPFvUJe3DaB_WCuN02ailXi5G7eppZRzXP8dFYwjN_36B3CtixBMcHGym5WJj_g1v6HALDVnJG_CugMUonobWpji6LUfu5MCpZxv_eRfxNbG4zEAxP7xuDLmqZI6i9jYsaHRxgF55Q3Vv_lkAXOrmHZ31gNA9hSkZvIm9Cs53T750D-iK0woO2K-F52Wy9Rjzo8jaEzHxpYMQA3eKLrbjhGG1_7ZBKgyLyBJflvVkJQQ6D-ahxy0bNUBw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rVcIhDRxi_D_6orcU9-EMfI_atuHq1ad82Hl0vrN4ua2bGOMLany6mP7vPpOd7jL7_MYTJ04lPfu6E7KzQvJ93qT1ZkwEU4DvM0zyBi61DFDHwgOXAZO4X-w2pRi4AxEXuUKXLcrTaHjjGHQs-DKl-Sab7XHjv3r_RXZm7BZeJgvKVCJ-Q46rKR8EGky0J3_ceJNTdE86RuI66cFtg-bYGYSmYxQidzUmqvD0q-wyNy8I4FUYAIND529FhdrJjFYTZycjlKlfoAvQO3iWbOwKmYlPIOdgJ0fYQPwfRy0waMcrOaxd-oapQPLRBV6V4skh1HAEQL7h0JAfeJSYsqW-w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Александр Панчин</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+          <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
+          <span>@linuxkalii</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/PIBv7ezLiX7nwmf2uhUkQpQzjaoAATH0FV59XleYjMm5jLuTrpw7tSv_WtBTJHJCwNXs0FBmxnMgLuGla7Kl4cuGY9FVyiIZP2konqFE8u89GbrE4lM6EMPN1jreX1ejZvFE5PCqZkRk9x4JH4sFYb9W7TDS6p2u9IEd2p_6Q4fbj4qAuyRpPEgi7l01fvQLYfQHpcmcj-Myv9hCYB-3GWjp-K5PzEk7DLZOHMKkx7W8hSyOI7yGSeA-yrAslRJmWI89FfgonJMwaT1inTjDc_3I3SEWsBR9HypyO7yd9eR4B9SbxLvbPJYZ3oPklNtv_oqELobozUaa97PMjTPZ-A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Claude нашёл криптографические слабости, которые годами пропускали экспер…</h3>
+        <p>Claude нашёл криптографические слабости, которые годами пропускали эксперты Anthropic показала один из самых серьёзных примеров использования ИИ в науке: Claude помог разработать новые атаки сразу на две криптографические схемы. В первом эксперименте модель и…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T09:53:37.401Z">Jul 30, 2026, 9:53 AM</time> · <a href="/post/458728227">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1625906249">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/qhUYVNtbgjF7S8nJKEIKqIovmI9qmXYEm0S0Rlt7OnutARzRLZImoBwhpwenq9gdKvuApWbVPvKRfvzMX0DDWTZqU7xSMO7VecedFa7xbHx4vYTm2fPp-0oJqamBTCVmj1HW7bwfxlzn2zLEsVNXvxJSXeJmvc1j8UqCOq9gnG909kvMpgi1LP7TU8mdqa0vZ430g2rTZXX3xilLFjgIBrWHcDwEDq-Z_2mVxsO2NVncs3aSy_SoS3FJ4pQgS5OZqiOq0DPvOuPsZR2hfzJ_5_HQWVdiHNRJJ06RxYtF1hHWg_rK2Mu8hTX6cWa-HyBaJ-9vc9NlskdHBMg3wjqaAA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Бэкап</strong></span>
+          <span>@ne_backup</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/BKAvLA4PvbeFUbG8ZJwYCtP3QRw7nJA3t-EUeqchHufofl19Xn14ep9X_tF3pB8wpHrSdWQKPhe4Pn04PAogS4bEMerKn1TQvMeDsnaSqikd1o-B2Wb-c_p1Ev8_dGPtKZ6pT-8e1sonEf8V6NUxJirUM3YPHBlzClIeoqXW44uDdYyjbA08Bra71HicBwpDNmn9ejjqrqDA56avVP7Spba8Ue1nphKeZNcHemO3N5zvhZAL2WzwSSgvdYipfIXBKqzkU-GuwhgdI7JIPC3zkY2mLH4xuQ0tqZI_I4mhPp3dj8Gk6y9n2IehbcUneQZGzDH6D4Hn8mVQwz88yxqHpg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Авторы прогноза AI 2027 выпустили новый сценарий развития нейросетей — AI…</h3>
+        <p>Авторы прогноза AI 2027 выпустили новый сценарий развития нейросетей — AI 2040. В прошлый раз они рассказали, как гонка ИИ может привести к появлению сверхинтеллекта. Теперь исследователи во главе с бывшим сотрудником OpenAI Даниэлем Кокотайло описали несколь…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T09:54:23.680Z">Jul 30, 2026, 9:54 AM</time> · <a href="/post/1625906249">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2339565287">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/eEWUSenfTb8TX8HIvVDmh1ncr19L9MSgzIy_zCQWHS0iCAJHoc7SfGBOEMD25fj5BliEsKvfx8pPDU4zNMtnaXw9MHGvPHFrMSkZoyZVS_Rb6M7oMHD5ugJwsABcptDBCCwLkWNVFat9bVpNn9BxK0emlSqrByVScUJi2t2rcoPuVPYKEhfInSnvADjKxWyaWUnyKO43YYgGa75JQ06pUUFew5p7MB8bjE93KJsR4NIgiKTi9cohV5rJPZVmbGff0hgKdUSeeKV2NT4IqQ8z_5d8XTjsmosZCHzsr210oB67KSz9Lu0w-C6CxaT9lMYIhxytZ7qLGzi0sArtawmrcQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Саша Чижов</strong></span>
+          <span>@blogsmm</span>
+        </span>
+      </p>
+        
+        <h3>«Восемь трендов вирусного контента» — новый Trend Report Студии Чижова! К…</h3>
+        <p>«Восемь трендов вирусного контента» — новый Trend Report Студии Чижова! Коллеги, мы с командой Студии продолжаем внимательно изучать, что происходит в мировом SMM и упаковывать наши выводы в удобные лонгриды. В этот раз решили разобраться: что все еще способн…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T09:51:14.061Z">Jul 30, 2026, 9:51 AM</time> · <a href="/post/2339565287">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2343522755">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/P-JCeEO528eC4IYLe7QtFdHXT2dlKCVdzxIyW-LO0O6-YVrfP_xjsjOIu62zwIBT7zKHD-xoG1X1rNcf53uso4WgImyfk-TOejfSp33enWGF1d_TLFwm6xzJlJ9hx2L7Tyu7-gZ_NU_gPKaCxm3Vn-44SSR5vgNkPA-aDif5jC0MiH12MVBqK-r0T8X7hTfSZ919LQkHP5A3sXBdcgY2Ob1IOsy0C4qbqt-TtAPdCg_FzQ7nXFPQqAEh5GitsxU_BITHMQo35DZjIvHWn1B2MJKFJiDOSg3vy2k-nGIzKJmx4nNKnio1IsGy9KcOA_tjzknLph9WJGexnG5mAheMvA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Борус</strong></span>
+          <span>@borusio</span>
+        </span>
+      </p>
+        
+        <h3>Разработчики ИИ массово закупают бумажные книги для обучения моделей — по…</h3>
+        <p>Разработчики ИИ массово закупают бумажные книги для обучения моделей — после эти книги уничтожаются Миллионы подержанных книг закупают через посредников разработчики систем искусственного интеллекта, чтобы формировать из них массивы высококачественных данных…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:13:23.842Z">Jul 30, 2026, 10:13 AM</time> · <a href="/post/2343522755">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3185605342">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Jna3BR4dXm0PWo05hkwyqptNin7jRlozqp35OrJ7IkqceCTPAozYpklEFfXhGhnvKaLz6RsCfSoleA2Dso3D4YfpQOwZB-qlV1M3bp4mLiKCZr7dpT_WFuMVvGw5sllmzg1nhyO_DLQYg2sy383KTSMkB5yUM77m-9Q93F3_b3yZ9Ty-qMLkbKoN04VWO0DbPO5Ag8JTUdJURwbiiRKQb7QLN3k8KcGv0ztPHBvO8pyzCNDbLxUylq6jMm6DDAzV1Psd-Mr8lxXpV7fKSTNikeDHyo4JVbgHUmZZR8LjCmrsZGtMHdWJ_okdVuVCcI8dK_Xeq8UYjttYOhXhEmCTqA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">112 | Россия</strong></span>
+          <span>@novosti_112rossiya</span>
+        </span>
+      </p>
+        
+        <h3>Треш-блогер, который убил голубя ради контента, попал в СИЗО Ранее суд в…</h3>
+        <p>Треш-блогер, который убил голубя ради контента, попал в СИЗО Ранее суд в Санкт-Петербурге назначил Владиславу Кайлю запрет определенных действий и не стал отправлять его под стражу. Тогда во внимание приняли, что Кайль имеет постоянное место жительства на тер…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-30T10:12:17.630Z">Jul 30, 2026, 10:12 AM</time> · <a href="/post/3185605342">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3466960843">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/jMT4Mi_-u1iECaIyu8J6C108LVTnNCGJK8W7gxJUTv5X3ux5ymvbPQCQNBAyPS21huoJGIJTkcHrxJUT1Sjt4hZhaNjFj6qmBz4cqNoxQKXtuHV4xRULx6Kj9YPhKCTxQMOxeRNZCTxDLdS8TCTgCoFLM8rTKQRPFOaL2iX5ZKQ_49NGyYdODYJWvBf6pNcBzsD9gxFKXV-Rne-O1hBavHP5hE68lPvq60cl3AJAFOgPODYKU4njmcZDmZLtJJwZft5JCcXI0z3za2DrDKIR8GyzBZ0GoPFiiNoQV8XjiW1-Qr-IYrg3dCCSkfF3EQQNjrkE6rD-StyuUIQ-fy6UsQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Абу</strong><span class="verified-badge" title="Verified" aria-label="Verified">
     <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
@@ -98,119 +173,44 @@ Anthropic закрыла баг-репорт как *Informative*. Сейчас 
       <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
     </svg>
   </span></span>
-          <span>@scienceinquisition</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/iKDZzD_q5JMQ0qtTx-b4T916leQx_Ds42N4R8JK6ZhWRUzPz66fDImUVUjij27F5AYmWYsJ5orFqSfpyTNSYXVTHJ4ht1p7CB174tqNJ2nxS2d6znSk-F0Jevzsa5fF_vsdRIqWgY07BEmOQ5Ps8tfnVwpZ4bDW85iy3vTWRQIEDN2Lb3LVCS_vnjHPbxkg8dcVSSakHKWaPlqLamCAxSIpUDOhuLdvLfcychqcv-8V73QKommLRNP0N86v6JAvchssE7bzPtGqWsaXRreTrK9uqwg3p7qhU0E-s1FAKTalnEakBQ5eozgVncy6UP5_kof6zeKvjHdWqneSw1WTGoQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Недавно Ричард Докинз поразился возможностям нейросети Claude и допустил,…</h3>
-        <p>Недавно Ричард Докинз поразился возможностям нейросети Claude и допустил, что она может обладать сознанием. Это вызвало волну хейта и негодования. В комментариях ему сразу начали объяснять, что Claude — всего лишь языковая модель. Она не думает, не понимает с…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:09:33.337Z">Jul 29, 2026, 3:09 PM</time> · <a href="/post/3951527899">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/458728227">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/d98XAGSyS5FxdhzI8PlvivaR78YfPmCMHk3ZZhx7m6OFHn3cahH_ExjXSQQkK30gS8lhcWYlt4YWuGtT8xSqgtrS2ApX8oAtGenhnzP3Srio_bNc6jAZuPRjXhDvhr5oS93ToTqIv7_5Jk6KTZd7myDczfkjTSeVavnzLYYIbHJehEU8Vb3VFQVaDQm4VeC2yR1aXPbVy14I8ZjvCiscAWFTRY0fjnPqfbkURpYPiVGGHcgA-n-FjWHG6y_tJbAUOvbrzSMq5rJFjXUsmwzbo2jAuAUTHkwQjVpCc2IE1OgSTbCTIpc5xvey4yt54DyECBjWtRwkbPZqDn9MYjzmhw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
-          <span>@linuxkalii</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/PIBv7ezLiX7nwmf2uhUkQpQzjaoAATH0FV59XleYjMm5jLuTrpw7tSv_WtBTJHJCwNXs0FBmxnMgLuGla7Kl4cuGY9FVyiIZP2konqFE8u89GbrE4lM6EMPN1jreX1ejZvFE5PCqZkRk9x4JH4sFYb9W7TDS6p2u9IEd2p_6Q4fbj4qAuyRpPEgi7l01fvQLYfQHpcmcj-Myv9hCYB-3GWjp-K5PzEk7DLZOHMKkx7W8hSyOI7yGSeA-yrAslRJmWI89FfgonJMwaT1inTjDc_3I3SEWsBR9HypyO7yd9eR4B9SbxLvbPJYZ3oPklNtv_oqELobozUaa97PMjTPZ-A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Claude нашёл криптографические слабости, которые годами пропускали экспер…</h3>
-        <p>Claude нашёл криптографические слабости, которые годами пропускали эксперты Anthropic показала один из самых серьёзных примеров использования ИИ в науке: Claude помог разработать новые атаки сразу на две криптографические схемы. В первом эксперименте модель и…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:29:53.009Z">Jul 29, 2026, 3:29 PM</time> · <a href="/post/458728227">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1625906249">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/om03hpdjbbiQOvJ58XjOSAWrU6uLPnNRph-G8TV0sCa9N1Vs40eFNbAwCtQvZTF5tw7-26GSSHNbKiLE26kNNtExQSDBcNLNi4PRGALobyYsoyTbL_i3aIokbWxQ_2qsC8kSPgQFoylZCE0ChH-QLCqDwQVZKN0KI0z6oY0dnAkfs15eBVey4Fv1ht32_BJhoS91Lz3KkohH_FZ206eyAPfJfeubzkuRNtxWbsAjBGLdKuyK2rji3EiYOVIudvGQYfRbjEF_7pq9s_2mdVpETcIFZN_CHRlnoDr4kKnFgA-qCU3qyBD9Ql0nacMyJMqfQRQLl18qXf9QHWzO0iN8rg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Бэкап</strong></span>
-          <span>@ne_backup</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/BKAvLA4PvbeFUbG8ZJwYCtP3QRw7nJA3t-EUeqchHufofl19Xn14ep9X_tF3pB8wpHrSdWQKPhe4Pn04PAogS4bEMerKn1TQvMeDsnaSqikd1o-B2Wb-c_p1Ev8_dGPtKZ6pT-8e1sonEf8V6NUxJirUM3YPHBlzClIeoqXW44uDdYyjbA08Bra71HicBwpDNmn9ejjqrqDA56avVP7Spba8Ue1nphKeZNcHemO3N5zvhZAL2WzwSSgvdYipfIXBKqzkU-GuwhgdI7JIPC3zkY2mLH4xuQ0tqZI_I4mhPp3dj8Gk6y9n2IehbcUneQZGzDH6D4Hn8mVQwz88yxqHpg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Авторы прогноза AI 2027 выпустили новый сценарий развития нейросетей — AI…</h3>
-        <p>Авторы прогноза AI 2027 выпустили новый сценарий развития нейросетей — AI 2040. В прошлый раз они рассказали, как гонка ИИ может привести к появлению сверхинтеллекта. Теперь исследователи во главе с бывшим сотрудником OpenAI Даниэлем Кокотайло описали несколь…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:30:38.535Z">Jul 29, 2026, 3:30 PM</time> · <a href="/post/1625906249">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/907919182">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/JBR1ZGUbME0yy9G4kWFT46FdbRbAsCSvTUM4b23vsuAKaCTkqUxdslOj9SB-Oyxb1XUvBWjmVILDiD6R2md7-sFjdQsGdTHh4ltUylBSUx401DbeQlda7vC1hGyoqGxjc77XOmQ_GasGd3zTuRW--YUqWvWfaPvQ2GyWhtb4eJyfq2C1WLtCyH7fBcFD7BsfPezxOUvDhPBnIb_t5nZk2wnwLusBsTkzx_gjrsNBB8lOcb6F8BkThnpij5SDE9ibJoyzA_quMasigYM1yd95PXTXrPzHDMV592vHavcOL9WuX1lNztaxNYLeI31SIqt4KOPPVHJu55AiDn990w2SPQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">О Бизнесе</strong></span>
-          <span>@business_ru</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/X5OYyq2HLRMVn0yNTH-ssAAn7iWhk2nZwe8_rJrxZq59RUcRd3B5IwYG16cssukXl-OocmThlV4_3XkTGhBiX5F_XoFj6vYwo4218p9Ldtm7r4RwvfDqBUaQCte8wFB0dVTwAcgMbA0974z5mZ3W7xy6TcEeCDShdDekSr5XqAPL_eB_934LJCDwCVJFyLCKa4cO16yam5OqxAjyxWSu_ccuoDcQswguB_kw-qwu99mfuPkGXoVKYcGi5NgXM7l4cjmgB-hopFyGndecijBxuonJyFifvKTzh0ImyREtLzv9vNMsboYIpAeS67w9ImJI_LQfqLWamb642L2mR7XGTg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>ИИ перестал быть экспериментом для быстрорастущих IT-компаний. По данным…</h3>
-        <p>ИИ перестал быть экспериментом для быстрорастущих IT-компаний. По данным исследования VK Cloud и Smart Ranking, 95% компаний с ростом более 100% в год уже используют его в рабочих процессах, а половина автоматизировала поддержку, документооборот и первичный о…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:27:24.729Z">Jul 29, 2026, 3:27 PM</time> · <a href="/post/907919182">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2339565287">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/eil6XjkgJRLoxYEslQMyfvHyuiafbUwP3lxa6NQRrTG9H4oO6xs0w-fZu3pfwQtfEhPNvIn2GA-wkP2GzDYqBtntrBULYjLbl7fluOyKr9n3yDUvoPtqh6lQd17FJeThMD86iTOAkrT9WcRNKfbKOJ3jf51EaeiJx8eDIK_znpyOtJLkoTi67zTRfwzpzfJXBO2BWiTEamu51CIlw4cHPQsGQvbc-7-L8h0A-UUu8Z-ek6zgTLPaglwcjmkVAvSH2kb8zfhkd3R9jLhg04VKn6bJ9-XoNlV3wgVaejCTCnB6jTvQRJbD_uCtyIFBL-Y0FAK0Vlq793Px5q71jvrjEA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Саша Чижов</strong></span>
-          <span>@blogsmm</span>
+          <span>@abuwtf</span>
         </span>
       </p>
         
-        <h3>«Восемь трендов вирусного контента» — новый Trend Report Студии Чижова! К…</h3>
-        <p>«Восемь трендов вирусного контента» — новый Trend Report Студии Чижова! Коллеги, мы с командой Студии продолжаем внимательно изучать, что происходит в мировом SMM и упаковывать наши выводы в удобные лонгриды. В этот раз решили разобраться: что все еще способн…</p>
+        <h3>Треш-блогер, который убил голубя ради хайпа, со второй попытки всё же поп…</h3>
+        <p>Треш-блогер, который убил голубя ради хайпа, со второй попытки всё же попал в СИЗО Ранее суд в Санкт-Петербурге назначил Владиславу Кайлю запрет определенных действий и не стал отправлять его под стражу. Тогда во внимание приняли, что Кайль имеет постоянное м…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:27:15.937Z">Jul 29, 2026, 3:27 PM</time> · <a href="/post/2339565287">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T10:08:12.978Z">Jul 30, 2026, 10:08 AM</time> · <a href="/post/3466960843">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2381138243">
+      <a class="post-link" href="/post/4210383470">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/g5uRVfH0gRFoHquY0GHeu54fk2vEAOg_7DSfmu_GerFN1HIG_GuU-ek3lY2ixunNU6GPgC4KEBCFs-mHz16kuUX6bFl_yqb86YpkzgwTY8Fbug_QIKRD6N0GjmhNjnwAcTl1aM_bsFNtvfmc8tyV_lR0wnQA9-sx-x2gBnrQmLE2RFE7oEWpxWUbX14u9Xt-yZ0xP3xb6H5M6XZGZ0adsIUr2at44FdkI3PulvOS1LGqIxDb-ep9B5CebY3KJskSWMWLJh6XB_I792uZNuT5nLwOLpiBu05VCli7SMym4T8-AtNG2D5CqTkeHQeD6viWd5SQLTnNbH338399B-54-g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/MHPN-Lg7_loBJjJfiddmvfIa7yDH3wCT32NVrmmEBbXYScqFaOFSxePQJvj50DI8L_zW5l_qK1mt9qk2zaFEBe96puEqRGs77_gYgOUU_VkasLSFmo51kmbwepB-161qy4F8xymPpLku1vxhV25GmjDa9tnu88hpcSlmLadjvF4I_HDtKAFUhmv6bxQGNjxGcVmQx-X-5zObG1zSwTDneLWCDAAPERPNWjVxsx6u21MHJNoGbbdoawPSBbFC9nAbHYPmUSr-59uRP-TqdHNKz9Q7c2MowFcQc3cXHJZDBgSVNlB9da1x3WV7YWNsDZRirQFdUYH1_JymWj2wzBRKRQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Технологии | Нейросети | Боты</strong></span>
-          <span>@aiaiai</span>
+          <span class="source-title-row"><strong class="source-title">Apple Media</strong></span>
+          <span>@media_apple</span>
         </span>
       </p>
-        
-        <h3>🍿 ИИ-режиссёр снял трейлер несуществующей антиутопии. В The Tubes люди п…</h3>
-        <p>🍿 ИИ-режиссёр снял трейлер несуществующей антиутопии. В The Tubes люди проходят смертельные испытания внутри прозрачных труб, пока богачи наблюдают за ними снаружи. Кадры автор сделал в ChatGPT Image 2, оживил через Seedance 2.0, а музыку собрал в Suno из со…</p>
+        <img src="https://cdn4.telesco.pe/file/kowHP4r2PpkuouJDb5BDIKzNmxDqFtBnuBkSBA8xOt9CfgG7F9ckgfdZxX_CSo2vYg5OVSLE1NEFKQD3GV5bK_EnuWCst17LNyh7g9oN9CXt3GZCuCyeVhd455vlgW4K8dBYTZrwai6q1tDv_JCnqgSpULKiEWgA-cvcVjtHZTRLFw0Dpt1xQfsLRZl_dNh1orYS0oV2KnbgcQ4B37dcJV90gQFToq_KJP1pfIC-mP_bEKCZro-1dWy6fW5GKJMog8UUhGOjy3oWq4Pm_koHiQ3AVxcA11C-op7SUfE57HAXw7AFvxc6O6lky2AtOLqREEkJ2bsHbQTn3SyvQYJZQA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Samsung отчитался о росте операционной прибыли ​в ​14 раз г/г во 2кв 2026…</h3>
+        <p>Samsung отчитался о росте операционной прибыли ​в ​14 раз г/г во 2кв 2026г. 🍎 Apple Media</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:26:00.352Z">Jul 29, 2026, 3:26 PM</time> · <a href="/post/2381138243">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T10:07:20.127Z">Jul 30, 2026, 10:07 AM</time> · <a href="/post/4210383470">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3605497438">
+      <a class="post-link" href="/post/2559090627">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/jDFY9SekRnVn12AMA5StJN4kGhuoK7S4UPoUGf7V-mfFMTy82YvCyosK1zeMNpOn3Xz1dwvOSfdEJiwLaApFantvq5NCb3O-GhVJZloWghjzZknQcuWV1cm6vMA5m7PEfz8W26Wo5B69UV8n4Mi5jzLANw7xRbidOyacDACzEe_x_TwxmeRP3ycHCR_4CqpAb8gWSkQ106REqYZ-P7p6Bx9JMBmmWGC5Xg65QQOTcQEstbLgLubnm4nx8Rr9dzow58dQDSM4fmy_zf-uK7PtX8CWlyQn6dfSoCxXLgwU4ZVmg9iTXZzay0Kpt3FlH9OVyyNrPnzEq7rb4xD0Hea0wg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/uIAi9uqpyX-9ai6wh7Sj3PddDWrmICVfC10kohgW8xcSnxXh8EwAMLGdmHdcTvBcH-YQIUqwQ-hbn9qkv50rIUVVHrHNjXMNt492dAorbfS6fJCCiqfc-25j9Kga-YeHpNUJKmT_DmwTqDrY4oCXIeTp9_AsSEk6Mx_sVip7ZfjBXILs-dpqCUdBhyQTsoLy5CMOwOnNU72kn8i1AD-Xk1OCJT6pbjv9MMPGZfYWfbYB-SaIE-pISuyQL9xnX73wi_XrISIyN0cFtjtG2JwTBL4fwQ1L94Wz7O2d6kq026sbojY5S-RBiE8-qnReUX7rIThI2WXlKGa2hLF67ChF2A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">EmiraCar Flow 🇦🇪 | Покупка/продажа авто Дубаи</strong></span>
-          <span>@emiracar_flow</span>
+          <span class="source-title-row"><strong class="source-title">👨🏻‍💻/ Марат Юсупов</strong></span>
+          <span>@maratyus</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/DFALZvIzt_5vsIU-P-38Qmz27rKWGWOSM74odSYMr-IJ8MH1yQgZ2m8I6tU0WTQQga6c3CgepfnzRqnYZ59G4jF6Yli23zFcb6A-HjbhxgvJUC32jT8VeqX7XfZRH5NUA80Jt8_OVF_oKXeGwupaU4g-lTVl6F-sThwT9L7kBb3UO5qIverzW0yooG9ymGHLpGAeR0AHAB85nw0hmKQ85v0tpqTVUjtNsnVNnUaOp3OX7QZFl_UM2vUyjNmLp9lY7BSLXBlNsrogbsAFbAJeGwA0JmHn03yFVe6U1JhJktQKezhAOmNewoMSruYxO9Lbx5DmnnlgRcDwEXW8bqaT0g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Операционная эффективность Минфина ОАЭ превысила 97% Министерство финансо…</h3>
-        <p>Операционная эффективность Минфина ОАЭ превысила 97% Министерство финансов ОАЭ превзошло запланированные операционные показатели своего колл-центра в первом полугодии 2026 года благодаря масштабному внедрению генеративного искусственного интеллекта. Уровень р…</p>
+        <img src="https://cdn4.telesco.pe/file/dZkPhU8Lq9eYHYOYbSj0xwi7gBIA0_N-3TKWzFydUXm2e5Etv-sqxvtGeNPTh_DhOdm4sOY_Bah3QrcoAEbNnnGfKMTTf5rAcm3_06kLUxiWHcEhE087kSRVTaBlDG4yHxW5e7j4FFkzMbAgIEAC_dT3Ir_jp3X0jXbmEA244d0k_yPzC5LBvlS6S594jiVOpIWGM3Y0pwuo31oqDtjkTwY6Uh_OzXoEktWvi0DHWgItUQ236LMwzK6iB4ycq5HLLmcxroFZt-jDxkBDwHgtJLmRGk33AVTMmODgCj9a8H-kLJbu0SbTjvlX4IyUShkIV0bp_ZlDXE2qEgLrZIvmPA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Кажется браузер перестает быть просто окном в интернет Мы как-то незаметн…</h3>
+        <p>Кажется браузер перестает быть просто окном в интернет Мы как-то незаметно проскочили важный момент. Браузер двадцать лет был скучным инструментом — адресная строка, вкладки, закладки. А сейчас превращается в главный интерфейс работы с ИИ Вся жизнь человека в…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-29T15:34:38.482Z">Jul 29, 2026, 3:34 PM</time> · <a href="/post/3605497438">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1125101597">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/pM7YGNSy9TG3l2boaqwUTj59kP4yXJbyML1Fte5mpFXe5VzxpYqBKJ9XnHew5MdbIeeVh77c-nIM_A1DXxBeHOgSC50zq-wNtsGUS1dl6E5xFgTnygiJ4EnbFxhLVVnC9cXzno-p4PxPUPLlqpHKanOwuIYr8as4Gapmyp6ZKO1WhSA4bL0fmKNRE3VkSZwDUalyptMF7yiuZllKMz0TaLX18lbiu8ruW91lhA5GJXOPX9-dgeJ2ZTjs7SxVnX6sDb1Pq6t3wPLrb9XxeHZecH9DRFI63z6F0bNWCgWXuohlZP1pyXRWi3Cctjri-o8rmT-RthiV3HM-PO6EZKopSg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">ATI.SU | Логистическая платформа: грузоперевозки и автоматизация</strong></span>
-          <span>@birzha_atisu</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/FaKLX7fS2LzSq8Xj9w7rEnoT-070KbM-E_XcBC2p1XwrqolyfmGTvHkGJrhBBpPRpPtMcrFZQvPhJpmWF0hGeknllpikGRtC0MnBElK5lzGtCxAwip13H73byVm-h4ktqB2V8T53IQu1ZJbx1kZ1gm2ecSupAKxa0-h0qNJTRXQ-b372nrSbEVBvZ3uPixi7IVBDeYoTFRflgU0pVQuhSkpBCL--qfg1SyG4dT3pnWn4kwF4A_1UszWabNPVqro8DsDxa25_HeMeZ5UhVaxQfCQW-x6E-Wpu_7XYt71_eJj-JFE38sH1uENr762MPcRa1Er9wYo7RkJScPFQw3Oxfg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Дизель дорожает: почему топливо не всегда сразу влияет на ставку С начала…</h3>
-        <p>Дизель дорожает: почему топливо не всегда сразу влияет на ставку С начала года дизельное топливо подорожало на 11%, а в последние недели рост цен ускорился. Для перевозчика это напрямую влияет на себестоимость рейса: на топливо приходится около 30–40% расходо…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-29T15:33:33.277Z">Jul 29, 2026, 3:33 PM</time> · <a href="/post/1125101597">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-30T10:07:01.407Z">Jul 30, 2026, 10:07 AM</time> · <a href="/post/2559090627">View post on margeleT</a></p>
     </article>
     </section>
   </main>
