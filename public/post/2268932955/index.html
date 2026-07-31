@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food." />
   <meta property="og:url" content="https://www.margelet.space/post/2268932955" />
   <meta property="og:image" content="https://www.margelet.space/hero.webp" />
-  <meta property="og:updated_time" content="2026-07-30T15:29:14.563Z" />
+  <meta property="og:updated_time" content="2026-07-31T12:42:36.427Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мир… — ZeroDay | Кибербезопасность, Russia war | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food." />
   <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мир…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food.","articleBody":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить произвольный код внутри процесса браузера. По словам исследователей из Nebula Security, для эксплуатации было достаточно просто открыть специально подготовленную страницу. ⏺Атака максимально простая для пользователя: никаких загрузок, расширений или дополнительных действий. Достаточно перейти на вредоносный сайт - дальше срабатывает ошибка в JIT-компиляторе JavaScript. ⏺Проблема затрагивала Firefox с версий 147–151.0.2. Поскольку Tor Browser построен на Firefox, уязвимость распространялась и на его релизы с тем же движком. ⏺Сам баг не выводит атакующего сразу из песочницы браузера. Он позволяет получить выполнение кода только внутри sandbox-процесса. Но исследователи показали полную цепочку эксплуатации, где следующим этапом используется отдельная уязвимость ядра Linux (CVE-2026-43499), что позволяет уже повысить привилегии на Android. ⏺Схема выглядит так: Вредоносная страница ↓ CVE-2026-10702 (Firefox JIT) ↓ Выполнение кода в процессе браузера ↓ CVE-2026-43499 (ядро Linux) ↓ Повышение привилегий ⏺Причи…","text":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить произвольный код внутри процесса браузера. По словам исследователей из Nebula Security, для эксплуатации было достаточно просто открыть специально подготовленную страницу. ⏺Атака максимально простая для пользователя: никаких загрузок, расширений или дополнительных действий. Достаточно перейти на вредоносный сайт - дальше срабатывает ошибка в JIT-компиляторе JavaScript. ⏺Проблема затрагивала Firefox с версий 147–151.0.2. Поскольку Tor Browser построен на Firefox, уязвимость распространялась и на его релизы с тем же движком. ⏺Сам баг не выводит атакующего сразу из песочницы браузера. Он позволяет получить выполнение кода только внутри sandbox-процесса. Но исследователи показали полную цепочку эксплуатации, где следующим этапом используется отдельная уязвимость ядра Linux (CVE-2026-43499), что позволяет уже повысить привилегии на Android. ⏺Схема выглядит так: Вредоносная страница ↓ CVE-2026-10702 (Firefox JIT) ↓ Выполнение кода в процессе браузера ↓ CVE-2026-43499 (ядро Linux) ↓ Повышение привилегий ⏺Причина оказалась в оптимизациях JIT-компилятора. Во время компиляции JavaScript одна из операций ошибочно считалась обычным чтением памяти, хотя на самом деле могла изменить внутреннюю структуру объекта. Из-за этого оптимизатор продолжал использовать уже освобождённый указатель (use-after-free), что в итоге открывало путь к чтению и записи произвольной памяти. ⏺Исправление оказалось небольшим: Mozilla убрала некорректную оптимизацию, после чего компилятор перестал повторно использовать устаревший указатель. ⏺На момент публикации подтверждённых атак на пользователей не зафиксировано. Тем не менее PoC уже опубликован, поэтому обновление откладывать не стоит. ➡️Обновиться рекомендуется до Firefox 151.0.3 или новее. Владельцам Tor Browser также стоит установить актуальную версию, основанную на исправленном Firefox. ZeroDay | Белый Хакер | #Firefox","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, war, politics, recipes, food, health medicine, health","url":"https://www.margelet.space/post/2268932955","mainEntityOfPage":"https://www.margelet.space/post/2268932955","datePublished":"2026-07-30T15:29:14.563Z","dateModified":"2026-07-30T15:29:14.563Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мир…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-30T15:29:14.563Z","contentUrl":"https://cdn4.telesco.pe/file/9fe7f78b11.mp4?token=IAdViaxPAlkM8RAVtxoGpwVf2EGYNBB7WdP1_-jcoOPLPpTjbXhNgDN5x2TEKdLDDk9oLt63sNiknrjc94hkxvdqt3axQH-yX1JkHEPEAhdO_0Q3yTbG8r0HcxLsGSuzLYCAj2uFkpfEwbkt6wDqJwUYDkg_w48ka0Sy-dnhcih7YNMYBBlU_ShWADNnMi6BcQi5hCpQjAgbEWcL77wx3sN4lXGHhreAt5_7weTFs3t0GE8Mb7UX7LKg98jyMKEfBxdMWNiO9E2EvYjvmA-jBz4KY0MO6eAz40fUXG-3PGC4PKQ3sQxZCo-XkA0V_7nhPsUmKf3d58hmvX9UVdyAIQ"},"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"},{"@type":"Thing","name":"health medicine"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/uNPgEOQ4SX9AdWBZ7qu0VYASnjfEuLmL2TNIxEzpx3fOLHjD6-JndH8g3_xK_IZvvdyaW_IwItDdve6nVgcFytLqqq3IZgr6ryrXQYqexBYZkeYrE0EJLQ3GZiguYjBnPG5cvh11Y57SP5wemTNuAkuDanJhQNCwF3j-fsQW5__WfKzT7KaKdK0c-Fg0sMEkHy_7U1wLLP1ae3g-mJbeSbR-7YAq558kJw62sbO5fZHqFGmF6it-ljaUANY8yZqYt2O0Ngco9JNkocOaCTaXXmLnORtj4wtFdSmh21jp_FUdigMAsdY4Ee0r9QIQPAhs23Sn93kNegg6v-oQFT3X_g.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1987?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мир…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food.","articleBody":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить произвольный код внутри процесса браузера. По словам исследователей из Nebula Security, для эксплуатации было достаточно просто открыть специально подготовленную страницу. ⏺Атака максимально простая для пользователя: никаких загрузок, расширений или дополнительных действий. Достаточно перейти на вредоносный сайт - дальше срабатывает ошибка в JIT-компиляторе JavaScript. ⏺Проблема затрагивала Firefox с версий 147–151.0.2. Поскольку Tor Browser построен на Firefox, уязвимость распространялась и на его релизы с тем же движком. ⏺Сам баг не выводит атакующего сразу из песочницы браузера. Он позволяет получить выполнение кода только внутри sandbox-процесса. Но исследователи показали полную цепочку эксплуатации, где следующим этапом используется отдельная уязвимость ядра Linux (CVE-2026-43499), что позволяет уже повысить привилегии на Android. ⏺Схема выглядит так: Вредоносная страница ↓ CVE-2026-10702 (Firefox JIT) ↓ Выполнение кода в процессе браузера ↓ CVE-2026-43499 (ядро Linux) ↓ Повышение привилегий ⏺Причи…","text":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить произвольный код внутри процесса браузера. По словам исследователей из Nebula Security, для эксплуатации было достаточно просто открыть специально подготовленную страницу. ⏺Атака максимально простая для пользователя: никаких загрузок, расширений или дополнительных действий. Достаточно перейти на вредоносный сайт - дальше срабатывает ошибка в JIT-компиляторе JavaScript. ⏺Проблема затрагивала Firefox с версий 147–151.0.2. Поскольку Tor Browser построен на Firefox, уязвимость распространялась и на его релизы с тем же движком. ⏺Сам баг не выводит атакующего сразу из песочницы браузера. Он позволяет получить выполнение кода только внутри sandbox-процесса. Но исследователи показали полную цепочку эксплуатации, где следующим этапом используется отдельная уязвимость ядра Linux (CVE-2026-43499), что позволяет уже повысить привилегии на Android. ⏺Схема выглядит так: Вредоносная страница ↓ CVE-2026-10702 (Firefox JIT) ↓ Выполнение кода в процессе браузера ↓ CVE-2026-43499 (ядро Linux) ↓ Повышение привилегий ⏺Причина оказалась в оптимизациях JIT-компилятора. Во время компиляции JavaScript одна из операций ошибочно считалась обычным чтением памяти, хотя на самом деле могла изменить внутреннюю структуру объекта. Из-за этого оптимизатор продолжал использовать уже освобождённый указатель (use-after-free), что в итоге открывало путь к чтению и записи произвольной памяти. ⏺Исправление оказалось небольшим: Mozilla убрала некорректную оптимизацию, после чего компилятор перестал повторно использовать устаревший указатель. ⏺На момент публикации подтверждённых атак на пользователей не зафиксировано. Тем не менее PoC уже опубликован, поэтому обновление откладывать не стоит. ➡️Обновиться рекомендуется до Firefox 151.0.3 или новее. Владельцам Tor Browser также стоит установить актуальную версию, основанную на исправленном Firefox. ZeroDay | Белый Хакер | #Firefox","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, war, politics, recipes, food, health medicine, health","url":"https://www.margelet.space/post/2268932955","mainEntityOfPage":"https://www.margelet.space/post/2268932955","datePublished":"2026-07-31T12:42:36.427Z","dateModified":"2026-07-31T12:42:36.427Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мир…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Новая критическая уязвимость в Firefox и Tor Browser 👋 Приветствую в мире цифровой безопасности! Mozilla закрыла критическую уязвимость CVE-2026-10702, которая позволяла выполнить про… Topics: war, politics, recipes, food.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-31T12:42:36.427Z","contentUrl":"https://cdn4.telesco.pe/file/9fe7f78b11.mp4?token=Ptyx0J6RXezvdnx0DR0ZcW4_IOqfrxTxmHK77ZhMCLFoP69vvI1ucLX8iAhq_TMTN8xWy_KBOxdYYnQqoWTSOc9LchxBLcYG9ZWgghYbfXN-2Q0C-6z0BNiTIpWTlcEJAjNGuJo2m1xPIrLRDDCTmpGP6WYUwCdYiUVPHk4HbjOYQ1pADuvCjwEoUuEcw7Tx0D0R03sKEehbCZVvybmpFPhA_AXiW0rr_JmVjQ-O-6q4u0WXIAmr2psXFLeR3SxQe7g8DJH8Uxd2Jhiep-ws0ko6CvgsSeATmEvS5Ms1qdX8QShh9J6C-ap_baUdjZWxpQKupqKXeZwZLqGGfbot-Q"},"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"},{"@type":"Thing","name":"health medicine"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/iPS-9ZeF-luDqXD9sHcZWMvJmPAVE7fptkCGSAjCtDgE0vgYR9trQv_2wi2Fej4tI0CstVxdzLrJUxsuzqGD98NbLxiqjSPVR3Se7P-gaFNJWXpY5-GugU2sgCiBKP0UCghI6TCl-kdkfVbT09yS8aMSUWYuH8DUlAWSleImxXRAOOuYeg_gXy2f_ldGVXOpEIdbLZsAZUil8egfgg7d8hg_wvwz0DmPmj6J8efMaASjy_XmzRzNuJfM8KBd47ZqUI3DP3TGr6dRMCFvFPTUgqjU6gacqvTLK8INIgGYyrA897lfvnjgLtHAT4HZPMMU0bms9non_Ym4XrZ887y9Rw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1987?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/uNPgEOQ4SX9AdWBZ7qu0VYASnjfEuLmL2TNIxEzpx3fOLHjD6-JndH8g3_xK_IZvvdyaW_IwItDdve6nVgcFytLqqq3IZgr6ryrXQYqexBYZkeYrE0EJLQ3GZiguYjBnPG5cvh11Y57SP5wemTNuAkuDanJhQNCwF3j-fsQW5__WfKzT7KaKdK0c-Fg0sMEkHy_7U1wLLP1ae3g-mJbeSbR-7YAq558kJw62sbO5fZHqFGmF6it-ljaUANY8yZqYt2O0Ngco9JNkocOaCTaXXmLnORtj4wtFdSmh21jp_FUdigMAsdY4Ee0r9QIQPAhs23Sn93kNegg6v-oQFT3X_g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/iPS-9ZeF-luDqXD9sHcZWMvJmPAVE7fptkCGSAjCtDgE0vgYR9trQv_2wi2Fej4tI0CstVxdzLrJUxsuzqGD98NbLxiqjSPVR3Se7P-gaFNJWXpY5-GugU2sgCiBKP0UCghI6TCl-kdkfVbT09yS8aMSUWYuH8DUlAWSleImxXRAOOuYeg_gXy2f_ldGVXOpEIdbLZsAZUil8egfgg7d8hg_wvwz0DmPmj6J8efMaASjy_XmzRzNuJfM8KBd47ZqUI3DP3TGr6dRMCFvFPTUgqjU6gacqvTLK8INIgGYyrA897lfvnjgLtHAT4HZPMMU0bms9non_Ym4XrZ887y9Rw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
           <span>@cybersec_academy</span>
@@ -71,7 +71,7 @@ CVE-2026-43499 (ядро Linux)
 
 ZeroDay | Белый Хакер | #Firefox</p>
       <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
-      <p class="meta"><time datetime="2026-07-30T15:29:14.563Z">Jul 30, 2026, 3:29 PM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-07-31T12:42:36.427Z">Jul 31, 2026, 12:42 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/war">war</a>
 <a class="pill" href="/country/ru/tag/politics">politics</a>
@@ -91,124 +91,124 @@ ZeroDay | Белый Хакер | #Firefox</p>
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/315327497">
+      <a class="post-link" href="/post/3421472015">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/jy6ysw3JN-aJj7clhuGLY024NCV5K7Y7fAe6a93WaBnSFh3NAd61tMnLBOhQZX78cBagXeSP6h1VIR2o4qeR81TmLNFkmRWtYfO-lxdpjPCLXHUvinnPhLB-MQ6vg-BPmwZO_wG-tFciw2dPg9_T_ubPGtemNnC3OD2d0nTyGDPZFuQvdhbln5bMEPOiMwnCOSGgKeeKI0hjui3Hfad3SSKEv_szTvfzAZ6rdJg06Z4tiXFyzv8rCu5Xyw0jDvGcjuucMZo_6wsmn_qy0YGyQL7hG4X-U-A9DiaJ2xa63uvkJJhmcNq8E1qwZ65-QMxUCprMasikYakWW0bizjJUOA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/BeA93z5bGsbE0LGBztH_DMpWXyfakt2Mk2ddpmOndgGkm0Kd87kopFb69oFkKOkBwBjolD3CzfQsg0-z9nwG-8h6IpUrd8q-vojtCc9VAgoQ0e29vezBiE1AkQQXSjSkEZenU3p8-8dmi6gjrAgX5V6VCm2N3s3fEqItSu5XI9SuFnH8vNIODpsuM-4dNG79dsD0GiqRJH8P7SmUDk80SOITPzHp69ZhNs82pFXL1xrooRnAtzbGmgsnBCV2d6oY8mfwnIajuA8fBUDZmUoYds2obtHWL_BwNmc0gcAyZMdpn_cPzMiOG3ReS-ssQw3eal8qz25x0ycAdB0fZVvoHw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Правда за нами</strong></span>
-          <span>@zarussia_1</span>
+          <span class="source-title-row"><strong class="source-title">Lomovka</strong></span>
+          <span>@lomovkaa</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/XsRhxo97wX9k0ZJKV5ylEqazpU4NHEcjX5xC2kPjjG2SAYRceki2uHineGNrUoX3vc2mSemMDTtKwBXnXzVpAZ-XpJJkyxCvlE3S5PVnQGs6dHezuqSiW-pf-sb8jIBMw7vFKntUD3VPvSU9XBwPchoXCnLz78cygYieCKYzZ-Xb7rUSY9VXY7Qg0_h-aCcxF3sgwNdBglFTzyWX_7lf-dZ2QMr6twxk3eb1HAVfaF9ed5mtzIpOC2tf7n5f15wC7ulUYt0SWCeJQWe0MchVOrFi9AnsJK1jN0ctc10X9-3ADpgrFlZoBaFZRU_HRP8mNhzO59F7NEOiQltxn5hyHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Информация о подвигах участников СВО войдет в единые государственные учеб…</h3>
-        <p>Информация о подвигах участников СВО войдет в единые государственные учебники Сведения будут в учебниках по русскому языку для 10-11-х классов. А в новые учебники по литературе для 9-11 классов включили произведения о спецоперации. «Сведения о героях специаль…</p>
+        <img src="https://cdn4.telesco.pe/file/X9nxTd34bC2GjoQ-2I6LImROaXIAGo7BZQup3pfRfAY78ivRNkLoFWlsOjGK491FmHm0PZ9Pam2Jl0CSj0v2yPpx6KPE3zna7EOwr11a25RwiqgyPwxTYdaNE-vAYJYII_TwGxoA13l5wtakILE4OP_I33xNmDaEhK95fIH65fVRGkmyS0s9YRJzJikAvEQjb7V0sQ5CWkg2SWX8xEB0ysHDdttZ-qNZ2OmDeLpZWZI0ZbVrg_HwZfypjkfHPUwYI_BgcdEp4OTfieY2mb2n35gDCcHi70H8abCnYmrHaSNYs2DHPEe1UHoRYlmm4Fy7O1SzBKLJePL64yDzWEK4VQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В состав Балтийского флота приняли малый морской танкер. В Балтийске торж…</h3>
+        <p>В состав Балтийского флота приняли малый морской танкер. В Балтийске торжественно подняли флаг на танкере «Валентин Рыков» проекта 03182. Судно успешно прошло заводские ходовые и государственные испытания. В частности, экипаж танкера совместно с представителя…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-30T15:25:54.636Z">Jul 30, 2026, 3:25 PM</time> · <a href="/post/315327497">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-31T12:54:11.095Z">Jul 31, 2026, 12:54 PM</time> · <a href="/post/3421472015">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2857999122">
+      <a class="post-link" href="/post/3000365269">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/YoEMiBtVOnYvirfmouJ8GpbRpIAHmLSi6Nua3IW6a9NVYloY2oI3nfNgdh1Kcn9T9IZiL4s-w1O_WRoehxhdPUnRcQUP1DWgciHmUKjZcNe6IgXyyKEz-dgDvYmseUYHv4PT72BashzX2Qy_GezgprkiuPaop_yrJcOtxfmTZuUo-dwAQwO8jbz14i2FXbv13a2rEUayE1gXs6mWeQPr1jLzF62PxdOSSdd7rXi9Zb607NTt5v8dw_jAihoiCUhyAaJuHx8Xfefs5hVPkAjcBV8UBqBaxXbef-vm5j-kpXDy4Z76s1Gtf8mCzTqeyypTbZLJzteB54_9eLh_6tFK6w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/F6COi7yvjcY4v1A02AgMYs-J08aimaZAWoPABF2t328BREMdb__bfY_lJeCfNLtJHwE0p4ioClOxpk6-JAYtxK45CpviOMlGnNgnqIC8DnM-p5aevJuvo1U0-yQdgybtzGMrpscHpBLndkZJkwLUWefQKzM7mYWZZ5tjM0FE0mIbceWiTnB5vKnbSN_1BNilenWKXeTD5KaIV4pKtfGoRWLyjXnXt9IcvUpuuJHx1YktbsM691mlpmjNC-Nx8GNcbIHjAIxizizbYQQeBc3XDEit2rXO44iOYE96nB0EHrjnXvn8gZ-0hjsF8TLy9mz2ZtZ7TrVyW1HsiKnYiuT0Dg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">РОССИЯ</strong></span>
-          <span>@russiafirstchanel</span>
+          <span class="source-title-row"><strong class="source-title">Уткачёв +1</strong></span>
+          <span>@utkachev</span>
         </span>
       </p>
         
-        <h3>Сергей Лавров дал интервью гендиректору ТАСС Андрею Кондрашову. Некоторые…</h3>
-        <p>Сергей Лавров дал интервью гендиректору ТАСС Андрею Кондрашову. Некоторые заявления министра иностранных дел, главы комиссии Единой России по международному сотрудничеству: 🔹Главное для меня – это решение руководства рекомендовать меня в «пятёрку», которая п…</p>
+        <h3>🟠 США готовят вывод двух тысяч служащих из Испании Белый дом рассматрива…</h3>
+        <p>🟠 США готовят вывод двух тысяч служащих из Испании Белый дом рассматривает вывод половины американского контингента из Испании как наказание властям страны за отказ предоставить военные базы для операций против Ирана. По данным немецкой газеты Handelsblatt,…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-30T15:06:35.400Z">Jul 30, 2026, 3:06 PM</time> · <a href="/post/2857999122">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-31T12:36:53.003Z">Jul 31, 2026, 12:36 PM</time> · <a href="/post/3000365269">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/430759096">
+      <a class="post-link" href="/post/2627779165">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mes15rX4a2iMkikCYRJOSY7tntJKeWSHnoF4O13Q-lPD7V70NtpJuC1zCI0OrE6_z0icbjWpOO78KyPZEHngwn67td2YPO7tVHNv31sAPb7NpaPcnPW9LIK5LGWFK-7fD4MJloUtNPbezB55EYgN5BOO0JpKyUSnBBqgnCavqPBiIBM9XM2BwNLl_2ecZajLVMO_45qN8edOnr3elf0KCb0VeLXbRGR9ZqzWDKDaP_jcFHjAj-7jhghcPXGbmJnYDwzgYIMWSjcRqJvJ0mieiuA_tq5DV1rRSw-wtZj8pHMTJoZTiSGQVUg3-hbE0ahtCKjIl4yrvS_UjvJM9D8BQA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/eM3zBS2TM2N2ledP-6AOofQuv6uNBGraIllIHz1aSV7ykBSnFVsJuXRUAWzE4HnjRTT1JmkmYg996-OdD-D6ItKdhT7ZmVafoYjURfmenq9ufbSJzFwobatTXotKlykLtl5fJaJhd7SMcPLLRY0MYJ4mZ8fnmQ9SC5OlhVRUexkhBX_uRRtzQCY-D1RU2KX2cjYq0eiUOib2XSC1Xs5kr1rNB6h5QI_7Zp_Dm-XuFldxpKfCCO-GqYCtBukNUZiXqiI5srrVHWUx6ccYZmcipAGPHXYdY0ms-K67Nt-wjEI0UUbFZ288jULIplMH5UuCU47eH6Ide86Zw__tDWQdkQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Подольск</strong></span>
-          <span>@podolsk24life</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/lbEui1FCJ83DN95NCy1HJ5dphLP5cCxNwGGIq3ajy21CKDU5XiYYK7L8BWk8enrAuQ8k34eGSeM2TAdiV6AdIsHTRZJXH-w65Y-FXnYFAWY26pijIsHZiqoAWweUhlzb-cX-sgcf4yr8mSOB6tzJu9Jj9keCpgXHNDjYPwJoWmsjzbhU1oni86oe10mXtBaVfTqCRmJIChGzxLEGORLGJjeuBZS5f7DwrehYzM9mZFXJHVP3nt1Hq8gflu7dlUYrub64Fp7vXVOW230D2BRHbP2cTaFXto_ELGu1DjCDVQUhggP9YLpBJUJxfddRt0IJyptEuXPKIwpAK-vExp7fDQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Ветеран СВО из Подольска открыл свое дело благодаря социальному контракту…</h3>
-        <p>Ветеран СВО из Подольска открыл свое дело благодаря социальному контракту Демобилизованные участники специальной военной операции, проживающие в Подольске, могут воспользоваться новой мерой государственной поддержки для открытия собственного бизнеса. С 1 янва…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-30T15:00:20.361Z">Jul 30, 2026, 3:00 PM</time> · <a href="/post/430759096">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/447026274">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Rh_C8Wl0CkVhhT53jYypkIw3t73GYGBU_nElTfgmoCUz9zHKDRriqSG9QilLhK7B3uiL8FJfVdnaCas_Rw_wqp5UYeE9PQ9xeNlHIbFEJ0D-cm3Rc9TOOpjagOsRCE4SVfdLCS04TFyqAl40wZvNSRFaDRhx_e-mFfm_ethwEo0lnGJ4y-HjrB0r5m3EPOpo5rTKGouqkSYl4-o9nyMFwjAef7etgs4SGvlFyezZjwzc4T5-qW1R-QxB0wdD0FRMv9O6PsLOEQEVoLBiFoS958H30iPUTdq2CMdzkIiOvEXP21tGIBZ4l4hMAib43-AO6A6ew-2oJR9EDKgV2wHGBg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">@copm_maniya💻</strong></span>
-          <span>@computerchik</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/G-nl9iHvyV_4nUXj7emu2tj4elWvMSB9v-eOi5nIUMzS6_p6rGxp2HYRmWPrA_dSx_5FO3YeFuUmsdH1ca8kDHwF3Pc9zKbXL_u8JWXlk6v6S5V-lwTTt_stpjhHX39OxHoBLDhCIcR8EeaQ4S0-xaWrkQTKpqA-jXLVpQ4196-L_69mB_a3Px4wuaEBShG4nhTS2nvR6SVrxzkRyE3kfsJ_niRve2TkcjNC-GKHclYVrDcQr9A3uZsoP0v1aFfxh9v9iJtaVsltL6O-5Yb1xCRWQP3NMrFRL_7QL6W5he0_VDhR7M81hBNhPEOgPEATLz4W7cN5xaOalAMCCfXEGQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Скрытый идентификатор устройств Windows GDID (Global Device Identifier) —…</h3>
-        <p>Скрытый идентификатор устройств Windows GDID (Global Device Identifier) — это постоянный цифровой отпечаток, который серверы Microsoft автоматически присваивают каждой установке операционной системы и сохраняют в системном реестре. Недавно этот скрытый механи…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-30T15:28:52.659Z">Jul 30, 2026, 3:28 PM</time> · <a href="/post/447026274">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1196478195">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/VQWnuVkyzZqGPgJyMzCkfljwOm8f4fQ6ejCETarlobuUmBQI0bgG4LcUtRQ8z3PxwMMQbuRCR_hU-MdbIaODshEx7CaqvknU99Xp3biEhjQZ22JkDZ8eQ4WsVDCMUhaSyoXWsers2WiEq9V5K4E9VN5-FJeHONdsysklPbZ2W34s0W4j1xpa6KI6P50DILPl1EloGE6fOlreDvbo3Gew2cYrkaJIHzGWp50HGFfn1g7Cj8eTzj1f0mckUv2bOP3kTNK28w2iRe8d_y-LxuWB-dQ3mUcTQkPzGCT0h_FyTRQnizPsI_0uKCF2nIxq9C13WIV4hOt2fMTm9LliNnwPgQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">1С для бухгалтера ❤️</strong></span>
-          <span>@buhi1c</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/UKGj7OXjrwhuPQQAVS2ElNDNexvkagNBAwEu7wzedwNc_e23kyf6gMg1HubIp8g-pld8NBobAmfhBiToSjwnyMRV_obE_zAZkqd5cbfPmVdjXQpOJqRXzhsGWTzXJkRCT7k56a6MY1IuWGPr7bY6DXmq3w1S8yrtkoRbIkGv5eC85Zf2zFhnfFWO2mN0mpLgeqsQjHeYOu2PJPJL4VI5TqMRnqYWLvE9a8dVNnGn6ZkuAo5vUgdGfdW6ZwcLqNkykbmqCLA0oKQok2bs2TLOyzQOOV-blOuRoSs-A6khTZIbhf9w70k6gOXm31hdRJ-iRND-2AqHQXOML9EHU4xBUg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>📣 Новое универсальное уведомление в 1С:Бухгалтерии 8 ред.3 В разделе «От…</h3>
-        <p>📣 Новое универсальное уведомление в 1С:Бухгалтерии 8 ред.3 В разделе «Отчеты/ Регламентированные отчеты» появилась новая форма «Уведомление по УСН». Документ применяется с 31 июля 2026 года и является универсальным документом для подачи в ФНС сведений: 1️⃣О…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-30T15:28:30.849Z">Jul 30, 2026, 3:28 PM</time> · <a href="/post/1196478195">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3641706129">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/VQWnuVkyzZqGPgJyMzCkfljwOm8f4fQ6ejCETarlobuUmBQI0bgG4LcUtRQ8z3PxwMMQbuRCR_hU-MdbIaODshEx7CaqvknU99Xp3biEhjQZ22JkDZ8eQ4WsVDCMUhaSyoXWsers2WiEq9V5K4E9VN5-FJeHONdsysklPbZ2W34s0W4j1xpa6KI6P50DILPl1EloGE6fOlreDvbo3Gew2cYrkaJIHzGWp50HGFfn1g7Cj8eTzj1f0mckUv2bOP3kTNK28w2iRe8d_y-LxuWB-dQ3mUcTQkPzGCT0h_FyTRQnizPsI_0uKCF2nIxq9C13WIV4hOt2fMTm9LliNnwPgQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">1С для бухгалтера ❤️</strong></span>
-          <span>@buhi1c</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/fFT1JOYUyGTCI6RM3Uo05uGzzlsdzNxAez3URifQagMIu1rBDjWMVJ_AQfIe7Mn8wYmaNgmZ8SWSbJvnPYXsNaecYe5OSpsaDw9frxC_0SIiq5k1n4GGbkuuK1wurbWM0SVeDBOTPQ4BxDfJLpoVbYuAvZLVutQALcVZ7yKIP6DVnUAKHqI3freL5Qj59hCnsl6r51KMAqVDGT3SlO0N5H3E5VZbi76GRCrvhTqtAONGvRvOkJD53xsnuKLFv3VPaDlnJxR7WTFBqHwI6d7ub0tu5-OmlKvoSSjBHWVptLmB3XmZk8qJbQvPkPnvimBkk38MezaugKQQkCeO7Uoagw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Уведомление по НДФЛ до 03 августа 2026г. в 1С:Бухгалтерии 8 ред.3 Уведомл…</h3>
-        <p>Уведомление по НДФЛ до 03 августа 2026г. в 1С:Бухгалтерии 8 ред.3 Уведомления по налогу на доходы физических лиц подаются в ИФНС дважды в месяц: по доходам, выплаченным с 1 по 22 число – до 25 числа, по доходам с датой выплаты между 23 и 31 числом – до 3 числ…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-30T15:28:30.849Z">Jul 30, 2026, 3:28 PM</time> · <a href="/post/3641706129">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3199155069">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/R9ECcRg4cLfVnCKL15bnvwsvPCW_jA8SlfaEH9d0N7_hAqRZmTQvL57gWDr2JIxSzLaNl-crCLPD129kOKfrrFSVK8os-jYhxInI7n2G1Vo66wlNdRuN_BjfQKOYq0V7immnsEmThpcnV75H_evUSUR9eYIXVTq8RgyYRkAvqkrNHXy8uQJ7tulKtjcWFSg2-hjLjYiBXg28JBVP4ZBbDG6OLaWVIyiPrmMnlBK3vlxUOLU6KlsUVpP1fhKzLVQ2B2Gclm0ewCYY1mNK259z0Z_KxQIDfpPNbtGKHKsAYuKQl8PWdS36sv48ZvfoAIth2EBLkrwZGXNYnknWi2PwlQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Беспилот | БПЛА, дроны, роботы</strong></span>
-          <span>@bes_pilot</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/v69q-XEzHYdiCJ4hl4IduM_Hkm7PKK7ukOrtUXIUxgr2xMn_NLTfWVMGKYVxMrptswFoSdPmSMaj1DMN9cNygmQ4_oSy6I404lnTNjffcT6fDWtfWbSc1q3T8cddTFm9Y-U_LGtiGb7n4CAT1bG2luZ4QpBlqZnsHrvC3RK2oc1S3DH4yB45TFhG2uDkgteyRpURaR_EXZkIdxsPdfrqYj9a-vHQo_P7jYFn-vX11Bqh70DA1ffWvyWjy3ji2wciaEIwzeh8wyI2Q6s1pdKtv2TrpR1r2z6xhLJJ0eMC5M_Ty-TgPEu5YAhsxkLO8HW6MciQxhVOAFZTQdggHJ6AQA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>В Москве задержали замглавы управления Минпромторга по беспилотникам и то…</h3>
-        <p>В Москве задержали замглавы управления Минпромторга по беспилотникам и топ-менеджеров ГК «Эфко» ▶️ В Москве по подозрению в растрате в особо крупном размере (ч. 4 ст. 160 УК) задержана замначальника управления беспилотных систем и робототехники Минпромторга А…</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-30T15:28:23.975Z">Jul 30, 2026, 3:28 PM</time> · <a href="/post/3199155069">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1945434833">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/WbIabIHtDVnwzCfXb_u1Ds_V0PHp-y6P3fIWrfqThW00WqGGUtxTHXJ_ZHEncNMl-7h6JtAFeDl1NK_XnDyJulSX4dpploIYJKIDxFgSzAV68EemYh6nskJvX4TJZQ6HZ1Nh41hZ-pFRclKMn933GyZB2cqNipv07M3KKwy09vN176xrFDCTD7TQ6GKxZ873LW1rMrZ06al3ikrZzsE_Tu7yAhOYDR64QVtpzYzvq_yMp6OC6I0bKI3q7364KlU9og9wm3orlbLEZg7KOpX0KtUb07XfatzO3BcWiPQu854BkZJB1RjG4DQUWMmqmke6D4XVB6lBs6fRtekOlD1AYg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Адам Делимханов</strong></span>
-          <span>@adelimkhanov_95</span>
+          <span class="source-title-row"><strong class="source-title">Т-Воронеж | Типичный | Новости Воронежа</strong></span>
+          <span>@typicalvoronezh</span>
         </span>
       </p>
         
-        <h3>Сегодня завершилась весенняя сессия Государственной Думы ФС РФ, ставшая з…</h3>
-        <p>Сегодня завершилась весенняя сессия Государственной Думы ФС РФ, ставшая заключительной в работе VIII созыва. За прошедшие пять лет депутатами Государственной Думы проведена большая работа по реализации стратегических задач, поставленных Президентом РФ ВЛАДИМИ…</p>
+        <h3>❗️СВО не завершится в 2026 году, заявили в Госдуме. «Никаких предпосылок…</h3>
+        <p>❗️СВО не завершится в 2026 году, заявили в Госдуме. «Никаких предпосылок к завершению СВО в этом году пока нет. Нужно достичь целей специальной военной операции. По моему мнению, это выход на западные границы Украины», — сказал член комитета Госдумы по оборон…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-30T15:27:25.412Z">Jul 30, 2026, 3:27 PM</time> · <a href="/post/1945434833">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-31T12:36:14.091Z">Jul 31, 2026, 12:36 PM</time> · <a href="/post/2627779165">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2234182663">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/R6YbL4Mol93mIp1anVkQJ12IHjfdlJ44eTv7zelqpNHs07qANHHu7KOZy_UbLJh7MENXBLyU7udX1iOa7XSEUh0pRUML9V81JObNRkYMGqIC-aG5nuq47F_4Au2ieEuAOiXRHkicnreuTmlyo7Y0XpuRMeAefBEeV1guZegNWWGbl71f2gse0s-sbnR0OBGvv2SiU1HmdfyWZ6KKd32Bz4nLjnfeymT10TmsGoGlhEFotWJN69vzLKg3nkMUlXVYbPO048vafJsYqSMCaQttwbphfBuRuNqKH2haWtOOvQL-BaRvBTZt_--8k7sNVXaDykueSwuv__SBwRDZTAW-lQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Подслушано Тверь и Тверская область</strong></span>
+          <span>@tver_podslushano</span>
+        </span>
+      </p>
+        
+        <h3>📚 В школьные учебники по русскому языку включили материалы о героях СВО…</h3>
+        <p>📚 В школьные учебники по русскому языку включили материалы о героях СВО Сведения о подвигах героев специальной военной операции появились в единых государственных учебниках по русскому языку для 10–11-х классов. Об этом сообщила советник президента РФ Елена…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-31T12:35:46.310Z">Jul 31, 2026, 12:35 PM</time> · <a href="/post/2234182663">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1140586364">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/iPS-9ZeF-luDqXD9sHcZWMvJmPAVE7fptkCGSAjCtDgE0vgYR9trQv_2wi2Fej4tI0CstVxdzLrJUxsuzqGD98NbLxiqjSPVR3Se7P-gaFNJWXpY5-GugU2sgCiBKP0UCghI6TCl-kdkfVbT09yS8aMSUWYuH8DUlAWSleImxXRAOOuYeg_gXy2f_ldGVXOpEIdbLZsAZUil8egfgg7d8hg_wvwz0DmPmj6J8efMaASjy_XmzRzNuJfM8KBd47ZqUI3DP3TGr6dRMCFvFPTUgqjU6gacqvTLK8INIgGYyrA897lfvnjgLtHAT4HZPMMU0bms9non_Ym4XrZ887y9Rw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
+          <span>@cybersec_academy</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/TDhsJoFUfHCXdKVixTFGdn___b4RqQq9SOvmDqPJuUmhiE7lcTufMTbDdyWyRcOVT9AqDTXPVoCWtmj7kk_aZZjqlyyQ7li0U_hqpgz_4TNECMXz0ITUxrNaCr1I4d-qa6gCSn-XhvZaNgpt8YzMGAc6d1xOLGZINZhMQjKBDpZQVT8u7N8v878WdmLh4318j02mewq-MSmyMvke5MRANVEJ-iueFbO0dLVYrfapDtK0kg8FFPaXesBRuiB9z0u1E4dvrsoT-K25vbC7HgY0k1p3AAnMJXJN8FjUHHMW4zRbW550miEwM_iioiSAdOk8boLgtUAPCj3Lkodys03HZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>На Stepik запустили мощный курс по «Troubleshooting Docker и Kubernetes:…</h3>
+        <p>На Stepik запустили мощный курс по «Troubleshooting Docker и Kubernetes: поиск и устранение проблем» В программе только важные аспекты: — troubleshooting Docker и образов — диагностика сетевых проблем — настройка readiness/liveness probes — отладка pod’ов, де…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-31T12:42:36.427Z">Jul 31, 2026, 12:42 PM</time> · <a href="/post/1140586364">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2733271057">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/TsROU0DLDW_kFsBwqXhHzaD2Q5VnYWijQtyFBDz0yuoddzO0s90a9OH0KrOK2AJRme1ZSawqCCnLiRN2ujX2_v13Cnycqy-0j3Aa-BNJfWEpODmWNZnUZ0FtI3OrNsGN8wAg7HzFVBEYtLwlFnmIbSI8-wka_GImOhdWnZAKPy31vE9ozxdVVQ9-bA4CKzkQs9Vpl1NtsWvmxGnszgNPKKK5ixG9vJVgpTypnh_EtrXwivcE4nJWiMUQqyUsJaPqcQ6fXuua9IjRdMF_Oa75h0eBAZ2iPl8rs6Q6LEmk3jfDPKqgwNIGJ1a1AhSmUzWoh37qNPzWHUq4GboRvb0H3A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мир Михаила Онуфриенко</strong></span>
+          <span>@mikle1on</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/ZmpgRxO7wG8EmIAjm8JDwjB10o-4l3b9cEbRxq3unutQrT6E-jNLXHXbtbjE9uwPLhcLrrN_k8sBZYQbjWIeQUyzTLgwTWhWEKjNjeA8zRmN08xoh_nFunKcH7YMxhdSLq1MTrxJ4cixwnYMhltGD6vN32Q7rtjhvizg0ULc5rntfgYUD3UZQuyERMveLByEhDSe1TTg_pqauArZv2CLQ522eYBKVyA5olflK3PbDsDl2bJ1ejPuRcyIk_eVSQPi5uFuVU3cu2JncBD2qZi-REjBTD4A0n9iNEOia6Vocm5bbWiWmfS-WuHoJGJZr0q-_KSjTvgFj1qrZLHoer_9QQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В новом выпуске Дурдом Земля Михаил Онуфриенко расскажет: Американские во…</h3>
+        <p>В новом выпуске Дурдом Земля Михаил Онуфриенко расскажет: Американские военные заявили, что завершили 11-ю ночь ударов по Ирану. Новая серия атак последовала за заявлением президента Дональда Трампа о том, что удары будут усиливаться. На этом фоне интересно з…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-31T12:54:49.587Z">Jul 31, 2026, 12:54 PM</time> · <a href="/post/2733271057">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3654547975">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/TsROU0DLDW_kFsBwqXhHzaD2Q5VnYWijQtyFBDz0yuoddzO0s90a9OH0KrOK2AJRme1ZSawqCCnLiRN2ujX2_v13Cnycqy-0j3Aa-BNJfWEpODmWNZnUZ0FtI3OrNsGN8wAg7HzFVBEYtLwlFnmIbSI8-wka_GImOhdWnZAKPy31vE9ozxdVVQ9-bA4CKzkQs9Vpl1NtsWvmxGnszgNPKKK5ixG9vJVgpTypnh_EtrXwivcE4nJWiMUQqyUsJaPqcQ6fXuua9IjRdMF_Oa75h0eBAZ2iPl8rs6Q6LEmk3jfDPKqgwNIGJ1a1AhSmUzWoh37qNPzWHUq4GboRvb0H3A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мир Михаила Онуфриенко</strong></span>
+          <span>@mikle1on</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/Cebsfm25xo8NklDX9sWzKuF3-pSGS_34RfHlH-s8AXlNpWQUf-duZY64YEflyhXY93HlAuas1Ej4iUi__s3JpwpN1r7XDQSefsIec9Ziq5IqD8p9Y9vu7OhAF7xoR3k5FaRvRT1myjo9SIF78D6MYjtLuc9n1aQbSUXU29Eg4I1LFa5ka-cOphdiv7HhImvtjeXFyTfvtwmRhXyFhjRJEHFaWmTm1FNWxE-MSgbYACOXTGDcSc64EmhIWx52rEPKnWi1buIKrHll2lTTiKWcl5wngdWe7-pV8iIx18IdkEdxTiYp2IND8OV4m93EcJO17-MlXX4SPr_UCIUWFmf0wA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Медведев: &quot;У нас сейчас есть одна общая задача, и она очевидна - сохранит…</h3>
+        <p>Медведев: &quot;У нас сейчас есть одна общая задача, и она очевидна - сохранить нашу страну. А сохранить нашу страну можно только одним способом - победой в специальной военной операции.&quot; ▶️. Дмитрий Анатольевич, повторите это еще раз для Дмитриева, Пескова, Абрам…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-31T12:54:49.587Z">Jul 31, 2026, 12:54 PM</time> · <a href="/post/3654547975">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1381901008">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Fx1czlSIbkibBAi-GPiSmq_CKbqMDNZAhVV2crDrIo94Wte9VXbejtGRP1_q8SqXyOnrlOIrtnbhFbEaPiMWwmrIgAso2Zn7qe5DLjJSnXhmcT48ElJ4MpFCVDf49dHFB_vXpdtGWMRmzmehoDKnfTgNdzacxoH-sNIeKqHrprWNIu-ONWUgNrjcNhWmbieUZI9fqzQTXYtujYM7TG4T63Cp9mgOFrjXYoSQ6nZNRLUBcqRzYdADTBRAsDc95MEew8AZcUDPqmJu62hMrRF2SHsXV806TS8Tvcyr1uLjhOOo95oa6unhDk3PX2amEpKmsL9y-kAq-BqjhSRfJWMPLQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мейстер</strong></span>
+          <span>@maester</span>
+        </span>
+      </p>
+        
+        <h3>Беспилотник атаковал газовозы у египетского порта Дамиетта, в результате…</h3>
+        <p>Беспилотник атаковал газовозы у египетского порта Дамиетта, в результате чего вспыхнул пожар на судах, принадлежащих Греции и США, признали власти Египта после некоторого промедления. Виновные не называются, ответственность на себя тоже никто не взял. Версий,…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-31T12:54:19.486Z">Jul 31, 2026, 12:54 PM</time> · <a href="/post/1381901008">View post on margeleT</a></p>
     </article>
     </section>
   </main>
