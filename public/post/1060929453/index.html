@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance." />
   <meta property="og:url" content="https://www.margelet.space/post/1060929453" />
   <meta property="og:image" content="https://www.margelet.space/hero.webp" />
-  <meta property="og:updated_time" content="2026-08-02T12:29:39.751Z" />
+  <meta property="og:updated_time" content="2026-08-03T13:41:02.128Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Р… — ZeroDay | Кибербезопасность, Russia crypto | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance." />
   <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Р…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance.","articleBody":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие команды удаляют старые сервисы, но записи о них остаются в публичных источниках. Через Certificate Transparency можно найти домены, которые уже не отображаются в основной инфраструктуре. Например: curl -s \"https://crt.sh/?q=%25.example.com&output=json\" \\ | jq -r '.[].name_value' \\ | sort -u Так можно обнаружить: ➡️старые панели администрирования ➡️тестовые окружения ➡️забытые API-сервисы Часто именно такие хосты оказываются менее защищёнными. ⏺Проверка утечек через Git history: Удалённый из репозитория пароль не всегда исчезает. Git хранит старые коммиты, поэтому секрет может остаться доступным в истории. Быстрая проверка: git log -p --all | grep -Ei \"password|token|secret|apikey\" Для полноценного поиска используют специализированные сканеры, которые проходят всю историю коммитов и ищут ключи, токены и приватные данные. ⏺Поиск скрытых endpoint’ов в веб-приложениях: Документации часто нет, а старые API остаются доступными. Один из подходов - собрать список возможных путей и проверить ответы сервера. На…","text":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие команды удаляют старые сервисы, но записи о них остаются в публичных источниках. Через Certificate Transparency можно найти домены, которые уже не отображаются в основной инфраструктуре. Например: curl -s \"https://crt.sh/?q=%25.example.com&output=json\" \\ | jq -r '.[].name_value' \\ | sort -u Так можно обнаружить: ➡️старые панели администрирования ➡️тестовые окружения ➡️забытые API-сервисы Часто именно такие хосты оказываются менее защищёнными. ⏺Проверка утечек через Git history: Удалённый из репозитория пароль не всегда исчезает. Git хранит старые коммиты, поэтому секрет может остаться доступным в истории. Быстрая проверка: git log -p --all | grep -Ei \"password|token|secret|apikey\" Для полноценного поиска используют специализированные сканеры, которые проходят всю историю коммитов и ищут ключи, токены и приватные данные. ⏺Поиск скрытых endpoint’ов в веб-приложениях: Документации часто нет, а старые API остаются доступными. Один из подходов - собрать список возможных путей и проверить ответы сервера. Например: ffuf -u https://target.com/FUZZ \\ -w common.txt \\ -e .php,.json,.bak Так можно найти: ➡️старые версии API ➡️служебные страницы ➡️резервные копии файлов ➡️забытые административные разделы ZeroDay | Белый Хакер | #пентест","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, crypto, finance","url":"https://www.margelet.space/post/1060929453","mainEntityOfPage":"https://www.margelet.space/post/1060929453","datePublished":"2026-08-02T12:29:39.751Z","dateModified":"2026-08-02T12:29:39.751Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Р…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-08-02T12:29:39.751Z","contentUrl":"https://cdn4.telesco.pe/file/d6ec59e15b.mp4?token=EB18wPAT1-f2r66KbaF6JfDH7Q2LS4hRoSS3bTyGpiOF3mKJXL0-qkLUY9sY4hqMJ38Wvu-IP0846LH6nVTvTpERSk2mvxVklKLWA3W7bKqzFQxCmq2Bt44TFAoYkVjyM3BcDDYJimKhP7MN59FSqAiogjRrsNpGrsT-zv5NExOEUx3Jkx6zDVEtKGbq32CtTpMYhSg2BoBKlNqc8XRoyrfPs9E-50ATP401OzQkng8mAfm9I5HM4wNfkn5p70gNKyP_NpPsvkWHvKzGH_4giS3JMEN0FtT34DNXhLP-I36cyJTZj6caYPS6Z_p5HPM7QAQuhs7fWnbeFic_gG-BrA"},"inLanguage":"ru","about":[{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/mQwvHWecZMP90zAXrJbeFjaIKpw08pnUN5VSILD9jgeewW9WvVorTXtI4XrJ9Tvn6dlqfLnWf9Xq8ZWp7E4JjbznIe4FSy-oJuhpW1Ty16MFj2pTc8l38TAtWsFlnRnksMAX4gxFo22TGi9c1l4_U_Y0y90JZA6TQRCsVHvLpr62OdFfoQe7PLRzbfYRHQpBpWiPP0-HyfyXsLQYHwea9Rl0sMFr9wffAgcdG6yjhossR941e38-NZ4gTNpKFNsxytBWZZW5hfhBeGAiEZIh1LTUYteFJSbayulGDu46KSr_7wutuKYmUMDWIo7Ri6geGI4N12OEMv4lAGr0Ge7NCg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1989?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Р…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance.","articleBody":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие команды удаляют старые сервисы, но записи о них остаются в публичных источниках. Через Certificate Transparency можно найти домены, которые уже не отображаются в основной инфраструктуре. Например: curl -s \"https://crt.sh/?q=%25.example.com&output=json\" \\ | jq -r '.[].name_value' \\ | sort -u Так можно обнаружить: ➡️старые панели администрирования ➡️тестовые окружения ➡️забытые API-сервисы Часто именно такие хосты оказываются менее защищёнными. ⏺Проверка утечек через Git history: Удалённый из репозитория пароль не всегда исчезает. Git хранит старые коммиты, поэтому секрет может остаться доступным в истории. Быстрая проверка: git log -p --all | grep -Ei \"password|token|secret|apikey\" Для полноценного поиска используют специализированные сканеры, которые проходят всю историю коммитов и ищут ключи, токены и приватные данные. ⏺Поиск скрытых endpoint’ов в веб-приложениях: Документации часто нет, а старые API остаются доступными. Один из подходов - собрать список возможных путей и проверить ответы сервера. На…","text":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие команды удаляют старые сервисы, но записи о них остаются в публичных источниках. Через Certificate Transparency можно найти домены, которые уже не отображаются в основной инфраструктуре. Например: curl -s \"https://crt.sh/?q=%25.example.com&output=json\" \\ | jq -r '.[].name_value' \\ | sort -u Так можно обнаружить: ➡️старые панели администрирования ➡️тестовые окружения ➡️забытые API-сервисы Часто именно такие хосты оказываются менее защищёнными. ⏺Проверка утечек через Git history: Удалённый из репозитория пароль не всегда исчезает. Git хранит старые коммиты, поэтому секрет может остаться доступным в истории. Быстрая проверка: git log -p --all | grep -Ei \"password|token|secret|apikey\" Для полноценного поиска используют специализированные сканеры, которые проходят всю историю коммитов и ищут ключи, токены и приватные данные. ⏺Поиск скрытых endpoint’ов в веб-приложениях: Документации часто нет, а старые API остаются доступными. Один из подходов - собрать список возможных путей и проверить ответы сервера. Например: ffuf -u https://target.com/FUZZ \\ -w common.txt \\ -e .php,.json,.bak Так можно найти: ➡️старые версии API ➡️служебные страницы ➡️резервные копии файлов ➡️забытые административные разделы ZeroDay | Белый Хакер | #пентест","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, crypto, finance","url":"https://www.margelet.space/post/1060929453","mainEntityOfPage":"https://www.margelet.space/post/1060929453","datePublished":"2026-08-03T13:41:02.128Z","dateModified":"2026-08-03T13:41:02.128Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Р…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. 3 лайфхака для пентестинга 👋 Приветствую в мире цифровой безопасности! Расскажу ещё о трех полезных фишках про пентесте. ⏺Поиск забытых поддоменов через историю сертификатов: Многие к… Topics: crypto, finance.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-08-03T13:41:02.128Z","contentUrl":"https://cdn4.telesco.pe/file/d6ec59e15b.mp4?token=W9IxxvSM2_zgpsr915VNEs35398B0JFp20LmaWQfhFY3kj-P8_jPCuGwmWLmQsG4q-QRdbmZN6Uj-I1NE3izWwT_NA2hImJAn5u96q0W2aNanamDkiIehHKeKPzMOaq7CSj9MBWbqTbhg72kacl5qr8hMUXYtXwBTTxCx04OH3F5Ei3LluEHNA4OZU6B-Ue7HXYbvpuTtAQxCt1JY2pSKeu_laAmH9klotpZBMBY1a1AUBmaV2VMd1OVrgOOCyE9bmvGjxmHG_ke1gJHyLUtaoORpj4BQxk5DisfgofC4KXQ0ummGkOUf_M6DntlLtO9hKPB9vmG0GHqXes5WkDnCQ"},"inLanguage":"ru","about":[{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/FuOYcOYEbzu1hnXjM0dRDfvcBOmmm0h8VV_pOU4RpQ18A3_V3AB7f_CPFC-Qzq8fmkrz9V9i61243VoC25PMKicJXIWgmHz5usJePm4utZUklmOMUMIu_K57xG0tKGq3_UAxVoCh0PF4aW5MkDOSckCvWFqg7AEucpqUaEXDWWqB3aQNhshG35w3UN8TImfbeWyswTORo5u6teLAOTd7u_u6zesN-rzCHmit8ACsdzzVz_0HReSld-YkvUkLYzIGOg5gy6dMAdgPp4I_w_y6FATCwrRf12KIrBVawaBMIAxs3g7Mf0EKtpveM_f9e9jN6tyXJSDL3O5cg3MIQ4MpTg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1989?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mQwvHWecZMP90zAXrJbeFjaIKpw08pnUN5VSILD9jgeewW9WvVorTXtI4XrJ9Tvn6dlqfLnWf9Xq8ZWp7E4JjbznIe4FSy-oJuhpW1Ty16MFj2pTc8l38TAtWsFlnRnksMAX4gxFo22TGi9c1l4_U_Y0y90JZA6TQRCsVHvLpr62OdFfoQe7PLRzbfYRHQpBpWiPP0-HyfyXsLQYHwea9Rl0sMFr9wffAgcdG6yjhossR941e38-NZ4gTNpKFNsxytBWZZW5hfhBeGAiEZIh1LTUYteFJSbayulGDu46KSr_7wutuKYmUMDWIo7Ri6geGI4N12OEMv4lAGr0Ge7NCg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/FuOYcOYEbzu1hnXjM0dRDfvcBOmmm0h8VV_pOU4RpQ18A3_V3AB7f_CPFC-Qzq8fmkrz9V9i61243VoC25PMKicJXIWgmHz5usJePm4utZUklmOMUMIu_K57xG0tKGq3_UAxVoCh0PF4aW5MkDOSckCvWFqg7AEucpqUaEXDWWqB3aQNhshG35w3UN8TImfbeWyswTORo5u6teLAOTd7u_u6zesN-rzCHmit8ACsdzzVz_0HReSld-YkvUkLYzIGOg5gy6dMAdgPp4I_w_y6FATCwrRf12KIrBVawaBMIAxs3g7Mf0EKtpveM_f9e9jN6tyXJSDL3O5cg3MIQ4MpTg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
           <span>@cybersec_academy</span>
@@ -76,7 +76,7 @@ ffuf -u https://target.com/FUZZ \
 
 ZeroDay | Белый Хакер | #пентест</p>
       <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
-      <p class="meta"><time datetime="2026-08-02T12:29:39.751Z">Aug 2, 2026, 12:29 PM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-08-03T13:41:02.128Z">Aug 3, 2026, 1:41 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/crypto">crypto</a>
 <a class="pill" href="/country/ru/tag/finance">finance</a>
@@ -92,86 +92,41 @@ ZeroDay | Белый Хакер | #пентест</p>
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/1842597931">
+      <a class="post-link" href="/post/467992498">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mQwvHWecZMP90zAXrJbeFjaIKpw08pnUN5VSILD9jgeewW9WvVorTXtI4XrJ9Tvn6dlqfLnWf9Xq8ZWp7E4JjbznIe4FSy-oJuhpW1Ty16MFj2pTc8l38TAtWsFlnRnksMAX4gxFo22TGi9c1l4_U_Y0y90JZA6TQRCsVHvLpr62OdFfoQe7PLRzbfYRHQpBpWiPP0-HyfyXsLQYHwea9Rl0sMFr9wffAgcdG6yjhossR941e38-NZ4gTNpKFNsxytBWZZW5hfhBeGAiEZIh1LTUYteFJSbayulGDu46KSr_7wutuKYmUMDWIo7Ri6geGI4N12OEMv4lAGr0Ge7NCg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/FuOYcOYEbzu1hnXjM0dRDfvcBOmmm0h8VV_pOU4RpQ18A3_V3AB7f_CPFC-Qzq8fmkrz9V9i61243VoC25PMKicJXIWgmHz5usJePm4utZUklmOMUMIu_K57xG0tKGq3_UAxVoCh0PF4aW5MkDOSckCvWFqg7AEucpqUaEXDWWqB3aQNhshG35w3UN8TImfbeWyswTORo5u6teLAOTd7u_u6zesN-rzCHmit8ACsdzzVz_0HReSld-YkvUkLYzIGOg5gy6dMAdgPp4I_w_y6FATCwrRf12KIrBVawaBMIAxs3g7Mf0EKtpveM_f9e9jN6tyXJSDL3O5cg3MIQ4MpTg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
           <span>@cybersec_academy</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/bMhjLI5IdUfjFi77t3Va2U7XQNWtPh1XBr4S33L1KxhKW61qhn7Nl3-B7iNyyM8GVIiYmyY7mNyTlWHIIzNaMTlPbdZb3G9QRAlFMKqn6fcD7QKraKLVdSwIPMCuGylq15k0qwIabvaDdsAZntOrW8wz85fnnxSiHJRDpWoQXYJLpf0YjnFj_iXfM_CZGSnPz-YBUws539k75deR90H_egIuff5VRd889_hlGrC9DYudIQSiNrCC_7cFuv_2vTkJ90xXYUjYRtIt3_kFb7Kjqh2yPbCg4NsvdaBVKx9Vv15U0sI_AoSXtV5invWsEldeKtMg5r4eZF_MqoAea09pzQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img src="https://cdn4.telesco.pe/file/iY3QOA9-sIt6ht0sahUVGE49rww8PzNYHUs4cHcj5C2cUCL_s5zM-T8QdxyI95R_gkvxtL8xmKCBGwhKrZYXh5FFBnQR_j_Jt5LuPdjTW_yjUrKpvbvCy5n3sPVw0uy0uR99kTYK8p707q6I_jVq4SnA9SXIRV_Y4tqFFp0aMwIuT-ZLVg9HUncQwWVTlcJt5mdtlyD2v0_enWBsDwlXogl-Qmp8nb8H8uKTmnkwEAmdgf93pILjatKRC7HUTke711JRvgNXPn8k71OggP6zd2_xdQJnnyVrLCLk2tHPPHTX07O8e6u9oLkeFsbBX4LMCtsGsA7-KmNheeaA07oXAA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Что ещё умеет SSH, кроме подключения к серверу? Большинство используют SS…</h3>
+        <p>Что ещё умеет SSH, кроме подключения к серверу? Большинство используют SSH только для удалённого доступа. Но через него можно открывать доступ к внутренним сервисам, пробрасывать порты, строить туннели, работать через jump-серверы и даже проксировать весь тра…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-03T13:41:02.128Z">Aug 3, 2026, 1:41 PM</time> · <a href="/post/467992498">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1842597931">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/FuOYcOYEbzu1hnXjM0dRDfvcBOmmm0h8VV_pOU4RpQ18A3_V3AB7f_CPFC-Qzq8fmkrz9V9i61243VoC25PMKicJXIWgmHz5usJePm4utZUklmOMUMIu_K57xG0tKGq3_UAxVoCh0PF4aW5MkDOSckCvWFqg7AEucpqUaEXDWWqB3aQNhshG35w3UN8TImfbeWyswTORo5u6teLAOTd7u_u6zesN-rzCHmit8ACsdzzVz_0HReSld-YkvUkLYzIGOg5gy6dMAdgPp4I_w_y6FATCwrRf12KIrBVawaBMIAxs3g7Mf0EKtpveM_f9e9jN6tyXJSDL3O5cg3MIQ4MpTg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
+          <span>@cybersec_academy</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/LqHWwM86AuAjfOXmyqBe_jGjKFL-ciEtJevrIdlqY4e8VsF7XgqxCXsVxrvIHOvrN5RhSJciKmGu4FA76FaHskZ2bvBEvnLz6ntRu5U_BzG6JhdZkDEC-F4KoBhXKfuOJSZmxrpeLAYRGLTWn1fGqhHvBtle9ZeQ6D3QSEGIienLga7vpta_Jx9arp-hEeNDgimd98_g2guwOwrPLNwKaiWqcqDpRMwhVA0iIRKEZvOmvq5NG2AGJDO9nH7zPnkAkiRqVPHGmi3Ui4TqvPyiAZuy0r1VSJ7B0F55un7sAtBnqey0ogZvdHfbMTCdp2jyCi4yZQ5tMQiO5323oqjI6w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <h3>ZeroDay | #мем</h3>
         <p>ZeroDay | #мем</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T12:29:39.751Z">Aug 2, 2026, 12:29 PM</time> · <a href="/post/1842597931">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-03T13:41:02.128Z">Aug 3, 2026, 1:41 PM</time> · <a href="/post/1842597931">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1140586364">
+      <a class="post-link" href="/post/2712227773">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mQwvHWecZMP90zAXrJbeFjaIKpw08pnUN5VSILD9jgeewW9WvVorTXtI4XrJ9Tvn6dlqfLnWf9Xq8ZWp7E4JjbznIe4FSy-oJuhpW1Ty16MFj2pTc8l38TAtWsFlnRnksMAX4gxFo22TGi9c1l4_U_Y0y90JZA6TQRCsVHvLpr62OdFfoQe7PLRzbfYRHQpBpWiPP0-HyfyXsLQYHwea9Rl0sMFr9wffAgcdG6yjhossR941e38-NZ4gTNpKFNsxytBWZZW5hfhBeGAiEZIh1LTUYteFJSbayulGDu46KSr_7wutuKYmUMDWIo7Ri6geGI4N12OEMv4lAGr0Ge7NCg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/krdmc9Qf2C4_KacHdt1tN3CGeqOarmwgzLFycqHlf3ZqnlYlAwoXQlhxgDy7cU4HXKcu1FHM_faEdeF5-2JWjaRd-EfzeU1cal7b4Y-fsaTpfelG6ZvFBnCFoB5cjdUAEi6_ooUF612lEqyzXGMzax7EAcv1WiNv8cDhdFp_Bo6fMZ7-KIozrDiOeRvlXLn-tkoEyRV9kbbgJiqCioETilCnbkFTnJOf79sPJJA7mH-CEXxfrnFje4aiwsxtYpc5uIF2XxGYqYZbJ75KN7qHnbRIlJl-f_4kiQ82D1_kbz3Z4GE3ufW5Pir5cUc5D_T8trKJfsQK46uVyrCsXthurg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
-          <span>@cybersec_academy</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/qfei48bRK9JxbWaydntQ7z58ey4krMno5heNVPep5mTabbgQrvDPs3EaSFusbvRmvA_KJNe4ufNKznlpLpjRO-1hlhfv1mk1riQGoDqlxvRoMMd75vGAMIkZsnm7oaOP0Vf_pOL47GgJ7oVKMHl90qwgUhKd4N6c35sf03Hx1cl9TP5kMHEnxK8GbgMqw2cPzC32rpJvqoAYIOIRgNPor9iKaGjxDe6-fXxEuY8VNyWIpbr6CCqzwpWsU7-wNlsoNL2ptcyQF4Y29WEmi88UwA0xLBTdT11VUugVn385Bk8oxHX57cfjqJdNHd0LqLVkIJD4qMcKftIQTfOJWXzvzA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>На Stepik запустили мощный курс по «Troubleshooting Docker и Kubernetes:…</h3>
-        <p>На Stepik запустили мощный курс по «Troubleshooting Docker и Kubernetes: поиск и устранение проблем» В программе только важные аспекты: — troubleshooting Docker и образов — диагностика сетевых проблем — настройка readiness/liveness probes — отладка pod’ов, де…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T12:29:39.751Z">Aug 2, 2026, 12:29 PM</time> · <a href="/post/1140586364">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/293788987">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/EYudc4Ktzv_guejer8EvN4kWUTo-qarkQA6X-1JSdhKR8iXQqB3BeVdWTnMYkJCxafKYqL7WVnyyg3gesXqB9LbT7BQvOJ3rlSA8nAdyr3u6n_-x_tIw85jxi3XBa5QHzM6XXx_wBn5RRfdR7OnwmhuTY5_UDvDSkrtxlToEF1AmElSZ8r56SPk1k2mwc-jJy6Ixyq46NkU7CxIgtG3BRbtZ3Su32d0bZJ-l2LWM66jE8LHXqz32vBpK0VcLpYvVBxRfxGLU-RG3KICA8PRbLQLfwchVcR9mY7MZZUCJbUAYdkWdB8FrheeSFtre6aQSjB4FAlmGgaadK6AqyuXVHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Макс 3 в 1 | ИИ, Маркетинг, Стартапы</strong></span>
-          <span>@neuromaximru</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/oF5uVvx0TxT1j6fxIPTCXDHtG3zMjwysjZN--AvQZFC3osc1r1hYhO3cLKdcqTYnwZHfFalv35HfyhbvQkMbSHxxvVUw5l3rh2pROqJbuzafGtoUELwrwris2DjfsXCScfC4l3UJf_vdgsSTu84L76KAnQHtJKIaTRv-OQCO9FJpMPfrYc1a8VyH_Hq1e4tRiH1oM5LCUDdI0OLEn5oM4lyjP1q8uTApT2MonERAao4ArSfYDPWDlq2Ec6wR_VKnzRA1Jf3zCziAaRn6gx896md25b5mlHl4qhZu1CM0NyGAcGaEQ8vEq7NLMCTBfn2wwulBjf_qTnQppnSizD_Y6A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Агент слил $447. И это лучшая новость для тех, кто строит на агентах На H…</h3>
-        <p>Агент слил $447. И это лучшая новость для тех, кто строит на агентах На HN вчера выложили эксперимент: дали GPT-5.6 Sol настоящий бизнес. Не демо, не песочницу - реальную компанию с клиентами Итог: соврал, заспамил, потерял $447 Самое страшное не деньги. Он п…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T12:33:02.872Z">Aug 2, 2026, 12:33 PM</time> · <a href="/post/293788987">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3875762005">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/EYudc4Ktzv_guejer8EvN4kWUTo-qarkQA6X-1JSdhKR8iXQqB3BeVdWTnMYkJCxafKYqL7WVnyyg3gesXqB9LbT7BQvOJ3rlSA8nAdyr3u6n_-x_tIw85jxi3XBa5QHzM6XXx_wBn5RRfdR7OnwmhuTY5_UDvDSkrtxlToEF1AmElSZ8r56SPk1k2mwc-jJy6Ixyq46NkU7CxIgtG3BRbtZ3Su32d0bZJ-l2LWM66jE8LHXqz32vBpK0VcLpYvVBxRfxGLU-RG3KICA8PRbLQLfwchVcR9mY7MZZUCJbUAYdkWdB8FrheeSFtre6aQSjB4FAlmGgaadK6AqyuXVHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Макс 3 в 1 | ИИ, Маркетинг, Стартапы</strong></span>
-          <span>@neuromaximru</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/frrUCG14RGLFRZJZrFRqs16oGFRhwmLEnxwIRjbT-4Qh5b1n9JxeZXCLrMQbhJJ1yOSZ1dTIyaQe7bFWcRl-rw5RhTymUvF2o4VU9rR6r1fs_5gCckotxbrZySBOQwR8Leiw3NSD6Y3W4gcTAJNM6ZvlPv5zmtBs-2eKAhufcx8pVEvz_a-I_pXlSf4e-MO5ZxWuhes4H14tJfVTh2mCQLcLU8wxnpiGfBCTwr0eulM9FwcbonJrxxx8s18auxc5l_f1DJL_g03X1NOX5cxVOtj5JUDr2dZGQfnsPQD0kufyrJT3vpkJKI9h-BMr6iq30cc9SFvUl4NVNs7OqmV87w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Мама начала разбираться в крипте. Я начал разбираться в том, как не потер…</h3>
-        <p>Мама начала разбираться в крипте. Я начал разбираться в том, как не потерять всё 🥹 Собрал полный гид по безопасности: → Топ-20 ошибок, по которым люди теряют деньги → Топ-20 схем мошенников (ИИ-дипфейки, rug pull, honeypot, SIM-swap) → Чек-листы для распечат…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T12:33:02.872Z">Aug 2, 2026, 12:33 PM</time> · <a href="/post/3875762005">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/619103875">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UJMDDvcNC33xtn91qDU5-qeFobCJ4-5A_V7MUamRyqPq6eedXDRq8r4Ck6z4RmUQ5MXEqa-4bu9Oti7kCR0Bm-0CJZd5IYuR1ldH-OVcVkMT3I1W7l6f9rAsYH54BhOauArd5ik1NMigTidshRs2vPd7m-8T4wruepmXa11GqAj2CWRdbjdda94tSksoU1tCgqf3HCRUyKyKJf9aN8rUSclsvr6kD9kDu_CMS59TLeqOmDta4VS_QvfACqU-_tzoFku7PtFusHjLB_NxmT8rrpet-3aTkF4Cz2xrt_d707h84BgmmY-KIPuWkAQWqCbCypDInIB3By8Ifn4kLnlz4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">[netstalkers]</strong></span>
-          <span>@netstalkers</span>
-        </span>
-      </p>
-        
-        <h3>Охренеть, прямо сейчас происходит кража биткоинов с ХОЛОДНЫХ АППАРАТНЫХ К…</h3>
-        <p>Охренеть, прямо сейчас происходит кража биткоинов с ХОЛОДНЫХ АППАРАТНЫХ КОШЕЛЬКОВ уже вынесли биткоинов почти на $89 миллионов Компания coldcard позиционировала свой продукт для людей, которые не доверяют биржам, банкам, облакам и, вероятно, собственным родст…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T12:32:54.268Z">Aug 2, 2026, 12:32 PM</time> · <a href="/post/619103875">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2840179430">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/XRsEzdMsp1ww2Ca0on8vCdv5s1m3ol6dv6B9TLGZ4qnaedD5fwfkuK0uGD3owq8ikWVLhP8z8RsiBb1pJWKO2gbm5CI7eI5mMTmZqE0Y_9Xfs34C6coQSyW7MKkJwv9kaiXSQmRhJ3jO9p58nwxs8IKC-otXdO8dRZJm4QNlNLelr0zoeZCTIaXqXg_b5xPQxaBvfQ2FQChBQde-tTIESZz23kDBAvGeks4yu0xMn6ryk1dYs8vS22RsLB3Ws72kfHGOcUmf5yEHM-N8rrHYWAh8gZxpqHFfWvePgXp3rvGIm7xIFQ4GTRLdjj7H-kdqXCbodwQ2VBab5YMC5TrqlA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">МТС</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+          <span class="source-title-row"><strong class="source-title">Мой Компьютер</strong><span class="verified-badge" title="Verified" aria-label="Verified">
     <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
@@ -187,44 +142,89 @@ ZeroDay | Белый Хакер | #пентест</p>
       <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
     </svg>
   </span></span>
-          <span>@mtsofficial</span>
+          <span>@mknewsru</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/JKbYCsEHIhBsrnTK2NCNaCATIkxbrbLfoPIjZoZtV6JbOlDKJe_mXxK1B3T-Cocu1hdxZGWigs7xh0zZD57vRBUaJrxMwx4qJDRwO-P3yyNZG9RPIj5t-bG8Ksbb50dT5cgB96KaYVPQENvelRifd-gClJPpbVPNtc16t_sGzepQWwo2kmZyKC4juh3ZDVlldDl-8bbEI6gR6L6NNsl4i-KNMgraVVE3Lav88i38_j3TDhaXlzGKum5S5J8etllJW7eKy90VosARPqlbtHV0xm6eg0B8eoh4QvrlE28KCvIMNKmJ_XEp6Usk_GXyzY29T4t9crEp00LdF9pg_qGYhw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Еще недавно приходилось держать телефоны максимально близко и стараться н…</h3>
-        <p>Еще недавно приходилось держать телефоны максимально близко и стараться не дышать, чтобы отправить другу мелодию или гифку по ИК-порту. Сейчас комбинация Bluetooth и Wi-Fi позволяет мгновенно передавать файлы на устройство рядом. Вот как это работает ⬇️ Bluet…</p>
+        <img src="https://cdn4.telesco.pe/file/as1mNFTL6iUh39osKdLSjiA1_pGgmFOleB4Jb783ufhKfzBBJ2n1bMmatxiRXQZY-bbJG1tcthYHHW3TlPcWm_1O_knl8ZWjMelGwRKSvJK1sSR9_LcdCX-q-p2NTIrusjfxIPqjzviYVH-cmo-HjA4gK67gHn76LMBeCkLKZjosMjW3JpEUGKjO1rb96TLgJ9PZpUpb86OOLSdAVZdHh-O8K6Vlu-AR320St-lUpDxNdr5WPSIYIBHHbLnaxiHQIShA7KVA3Z7Ylen-2mwf-5dF-meqk4vyGvtHJktE-rdVO37DqqQm9LVEdrLfk4LsgVPFVZZ_ez-mZa23VYyXuw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Вышла бесплатная ИИ-модель Qwen3.8-Max Alibaba представила свою самую мощ…</h3>
+        <p>Вышла бесплатная ИИ-модель Qwen3.8-Max Alibaba представила свою самую мощную модель – она содержит 2.4 трлн параметров, способна автономно писать код в течение 16 дней, превосходит GPT-5.6 Sol и Claude Opus 4.8, но уступает Claude Fable 5. Контекстное окно –…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T12:32:32.382Z">Aug 2, 2026, 12:32 PM</time> · <a href="/post/2840179430">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-03T13:52:13.823Z">Aug 3, 2026, 1:52 PM</time> · <a href="/post/2712227773">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2610095542">
+      <a class="post-link" href="/post/4170028624">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/YutHx9wdPqFNUSck24zuf8tCbHuTbApMs0cqGvaRcr1UjufZOQXobXFYGuvbYdtDYjMOAht1MwxFpmzRGOTDLwYbPuf6rb_bu63e3Hs4SSvW2r2XaiS43bRnAoGXW451Cp0sjbZy-Gwij0XKOWNn8iqNxqlV8I4T13QeOpStfaVrbCtNv6f6vn74ZbqmHRzjFF-J8ish9QP9utHJGaJNu8gws3E9fl0rcaTNuRQJHsr2l0btgh1QvMKJBBgrKqLZPgm-7ZzCP2h9TVfYyVK9tIP2maeQcLMa1UoJ7j04AclgSS_ukPPUw7RgLBO3IFlpLG6To5IagSUDVktp96AM_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/IpRytLyNI7SiMt0gD45nWAKecUXnVxX05LwmGXoQe5ClfgeiVxGXeej4blRZ7hJlNjVvSEgYB-DOwtHW8by8nSGgBKsdxPBvehgqdOia3yk9FsSALb3VMNHMqBZhROmllbGG9_pdOvcbk3F28QAQc7bYjGLmBm3YQ6chZkLWQU0ZjAzRoQn8tLVFR9P-uRlIUgmPK5l4-lOeBC-h-422toIrWp-5HGE6WPrDBJX3ZnhxTmpr3eEN05L5B8ETJPn9t9dRcy-jol5xbWw89RPcE2OmfY1NMu50nFkyFD-Qq8Nn87vQKxvScY-lRV7OJnE0fSXs3iPN2fbvljkdeXqjaw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Лаки нейро</strong></span>
-          <span>@lakineuro</span>
+          <span class="source-title-row"><strong class="source-title">Free TON News 💎</strong></span>
+          <span>@miningapp_news</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/Ym3HcbD0s8AJrMr270TdQ4UAyutKHGppJopMKqEEAaTEkf3jCf2G9VbRCF8rceZ8yxOYpoiNAJWiMVvpwGq85v6_UBcA8CrJUWupRkNgtKA896wb9vqqHyAG6DuOiuAs-iErFQFckszH9_OP1PdhfS5x_uI4BOk8OrKH9ZQGX-DIUGasBrlhXzf0oIbqtbRbs0Doebm2Z1VUD2ZXvK46vFW3RtdOTGizTDRTXpoGnthRZR7J7Z666tYvE-GR4qLE5kPbIx-9LlkUsAsUNTg3hf8nwq2qV6Gaa8ZUhhGUaB06JjDaqMbYooLlje2SqUg-S9kCbxAAtkt2eXQdD65Svw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚙️Fair distribution mechanism of computing power Each account has a minin…</h3>
+        <p>⚙️Fair distribution mechanism of computing power Each account has a mining machine purchasing limit, ensuring reasonable allocation of resources and avoiding centralized occupation. Real user verification system First withdrawal requires identity verification…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-03T13:52:11.750Z">Aug 3, 2026, 1:52 PM</time> · <a href="/post/4170028624">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/53759441">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/IpRytLyNI7SiMt0gD45nWAKecUXnVxX05LwmGXoQe5ClfgeiVxGXeej4blRZ7hJlNjVvSEgYB-DOwtHW8by8nSGgBKsdxPBvehgqdOia3yk9FsSALb3VMNHMqBZhROmllbGG9_pdOvcbk3F28QAQc7bYjGLmBm3YQ6chZkLWQU0ZjAzRoQn8tLVFR9P-uRlIUgmPK5l4-lOeBC-h-422toIrWp-5HGE6WPrDBJX3ZnhxTmpr3eEN05L5B8ETJPn9t9dRcy-jol5xbWw89RPcE2OmfY1NMu50nFkyFD-Qq8Nn87vQKxvScY-lRV7OJnE0fSXs3iPN2fbvljkdeXqjaw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Free TON News 💎</strong></span>
+          <span>@miningapp_news</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/tE6Xiopieu9_5OCtoegTy8omaN4B9Uu0hTNuMKHzSEyjX6RONPiycx79H3U6Yhm2q3kLTX9uIorUjI2J0peVqSZUYQUWwMDlGF9WKrpt2cQPVp-ThnPq3Murlf7OccUYQVB8MuzFwmSsaJTLPs43fuZgVmq5fpt2z_BXFKqHh1bykGhYJSs5Lte9R7p-mC7HLsRdXwJ6VujLWqFf4hZ6cBCMRri7IsPKOO2ILUGZBE_JqzSJ7FBUXfsvRM5K5kolB3tJZRCREunr7ANbXAdqVAvfWFiD8ngErrJ9-_3E2R5qBlm8VOJQVYU_vIYMP4jzJZdNxbCwdkdJqgZCByMHpQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🌍Free TON is a global digital asset mining platform built on blockchain…</h3>
+        <p>🌍Free TON is a global digital asset mining platform built on blockchain technology, relying on the Telegram ecosystem, integrating real mining pool resources and cloud mining mechanisms, providing users with a low-threshold, sustainable, and verifiable way t…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-03T13:52:11.750Z">Aug 3, 2026, 1:52 PM</time> · <a href="/post/53759441">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/563123371">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/IpRytLyNI7SiMt0gD45nWAKecUXnVxX05LwmGXoQe5ClfgeiVxGXeej4blRZ7hJlNjVvSEgYB-DOwtHW8by8nSGgBKsdxPBvehgqdOia3yk9FsSALb3VMNHMqBZhROmllbGG9_pdOvcbk3F28QAQc7bYjGLmBm3YQ6chZkLWQU0ZjAzRoQn8tLVFR9P-uRlIUgmPK5l4-lOeBC-h-422toIrWp-5HGE6WPrDBJX3ZnhxTmpr3eEN05L5B8ETJPn9t9dRcy-jol5xbWw89RPcE2OmfY1NMu50nFkyFD-Qq8Nn87vQKxvScY-lRV7OJnE0fSXs3iPN2fbvljkdeXqjaw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Free TON News 💎</strong></span>
+          <span>@miningapp_news</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/H_5wW41ijkQpySklufTL5vKsYsWBIJRF39IA4FFLR1cz5kcj9Oy9r_jfqwwab6qbRyVeHFRreUOFaXIWMTFFSqlgwQid5FNGL4ul59HMN5EfeqNtJoFXBVdW7s_zJYMDPLAQCJrTZr_FZNqjG9QhDrYTiGkDf9qpkXoYxODwb3qxIBZUV6lOg1-Ssm4WcDiAvxgaLcNY1EpRpMCN8Ed0Oxk-at4hGHANzGXTrTT1shBqpUA0r-msC-5KH94w9uLLvarxRl1Gb_SmLJvaVUDvrXthYMw7nfwzBLZlLO2xBfqJFWcDmoaMHZ1JZOrX8dsTpcEhcJTSg3aJxHb08ojGdA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🌍Free TON is committed to creating a global digital asset mining platfor…</h3>
+        <p>🌍Free TON is committed to creating a global digital asset mining platform. By adopting a &quot;Participation + Invitation&quot; dual-driven model, users can continuously earn rewards during the ecological expansion process, achieving long-term value growth.</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-03T13:52:11.750Z">Aug 3, 2026, 1:52 PM</time> · <a href="/post/563123371">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3609045427">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UeNDx01xTTM8_3LWoyA18ZmTRJklGdfRi9kG9lGcinbBG4p5tQBtGDawmwaMnMIXXn8MytFxxxzrclMX1wDtqfdVy_7JmX4OJ0O0kgT0_epuap_ouXKo88SGE7J-1gx-2bVJnmDnRFK3UM1COpkJlYhP0zHm-N6ZfihQVhtwrjC_kCvoCA-P8XdCOYAxKYh9NDJZhfXTHxEgxQjMcffaKgAhKejs011IpVVp8CglQfGRsNO3hjBsyeGMRHICDOp1XDcDDMuVZ_HQc_cTjq_iv8A0R57VVfo85ojxXkjvDoXu2hqi6GSBjZZzJoBvSTWpCmQfeklr46PevLqVSDLENQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Neftis l Трейдинг, крипта, Web3</strong></span>
+          <span>@metaneftis</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/lkpOghnv9fuziTqqO3E8vZh6Piome-VpOae-QB92tCtl786iE0AucKmvqMujkFWpu7SpsCz_qGuE5ioxgPAeL9UUGBLWMzNs4qD4H4TmTvSjNil6qX27ZEKNKFv3_LKSBFrsmRPQqha7CAXeKpwEmJoOW5XekAl6V4De3kpeiU4GXVApt4Ij28Aa8PLSxXS4yxRo406t_I9hwJQyY7McJBFW7oY6PbITV6uxnkUcrIoDVPuvGhac6E4hgsVgDF24MJoMZd6IfYxfbQ0EVOFf-jeUo263EOskLgTck2lT5vFcXhuhfRBTPDu7YgfK4yXS0CgsqVjcSD8_R7Dtmy43Dw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>📝 Бывший сотрудник BNB Chain запустил скам-токен через служебный кошелек…</h3>
+        <p>📝 Бывший сотрудник BNB Chain запустил скам-токен через служебный кошелек 💤 Кошелек изначально создали для обучающего видео о запуске токенов на BNB Chain 💤 После увольнения сотрудник сохранил доступ к seed-фразе (секретной фразе для восстановления доступа…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-03T13:52:03.211Z">Aug 3, 2026, 1:52 PM</time> · <a href="/post/3609045427">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2654665805">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/QHalchFjyoXB75Jfvdd-B2WCqOmEtr7w6hENwnfjMzVcybBH_kR0Vpn-O_h01bihq_wHuqViDGLdEbR83OuKabnlEEjKP1GDNnnMWZey783O2nbg8V193AWrlvgtAnOBDShG_iCr4ohVWnOb3UfSrNsPQu9hauWes3ytZ5gPMxEfJiQ__eewzDtAf2JSctRIk8P5A8mGe573ziSAs5d7hG6a1kz5R-0DXuT1WtAdCp6mOkSdZvp5UKdOWfukcYGgZ25cAtVX5BYvx0KZngixOI8IJuNhYlhkAI1wzdr_8O_cV6756ZcdtJl7AIYcn67H7M_GRA3SyG8-1z9yHUsLpg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">1337</strong></span>
+          <span>@media1337</span>
         </span>
       </p>
         
-        <h3>ЛЕВ НА ДЕНЬ РОЖДЕНИЯ - НОВЫЙ ТРЕНД 🦁 Пошаговая инструкция как повторить…</h3>
-        <p>ЛЕВ НА ДЕНЬ РОЖДЕНИЯ - НОВЫЙ ТРЕНД 🦁 Пошаговая инструкция как повторить в Study: ⏺️ Переходим на StudyAi → Все нейросети → Seedance 2.0 ⏺️ Загружаем свое фото в хорошем качестве → Ставим 9:16 и 6 сек ⏺️Вставляем промпт👇 A 6-second cinematic birthday video.…</p>
+        <h3>Стэнфорд выкатил БЕСПЛАТНЫЙ двухчасовой курс по созданию LLM — именно за…</h3>
+        <p>Стэнфорд выкатил БЕСПЛАТНЫЙ двухчасовой курс по созданию LLM — именно за такие знания OpenAI и Anthropic готовы платить инженерам до $750 тысяч в год. Что внутри: • 00:00 — токенизация больших языковых моделей; • 25:44 — как LLM обрабатывают и декодируют запр…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T12:31:37.756Z">Aug 2, 2026, 12:31 PM</time> · <a href="/post/2610095542">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3332140978">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/htafaS4McZHvaeZsXFiIn3xxyLjFJMo-VFX8_QKeowDQHPyZJ6HeVuELyZnDtmijR5QBBM0fkFYPIY-0KiUrxa0BsKd2rPNxxQUGFaGbuwt4LgNffHXbvIgOzjRZYUel8U_JvKGh6gdM6wS1VJakGZoibWjFNIUW6-cDQf4EUURxjSmBWGm82URsEQJGUsb1HhU0ezRLimxgCZeo4m1NSlpU4BLFNd4VpM1DlTbJlNf_LhgX1GKn9PGHsxqkry3h5tIvU1nAOuExsrwCX-lmMuWMICAi5MHAz_NLfyPJ9IhDHORuL57TKuP0XZFdf7eh6Q7UunYhxvq9gKRORkIu8A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Джарвис Ньюс | Нейросети</strong></span>
-          <span>@jarvisnew</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/TWu5SST__jqnNRSFYuxgcRCoXNq2AsUq18biNcdT64I5okYOWHFE8LcFvjFWdpCkGuY_EMx-Z1eVyLagJxqFt33RZp3MkwH3BQDl1ty03SpKzVQj0yRJ17r6Q_GpTmX2wkyWSz35drNP2CpsFShFp_AqG0wXcgwelt9jcoWiGHtYOdOXsMWNwz4iwn5hU5DNidJBrExTh-pAisM9dk7OMPb0kwS9Pmz8VDowzbFPvqCrLSXcxnkN12gKZb6KAWpbYhh0vFlpk7Ck9r4qE5CTbETc0JT1hCouHitivBjlVT328sSJPklF0sn88VxedDflk9bFfvFo9ydTifbb8TC4zQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>☄️ Вышел мощный комбайн для разработчиков, объединяющий все главные нейро…</h3>
-        <p>☄️ Вышел мощный комбайн для разработчиков, объединяющий все главные нейросети В ОДНОМ МЕСТЕ Теперь можно запустить Claude Code, Codex, Cursor и OpenCode в одной программе и снизить расходы на токены аж в 8 раз! Главные фичи инструмента: ➖ Единое пространство:…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T12:31:13.885Z">Aug 2, 2026, 12:31 PM</time> · <a href="/post/3332140978">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-03T13:51:24.799Z">Aug 3, 2026, 1:51 PM</time> · <a href="/post/2654665805">View post on margeleT</a></p>
     </article>
     </section>
   </main>
