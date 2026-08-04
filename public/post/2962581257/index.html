@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance." />
   <meta property="og:url" content="https://www.margelet.space/post/2962581257" />
   <meta property="og:image" content="https://www.margelet.space/hero.webp" />
-  <meta property="og:updated_time" content="2026-08-02T17:56:21.217Z" />
+  <meta property="og:updated_time" content="2026-08-04T21:23:29.605Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key m… — Machine Learning with Python, United States ai | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance." />
   <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"United States","item":"https://www.margelet.space/us"},{"@type":"ListItem","position":3,"name":"Machine Learning with Python","item":"https://www.margelet.space/codeprogrammer"}]},{"@type":["Article","SocialMediaPosting"],"headline":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key m…","description":"Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance.","articleBody":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, an unusual place, not from NeurIPS or CVPR or ACL. Now it is the backbone of diffusion models, which you see in almost all modern image generation models. I drew the network as a C so the matrix multiplication flows naturally down. Tilt your head to the right and it is a U again. 🤣 Goal: push a 3 x 16 image down to a 2 x 4 bottleneck and back out again, filling in every cell yourself. = 1. Given = An image of three channels, R, G and B, sixteen pixels wide, and every kernel the network will use. = 2. Convolution 1 = Let us slide the first kernel over the image. Each output is one multiply-and-add over a 2 x 3 window, and the result is the green feature map. = 3. Find the maxima = We circle the largest value in each 1 x 2 window. Circling first is worth the extra step: it is the pooling decision, made before anything is written down. = 4. Max pool 1 = Let us copy those maxima down. Sixteen columns become eight, and half the detail is gone for good. = 5. Convolution 2 = We convolve again with the secon…","text":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, an unusual place, not from NeurIPS or CVPR or ACL. Now it is the backbone of diffusion models, which you see in almost all modern image generation models. I drew the network as a C so the matrix multiplication flows naturally down. Tilt your head to the right and it is a U again. 🤣 Goal: push a 3 x 16 image down to a 2 x 4 bottleneck and back out again, filling in every cell yourself. = 1. Given = An image of three channels, R, G and B, sixteen pixels wide, and every kernel the network will use. = 2. Convolution 1 = Let us slide the first kernel over the image. Each output is one multiply-and-add over a 2 x 3 window, and the result is the green feature map. = 3. Find the maxima = We circle the largest value in each 1 x 2 window. Circling first is worth the extra step: it is the pooling decision, made before anything is written down. = 4. Max pool 1 = Let us copy those maxima down. Sixteen columns become eight, and half the detail is gone for good. = 5. Convolution 2 = We convolve again with the second kernel, deeper into the contracting path. The feature map is blue now. = 6. Find the maxima again = Same move as step 3, on the blue map. = 7. Max pool 2 = Eight columns become four. = 8. The bottleneck = Let us convolve once more. This is the bottom of the U, a 2 x 4 block that is everything the network kept. = 9. Spread it out = We start back up. The transposed convolution writes each bottleneck value into a wider grid, leaving gaps between them. = 10. Transposed convolution 1 = Let us fill those gaps by convolving over the spread-out grid. Four columns become eight. = 11. The first skip = We copy the encoder's matching row straight across. This is the skip connection, and it is the whole reason a U-Net can recover detail that pooling threw away. = 12. Convolution with the skip = Let us convolve the upsampled features together with the copied ones. = 13. Spread it out again = Same as step 9, one level up. = 14. Transposed convolution 2 = Eight columns become sixteen, back to the width we started at. = 15. The second skip = The encoder's first feature map comes across, the one made before any pooling happened. = 16. Convolution and ReLU = We convolve, then cross out every negative and set it to zero. = 17. Output convolution = Let us apply the last kernel. Out comes R', G' and B', an image the same size as the one we started with. The outputs: R' = [3, 0, 7, 0, 7, 0, 17, 0, 3, 0, 9, 0, 2, 0, 6, 0] G' = [1, 20, 1, 10, 1, 12, 1, 19, 2, 5, 1, 11, 1, 3, 1, 7] B' = [4, 20, 8, 10, 8, 12, 18, 19, 5, 5, 10, 11, 3, 3, 7, 7] Congrats! You just calculated a U-Net by hand. 💾 Save this post! #UNet #DeepLearning #AI #NeuralNetworks #ComputerVision #MachineLearning ✨ Join Best TG Channels https://t.me/addlist/0f6vfFbEMdAwODBk ⭐️ Join Our WhatsApp Channel https://whatsapp.com/chann…","keywords":"margeleT, Telegram, United States, Machine Learning with Python, codeprogrammer, ai, technology, crypto, finance, electronics pc, electronics","url":"https://www.margelet.space/post/2962581257","mainEntityOfPage":"https://www.margelet.space/post/2962581257","datePublished":"2026-08-02T17:56:21.217Z","dateModified":"2026-08-02T17:56:21.217Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key m…","description":"Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-08-02T17:56:21.217Z","contentUrl":"https://cdn4.telesco.pe/file/4da0f9b715.mp4?token=BDxZVYy1eqQw47Aq96lR8fiukdCBdgp4SpNJ9sdruyVPdl2eXjI-6W2DsroPa9C8wsTYMhc5SlxAJ2SkHufvtoVVlXwM7q-fWCf3zmK_QxqxJ5ParQA65LhSgOVN_lfkGkoNn6RtDw-lc5g1f9E86_i9S_QT4x4bNe0EXEGbQfVUrWkIYZD31YnHA7QdB5vZ7iPvOkqEDfFVf0VmlEtfSguUrL3KTuE7tKo5riXXYKuCAPXSmx8f1ZU5cdZSKiDiDMzzXQu-IJUe--r847nSY-_4b53JDztdYwRO_wS9PhEu5E_X1h3wW3nZShxtKu9g9T29Xju4viVqWSOQhXQlJA"},"inLanguage":"en","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Machine Learning with Python","url":"https://www.margelet.space/codeprogrammer","logo":"https://cdn4.telesco.pe/file/kElwvwYWtH4MpvhiKt11gi8fRt2TemrCk0nejLjzvCcrO0HnVWldTRzjfON2i7hqknrQAUMA7AKD-e2HihY7z3C0_DOgKY1Dq8jA7ZPfiEqtfEBWvBLn2bf5w7ETmzNgTjwF4jDr786tMAxFkt7XP6jUILN137D-9nmoz_kMcwNa3JrBJKE_TsvaLPJ-a_Shj24E-B3N5E3D2zfjtiUjZdETbUZTgPzVOOxDTNYmLEPhrEGFSpdR4utHjPkGFwTZpOs_RL8HOg9cZZAK9BjhbP0-ZqpLGnw6orf50phE0BlT1j6qmA8dElZELucp8fiddrxY2k-zH3lJZDTp1y_SKQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/codeprogrammer/5374?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"United States","item":"https://www.margelet.space/us"},{"@type":"ListItem","position":3,"name":"Machine Learning with Python","item":"https://www.margelet.space/codeprogrammer"}]},{"@type":["Article","SocialMediaPosting"],"headline":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key m…","description":"Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance.","articleBody":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, an unusual place, not from NeurIPS or CVPR or ACL. Now it is the backbone of diffusion models, which you see in almost all modern image generation models. I drew the network as a C so the matrix multiplication flows naturally down. Tilt your head to the right and it is a U again. 🤣 Goal: push a 3 x 16 image down to a 2 x 4 bottleneck and back out again, filling in every cell yourself. = 1. Given = An image of three channels, R, G and B, sixteen pixels wide, and every kernel the network will use. = 2. Convolution 1 = Let us slide the first kernel over the image. Each output is one multiply-and-add over a 2 x 3 window, and the result is the green feature map. = 3. Find the maxima = We circle the largest value in each 1 x 2 window. Circling first is worth the extra step: it is the pooling decision, made before anything is written down. = 4. Max pool 1 = Let us copy those maxima down. Sixteen columns become eight, and half the detail is gone for good. = 5. Convolution 2 = We convolve again with the secon…","text":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, an unusual place, not from NeurIPS or CVPR or ACL. Now it is the backbone of diffusion models, which you see in almost all modern image generation models. I drew the network as a C so the matrix multiplication flows naturally down. Tilt your head to the right and it is a U again. 🤣 Goal: push a 3 x 16 image down to a 2 x 4 bottleneck and back out again, filling in every cell yourself. = 1. Given = An image of three channels, R, G and B, sixteen pixels wide, and every kernel the network will use. = 2. Convolution 1 = Let us slide the first kernel over the image. Each output is one multiply-and-add over a 2 x 3 window, and the result is the green feature map. = 3. Find the maxima = We circle the largest value in each 1 x 2 window. Circling first is worth the extra step: it is the pooling decision, made before anything is written down. = 4. Max pool 1 = Let us copy those maxima down. Sixteen columns become eight, and half the detail is gone for good. = 5. Convolution 2 = We convolve again with the second kernel, deeper into the contracting path. The feature map is blue now. = 6. Find the maxima again = Same move as step 3, on the blue map. = 7. Max pool 2 = Eight columns become four. = 8. The bottleneck = Let us convolve once more. This is the bottom of the U, a 2 x 4 block that is everything the network kept. = 9. Spread it out = We start back up. The transposed convolution writes each bottleneck value into a wider grid, leaving gaps between them. = 10. Transposed convolution 1 = Let us fill those gaps by convolving over the spread-out grid. Four columns become eight. = 11. The first skip = We copy the encoder's matching row straight across. This is the skip connection, and it is the whole reason a U-Net can recover detail that pooling threw away. = 12. Convolution with the skip = Let us convolve the upsampled features together with the copied ones. = 13. Spread it out again = Same as step 9, one level up. = 14. Transposed convolution 2 = Eight columns become sixteen, back to the width we started at. = 15. The second skip = The encoder's first feature map comes across, the one made before any pooling happened. = 16. Convolution and ReLU = We convolve, then cross out every negative and set it to zero. = 17. Output convolution = Let us apply the last kernel. Out comes R', G' and B', an image the same size as the one we started with. The outputs: R' = [3, 0, 7, 0, 7, 0, 17, 0, 3, 0, 9, 0, 2, 0, 6, 0] G' = [1, 20, 1, 10, 1, 12, 1, 19, 2, 5, 1, 11, 1, 3, 1, 7] B' = [4, 20, 8, 10, 8, 12, 18, 19, 5, 5, 10, 11, 3, 3, 7, 7] Congrats! You just calculated a U-Net by hand. 💾 Save this post! #UNet #DeepLearning #AI #NeuralNetworks #ComputerVision #MachineLearning ✨ Join Best TG Channels https://t.me/addlist/0f6vfFbEMdAwODBk ⭐️ Join Our WhatsApp Channel https://whatsapp.com/chann…","keywords":"margeleT, Telegram, United States, Machine Learning with Python, codeprogrammer, ai, technology, crypto, finance, electronics pc, electronics","url":"https://www.margelet.space/post/2962581257","mainEntityOfPage":"https://www.margelet.space/post/2962581257","datePublished":"2026-08-04T21:23:29.605Z","dateModified":"2026-08-04T21:23:29.605Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key m…","description":"Fresh Telegram snapshot from Machine Learning with Python in United States. U-Net by hand ✍️ ~ 17 steps walkthrough below I consider U-Net as a key milestone in deep learning, the first image-to-image model that really worked! It came out of medical imaging, a… Topics: ai, technology, crypto, finance.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-08-04T21:23:29.605Z","contentUrl":"https://cdn4.telesco.pe/file/4da0f9b715.mp4?token=ijpThST8qJLEnzDExEx2klfNEILMzAbu1KudCd1O2wj13wDDV4gJPP0oZvjgGX7yK3xOPRhQiHtY2paZORV77BrYy9OLTxoYXD_SMY042D2maxVeJV-qQBFs7ux-qf1vJeOktIzK_On7AptoEak-YCyUUjmIKWwrLwX6xS5XDxms7dba1jJ2dUEMqn_ZNgeihErXyQGT3hBWOqY2YrgkRPM78UDpUmPBX6yqs3IEI1QJu-J5Zakrm4Ua1YfFTFDf_TgMiuDikJMAa9vrIulDIWE3PHGbKU0Hfuvap_jULxNWTwMwGsbRnyfgJWJcKaGXtKfFPJmhozd3epzPWe7unA"},"inLanguage":"en","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Machine Learning with Python","url":"https://www.margelet.space/codeprogrammer","logo":"https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/codeprogrammer/5374?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/kElwvwYWtH4MpvhiKt11gi8fRt2TemrCk0nejLjzvCcrO0HnVWldTRzjfON2i7hqknrQAUMA7AKD-e2HihY7z3C0_DOgKY1Dq8jA7ZPfiEqtfEBWvBLn2bf5w7ETmzNgTjwF4jDr786tMAxFkt7XP6jUILN137D-9nmoz_kMcwNa3JrBJKE_TsvaLPJ-a_Shj24E-B3N5E3D2zfjtiUjZdETbUZTgPzVOOxDTNYmLEPhrEGFSpdR4utHjPkGFwTZpOs_RL8HOg9cZZAK9BjhbP0-ZqpLGnw6orf50phE0BlT1j6qmA8dElZELucp8fiddrxY2k-zH3lJZDTp1y_SKQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
           <span>@codeprogrammer</span>
@@ -134,7 +134,7 @@ Congrats! You just calculated a U-Net by hand.
 
 ⭐️ Join Our WhatsApp Channel https://whatsapp.com/channel/0029VaC7Weq29753hpcggW2A</p>
       <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
-      <p class="meta"><time datetime="2026-08-02T17:56:21.217Z">Aug 2, 2026, 5:56 PM</time> · United States</p>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · United States</p>
       <div class="tag-row">
         <a class="pill" href="/country/us/tag/ai">ai</a>
 <a class="pill" href="/country/us/tag/technology">technology</a>
@@ -156,7 +156,7 @@ Congrats! You just calculated a U-Net by hand.
       <article class="post">
       <a class="post-link" href="/post/3445016159">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/d1OORUEkfLJ5AVJHcxxLP2VWudjzVfaWj0e5C5A3ORWO279JWmjG_XqJNz3dj9L_VVfEJmeIdt4kSGAn2Pbj1fIgCXeXjASaYuNDBKw_EdgTd16wOTvPxXqknPR6CmZ6gLt2fEiUGceJj3DIczH3q-TQ8wqUjrgqjbdFzwZB7HGAdCHHUYixFWdvEdIODg1wYJytdehmHkvhhdFtQDefgFK12-zCuY8D2QWN4unGcrkT8ScoBHOTQLXzYu6UPHqfKhrak1odThqlg9p8TKFOKRvQw4-OPeQ4WSNdN6FHVSKEdU39_QZX2DjnlMgZjRMxtrj56F8iIa4rE-VB790SHA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/tvtEcFzqMJD4kG9AO4ZM1uQmPW1PqVuz_3C4smghmvxyaCGKjyj1SMKq419Y_9Fjg7SB39ylUfsLaU_RfzcIOOLL8rZaLnIDWfJdea3QxXwy1vVFpmRjOWMoEA-ARW6Tul3Dt2oPXrbJ_8GSKvCE3riKLwKfqD837emfyCDPbHxvtp76Rm9wRzBWgurrTMPTIvWs89kB6t7fvKb-OPqWYYNTdvE5P8FHq2nd8ABPMC_RCEuH2QkfBSuhDBQhTIyVo4Lz4RVFPpwL7mU4gfwulONSqRZbcWIr3LvWnTXM7J7tyOZnQcsVcadQS_bvuE1S7hn4i-T2d8otIb93mVFvVg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Wallet News</strong><span class="verified-badge" title="Verified" aria-label="Verified">
     <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -177,116 +177,131 @@ Congrats! You just calculated a U-Net by hand.
           <span>@cryptowallet_news_en</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/B1YwaNfBaLx202_7q1kV3Gqsoyxh-0BZfV5y_8JAIZW3ZQuc3a_LI8E_RZDQ0Zkt6mjfvfjPN592CWkOWbajwgjbaZpVJGc96YzSqXd3TAhyEHxD2pa0mM5QphUXbA1Hz8IrZwvjfbYH1heQIFirhrZ6AtlH9_qbKfVRRfxi0cXsH06Ku-6078d63nXBzvyFZF5nXnFOFmoZ5wbd2qYfhzNO4J3YvtDyqH9JJW0gTYEnUMV7TgRALbVJ0emdIAYweJYt7n_cok3UYQdUPLXvS0FazJ7O0UPcSm1DeOcDzpI89zL7u1JYmv0MJD-tyOSW2UCZU56-ek96M3kVvC8yrQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img src="https://cdn4.telesco.pe/file/D_sXVT8c-CHTTCJuyakhyn7f5ufCqK8a1vD_Gixw1gfvzrZDB3qF7xZM5DI-JioaFe2Lx-agmbkzVPs8XN3c9tPdJOmLCCz0SxLYFrt9_ngPqD0MC5Nu3n7uy9Rvt_F0gsOobc-9KjQebXezZctHONpV_0i8XtFJ5yOZryZQYrUkChFl84Fr0Qr5AdLFjR0X2AqDqxyHpeUDc_waG7xP7abIS4lQxx29Ac9PcVcF72BJUWOepdS_XEu6G8uy56bIPs6voo5Si9-e4egeD0GTUmplXQ9PgnEmGEASNEYiQu7Pmcme9Q6PL5-dlrzZoSspuAORHyNzHvm_UqWC8GF1PA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <h3>🧠 The AI trade has split in two Layer one is the infrastructure. Chips,…</h3>
         <p>🧠 The AI trade has split in two Layer one is the infrastructure. Chips, memory, power. Layer two is the AI companies themselves. 🇨🇳 China is the second front ZHIPU, one of China&#39;s leading model developers, is up 1,425% since its January 2026 IPO. MINIMAX r…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T17:57:08.592Z">Aug 2, 2026, 5:57 PM</time> · <a href="/post/3445016159">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T21:24:11.475Z">Aug 4, 2026, 9:24 PM</time> · <a href="/post/3445016159">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/837014601">
+      <a class="post-link" href="/post/1077769912">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/H7U94GnaPAxyDsBdACFCJXpcr7Fvk1ctRoG6-D8lXb_BtH-6UwJyqJbV6IxEF28uqxC5WmgLhcXC4wH_KVNOuO5i79XwJyh95ogBHaISQ45K6bDcwRVdtGVDKt8OkKiOvxiVhyj9CdoHuaoQRF9n9zLAktybxXVUMrOI5v53deC6Q-lbN2BcW_m86G8yd8WBb1KIseUcS_8pfQP0shwtlnGT_AEe31WHwIeHpijeq6lxR0eft2VnKZBKwgR0OyWExncjNdt2z4qogQ825zrfIX_CXgQsbdNKWScGkLJi7Rvmz9rZXrXCB-60UDfiAEYd9MiOBz9EPNdkUkk_9vAkSw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Crypto soothsayer</strong></span>
-          <span>@cryptosayer</span>
+          <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
+          <span>@codeprogrammer</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/UOaR2_2kx3QFgH2AGKysIMiJWt9fG5Y6f6qDP9Koh2lQIM5HcjEV6fM4uvpH8wbKEaIDB278J-YMIITV-ueUs57-_Enpxqo5-oLqCvN9fhOQgCoLMKgV-tJ01Tihi4TV0pSixTZjY1Ypfaooj-guWuytZJ5p0K2sMJqW7lwnr7vp5c4sUWEWYnnREP1QBe4p5aRS3vhJvDSN2X0Pr-U3milmXutD65cld8TIvIG1R2geZfcx-rt9-wCoDFl2sszkD-jgHbX2qoypShnsjH8RH79RuxgY2zDrzl3BshCYYnqzkWk7tqASE6p4xuCpCmA5Bkbdyz1N63fKNyD6vlgXfg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>🤖 Is AI making Bitcoin mining obsolete? According to Frank Holmes, Chair…</h3>
-        <p>🤖 Is AI making Bitcoin mining obsolete? According to Frank Holmes, Chairman of HIVE Digital Technologies, traditional Bitcoin mining is becoming far less profitable than AI computing. 🧐 🧮 He estimates that a typical ASIC miner generates only $0.12–0.14 per…</p>
+        
+        <h3>Attention Heatmap vs Token Pruning 🔍✂️ 🔗 More: https://www.overshoot.ai…</h3>
+        <p>Attention Heatmap vs Token Pruning 🔍✂️ 🔗 More: https://www.overshoot.ai/blogs/an-introduction-to-token-pruning-for-vlms #AI #MachineLearning #TokenPruning #DeepLearning #TechNews #VLM ✨ Join Best TG Channels https://t.me/addlist/0f6vfFbEMdAwODBk ⭐️ Join Our…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T17:57:02.337Z">Aug 2, 2026, 5:57 PM</time> · <a href="/post/837014601">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · <a href="/post/1077769912">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1078415087">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
+          <span>@codeprogrammer</span>
+        </span>
+      </p>
+        
+        <h3>Google just released a free 2-hour course on full Graph engineering: 1 pr…</h3>
+        <p>Google just released a free 2-hour course on full Graph engineering: 1 prompt → 100 agents → loops → graphs from 0% to 100%: 🤖⚙️ 10% → 17:44 - build your first agent 🚀 30% → 39:30 - Loop engineering: iterate, check, break 🔁 60% → 1:12:38 - Graph engineerin…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · <a href="/post/1078415087">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3693258798">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
+          <span>@codeprogrammer</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/LbugS7kejYvNngUKP84ALWHYFd2Y-wzcxLehiJu_Y7dc9UXC8g4857NV56nIi6yca8fCr87bkcRXnyVls9XaOHlqLU6DNlY1KiKLUR_h9wtPy_XFuDtLDI7fUdl4EeM9jDI3l3yJGVbLvQSiBiamGtsDzV5mjeFNy60L3bGRhafMCcE1vy486Wp_5jRQeFNDtvBjzgO2aHzgCh8rkZPMzlCuhU5yE43Uo3MunbBUKXQ4YANWgyFxhwYVFi_UA7sGjloAGVsG0KiCumJ3Rmir93fv3SoWRf1ZgC37mSMRi9EpTqsKyWOmlTwft2IKgyiG4zZOZxvw9u8PkHTccWX6Vg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>A collection of resources on MLOps for those who want to understand how m…</h3>
+        <p>A collection of resources on MLOps for those who want to understand how machine learning systems are brought to production. 🚀🤖 https://github.com/visenger/awesome-mlops #MLOps #MachineLearning #DevOps #AI #DataScience #TechResources ✨ Join Best TG Channels…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · <a href="/post/3693258798">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1273138919">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
+          <span>@codeprogrammer</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/PePnh62_NamzUZ9xx5kR3K92khKWMVbz9qAeDdpamKwypFtqLIC9TDJU5h34UK5ZI7LaiO3WUsQIqrKMJY951yDbFU2rXoV6bA1CaptV3ABg5z8fNDkjnGRrrOQPEQMQ5WcQArWO5eO8D0K5510a75SQNL663SGoHkGlL9Lyf9eTAuOIBnjzjAE3DGeR69jRq0wOqnOATZiGncbxrUzujXE9tAlS3h8x_4zYPmVNOjTg7xXS-IqU-6Lc8vHJu_E8_j6ZFWLmg-EPKtUHzhXL3G1784WQv3QRdp-EEhLFbsh2MOMJmXF_kVMIqkdt-bMPGoD1Ypf9aZrXgNgP9tm8QA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>This channels is for Programmers, Coders, Software Engineers. 0️⃣ Python…</h3>
+        <p>This channels is for Programmers, Coders, Software Engineers. 0️⃣ Python 1️⃣ Data Science 2️⃣ Machine Learning 3️⃣ Data Visualization 4️⃣ Artificial Intelligence 5️⃣ Data Analysis 6️⃣ Statistics 7️⃣ Deep Learning 8️⃣ programming Languages ✅ https://t.me/addli…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · <a href="/post/1273138919">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3104202341">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/aTF13QbzYuDA3HfA3lDNfmLc0DvlV7_fHzaY6Y3blPCbGkgjpiVZaaxEJngOOkPGVu7HMSdPF2mhITcIpxBieMqHdPhMY_QH0_U_IYFCaRsFI1OMPVaS2LnBf2rYI54Ctwkgvg2KZBuJs3WZJiMYDzdzYzpBfeDMO18Ft8Pcx9ZhF_8DPNkQFAWZxGK5dqk8Oup_y8UReUabdXspTig3tsrjWdA0kLenDoM05MB-UIFIXC827MJE-BFqoaq5lA6G1GPVpqYIxKaBTmbXM_5xFSaJghCPxqWRqkD8SHVwQW1yKJXo10BVakdPpUDgxshNDyvx2XiwQWCbwkrTudkEZg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machine Learning with Python</strong></span>
+          <span>@codeprogrammer</span>
+        </span>
+      </p>
+        
+        <h3>Your AI helper right in your messenger — in 5 minutes, free Amplify (UK)…</h3>
+        <p>Your AI helper right in your messenger — in 5 minutes, free Amplify (UK) plugs an AI agent straight into your Telegram, WhatsApp, Slack, WeChat, or Discord. Not just a GPT chat — an assistant that reaches into the real world. Handles it all: emails, reminders…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T21:23:29.605Z">Aug 4, 2026, 9:23 PM</time> · <a href="/post/3104202341">View post on margeleT</a></p>
     </article>
 <article class="post">
       <a class="post-link" href="/post/722315313">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/jVxdnAZcSRJtzd-7KitbaawRVROQAli_tVoDnk9Pzt2F2G08JJFdlQ7vIkEtJ5IqVsu4uu95N1VX9ulEieSwD4xJGsO_LFDN43Ahs4I-YmJvIyAIOUXpfaZnvpf5E_ukQLvgrNpXQQgxEoeJr2-xeCBaxGHuTbseHsq9yw8SGtPGGcB6pOE1wITy2Kk56K0jnD47oeg2u_Et5_Nx_FvSBwb_uBf2kK0O0ToMNt-3dtuEQ1Rdoa7taHxYu7Kqdcxt52fcbSYKHihDCVouPr7PqDv8S6knhz0OktHLJCfIp8zSUya7-JVL__iG_Grz66kxTwSHSYvnNUCy_b6vK4hlZQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/pdJxYllseJw-N_dRtbkJPg2L8W2xAdOo2NGLflMFsLLB_6ZtMYCjHJj8xY_KeNYamIdPm3UMnnNQqfMcouwDXUmwDhwHFddmDQ266TV_BMDsuMscmTQyU7hSuqdTNEriBI34lFYFntduumUj1lZRAmrxJzFb6wd7Bw1zCBYHIPMPQhiY99UR7BqHBR82CyjCs5O9nE8N-8ez7PpiELY8PpI9bTaMZKIncyjSEkbdcqiIexHG_PDgMsoCgDawGP9ojEjJ7JWejLTo6dPjJxpVuDi_4FTKb8eROYhatVhELnjPvfLfmYUuXdGT5xFBIvf7F0ZdeBoSKvW2K7_jd7LmeA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Crypto Garden</strong></span>
           <span>@garden_btc</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/clKKMC7wcLgQKL3uB68C5gvMdOZftPjN68414DXbueGFRfnYUr93GaGeiiQTmKvCG9NXybovp2fEYi-JoIJ1ChUttSFlkIHDuYF-s1l-GmPCXnRkwPtBRqymgvyMDJrUW8nxz2Dqy_k5rXbFEXgNQIhXQ-yNk77Jzd1Nq1o9e-DLE5eQSS_73IkSzPthtns34RlWaQTXdhly7-TPX9-Ur10Jd3rIVYIxnU71DXjNqQLJYb6iSWf3GEoLXyE_eUfrOkkLCo9OTU9USzeAzxGHPDuoHI6TVU19W1Hv068XHC0T1qa705C6KF_vQph6TZfHxHBRLUe6Du0XCL4Vn-g-2A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img src="https://cdn4.telesco.pe/file/DKitjieO57TKx2dcP7riHcvLoT05rQQaXAzu0P5nyDsD6ZlyBOLhiH0BXJ0fcOGZQoFboKMQRSKtPe0DpJd8oei2v0b67nAWyclr9cpjAJOt-VUdnUpqZ7S_KRSlx5l8Y3h7pXr8sfwjVabNzaqlZfkuUKDiL-LsVcY49lcCpvVQoGu--mmuH3giIpWjMVST_zhSl7p20YEnrSppx3CU4g5BM2G8aAxXZG4hG_RqeI8H_m0rtZQed1F4wB9ERqMrHbANAQzN5A5QeogElD7VINvc5-vKQ9cIDFmPOvY1gzL8qfH5YlEcWlw8mAuLeRWEB2r0GrcTiP8jIcpUPRbFFw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <h3>⚠️ ChatGPT’s Hugging Face breach shows why AI containment matters more th…</h3>
         <p>⚠️ ChatGPT’s Hugging Face breach shows why AI containment matters more than ever 📣 When OpenAI disclosed that one of its AI models escaped a restricted testing environment and breached Hugging Face’s infrastructure, the discussion quickly centered on AI safe…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T17:59:30.115Z">Aug 2, 2026, 5:59 PM</time> · <a href="/post/722315313">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T21:26:06.127Z">Aug 4, 2026, 9:26 PM</time> · <a href="/post/722315313">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3493681430">
+      <a class="post-link" href="/post/1790344138">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/fwTn6NWoKf9qdG__-9SkJFKaSIarRR0qW2qfjCOZZQ_4llgk0FUCVuNMayLCycS7ZKTpKA7Wp6jhDqwqqRJ1hSO6SXz_PHfeI7h6TkL35CQ0yMGluRJIbSgvFYueMKdq9pBNNoamA_7fbpY315pwa65UFcI8S_xnCjxo7tBh_RplF037cLDoCNUGlfbd4Sdr7qZ0ybP1Yxr_Ntp-Mv555A-7H6mKBCWCxaWUVM02HJM9YvlWGSMo-IKEXiiGMkREHDaPk_08Ncn4Eb0g88UdM9u7XBaFzXJBHSuy6hegtCiDnABCyRDCMQ8UHVxjKqaVYYuS4py6BG-xs-TqoiA02Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/meMW9jJQ0LuKNJIQzSUR7W9o8pbWhTPmyipigj3VZNIt3X8iz0Q8M3McX1RWUSH0z-SngjxjtBBJVdkHj8MULNCsjPdmaahE2mtFHanO59Rz4ffJ0kPL3KEycdx7vEsamMppnRjvhbbW_4Cgqc1_Z0iyM-apAOPv0_drjfzl_UIx3YlPXLzmCljg5u_og5oQXTznffk8_-5JTKSCwN4LvHmc7USzzOyCOhKHHPtwPORj86H18U0eqYCLznyTFetVbAtax4FniEWIZ1feb6J-FY91XG1XYOfh3GhL8MnRQD_r-am_7WWFjw1pYdccmQ-0eVubSgKnnwc5r7I0coc9-w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Collections of +888 🏴‍☠️</strong></span>
-          <span>@collections</span>
+          <span class="source-title-row"><strong class="source-title">Pavel Durov</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@durov</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/G4XmzYuiPmz5d3ugzfPmn770fXsZqwcDdJLkxrSd55T9Y2FfJomOtqeocOTB9I9mC_jenhhTz1lrjjFWFDkOoc_OmZ9lawanCK7bv7K1DZp2DG0EepYagMSx0oxsKV0BxvoyY9wq34et1EBWusj6WhCp_2GPEqSEWeYgjbzL_79YG_ATamSqZ5vqTwWQ-c80JFLqO3SAGVJLhZc1QQeTWWZahOqYG1wLEczcuCp_oGdhwWByNSKTmLYWmueujHxsTq5agMtws2ewRx8ZlLNEgb-t49CXUYLpnvXMtw88Z8qBwRE-bgBFv1vHACdz0lANxQApl7Z19gRfpaIWGXfG0g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>TON DNS Summer (Part 1) As we predicted, the hype around TON DNS has begu…</h3>
-        <p>TON DNS Summer (Part 1) As we predicted, the hype around TON DNS has begun. The hype began with Four-Digit domains (hereinafter referred to as 4N domains). People are &quot;burning&quot; their 100 TON on the TON DNS smart contract and transferring this value to NFTs (s…</p>
+        <img src="https://cdn4.telesco.pe/file/HdpAeawV9wtt9eb5TfNC7CvFmQkKTbF8hn1OjQjxow7XLdw6CffvonLke_gQx1GzRbVjz7wA_GbT_XH5ZVZ4inWm9YpJ0HoPMobgEYN_9_UJIqNWP1-i-QiLLpkybZo2fEl6fIdRpHNwXTf953afzT1_y2_0x9UAcZNq0QbdIep-P7HmHaN_r8QYosWkPPX_JGb5-rMPHmty1nDaerp_aIHGBr1kTmuxHkZLiX1oEVErFMUmxL3SvSr3KAtob9qYmnq7E-Eel_GEsujYCYssg1I9S7KsmGYf2xGOLGbNI81q8wO7ffvkHNPe21Th5MFjom0Dy_utc_mC6YpSng2AWA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🧠 The 2026 International Olympiad in Artificial Intelligence starts toda…</h3>
+        <p>🧠 The 2026 International Olympiad in Artificial Intelligence starts today. As a token of support for those who will reinvent our civilization, we&#39;ll issue 🏆 240 exclusive Intelligence Cups to the winners. 💵 We guarantee minimum buyback prices ($1,000 per G…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-02T17:59:05.150Z">Aug 2, 2026, 5:59 PM</time> · <a href="/post/3493681430">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1404191323">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn5.telesco.pe/file/knWTYCyI2sJrx7Z53Ruztzx6dcuzwPP6QocU6D9BqJa7Szh_h3Yq5Np51N-1wbzMIY_PxrQluKZb7SiTfrkOLs5EIsjXET-XNnVXES71759SAUUhdtgIh9rxS7TwRSO7Lc77ySgGJ0KE_achpl5y8l_rDR0as1Sr7HuRiRtUWxErMvQE2IkVRIZZww0u_dX0TaofEBKZ0BkKfdnORYyrd0yrodttKVJEBCMXYSRb3sqNYwe3fWq_9lHeggZaPnMVKOAZ-rw1818kF2JFth0e_04aY28Qmqt3JLn81n7NmocmHpLYYu-sfMAX_tcqdQ02jGT8st5eR_fKDudEGBGzow.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Artificial Intelligence</strong></span>
-          <span>@artificial_intelligence_in</span>
-        </span>
-      </p>
-        <img src="https://cdn5.telesco.pe/file/oezf-SyfFfRxCxse1IzjjqY6UK-Upq29RBvMlDalm8_5Jr8vnbUKVvqDnyaOFTL_gTJCms8soq4z_NN9K68npyoo7GUlP4HL0HcyTMTcKDAHhnsWYP1DozgBsM-b8DLB6fazW9qqiAFGKgZcFQQaA1sGJyh-9cGLDrHVs3wNr6U3oLHY8zEr0HshHa8NE6wFCHtiqoCbPAvDh3U7a_pYpQTjj8K7jZ1cNm-Ka1kf3SSaX78pDHbPvCwcPyWLpnhKBZ_H97d324WwEcw-NHVEoW5kUztam25itn6Yhcl7ZwIe86yUBb9zrvNRWwfQMEMxjjJw-Kp5yNgmJDiep_-cXg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>These YouTube channels will guide you step by step to master AI Whether y…</h3>
-        <p>These YouTube channels will guide you step by step to master AI Whether you&#39;re building Agentic AI workflows or just starting with Python, this llist covers everything: 1. Agentic AI &amp; ChatGPT Watch creators like Krish Naik and Freecodecamp for hands-on proje…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T17:58:33.410Z">Aug 2, 2026, 5:58 PM</time> · <a href="/post/1404191323">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1400841918">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn5.telesco.pe/file/knWTYCyI2sJrx7Z53Ruztzx6dcuzwPP6QocU6D9BqJa7Szh_h3Yq5Np51N-1wbzMIY_PxrQluKZb7SiTfrkOLs5EIsjXET-XNnVXES71759SAUUhdtgIh9rxS7TwRSO7Lc77ySgGJ0KE_achpl5y8l_rDR0as1Sr7HuRiRtUWxErMvQE2IkVRIZZww0u_dX0TaofEBKZ0BkKfdnORYyrd0yrodttKVJEBCMXYSRb3sqNYwe3fWq_9lHeggZaPnMVKOAZ-rw1818kF2JFth0e_04aY28Qmqt3JLn81n7NmocmHpLYYu-sfMAX_tcqdQ02jGT8st5eR_fKDudEGBGzow.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Artificial Intelligence</strong></span>
-          <span>@artificial_intelligence_in</span>
-        </span>
-      </p>
-        
-        <h3>Want to become an AI Engineer in 2026? Don&#39;t start with LangChain. Don&#39;t…</h3>
-        <p>Want to become an AI Engineer in 2026? Don&#39;t start with LangChain. Don&#39;t start with Pinecone. Don&#39;t even start with AI Agents. Start by understanding this roadmap. 👇 Most people jump straight into building AI apps. They copy tutorials. They connect APIs. The…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T17:58:33.410Z">Aug 2, 2026, 5:58 PM</time> · <a href="/post/1400841918">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/826227548">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn5.telesco.pe/file/m7smoW3bt3A7ReooJL3kyW86y1xJy_GI5OxdCWjjAZqtmqMIirDZHrOFCZKNVN3qdo6_b-lHazxC_JVNENKxqvqGBcW5113P1qoc_B3NGFs-_hHwFJ7P4uB_hPY9KaF9oY9uIExTc0LSoljf3GONs-IKpJ9gQCzhS7SkgxA0jHoKu81pCYmn-0qxnYK3IP_YyTIfhau7Yy9okT0YbDkMq-j7zf0ZLjpi89rwkecdBSLn4JunXnVPlHbjdYRKxf9nCAA6KPDcFSo7vVgIeLt7OWVM14LifT2-IW55hIWvJBw5S2k9gpHWYLR3oBteDwk9LaQnBvz1kbrQv-2pG3PLCw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Infinity Labs Update</strong></span>
-          <span>@infinitylabsup</span>
-        </span>
-      </p>
-        <img src="https://cdn1.telesco.pe/file/kIDvpc_HHjICQdb-jjU54vYjOJ8Ybnh4XpoJi8IuGUgmOZiFydyGVfE1bKqnEYmSQGm69jnu49WVtxzRMnOedrmnruhZj2RyOtqty4S5-1oiaMmGNei1XErUWuJ1IAW9SfXi8wucNyckFl1ZTACgiOYB4cekAZ40zl-VByxN_ABfzYSA2euDXsMRfllEuwrP8ZMiG6HGs5OlvW1sbBylp4I_pj47MMb2dygx1ETISx9p4yKCGYOz_5uJWlar4mpElYVFI5Tld5zjiqzCGePCUf_hBCEFvwIBVbGAPjMEDerOl7PmNbWv3e0PNjUSXFZM4HXCjJMKIewUQm3UIsK09Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>🎁 $MEPR AIRDROP: 50,000 tokens. Zero speculation, all utility. Metta Pro…</h3>
-        <p>🎁 $MEPR AIRDROP: 50,000 tokens. Zero speculation, all utility. Metta Protocol runs on fee-generating infrastructure - payments, escrow, AI APIs, digital identity, RWA - not hype. 🗓 Duration: July 31 – August 15 💰 Prize pool: 50,000 $MEPR Details 👇 https:/…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T17:58:06.979Z">Aug 2, 2026, 5:58 PM</time> · <a href="/post/826227548">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1486047256">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/niLgnX6CzFc2cz6CmjeREuuwQM_D4ZFF3aj1pHYi1rhmNlz3qS0G63BAeSAEQbqIHe3bJbXNuS_stcSaaXuIznLlhW4srEeFRDMCnFeO0AVKMeYdm7f7wZfpRNDxiUsdroxmNNge4OsQf8lGZPsDQ8QEL6zS1lIUvnuCOVRM1R8qvtiD2q5I7ExPpcMwrSrp41xsI1J3jG16AQa3nlQDKjnGPtQjwHlVgmxmpaywZq89jRLn76AU8_VGw8jMOK5IB7p3VfQ9rW7F_ndx6FH8fbGtC2YSi9XOkv_y6b_tUGLxQj3Jjo5Cyto5teCcKyUMdp3-n0-9tlmiWM-s0RacGQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">CryptoRank Fundraising Digest</strong></span>
-          <span>@cryptorank_fundraising</span>
-        </span>
-      </p>
-        
-        <h3>​​Perceptron Network $6.5M Strategic Round⚡️ 📑 About: Decentralized DePI…</h3>
-        <p>​​Perceptron Network $6.5M Strategic Round⚡️ 📑 About: Decentralized DePIN and AI network rewarding users for sharing bandwidth and data. 🤝 Investors: P2 Ventures (Polygon Ventures), QCP Capital, Selini Capital, Momentum 6, DeFi Capital, and Sigma Capital 👉…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-02T17:57:01.335Z">Aug 2, 2026, 5:57 PM</time> · <a href="/post/1486047256">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T21:25:59.790Z">Aug 4, 2026, 9:25 PM</time> · <a href="/post/1790344138">View post on margeleT</a></p>
     </article>
     </section>
   </main>
