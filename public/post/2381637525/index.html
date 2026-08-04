@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from Codeby in Russia. Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотру… Topics: war, politics, crypto, finance." />
   <meta property="og:url" content="https://www.margelet.space/post/2381637525" />
   <meta property="og:image" content="https://cdn4.telesco.pe/file/nZxXfjJ1fp-iNDQBxizImOn5el8LSavllG0Cm7SoDjS_m9T9cjEGRdMfgkAK7XiCsj9qfqJ2KHPYMiKCFr6lljDquD2-QeQpCKDk4Sf0Z74C8GKQcG7Agnsy3kAzaswMXWGLnMAOcbSUCZ6XgQGa7dX0tYBDKmGyejTq75gj9zKESv2ocR9_fPd7n0YIdcFchSHCTczxw0T1g7DrwfSLVuV6xy-Q9HHizp5tT95gMOIb2-Y8qL5RT8rATMTTSJ4b6DBgfoVMM59pQ-rcaQNbJgZDuDH1UdmCloBXQu9kje33tm0J8B5X6ff7HsRkxXzKMJibIOZOcTxFt33C9vY8-Q.jpg" />
-  <meta property="og:updated_time" content="2026-08-04T07:54:25.286Z" />
+  <meta property="og:updated_time" content="2026-08-04T15:38:25.011Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 П… — Codeby, Russia war | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Codeby in Russia. Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотру… Topics: war, politics, crypto, finance." />
   <meta name="twitter:image" content="https://cdn4.telesco.pe/file/nZxXfjJ1fp-iNDQBxizImOn5el8LSavllG0Cm7SoDjS_m9T9cjEGRdMfgkAK7XiCsj9qfqJ2KHPYMiKCFr6lljDquD2-QeQpCKDk4Sf0Z74C8GKQcG7Agnsy3kAzaswMXWGLnMAOcbSUCZ6XgQGa7dX0tYBDKmGyejTq75gj9zKESv2ocR9_fPd7n0YIdcFchSHCTczxw0T1g7DrwfSLVuV6xy-Q9HHizp5tT95gMOIb2-Y8qL5RT8rATMTTSJ4b6DBgfoVMM59pQ-rcaQNbJgZDuDH1UdmCloBXQu9kje33tm0J8B5X6ff7HsRkxXzKMJibIOZOcTxFt33C9vY8-Q.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Codeby","item":"https://www.margelet.space/codeby_sec"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 П…","description":"Fresh Telegram snapshot from Codeby in Russia. Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотру… Topics: war, politics, crypto, finance.","articleBody":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотрудник кликает по ссылке из мессенджера, проходит привычную аутентификацию в корпоративном IDP — и даже не подозревает, что vault token с его привилегиями уже в руках злоумышленника. Без алертов, без аномалий в логах. CVSS 9.6 Critical. 🔑OpenBao — open-source форк HashiCorp Vault, на который многие компании перешли после смены лицензии Vault на BSL. Проблема CVE-2026-33757 затрагивает OIDC-аутентификацию в конфигурациях, где администратор вручную включил callback_mode=direct. Это не дефолт, но на практике встречается чаще, чем хотелось бы. Как это работает в штатном режиме? Вы запрашиваете вход, OpenBao генерирует auth URL, ваш браузер отправляет вас в IDP, вы проходите аутентификацию, и authorization code возвращается в ваш браузер. Вы контролируете весь процесс. 🎇А теперь атака. В direct mode authorization code идёт напрямую в API OpenBao, минуя браузер пользователя. Атакующий: • Сам инициирует auth request к API — привилегии не нужны • Получает auth URL с параметрами state и nonce • Отправляет эту…","text":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотрудник кликает по ссылке из мессенджера, проходит привычную аутентификацию в корпоративном IDP — и даже не подозревает, что vault token с его привилегиями уже в руках злоумышленника. Без алертов, без аномалий в логах. CVSS 9.6 Critical. 🔑OpenBao — open-source форк HashiCorp Vault, на который многие компании перешли после смены лицензии Vault на BSL. Проблема CVE-2026-33757 затрагивает OIDC-аутентификацию в конфигурациях, где администратор вручную включил callback_mode=direct. Это не дефолт, но на практике встречается чаще, чем хотелось бы. Как это работает в штатном режиме? Вы запрашиваете вход, OpenBao генерирует auth URL, ваш браузер отправляет вас в IDP, вы проходите аутентификацию, и authorization code возвращается в ваш браузер. Вы контролируете весь процесс. 🎇А теперь атака. В direct mode authorization code идёт напрямую в API OpenBao, минуя браузер пользователя. Атакующий: • Сам инициирует auth request к API — привилегии не нужны • Получает auth URL с параметрами state и nonce • Отправляет эту ссылку жертве через фишинг • Жертва кликает, логинится в IDP — всё выглядит легитимно • OpenBao привязывает vault token к сессии атакующего • Атакующий поллит API и забирает токен Классика session fixation (CWE-384): система не инвалидирует сессию при аутентификации нового пользователя и не запрашивает подтверждение. Что делает эту уязвимость по-настоящему опасной — каскадный эффект. Получив vault token, атакующий читает database credentials, SSH-ключи, cloud API keys. С ними — lateral movement без необходимости ломать каждый сервис отдельно. А если у жертвы write-политики — подмена секретов и внедрение backdoor credentials. В средах с CI/CD один украденный токен компрометирует весь pipeline. ➡️Что делать прямо сейчас: 1. Обновиться до OpenBao 2.5.2 — фикс уже в релизе 2. Проверить все OIDC-роли на наличие callback_mode=direct — если не нужен явно, убрать 3. Настроить корреляцию IP в auth flow: кто инициировал запрос и откуда пришёл callback — должны совпадать 4. Мониторить паттерн «auth request с одного IP, callback с другого» — это прямой индикатор атаки EPSS даёт скромные 0.41% вероятности эксплуатации за 30 дней. Но для целевой атаки на организацию, мигрировавшую на OpenBao, этот вектор — подарок. Массовых атак ждать не стоит, а вот точечных — вопрос времени. Полный разбор с пошаговым сценарием эксплуатации и детектированием — в статье на форуме. https://codeby.net/threads/cve-2026-33757-uyazvimost-openbao-session-fixation-cherez-jwt-oidc-v-secrets-management.94963/","keywords":"margeleT, Telegram, Russia, Codeby, codeby_sec, war, politics, crypto, finance, electronics pc, electronics","url":"https://www.margelet.space/post/2381637525","mainEntityOfPage":"https://www.margelet.space/post/2381637525","datePublished":"2026-08-04T07:54:25.286Z","dateModified":"2026-08-04T07:54:25.286Z","image":["https://cdn4.telesco.pe/file/nZxXfjJ1fp-iNDQBxizImOn5el8LSavllG0Cm7SoDjS_m9T9cjEGRdMfgkAK7XiCsj9qfqJ2KHPYMiKCFr6lljDquD2-QeQpCKDk4Sf0Z74C8GKQcG7Agnsy3kAzaswMXWGLnMAOcbSUCZ6XgQGa7dX0tYBDKmGyejTq75gj9zKESv2ocR9_fPd7n0YIdcFchSHCTczxw0T1g7DrwfSLVuV6xy-Q9HHizp5tT95gMOIb2-Y8qL5RT8rATMTTSJ4b6DBgfoVMM59pQ-rcaQNbJgZDuDH1UdmCloBXQu9kje33tm0J8B5X6ff7HsRkxXzKMJibIOZOcTxFt33C9vY8-Q.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Codeby","url":"https://www.margelet.space/codeby_sec","logo":"https://cdn4.telesco.pe/file/rWQHeiH1__SLPJhD77Ljf9kvTs7MdQPAEOZbb-SpZRAeOzCk0E1jcTRodERv-TPRnczcX5fZS_DrVHNDy4BKAHSzV6ldZtKqvAzekqVCS_v_S9fOCms1iM93Qu-NVz9mBTa3OC3x69RZtRUzLYNZilglKOj7lKoRNX2pizq_kZORi9YibAgRGd326r9v0aiNlRe5M8MEozuQNjVUIlCvnE_yS5Ed5tLXW1hMJg0M6RGdkuo8MGdM60uYENrw0RJpLMuFmasaxb97blld2TeybkqrXglJTcgk0-laAkD2MdFXndPuGeLMrl_JDH8tHD6ei6udey_-5izfcvhvWjGRew.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/codeby_sec/10335?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Codeby","item":"https://www.margelet.space/codeby_sec"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 П…","description":"Fresh Telegram snapshot from Codeby in Russia. Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотру… Topics: war, politics, crypto, finance.","articleBody":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотрудник кликает по ссылке из мессенджера, проходит привычную аутентификацию в корпоративном IDP — и даже не подозревает, что vault token с его привилегиями уже в руках злоумышленника. Без алертов, без аномалий в логах. CVSS 9.6 Critical. 🔑OpenBao — open-source форк HashiCorp Vault, на который многие компании перешли после смены лицензии Vault на BSL. Проблема CVE-2026-33757 затрагивает OIDC-аутентификацию в конфигурациях, где администратор вручную включил callback_mode=direct. Это не дефолт, но на практике встречается чаще, чем хотелось бы. Как это работает в штатном режиме? Вы запрашиваете вход, OpenBao генерирует auth URL, ваш браузер отправляет вас в IDP, вы проходите аутентификацию, и authorization code возвращается в ваш браузер. Вы контролируете весь процесс. 🎇А теперь атака. В direct mode authorization code идёт напрямую в API OpenBao, минуя браузер пользователя. Атакующий: • Сам инициирует auth request к API — привилегии не нужны • Получает auth URL с параметрами state и nonce • Отправляет эту…","text":"Один клик — и ваш vault token у атакующего: как работает CVE-2026-33757 Представьте: вы храните в OpenBao пароли баз данных, API-ключи облачных провайдеров, TLS-сертификаты. Один сотрудник кликает по ссылке из мессенджера, проходит привычную аутентификацию в корпоративном IDP — и даже не подозревает, что vault token с его привилегиями уже в руках злоумышленника. Без алертов, без аномалий в логах. CVSS 9.6 Critical. 🔑OpenBao — open-source форк HashiCorp Vault, на который многие компании перешли после смены лицензии Vault на BSL. Проблема CVE-2026-33757 затрагивает OIDC-аутентификацию в конфигурациях, где администратор вручную включил callback_mode=direct. Это не дефолт, но на практике встречается чаще, чем хотелось бы. Как это работает в штатном режиме? Вы запрашиваете вход, OpenBao генерирует auth URL, ваш браузер отправляет вас в IDP, вы проходите аутентификацию, и authorization code возвращается в ваш браузер. Вы контролируете весь процесс. 🎇А теперь атака. В direct mode authorization code идёт напрямую в API OpenBao, минуя браузер пользователя. Атакующий: • Сам инициирует auth request к API — привилегии не нужны • Получает auth URL с параметрами state и nonce • Отправляет эту ссылку жертве через фишинг • Жертва кликает, логинится в IDP — всё выглядит легитимно • OpenBao привязывает vault token к сессии атакующего • Атакующий поллит API и забирает токен Классика session fixation (CWE-384): система не инвалидирует сессию при аутентификации нового пользователя и не запрашивает подтверждение. Что делает эту уязвимость по-настоящему опасной — каскадный эффект. Получив vault token, атакующий читает database credentials, SSH-ключи, cloud API keys. С ними — lateral movement без необходимости ломать каждый сервис отдельно. А если у жертвы write-политики — подмена секретов и внедрение backdoor credentials. В средах с CI/CD один украденный токен компрометирует весь pipeline. ➡️Что делать прямо сейчас: 1. Обновиться до OpenBao 2.5.2 — фикс уже в релизе 2. Проверить все OIDC-роли на наличие callback_mode=direct — если не нужен явно, убрать 3. Настроить корреляцию IP в auth flow: кто инициировал запрос и откуда пришёл callback — должны совпадать 4. Мониторить паттерн «auth request с одного IP, callback с другого» — это прямой индикатор атаки EPSS даёт скромные 0.41% вероятности эксплуатации за 30 дней. Но для целевой атаки на организацию, мигрировавшую на OpenBao, этот вектор — подарок. Массовых атак ждать не стоит, а вот точечных — вопрос времени. Полный разбор с пошаговым сценарием эксплуатации и детектированием — в статье на форуме. https://codeby.net/threads/cve-2026-33757-uyazvimost-openbao-session-fixation-cherez-jwt-oidc-v-secrets-management.94963/","keywords":"margeleT, Telegram, Russia, Codeby, codeby_sec, war, politics, crypto, finance, electronics pc, electronics","url":"https://www.margelet.space/post/2381637525","mainEntityOfPage":"https://www.margelet.space/post/2381637525","datePublished":"2026-08-04T15:38:25.011Z","dateModified":"2026-08-04T15:38:25.011Z","image":["https://cdn4.telesco.pe/file/nZxXfjJ1fp-iNDQBxizImOn5el8LSavllG0Cm7SoDjS_m9T9cjEGRdMfgkAK7XiCsj9qfqJ2KHPYMiKCFr6lljDquD2-QeQpCKDk4Sf0Z74C8GKQcG7Agnsy3kAzaswMXWGLnMAOcbSUCZ6XgQGa7dX0tYBDKmGyejTq75gj9zKESv2ocR9_fPd7n0YIdcFchSHCTczxw0T1g7DrwfSLVuV6xy-Q9HHizp5tT95gMOIb2-Y8qL5RT8rATMTTSJ4b6DBgfoVMM59pQ-rcaQNbJgZDuDH1UdmCloBXQu9kje33tm0J8B5X6ff7HsRkxXzKMJibIOZOcTxFt33C9vY8-Q.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Codeby","url":"https://www.margelet.space/codeby_sec","logo":"https://cdn4.telesco.pe/file/HIx3HzmjJC2pEMTgbWZb6Gu6TzHK1fYIuc0nG9AYnX9D06pRQ-ZD4bW6qGfLl4VwsGqHLZLnV12cq-YlvLzSNmWF0GSIFmkWFbBb5izbpD3N72Tmu-_7TT0FK6O1-y3XoQH3vbOZt6o5sIvEN8xpTyelt4ZrvRX37QrjVD-g45d6BOucM1YDqDD4GiAEPEVtNshUNNTgMamTXgO2jkaIdcZ-4TJgEbVlFrRxc8jO3tBZdCNApUBx0BSf2y2P53Cgp38LCOfo8xiptWG_R1PMr9KsPu3dLCXx-LxzIygFzzCwUy3LQCLqjUhAZ1BjnwO6ZEEOhblA31xex0tx6x-gSA.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/codeby_sec/10335?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rWQHeiH1__SLPJhD77Ljf9kvTs7MdQPAEOZbb-SpZRAeOzCk0E1jcTRodERv-TPRnczcX5fZS_DrVHNDy4BKAHSzV6ldZtKqvAzekqVCS_v_S9fOCms1iM93Qu-NVz9mBTa3OC3x69RZtRUzLYNZilglKOj7lKoRNX2pizq_kZORi9YibAgRGd326r9v0aiNlRe5M8MEozuQNjVUIlCvnE_yS5Ed5tLXW1hMJg0M6RGdkuo8MGdM60uYENrw0RJpLMuFmasaxb97blld2TeybkqrXglJTcgk0-laAkD2MdFXndPuGeLMrl_JDH8tHD6ei6udey_-5izfcvhvWjGRew.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HIx3HzmjJC2pEMTgbWZb6Gu6TzHK1fYIuc0nG9AYnX9D06pRQ-ZD4bW6qGfLl4VwsGqHLZLnV12cq-YlvLzSNmWF0GSIFmkWFbBb5izbpD3N72Tmu-_7TT0FK6O1-y3XoQH3vbOZt6o5sIvEN8xpTyelt4ZrvRX37QrjVD-g45d6BOucM1YDqDD4GiAEPEVtNshUNNTgMamTXgO2jkaIdcZ-4TJgEbVlFrRxc8jO3tBZdCNApUBx0BSf2y2P53Cgp38LCOfo8xiptWG_R1PMr9KsPu3dLCXx-LxzIygFzzCwUy3LQCLqjUhAZ1BjnwO6ZEEOhblA31xex0tx6x-gSA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Codeby</strong></span>
           <span>@codeby_sec</span>
@@ -71,7 +71,7 @@ EPSS даёт скромные 0.41% вероятности эксплуатац
 
 https://codeby.net/threads/cve-2026-33757-uyazvimost-openbao-session-fixation-cherez-jwt-oidc-v-secrets-management.94963/</p>
       <img src="https://cdn4.telesco.pe/file/nZxXfjJ1fp-iNDQBxizImOn5el8LSavllG0Cm7SoDjS_m9T9cjEGRdMfgkAK7XiCsj9qfqJ2KHPYMiKCFr6lljDquD2-QeQpCKDk4Sf0Z74C8GKQcG7Agnsy3kAzaswMXWGLnMAOcbSUCZ6XgQGa7dX0tYBDKmGyejTq75gj9zKESv2ocR9_fPd7n0YIdcFchSHCTczxw0T1g7DrwfSLVuV6xy-Q9HHizp5tT95gMOIb2-Y8qL5RT8rATMTTSJ4b6DBgfoVMM59pQ-rcaQNbJgZDuDH1UdmCloBXQu9kje33tm0J8B5X6ff7HsRkxXzKMJibIOZOcTxFt33C9vY8-Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-08-04T07:54:25.286Z">Aug 4, 2026, 7:54 AM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-08-04T15:38:25.011Z">Aug 4, 2026, 3:38 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/war">war</a>
 <a class="pill" href="/country/ru/tag/politics">politics</a>
@@ -93,7 +93,7 @@ https://codeby.net/threads/cve-2026-33757-uyazvimost-openbao-session-fixation-ch
       <article class="post">
       <a class="post-link" href="/post/2346966487">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rWQHeiH1__SLPJhD77Ljf9kvTs7MdQPAEOZbb-SpZRAeOzCk0E1jcTRodERv-TPRnczcX5fZS_DrVHNDy4BKAHSzV6ldZtKqvAzekqVCS_v_S9fOCms1iM93Qu-NVz9mBTa3OC3x69RZtRUzLYNZilglKOj7lKoRNX2pizq_kZORi9YibAgRGd326r9v0aiNlRe5M8MEozuQNjVUIlCvnE_yS5Ed5tLXW1hMJg0M6RGdkuo8MGdM60uYENrw0RJpLMuFmasaxb97blld2TeybkqrXglJTcgk0-laAkD2MdFXndPuGeLMrl_JDH8tHD6ei6udey_-5izfcvhvWjGRew.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HIx3HzmjJC2pEMTgbWZb6Gu6TzHK1fYIuc0nG9AYnX9D06pRQ-ZD4bW6qGfLl4VwsGqHLZLnV12cq-YlvLzSNmWF0GSIFmkWFbBb5izbpD3N72Tmu-_7TT0FK6O1-y3XoQH3vbOZt6o5sIvEN8xpTyelt4ZrvRX37QrjVD-g45d6BOucM1YDqDD4GiAEPEVtNshUNNTgMamTXgO2jkaIdcZ-4TJgEbVlFrRxc8jO3tBZdCNApUBx0BSf2y2P53Cgp38LCOfo8xiptWG_R1PMr9KsPu3dLCXx-LxzIygFzzCwUy3LQCLqjUhAZ1BjnwO6ZEEOhblA31xex0tx6x-gSA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Codeby</strong></span>
           <span>@codeby_sec</span>
@@ -103,127 +103,112 @@ https://codeby.net/threads/cve-2026-33757-uyazvimost-openbao-session-fixation-ch
         <h3>92% на тесте по ИБ — и клик по фишингу в тот же понедельник Реальная исто…</h3>
         <p>92% на тесте по ИБ — и клик по фишингу в тот же понедельник Реальная история: бухгалтер прошла обучение по безопасности, набрала 92% на тесте. А через неделю открыла вложение из письма, замаскированного под запрос контрагента. Классический Spearphishing Attac…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-04T07:54:25.286Z">Aug 4, 2026, 7:54 AM</time> · <a href="/post/2346966487">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T15:38:25.011Z">Aug 4, 2026, 3:38 PM</time> · <a href="/post/2346966487">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2610095542">
+      <a class="post-link" href="/post/1743143033">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/uT7eWVUzKHSL_SVGC0zA0fNV9ujMSbomAIcKXNardFOAiUbnZnWLnSt1u-8oRCq3F_pl12mB3cLsc13_q1TAxbq6qM_ENi6zbexbrpHaRTKGzbLTr3-l_Yn07HZPcwJk8kTldomva6EJaej_qgqsAwU0E4jiBRIxHrqeNuInW8BPo_CdbY1oGQz6edew7PVfiCiMUSaroQ9DROKG61dZhpsWsL1_viygCk63rYPkRbHKwxwjbvUTc2p69h9miL4xg2hF7sZNAtGJrSSaacXwA9phaGW5k9XsCkhfGKNqxnvXdv6OSTBs30-8wx0eKZtrZs7ZGQO5DqFER5UdwuwOVQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Q6NLSZlkHwR9SyOFSKrXGSwOdDwzYoq_zmEVU02bGLA_TqZS1rBvHUFryWUd4XfBP6wwXDAuZhFKlI09otknxf6iFkYXzw9sZa1y1C9nppWbr0kP4iXocGjI4pOS1HvXWcZUGRcfHdOyAxPQ27n4K0Ya_3YsBxCL2VLHQsX6kR9R5HRrdTk6bBuDFEeYAXDRoQcL4vFdOmem4if00H_sHIl0VZeCiBY5d3WAF9X0fa6iFiH6sndKwChwBI-Z0DLzV0FBd3CqKRVJrIWTVGeANCEeb2gJW3E1VdQI6shPIQqPYj_16zKRhQYnSTb0kcV52xHSYoc3Xk1x5Kq8dz_Eag.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Лаки нейро</strong></span>
-          <span>@lakineuro</span>
+          <span class="source-title-row"><strong class="source-title">DTF</strong></span>
+          <span>@dtfbest</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/BpYPDm9g1_aleV8k49ExgCvp_w3G-Y1Vwc27MxeZ8ftPkutu51k7gWVJ1IBJHyAOUH1B76fgiup4foo5X2XJEZvCDmr-3etUsQ3fsBeYbjUuUswfjztiTgjWQdLI3UH_ZHtUjTzjFqVRDL-4VQxH30OVfhED2s-fIkfT0gzcAEXqxeaLGqU0GRHxwwHZIKJoE-wslF0dUa6gY69RaNr17T-QBkgLV-DWBsStiSBbxK-SMdCoE5KYbzfmcwJX93rkSrATZn11gc4Q_eeh2dD4hwQ5V8z0qvF7LVJyPNKrKodKN91wxqXZjo9k2oxN3LgVxdSrh4pILtN6eCQ_XfohWw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Aliens: Firesteam Elite, Firewatch, Atlas Fallen и Menace уберут из Game…</h3>
+        <p>Aliens: Firesteam Elite, Firewatch, Atlas Fallen и Menace уберут из Game Pass 15 августа. 6 числа подписчики Ultimate и PC Game Pass получат доступ к закрытой бете онлайна Gears of War: E-Day, которая продлится несколько дней. https://dtf.ru/games/5222564</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T15:48:40.742Z">Aug 4, 2026, 3:48 PM</time> · <a href="/post/1743143033">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1809917136">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/f8Ezo4ad7RrtPRvl0T8N4TKuhCs3vTuI6U_w16F8yV4zc2SOMcJJER3M4tl104TnLe6KpZxTsZDcqQGoAEnc_GqhfLS7DwgDy4nlxVcOzMZvFzx-Ypl4fJmWCE_x2OmhQRafgXJDTJ75WrsKN4_0WBnv6qidEOesemlt0hkTRb2WLMYDm7T4mt2--AwThg7mPzHoNHQtpKOtR6NUPZP2YHswhvslhlX7sP5HtH4iSZ0qJ_Ms-zEWr2lk2kcpCuzjubLYV2khTG4OQJB1iOl6lufpMQPyRHf2tnOzVwlER0eajnt6thGmt7BXmAo4omsDpECqDzNxcJP-a-8Nb13UrA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Medwed</strong></span>
+          <span>@cryptomedwed</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/mki82oWBcotgtTIdxaBtI5vJpRRbNqo0ZndUIVgkRRyJ-jJMgilsW1fe6D9H7gBGEvN3Xdr6X1bkDwqqEj_CFsOr0701y72KTIE2oqojtIQwhyr1hXr6Q_krtRJ-5_Q3D3hAiqBSGAZAA1Zy25D4OrZAvYZmOfx5E1hEgDAUakQaSSQw6QORo9vn7lyA1_xRVxw3M6WAvHuYaZam1zA3BnCCYu9Z1wTMPTNUcOTUVX7uKZA-B6sMcIj2oRgJQjsbVKX-kzJxpqKPFD4unEoKMXGXwTNqAylu5iHPSkPsHaBmOO1_u3uasjlJScsqyAK6CmMsYs6mQyi04AgNWZJ3FQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🚀 Увидимся на 17-м Blockchain Life 2026 в Дубае! 🚀 🗓 1-2 декабря в Дуб…</h3>
+        <p>🚀 Увидимся на 17-м Blockchain Life 2026 в Дубае! 🚀 🗓 1-2 декабря в Дубае состоится Blockchain Life 2026 – одно из самых масштабных мировых событий по Web3, майнингу, криптовалютам и AI. 🌎 15000+ участников из 130+ стран, 200+ спикеров, AI Future – новое н…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T15:47:48.498Z">Aug 4, 2026, 3:47 PM</time> · <a href="/post/1809917136">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2639637946">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HLTfybXcR5JKIhpfoXJIMlArGt8eDcQYe5pN2K57F9SM5B7ymW7Iu-DTMyci_H5pFCOmc1ZAxivjnjzIC6UeLwmHyjXyy9lYz3eLlsna1eXIGJcYIUuu6RiRBeuYOlKGo2c_QeLL-xxOJ7vMHjmofuyCj6r8_7aVSdnflOSI3nJYjfOuyBc5g-NgXrBwDw1_kJ6ldQ5uwXqie6ncFlSoSZZVabtOrGT1BjTqyiu83irgg402cnyLRBGTh_OHPpp7PDzev5o2DMr_T5gudSzOTLjBNWXsQwOxncFz5bK7sTMv_9u0dII9VoHWSKIx_1eA5IpCuMICcAy6pOwWNiijcA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Headlines</strong></span>
+          <span>@crypto_hd</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/L0K_o0mOZuw5E_oRk_fA3KzMGWGB3KKyl0rsUfozzaudu6K6i1SsufHbQQl1RDzrttkXXwLBBPoGM49ddLZ2rUMHMVggIzui_gzG3jQTUobWpAYHez0CbXmrKHe4E57PBvg5tAqYUBhwJvGjB3BNvb5ZD2Cmnn0yi2tkIbADg_Xvf0Z6l_1LwTL9DFRSVmRegnxQRlKIxH2T1IzvTFrWDib4uEhdW6pWOpL2tdXnOHRvzgszN_bjh9DINywWy2wnGZUwhmyRjKyykQFj3xGQUyUc54GfPW4btUUzB0TNR6xzHlUcnX997setwfLtK0vVaVgHOLeLGQjYJIxKxobekQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>😳 BTC, S&amp;P 500, DXY и нефть в моменте. Последние обновления: ➥ Индекс S&amp;…</h3>
+        <p>😳 BTC, S&amp;P 500, DXY и нефть в моменте. Последние обновления: ➥ Индекс S&amp;P 500 – новый рекорд. ➥ В США вышел отчет по рынку труда (JOLTS) + продолжается сезон корпоративных отчетностей. ➥ Марко Рубио заявил о прогрессе в переговорах с Ираном, однако окончател…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T15:47:39.087Z">Aug 4, 2026, 3:47 PM</time> · <a href="/post/2639637946">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1694911480">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HLTfybXcR5JKIhpfoXJIMlArGt8eDcQYe5pN2K57F9SM5B7ymW7Iu-DTMyci_H5pFCOmc1ZAxivjnjzIC6UeLwmHyjXyy9lYz3eLlsna1eXIGJcYIUuu6RiRBeuYOlKGo2c_QeLL-xxOJ7vMHjmofuyCj6r8_7aVSdnflOSI3nJYjfOuyBc5g-NgXrBwDw1_kJ6ldQ5uwXqie6ncFlSoSZZVabtOrGT1BjTqyiu83irgg402cnyLRBGTh_OHPpp7PDzev5o2DMr_T5gudSzOTLjBNWXsQwOxncFz5bK7sTMv_9u0dII9VoHWSKIx_1eA5IpCuMICcAy6pOwWNiijcA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Headlines</strong></span>
+          <span>@crypto_hd</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/cyzjz3U05q0znAihvyF04m0mR7UviHUWoCTAGwlCFAHJWfMWTant9oxRYE-CYmtbxHhMGsShiRmOOjGd4yTaZty-Qj6jhRio0cncYxuuscmXOCBN4OdG1fdbXwYvipocEwjK0UBgu00IntzY_uFNOSB1sv3qvGzty4gIdDz0gtoaXTm2V05Ccv0Jsalv8qzFyqM66l9BKZoTAb9Sjw3uvbFAzo6W4vf-AKw5-V3_aDQ8AbNb-Kye_ih0mTsz-VZdI6beDbNWGm94PMOoODqzRwcmFCfpqY2yftOmb_qD6q9pIW2yxnBSGnw6gvgudr54OlxVQSPyjScMECh7680Oag.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#нефть 🇺🇸🇮🇷 Министр финансов США: Сделка с Ираном по Ормузскому проли…</h3>
+        <p>#нефть 🇺🇸🇮🇷 Министр финансов США: Сделка с Ираном по Ормузскому проливу может быть заключена уже завтра. Остальные ключевые события вокруг конфликта на Ближнем Востоке к этому часу: ➤ Дональд Трамп заявил, что сделка – это «последний шанс» для Тегерана, а…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T15:47:39.087Z">Aug 4, 2026, 3:47 PM</time> · <a href="/post/1694911480">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2110400284">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/GSd-gfqJRMVwsuEg9eZEOpOYE-SCOAV66l8x-4SZG0-_KEEfW9ZyXM4_BMtWwpjaovTE9dkXccOoASIt0mojQLT5f_gXixrvoTwq5R1MLMVFAfcbYDeJoaf-rNknE6bVMEMveso6_tHXgCtfjzSQtUl3s4isgCqVsPQNXBp4T5Mpt7zaZv-f4RotySw_tKJDCPa0pxtOQA4z550lE5snn8BfHCRH6f6j7EJOdcizAPYlEer24i3TddAJ3GiRXjX0PyK0h4VPSRhCjlPSGNyl1pPq8DGy3YXlCXxECwwM6YvihC-1ZrNHmynXgkwHzJXPjTSe00GtQa7QlxqStCgmGg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ЧП САМАРА</strong></span>
+          <span>@chp_samara</span>
         </span>
       </p>
         
-        <h3>ЛЕВ НА ДЕНЬ РОЖДЕНИЯ - НОВЫЙ ТРЕНД 🦁 Пошаговая инструкция как повторить…</h3>
-        <p>ЛЕВ НА ДЕНЬ РОЖДЕНИЯ - НОВЫЙ ТРЕНД 🦁 Пошаговая инструкция как повторить в Study: ⏺️ Переходим на StudyAi → Все нейросети → Seedance 2.0 ⏺️ Загружаем свое фото в хорошем качестве → Ставим 9:16 и 6 сек ⏺️Вставляем промпт👇 A 6-second cinematic birthday video.…</p>
+        <h3>⚡️ Склад Wildberries в Самарской области выгорел полностью в результате а…</h3>
+        <p>⚡️ Склад Wildberries в Самарской области выгорел полностью в результате атаки БПЛА. Его площадь составляла 160 тысяч кв. м, сообщили на оперативном совещании правительства региона. ❗️Мониторинг и все подробности по ссылке в «СРОЧНО САМАРА» - https://max.…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-04T07:56:21.761Z">Aug 4, 2026, 7:56 AM</time> · <a href="/post/2610095542">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T15:43:42.202Z">Aug 4, 2026, 3:43 PM</time> · <a href="/post/2110400284">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1988770316">
+      <a class="post-link" href="/post/1680110904">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Ub1Bjgwv6nQa06dA8eskr1y8EjmdXJn3-ofCeW71ECeR7QZU7SG6sdxKfG9F6Bo8z0NA7nhJE5v6QFLzEk44DjcgNqTClW4TzgaiZCWhdH9MBdJiFjntkQsGI-edVbZWrtAs2MUG0jlXhnKHiOy0Jl_Y3AJGgFy9WGfBDj7CKnuJRqmzWAxxir-KCYFoTzAYn7slOBLwlhNmjsObPytPjle3_UEVLU6AF30MbsAsVaTfZzTG55t_QupND3DuUgwCD_4tpUexOP9C1Of5XXD719HhhKMrhSdPAajlLU-xGb_PW-oY-Fzd5HzramJWw28CWI2d9L9qxLKvel5vvUBAbg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/GSd-gfqJRMVwsuEg9eZEOpOYE-SCOAV66l8x-4SZG0-_KEEfW9ZyXM4_BMtWwpjaovTE9dkXccOoASIt0mojQLT5f_gXixrvoTwq5R1MLMVFAfcbYDeJoaf-rNknE6bVMEMveso6_tHXgCtfjzSQtUl3s4isgCqVsPQNXBp4T5Mpt7zaZv-f4RotySw_tKJDCPa0pxtOQA4z550lE5snn8BfHCRH6f6j7EJOdcizAPYlEer24i3TddAJ3GiRXjX0PyK0h4VPSRhCjlPSGNyl1pPq8DGy3YXlCXxECwwM6YvihC-1ZrNHmynXgkwHzJXPjTSe00GtQa7QlxqStCgmGg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">iQOO Россия</strong><span class="verified-badge" title="Verified" aria-label="Verified">
-    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#5ABEF7" />
-          <stop offset="1" stop-color="#0096FF" />
-        </linearGradient>
-        <mask id="tg_v_mask_seo">
-          <rect width="150" height="150" fill="black" />
-          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
-        </mask>
-      </defs>
-      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
-      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
-    </svg>
-  </span></span>
-          <span>@iqoo_rus</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/c_cmwlXgf17Q-ZpG6JFnQs8uS9eH8sn86qdxBPeZ_BhIgVOYmuw3SNIL3UZDqbCo9T8uQ_TJC7nXxDkFMfZTImqaHMem-YbxKjDkhgOfR-SqhDDqwXo81PLvOmvq_uhuWpKBH7w-n-9jI1JpIk5QFBopqwkudM2eK-rqpM-Q_O3kRrx27kaNmSZ6TgxXuYWguIAwtBgIjD_f-dI_1Bjt0nPgjRh4f_rtf_uWvxJ_KsgfvIN266jPum9xmf04WH_ey0M8YsG2rQy6hpFOu3hwZ5Yf6lRaKzA-gzgTAAqdOpffOhRCVPSnpRCk5UX0Z4RVR4-Et2eKhJPa5w-UcgkCtA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Если что, именно так правильно играть в морской бой на iQOO 15R. А не так…</h3>
-        <p>Если что, именно так правильно играть в морской бой на iQOO 15R. А не так, как на фото под спойлером… Просто забудь этот способ, ок? 👀 Процессора iQOO 15R правда хватит, чтобы потянуть War Thunder Mobile и другие игры на максималках Забери свой по летней ски…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-04T07:55:47.853Z">Aug 4, 2026, 7:55 AM</time> · <a href="/post/1988770316">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2935953549">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/CTtBL6Oufgtzhyf8-QEVMBhp41Vy2YygNv83DXWFqCi81_oXGTFrXY2Vw9E54_E5Htnjh6Xp-T9If0mwFnmge1jWSSayUveCXBWD0fbXpnlhRSNO76ENunC_roHu93H8kGGcUXd3ZOtaNS-_eGhtFXor957MTdNehlaxYZojvR-7NlvBPaEh-No2N4MbQESfNE0Rin6Utfgt6YbENGbLUL4YPYgqnnX7LIpfGoXWm48reDp6HfX8i4rgjL2fxqAfRkxBpLejrRPpwRuNmpI_r_h3dn6-LT9Ldyx7oXenaOQh6yYxSzB0f2Xk1ca4J2ccQBJtYHStnRAhSoUrZ8tMbw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Промты для ИИ фотосесии 🤖</strong></span>
-          <span>@ii_photolab</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/XnydQFSFn4gA7ciKbHHQFb67Deyo0vrkO6OfHQcVsJmrgTNvA9AmcAlIDfkyQsTAvSFJ93CgHVUOiNdP1Mi_DNv3LnRAs-O60SWwKkFaNAz9M_3Z5iwn9rFW_LKZXJEa305Ge16qwFbqyz9WavIS2r_q0gztpE872_r84BgplUA48DIQjqAn_SRXx2xlKPVzs_sgQLxsBtBr6R1vek-VLEawMCZDMiqj78gSV_Tfpvc1g384laQwicWygYt1djO2oUM8AMMHDuY1sdWdIi3FBVFkEJwn9ZcmEDx-4KmfreNNy_4mLOIYcz-kLh9Bs7gNvDCg59XKs8imTqh9YKQVMQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>A couple&#39;s selfie at a stylish beach restaurant. The woman gently purses…</h3>
-        <p>A couple&#39;s selfie at a stylish beach restaurant. The woman gently purses her lips in a kiss, looking directly into the camera. The man leans in from the side and kisses her temple. The shot is from the chest up, taken from a natural angle with the front-facin…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-04T07:55:34.594Z">Aug 4, 2026, 7:55 AM</time> · <a href="/post/2935953549">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2588698520">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/t3UA0mEe_uWYfO8BDG7lDCVfifR-Hqcq7K2HJSlNfCLTn5zxJunsq6Rr9QovlD8nDkYccPTLWeDCIfQTkQ3DAGV4QMyjZHAsKbFhZHtl0PXcfYyQZa_k3cM9KuLavQGA62Sh6zMejpJLX18Fkw2oZBke72G31Gc8ykpmKAjkw8SNsV6zYLXCalV8yt5jrUBm_b3uD9lJhdCOS8-zYVE5e0j38-K8BWc9-kUMOS_QDsfE5QdyfJbIBzdhzmFmSS4ahim6BuRmvwo0OTZ4G6H1C2gRgZLTFekKmT045YZcFsQmIrcib2vLjvNj5mrx_emw85AdKs_d7JfEzWdsbc1QQA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Life-Hack - Хакер</strong></span>
-          <span>@haccking</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/Mf1vYxDN8Vro1j4poBiL83cmIPmcRiHAPHZ0KcKlSs8Cm4mRIz8fJUJAyawYPQAnPHNu7p1K3eoYzyinssF9MXSHjpf8Cs0Af8lWDj-0QRXDsUyyNW8vAYTfSheWoH9JqcBvXEg1N1MS7J603z_9ayAJ5NA5naAd6GOAUKIXt44F41VUWk0PT7B5KHwja13pNDGdh01ev_YqE-sJiCCyVokanqlvun-xppMSXCnEYutmRA6G1ii9dqysBkq7gTi0KcARzS780JtXa7uG2unmRaYEotflQrvjy5d62HeQ-Q8uU9lGtzBbf59l0sjKAH4oEiUj_XWfHogneFt4uURfKw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Я обнаружил крупномасштабное распространение вирусов в GitHub #статья #по…</h3>
-        <p>Я обнаружил крупномасштабное распространение вирусов в GitHub #статья #полезное #malware Это история о том, как я нашел 10.000 репозиториев в GitHub, в которых находится ссылка на скачивание zip архива. В этом архиве — троян. Все эти репозитории от разных кон…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-04T07:55:23.054Z">Aug 4, 2026, 7:55 AM</time> · <a href="/post/2588698520">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2828796203">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rCsVppj19EvL6ouaAXGun7oRRqnVbbaswmd68S4jM0FhL3vNyzaJQPL9euYJo6jS5ccgKy916mPSRV_UiJdV3EFoxv685APpPDHi08llAXfuNL9i-XpMLGikOmH2XEFjnTpbgSHly5RisYamsLwlwK1LCNI-mYt8YJd88NjG4MuuS97WUYAfYyHKpW-Sc_2FIgUV-f2IrZ7WnAz3usMJRpsyZxlTD_XlW4Ol3hChwEOVs_bJu_Toq5-BylJKi5S3cmWy2dcTjSIxNyVEpR5MuvnYYjZkUVIY4MKSxuG_qm08L_JmnAJQaN2KDh8C5vCN5N0yExmb4I56bTdJKl8i0g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Анализ данных (Data analysis)</strong></span>
-          <span>@data_analysis_ml</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/og6NS8avMmA1_9G0oMlWVk_aCVCDaSKAKDfwBWJOeiE0Q4vJd6-iygYydoL_F9g6HPhL-QU1jEz85-BmwkXB4R3n87H1qfsfqwpj_YHMOG4E4I9jX6GKZskN4CX9kwY9BjSCYx3cjL8hCLXd2F-t0j_F2a5tjiO3DOZ_g48lm2xOwLXF3bcO5Cg-5djmtO8dmXVwgymanL8homZn5qHOMXNTqu5ucZu5T6n0SH_eQfKSztTcsYkJ9FTPJfyeSjoudnf5iMKSSaQVpTNun_6bxa2wSnAvemI6MkYerLTbN25n_LbeAU5NBuKcua5NP789acyYVYtxz7fnyIjyA9JXlg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>⚡️ DeepSeek V4 Flash теперь можно запустить локально на одном Mac На Hugg…</h3>
-        <p>⚡️ DeepSeek V4 Flash теперь можно запустить локально на одном Mac На Hugging Face появилась специальная GGUF-сборка DeepSeek-V4-Flash-0731 для компьютеров Apple Silicon со 128 ГБ объединённой памяти. Официальная модель содержит 304 млрд параметров и поддержив…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-04T07:54:45.015Z">Aug 4, 2026, 7:54 AM</time> · <a href="/post/2828796203">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/570446555">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/WhxR6yTDzzw8ksMZTqzauI3LL0Rf2VowhwdePLPk2vrUaKHBk_paVhYeTaTBfehY1Ecq3YHom0UEgH9jARWbI5yscd9KbWlVcorNAGgvt7eu7FVk3viuYi_Z1TL3kcUc1fYLGUfr2ehxMPdDrwmmARRzGdEdmQvMI0OmYLTcyRofcqyIrg5RCbenaX0_CwFE0fviLD2S_dZ839q-INvaj3FroMx_hjMg-NM4VbZ4bx_dOJBEzj1RVLJ_2Uj5UrFURpwtPJmIRmK-Qb8zz4lSaAr9KO8JUxxP0fhzKmzZXYxgQhHl9VWxt5yWJ9coTd6COEUz98aazjn8tTUZMFH-UQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">КликПик | Образы и стили</strong></span>
-          <span>@clickpickstyle</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/JVrkOGE34Xw1J8xG9lEfyA2YGH12w4KipcUnx4kUY5EIzX4Fk7jrEyL4995insibT7Z-PG4g-L8cvZ-wV5biwaAQKYEuaOEzUevKfOA_JQvgoDKlC99Wwnk2aabswgE3ZisYhtClDJIpnfGmoQrXCvh_e-_AixPrnyTiH6yv7M-OlWZMT3U_Q4ehgW9sSpqNCgmpwIul5FUgHSB-8DUazba9ECPlaunrFTdxYHj6Vr5bEjaXJ6uIkCg3UFOlIVKAf_MkSKN9gC_2igf8Rt71ESI9SOL1gpfRZf7zmwZf6fIQUwsBKTe3xbLdX2t3Hl-AX6F42VgcQe6wVFYLwZPyfg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Режим творца 1️⃣ Заходите в наш бот @clickpick_ai_bot 2️⃣ Нажимаете на &quot;Ф…</h3>
-        <p>Режим творца 1️⃣ Заходите в наш бот @clickpick_ai_bot 2️⃣ Нажимаете на &quot;Фото по модели&quot; ➡️ &quot;Режим творца&quot; 3️⃣ Вставляете промт Художник в мастерской 🎨 A thoughtful contemporary artist stands alone inside a bright modern art studio surrounded by large colorfu…</p>
-      </a>
-      <p class="meta"><time datetime="2026-08-04T07:54:23.154Z">Aug 4, 2026, 7:54 AM</time> · <a href="/post/570446555">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/1644514067">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/A6LxcnpSyuzpSUlDV-L9TyLdiwQy262DUo2MSWkWtdJHbQQZs6EYoSExIHxTDU_wd42mcOL5ovaF9Ykzi-RCVei6azCsbwwtzTUK7LYt72NDTIbYor-pmwDYrxKFeSHeq5tVHWGErzZ5xbeyeH6SvamOT0SVoc4QzMiwFfizrdflQ4oZQlXpenbeU8WPcRlkGPfG1yo5K8fbJ6-fiDHGJJaytH26TEQ9EHQd_TdgdYUKgKDzqXK0AAnl7YGQgB27yVCkHoyMzW0E3vsKB_yPm0l9bQUxX45tk1mPxeHW6hohbtoMsEoWdyRlweYhJFLywha847yzx6WPVJvbu4qz-Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">ЗАПОРОЖСКИЙ ФРОНТ</strong></span>
-          <span>@za_froht</span>
+          <span class="source-title-row"><strong class="source-title">ЧП САМАРА</strong></span>
+          <span>@chp_samara</span>
         </span>
       </p>
         
-        <h3>Парни из «KWG» и волонтеры проекта «Free Soldier» снова вышли на связь. Н…</h3>
-        <p>Парни из «KWG» и волонтеры проекта «Free Soldier» снова вышли на связь. На этот раз под раздачу попали склад БпЛА ВСУ в н.п. Заря и ЛЭП, питавшая расположение нацистов в н.п. Кушугум. Как всегда, огромное спасибо неравнодушным жителям города за предоставленну…</p>
+        <h3>В Сызрани погиб сотрудник предприятия из-за технологического хлопка Об эт…</h3>
+        <p>В Сызрани погиб сотрудник предприятия из-за технологического хлопка Об этом стало известно на оперативном совещании в правительстве Самарской области. Глава региона Вячеслав Федорищев подчеркнул, что трагедия не связана с БПЛА, а связана с технологической сит…</p>
       </a>
-      <p class="meta"><time datetime="2026-08-04T07:51:18.415Z">Aug 4, 2026, 7:51 AM</time> · <a href="/post/1644514067">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-08-04T15:43:42.202Z">Aug 4, 2026, 3:43 PM</time> · <a href="/post/1680110904">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/259417657">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/GSd-gfqJRMVwsuEg9eZEOpOYE-SCOAV66l8x-4SZG0-_KEEfW9ZyXM4_BMtWwpjaovTE9dkXccOoASIt0mojQLT5f_gXixrvoTwq5R1MLMVFAfcbYDeJoaf-rNknE6bVMEMveso6_tHXgCtfjzSQtUl3s4isgCqVsPQNXBp4T5Mpt7zaZv-f4RotySw_tKJDCPa0pxtOQA4z550lE5snn8BfHCRH6f6j7EJOdcizAPYlEer24i3TddAJ3GiRXjX0PyK0h4VPSRhCjlPSGNyl1pPq8DGy3YXlCXxECwwM6YvihC-1ZrNHmynXgkwHzJXPjTSe00GtQa7QlxqStCgmGg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ЧП САМАРА</strong></span>
+          <span>@chp_samara</span>
+        </span>
+      </p>
+        
+        <h3>⚡️ Склад Wildberries в Самарской области выгорел полностью в результате а…</h3>
+        <p>⚡️ Склад Wildberries в Самарской области выгорел полностью в результате атаки БПЛА. Его площадь составляла 160 тысяч кв. м, сообщили на оперативном совещании правительства региона. ❗️Мониторинг и все подробности по ссылке в «СРОЧНО САМАРА» - https://max.ru/jo…</p>
+      </a>
+      <p class="meta"><time datetime="2026-08-04T15:43:42.202Z">Aug 4, 2026, 3:43 PM</time> · <a href="/post/259417657">View post on margeleT</a></p>
     </article>
     </section>
   </main>
