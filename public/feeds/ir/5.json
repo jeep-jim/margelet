@@ -1,162 +1,6 @@
 {
-  "updatedAt": "2026-08-23T23:31:15.620Z",
+  "updatedAt": "2026-08-24T02:56:24.442Z",
   "posts": [
-    {
-      "id": 721322011,
-      "postUrl": "https://t.me/farda_ai/7064?single",
-      "source": {
-        "title": "هوش مصنوعی | تکنولوژی",
-        "handle": "farda_ai",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/XnnPrXnGPfhMH-A1oUGY4G2zQCeG9WYDJHV_CqO7LqhG1dr4wc2jUzcmmsVcK0Fxiom_vV0Fd5cCaVRG_HdKYBy_S9AHDgxkhdKOI5dEi1NmTmbYCDX_eRP-Vbxls0dqvOjvzdabwn5Bn-JMTa3LEBpgpAKdE6l2dw6J2FhS01f-1SKVDMCIHwJQgaJP29ou8T4MMIuzAeJ74uGinXh-Fw3iziJOx4gX1K3nQAU2sjVaeXwajVzyKPZNs9Qw0AiE2HWosEZ2TNU1QJcKDMJJxtwhpS7N8FOeEKmy_KDN7DR7zxXdm8feBus1w6QEf_8nlY1OKwYtEmt_nRAPG1LLAg.jpg"
-      },
-      "sourceId": "ir:farda_ai",
-      "sourceCountryCode": "ir",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Z5iFE9ER31FbMY7qTaGVd35J4jQDRRp_ou5HbQlymDFLGcWcFj23xHdaKKwe3MiE-QRFtNFWOkCFsvOCT3cUkOGVsNab3x50dPQnBGYI0ftzF63oc_atYMIuCZ9q193ylJ6YBqP7sic0_RkYu9ZysuPtmcnuZZlHgEzF7BvTk1IzHxZcx10pbONuG4TpR1HDQRlN6JUTYu59iVVpRNsIu1jdLl6k5jGIoRv21qmzBwlTon4o8sYFsfuMELW761UU6e1Pm_dLHAXpMj0Bl2xrhC8uQCL-EHr2uIBZCt0za0zstAA89rJ7bfDS8T7NHlkCcp_leLy28UB4JzbHDyY3mA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "دسترسی رایگان به هوش مصنوعی Qwen برای کاربران هتزنر (Hetzner)\n\nاگه سرور هتزنر دارید یا اکانت وریفای‌شده‌اش دستتونه، یه قابلیت آزمایشی جذاب و رایگان براتون فعال شده\nهتزنر برای تست سرورهاش، دسترسی رایگان به دو مدل قدرتمند Qwen رو از طریق API باز کرده. از اونجایی که این API با استانداردهای OpenAI سازگاره، خیلی راحت می‌تونید روی هر کلاینتی (مثل LobeChat ،Cherry Studio یا هر برنامه‌ای که Base URL می‌گیره) بیاریدش بالا.\n\nمراحل راه‌اندازی:\nبا اکانت هتزنر خودتون لاگین کنید و از لینک زیر یه توکن (API Key) بسازید:\nلینک سایت  توی کلاینت هوش مصنوعی خودتون، یه ارائه‌دهنده (Provider) کاستوم بسازید و آدرس زیر رو به عنوان Base URL (یا همون Endpoint) وارد کنید: لینک سایت توکنی که ساختید رو تو بخش API Key وارد کنید. دکمه‌ی Fetch/Import Models رو بزنید تا مدل‌ها اضافه بشن.\n\n چند تا نکته مهم:\nدر حال حاضر مدل Qwen3.6-35B-A3B-FP8 بدون مشکل و عالی جواب می‌ده، اما مدل Qwen3.8-27B ممکنه ارور بده.\nاین سرویس کاملاً آزمایشیه و ممکنه هر لحظه متوقف بشه.\nساخت و تایید اکانت هتزنر از ایران به خاطر احراز هویت (KYC) سخت‌گیرانه، خیلی سخته؛ پس فقط اگه از قبل اکانت دارید برید سراغش و وقتتون رو برای ساخت اکانت فیک تلف نکنید.\n\n@Farda_Ai",
-      "links": [
-        {
-          "label": "لینک سایت",
-          "url": "https://experiments.hetzner.com/inference"
-        },
-        {
-          "label": "لینک سایت",
-          "url": "https://experiments.hetzner.com/inference"
-        },
-        {
-          "label": "@Farda_Ai",
-          "url": "https://t.me/Farda_Ai"
-        }
-      ],
-      "createdAt": "2026-08-23T22:42:48.081Z",
-      "expiresAt": "2026-08-25T22:42:48.081Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:48.081Z",
-      "tag": "ai",
-      "tags": [
-        "ai",
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-08-23T22:42:48.081Z"
-      }
-    },
-    {
-      "id": 481180655,
-      "postUrl": "https://t.me/farahmandniy/155818?single",
-      "source": {
-        "title": "زیست فرهمندنیا 1405",
-        "handle": "farahmandniy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/d9p0iYAObQi-ioaXasJHrjBqT5aPn4lfPO3YDnCa8eOQMELXUbua9bk_X0m6PpMRzE6ERnLtuVqzE6qH5UU-PPP7UQ6FfGMHsbP6HI16RBUNtYPRYtvlB9sMwzPD3-O8FoV62dBDpFa5tXUIu3fdrppQU8qIejvTrnpt6uIdLSTo_DTsauGYGIE5EuKv7a4wy2coC15TfYussY-OfixXVvDCV5tCLBLxoeMkAgs0GUEcXhUC27ovIyvUS9KABFPiPgBdoSQS6Mrl8JPq5sPj-EHeQJ16lNzI-guHXUcEFILb8QEneHhXmMva93899iRE4Kh1uNsvY4l1uWF5DYryXg.jpg"
-      },
-      "sourceId": "ir:farahmandniy",
-      "sourceCountryCode": "ir",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "#سالیانه_جامع_زیست_فرهمندنیا_1406  👨‍🏫| استاد : فرهمندنیا 📝| رشته : تحربی - ریاضی  جلسه  منها 1 👈🏼(دریافت) جلسه  0 👈🏼(دریافت) جلسه  1 👈🏼(دریافت) جلسه  2 👈🏼(دریافت) جلسه  3 👈🏼(دریافت) جلسه  4 👈🏼(دریافت) جلسه  5 👈🏼(دریافت)✅  —حل ویدئویی QB سری اول  طرح درس(دریافت)…",
-      "links": [],
-      "createdAt": "2026-08-23T22:42:46.638Z",
-      "expiresAt": "2026-08-25T22:42:46.638Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:46.638Z",
-      "tag": "telegram_all",
-      "tags": [
-        "telegram_all",
-        "telegram",
-        "telegram_bots"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-08-23T22:42:46.638Z"
-      }
-    },
-    {
-      "id": 2201610697,
-      "postUrl": "https://t.me/f0_tb/139167?single",
-      "source": {
-        "title": "فوتبال برتر ࡆ لیگ 360 ࡆ ورزشی",
-        "handle": "f0_tb",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ZxwqFHHoxJEt-KvO9sO0KerDwMK5OZIKq7wpFLz3gG4NH5nLwWh-YNXieCJgVu5KupKidz8F0JgLVGP0cW9nS_VLQD5h0Mdi2dCW65i6aqahue0ly1YIGbAxAsLWbCj3JnS4Rc6fvqzId1D7BmTLpQjVBb4jN4gbOTUfzlhz0ersgyh9oiy_57wq1NDhFUjK-YYjcpLgQG3E0Fs4Hr4zKEKt2ywnjR89rd78YYNBOItlEIPRyyfsLx2oVy74P1ZniT07D2Ic_-ueHxnpxRWbRVuByDmQWMd-utFoKDG4lDJOC6jgUEL6fqMy3g0uNsTcfZ-k0tqmlacz8lECZqZEeQ.jpg"
-      },
-      "sourceId": "ir:f0_tb",
-      "sourceCountryCode": "ir",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/aiFOJXBGJ6XcAHJ1k_Cp2mmanfVhvVTeRGxs4IJsZ2zdolvsb6aSLU8QmWprLzE0ACfOJFMXTPSTszUJx8JSB6k8qFH6tOEwukfA_7v3NiqraG0H421w3jZykub1faj81_dzxoLPQUO4jIwDmiJXb4TdpjuILebxtmTbxwpqL5b214yA4XZCY4H_99eWh_IDxUgTQnI8Eb_Ymp29gwUqEv5dtsm9-nrd-1Zp67s_ADOnINTC7hNbDLFmFi9ibFzTr0p1EbTxJ9qPWM9qSBkY9XYEUUWnykk_cW_KOUyHPOUdkn1BWQ_nQyJ9JCl8r5HIu-NO0lJnmlPwlmU2B_chOQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🔴طلا به زودی گرمی 35 میلیون‼️\n\n🔴سکه هم به زودی 300 میلیون    ‼️\n\n🔴 دلار به زودی 300 هزار تومان ‼️\n\n🤍 اگه میخوای بدونی کی وقت خرید طلاست \nکی وقت فروشش، تو این کانال بهت میگن\n\n@Tala v dolar  👈\n.",
-      "links": [
-        {
-          "label": "@Tala v dolar",
-          "url": "https://t.me/+2FFDSuhAk9dkZWRk"
-        }
-      ],
-      "createdAt": "2026-08-23T22:42:43.386Z",
-      "expiresAt": "2026-08-25T22:42:43.386Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:43.386Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-08-23T22:42:43.386Z"
-      }
-    },
     {
       "id": 4274404233,
       "postUrl": "https://t.me/esthlalk/18421?single",
@@ -187,10 +31,10 @@
           "url": "https://t.me/esthlalk"
         }
       ],
-      "createdAt": "2026-08-23T22:42:40.774Z",
-      "expiresAt": "2026-08-25T22:42:40.774Z",
+      "createdAt": "2026-08-24T02:06:59.873Z",
+      "expiresAt": "2026-08-26T02:06:59.873Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:40.774Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:59.873Z",
       "tag": "other",
       "tags": [
         "other"
@@ -208,12 +52,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:40.774Z"
+        "reviewedAt": "2026-08-24T02:06:59.873Z"
       }
     },
     {
-      "id": 1633321766,
-      "postUrl": "https://t.me/esteghlallinews/177669?single",
+      "id": 20481763,
+      "postUrl": "https://t.me/esteghlallinews/177673?single",
       "source": {
         "title": "کانال هواداران استقلال",
         "handle": "esteghlallinews",
@@ -227,24 +71,24 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/e02e37edb2.mp4?token=rYwKGnOd2oS_AwlJULTdhBjIz_T44_rwSaSGiQnM2tf0yQaJDjdzkYpxBWaB7g9tt_qh9DS_Zw80wFoGYe1p-pBv8BRQKhw7xzseo5k-a9ahznRcFozBI2F-gqmGXo8X1xotbgLrztTVQ2vDRmrur42ozPyVXeVHRlZ8a_5S-34eYgrMUIsTB1m22xlfZRd-tRMb_1Md08JRIgpo28I2-RYTeTcOKZGAlCdN9JCQ0HfjqogP2tKgdZU1KW9WBean-y2WJw5xtGWjOelO8hmG20Dt6Jk0e1t1oFymkRvV2xPfCw5oiSLAJAZboXYdNufXDL01EDYXfRaNHtINw5QplA",
+          "url": "https://cdn4.telesco.pe/file/044c1ae211.mp4?token=KkgoqUwRBFp2LDb_6KnX0Jp6LhSEtSZIhR2iHYy4nGHO2v2VgUq9iY4ThIhRUQHOiXfECv9WpNL4M1kXfF6LDVThg9BSgfKJhDqye1Yvzv9hc9BYUsI53bhit5jAZ6EMeO1gH95bTQdd47jvtczLIJhm8Fr4IdO_0eK-tqj3M0HYzKnFpwwhXExtIJ8cUB4cDTMDBbwsQld9xLrGCkl1WeLXXwbyd1yuCFhcogIEu1G-KwglgbpDRvHkYSPVq8gO84Fis2p56quzFh6NDyP6c5-M01CljQWo2yy3PsWsbTH7cwsKEcRXRBCNGDBjNyidPCf2Vv9p6S5BEYr78drcSQ",
           "poster": null,
           "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "❌حرکت زشت و زننده عارف حاجی عیدیِ.... روبروی هوادارا استقلال\n\n🌟🌟 @Esteghlallinews",
+      "text": "این کلیپ و میشه بارها و بارها دید و لذت برد به به بنازم به اتحاد و همدلی تیم خیلی وقت بود ندیده بودیم دلتنگ دیدن همچین استقلالی بودیم بچه ها مچکریم ❤️🔥\n\n🌟🌟 @Esteghlallinews",
       "links": [
         {
           "label": "@Esteghlallinews",
           "url": "https://t.me/Esteghlallinews"
         }
       ],
-      "createdAt": "2026-08-23T22:42:37.931Z",
-      "expiresAt": "2026-08-25T22:42:37.931Z",
+      "createdAt": "2026-08-24T02:06:58.582Z",
+      "expiresAt": "2026-08-26T02:06:58.582Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:37.931Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:58.582Z",
       "tag": "other",
       "tags": [
         "other"
@@ -262,7 +106,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:37.931Z"
+        "reviewedAt": "2026-08-24T02:06:58.582Z"
       }
     },
     {
@@ -295,10 +139,10 @@
           "url": "https://t.me/EsteghlalFan"
         }
       ],
-      "createdAt": "2026-08-23T22:42:35.112Z",
-      "expiresAt": "2026-08-25T22:42:35.112Z",
+      "createdAt": "2026-08-24T02:06:57.422Z",
+      "expiresAt": "2026-08-26T02:06:57.422Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:35.112Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:57.422Z",
       "tag": "other",
       "tags": [
         "other"
@@ -316,12 +160,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:35.112Z"
+        "reviewedAt": "2026-08-24T02:06:57.422Z"
       }
     },
     {
-      "id": 178109245,
-      "postUrl": "https://t.me/errzzl/41718?single",
+      "id": 438864647,
+      "postUrl": "https://t.me/errzzl/41712?single",
       "source": {
         "title": "ميمز - memes",
         "handle": "errzzl",
@@ -330,22 +174,16 @@
       },
       "sourceId": "ir:errzzl",
       "sourceCountryCode": "ir",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/J6uojC0EvcrXz0vYHzuq9fzTPCb60v814aaLhdRH9EhOv-oXdJa1108CYKrcD2vtHAYjm2zM8Ei2P6PWG-fOz5m2wzy1J3qQXfktNrEWT_Il30PAuvX1HYtvpmXLUpFnciz9oW_v6_EcBTQmCUYkCrt2g3Xo575x5CHx5w-EhvIMPP1_WU4x7c8_U4oUiDvbwsTTFhmpITGVgoEVStLXSg0llD_fUiMYu_CA-utddHQma2eUZ_BzmUY5bZfhbelPN-_6OPnSTQi3YmzxC8Vc1WZqUXo8z7XJTt_dNy8S4iefOqzJwVrDgNLKzQeG_21i26ZexfEDRSQyCWhvVFpelw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "امر فوج كله راد عليها",
+      "text": "صباح النسوان\nلان النسوان همه الخير",
       "links": [],
-      "createdAt": "2026-08-23T22:42:34.185Z",
-      "expiresAt": "2026-08-25T22:42:34.185Z",
+      "createdAt": "2026-08-24T02:06:54.832Z",
+      "expiresAt": "2026-08-26T02:06:54.832Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:34.185Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:54.832Z",
       "tag": "other",
       "tags": [
         "other"
@@ -363,7 +201,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:34.185Z"
+        "reviewedAt": "2026-08-24T02:06:54.832Z"
       }
     },
     {
@@ -396,10 +234,10 @@
           "url": "https://t.me/EngIRI"
         }
       ],
-      "createdAt": "2026-08-23T22:42:32.235Z",
-      "expiresAt": "2026-08-25T22:42:32.235Z",
+      "createdAt": "2026-08-24T02:06:53.722Z",
+      "expiresAt": "2026-08-26T02:06:53.722Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:32.235Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:53.722Z",
       "tag": "other",
       "tags": [
         "other"
@@ -417,7 +255,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:32.235Z"
+        "reviewedAt": "2026-08-24T02:06:53.722Z"
       }
     },
     {
@@ -453,10 +291,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:42:31.119Z",
-      "expiresAt": "2026-08-25T22:42:31.119Z",
+      "createdAt": "2026-08-24T02:06:52.581Z",
+      "expiresAt": "2026-08-26T02:06:52.581Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:31.119Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:52.581Z",
       "tag": "other",
       "tags": [
         "other"
@@ -474,17 +312,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:31.119Z"
+        "reviewedAt": "2026-08-24T02:06:52.581Z"
       }
     },
     {
-      "id": 2899184577,
-      "postUrl": "https://t.me/efl1_team/349888?single",
+      "id": 2144554216,
+      "postUrl": "https://t.me/efl1_team/349975?single",
       "source": {
         "title": "حالات وتصاميم مميزة♻️",
         "handle": "efl1_team",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/R9ciaj2kWDkguFTrq-CCIbNCLdUcXvFPzujNIqOUe3vPp4qCt7DCingKswivW0cZXm36iz8FcOoxTQ6H5Uvt-LNMD0KJKBO49apdbRdwLk43qcf0jdt-oJF_-G4mQu1gz5efrn-UmujFPdR2co_sjnciuEbyewxSFKVjdAODDSzM4HIVsUrFcZJvV8afqJySkrfRi4OquhYBRy7uD-KuV19vmd45S2GSyBkGNElQb_fdxrsz2zYs3lV_WEJJOPe3gfjWm1_RmM-VpXBIMxBfthICUb7jpeNZSVTDZUKyB0jTgmKNhaiOTpl5kijexkL88MALfrrkNlIctJSqvdwxQQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/IWMFEFyecSZvIcEbKFB_T5XWtAhx7I752MIDBnuC_YxI5Eue0NzxGWwoUqxinVlHKYd_9hzNnjEr8TARZUeOZ4SQRQyTYAUYjE7rhUWUjfzzjfsc7EtN4dVetKPo_YFD08LCnHFvRBDRIt4mkIByG7HjxksShfYbB-hUIGCqaIeFzK7P1VyWwsY8hwlZmEJk04nD_9AB2cZraacPuKA3hMYWAk5kKOjA0VsEWF-tOxlxm95j7wPEUiXJedAxILXuzVZrNn1PveBQMXDm1LnkkIYfE1LCCS3C8DheTxShb3uRK3NL8ZrIolSNrMoF74UFBcx1c6RPo8q8J7EwJ0Do4g.jpg"
       },
       "sourceId": "ir:efl1_team",
       "sourceCountryCode": "ir",
@@ -511,10 +349,10 @@
           "url": "https://t.me/addlist/_-FJz3iZ655jMjJh"
         }
       ],
-      "createdAt": "2026-08-23T22:42:29.891Z",
-      "expiresAt": "2026-08-25T22:42:29.891Z",
+      "createdAt": "2026-08-24T02:06:50.948Z",
+      "expiresAt": "2026-08-26T02:06:50.948Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:29.891Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:50.948Z",
       "tag": "other",
       "tags": [
         "other"
@@ -532,7 +370,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:29.891Z"
+        "reviewedAt": "2026-08-24T02:06:50.948Z"
       }
     },
     {
@@ -565,10 +403,10 @@
           "url": "https://t.me/EfixVPN"
         }
       ],
-      "createdAt": "2026-08-23T22:42:28.727Z",
-      "expiresAt": "2026-08-25T22:42:28.727Z",
+      "createdAt": "2026-08-24T02:06:49.321Z",
+      "expiresAt": "2026-08-26T02:06:49.321Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:28.727Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:49.321Z",
       "tag": "other",
       "tags": [
         "other"
@@ -586,12 +424,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:28.727Z"
+        "reviewedAt": "2026-08-24T02:06:49.321Z"
       }
     },
     {
-      "id": 577986026,
-      "postUrl": "https://t.me/ecoshariff/13627?single",
+      "id": 597027091,
+      "postUrl": "https://t.me/ecoshariff/13653?single",
       "source": {
         "title": "شریف | Sharif",
         "handle": "ecoshariff",
@@ -604,12 +442,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "#دلار فردایی 200 تومن\nو #طلا 22 میلیون....🪙\n\nخداقوت به مسؤلین! 🖐️ \nهزار بار هشدار‌ش رو دادم تحویل بگیرید!!",
-      "links": [],
-      "createdAt": "2026-08-23T22:42:27.667Z",
-      "expiresAt": "2026-08-25T22:42:27.667Z",
+      "text": "ونس : دنبال انهدام 400 کیلو ایم!و حمله اقتصادی شدیدی علیه ایران از امروز آغاز شد....\n\n@ecoshariff",
+      "links": [
+        {
+          "label": "@ecoshariff",
+          "url": "https://t.me/ecoshariff"
+        }
+      ],
+      "createdAt": "2026-08-24T02:06:48.086Z",
+      "expiresAt": "2026-08-26T02:06:48.086Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:27.667Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:48.086Z",
       "tag": "other",
       "tags": [
         "other"
@@ -627,7 +470,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:27.667Z"
+        "reviewedAt": "2026-08-24T02:06:48.086Z"
       }
     },
     {
@@ -662,10 +505,10 @@
           "url": "https://t.me/ecoiran_webtv"
         }
       ],
-      "createdAt": "2026-08-23T22:42:25.604Z",
-      "expiresAt": "2026-08-25T22:42:25.604Z",
+      "createdAt": "2026-08-24T02:06:46.470Z",
+      "expiresAt": "2026-08-26T02:06:46.470Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:25.604Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:46.470Z",
       "tag": "other",
       "tags": [
         "other"
@@ -683,7 +526,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:25.604Z"
+        "reviewedAt": "2026-08-24T02:06:46.470Z"
       }
     },
     {
@@ -722,10 +565,10 @@
           "url": "https://www.instagram.com/eafc_prime?igsh=MXVyb2I3cmJzN2J1bQ=="
         }
       ],
-      "createdAt": "2026-08-23T22:42:22.884Z",
-      "expiresAt": "2026-08-25T22:42:22.884Z",
+      "createdAt": "2026-08-24T02:06:45.137Z",
+      "expiresAt": "2026-08-26T02:06:45.137Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:22.884Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:45.137Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -744,7 +587,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:22.884Z"
+        "reviewedAt": "2026-08-24T02:06:45.137Z"
       }
     },
     {
@@ -775,10 +618,10 @@
           "url": "https://t.me/EAFC_IR"
         }
       ],
-      "createdAt": "2026-08-23T22:42:19.649Z",
-      "expiresAt": "2026-08-25T22:42:19.649Z",
+      "createdAt": "2026-08-24T02:06:43.138Z",
+      "expiresAt": "2026-08-26T02:06:43.138Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:19.649Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:43.138Z",
       "tag": "other",
       "tags": [
         "other"
@@ -796,12 +639,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:19.649Z"
+        "reviewedAt": "2026-08-24T02:06:43.138Z"
       }
     },
     {
-      "id": 3235371310,
-      "postUrl": "https://t.me/drtel/65319?single",
+      "id": 494553423,
+      "postUrl": "https://t.me/drtel/65325?single",
       "source": {
         "title": "𝐃𝐫 𝐓𝐞𝐥",
         "handle": "drtel",
@@ -810,29 +653,76 @@
       },
       "sourceId": "ir:drtel",
       "sourceCountryCode": "ir",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/ac2f42326f.mp4?token=fqb_C0PqXxFqB11nKyoBYKkpYnP1_W024y4_-W8bskZXOR3bv2E5KVxmYV5lxeFEOnKYc46Rtcp92edyXtTWijFvH17zixnIKdeeMwI9n04kWRTqVndNAL4tUY93HofafH7x3H7rcs7FAyHp-a6JGowZkLiSaaZLnyCAoOwJnK7RiAz4AzyXz9Ifvzwd6eeKhjWJGsWGSCsZmBOeESgRz73J9PjdUo_h32c7UwfvzG-eAtohQkXUBrGZgkJ8OEZ7jAdJXr7iTDaV6rtgnONKiYb2zEjytjGUg86muHLScyAU4vQKzgpotEdtpyeFCGBlATzewyv36Lv-gZA439mIHQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🇮🇷علی آبادی، وزیر نیرو:\nفکر کنم با همین روندِ مصرف برق، انشالله همین هفته روزهای سخت‌مون تموم میشه.\n\n+ خیلی از سایت‌های خبری با استناد به این ویدئو، گفتن که از هفته بعد دیگه قطعی برق نخواهیم داشت.\n\n@DrTeL",
+      "text": "🟢 تنها فقط تا پایان دوشنبه برای بونوس ویژه SCARABTEMPLE فرصت باقی مانده!\n\n🔵 همین حالا با هر بار شارژ حداقل ۱ میلیون تومان، اسپین رایگان متناسب با مبلغ شارژ دریافت کن!\n\n🔵 شارژ بیشتر؟ اسپین بیشتر!\n🔵 هر چرخش، شانس دریافت جوایز نقدی\n📌 فرصت محدوده؛ زمان زیادی باقی نمونده!\n🔗 اسکرب‌تمپل، با یک سیستم اسپین پرهیجان و جوایز متنوع: 👇\n\n2⃣ نسخه جدید سایت: Sportn5b2.com\n2⃣ نسخه قدیمی سایت: Sport90.bet\n\n🔗 کانال رسمی اسپورت نود:👇\n\n🔵 @Sportnavad",
       "links": [
         {
-          "label": "@DrTeL",
-          "url": "https://t.me/DrTeL"
+          "label": "Sportn5b2.com",
+          "url": "https://Sportn5b2.com/"
+        },
+        {
+          "label": "Sport90.bet",
+          "url": "https://Sport90.bet/"
+        },
+        {
+          "label": "@Sportnavad",
+          "url": "https://t.me/Sportnavad"
         }
       ],
-      "createdAt": "2026-08-23T22:42:16.535Z",
-      "expiresAt": "2026-08-25T22:42:16.535Z",
+      "createdAt": "2026-08-24T02:06:41.892Z",
+      "expiresAt": "2026-08-26T02:06:41.892Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:16.535Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:41.892Z",
+      "tag": "sports_news",
+      "tags": [
+        "sports_news",
+        "sports"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-08-24T02:06:41.892Z"
+      }
+    },
+    {
+      "id": 2838889100,
+      "postUrl": "https://t.me/drtabtob/49088?single",
+      "source": {
+        "title": "💊 ثقافة صحية طبية 😉(اساسيات طبطوب)",
+        "handle": "drtabtob",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/c7LkXniLCS4qhnwgFFKqFcUtvxlo7_jl93N4Vx9mCSgoYiZXQ2kuTeaghpOlAzaMptA8_wbKr2U4Td0cJrTBjc9FAbsdpCf8qRGuu34TocdDgcaMaXck9y06WXBDIq5p7CCZazFFSOR51zGqmkx5T8VI46tJFPwoJtM4LW9dwU4MZXroWtFTc0OwEI7sDBzUAB3XhsOzoOId8h9am2pyQ550sAQ_pawRjP4ESqfnqALt-zn6Yj4Co_74EvJBhdPQZ_ZPVxnLb1puW-Z7LL64CBSsAGZWNX3MqGE9jM9cRGLZ1VjC5WI8fab9v4yHLn5dfol01E5i7kd5L0OE_RNKoQ.jpg"
+      },
+      "sourceId": "ir:drtabtob",
+      "sourceCountryCode": "ir",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "اقتباسات خاصة ليوم الجمعة 🧡☁️.",
+      "links": [
+        {
+          "label": "اقتباسات خاصة ليوم الجمعة 🧡☁️.",
+          "url": "https://t.me/addlist/jr4rnsWvkEw0OTg0"
+        }
+      ],
+      "createdAt": "2026-08-24T02:06:40.400Z",
+      "expiresAt": "2026-08-26T02:06:40.400Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-08-24T02:06:40.400Z",
       "tag": "other",
       "tags": [
         "other"
@@ -850,60 +740,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:16.535Z"
-      }
-    },
-    {
-      "id": 1682811685,
-      "postUrl": "https://t.me/drtabtob/49045?single",
-      "source": {
-        "title": "💊 ثقافة صحية طبية 😉(اساسيات طبطوب)",
-        "handle": "drtabtob",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/c7LkXniLCS4qhnwgFFKqFcUtvxlo7_jl93N4Vx9mCSgoYiZXQ2kuTeaghpOlAzaMptA8_wbKr2U4Td0cJrTBjc9FAbsdpCf8qRGuu34TocdDgcaMaXck9y06WXBDIq5p7CCZazFFSOR51zGqmkx5T8VI46tJFPwoJtM4LW9dwU4MZXroWtFTc0OwEI7sDBzUAB3XhsOzoOId8h9am2pyQ550sAQ_pawRjP4ESqfnqALt-zn6Yj4Co_74EvJBhdPQZ_ZPVxnLb1puW-Z7LL64CBSsAGZWNX3MqGE9jM9cRGLZ1VjC5WI8fab9v4yHLn5dfol01E5i7kd5L0OE_RNKoQ.jpg"
-      },
-      "sourceId": "ir:drtabtob",
-      "sourceCountryCode": "ir",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/nQoQwwk-SkQvx0yzaiS4ReiD0hirfnEi1qmACdrj1PQaU5WUzdX5RgbixXKQ9Jg3-DLgtv5q2q50CSmlf4eGzkyjwS4jPzsNGXZnG5DHUbeukpc2liu6dSa0EeRBEJIDI5X5HmR0rqEKKWzHTaF58Xj1Bvh8wE-cUFAezCM-pqpdyfceyrv5767vJTaQKvvIs7i_G5j-qNzk_mg1r6dHURmWE_iNRlqalUp5ankafodUFJeqo3Dt1AP8NWoZhSNOvhTBBhXxPUbTVOcxbKxrAowDwIZJjf3iQ4ESO3ZaFzh1GrNVrMqGnqkxW5NxjbtRaCm8sPyNetTW8hAkWbANCQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "​🚀 انطلق نحو المستقبل مع XT Futures:\n\nتداول واربح دراجة رويال إنفيلد!\n​📌 أودع وتداول لتتقاسم مجمّع جوائز بقيمة 30,000 USDT بالإضافة إلى مكافآت قيّمة ودراجة نارية!\n\n​🗓 فترة الحملة: \nمن 17-08-2026 حتى 02-09-2026 (UTC+0)\n\n​1️⃣ مكافآت المستخدمين الجدد:\n60 USDT Bonus \n\n​2️⃣ مكافآت صافي الإيداع وحجم التداول:\n​إيداع وحجم تداول للحصول على بونص فيوتشر يصل إلى 1000 USDT.\n\n​3️⃣ مكافآت حجم تداول العقود الآجلة (الكبرى):\n​تصل إلى بونص فيوتشر، كاش، ذهب بقيمة 500 USDT، والجائزة الكبرى: دراجة Royal Enfield Hunter 350 (بقيمة 1500 USDT)!\n\n​⚠️ طريقة المشاركة:\n​سجل حساب جديد عبر المنصة.\n​اضغط على زر \"انضم الآن\" في صفحة الحدث.\n​قم بالإيداع والتداول للحصول على الجوائز!\n\n​🔗 رابط التسجيل والمشاركة في الحدث:\nhttps://www.xt.com/activity/0817asdrgmeasx?ref=WGQJKI",
-      "links": [
-        {
-          "label": "https://www.xt.com/activity/0817asdrgmeasx?ref=WGQJKI",
-          "url": "https://www.xt.com/activity/0817asdrgmeasx?ref=WGQJKI"
-        }
-      ],
-      "createdAt": "2026-08-23T22:42:13.555Z",
-      "expiresAt": "2026-08-25T22:42:13.555Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:13.555Z",
-      "tag": "crypto",
-      "tags": [
-        "crypto",
-        "finance"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-08-23T22:42:13.555Z"
+        "reviewedAt": "2026-08-24T02:06:40.400Z"
       }
     },
     {
@@ -928,10 +765,10 @@
           "url": "https://t.me/sokhanranihaa/58251"
         }
       ],
-      "createdAt": "2026-08-23T22:42:12.610Z",
-      "expiresAt": "2026-08-25T22:42:12.610Z",
+      "createdAt": "2026-08-24T02:06:39.291Z",
+      "expiresAt": "2026-08-26T02:06:39.291Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:12.610Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:39.291Z",
       "tag": "other",
       "tags": [
         "other"
@@ -949,12 +786,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:12.610Z"
+        "reviewedAt": "2026-08-24T02:06:39.291Z"
       }
     },
     {
-      "id": 3973930442,
-      "postUrl": "https://t.me/dreamaa30/92677?single",
+      "id": 2617013964,
+      "postUrl": "https://t.me/dreamaa30/92693?single",
       "source": {
         "title": "تحفيزات نـحن لأحلامنـا 🩵.",
         "handle": "dreamaa30",
@@ -963,23 +800,21 @@
       },
       "sourceId": "ir:dreamaa30",
       "sourceCountryCode": "ir",
-      "contentType": "audio",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "خلفيات دكاترة 👩🏻‍⚕🩵",
+      "links": [
         {
-          "id": "audio-1",
-          "kind": "audio",
-          "url": "https://cdn1.telesco.pe/file/9fff0b419d.ogg?token=pomS9NBMi0p0gxLY_dyNByWvD6PqtbZtID3OXZp4YOY1J48J5_dDlbsLwuFbzdr8NXwjsjlxKm8A-Glvd-yCMPVCWUSxkQpM2_YaUL0Hi9-1yFEG8857yVNs5pwKt3spy9cSsd511FbvTy7cfjE3nE2qboF5oq_o36UZCd4AYqztgnvpn06XrcZpxyAszVDv6errLfdX0hXiDis5Fiy48N2A4fReYVKN8YEWtPlcUCN_ZtYDHrBqLlHq771wNjFqUXz3TDcJWV9OsD4LfSG3vY5CJoyLJOfOi6Sy2PfjcuL03delLC_2K8iBDdI29kebVEqG4ZwLmM2JSE74sCUiDA",
-          "mimeType": "audio/mpeg"
+          "label": "خلفيات دكاترة",
+          "url": "https://t.me/tttfm0/22809?single"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "الدراسة الها نهاية، شدّ حيلك وانت ڪَدها 🫶✨",
-      "links": [],
-      "createdAt": "2026-08-23T22:42:11.000Z",
-      "expiresAt": "2026-08-25T22:42:11.000Z",
+      "createdAt": "2026-08-24T02:06:37.908Z",
+      "expiresAt": "2026-08-26T02:06:37.908Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:11.000Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:37.908Z",
       "tag": "other",
       "tags": [
         "other"
@@ -997,7 +832,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:11.000Z"
+        "reviewedAt": "2026-08-24T02:06:37.908Z"
       }
     },
     {
@@ -1017,10 +852,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:42:09.496Z",
-      "expiresAt": "2026-08-25T22:42:09.496Z",
+      "createdAt": "2026-08-24T02:06:36.214Z",
+      "expiresAt": "2026-08-26T02:06:36.214Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:09.496Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:36.214Z",
       "tag": "culture_all",
       "tags": [
         "culture_all",
@@ -1040,7 +875,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:09.496Z"
+        "reviewedAt": "2026-08-24T02:06:36.214Z"
       }
     },
     {
@@ -1071,10 +906,10 @@
           "url": "https://t.me/dr_ghomsheii"
         }
       ],
-      "createdAt": "2026-08-23T22:42:08.167Z",
-      "expiresAt": "2026-08-25T22:42:08.167Z",
+      "createdAt": "2026-08-24T02:06:35.218Z",
+      "expiresAt": "2026-08-26T02:06:35.218Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:08.167Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:35.218Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1092,7 +927,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:08.167Z"
+        "reviewedAt": "2026-08-24T02:06:35.218Z"
       }
     },
     {
@@ -1117,10 +952,10 @@
           "url": "https://t.me/+EGCAeRV9rR03N2Jk"
         }
       ],
-      "createdAt": "2026-08-23T22:42:05.546Z",
-      "expiresAt": "2026-08-25T22:42:05.546Z",
+      "createdAt": "2026-08-24T02:06:32.579Z",
+      "expiresAt": "2026-08-26T02:06:32.579Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:05.546Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:32.579Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1138,7 +973,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:05.546Z"
+        "reviewedAt": "2026-08-24T02:06:32.579Z"
       }
     },
     {
@@ -1169,10 +1004,10 @@
           "url": "https://t.me/Dolar_403"
         }
       ],
-      "createdAt": "2026-08-23T22:42:02.929Z",
-      "expiresAt": "2026-08-25T22:42:02.929Z",
+      "createdAt": "2026-08-24T02:06:31.556Z",
+      "expiresAt": "2026-08-26T02:06:31.556Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:02.929Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:31.556Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1190,7 +1025,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:02.929Z"
+        "reviewedAt": "2026-08-24T02:06:31.556Z"
       }
     },
     {
@@ -1200,7 +1035,7 @@
         "title": "سازمان حفاظت محیط زیست",
         "handle": "doenews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F4IkLVBHtOZlAc-qCGzQSOzFWHZ_tkPEYrGZ7tli5dDSwK3seolJ4g1VCKcZdey-meuYJAU7Wg-k6AbsfzqJrK6lLNWoceg8vYeynFl7XQrlJM2NgmVSg7ePoDWVy2nGLlcX9yXFxJhRxjevFfN-7QFOyYyuNJ3d62AyQFIki2l1ctp7uPyUVPjTYAgdAuWie5S17LETTX6h8NTtPDLdLjc3O8NrNabX6VpN6bxiKqcaJavxHtHa-cQMm4_srXFRo_L0CMt3qsJBYcj18hp3CfgzI7HjKKP66IJnrNgUIe_1FHI-tPXQWvRyKw8MIyF29ppWGp2rHiximhB4C0PvHw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Q_0ULNDbrzcbzbcBHqzK31ERiGmXV2GLEDKVoY6gLg0TA43X-kmhnY_zmTIrwY_-PwwJD7cKYPuckoz-cDxJd4Hc2eRa3dcEjlQp40tglweTW9i0Gs8vcE4XgmttIHPDEIZGWDoR07sI2NPm5j972-YEu0YoElep-1Ipl2732GVMdDkp134miHaDD9qiFJkspzv2LtuspQRdnbkPW3Hq_6rupncMwExszsl7hgs8lDSNKlclJwVNUjHnP_Pgl5wn_OAZfJXMaqCBHcmTNy0aFQ-QYcnXLcWkdi2Yqi03J3YfmZjh2_qQ644iAGmZCSsgR-vK3BIi09sv29CWMW76Fw.jpg"
       },
       "sourceId": "ir:doenews",
       "sourceCountryCode": "ir",
@@ -1225,10 +1060,10 @@
           "url": "https://t.me/doenews"
         }
       ],
-      "createdAt": "2026-08-23T22:42:01.796Z",
-      "expiresAt": "2026-08-25T22:42:01.796Z",
+      "createdAt": "2026-08-24T02:06:30.370Z",
+      "expiresAt": "2026-08-26T02:06:30.370Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:01.796Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:30.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1246,7 +1081,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:01.796Z"
+        "reviewedAt": "2026-08-24T02:06:30.370Z"
       }
     },
     {
@@ -1266,10 +1101,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:42:00.551Z",
-      "expiresAt": "2026-08-25T22:42:00.551Z",
+      "createdAt": "2026-08-24T02:06:28.998Z",
+      "expiresAt": "2026-08-26T02:06:28.998Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:42:00.551Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:28.998Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1287,12 +1122,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:42:00.551Z"
+        "reviewedAt": "2026-08-24T02:06:28.998Z"
       }
     },
     {
-      "id": 3823026417,
-      "postUrl": "https://t.me/do_l4/50298?single",
+      "id": 2451954928,
+      "postUrl": "https://t.me/do_l4/50299?single",
       "source": {
         "title": "قیمت‌‌‌لحظه‌ای دلار طلا خودرو و سکه",
         "handle": "do_l4",
@@ -1301,16 +1136,27 @@
       },
       "sourceId": "ir:do_l4",
       "sourceCountryCode": "ir",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/iRPnJBShQxQtQiWqAkSrY7-VnyJxEyNaKV8ftAka115tJPMrV_m-4F0IaEJOrlboavRdUpOMXEdofU18b8Dr7eAyU_AbeeSuswGwgojpC7TpLOwr6lkyEkQLbdDAlQ_VVVAB3pLTW6gW-S9rIonx6wS8RQMajKG_jqEeR_s52PjULxLJmtzMwlasRrcv3Kw5dKd-qMFRjlvhwroTDgS9geoip-SWJIryhbCNGCgIQK6i91ANIrKYMwhpw6oR0YT5RV3anPcTrKphqmNE0WG2Cmp-jnBa7zJ_4Xe6H9PzChmjlhEs5VMqwivmt0jDC7RlPlEEuTWVuFdeCB4x9ZNzhw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "💸 دلار فردایی تهران 💵 199,300 خـرید 💸\n\n💸 دلار فردایی تهران 💵 199,350 فروش 💵\n\n💸 دلار فردایی تهران 💵 199,350 معامله ✅",
-      "links": [],
-      "createdAt": "2026-08-23T22:41:57.750Z",
-      "expiresAt": "2026-08-25T22:41:57.750Z",
+      "text": "🔴طلا به زودی گرمی 35 میلیون‼️\n\n🔴سکه هم به زودی 300 میلیون    ‼️\n\n🔴 دلار به زودی 300 هزار تومان ‼️\n\n🤍 اگه میخوای بدونی کی وقت خرید طلاست \nکی وقت فروشش، تو این کانال بهت میگن\n\n@Tala v dolar  👈\n.",
+      "links": [
+        {
+          "label": "@Tala v dolar",
+          "url": "https://t.me/+2FFDSuhAk9dkZWRk"
+        }
+      ],
+      "createdAt": "2026-08-24T02:06:28.106Z",
+      "expiresAt": "2026-08-26T02:06:28.106Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:57.750Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:28.106Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1328,7 +1174,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:57.750Z"
+        "reviewedAt": "2026-08-24T02:06:28.106Z"
       }
     },
     {
@@ -1375,10 +1221,10 @@
           "url": "https://DigiMoviez.com/"
         }
       ],
-      "createdAt": "2026-08-23T22:41:56.800Z",
-      "expiresAt": "2026-08-25T22:41:56.800Z",
+      "createdAt": "2026-08-24T02:06:26.698Z",
+      "expiresAt": "2026-08-26T02:06:26.698Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:56.800Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:26.698Z",
       "tag": "cinema",
       "tags": [
         "cinema",
@@ -1397,7 +1243,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:56.800Z"
+        "reviewedAt": "2026-08-24T02:06:26.698Z"
       }
     },
     {
@@ -1430,10 +1276,10 @@
           "url": "https://t.me/+LB508WZyIr8xNmY0"
         }
       ],
-      "createdAt": "2026-08-23T22:41:54.599Z",
-      "expiresAt": "2026-08-25T22:41:54.599Z",
+      "createdAt": "2026-08-24T02:06:24.644Z",
+      "expiresAt": "2026-08-26T02:06:24.644Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:54.599Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:24.644Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1451,7 +1297,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:54.599Z"
+        "reviewedAt": "2026-08-24T02:06:24.644Z"
       }
     },
     {
@@ -1496,10 +1342,10 @@
           "url": "https://t.me/w_w_er"
         }
       ],
-      "createdAt": "2026-08-23T22:41:51.732Z",
-      "expiresAt": "2026-08-25T22:41:51.732Z",
+      "createdAt": "2026-08-24T02:06:23.313Z",
+      "expiresAt": "2026-08-26T02:06:23.313Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:51.732Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:23.313Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -1519,7 +1365,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:51.732Z"
+        "reviewedAt": "2026-08-24T02:06:23.313Z"
       }
     },
     {
@@ -1550,10 +1396,10 @@
           "url": "https://t.me/MovieCottage"
         }
       ],
-      "createdAt": "2026-08-23T22:41:49.195Z",
-      "expiresAt": "2026-08-25T22:41:49.195Z",
+      "createdAt": "2026-08-24T02:06:21.746Z",
+      "expiresAt": "2026-08-26T02:06:21.746Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:49.195Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:21.746Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -1575,7 +1421,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:49.195Z"
+        "reviewedAt": "2026-08-24T02:06:21.746Z"
       }
     },
     {
@@ -1601,10 +1447,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:47.991Z",
-      "expiresAt": "2026-08-25T22:41:47.991Z",
+      "createdAt": "2026-08-24T02:06:20.530Z",
+      "expiresAt": "2026-08-26T02:06:20.530Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:47.991Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:20.530Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1622,7 +1468,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:47.991Z"
+        "reviewedAt": "2026-08-24T02:06:20.530Z"
       }
     },
     {
@@ -1647,10 +1493,10 @@
           "url": "https://t.me/Irx2rayngbot"
         }
       ],
-      "createdAt": "2026-08-23T22:41:47.051Z",
-      "expiresAt": "2026-08-25T22:41:47.051Z",
+      "createdAt": "2026-08-24T02:06:19.340Z",
+      "expiresAt": "2026-08-26T02:06:19.340Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:47.051Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:19.340Z",
       "tag": "telegram_bots",
       "tags": [
         "telegram_bots",
@@ -1669,7 +1515,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:47.051Z"
+        "reviewedAt": "2026-08-24T02:06:19.340Z"
       }
     },
     {
@@ -1689,10 +1535,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:45.856Z",
-      "expiresAt": "2026-08-25T22:41:45.856Z",
+      "createdAt": "2026-08-24T02:06:17.643Z",
+      "expiresAt": "2026-08-26T02:06:17.643Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:45.856Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:17.643Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1710,7 +1556,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:45.856Z"
+        "reviewedAt": "2026-08-24T02:06:17.643Z"
       }
     },
     {
@@ -1720,7 +1566,7 @@
         "title": "کانال کافه خودرو",
         "handle": "cofeekhodro",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/hVBzZlXNlhMMvVT-TXJ0XJMPuKVn04sNMT050yBDqi2p4IZyBvi4QBfdwesWmYo_jH-rqtQWopmqkilntVHuISz24pzeXXNz1vNdQGzJgsG1AYN3ifdNXiCSBSaISgrVZ12R5VB0Zi6NwDFnJZMXd4Hn5ILPDvWXjITZjEsdrjqsBsjuxzm9KSwDV9rErK2AFU5dH19Jvs-1QOPiV0OdvNave2GQXBb6iDp-pR0poZI1xcDBoq6sntv4GV9R6DeFi7dkBGgeswlCxq5-tOxQ9TWXtlniH9jYogrVpz5w5hajmdqXWlr1h4wD-xF0nG7LS5hO-upELs8UdM_ixHimCg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/YaQ5meFoj6S9bkYH6SoWe0pT6zlHTgr4qZf5XlEcoOR_LHxrs64HvNLF0wVvftsOomO8VG1ixQqqkn_eMzRIU13cUaM_Snsrz_jix9nA5sQl7LbMQ-K2nQ6wAwKrSsEpnf9nRlSp5V9Y-ydN0UXkc1UBkz98mxZHN5EjULcPPJ8HmMT3t640VmCpUeOLMog4vMD_laCu5gO-3V2vdJ8tXJU1lTafYALag-1h1YcGf4V1horbeusqZCvMUyi0cqemqQbRIWQYawlxJZXoZ32z2JixRFaQRBHGm9S0pbk66VOF8MXmb1NZiGkZFwHKM4X66N-sYtKKrgkNvwhHMbreqQ.jpg"
       },
       "sourceId": "ir:cofeekhodro",
       "sourceCountryCode": "ir",
@@ -1730,10 +1576,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:43.444Z",
-      "expiresAt": "2026-08-25T22:41:43.444Z",
+      "createdAt": "2026-08-24T02:06:16.676Z",
+      "expiresAt": "2026-08-26T02:06:16.676Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:43.444Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:16.676Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1751,7 +1597,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:43.444Z"
+        "reviewedAt": "2026-08-24T02:06:16.676Z"
       }
     },
     {
@@ -1786,10 +1632,10 @@
           "url": "https://t.me/ClashTV"
         }
       ],
-      "createdAt": "2026-08-23T22:41:37.353Z",
-      "expiresAt": "2026-08-25T22:41:37.353Z",
+      "createdAt": "2026-08-24T02:06:15.270Z",
+      "expiresAt": "2026-08-26T02:06:15.270Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:37.353Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:15.270Z",
       "tag": "politics_elections",
       "tags": [
         "politics_elections",
@@ -1808,7 +1654,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:37.353Z"
+        "reviewedAt": "2026-08-24T02:06:15.270Z"
       }
     },
     {
@@ -1834,10 +1680,10 @@
       "fallbackReason": null,
       "text": "👀",
       "links": [],
-      "createdAt": "2026-08-23T22:41:35.218Z",
-      "expiresAt": "2026-08-25T22:41:35.218Z",
+      "createdAt": "2026-08-24T02:06:13.241Z",
+      "expiresAt": "2026-08-26T02:06:13.241Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:35.218Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:13.241Z",
       "tag": "finance_all",
       "tags": [
         "finance_all",
@@ -1857,12 +1703,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:35.218Z"
+        "reviewedAt": "2026-08-24T02:06:13.241Z"
       }
     },
     {
-      "id": 2674597516,
-      "postUrl": "https://t.me/canadalivetv/16314?single",
+      "id": 2561599293,
+      "postUrl": "https://t.me/canadalivetv/16315?single",
       "source": {
         "title": "Canadalive",
         "handle": "canadalivetv",
@@ -1871,30 +1717,33 @@
       },
       "sourceId": "ir:canadalivetv",
       "sourceCountryCode": "ir",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/sWlA5gnNLOmkl0ZqZGDGUcjCMRnIj5SphJYElDwWdvOzA3yYIaCoX7e9UYqKZoIptA7TKszuDjp9F6atGFxQYgrMXhPPZUWKuFRN7v0gSt_8h6R30Ia2Rj20muqlpsxJ7hmDSRLhOdp7ODVXIbmM1cKq3iqWTSK1IcWFS7OGFG7TLY6Q5GrFip0y6DwTQREUoFsTmtuykGBe16E1VZwbY8whRxhIQkYGoSVFScuGCVKy76tSsXLBrtLBNffjKqg_GcSNxf4CS6NNAUs9az_YJhGsfcGwZHzzg5Qt6FNDVeQwGu8LqwNB-gHjjE38Nd9Pyy2qBf9ZZYAoZkYtgOWuOQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "پنج ترکیب شغلی همزمان در کانادا با درآمد صد هزار دلاری\n\n ترکیب‌های شغلی همزمان یا دوآل جاب در کانادا یک استراتژی برای رسیدن به درآمد ۶ رقمی است. برای این کار، معمولاً ترکیب یک شغل اداری/دورکاری با انعطاف بالا با یک شغل فیزیکی یا پروژه‌ای بهترین بازدهی را دارد. در ادامه پنج ترکیب دوگانه هوشمندانه که پتانسیل درآمد صد هزار دلاری  در کانادا دارند آورده شده است:\n\n✅ دیتا انتری دورکاری بعلاوه راننده اوبر: این ترکیب جریان درآمدی پایداری ایجاد می‌کند. بسیاری از شرکت‌های کانادایی پوزیشن‌های دورکاری دیتا انتری دارند با درآمد متوسط ۴۵,۰۰۰ تا ۵٠,۰۰۰ دلار در سال که تمرکز شما روی وارد کردن اطلاعات است. در ساعات پیک رفت و آمد (عصرها و آخر هفته‌ها) و زمان‌های خالی بین کارتان رانندگی در شهرهای بزرگ کانادا می‌تواند سالانه ۴۵,۰۰۰ تا ۵٠,۰۰۰ دلار درآمد  داشته باشد. در زمان‌های دلخواه می‌توانید در ماشین خود مستقر شده و آماده حرکت باشید.\n\n✅ تکنسین پشتیبانی فنی بعلاوه املاک و مستغلات: یک ترکیب قدرتمند از درآمد ثابت کامپیوتری و کمیسیون‌های بزرگ. کار دورکاری یا شیفتی در بخش کامپیوتر شرکت‌ها که حدود ۶۰,۰۰۰ دلار در سال درآمد دارد. وظیفه شما حل مشکلات سیستم کارمندان است که معمولاً فراز و نشیب کاری زیادی دارد و وقت آزاد ایجاد می‌کند. از طرفی در بازار مسکن کانادا بعنوان یک مشاور املاک پارت-تایم، بازدید خانه‌ها را برای عصرها یا آخر هفته‌ها تنظیم می‌کنید. فروش تنها ۲ تا ۳ خانه در سال در کانادا می‌تواند ۳۰,۰۰۰ تا ۵۰,۰۰۰ دلار کمیسیون داشته باشد.\n\n✅ حسابدار بعلاوه مدرس آنلاین زبان یا دروس دیگر. مدیریت دفاتر مالی شرکت‌های کوچک. با داشتن ۴ تا ۵ مشتری ثابت، می‌توانید سالانه ۵۰,۰۰۰ دلار درآمد داشته باشید. این کار کاملاً پروژه‌ای است و زمان دست خودتان است. در کنارش تدریس زبان، ریاضی یا برنامه‌نویسی به دانش‌آموزان در پلتفرم‌هایی مثل Preply یا VIPKid. با اختصاص دادن ۲۰ ساعت در هفته، می‌توانید سالانه تا ۵٠,۰۰۰ دلار درآمد کسب کنید. می‌توانید صبح‌ها به حسابداری برسید و عصرها (زمان اوج کلاس‌های آنلاین) تدریس کنید.\n\n✅ ادمین شبکه‌های اجتماعی بعلاوه عکاس: ترکیبی عالی برای افراد خلاق که به راحتی مرز ۱۰۰ هزار دلار را رد می‌کند. مدیریت اینستاگرام، تیک‌تاک یا ،،،  برای کسب‌وکارهای محلی کانادا که کارهای یک هفته را می‌توان در چند ساعت انجام داد با درآمد متوسط: ۵۰,۰۰۰ دلار. در کنار آن عکاسی عروسی، تولد، یا پرتره‌های عکس رسمی در آخر هفته‌ها. عکاسان در کانادا برای یک آخر هفته عروسی بین ۱,۵۰۰ تا ۳,۵۰۰ دلار درآمد دارند که سالانه به راحتی به ۵٠,۰۰۰ دلار می‌رسد. ابزارهای هر دو شغل یکسان است (لپ‌تاپ و نرم‌افزارهای گرافیکی).\n\n✅ نویسنده محتوا بعلاوه مترجم رسمی یا کپی‌رایتر فریلنس: این گزینه برای افرادی که مهارت زبانی و نگارشی قوی دارند بسیار درآمدزا است. استخدام در یک شرکت مارکتینگ کانادایی به صورت دورکاری با درآمد ۵۵,۰۰۰ تا ۶۵,۰۰۰ دلار. وظیفه شما نوشتن سناریو وبلاگ و متن‌های سایت است. در کنارش گرفتن پروژه‌های ترجمه یا کپی‌رایتینگ (متن‌های تبلیغاتی) از طریق پلتفرم‌های Upwork یا Fiverr برای مشتریان بین‌المللی. این بخش می‌تواند سالانه ۳۵,۰۰۰ تا ۵۰,۰۰۰ دلار دیگر به درآمد شما اضافه کند.\n\n⚠️ توجه: با رسیدن به درآمد ۱۰۰ هزار دلار، نرخ مالیات شما بالا می‌رود. بهتر است برخی از این شغل‌ها را در قالب کسب‌وکار شخصی ثبت کنید تا بتوانید هزینه‌هایی مثل اینترنت، ماشین و لپ‌تاپ را از مالیات کسر کنید.\n\n@CanadaliveTV",
+      "text": "آیا می‌توانم اداره مهاجرت کانادا را به دادگاه بکشانم؟! \n\nتاخیر در پاسخگویی به پرونده‌های مهاجرتی یک مشکل رایج در این روزها می‌باشد. توضیحات رامین موسوی مشاور مهاجرت و دکترای حقوق بین‌الملل در این ارتباط را بشنوید.\n🔻\n💎 instagram.com/raminmousavilaw\n🔸 instagram.com/raminmousavilaw\n🔺\n\n@CanadaliveTV",
       "links": [
+        {
+          "label": "instagram.com/raminmousavilaw",
+          "url": "https://instagram.com/raminmousavilaw"
+        },
+        {
+          "label": "instagram.com/raminmousavilaw",
+          "url": "https://instagram.com/raminmousavilaw"
+        },
         {
           "label": "@CanadaliveTV",
           "url": "https://t.me/CanadaliveTV"
         }
       ],
-      "createdAt": "2026-08-23T22:41:33.548Z",
-      "expiresAt": "2026-08-25T22:41:33.548Z",
+      "createdAt": "2026-08-24T02:06:11.673Z",
+      "expiresAt": "2026-08-26T02:06:11.673Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:33.548Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-08-24T02:06:11.673Z",
+      "tag": "telegram_ton",
       "tags": [
-        "other"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1909,7 +1758,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:33.548Z"
+        "reviewedAt": "2026-08-24T02:06:11.673Z"
       }
     },
     {
@@ -1962,10 +1811,10 @@
           "url": "https://t.me/Bitpin"
         }
       ],
-      "createdAt": "2026-08-23T22:41:31.741Z",
-      "expiresAt": "2026-08-25T22:41:31.741Z",
+      "createdAt": "2026-08-24T02:06:09.767Z",
+      "expiresAt": "2026-08-26T02:06:09.767Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:31.741Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:09.767Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1983,7 +1832,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:31.741Z"
+        "reviewedAt": "2026-08-24T02:06:09.767Z"
       }
     },
     {
@@ -2014,10 +1863,10 @@
           "url": "https://t.me/BINAZIR_SAG"
         }
       ],
-      "createdAt": "2026-08-23T22:41:30.492Z",
-      "expiresAt": "2026-08-25T22:41:30.492Z",
+      "createdAt": "2026-08-24T02:06:08.572Z",
+      "expiresAt": "2026-08-26T02:06:08.572Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:30.492Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:08.572Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2035,7 +1884,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:30.492Z"
+        "reviewedAt": "2026-08-24T02:06:08.572Z"
       }
     },
     {
@@ -2055,10 +1904,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:28.501Z",
-      "expiresAt": "2026-08-25T22:41:28.501Z",
+      "createdAt": "2026-08-24T02:06:07.268Z",
+      "expiresAt": "2026-08-26T02:06:07.268Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:28.501Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:07.268Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2076,7 +1925,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:28.501Z"
+        "reviewedAt": "2026-08-24T02:06:07.268Z"
       }
     },
     {
@@ -2096,10 +1945,10 @@
       "fallbackReason": null,
       "text": "اینستاگرام الگوریتم خاص خودشو داره و چیزهایی که بهشون علاقه داری رو بیشتر نشون می‌ده،\n جهان هستی هم الگوریتم خاص خودشو داره و بیشتر چیزهایی رو بهت نشون می‌ده که :\nبهشون فکر می‌کنی،\nاحساسشون می‌کنی،\nبهشون ایمان داری،\nو روی اون ها تمرکز می‌ کنی.\n\nدوباره بخون!",
       "links": [],
-      "createdAt": "2026-08-23T22:41:27.611Z",
-      "expiresAt": "2026-08-25T22:41:27.611Z",
+      "createdAt": "2026-08-24T02:06:06.207Z",
+      "expiresAt": "2026-08-26T02:06:06.207Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:27.611Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:06.207Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2117,12 +1966,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:27.611Z"
+        "reviewedAt": "2026-08-24T02:06:06.207Z"
       }
     },
     {
-      "id": 100396366,
-      "postUrl": "https://t.me/bad_twitty/18454?single",
+      "id": 186583348,
+      "postUrl": "https://t.me/bad_twitty/18456?single",
       "source": {
         "title": "🔴 اخبار جنگ | Bad Twitty",
         "handle": "bad_twitty",
@@ -2131,29 +1980,22 @@
       },
       "sourceId": "ir:bad_twitty",
       "sourceCountryCode": "ir",
-      "contentType": "video",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/35a8609222.mp4?token=T00veqs_7GVbZb3m__j-n5S9jIUuutDKlQIE8pBnWCf1S0aXPLokM7nHdhIMbtujwAlJXLrldHDdUth-fROPBqffHOpLtJoVNfFWU1rWWObnYD8e77ryHlypWwC0TrgxCoC0hQ4ColI80gmQ86Vi3r1vRahHvYQvcUQLqPAJd6IY2D28eAuxZiZzRmm_nuF35pD2aSabaIkuLmIs8Z80BpiJRj4u96rfNkIRwVbSR5WsxwPaDMm_V1fNBcH36zjkOGsKMnyIsug83PPVALQ8g-nW4-T8VJ7eWlCpChUCj2AJ2MMIIc--P2Awhh8TK9mILQ9rshoueYE72R9Y2_XOVg",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/i9QCbkWjmL62zcHUqLeNnWZ5HDomvx72EY9yP1bSOpqjbkPMMO5Yr1yJxC5fLpHtBtSUD_8ElIDk70P42jcJHgbQj-7f8VKVhyzAktkIY7IQNTDUO4KOiOLqlrYzUMecGT0gQtaav1rhMcnGx_MrJVZiiOuu0fSuFXwtZeMHaghy_P850jHyNrXah_kXpLVfyvTH9zjoVhee-1yCjptPnuOUB-Z7ThT2EGmkK9FsPbJ-gr4qhR_c_7_aFLBvbaA25dIorHgYUOem0GNEZUS3PutubM5LlAI0bGWlChXwaKhvWqxK7F56QU1Ge9oWTbK_VN3P8q1mC7W_0w83SRqeOA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔴 دو ماهیگیر جنوبی \n\nموتور قایق‌شون خراب شده بود و چندین روز بود که وسط دریا گیر کرده بودن و کم کم داشتن میمردن\n\nکه ماهیگیرای عمانی دیروز دیدنشون و جونشون رو نجات دادن\n\n‌@Bad_Twitty | بَد توئیتی 🤩",
-      "links": [
-        {
-          "label": "@Bad_Twitty",
-          "url": "https://t.me/Bad_Twitty"
-        }
-      ],
-      "createdAt": "2026-08-23T22:41:25.645Z",
-      "expiresAt": "2026-08-25T22:41:25.645Z",
+      "text": "� لندن امشب شاهد یک نبرد جذابه!\n\nچلسی و فولام برای ۹۰ دقیقه رقابت، سرعت و اتفاق‌های غیرقابل پیش‌بینی آماده میشن. ⚽️\n\n⏰ ۲ شهریور | ۲۲:۳۰\n\n🎁 50$ بونوس ثبت‌نام\n💰 100٪ کریپتو | 30٪ تومانی",
+      "links": [],
+      "createdAt": "2026-08-24T02:06:04.735Z",
+      "expiresAt": "2026-08-26T02:06:04.735Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:25.645Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:04.735Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2171,7 +2013,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:25.645Z"
+        "reviewedAt": "2026-08-24T02:06:04.735Z"
       }
     },
     {
@@ -2200,10 +2042,10 @@
           "url": "https://ble.ir/megacivilbot?start=0"
         }
       ],
-      "createdAt": "2026-08-23T22:41:24.544Z",
-      "expiresAt": "2026-08-25T22:41:24.544Z",
+      "createdAt": "2026-08-24T02:06:02.959Z",
+      "expiresAt": "2026-08-26T02:06:02.959Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:24.544Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:02.959Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2221,7 +2063,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:24.544Z"
+        "reviewedAt": "2026-08-24T02:06:02.959Z"
       }
     },
     {
@@ -2252,10 +2094,10 @@
           "url": "https://t.me/AutomobilePrice"
         }
       ],
-      "createdAt": "2026-08-23T22:41:21.539Z",
-      "expiresAt": "2026-08-25T22:41:21.539Z",
+      "createdAt": "2026-08-24T02:06:01.897Z",
+      "expiresAt": "2026-08-26T02:06:01.897Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:21.539Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:01.897Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2273,7 +2115,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:21.539Z"
+        "reviewedAt": "2026-08-24T02:06:01.897Z"
       }
     },
     {
@@ -2299,10 +2141,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:20.342Z",
-      "expiresAt": "2026-08-25T22:41:20.342Z",
+      "createdAt": "2026-08-24T02:06:00.069Z",
+      "expiresAt": "2026-08-26T02:06:00.069Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:20.342Z",
+      "mediaRefreshedAt": "2026-08-24T02:06:00.069Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2320,7 +2162,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:20.342Z"
+        "reviewedAt": "2026-08-24T02:06:00.069Z"
       }
     },
     {
@@ -2349,10 +2191,10 @@
           "url": "https://www.instagram.com/ashpaz_nazgol"
         }
       ],
-      "createdAt": "2026-08-23T22:41:18.807Z",
-      "expiresAt": "2026-08-25T22:41:18.807Z",
+      "createdAt": "2026-08-24T02:05:57.790Z",
+      "expiresAt": "2026-08-26T02:05:57.790Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:18.807Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:57.790Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2370,7 +2212,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:18.807Z"
+        "reviewedAt": "2026-08-24T02:05:57.790Z"
       }
     },
     {
@@ -2390,10 +2232,10 @@
       "fallbackReason": null,
       "text": "یکی کنسرت تتلو تو تهران\nیکی دیگه هم کنسرت دورچی",
       "links": [],
-      "createdAt": "2026-08-23T22:41:17.721Z",
-      "expiresAt": "2026-08-25T22:41:17.721Z",
+      "createdAt": "2026-08-24T02:05:56.762Z",
+      "expiresAt": "2026-08-26T02:05:56.762Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:17.721Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:56.762Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2411,7 +2253,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:17.721Z"
+        "reviewedAt": "2026-08-24T02:05:56.762Z"
       }
     },
     {
@@ -2446,10 +2288,10 @@
           "url": "https://www.t.me/Artcam1"
         }
       ],
-      "createdAt": "2026-08-23T22:41:16.802Z",
-      "expiresAt": "2026-08-25T22:41:16.802Z",
+      "createdAt": "2026-08-24T02:05:55.422Z",
+      "expiresAt": "2026-08-26T02:05:55.422Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:16.802Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:55.422Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -2468,7 +2310,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:16.802Z"
+        "reviewedAt": "2026-08-24T02:05:55.422Z"
       }
     },
     {
@@ -2501,10 +2343,10 @@
           "url": "https://t.me/ARGO_VPNN"
         }
       ],
-      "createdAt": "2026-08-23T22:41:15.480Z",
-      "expiresAt": "2026-08-25T22:41:15.480Z",
+      "createdAt": "2026-08-24T02:05:53.926Z",
+      "expiresAt": "2026-08-26T02:05:53.926Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:15.480Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:53.926Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2522,58 +2364,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:15.480Z"
+        "reviewedAt": "2026-08-24T02:05:53.926Z"
       }
     },
     {
-      "id": 3634079111,
-      "postUrl": "https://t.me/aqay_tahlilgar/1662?single",
-      "source": {
-        "title": "آقای تحلیلگر",
-        "handle": "aqay_tahlilgar",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/I5QW-q0aPkLY0vOr-1QzhH07sc8TdVlb9iUpdhPzMC_asQdm4EuZuPbFO1hwMoAEwOt6JYuSK_MPNJlILiSaDc3MWLWd-EC-63tkvo2uH73OLE_FHac-fpDrOkka3XR8B8Ys_H504yhZpiyygEg666XacDXqjsks4Z2tMZC0ma5cCLo5CAKli2IAP-DngyMZN1xkL_IlswL-yBcqcq-0xBliz_vxgRiO2j8BsiXkzRZuKGIJtNW4W8-lroOup8Vay5T3XpOWcvLW31kSCVTf7TiRpOYA6MQ34bKPIw7ozZFi_vIJ0o31O9DZZHFlhd3mbWmrwsu4ci8ayvnfUEaZIg.jpg"
-      },
-      "sourceId": "ir:aqay_tahlilgar",
-      "sourceCountryCode": "ir",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "طلا و دلار در سقف و مسئولین در خواب. \n\n@Aqay_Tahlilgar",
-      "links": [
-        {
-          "label": "@Aqay_Tahlilgar",
-          "url": "https://t.me/addlist/Ra1rwFRCiTs3ZjNk"
-        }
-      ],
-      "createdAt": "2026-08-23T22:41:14.546Z",
-      "expiresAt": "2026-08-25T22:41:14.546Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:14.546Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-08-23T22:41:14.546Z"
-      }
-    },
-    {
-      "id": 3706449453,
-      "postUrl": "https://t.me/anty_filter/23880?single",
+      "id": 4004524918,
+      "postUrl": "https://t.me/anty_filter/23883?single",
       "source": {
         "title": "VPN MARKET",
         "handle": "anty_filter",
@@ -2588,10 +2384,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:41:13.308Z",
-      "expiresAt": "2026-08-25T22:41:13.308Z",
+      "createdAt": "2026-08-24T02:05:37.633Z",
+      "expiresAt": "2026-08-26T02:05:37.633Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:13.308Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:37.633Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2609,7 +2405,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:13.308Z"
+        "reviewedAt": "2026-08-24T02:05:37.633Z"
       }
     },
     {
@@ -2640,10 +2436,10 @@
           "url": "https://t.me/FilterinoBot?start=1977877449"
         }
       ],
-      "createdAt": "2026-08-23T22:41:10.693Z",
-      "expiresAt": "2026-08-25T22:41:10.693Z",
+      "createdAt": "2026-08-24T02:05:36.710Z",
+      "expiresAt": "2026-08-26T02:05:36.710Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:10.693Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:36.710Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2661,7 +2457,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:10.693Z"
+        "reviewedAt": "2026-08-24T02:05:36.710Z"
       }
     },
     {
@@ -2710,10 +2506,10 @@
           "url": "https://t.me/IlikeBot"
         }
       ],
-      "createdAt": "2026-08-23T22:41:09.400Z",
-      "expiresAt": "2026-08-25T22:41:09.400Z",
+      "createdAt": "2026-08-24T02:05:35.600Z",
+      "expiresAt": "2026-08-26T02:05:35.600Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:09.400Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:35.600Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -2732,7 +2528,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:09.400Z"
+        "reviewedAt": "2026-08-24T02:05:35.600Z"
       }
     },
     {
@@ -2752,10 +2548,10 @@
       "fallbackReason": null,
       "text": "مرغ بریون با بافت نرم و پنبه ای ❥  @amozeshcooking [ 🐓🔥 ]",
       "links": [],
-      "createdAt": "2026-08-23T22:41:07.301Z",
-      "expiresAt": "2026-08-25T22:41:07.301Z",
+      "createdAt": "2026-08-24T02:05:34.459Z",
+      "expiresAt": "2026-08-26T02:05:34.459Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:07.301Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:34.459Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2773,12 +2569,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:07.301Z"
+        "reviewedAt": "2026-08-24T02:05:34.459Z"
       }
     },
     {
-      "id": 1098583687,
-      "postUrl": "https://t.me/akhbarefori/683830?single",
+      "id": 676145650,
+      "postUrl": "https://t.me/akhbarefori/683835?single",
       "source": {
         "title": "خبرفوری",
         "handle": "akhbarefori",
@@ -2787,24 +2583,21 @@
       },
       "sourceId": "ir:akhbarefori",
       "sourceCountryCode": "ir",
-      "contentType": "video",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "♦️ادعای جی‌دی‌ونس: ما ابزارهای زیادی برای مقابله با ایران داریم، گاهی قاطع و گاهی اقتصادی\n\nمعاون ترامپ:\nهدف اصلی و اساسی حضور ما در خاورمیانه جلوگیری از دستیابی ایران به سلاح هسته ای است.\n🔹یکی از قدرتمندترین ابزارهایی که ما داریم این است که تهران را وادار کنیم تا هزینه تلاش برای خفه کردن تجارت نفت و گاز را بپردازد.\n🔹علیرغم تلاش‌های ایران برای بستن تنگه هرمز، ما موفق به استخراج مقادیری بین ۷ تا ۱۵ میلیون بشکه در روز شده‌ایم.\n🔹ما در تلاشیم تا از بحران انرژی که ایرانی‌ها سعی در ایجاد آن دارند، جلوگیری کنیم.\n🇮🇷 ✊ @AkhbareFori",
+      "links": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/a2cbf2bb4c.mp4?token=GjKxf2Gpn2vH5j0MgQ6NFsco9ymx5dsxbtVbW_kryvEDpFoHXhnsbBNHMYhbU_hkDmJM8sj-tM3yfcQYqmkSBsxlymyEvwKQCnlyO8hAz0pRCTZOsTXPZsAPjDvfZLDqKyYrDltzs1mlrq0bLU0ZRvwIf1iOy_-ewU0jgDoCrUWy-efsr4Kt689vW22I7o2g0e_H29DfQsJcECtBZOFs2TBUwXbHZTa3WTRq60k3uSPiksWp-i-hrc1D2LCPt8Y-YtNP24KSja09hiaCRoOOU2nq20YYzw87NQYJurJ36xNFHMqaGcSdbF4Zdgjgxt-8IavLlSdnGQdDhpST-EXYag",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "label": "@AkhbareFori",
+          "url": "https://t.me/AkhbareFori"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "♦️اعتراض عشایر هَرکی در اربیل عراق  🔹افراد مسلح وابسته به عشایر هَرکی در اعتراض به آزاد نشدن خورشید هرکی رهبر این عشایر، مسیر منتهی به روستاهای کَردَرَشه و منطقه خَبات در استان اربیل را مسدود کردند. 🇮🇷 ✊ @AkhbareFori | Link",
-      "links": [],
-      "createdAt": "2026-08-23T22:41:04.233Z",
-      "expiresAt": "2026-08-25T22:41:04.233Z",
+      "createdAt": "2026-08-24T02:05:32.136Z",
+      "expiresAt": "2026-08-26T02:05:32.136Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:04.233Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:32.136Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2822,7 +2615,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:04.233Z"
+        "reviewedAt": "2026-08-24T02:05:32.136Z"
       }
     },
     {
@@ -2855,10 +2648,10 @@
           "url": "https://my.alefcamp.ir/?invite=ev6B1tmPFI"
         }
       ],
-      "createdAt": "2026-08-23T22:41:00.806Z",
-      "expiresAt": "2026-08-25T22:41:00.806Z",
+      "createdAt": "2026-08-24T02:05:31.120Z",
+      "expiresAt": "2026-08-26T02:05:31.120Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:41:00.806Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:31.120Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2876,7 +2669,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:41:00.806Z"
+        "reviewedAt": "2026-08-24T02:05:31.120Z"
       }
     },
     {
@@ -2905,10 +2698,10 @@
           "url": "https://akharinkhabar.ir/"
         }
       ],
-      "createdAt": "2026-08-23T22:40:58.293Z",
-      "expiresAt": "2026-08-25T22:40:58.293Z",
+      "createdAt": "2026-08-24T02:05:29.993Z",
+      "expiresAt": "2026-08-26T02:05:29.993Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:58.293Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:29.993Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2926,7 +2719,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:58.293Z"
+        "reviewedAt": "2026-08-24T02:05:29.993Z"
       }
     },
     {
@@ -2961,10 +2754,10 @@
           "url": "https://Akharinkhodro.ir/"
         }
       ],
-      "createdAt": "2026-08-23T22:40:56.440Z",
-      "expiresAt": "2026-08-25T22:40:56.440Z",
+      "createdAt": "2026-08-24T02:05:28.244Z",
+      "expiresAt": "2026-08-26T02:05:28.244Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:56.440Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:28.244Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2982,7 +2775,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:56.440Z"
+        "reviewedAt": "2026-08-24T02:05:28.244Z"
       }
     },
     {
@@ -3009,10 +2802,10 @@
       "fallbackReason": null,
       "text": "🔤🔤🔤🔤",
       "links": [],
-      "createdAt": "2026-08-23T22:40:54.565Z",
-      "expiresAt": "2026-08-25T22:40:54.565Z",
+      "createdAt": "2026-08-24T02:05:26.967Z",
+      "expiresAt": "2026-08-26T02:05:26.967Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:54.565Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:26.967Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3030,7 +2823,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:54.565Z"
+        "reviewedAt": "2026-08-24T02:05:26.967Z"
       }
     },
     {
@@ -3061,10 +2854,10 @@
           "url": "https://t.me/AFSAGROUP"
         }
       ],
-      "createdAt": "2026-08-23T22:40:53.600Z",
-      "expiresAt": "2026-08-25T22:40:53.600Z",
+      "createdAt": "2026-08-24T02:05:25.166Z",
+      "expiresAt": "2026-08-26T02:05:25.166Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:53.600Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:25.166Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3082,7 +2875,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:53.600Z"
+        "reviewedAt": "2026-08-24T02:05:25.166Z"
       }
     },
     {
@@ -3108,10 +2901,10 @@
       "fallbackReason": null,
       "text": "👈یک حمله هوایی اسرائیل به ارتفاعات دبشا، در جنوب لبنان، انجام شد.",
       "links": [],
-      "createdAt": "2026-08-23T22:40:52.608Z",
-      "expiresAt": "2026-08-25T22:40:52.608Z",
+      "createdAt": "2026-08-24T02:05:24.219Z",
+      "expiresAt": "2026-08-26T02:05:24.219Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:52.608Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:24.219Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3129,7 +2922,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:52.608Z"
+        "reviewedAt": "2026-08-24T02:05:24.219Z"
       }
     },
     {
@@ -3162,10 +2955,10 @@
           "url": "https://mamanino.landin.ir/khoshbakht05/"
         }
       ],
-      "createdAt": "2026-08-23T22:40:51.744Z",
-      "expiresAt": "2026-08-25T22:40:51.744Z",
+      "createdAt": "2026-08-24T02:05:22.575Z",
+      "expiresAt": "2026-08-26T02:05:22.575Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:51.744Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:22.575Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3183,7 +2976,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:51.744Z"
+        "reviewedAt": "2026-08-24T02:05:22.575Z"
       }
     },
     {
@@ -3230,10 +3023,10 @@
           "url": "https://castbox.fm/channel/id6317469"
         }
       ],
-      "createdAt": "2026-08-23T22:40:47.719Z",
-      "expiresAt": "2026-08-25T22:40:47.719Z",
+      "createdAt": "2026-08-24T02:05:20.271Z",
+      "expiresAt": "2026-08-26T02:05:20.271Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:47.719Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:20.271Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3251,7 +3044,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:47.719Z"
+        "reviewedAt": "2026-08-24T02:05:20.271Z"
       }
     },
     {
@@ -3282,10 +3075,10 @@
           "url": "https://president.ir/fa/164609"
         }
       ],
-      "createdAt": "2026-08-23T22:40:45.942Z",
-      "expiresAt": "2026-08-25T22:40:45.942Z",
+      "createdAt": "2026-08-24T02:05:18.246Z",
+      "expiresAt": "2026-08-26T02:05:18.246Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:45.942Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:18.246Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3304,7 +3097,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:45.942Z"
+        "reviewedAt": "2026-08-24T02:05:18.246Z"
       }
     },
     {
@@ -3333,10 +3126,10 @@
           "url": "https://www.codal.ir/DownloadFile.aspx?hs=FQQQaQQQvtT4jwX99JmoP5ITj0xQ%3d%3d&amp;ft=1005&amp;let=11"
         }
       ],
-      "createdAt": "2026-08-23T22:40:43.208Z",
-      "expiresAt": "2026-08-25T22:40:43.208Z",
+      "createdAt": "2026-08-24T02:05:16.891Z",
+      "expiresAt": "2026-08-26T02:05:16.891Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:43.208Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:16.891Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3355,7 +3148,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:43.208Z"
+        "reviewedAt": "2026-08-24T02:05:16.891Z"
       }
     },
     {
@@ -3380,10 +3173,10 @@
           "url": "https://t.me/NewHasanMohaddesi"
         }
       ],
-      "createdAt": "2026-08-23T22:40:41.798Z",
-      "expiresAt": "2026-08-25T22:40:41.798Z",
+      "createdAt": "2026-08-24T02:05:15.845Z",
+      "expiresAt": "2026-08-26T02:05:15.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:41.798Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:15.845Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3402,12 +3195,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:41.798Z"
+        "reviewedAt": "2026-08-24T02:05:15.845Z"
       }
     },
     {
-      "id": 3631745285,
-      "postUrl": "https://t.me/neshat_shirin/21068?single",
+      "id": 307190654,
+      "postUrl": "https://t.me/neshat_shirin/21078?single",
       "source": {
         "title": "سربازان",
         "handle": "neshat_shirin",
@@ -3416,22 +3209,24 @@
       },
       "sourceId": "ir:neshat_shirin",
       "sourceCountryCode": "ir",
-      "contentType": "image",
+      "contentType": "video",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/OhXVawbNjI05LUdg2ABGlSzO0lnbZSa3YRUooksHT8SmAtioykceN4YUZa6ndT2kR3ielzgTcSrEIK1c6jnkiPCYU1H7zJRoPPaAmP-Ks_7_CKSctAYMVZMsobyZCxyw8-yt1nZoRvtTqeVEPtQi0WCvxj5umIWD144xexgboIIMN2oubsK-yOTNMPVXtPTuymFRtixA-0gGxxwTfTTMlalYyessUmQgCnxqBwiuDv9-f0jHVFiiq9i7IYINudROe3pr3HqLBwFhgxoWL4xHvk41K7iUpdzH-1Nnzi_kXfk0FckUJrqfmukXZiL0TsTDqxFK0kmAvWPmgkbtBpSHug.jpg"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/6c0871847e.mp4?token=CGpiQBpC81z12aELzn4wmzPNLl6ZYq9RnYs1kLegsw_qBIQA3y8OnuF_dDbQGm6VGWn-LBD2qkcMw6D0myOKEEehu0d87CHrD5SOlPlRNmGTJ7QfoCvDKRt8MAggNlFWCtjlH8HI46SkhAeLAYmPgZQCV9cFbwfE18w8uyaenTlMRtzk4D26Dv1SwLjh4LOrNpFOdqOyyCDAaqnP-CiGtEj6L8dopdAzbYT4xz3o-_mo5uj3TCHdhUn2yd08wfycFf0i3qqMb8t5KwaJ-DHmxxR18LW9ZTtTEOVdFUcRmy3960k165d5TwisGMf1qGUiXsvaIWk9u6yGnLkX5VspwA",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔺به جرات می‌توان گفت که یکی از درست‌ترین کارهایی که در زمان #شاهنشاه_آریامهر_قدرت_ماندگار انجام شد همین برخورد درست با امثال مصدق و فاطمی بود و اگر با تمام سه فاسد همینطور برخورد می‌شد ما امروز چیزی به نام جمهوری اسلامی نداشتیم و مردم در دوران باشکوه #پهلوی زندگی می‌کردند.\n\n🔻اما بیوه مسعود رجوی که حرف از دیکتاتوری می‌زند اما حاضر نیست حرف مردم بشنود چون خوب می‌داند که تنفر مردم از مجاهدین به عنوان یکی از عوامل بوجود آمدن ج ا ، از آخوندها اگر بیشتر نباشد کمتر نیست و آنجاست که معلوم می‌شود مردم چقدر از مریم رجوی و مجاهدین متنفرند.\n\n#مرگ_بر_سه_فاسد_ملا_چپی_مجاهد",
+      "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:40:38.403Z",
-      "expiresAt": "2026-08-25T22:40:38.403Z",
+      "createdAt": "2026-08-24T02:05:13.427Z",
+      "expiresAt": "2026-08-26T02:05:13.427Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:38.403Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:13.427Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3450,7 +3245,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:38.403Z"
+        "reviewedAt": "2026-08-24T02:05:13.427Z"
       }
     },
     {
@@ -3470,10 +3265,10 @@
       "fallbackReason": null,
       "text": "🆘السلام علیک یا علی بن موسی الرضا علیه السلام/ شب ولادت امام رضا (ع)\n\nنائب الزیاره همه دوستان، علی الخصوص دکتر احمدی نژاد و حامیان ایشان هستیم",
       "links": [],
-      "createdAt": "2026-08-23T22:40:36.675Z",
-      "expiresAt": "2026-08-25T22:40:36.675Z",
+      "createdAt": "2026-08-24T02:05:11.375Z",
+      "expiresAt": "2026-08-26T02:05:11.375Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:36.675Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:11.375Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3492,7 +3287,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:36.675Z"
+        "reviewedAt": "2026-08-24T02:05:11.375Z"
       }
     },
     {
@@ -3512,10 +3307,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:40:33.252Z",
-      "expiresAt": "2026-08-25T22:40:33.252Z",
+      "createdAt": "2026-08-24T02:05:10.035Z",
+      "expiresAt": "2026-08-26T02:05:10.035Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:33.252Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:10.035Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3534,7 +3329,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:33.252Z"
+        "reviewedAt": "2026-08-24T02:05:10.035Z"
       }
     },
     {
@@ -3565,10 +3360,10 @@
           "url": "https://t.me/Media_arma"
         }
       ],
-      "createdAt": "2026-08-23T22:40:31.625Z",
-      "expiresAt": "2026-08-25T22:40:31.625Z",
+      "createdAt": "2026-08-24T02:05:08.296Z",
+      "expiresAt": "2026-08-26T02:05:08.296Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:31.625Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:08.296Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3587,7 +3382,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:31.625Z"
+        "reviewedAt": "2026-08-24T02:05:08.296Z"
       }
     },
     {
@@ -3624,10 +3419,10 @@
           "url": "https://t.me/MyAsriran"
         }
       ],
-      "createdAt": "2026-08-23T22:40:29.908Z",
-      "expiresAt": "2026-08-25T22:40:29.908Z",
+      "createdAt": "2026-08-24T02:05:06.145Z",
+      "expiresAt": "2026-08-26T02:05:06.145Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:29.908Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:06.145Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3646,7 +3441,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:29.908Z"
+        "reviewedAt": "2026-08-24T02:05:06.145Z"
       }
     },
     {
@@ -3715,10 +3510,10 @@
           "url": "https://t.me/masaf_najva"
         }
       ],
-      "createdAt": "2026-08-23T22:40:27.632Z",
-      "expiresAt": "2026-08-25T22:40:27.632Z",
+      "createdAt": "2026-08-24T02:05:04.828Z",
+      "expiresAt": "2026-08-26T02:05:04.828Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:27.632Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:04.828Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3737,12 +3532,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:27.632Z"
+        "reviewedAt": "2026-08-24T02:05:04.828Z"
       }
     },
     {
-      "id": 2910481703,
-      "postUrl": "https://t.me/masaf/231712?single",
+      "id": 574125451,
+      "postUrl": "https://t.me/masaf/231716?single",
       "source": {
         "title": "Masaf | مؤسسه مصاف",
         "handle": "masaf",
@@ -3751,29 +3546,28 @@
       },
       "sourceId": "ir:masaf",
       "sourceCountryCode": "ir",
-      "contentType": "video",
+      "contentType": "file",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/fb0ce9d12c.mp4?token=GlihyhuDFoJCewAUpOU5mq9EaTS8sWT0o6aeJZUi8hcHqMdGqrC2FiTdx9eKCviNyuLeOO0QGiJknfkiBhqUpLYJaCgOOe8cYPbKO9TQKPwQbz2-SheVHzk-LwNt2pEYKGV3arVRsieMFZh0GwjbIeRqg5cYKINIfb0NqyChAzBW2fwangi6eQwdBpghpibWZu9T1V0p_YH6FsqRXH8RWvtZPBDiuOV982zNe-ERjF-AI4Z4pZ2PkVIAxNPR55FZ5wfTSJ8UlYxV_HfqaPjFHPIXHG6MWNX2LE26eD82AcOFt6Y1hc3S7S0Pt0rGBOQyxzt1jLVWYOzlATddpI2iqg",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/masaf/231716",
+          "fileName": null
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🎥 آخرین وضعیت مسیر ریلی شلمچه بصره از زبان رئیس دفتر رئیس‌جمهور\n\n🆔 @Masaf",
+      "text": "🔆 #ختم_قرآن به نیت فرج \n\n📚 قرائت صفحه ۲۱۲ قرآن کریم، سوره‌‌‌ مبارکه «یونس» توسط «شهریار پرهیزگار»\n\n📖 رسانه‌ی قرآن مدیا\n@QuranMediya",
       "links": [
         {
-          "label": "@Masaf",
-          "url": "https://t.me/Masaf"
+          "label": "@QuranMediya",
+          "url": "https://t.me/QuranMediya"
         }
       ],
-      "createdAt": "2026-08-23T22:40:24.723Z",
-      "expiresAt": "2026-08-25T22:40:24.723Z",
+      "createdAt": "2026-08-24T02:05:03.268Z",
+      "expiresAt": "2026-08-26T02:05:03.268Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:24.723Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:03.268Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3792,7 +3586,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:24.723Z"
+        "reviewedAt": "2026-08-24T02:05:03.268Z"
       }
     },
     {
@@ -3829,10 +3623,10 @@
           "url": "https://t.me/maktubat_yad"
         }
       ],
-      "createdAt": "2026-08-23T22:40:23.511Z",
-      "expiresAt": "2026-08-25T22:40:23.511Z",
+      "createdAt": "2026-08-24T02:05:01.781Z",
+      "expiresAt": "2026-08-26T02:05:01.781Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:23.511Z",
+      "mediaRefreshedAt": "2026-08-24T02:05:01.781Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3851,7 +3645,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:23.511Z"
+        "reviewedAt": "2026-08-24T02:05:01.781Z"
       }
     },
     {
@@ -3876,10 +3670,10 @@
           "url": "https://www.instagram.com/p/DaN2_2fCFzE/?img_index=1&amp;igsh=MW9qY3FsY3loaDdsbQ=="
         }
       ],
-      "createdAt": "2026-08-23T22:40:21.531Z",
-      "expiresAt": "2026-08-25T22:40:21.531Z",
+      "createdAt": "2026-08-24T02:04:59.995Z",
+      "expiresAt": "2026-08-26T02:04:59.995Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:21.531Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:59.995Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3898,7 +3692,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:21.531Z"
+        "reviewedAt": "2026-08-24T02:04:59.995Z"
       }
     },
     {
@@ -3929,10 +3723,10 @@
           "url": "https://t.me/MadaarPalestine"
         }
       ],
-      "createdAt": "2026-08-23T22:40:20.479Z",
-      "expiresAt": "2026-08-25T22:40:20.479Z",
+      "createdAt": "2026-08-24T02:04:58.227Z",
+      "expiresAt": "2026-08-26T02:04:58.227Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:20.479Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:58.227Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3951,7 +3745,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:20.479Z"
+        "reviewedAt": "2026-08-24T02:04:58.227Z"
       }
     },
     {
@@ -3977,10 +3771,10 @@
       "fallbackReason": null,
       "text": "در پی گرمای شدید و بارندگی‌های سیل‌آسای روزهای اخیر، چندین سازمان مدیریت آب در هلند از دریافت گزارش‌هایی درباره تلف شدن ماهیان و شناور شدن لاشه آن‌ها در آب خبر داده‌اند. به گفته این نهادها، علت احتمالی این پدیده کاهش سطح اکسیژن محلول در آب است.\nمسئولان توضیح داده‌اند که آب گرم توان نگهداری اکسیژن کمتری دارد و بارش‌های شدید نیز باعث ورود حجم زیادی از مواد آلی از حاشیه رودخانه‌ها و کانال‌ها به آب می‌شود. تجزیه این مواد توسط باکتری‌ها اکسیژن بیشتری مصرف می‌کند و در نتیجه میزان اکسیژن برای آبزیان کاهش می‌یابد. در این شرایط، گونه‌های حساس به کمبود اکسیژن، از جمله ماهی‌های شکارچی مانند سوف (پایک)، بیش از سایر گونه‌ها در معرض خطر تلف شدن قرار می‌گیرند.",
       "links": [],
-      "createdAt": "2026-08-23T22:40:18.839Z",
-      "expiresAt": "2026-08-25T22:40:18.839Z",
+      "createdAt": "2026-08-24T02:04:56.174Z",
+      "expiresAt": "2026-08-26T02:04:56.174Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:18.839Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:56.174Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3999,7 +3793,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:18.839Z"
+        "reviewedAt": "2026-08-24T02:04:56.174Z"
       }
     },
     {
@@ -4009,7 +3803,7 @@
         "title": "LiberTorch",
         "handle": "librt",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/BrtxXwXJ0E5UGaSAEDyYUR679atQGcBePH5o7KXgW--6gB3nAr9KlOqRE_zOwg7_893wKpHxqMQ3AM74dmivyt0aMSpZ24c_cpj_rp3ZeMk9PU5L496_JyWgOEcuCNmQGTJpcYOjKbMkDa8O9j4UjkxzWGuzseiCPBZUAV7ERgECjYcePHFh63TT_mEA0Y0WEqJ3K5Fa5nu7QR3PjLh0TL1f1q_mzGpBAlxGY4yLavuUgQbnbial526JB4yAIS7sAgX7G_rs046BnbvnSRGAcVkPEXNUD9f4BE789UARFADZiX36MhsB-bNfT6PVKoH0HHxrPlMsp6ZbPNCIQjKvow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/QjS-FQ5DBfOgryNQLR6gtzas1_e7f8JFuh6H5tggf_-fRe5PrAxSOG06q2UC4dOOaW9EwENwGvG7x_43xk-189xd2zO6sm09LMuz5-Fq9S18SrOzFIc-qmdLocRm-LmFnHj1dlwbB4997HWKGAY_QaGVd32wFQVcRXtLaiNhhtmwtzYhQpGe57LzHK0AuEfUbv_B_WxiIP0ROFIx89VgJAe3NUfbdNUKlZY520qxuFzCRZEmY21y7G-3sBju5UoFixS4yYY3FzshtRRPMLztZrgnub15iph6Lpn497Kf0VebGN7cTRDEOkDeHVXefIQSQw91ixkT8Z9MIeq1-XfvVw.jpg"
       },
       "sourceId": "ir:librt",
       "sourceCountryCode": "ir",
@@ -4024,10 +3818,10 @@
           "url": "https://t.me/andishee_noo"
         }
       ],
-      "createdAt": "2026-08-23T22:40:17.956Z",
-      "expiresAt": "2026-08-25T22:40:17.956Z",
+      "createdAt": "2026-08-24T02:04:53.413Z",
+      "expiresAt": "2026-08-26T02:04:53.413Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:17.956Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:53.413Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4046,7 +3840,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:17.956Z"
+        "reviewedAt": "2026-08-24T02:04:53.413Z"
       }
     },
     {
@@ -4066,10 +3860,10 @@
       "fallbackReason": null,
       "text": "یک دهه دیر، یک‌دهه بعد از سکوت در مقابل فعالیت لابی تحریم و تجاوز در غرب علیه ایران، شبه چپ پروناتو از هراس بیش طرد شدن حالا فرصت طلبانه ادبیات ضد تجاوز  را به کار می برد. \n\nالبته باز این جریان به صورت دو طرفه که در ان هجمه ی امپریالیستی نوعا به صورت کنش/واکنش به دولتهای منطقه نشان میدهد، و مزورانه به این نمی‌پردازد که اگر لنین، یا مائو یا چه گوارا یا حتی النده و مصدق در کشورهای جنوب جهانی بر سرکار بودند هجمه ی امپریالیستی حتی شدیدتر میشد. انها همچنان به وظیفه ی خود در ترسیم یک رابطه ی دوسویه بین محرومین در جنوب جهانی و سرمایه داری حاکم جهانی ترسیم می کنند که در ان مدل حاکمیت در جنوب جهانی در عملکرد امپریالیستی شریک است!\n\nاز طرف دیگر مدل سوسیال دمکراتها که به طبع ژیژک و شرکا، سروری اخلاقی اروپا بر جهان را تقدیس و عامدانه روسیه و چین را هم ارز فاتحین اتحادیه ی امپریال فاشیستی اروپا یعنی ناتو/EU  ترسیم می کنند کم فعالیت ندارند. \n\nاین همه اما در شکل دادن وقایع شاید نقشی ندارند . خط خطرناکی که جریان شبه چپ در ایران حالا مجری ان شده است و خط خطرناک کامران متین/فریدا افاری است: خط جنگ داخلی و تجزیه کردستان. \n\nمطلقا، مطلقا از مدعیان «مارکس در مارجین» که امروز از ناسیونالیسم قومی در ملت سازی «کورد/عرب/بلوچ» تئوری می سازد ساده نگذرید. نشریه ی «نقد، نقد بتوارگی» پلتفرم مجریان جنگ داخلی/دخالت پنتاگون/تجزیه است. \n\nوقتی Patriotism یا وطنپرستی با Nationalism یعنی تعصب نژادی تصویر می شود.  از کوین اندرسون، اشلی اسمیت و پل میسون، تئوریسینهای ضرورت دخالت ناتو در اوکراین در مقابل «امپریالیسم روسیه»  در نمانید.\n\nایا فعالیتهای مذبوحانه ی فریدا افاری و یاسین الحاج صالح را در تئوریزه کردن «امپریالیسم ایران» یا ژوزف ضاهر و اشلی اشکار را در تصویر انجرافی «از غزه تا اوکراین» نمی بینیم؟\n\nتقسیم روسیه و یوگسلاوی به ۲۲ کشور، یکی از دستاوردهای مهم‌ناتو، با حمایت محض شبه چپ عامل امپریالیسم است. سوریه، لیبی، عراق، ایران ... و وضعیت جنگ و‌نابسامانی دائم، و تبدیلشان به پایگاه های پنتاگون، پروژه ی اینهاست",
       "links": [],
-      "createdAt": "2026-08-23T22:40:16.135Z",
-      "expiresAt": "2026-08-25T22:40:16.135Z",
+      "createdAt": "2026-08-24T02:04:52.385Z",
+      "expiresAt": "2026-08-26T02:04:52.385Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:16.135Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:52.385Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4088,7 +3882,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:16.135Z"
+        "reviewedAt": "2026-08-24T02:04:52.385Z"
       }
     },
     {
@@ -4115,10 +3909,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:40:11.891Z",
-      "expiresAt": "2026-08-25T22:40:11.891Z",
+      "createdAt": "2026-08-24T02:04:49.699Z",
+      "expiresAt": "2026-08-26T02:04:49.699Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:11.891Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:49.699Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4137,7 +3931,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:11.891Z"
+        "reviewedAt": "2026-08-24T02:04:49.699Z"
       }
     },
     {
@@ -4157,10 +3951,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:40:10.307Z",
-      "expiresAt": "2026-08-25T22:40:10.307Z",
+      "createdAt": "2026-08-24T02:04:48.171Z",
+      "expiresAt": "2026-08-26T02:04:48.171Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:10.307Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:48.171Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4179,7 +3973,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:10.307Z"
+        "reviewedAt": "2026-08-24T02:04:48.171Z"
       }
     },
     {
@@ -4199,10 +3993,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:40:09.182Z",
-      "expiresAt": "2026-08-25T22:40:09.182Z",
+      "createdAt": "2026-08-24T02:04:47.174Z",
+      "expiresAt": "2026-08-26T02:04:47.174Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:09.182Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:47.174Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4221,7 +4015,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:09.182Z"
+        "reviewedAt": "2026-08-24T02:04:47.174Z"
       }
     },
     {
@@ -4241,10 +4035,10 @@
       "fallbackReason": null,
       "text": "مجدداً رفتیم خرید ماهانه فروشگاه و کوچک شدن سبد خرید و بیشتر شدن قیمت نسبت به ماه قبل رو به وضوح لمس کردیم.\n\nسوال اینکه تا پزشکیان کشور رو بیش از این تبدیل به خرابه نکنه قرار نیست هیچ سوال و بازخواستی توسط مجلس صورت بگیره؟\nسوال دیگه اینکه بانیان این وضعیت چه آخرتی خواهند داشت؟",
       "links": [],
-      "createdAt": "2026-08-23T22:40:07.482Z",
-      "expiresAt": "2026-08-25T22:40:07.482Z",
+      "createdAt": "2026-08-24T02:04:44.641Z",
+      "expiresAt": "2026-08-26T02:04:44.641Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:07.482Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:44.641Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4263,7 +4057,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:07.482Z"
+        "reviewedAt": "2026-08-24T02:04:44.641Z"
       }
     },
     {
@@ -4283,10 +4077,10 @@
       "fallbackReason": null,
       "text": "#موقت  چند روزی تهران هستم. اگر دوستی در حوزه‌ی هوش مصنوعی مایل به ملاقات حضوری هست، خوشحال می‌شم.   لطفاً پیام بدید، خودتون رو معرفی کنید و بفرمایید از چه شرکتی و در چه زمینه‌ای علاقه‌مند به صحبت هستید 🌹  @KeivanEbrahimi",
       "links": [],
-      "createdAt": "2026-08-23T22:40:06.437Z",
-      "expiresAt": "2026-08-25T22:40:06.437Z",
+      "createdAt": "2026-08-24T02:04:41.456Z",
+      "expiresAt": "2026-08-26T02:04:41.456Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:06.437Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:41.456Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4305,7 +4099,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:06.437Z"
+        "reviewedAt": "2026-08-24T02:04:41.456Z"
       }
     },
     {
@@ -4340,10 +4134,10 @@
           "url": "https://t.me/iranianlls"
         }
       ],
-      "createdAt": "2026-08-23T22:40:05.369Z",
-      "expiresAt": "2026-08-25T22:40:05.369Z",
+      "createdAt": "2026-08-24T02:04:40.377Z",
+      "expiresAt": "2026-08-26T02:04:40.377Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:05.369Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:40.377Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4362,7 +4156,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:05.369Z"
+        "reviewedAt": "2026-08-24T02:04:40.377Z"
       }
     },
     {
@@ -4389,10 +4183,10 @@
       "fallbackReason": null,
       "text": "عصرهای سه شنبه بخارا:بررسی کتاب امپراتوری کودکی",
       "links": [],
-      "createdAt": "2026-08-23T22:40:03.476Z",
-      "expiresAt": "2026-08-25T22:40:03.476Z",
+      "createdAt": "2026-08-24T02:04:38.637Z",
+      "expiresAt": "2026-08-26T02:04:38.637Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:03.476Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:38.637Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4411,7 +4205,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:03.476Z"
+        "reviewedAt": "2026-08-24T02:04:38.637Z"
       }
     },
     {
@@ -4448,10 +4242,10 @@
           "url": "https://t.me/italeader"
         }
       ],
-      "createdAt": "2026-08-23T22:40:01.816Z",
-      "expiresAt": "2026-08-25T22:40:01.816Z",
+      "createdAt": "2026-08-24T02:04:37.652Z",
+      "expiresAt": "2026-08-26T02:04:37.652Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:40:01.816Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:37.652Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4469,12 +4263,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:40:01.816Z"
+        "reviewedAt": "2026-08-24T02:04:37.652Z"
       }
     },
     {
-      "id": 21385999,
-      "postUrl": "https://t.me/hamiyannevelayat/704074?single",
+      "id": 3799493544,
+      "postUrl": "https://t.me/hamiyannevelayat/704082?single",
       "source": {
         "title": "خبرفوري حاميان ولايت",
         "handle": "hamiyannevelayat",
@@ -4487,7 +4281,7 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "ترامپ به ایرلند سفر می‌کند\n\n🔹 دونالد ترامپ، رئیس دولت تروریستی آمریکا، قرار است ماه آینده میلادی به ایرلند سفر کند.\n\n🇮🇷آیدی ما در شبکه های اجتماعی 👇\n\n@hamiyannevelayat\n\nوب سایت حامیان ولایت 👇\nwww.hamiyannevelayat.ir",
+      "text": "🇮🇷آیدی ما در شبکه های اجتماعی 👇\n\n@hamiyannevelayat\n\nوب سایت حامیان ولایت 👇\nwww.hamiyannevelayat.ir",
       "links": [
         {
           "label": "@hamiyannevelayat",
@@ -4498,10 +4292,10 @@
           "url": "https://www.hamiyannevelayat.ir/"
         }
       ],
-      "createdAt": "2026-08-23T22:39:58.972Z",
-      "expiresAt": "2026-08-25T22:39:58.972Z",
+      "createdAt": "2026-08-24T02:04:34.990Z",
+      "expiresAt": "2026-08-26T02:04:34.990Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:58.972Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:34.990Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4520,7 +4314,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:58.972Z"
+        "reviewedAt": "2026-08-24T02:04:34.990Z"
       }
     },
     {
@@ -4553,10 +4347,10 @@
           "url": "https://t.me/GamotionArt"
         }
       ],
-      "createdAt": "2026-08-23T22:39:57.562Z",
-      "expiresAt": "2026-08-25T22:39:57.562Z",
+      "createdAt": "2026-08-24T02:04:33.770Z",
+      "expiresAt": "2026-08-26T02:04:33.770Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:57.562Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:33.770Z",
       "tag": "culture_all",
       "tags": [
         "culture_all",
@@ -4576,7 +4370,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:57.562Z"
+        "reviewedAt": "2026-08-24T02:04:33.770Z"
       }
     },
     {
@@ -4601,10 +4395,10 @@
           "url": "https://medistU.t.me/"
         }
       ],
-      "createdAt": "2026-08-23T22:39:54.759Z",
-      "expiresAt": "2026-08-25T22:39:54.759Z",
+      "createdAt": "2026-08-24T02:04:32.104Z",
+      "expiresAt": "2026-08-26T02:04:32.104Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:54.759Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:32.104Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4622,7 +4416,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:54.759Z"
+        "reviewedAt": "2026-08-24T02:04:32.104Z"
       }
     },
     {
@@ -4679,10 +4473,10 @@
           "url": "https://t.me/DarkProxy"
         }
       ],
-      "createdAt": "2026-08-23T22:39:53.352Z",
-      "expiresAt": "2026-08-25T22:39:53.352Z",
+      "createdAt": "2026-08-24T02:04:30.768Z",
+      "expiresAt": "2026-08-26T02:04:30.768Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:53.352Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:30.768Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -4702,7 +4496,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:53.352Z"
+        "reviewedAt": "2026-08-24T02:04:30.768Z"
       }
     },
     {
@@ -4722,10 +4516,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-08-23T22:39:51.069Z",
-      "expiresAt": "2026-08-25T22:39:51.069Z",
+      "createdAt": "2026-08-24T02:04:28.271Z",
+      "expiresAt": "2026-08-26T02:04:28.271Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:51.069Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:28.271Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4744,7 +4538,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:51.069Z"
+        "reviewedAt": "2026-08-24T02:04:28.271Z"
       }
     },
     {
@@ -4754,7 +4548,7 @@
         "title": "جنبش مردمی حلال‌زاده‌ها",
         "handle": "halalzadeha",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/T_t4cP-tTA81KYJVuKwkInPY3cD2dOxXhYwtJMag-jd_VZxmtjiSRLt6pvGvPdX5eZiVyHVCAWEj7dBf_Kae40RY2GK1rTuSDXRL6-eToPdsPHYYeBf8PAffUL5ZOFgMwcXYGKh1vyR_4mJ6AKPh0xov9wmqCFqOV8XLsuga0GC0pbbuwc8pDtRENWmTgC2HiWid8u_m-_LP9jGMBkH5goW9pC5IRooAdP4IALSs4GmJ6_7XPxKxieSUo4R8navHlmVh1g1utnpGVQ7qcghzgp5Wb0FPy0nc3Nt-_hvvmBtp7izgesGvYvUAAYXpMX5JuIIJYzkiJxWKxIFEkUQ1AA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/aBUYopLsB6F2S8ULJsH52rRdSvEv1aQC_txy3JuGq3vMiJJkwfcY51NQn22KSiTlkc9DHyLouUaXvmR2eZlGIP4SZmKDKEd17ZgIRLbfY8oWSIT4bxnjLw0oDr2RrOmCxwkFg7pQ6vVvFsnEK5ksxcX_ubhD5b4ZcbY-H_hB5hJG63kuR3mW7H_CoA5Xf8DNEYk3H-Jm-SyqqpEWLnz5cIqWVOLOZeMn18nxVL4pNXR-J5bQI502YcThwZQ9rMdWwiFnr9Ft-8-Ov_OP5mDMKdVfhvty6Uj69d7q1V8n937UWzTFnxEmTslLjhoMQWAZd-_4k5xQqOdrmaapFgHKiA.jpg"
       },
       "sourceId": "ir:halalzadeha",
       "sourceCountryCode": "ir",
@@ -4776,10 +4570,10 @@
           "url": "https://t.me/HalalZadeha"
         }
       ],
-      "createdAt": "2026-08-23T22:39:50.090Z",
-      "expiresAt": "2026-08-25T22:39:50.090Z",
+      "createdAt": "2026-08-24T02:04:26.975Z",
+      "expiresAt": "2026-08-26T02:04:26.975Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:50.090Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:26.975Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4798,12 +4592,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:50.090Z"
+        "reviewedAt": "2026-08-24T02:04:26.975Z"
       }
     },
     {
-      "id": 70776757,
-      "postUrl": "https://t.me/historical_meme/12587?single",
+      "id": 3733327610,
+      "postUrl": "https://t.me/historical_meme/12588?single",
       "source": {
         "title": "تاریخ میم 📜",
         "handle": "historical_meme",
@@ -4812,31 +4606,32 @@
       },
       "sourceId": "ir:historical_meme",
       "sourceCountryCode": "ir",
-      "contentType": "image",
+      "contentType": "audio",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/GvFBT6Gg1uRUEaBIO3btPRlh86QA5E7odx9N169_yMWSqmNiDDBK3r9q2ruALZcM-0xqKW2rWLYhojvMvoNWaTC2SLcEKxojaF0iLd3n_u5w7CPI0hSuTCPjq5uWEofvYPEoLG2lUQEQRnwBCSqhVCd_rRhWVyNjE09-LpKXrvRDOkHjUgmd4mIxamN82voU8QZzIVRRl0LIIKZgEkQAOfa-GyFWS6y_iNLN4DJoZJeRLjbfIMW9JGxk88TKXjJDp4RCzO3RjTAMl08nHfN9i1-OwAuLOkS1D-SYoCavLOI76534z4CFFguI98fmDy2L43yCuqbqZEwt5lsbJ2elFg.jpg"
+          "id": "audio-1",
+          "kind": "audio",
+          "url": "https://cdn4.telesco.pe/file/648aa7d5c4.ogg?token=mEOyijiNlhnpk-umnVjESCFSXjMQQnbwShjhYn-Hl1mdUoOu8_WNBHknk9qqMZ0mzX4muRMW79LiiXEuzYzuJU7BuuWmUWcf6bQH6ih2r3rBe7mCqCkozl0cPMZy5INGNcNDXmlSnfaMzw41ceK2xs5a_uNcYV1DmJ7QnW2s4xid8UuDpte6Za2F7-OSTFJYgEciH75HAwvMe9jBVDT7JkUHMMprtgkiBHmgESu0C3vEhL5mYCJl16ySY1UwtP6B-m0Ov-LkfBZ_mS7NdCCvNFVukSTb25pVv7mbYBH8GiZF14x81zLnuB1OLizNd6NejHLxdA-8RuJabECAsiPTDEPwxvcEuxcci-SseBWLzpdsfpDzTdo1uEbfWTVR_8VtEenJHOPHYCtza83Kmf4geK-QX2LNppkh8ODU7gVoVjL_PJIZfc_H4b-qUjRT0ZCY6aLdSvBBvfEyZPqPEQr0Z11p-uBpFb5NOAf6rRX7-ETwnphk20h5WSFp0b5ZggPrUzxFwKhhuNtd1gam8v88GJsIxUVmC5Q8_90D9_eNTq6_gYJdrqIZ-TlNFyESvREwrDq9OMf2waQl4w38vMH6kWZA5RwkzLZcQfuLPrTKC8-7AXsJdOniyrKmnkYdEDd3ZDTudjMSofBy-E1WiPUvMoPxtv5Zj2vidaPDV8gbOH0",
+          "mimeType": "audio/mpeg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🤩\nهیچ چیز خطرناک‌تر از این نیست که جامعه‌ای بسازیم که در آن بیشترِ مردم حس کنند که هیچ سهمی در آن ندارند. مردمی که حس می‌کنند سهمی در جامعه دارند از آن جامعه محافظت می‌کنند، ولی اگر چنین احساسی نداشته باشند، نا خودآگاه می‌خواهند که آن جامعه را نابود کنند.\n-مارتین لوترکینگ\n\n\n💡 #Javad\n🌷 #Historical \n👑@Historical_Meme | تاریخ میم👑",
+      "text": "توضیح بی‌طرفانه و آکادمیک داستانِ «خویدوده»،  یک بار برای همیشه.\n➖➖➖➖➖➖➖➖➖➖\nازدواج با خویشاوندان درجه یک،\nمادر با پسر، خواهر با برادر ،پدر با دختر.\n\nاز منابع زرتشتی و غیر زرتشتی چه چیزی میشه فهمید؟\n\nماهیت این ازدواج چی بوده و چقدر رواج داشته بین جامعه؟\n➖➖➖➖➖➖➖➖➖➖\nمنابع خوانده شده:\n\n1)The Institution of Zoroastrian Marriage xwēdōdah: Genesis and Typology\n\n2)Incestuous and Close-Kin Marriage in Ancient Egypt and Persia\n\n3)Marriage, Property and Conversion among the Zoroastrians: From Late Sasanian to Islamic Iran\n\n4)Putative Persian perversities: Indian Buddhist condemnations of Zoroastrian close-kin marriage in context\n\n5)MARRIAGE ii. NEXT OF KIN MARRIAGE IN ZOROASTRIANISM\n\n6)کتاب سوم دینکرد\n\n7)جغرافیای استرابو\n\n8)ایران ساسانی از دیدگاه منابع چینی\n➖➖➖➖➖➖➖➖➖➖\n🤰 #Romanos\n🌷 #Historical #podcast 🎙\n👑@Historical_Meme | تاریخ میم👑",
       "links": [
         {
           "label": "@Historical_Meme",
           "url": "https://t.me/Historical_Meme"
         }
       ],
-      "createdAt": "2026-08-23T22:39:47.313Z",
-      "expiresAt": "2026-08-25T22:39:47.313Z",
+      "createdAt": "2026-08-24T02:04:24.092Z",
+      "expiresAt": "2026-08-26T02:04:24.092Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:47.313Z",
-      "tag": "marketing_ads",
+      "mediaRefreshedAt": "2026-08-24T02:04:24.092Z",
+      "tag": "relationships",
       "tags": [
-        "marketing_ads",
-        "marketing"
+        "relationships",
+        "psychology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4851,7 +4646,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:47.313Z"
+        "reviewedAt": "2026-08-24T02:04:24.092Z"
       }
     },
     {
@@ -4901,10 +4696,10 @@
           "url": "https://www.nadpco.com/EPS"
         }
       ],
-      "createdAt": "2026-08-23T22:39:46.021Z",
-      "expiresAt": "2026-08-25T22:39:46.021Z",
+      "createdAt": "2026-08-24T02:04:22.571Z",
+      "expiresAt": "2026-08-26T02:04:22.571Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:46.021Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:22.571Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4923,12 +4718,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:46.021Z"
+        "reviewedAt": "2026-08-24T02:04:22.571Z"
       }
     },
     {
-      "id": 764638360,
-      "postUrl": "https://t.me/ne_wg/109043?single",
+      "id": 4141520979,
+      "postUrl": "https://t.me/ne_wg/109048?single",
       "source": {
         "title": "خبرفوری ࡆ اخبارفوری ࡆ جنگ فوری امریکا",
         "handle": "ne_wg",
@@ -4942,19 +4737,24 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/6f62ee1281.mp4?token=flK98Q6q26bVPxoL-RjoRW9bT_LWyNQdYErwCvdLch7AmGf5DU8YyJKEEQ5hApgAJongVQ43ySx7KwH0UckilyFqhEcTAF7P9HM3T9DVnrMm-tbwCADJRlYEGpZc6hXrMZpFPEc6nTsRS9jTrjFbEKYGpU2M-Y9Um8DWjnthvCj2vx4aT89cmibUkKPcc8jtFj04RJznGNXfRcDx5M2JA4ElAvvu3u1u1cSPVbTlu9PAmjvMp31nvP0LnUBZDhLlS39lWuN3LAcveTEklCPyMeMbFeMYU3HViC3PeQViSxtttqFRXdZc4iolG5W4J4DhEo8sM6mCfCnjzfdyTMAufA",
+          "url": "https://cdn4.telesco.pe/file/d4eaa4f9b6.mp4?token=Et48cvIknwEIG_TqI52AlKDmHcjTgfDng4OAIxB3ZLLP-Sbr5u3jCVMUPfqpybYgJX1XI0XotXtSzgAKKz2dhEv0X70UgUWeuNPauY5-GvyuWH2MLqFm_cx2NolliHWx04xmyEXSz15cqNDn2Q8prMqp4OpywB6niM43uahZL8paUbZKkFcPTc6gnMropFP4njAVaRpkLYxfAOn0MuxqLKJSsBzeGndoGMtZHjgd8n7SL3w_6wB9nFqt8SZINuzZLLO4iAGhRsua1hoGGRvdyYi4UsOL605gboiPB1AhRHMGnB9sO4Hyn8cTbaAYtSw4aeuwCCPtNMxqWi_DLE6PRg",
           "poster": null,
           "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨رسانه های دولتی از کشف ۷.۵ تریلیون متر مکعب گاز طبیعی در جنوب استان فارس خبر دادند!  🔖 @News1Fori",
-      "links": [],
-      "createdAt": "2026-08-23T22:39:43.487Z",
-      "expiresAt": "2026-08-25T22:39:43.487Z",
+      "text": "⁉️در تجمعات شبانه چه می‌گذرد...\n\n🔖 @News1Fori",
+      "links": [
+        {
+          "label": "@News1Fori",
+          "url": "https://t.me/News1Fori"
+        }
+      ],
+      "createdAt": "2026-08-24T02:04:20.428Z",
+      "expiresAt": "2026-08-26T02:04:20.428Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:43.487Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:20.428Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4972,7 +4772,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:43.487Z"
+        "reviewedAt": "2026-08-24T02:04:20.428Z"
       }
     },
     {
@@ -4997,10 +4797,10 @@
           "url": "https://t.me/masaf_salam"
         }
       ],
-      "createdAt": "2026-08-23T22:39:41.902Z",
-      "expiresAt": "2026-08-25T22:39:41.902Z",
+      "createdAt": "2026-08-24T02:04:18.743Z",
+      "expiresAt": "2026-08-26T02:04:18.743Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:39:41.902Z",
+      "mediaRefreshedAt": "2026-08-24T02:04:18.743Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -5019,12 +4819,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:39:41.902Z"
+        "reviewedAt": "2026-08-24T02:04:18.743Z"
       }
     },
     {
-      "id": 603327970,
-      "postUrl": "https://t.me/jscenter/22085?single",
+      "id": 2485577113,
+      "postUrl": "https://t.me/jscenter/22086?single",
       "source": {
         "title": "اندیشکده مطالعات یهود",
         "handle": "jscenter",
@@ -5037,49 +4837,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "📆 تقویم روزانه\n\n🌺 امروز : یکشنبه\n🌞 ١ شهریور ۱۴٠۵ هجری‌شمسی\n☪️ ١٠ رَبیعُ‌الاَوّل ۱۴۴٨ هجری‌قمری\n✝️ ٢٣ اوت (آگوست) ۲۰٢۶ میلادی\n🕎 ١٠ اِلول (ایلول) ۵۷۸۶ عبری\n\n🌍 مناسبت‌های قمری ➖➖➖➖➖➖\n\n✍ رحلت حضرت #عبدالمطلب در ٨ سالگی پیامبر (ص) مطابق با سال ۴۵ پیش از هجرت\n\n📚 برای کسب اطلاعات بیشتر دربارهٔ حضرت عبدالمطلب و ترور ایشان، بنگرید به:\n\n📖 اسلام و تروریسم تاریخی یهود\n👉 https://jscenter.ir/judaism-and-islam/jewish-intrigue/3582\n📖 یهود و عصر بعثت\n👉 https://jscenter.ir/judaism-and-islam/jewish-intrigue/3579\n📖 یهود به دنبال ترور پیامبر اسلام\n👉 https://jscenter.ir/judaism-and-islam/jewish-intrigue/1428\n\n🌍 مناسبت‌های میلادی ➖➖➖➖➖➖\n\n1️⃣ روز جهانی یادآوریِ #تجارت_برده و الغای آن\n\n📚 بیشتر بدانیم:\n\n📖 یهودیان و غارت ماوراء بحار در آمریکا\n👉 https://jscenter.ir/jewish-history/formation/2298\n📖 پلانتوکراسی و تجارت جهانی برده\n👉 https://jscenter.ir/jewish-methods/jews-and-colonialism/1463\n📖 یهودیان بزرگترین برده‌داران تاریخ\n👉 https://jscenter.ir/jewish-methods/jews-and-colonialism/2814\n\n2️⃣ وقوع #جنگ_چالدران بین سپاه صفوی (شاه اسماعیل اول) و سپاه عثمانی (سلطان سلیم اول) (١۵١۴م)\n\n📚 بیشتر بدانیم:\n📖 یهود آتش‌افروز جنگ ایران و عثمانی\n👉 https://jscenter.ir/jewish-methods/jews-and-politics/3866\n\n3⃣ مرگ #عبدالمجید_دوم آخرین خلیفهٔ خاندان عثمانی (١٩۴۴م)\n\n📚 بیشتر بدانیم:\n📖 نقش یهودیان مخفی و آتاتورک در فروپاشی عثمانی\n👉 https://jscenter.ir/other-topics/crypto-judaism/15432\n\n🗓 تذکّر ضروری ➖➖➖➖➖➖➖➖\nاین تقویم، تنها به ذکر مناسبت‌های مرتبط با #یهود می‌پردازد.\n\n💳 «اندیشکده» تنها با #کمک‌های_مردمی اداره می‌شود. برای این منظور، شمارهٔ کارتی در قسمت توضیحات کانال اعلام شده‌است.\n\n✅ اندیشکدهٔ مطالعات یهود:\n🇮🇷👉 @jscenter",
+      "text": "💎 «تمدّن مستقل ایران» در برابر «جهل استراتژیک آمریکا»\n\n👤 تحلیلگر ارشد ژئوپلیتیک و سیاست خارجی ایتالیایی:\n\n🚨 برخی افسران ارتش آمریکا، درجه‌داران زیردست خود را وادار می‌کنند برای #ظهور_دوم_مسیح دعا کنند، می‌گویند ایران را نابود کنیم مسیح برای داوری نهایی بازخواهد گشت!!\n\n💥 شما شناخت درستی از بستر تاریخی ندارید و ایران را با ونزوئلا اشتباه گرفته‌اید، ایران یک امپراتوری است، آن‌ها خود را ذیل تمدن غرب تعریف نمی‌کنند، بلکه برخلاف آمریکا تمدن مستقلی دارند، اما نژادپرستی عریان شما آمریکایی‌ها اجازهٔ درک این مسائل را نمی‌دهد...\n\n🎬 یهود مدیا :\n🇮🇷👉 @jew_media",
       "links": [
         {
-          "label": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/3582",
-          "url": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/3582"
-        },
-        {
-          "label": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/3579",
-          "url": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/3579"
-        },
-        {
-          "label": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/1428",
-          "url": "https://jscenter.ir/judaism-and-islam/jewish-intrigue/1428"
-        },
-        {
-          "label": "https://jscenter.ir/jewish-history/formation/2298",
-          "url": "https://jscenter.ir/jewish-history/formation/2298"
-        },
-        {
-          "label": "https://jscenter.ir/jewish-methods/jews-and-colonialism/1463",
-          "url": "https://jscenter.ir/jewish-methods/jews-and-colonialism/1463"
-        },
-        {
-          "label": "https://jscenter.ir/jewish-methods/jews-and-colonialism/2814",
-          "url": "https://jscenter.ir/jewish-methods/jews-and-colonialism/2814"
-        },
-        {
-          "label": "https://jscenter.ir/jewish-methods/jews-and-politics/3866",
-          "url": "https://jscenter.ir/jewish-methods/jews-and-politics/3866"
-        },
-        {
-          "label": "https://jscenter.ir/other-topics/crypto-judaism/15432",
-          "url": "https://jscenter.ir/other-topics/crypto-judaism/15432"
-        },
-        {
-          "label": "@jscenter",
-          "url": "https://t.me/jscenter"
+          "label": "@jew_media",
+          "url": "https://t.me/jew_media"
         }
       ],
-      "createdAt": "2026-08-23T22:47:32.634Z",
-      "expiresAt": "2026-08-25T22:47:32.634Z",
+      "createdAt": "2026-08-24T02:10:58.117Z",
+      "expiresAt": "2026-08-26T02:10:58.117Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:47:32.634Z",
+      "mediaRefreshedAt": "2026-08-24T02:10:58.117Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -5098,12 +4866,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:47:32.634Z"
+        "reviewedAt": "2026-08-24T02:10:58.117Z"
       }
     },
     {
-      "id": 852259111,
-      "postUrl": "https://t.me/jomhouri/11966?single",
+      "id": 1590116034,
+      "postUrl": "https://t.me/jomhouri/11970?single",
       "source": {
         "title": "رؤیای ایرانی / محمد صادق شهبازی",
         "handle": "jomhouri",
@@ -5116,17 +4884,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "پایان‌بندی جنگ\n\n❓اینکه جنگ چگونه به پایان می‌رسد شاید مهم‌ترین سوالی باشد که باید از خودمان بپرسیم.\n\n📍برخی رفتارها بر این متمرکز است که جنگ چه زمانی به پایان می‌رسد؟ اما این موضوع کلیدی نیست. آنچه اهمیت دارد چگونگی پایان جنگ است.\n\n📍نگاه ما به چگونگی پایان جنگ آینده ما را می‌سازد.\n\n📍اگر تصور کنیم که با یک معامله و بده بستان جنگ به پایان می‌رسد، حتما خطای راهبردی انجام دادیم. دلیل؟ تجربه.\n\n📍تجربه خیلی گذشته هم نه، همین مذاکرات اسلام آباد دلیل مشخصی است.\n\n✅آنچه می‌تواند پایان بندی جنگ را متفاوت کند، تثبیت دستاوردها در میدان و زدودن تهدیدها در عمل است. اگر بخواهیم عینی صحبت کنیم باید بگوییم: تثبیت حکمرانی در تنگه هرمز و اعمال ترتیبات ایرانی در آن در کنار اقدام برای رفع واقعی محاصره دریایی و پیگیری پروژه انتقام. این مهم ترین اقدام برای پایان‌بندی جنگ، کاهش ریسک تکرار جنگ در آینده و گشایش های اقتصادی بعد از آن است. با عجز و ناله کردن از محاصره و رفتن به سمت افزایش شدید قیمت بنزین به بهانه محاصره فقط دست برتر خود را از بین می‌بریم.\n\n✔️اگر می‌خواهیم واقعا جنگ را با پیروزی و چشم‌انداز روشن در آینده به پایان برسانیم باید قبل از آن این را با خودمان حل کرده باشیم که ایران بعد از جنگ و با این همه هزینه دیگر ایران قبل نیست. اگر فکر کنیم هیچ اتفاقی نیافته و همچنان درب را بر همان پاشنه قبل که برویم حالا یک مذاکره کنیم ببینیم می‌شود یا نه بچرخانیم، حتما به توفیقی نمی‌رسیم.\n\n#سید_حامد_ترابی\n@khacky",
+      "text": "⭕️سخنی با دکتر قالیباف؛ نماینده ویژه ایران در امور چین\n\n🔹آقای قالیباف شما بجز مسئول تیم مذاکره کننده با آمریکایی ها که اکنون تفاهمات آن به اغما رفته است، نماینده ویژه ایران در امور چین نیز هستید. برای ارتقای جایگاه ایران در نظم نوین جهانی، مهار آمریکا و حتی بازسازی ایران راهی جز پیگیری راهبرد نگاه به شرق و تعاملات کلان و بلند مدت با چین نداریم. می بایست چند برابر زمان و تشکیلاتی که هزینه مذاکره با آمریکا شد و در نهایت هم مانند همیشه بی ثمر بود، با طرف چینی که اتفاقا مشتاق به ارتقای راهبردی روابط است، صرف شود.\n\n🔹وضعیت توافق ۲۵ساله با چین به کجا انجامیده است؟ در بازسازی زیرساخت های ایران جذب ولو درصدی از ۸۰۰میلیارد دلار مازاد تجاری چین کجای معادلات شما قرار داد؟ در جنگ کریدورها، جایگاه جغرافیایی ایران اهمیت زیادی در پروژه کریدور جاده ابریشم(BRI) دارد، چه بسترهایی آماده شده است؟ نسبت به جذب انبوه گردشگری چین برای درآمد پایدار که اتفاقا طرف چینی پالس مثبتی نیز داده است، چه اقداماتی انجام شده است؟ چرا از ظرفیت های موجود برای کسب منافع ملی آن هم بدون وابستگی به فروش نفت و خارج از قواعد تحریمی آمریکا استفاده نمی شود؟\n\n🔹در حوزه امنیتی و نظامی، طی ماه های گذشته شاهد کمک های امنیتی و دفاعی رژیم صهیونی به تایوان برای ساخت گنبد T متاثر از گنبدآهنین، همکاری های تایوان و تل آویو در حوزه ریزتراشه ها و هوش مصنوعی، حضور هیاتی از آیپک در تایوان با استقبال رئیس جمهور تایوان و نهایتا چندی پیش سفر هیئت پارلمانی رژیم به تایوان؛ موجب خشم چین نسبت به رژیم صهیونیستی شده است.\n\n🔹از سویی جنگ آشکار آمریکا و چین در مساله کریدورها، جنگ تعرفه ها، جنگ با چین بر سر عناصر کمیاب، و مهمتر از همه نبرد برای ایجاد نظم نوین جهانی فرصت ویژه ای به ایران داده است.\n\n🔹ایران نه تنها باید از شکاف های موجود استفاده کند، که آمریکا را به عنوان برهم زننده نظم جهانی به ضرر قدرت های شرق و تضعیف کننده کریدور راه ابریشم در جبهه مقابل چین ترسیم کرده و طرح های کلان ایجابی بلندمدتی نیز با چین پیش ببرد و پروژه ترامپ را در نطفه خنثی کند.\n\n🔹چین با وتو قطعنامه پیشنهادی بحرین علیه ایران در شورای امنیت و رد فعال شدن مکانیسم ماشه نشان داد، اولویت ژئوپلیتیک بر ژئواکونومیک برایش موضوعیت پیدا کرده و این می تواند برای ایران حتی در حوزه های پدافندی و جنگنده نیز راهگشا باشد.\n\n🔻ما نیازمند انتقال پیام در سطوح عالی برای همکاری گسترده بلندمدت با چین جهت حذف نگاه های افراطی اعتیادگونه نسبت به مذاکره با آمریکا هستیم، تا بعد از سالها غرب گرایی مفرط، پکن جدیت ما را باور کند وگرنه مانند گذشته پکن چرخش های ما را صرفا کارت بازی در مساله تعامل با آمریکا تفسیر می کند و هیچگاه بصورت جدی وارد شراکت راهبردی نخواهد شد.\n\n🔻آقای قالیباف از فرصت میان جنگ ها استفاده کنید، که زمان در حال گذر است و تفاهم با غرب سرابی بیش نیست...\n✍ #علیرضا_فقیهی_راد\n✅ @haallaj",
       "links": [
         {
-          "label": "@khacky",
-          "url": "https://t.me/khacky"
+          "label": "@haallaj",
+          "url": "https://t.me/haallaj"
         }
       ],
-      "createdAt": "2026-08-23T22:47:31.511Z",
-      "expiresAt": "2026-08-25T22:47:31.511Z",
+      "createdAt": "2026-08-24T02:10:57.104Z",
+      "expiresAt": "2026-08-26T02:10:57.104Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:47:31.511Z",
+      "mediaRefreshedAt": "2026-08-24T02:10:57.104Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -5145,7 +4913,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:47:31.511Z"
+        "reviewedAt": "2026-08-24T02:10:57.104Z"
       }
     },
     {
@@ -5180,10 +4948,10 @@
           "url": "https://t.me/govarikomar"
         }
       ],
-      "createdAt": "2026-08-23T22:47:30.269Z",
-      "expiresAt": "2026-08-25T22:47:30.269Z",
+      "createdAt": "2026-08-24T02:10:55.969Z",
+      "expiresAt": "2026-08-26T02:10:55.969Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-08-23T22:47:30.269Z",
+      "mediaRefreshedAt": "2026-08-24T02:10:55.969Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -5202,7 +4970,260 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-08-23T22:47:30.269Z"
+        "reviewedAt": "2026-08-24T02:10:55.969Z"
+      }
+    },
+    {
+      "id": 251702966,
+      "postUrl": "https://t.me/jenayaat/5300?single",
+      "source": {
+        "title": "جنایات غرب 💯",
+        "handle": "jenayaat",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/K68cQfZbJhDXQGZ8UlETH6tCzrpvhZyFK1QX4HEwhQODURuMxKWYrYjO6pf9TKKGtWdhN61B5Ud16ZFJYWUy8LWAdzNQe1t3G5qEdYPKJpuJKFZJJKGeTX2kl-sh7vUPNmuY4PrvrelWpfVICtVwCINZSN7NSx0qbi43m_3WmuEDUTqBZ1vBLdmUixTxYOn4lrT9jP2_H3BT1L3wk42VB2M2EHAMM8SwFB6FlBXcJ24GxpCHNItNzHcG8eo3zySVCUntrmd8DnqsxoUuWvXWZ0b3yaeXB0qub4B6LJ-yRCdD2UjF867gxwRlHwwmL8DR5Pv_lF7XO6ocshHZKDJT2w.jpg"
+      },
+      "sourceId": "ir:jenayaat",
+      "sourceCountryCode": "ir",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/24679b9521.mp4?token=qlxTmbsZ0talIIxIhWgfG8M7kVi3ZUOLJR8XK9igRLtCwNV1rXtbQvoKGf9mBuNYeUqHOEf4o4XUSiuh75Y2fcgr69FR4FL7_5dVqe95X69hjILhsYbjS1wGpcE8r8w_Bgo7kLvzMEBAv2k7GMz5R8jyXCVqEPVUCDGb4XaSfWI3dT4_VVhvxMmzk-ZJFqtJFNlmDbM4OT3T-LKZGJp9hhkghQ4ShbQgY-3YO3GTLz6bI-HJvX8O8ytAakb-XYpiZveSarC27qW_YGl3wEqDkTiR_wVfGab8z2sK3EnN34TYY_y1zWDl5XrSC_PC1m9TpclTU9iLgMoRzQNSkNHrUw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "✡️نژاد پرستی صهیونیستا \n\n🎥(باسم یوسف)، مجری مصری:\n\n🔺وقتی در سال ۲۰۱۳، یهودیان کشور اتیوپی به اسرائیل مهاجرت کردند، بدون رضایت و بدون اطلاع‌شان آمپول‌های ضدبارداری به زن‌ها تزریق کردند!\n\n🔺چرا؟ تا به‌دلیل رنگ پوست نامناسب‌شان، تولید مثل نکنند!\n\n🔺تمام ماجرا همینه؛ نژادپرستی❗️\n\n\n🔴 چهره واقعی غرب در\n✅ کانال جنایات غرب \n&rlm;💯@jenayaat",
+      "links": [
+        {
+          "label": "@jenayaat",
+          "url": "https://t.me/jenayaat"
+        }
+      ],
+      "createdAt": "2026-08-24T02:10:54.848Z",
+      "expiresAt": "2026-08-26T02:10:54.848Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-08-24T02:10:54.848Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-08-24T02:10:54.848Z"
+      }
+    },
+    {
+      "id": 4065994923,
+      "postUrl": "https://t.me/jangefarhang/81065?single",
+      "source": {
+        "title": "جنگ فرهنگی",
+        "handle": "jangefarhang",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/cD3IM4sPudoXL_pXKrmGLbW6eeH9imtFH8DoU-Z_11dclvgx_K4xFuAu83Rrpdy37tRuZ90rOEk8dNVDG6Rai4sRVSqvBusyhQGfx8hjML5pgcQnkc2CkdvoXJ4seLVebLNFjMclHWUNVGFUQO8plJxEoPzGqS4aReZXxeDaYVRYgsqs2ILhw_eEVKOgoGP3_jXyeUvqnSNAUezhrVAJJdHtuImOLzabXgMm0_EybgwA6ZNTP-Imjr7QLs40UKzkQywrILarz80R2HAGkrhUMWHBZI4FQwNjX-F_1aJ3KNN-BIhq1w6K_kQw5pRaYtK3lwPDebZNJxd64usMcinIUg.jpg"
+      },
+      "sourceId": "ir:jangefarhang",
+      "sourceCountryCode": "ir",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/PYgDVrLSAyrVX41jC2K-_4Z7qe8IDKVVETg-FFC7ZgftTfp6kZNHEdBNHY83xcMy7_WShtHiIF8S0q6f_5bXr_N6pe6iXlfi6o0NRJ686Xu-0zH5HL0W8FlaQltziXOBrmXttZqxTlfG8KrpdUmeWoi54AOCeDXdisO_QuxLw-agsKk-byZN_u7JpKkm9YHwwoXSiEYNt9u96vwu2cTXCK7sicyZE1yMrc_DxVvLhyJr32crxUQfr90x83BLXQV7LIBmtZtEb84j_xxw-SQ9H9i5JqW9vYfnAWY0OBHQjS-uD4I1icUFjB7h79Zd51tEneaJy2cqioDbRR6f8G1vuw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🔴️🔴🔴 قابل توجه اونایی که میگفتن نه غزه نه لبنان😏\n\n \n═════🇮🇷═════\n@JANGEFARHANG",
+      "links": [
+        {
+          "label": "@JANGEFARHANG",
+          "url": "https://t.me/JANGEFARHANG"
+        }
+      ],
+      "createdAt": "2026-08-24T02:10:53.651Z",
+      "expiresAt": "2026-08-26T02:10:53.651Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-08-24T02:10:53.651Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-08-24T02:10:53.651Z"
+      }
+    },
+    {
+      "id": 280029683,
+      "postUrl": "https://t.me/jalaeipour/17682?single",
+      "source": {
+        "title": "محمدرضا جلائی‌پور🍀Jalaeipour",
+        "handle": "jalaeipour",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/rLlcDVi6qJHZGXZJHOZvcW1oGAkmPRJcySkO_tG_IXeYCUyYekkWNM_DCh4c9IGtgFMZWXATnFKJ7Ovw-Ty4lyHaB_WKaltu_Z4x3OVXXivPsGK0e8KHCs9KiBDalGPamODfWapkjjrkGrDvpdQRNDsaYcwRAfVuaUYCIfXOiWCmL2riCU4Zn5EWU8wxbiLl6LAlYEb0JrWyyzAGolBlF1-rKyYynbvvW7yTEXmRHYmUwymPRSTcnkTzBsrOHNgp8Aaiu9WdHb73s4w2_AEG8VvirAq0qVvL-BLhJe30Cjx5v6Z8NuJS1a--YE3t4L2_ZF_8igDIB5T4wPb9Vu9MLg.jpg"
+      },
+      "sourceId": "ir:jalaeipour",
+      "sourceCountryCode": "ir",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "⭕️ گفت‌وگویی شنیدنی دربارهٔ «تِک‌فاشیسم» (فاشیسم فناورانه) در سیلیکون‌ولی و حلقهٔ پیتر تیل که به ویژه در دورهٔ ترامپ و ونس رشد کرده و از عوامل تهدید مردمسالاری در آمریکا شده اند:\n\nhttps://m.youtube.com/watch?v=sg7YNUbaV-8&pp=ygUbRGVtb2NyYWN5IG5vdyB0ZWNoIGZhc2Npc3Rz&ra=m\n\nماشین نظامی و ابزارهای استعمارگری نوین آمریکا علیه ایران و بسیاری از کشورها هم به نحو روزافزونی متکی به تک‌فاشیست‌ها یا بخشی از تکنو الیگارک‌های سیلیکون‌ولی است و ضروری است دانش عمومی در ایران دربارهٔ این گروه و باورها و گرایش‌های خطرناک‌شان افزایش یابد. ترجمهٔ همین کتاب یا زیرنویس همین کفتگو آغاز خوبی می‌تواند باشد. \n@jalaeipour",
+      "links": [
+        {
+          "label": "https://m.youtube.com/watch?v=sg7YNUbaV-8&pp=ygUbRGVtb2NyYWN5IG5vdyB0ZWNoIGZhc2Npc3Rz&ra=m",
+          "url": "https://m.youtube.com/watch?v=sg7YNUbaV-8&amp;pp=ygUbRGVtb2NyYWN5IG5vdyB0ZWNoIGZhc2Npc3Rz&amp;ra=m"
+        },
+        {
+          "label": "@jalaeipour",
+          "url": "https://t.me/jalaeipour"
+        }
+      ],
+      "createdAt": "2026-08-24T02:10:52.179Z",
+      "expiresAt": "2026-08-26T02:10:52.179Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-08-24T02:10:52.179Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-08-24T02:10:52.179Z"
+      }
+    },
+    {
+      "id": 1895049416,
+      "postUrl": "https://t.me/jadrazi/4808?single",
+      "source": {
+        "title": "جامعه اسلامی دانشجویان دانشگاه رازی",
+        "handle": "jadrazi",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/vbw3NEBn3J6smP_krZYRc-lUNtTFuVHusyN5H6CheNlKfPPC04dkR7q32JmFULJUZv0Bu2RZNsDZK0TeTwFbL15q6ZV4yw4k-YLRDu7UWS9vFss0WAC1tjxfcDJlKQgVkLEQ5uMH6RGqiZ0Q0d-KZtCy6RrM4B6cZgCCEiwAVM8e34gfVVURbF9DAAYFMUa49YHNn4hTIs9oxkHJ3az5BnAaxo7V7s6qlhPGcX2K9TA6inrdmfFwyczSdL5CCYt9HFgex0JHBwVa9LB3sCWuJtpT3QfEbBFuOJXzjOLCyLx8zlcjdBESf1Sqcrc0kYLJVehFNrPsPTy-wXL68R22QA.jpg"
+      },
+      "sourceId": "ir:jadrazi",
+      "sourceCountryCode": "ir",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/LNOct-BM55u4N11ffJmwF3uN6L6cWWDKXU90P5d9zOuTD82oKeT5DQ4auzyvXAaoTNohyAw2qN7BtX_p8uc-fTiQqM1bFnsdqWKEa2syycnpl8XLaQvkTJ5kBMAktKmxwdADrTAiTK2yXoDN3_Rkmk5zpacMra0_rAFjEHN-lMowdfnOp_R7RYJHH1fe5hBOtA5X7VIMi55sl3GdV_L3BuLnygCa2bFqkXIlOrq26zA4RubiLu5MdF5qr6d-NhgAMoEt5G0Ly_uIe2MqLp-se10e8uS9e9se6EJeaFxXRrDghuML6U_deKbfJuIqJhxE--x1FaAdyOJiLIOxtTuF1Q.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/COrnYHgTSV3_TZbdaj4neIYyfijVxv3GubRDxgt308QcgYSnVUD_WJV6gTi_1ddbwzHR160MIRW9iBAQC-GtNwvo5fvZZflThbl75Ir4bhuzyIGjKEiiwH4fG287741XYLmw9oCDHao2Ukkc3oMSk15VjLGMiATnxHUr4tdawUoxrIoVsl74Qw9sLe-nnUclnr-u76O_GOX93dxcZVc6tllE7lXc3NbTAHy6Eedb6dQzisPwhALOJRzY1KAXsAwDh2bK9-V37X9BcGgncJ1IGMGuLByalq8uX5SjvV_UNAkxCmMvoKD9WTFnfqhhGaU4gTd0FbggnhrgS6GD_WVYAw.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/MyO-a9LyhxSZhLY-q670tYzC424zRe3cDdvudOrg9mCyQAFNP0gBJ1QwxWJlf3T5Wk9k9maMvq_l3TFv9LBdCOA6088dbe9YwPCa3KRw8QDZYCfdv-huvnFxDOv2UetiL1SsM2nES4U8VegNgcekomy_7t2bUdTZZGzfz25Gxi1UjhKtMl3boYh6xFdTocI2_qetExXx8n8Ususak0ckZu2phXgu8eRv9H94MyjPZLrdrTWzxykvTMNWiSXrYGb5qwoGPQRMD6JaWCXkD6tZri8jOWYiwnyTyB0FlRPF9-JQ96VBXxT1kF3kLYH-XuX-_BqTT0P1_ekIWDbX5KUQCw.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/jPLiEGGf6i2ZBPJ3lkzyRtkgcGKtao1DmfT2qjK9fDFBBUhbUgH0ZeWSCN1VBzPvWQzE7FNFPSdecG7vK_4oh9HhTpGFUH1D-SldkMFe1ABHr61WZo3-kfa9pdR2oj7Q82P2ndWKOrNc8hQ9w_SeEuIvV5h9HDGyOhAQxOHjBpT-4CWUfoONYgEy845-sZ9k5f1_pO53QnZXScbhCpOwKRt-Nw71nu23yOInCoeXzr1P_-YH1wUhJSOm3pVAPlrz_u1pBqhGqOvdGXwCY29j8Yt7WVTeNbUgMkXVW7y5S1nqoriNl3FKJhIaAZ31mdWVPM6dlWSAriOP3XNSEzD8Qg.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/bF2PIVXhKjG0jKrgwNzjoz_TFckibZEr8E0Kews5SK9duU1czeQWoCaew6jg3oYNBT1xFGm1DTcB1sEG2rMxKhUcbKh13iCzgKiOV7hQ7JAJDIu9b4nLqKDTDL_ojazEgayqGocbIMLVToLHSkRhyneBf6wsgeILolIh2uzGd_7_kXO21kUOha8PBj0TMjMgcoUX__sT8K--5_08gjU34mXFHKg3jNFjvFb5i9TuS7moMObvwPlC1hqCSe38rUFbKwls-LsGCdlP_qjJ651ha1WHSi971DK3PCQ6SizJLRsPl20n9DVSWnfLxq5VEfThiPFjQGq3PKrrk6IXbpOwCw.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/LgDM4_jHdBpUyOy7zouJZ8EmGqqCLLIWrNHhnjf2zXKjW4QPVkvPyDFpdzVfUQMgVIi3GWLnsdmPUAKAlPvFFNiU0E6gOK54iga5qenJNGUVGDWjQX8IOHjxewNfhtjkgPGrQnrOrMJ4svk4tI0VAKvWImeauvMqMJT6jSQ7fBz-enILpNh4xKCig5xJyYuzr56JBmsfXBJ2Jw_t6sOdgr56170spGZfC33_695-W4KykuSxF0_ZoRgYqe7CUuz2n0l8B-GL0syBN-_7cwuGQ9uWbllJ-W_yAlJmFMicO2gFZwpcdz_TAVA-x7mTgXxF0zPDiJK1guftvE7DuYBV8A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🔰 نامه اتحادیه جامعه اسلامی دانشجویان خطاب به دکتر محمد باقر قالیباف (رئیس محترم هیئت مذاکره کننده جمهوری اسلامی ایران)\n\nاین ملت برای انتقام و تحمیل اراده خود بر دشمن به صحنه آمد و اکنون صرفا برای تثبیت آن پیروزی،به دیپلماسی فرصت داده است.\n\n#بخش_اول\n#اتحادیه_جامعه_اسلامی_دانشجویان \n\n🔗 اینستاگرام | تلگرام | ایتا | بله | ویراستی",
+      "links": [
+        {
+          "label": "اینستاگرام",
+          "url": "https://www.instagram.com/jad.news.ir?igsh=MTZwdzluOHdqcXA0cQ=="
+        },
+        {
+          "label": "تلگرام",
+          "url": "https://t.me/akhbar_jad"
+        },
+        {
+          "label": "ایتا",
+          "url": "https://eitaa.com/jadnews"
+        },
+        {
+          "label": "بله",
+          "url": "https://ble.ir/jadnews_ir"
+        },
+        {
+          "label": "ویراستی",
+          "url": "https://virasty.com/jadnews14"
+        }
+      ],
+      "createdAt": "2026-08-24T02:10:49.917Z",
+      "expiresAt": "2026-08-26T02:10:49.917Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-08-24T02:10:49.917Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-08-24T02:10:49.917Z"
       }
     }
   ]
