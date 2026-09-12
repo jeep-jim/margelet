@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12T00:04:17.681Z",
+  "updatedAt": "2026-09-12T03:46:34.389Z",
   "posts": [
     {
       "id": 2688454177,
@@ -26,10 +26,10 @@
       "fallbackReason": null,
       "text": "Vamos? ✨",
       "links": [],
-      "createdAt": "2026-09-11T23:22:39.113Z",
-      "expiresAt": "2026-09-13T23:22:39.113Z",
+      "createdAt": "2026-09-12T03:06:26.300Z",
+      "expiresAt": "2026-09-14T03:06:26.300Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:39.113Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:26.300Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -48,7 +48,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:39.113Z"
+        "reviewedAt": "2026-09-12T03:06:26.300Z"
       }
     },
     {
@@ -68,10 +68,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:38.566Z",
-      "expiresAt": "2026-09-13T23:22:38.566Z",
+      "createdAt": "2026-09-12T03:06:25.773Z",
+      "expiresAt": "2026-09-14T03:06:25.773Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:38.566Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:25.773Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -90,30 +90,38 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:38.566Z"
+        "reviewedAt": "2026-09-12T03:06:25.773Z"
       }
     },
     {
-      "id": 4009903104,
-      "postUrl": "https://t.me/demystifyingtruths/16471?single",
+      "id": 6664074,
+      "postUrl": "https://t.me/demystifyingtruths/16473?single",
       "source": {
         "title": "Demystifying \"Truths\"",
         "handle": "demystifyingtruths",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/fwQD_bBU68rY2GzwJQtrIX5lDCSrIUkIV_ibJN4Sp8vw8IYDYpZ6eJdk0nz4NCQSLI0hcwNalPvCBs-2bee4dyB3SgshjIRPLkMHW6Ty8fDV-UbqVuL_EPDw1Xr5Q12tDTHRYPgAQGovbUVuc8y6v7V8vO2OUjraDx0EX66uD-waw0pOvc0F5o3IjHLNmJgPkcrCQIZYrNc21FWdd9J9MwRLpNfs3QfW6BwYCQlRHesEQ8-HRrN3LumZAJ_gQnQDUuwHHojHe3_Ky1A6Q21CzgZ4luDrk8rTOzB4pgi5WZlbTefEE-XpmTdZc0hCEeG09gMDOKQiCuchTjo7_Emg3Q.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/detA9NRQaezulGpshTCyIWrEt-yXpl-M83uFgzJ8Xl0heXWA1TFoHek46kkCNNMCVz4RhQqSMDvEphHMi-bd9BD4uLp-zp7DVsiKl-Wjr3zWOPHYvKB3d_Pjo2qZQAm8dSjgrOCKa9zCF5gW3ao3Bi8a-OvM8Hqpcig6V1Q8Z0N8HTbyvGt3TEd1yu54-tlyjvdpfj_BKUKac6XVgr7TKtL3Ta4sPrA7P1Zyx9CgQRuyYm_nUCYgYd5MBVzAXlyC7LPkhq_3NOz61TNvkF2t0kbD2atq4WszPDbcWM3LE6vXmmDfrpjoViZxGdVi_sgsjE8B1qD6Gv_rbXt6V2IYLw.jpg"
       },
       "sourceId": "br:demystifyingtruths",
       "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/07edc5a6d7.mp4?token=Y-4hFKfL0OETeDZmZ7XQjaIICSDpKOmdLVycKMP-SgnMLexhtBM_eitZcXb8EqohGyiSAGAyC0CuuSMwtEM1OgyMrvi03TZcpcLUefb87V-Efmx5ODivhWtPfdSe7nrejH9Q_4iGrDkKVXljIWOesvcmK-2Hul5zGQ-n4Q_AYeuLhtx2eAt3tmKqRB86rLge9l7h9vdWHbKKKU7ZgX_lJ85K023epNadlLoalgZSK0CwSkfpIn5at-qLCDnR7JjtpQq8K6X9kP2b56Ima7CPyD-GQ2Jk62MacJOgcpbtpK44Jfks4DJbFeIvjpVtx5OtwpylSV12hi4ugtToJqYiYg",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:37.298Z",
-      "expiresAt": "2026-09-13T23:22:37.298Z",
+      "createdAt": "2026-09-12T03:06:24.445Z",
+      "expiresAt": "2026-09-14T03:06:24.445Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:37.298Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:24.445Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -132,7 +140,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:37.298Z"
+        "reviewedAt": "2026-09-12T03:06:24.445Z"
       }
     },
     {
@@ -152,10 +160,10 @@
       "fallbackReason": null,
       "text": "September 08, 2026 - I am compelled by my conscience to repost this so urgent and necessary once again:\n\nAugust 23, 2026 - The Brazilian people urgently need God's and Christ's mercy and compassion to save themselves and free themselves from tyranny.\n\nThey need to be healed by God IN THE NAME OF THE LORD JESUS CHRIST from the serious spiritual illnesses they contracted by committing grave sins, becoming SLAVES TO SIN AND THE EVIL ONE, ENEMIES OF GOD.\n\nIf the majority of the people were more humble of heart (I'm not talking about material poverty), less materialistic, less attached to the image and Idolatry of \"Our Lady of Aparecida\" simply \"The Cida\", for foreigners that do not known about terrible distorted Catholicism that is currently is STILL the average Religion of majority Brazilian People that is a Christianity IN NAME ONLY like Olavo de Carvalho exposed about it using what Pope John Paul II exposed that Brazilians are not converted Christians in deep spiritual level. \n\nSadly the dawn image that millions of Brazilians worship is called \"Mother of God\" a heresy and apostasy that leaders of Catholic Church invented that is put in Holy Maria FOR GOD NOT FOR HUMANS WORSHIP who birth Lord Jesus Christ in place of Lord Jesus Christ and even God to Christians can talk, ask blessings God's Spiritual and Material Guidance, Providence and Gifts to God by Prayers like Maria is the Intercessor between Christans and God when the true that is Lord Jesus Christ who sacrifice His own life in hard cross to open a spiritual narrow path to humans walk to can enter in God's Heavenly Kingdom is the real Intercessor between Christians and God.\n\nIf Brazilians was less obstinate, less envious, less talkative, less slanderous, less idolatrous, less hypocritical, less arrogant, less proud, more modest, more God-fearing in general in the way of living, perhaps Brazil wouldn't be in this mess sinking deeper and deeper into the quicksand of all Hecatomb that Dictatorship, Censorship, Slavery, Surveillance, Totalitarianism and Authoritarianism that always brings destruction and death to the lives of ordinary people it has been thrown into since 2002.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:35.604Z",
-      "expiresAt": "2026-09-13T23:22:35.604Z",
+      "createdAt": "2026-09-12T03:06:22.713Z",
+      "expiresAt": "2026-09-14T03:06:22.713Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:35.604Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:22.713Z",
       "tag": "news_breaking",
       "tags": [
         "news_breaking",
@@ -174,7 +182,96 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:35.604Z"
+        "reviewedAt": "2026-09-12T03:06:22.713Z"
+      }
+    },
+    {
+      "id": 1331140873,
+      "postUrl": "https://t.me/conservacore/4?single",
+      "source": {
+        "title": "Conservador Core (Entrada)",
+        "handle": "conservacore",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/KjE8Eav6ZobKu8m8knuaaiSAdbsECLvotqdBH76xHU9_rJgwHyeATuJEbuS1gdF9G8Et2MaryMwxsrG1TE0ba_Vk6FirCanCplYdVgmwyZkboKDtvTJMRpm_P7vAXHgqyCCBVqe07t99w0c3J06ZVxMtgE_D4-8wU3Ktb-PviY5nLL2Ugq8ZH6nevDalkHkX3G7EsONUlc37OCfQvFowPuWI-vCx-mLMtohQ1rPWHjtyBrZrO_NufqVvqwSr7zMOAtQFBMTheE9Ouzt6-y_8ixPuTDadrXscFbjgz5CUR5xaOhRKmkRybzt_rGt8WF6M_uYpFCXF6X201P8_-VrVig.jpg"
+      },
+      "sourceId": "br:conservacore",
+      "sourceCountryCode": "br",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:22.078Z",
+      "expiresAt": "2026-09-14T03:06:22.078Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:22.078Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:22.078Z"
+      }
+    },
+    {
+      "id": 3562017513,
+      "postUrl": "https://t.me/coleguinhasunivos/9548?single",
+      "source": {
+        "title": "Coleguinhas, Uni-vos",
+        "handle": "coleguinhasunivos",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/ZI2FKqrDTNGuBsk51W9mAfMGZrVXewfMEE9E2yvhr_MrHvoNMcvQd5hJjynOqxGuEX0aVM4q_k1M9CblHQpcAYODxCBvQYktMPsdjyj943OrI77y1QZJMOtnnCD89jfr4WPM2zsJBJwoLHe3zClC6dEfXEup5bKEp5Gg3_kMtOjG_xCdenK4D1-CpkDmnPHGaK2ajIdSaIas6b4hBiX5zjVwhZi-AlQIM3qdqgU6gSvwMMPZQUH7FYQvCwCqcpPlku1guml9MGtV2xgSySt1M3E6uQdG-Bn2uF_6bE_Px5vaWZn3LYsqEpuIR6xa01sOFc17jCUMyKuEraLt7j1tig.jpg"
+      },
+      "sourceId": "br:coleguinhasunivos",
+      "sourceCountryCode": "br",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Não se pode esquecer.\nhttps://apublica.org/2024/01/do-voto-impresso-ao-8-de-janeiro-qual-o-papel-dos-militares-na-crise-golpista/?utm_source=telegram&utm_medium=transmissao&utm_campaign=papelmilitares",
+      "links": [
+        {
+          "label": "https://apublica.org/2024/01/do-voto-impresso-ao-8-de-janeiro-qual-o-papel-dos-militares-na-crise-golpista/?utm_source=telegram&utm_medium=transmissao&utm_campaign=papelmilitares",
+          "url": "https://apublica.org/2024/01/do-voto-impresso-ao-8-de-janeiro-qual-o-papel-dos-militares-na-crise-golpista/?utm_source=telegram&amp;utm_medium=transmissao&amp;utm_campaign=papelmilitares"
+        }
+      ],
+      "createdAt": "2026-09-12T03:06:21.608Z",
+      "expiresAt": "2026-09-14T03:06:21.608Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:21.608Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:21.608Z"
       }
     },
     {
@@ -194,10 +291,10 @@
       "fallbackReason": null,
       "text": "Não preciso nem dizer que o contágio também não foi provado, né?\n“Ah, mas minha mãe também teve…” — Sim, sua mãe provavelmente está exposta a essas mesmas toxinas.\n\nLiteralmente, pela ÚLTIMA VEZ, quero passar essa mensagem no canal. \nVou encerrar as postagens. \nFiquem com Deus!",
       "links": [],
-      "createdAt": "2026-09-11T23:22:33.648Z",
-      "expiresAt": "2026-09-13T23:22:33.648Z",
+      "createdAt": "2026-09-12T03:06:20.329Z",
+      "expiresAt": "2026-09-14T03:06:20.329Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:33.648Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:20.329Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -216,7 +313,65 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:33.648Z"
+        "reviewedAt": "2026-09-12T03:06:20.329Z"
+      }
+    },
+    {
+      "id": 3229504284,
+      "postUrl": "https://t.me/coachpablao/10072?single",
+      "source": {
+        "title": "24h Matrix",
+        "handle": "coachpablao",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/Oq32RINO-LvuBwFWjAEjdQHE3zi6KE518QF6FwPcxietNo8hNiYHHLGr_bqmISpn63HNC7Fn_i4esATKoodmAiKO7Yga88lmDWfAV58WcHwvxC5fh745WkUbOZPxbtKn27PYtB56JEwkXPAv_YEdkufhim7i1qg7s2xtpEIiNdVmu23TW2Br0FWYvjSbCZfQrGs2rwvNCvngyPAMdvdjePCMLPITQdiDHsiUhZDagZYXe58kdU8yKhw3spr9xgLt2vkV-qMvzGYkQ8HlJcsMWTJ8KRc_czPsNfDhT5vaddsV8qOy7EP1tJZHIVJLjamDUEO6z_lAMHyTg1cq32da0w.jpg"
+      },
+      "sourceId": "br:coachpablao",
+      "sourceCountryCode": "br",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/L8aOrq74xGkf4BDKsRMqUIb1k_DeMAbWl5-_tdpi2Aj-1vsdOO17X6-Wk7usougctIUX-sFHnqsNLwhgEd5ugL1Jm8ukgdcMDeIC0D9uLInevNLgMdYzzZycR10OeIpAY27N2-_WHE8w1IUY5btkvh-yG_T2IGUAzxI5U7fjLX7mqxMUZ-RXdiSRLA_ftesAGHzfG4js2MoE-C1ZO_Q3beOuKsLrrPkeZgadLDXpyxSkNeAxL6KGhd0BgqnQm4ogEWlpSvLcIvyjYZdzH4Q_5yg25dOXd3R0xHogaNY-yE-J6re30a__GGktCMM5TCeJbe3tq0_huyFSwXXTmO-0DQ.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/A6XQ-xDoJWJlCrKftOHbLl7NYNdvLD2rV_DHpjiPRzSfxzX8xQMWAn90sXnBySZmyyLIvlEBnptR8IpDau-E-Hhyfz8dgiwhKhgLHuSKlq3QJx625vfVPsdRlwpGZoZSUxD9cQz8G9MN7lytuuX7R2KHDlpjCLEXSyI82tJpMqRXm5V1GF1xX86WoY91rgrKKUdk8tsPmQT6UkAQAYUpCVSjgabnWGOOdxyfXVmcoDjHvQ2YqIoLZIC1ZtArRVtbzw8JUVllOBPzfGtjr7qHJWIjrwkhyibTDMzY6vGtFfaqrFm3EIKE6l9kRh8ogVMT0b54_isPWr0T7zXvex4nZA.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/J1TYvoGLgQ6eHixpsgWUHXSZgZi-TaLFH6NZukbGlPgY8VZmcfERfuAjdKVq6dj3FsG_TJ1_v65lj2oPS8kVUmNL9PtRUMQ7-KmfSl8fzZEScf_epCofMbghE3qTYVsBrJXmUCdPDKn7PX172dWBXYwDtIqtq5D86Jfi5IhEmK03GVGHuO2bTi6J3mOZG9RCkE-mdGw1DOYpnnPLMw6r566dzWhs4hl3p61EYQY2EQDaXpoz55CAhXf436iiFLfdKgoEUZpeMlVKyJwCSFGXGJ9AqB_HkHq4aQG_SIfyRB6CxinauA1kxN5Bq0bddtQ-pqpUWt8GNDPA7Mal3lWaDg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "São Paulo, Santana, Zona Norte — BR",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:19.724Z",
+      "expiresAt": "2026-09-14T03:06:19.724Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:19.724Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:19.724Z"
       }
     },
     {
@@ -241,10 +396,10 @@
           "url": "https://youtu.be/o-LPYFzg3io"
         }
       ],
-      "createdAt": "2026-09-11T23:22:32.457Z",
-      "expiresAt": "2026-09-13T23:22:32.457Z",
+      "createdAt": "2026-09-12T03:06:18.622Z",
+      "expiresAt": "2026-09-14T03:06:18.622Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:32.457Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:18.622Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -263,7 +418,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:32.457Z"
+        "reviewedAt": "2026-09-12T03:06:18.622Z"
       }
     },
     {
@@ -288,10 +443,10 @@
           "url": "https://www.youtube.com/watch?v=IZApteXaSwA"
         }
       ],
-      "createdAt": "2026-09-11T23:22:31.717Z",
-      "expiresAt": "2026-09-13T23:22:31.717Z",
+      "createdAt": "2026-09-12T03:06:17.859Z",
+      "expiresAt": "2026-09-14T03:06:17.859Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:31.717Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:17.859Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -310,7 +465,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:31.717Z"
+        "reviewedAt": "2026-09-12T03:06:17.859Z"
       }
     },
     {
@@ -335,10 +490,10 @@
           "url": "https://pt.gatestoneinstitute.org/22827/lancet-contra-associacao-medica-de-israel"
         }
       ],
-      "createdAt": "2026-09-11T23:22:30.965Z",
-      "expiresAt": "2026-09-13T23:22:30.965Z",
+      "createdAt": "2026-09-12T03:06:17.084Z",
+      "expiresAt": "2026-09-14T03:06:17.084Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:30.965Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:17.084Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -357,7 +512,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:30.965Z"
+        "reviewedAt": "2026-09-12T03:06:17.084Z"
       }
     },
     {
@@ -382,10 +537,10 @@
           "url": "https://open.substack.com/pub/samuelsena/p/ora-pro-nobis-e-proibido-pela-anvisa?utm_source=share&amp;utm_medium=android&amp;r=14cz7a"
         }
       ],
-      "createdAt": "2026-09-11T23:22:30.284Z",
-      "expiresAt": "2026-09-13T23:22:30.284Z",
+      "createdAt": "2026-09-12T03:06:16.483Z",
+      "expiresAt": "2026-09-14T03:06:16.483Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:30.284Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:16.483Z",
       "tag": "travel_countries",
       "tags": [
         "travel_countries",
@@ -404,12 +559,65 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:30.284Z"
+        "reviewedAt": "2026-09-12T03:06:16.483Z"
       }
     },
     {
-      "id": 1100771071,
-      "postUrl": "https://t.me/bsbdf/150173?single",
+      "id": 995648720,
+      "postUrl": "https://t.me/canal_ulrich/8?single",
+      "source": {
+        "title": "Ulrich",
+        "handle": "canal_ulrich",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/HPnd4uJpvhd6XAcFjsANkOrBrhDbYHDYdjOLanX1YHJJ5j9fr3mwow0cDlU-Z_UGR66aiBX3APNn_2mWmMWQwMNFOAeNL75SQe1VlEAJwiUNhTEiz36Y-wb5EvRfOyn67qFzhQks3bdzxgPK_e1_j5SZYda4YxToM8W2OWsVYvAwmPuwLIL-rLVEbodHyML-RKo4sPv19wCw1vhxM-pxaNhJVM1hupd1WFJv2byDPpKzAK6uwoEaBKrsUFxaVvJba6AnnxJnrD9qYwctDV3FIO4PTrMnCFoGG2wAFo4kbXItarTCTrEYws3lHl4BFm8ZtyP83NVIhbv664MPxwF1lQ.jpg"
+      },
+      "sourceId": "br:canal_ulrich",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/SNyWemJ8Rb5KKgYmRR6yAaAMPNT3a89phx5YzbDtKdDOsLMVGFINMjSyz5Uh9sYIIsl9TFPmbQ1YpalRogTHe3yT37MVIkrXG04-tJ85ouZgLYJCF79TuPa8QUgen5d0P3_cRKVV9dz1rkx1R2c9kxraJy_yVydZMHeR-KNe01QaBv6CQFvSwPfwMpmH5Atw3blSaGwiswRBMsb7ml-TuzhZaajhI2Begfbxuas3K8Uxbcf6NZ4J7raI_m_6SRS-j5hmjeqHaPRlHMzwonqMAmp_cJf_0nxo7ZeOPDDQVXyxSXUyqDmLSFSRqbsLEREN3kpjWJPU-g5PUkdn9Udajg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Anna 💋\n\nI will meet a guy, I want to fall in love!\n\n👉🏼 https://datingz.city/girls-sex",
+      "links": [
+        {
+          "label": "https://datingz.city/girls-sex",
+          "url": "https://datingz.city/girls-sex"
+        }
+      ],
+      "createdAt": "2026-09-12T03:06:15.631Z",
+      "expiresAt": "2026-09-14T03:06:15.631Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:15.631Z",
+      "tag": "relationships",
+      "tags": [
+        "relationships",
+        "psychology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:15.631Z"
+      }
+    },
+    {
+      "id": 1438021473,
+      "postUrl": "https://t.me/bsbdf/150175?single",
       "source": {
         "title": "Brasília DF",
         "handle": "bsbdf",
@@ -423,22 +631,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/OAIOoAbmNdbeae62XgwLitGnAGhPhVCmZx64HRRv95PJxuiZdAlCTJTpEWq4gxbdJqsyClIxzp8g8JCq_GWdeZPa_oKcrZt41lHhRhBto1Dz5dy4Bef1y-L6fNEOJlu9KW6yJPDcQAp_WSHkEBvxA-e-9NtF6ADFqDkc_3T55i16mubeOE3pkPIkRrWfSD4VRpew3rNeiQb-5eXz_KeQ60Euu_AzxOchzUSd2k2QPvqIfUntv3f6tSi4LSp6hMf0qn7d_jUKVv6KNh_hoB3ejBwtsmzm8_p7qeMnJ1R3rJo3nLnvir5yPLfR79COYZvZPc_HCsvCPPP2-d9nn8htcg.jpg"
+          "url": "https://cdn1.telesco.pe/file/Zsp4c73mXSIP9carCoK4fFLOVWUT3iJtSYxRZe-1FL35PV_-K92ubxenKaeB3BKWnZt83EttJ4TtoJKKiVq4L9-gzOpVuUCVcOd3gQw7rYh_GiAGFtjJ_SKv4Dsr53dhedImB6XP-8dlLdQfcSzx-gVy0Rgvjp-IyzwMqpEQC42XCqcu9q_43p8_4GCpP-Lp4J-gQCJoZGGgStstCgqJcyTIIB3hhcoBdt0FsOMHQr3dH4yjDNPy_9Ru1CrGgTp50hfcXN8nccLa2q0GCytLt5M4hh0-XkB3UMXJXOnimXtZ8JuF_RGfSakcjF4-IQuV0tPyzouet04JHmp4Lf-ziQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔥 Queimadas no DF!\n\nQuantidade: 22 registros de focos\nSatélites:  🔴NPP 🟠GOES 🟡NOAA 🟢AQUA\nDados acumulados das últimas 6 horas\n[INPE]",
+      "text": "🔥 Queimadas no DF!\n\nQuantidade: 5 registros de focos\nSatélites:  🔴AQUA 🟠GOES 🟡METOP 🟢TERRA\nDados acumulados das últimas 6 horas\n[INPE]",
       "links": [
         {
           "label": "[INPE]",
           "url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/"
         }
       ],
-      "createdAt": "2026-09-11T23:22:29.087Z",
-      "expiresAt": "2026-09-13T23:22:29.087Z",
+      "createdAt": "2026-09-12T03:06:14.913Z",
+      "expiresAt": "2026-09-14T03:06:14.913Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:29.087Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:14.913Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -457,7 +665,55 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:29.087Z"
+        "reviewedAt": "2026-09-12T03:06:14.913Z"
+      }
+    },
+    {
+      "id": 1290451235,
+      "postUrl": "https://t.me/boomer_irrelevante/3355?single",
+      "source": {
+        "title": "Boomerang_Irrelevância Interativa ⚠️🔰⚠️",
+        "handle": "boomer_irrelevante",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/Xi3tUckGaZCz5Qoeh9e91DrX6z8d6J4YF4TE0qyLjgOBDGudgXEEO9N3NuHqnhUnqy6SDUXUlXTMR3AJ3UTvOWJK_A5O40GZZ3-GnsT8brx9ZYWXSFYDVpBoxQ5WVVEeEqcMX36HyA7-97OJ24PtytsCA3kkb1ZRx3yCOdRU1_wbJhbZNIMIeVzrSHpnx-rVYb0sAOBhBx-WMvNDic7TNAJS2AJgIaGpR06ArPHj76Nxc5Ssgf_x-y2hgiqm0lYo1FnfzV7ufvQMhhztFNEXby2NavHJg_3LI3LT3KoLxSERvwpeyZDzRP6QIdwWqzS_wv62K93I6hhHccBdWjpU_w.jpg"
+      },
+      "sourceId": "br:boomer_irrelevante",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/npu8B3yCWfoqwlE0W_WaPXk7__EtDyiQcccuVBEcHtyecV24bYes9ImLEElaUFSZLqGxcbFT5t3pL9GuO-Do3oIqioBs2Na6i3QTud5et55fLptZ_3t_LvytFhy_lazNVUADLdgklwGi_ahv9pFetpWDck9WxeF7ODFNY4Tm4VJkkgpmvnI0vgqGwYAPnwYRIgFb5RMZi34OWEukTCFkFCji01Q_gCZEMvzaDbRejnSF4ZzoH_qWCBaa0TYvOP67Qp9nX0tzAKhyfJN4XIFRykIOjp2yMTnMprCDs-F3v8Aro5Dgxj2bAh_eqzPsUnJLP2aoYzYiRfQFoAXcnwlr8g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Quando se sentir um imbecil, veja esse tweet e lembre-se de que tem gente que paga para ver suas opiniões.",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:13.536Z",
+      "expiresAt": "2026-09-14T03:06:13.536Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:13.536Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:13.536Z"
       }
     },
     {
@@ -477,10 +733,10 @@
       "fallbackReason": null,
       "text": "September 08, 2026 - I am compelled by my conscience to repost this so urgent and necessary once again:\n\nAugust 23, 2026 - The Brazilian people urgently need God's and Christ's mercy and compassion to save themselves and free themselves from tyranny.\n\nThey need to be healed by God IN THE NAME OF THE LORD JESUS CHRIST from the serious spiritual illnesses they contracted by committing grave sins, becoming SLAVES TO SIN AND THE EVIL ONE, ENEMIES OF GOD.\n\nIf the majority of the people were more humble of heart (I'm not talking about material poverty), less materialistic, less attached to the image and Idolatry of \"Our Lady of Aparecida\" simply \"The Cida\", for foreigners that do not known about terrible distorted Catholicism that is currently is STILL the average Religion of majority Brazilian People that is a Christianity IN NAME ONLY like Olavo de Carvalho exposed about it using what Pope John Paul II exposed that Brazilians are not converted Christians in deep spiritual level. \n\nSadly the dawn image that millions of Brazilians worship is called \"Mother of God\" a heresy and apostasy that leaders of Catholic Church invented that is put in Holy Maria FOR GOD NOT FOR HUMANS WORSHIP who birth Lord Jesus Christ in place of Lord Jesus Christ and even God to Christians can talk, ask blessings God's Spiritual and Material Guidance, Providence and Gifts to God by Prayers like Maria is the Intercessor between Christans and God when the true that is Lord Jesus Christ who sacrifice His own life in hard cross to open a spiritual narrow path to humans walk to can enter in God's Heavenly Kingdom is the real Intercessor between Christians and God.\n\nIf Brazilians was less obstinate, less envious, less talkative, less slanderous, less idolatrous, less hypocritical, less arrogant, less proud, more modest, more God-fearing in general in the way of living, perhaps Brazil wouldn't be in this mess sinking deeper and deeper into the quicksand of all Hecatomb that Dictatorship, Censorship, Slavery, Surveillance, Totalitarianism and Authoritarianism that always brings destruction and death to the lives of ordinary people it has been thrown into since 2002.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:27.624Z",
-      "expiresAt": "2026-09-13T23:22:27.624Z",
+      "createdAt": "2026-09-12T03:06:12.881Z",
+      "expiresAt": "2026-09-14T03:06:12.881Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:27.624Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:12.881Z",
       "tag": "news_breaking",
       "tags": [
         "news_breaking",
@@ -499,7 +755,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:27.624Z"
+        "reviewedAt": "2026-09-12T03:06:12.881Z"
       }
     },
     {
@@ -519,10 +775,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:27.036Z",
-      "expiresAt": "2026-09-13T23:22:27.036Z",
+      "createdAt": "2026-09-12T03:06:12.328Z",
+      "expiresAt": "2026-09-14T03:06:12.328Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:27.036Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:12.328Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -541,7 +797,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:27.036Z"
+        "reviewedAt": "2026-09-12T03:06:12.328Z"
       }
     },
     {
@@ -561,10 +817,10 @@
       "fallbackReason": null,
       "text": "25 anos do maior ataque de falsa bandeira roteirizado e ritualístico nas Torres Gêmeas, que serviu de oferenda para o anticristo bíblico, já que ele surge/aparecerá em Nova York.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:25.714Z",
-      "expiresAt": "2026-09-13T23:22:25.714Z",
+      "createdAt": "2026-09-12T03:06:10.894Z",
+      "expiresAt": "2026-09-14T03:06:10.894Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:25.714Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:10.894Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -583,12 +839,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:25.714Z"
+        "reviewedAt": "2026-09-12T03:06:10.894Z"
       }
     },
     {
-      "id": 3475371472,
-      "postUrl": "https://t.me/antivaxxx/115957?single",
+      "id": 2100647167,
+      "postUrl": "https://t.me/antivaxxx/115965?single",
       "source": {
         "title": "🦠 ANTVXXX",
         "handle": "antivaxxx",
@@ -597,25 +853,31 @@
       },
       "sourceId": "br:antivaxxx",
       "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Marinho pede que Fachin amplie acesso a processos sob relatoria de Dino\n\nO senador Rogério Marinho (PL-RN) pediu ao presidente do Supremo Tribunal Federal (STF), ministro Edson Fachin, que examine medidas para ampliar a publicidade de investigações consideradas de elevado interesse público. O pedido abrange os inquéritos das fake news e das milícias digitais, as apurações sobre descontos indevidos em benefícios do Instituto Nacional do Seguro Social (INSS) e os procedimentos relativos às emendas parlamentares.\n\n🔗 https://revistaoeste.com/politica/marinho-pede-que-fachin-amplie-acesso-a-processos-sob-relatoria-de-dino/",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "https://revistaoeste.com/politica/marinho-pede-que-fachin-amplie-acesso-a-processos-sob-relatoria-de-dino/",
-          "url": "https://revistaoeste.com/politica/marinho-pede-que-fachin-amplie-acesso-a-processos-sob-relatoria-de-dino/"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/gvHNaQvxCRgylYlzGY-5RE00JJoqamRul9FkYUvlFt2RvpRyYYFPUic11zTWaGxVbRO32KFd0cT8bRwxvLubC6HKi5b5RX2f1lysDapQ_TOIJ_SYzPz8WTvmzOAfGF0FHqw7xHd_Iv5zwttxTt_IIwl5HiHuUgHuYgINZomgEejIoTF7AYbRiC2KqEyssy2MVGloJaaq95kN1KBE_MOZCOIlrWfdKi36dwFbb5bDoRJGJSGWvTkza_rJrSubzACpgmgj6ByDxI_CHzjbBBYbkZV75dCGPKA5ZxggOd2XdsivGUaJDVLEdp6FS8ICePlQK_4wHBcRS3XJDNIuwUwfGg.jpg"
         }
       ],
-      "createdAt": "2026-09-11T23:22:23.824Z",
-      "expiresAt": "2026-09-13T23:22:23.824Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "PF SUSPEITA QUE TOFFOLI TEM DINHEIRO DE VORCARO EM PARAÍSO FISCAL: R$ 35 MILHÕES\nhttps://www.jornaldacidadeonline.com.br/noticias/87906/pf-suspeita-que-toffoli-tem-dinheiro-de-vorcaro-em-paraiso-fiscal-r-35-milhoes\nMais um escândalo.",
+      "links": [
+        {
+          "label": "https://www.jornaldacidadeonline.com.br/noticias/87906/pf-suspeita-que-toffoli-tem-dinheiro-de-vorcaro-em-paraiso-fiscal-r-35-milhoes",
+          "url": "https://www.jornaldacidadeonline.com.br/noticias/87906/pf-suspeita-que-toffoli-tem-dinheiro-de-vorcaro-em-paraiso-fiscal-r-35-milhoes"
+        }
+      ],
+      "createdAt": "2026-09-12T03:06:09.224Z",
+      "expiresAt": "2026-09-14T03:06:09.224Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:23.824Z",
-      "tag": "finance_investing",
+      "mediaRefreshedAt": "2026-09-12T03:06:09.224Z",
+      "tag": "transport_auto",
       "tags": [
-        "finance_investing",
-        "finance"
+        "transport_auto",
+        "auto"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -630,7 +892,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:23.824Z"
+        "reviewedAt": "2026-09-12T03:06:09.224Z"
       }
     },
     {
@@ -650,10 +912,10 @@
       "fallbackReason": null,
       "text": "Gente arrumei um emprego, começo na experiência amanhã são ate 5 dias de teste, preciso de ajuda pra pagar a passagem no primeiro dia 8;60 (oito reais e sessenta centavos)  se alguém puder ajudar com qualquer valor \nPix 62981134291",
       "links": [],
-      "createdAt": "2026-09-11T23:22:22.422Z",
-      "expiresAt": "2026-09-13T23:22:22.422Z",
+      "createdAt": "2026-09-12T03:06:07.850Z",
+      "expiresAt": "2026-09-14T03:06:07.850Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:22.422Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:07.850Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -672,7 +934,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:22.422Z"
+        "reviewedAt": "2026-09-12T03:06:07.850Z"
       }
     },
     {
@@ -700,10 +962,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:21.421Z",
-      "expiresAt": "2026-09-13T23:22:21.421Z",
+      "createdAt": "2026-09-12T03:06:06.872Z",
+      "expiresAt": "2026-09-14T03:06:06.872Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:21.421Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:06.872Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -722,12 +984,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:21.421Z"
+        "reviewedAt": "2026-09-12T03:06:06.872Z"
       }
     },
     {
-      "id": 3868857529,
-      "postUrl": "https://t.me/aliancabrasil/266569?single",
+      "id": 3964688991,
+      "postUrl": "https://t.me/aliancabrasil/266619?single",
       "source": {
         "title": "Brasil",
         "handle": "aliancabrasil",
@@ -740,21 +1002,49 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Caroline de Toni:\n\nHá anos eu defendo uma coisa que deveria ser básica: a Constituição precisa valer para todos. Nenhum Poder pode avançar sobre o outro. Nenhuma autoridade pode agir sem limites. O Brasil precisa recuperar o equilíbrio, o respeito entre as instituições e a segurança de que as regras serão cumpridas.A mudança que o Brasil precisa passa pelo Senado.Carol De Toni 221\n\nvia Twitter https://ift.tt/hAVdnXO\nSeptember 11, 2026 at 08:17PM",
+      "text": "O caso Banco Master e as conexões que estão abalando os bastidores do poder \n \nFonte: https://www.youtube.com/watch?v=cQ2fzRhSQsU\npor Ana Paula Henkel\n\n#AnaPaulaHenkel #PoliticaBrasileira #STFNeste corte, Ana Paula Henkel analisa os desdobramentos recentes envolvendo o Banco Master, decisões do STF e as revelações de mensagens que expõem a proximidade e os bastidores entre figuras do poder em Brasília. Uma análise direta e contundente sobre a atuação política, a postura do Senado e os impactos dessas revelações no cenário nacional#AnaPaulaHenkel #PoliticaBrasileira #STF #Noticias #AnalisePolitica👉 Não esqueça de: ✅ Se inscrever no canal para não perder as últimas notícias da política! https://www.youtube.com/@anapaula.henkel?sub_confirmation=1❤️ Entre para o clube de membros deste canal: https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join❤ Conheça a Bright Minds, a escola do futuro: https://ift.tt/2dEq4iw 🔴 Assista nossa playlist sobre a política no Brasil no link abaixo:https://www.youtube.com/watch?v=-9sdn63SNwA&list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-🔴 Assista nossa playlist sobre o Mundo no link abaixo:https://www.youtube.com/watch?v=nSbhhLBFPl0&list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&index=1\n\nt.me/s/AliancaBrasil\n#aliancabrasil",
       "links": [
         {
-          "label": "https://ift.tt/hAVdnXO",
-          "url": "https://ift.tt/hAVdnXO"
+          "label": "O caso Banco Master e as conexões que estão abalando os bastidores do poder",
+          "url": "https://www.youtube.com/watch?v=cQ2fzRhSQsU"
+        },
+        {
+          "label": "https://www.youtube.com/watch?v=cQ2fzRhSQsU",
+          "url": "https://www.youtube.com/watch?v=cQ2fzRhSQsU"
+        },
+        {
+          "label": "https://www.youtube.com/@anapaula.henkel?sub_confirmation=1❤️",
+          "url": "https://www.youtube.com/@anapaula.henkel?sub_confirmation=1%E2%9D%A4%EF%B8%8F"
+        },
+        {
+          "label": "https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join❤",
+          "url": "https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join%E2%9D%A4"
+        },
+        {
+          "label": "https://ift.tt/2dEq4iw",
+          "url": "https://ift.tt/2dEq4iw"
+        },
+        {
+          "label": "https://www.youtube.com/watch?v=-9sdn63SNwA&list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-🔴",
+          "url": "https://www.youtube.com/watch?v=-9sdn63SNwA&amp;list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-%F0%9F%94%B4"
+        },
+        {
+          "label": "https://www.youtube.com/watch?v=nSbhhLBFPl0&list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&index=1",
+          "url": "https://www.youtube.com/watch?v=nSbhhLBFPl0&amp;list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&amp;index=1"
+        },
+        {
+          "label": "t.me/s/AliancaBrasil",
+          "url": "https://t.me/s/AliancaBrasil"
         }
       ],
-      "createdAt": "2026-09-11T23:22:19.603Z",
-      "expiresAt": "2026-09-13T23:22:19.603Z",
+      "createdAt": "2026-09-12T03:06:05.040Z",
+      "expiresAt": "2026-09-14T03:06:05.040Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:19.603Z",
-      "tag": "design",
+      "mediaRefreshedAt": "2026-09-12T03:06:05.040Z",
+      "tag": "transport_auto",
       "tags": [
-        "design",
-        "culture"
+        "transport_auto",
+        "auto"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -769,7 +1059,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:19.603Z"
+        "reviewedAt": "2026-09-12T03:06:05.040Z"
       }
     },
     {
@@ -797,10 +1087,10 @@
       "fallbackReason": null,
       "text": "🤔 Observando uma estrela através do telescópio 250X. Veja como se fosse uma mão deslizando por ela...",
       "links": [],
-      "createdAt": "2026-09-11T23:22:18.772Z",
-      "expiresAt": "2026-09-13T23:22:18.772Z",
+      "createdAt": "2026-09-12T03:06:04.245Z",
+      "expiresAt": "2026-09-14T03:06:04.245Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:18.772Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:04.245Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -819,7 +1109,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:18.772Z"
+        "reviewedAt": "2026-09-12T03:06:04.245Z"
       }
     },
     {
@@ -845,10 +1135,10 @@
       "fallbackReason": null,
       "text": "🎬 Título: Dia D\n📆 Ano: 2026\n🎭 Gêneros: Suspense, Ação, Ficção Científica\n\n ℹ️ Sinopse: A existência de vida extraterrestre torna-se uma realidade inegável para todos os habitantes da Terra em um único instante. O mundo entra em colapso quando uma meteorologista, em plena transmissão ao vivo, é dominada por uma força invisível, perdendo a fala e emitindo sons perturbadores. Enquanto fenômenos inexplicáveis e sinais de controle mental em massa se espalham, um informante tenta expor segredos governamentais guardados por décadas. Diante da prova definitiva de que a humanidade não está sozinha, o pânico e o fascínio tomam conta de uma civilização confrontada pelo desconhecido.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:17.789Z",
-      "expiresAt": "2026-09-13T23:22:17.789Z",
+      "createdAt": "2026-09-12T03:06:03.317Z",
+      "expiresAt": "2026-09-14T03:06:03.317Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:17.789Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:03.317Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -868,12 +1158,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:17.789Z"
+        "reviewedAt": "2026-09-12T03:06:03.317Z"
       }
     },
     {
-      "id": 3070754314,
-      "postUrl": "https://t.me/linksbrazil/81393?single",
+      "id": 233485516,
+      "postUrl": "https://t.me/linksbrazil/81395?single",
       "source": {
         "title": "LinksBR - Promoções",
         "handle": "linksbrazil",
@@ -887,22 +1177,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/vo-VieVx3J3mNagMZQbd48F3ClqAr2DSvvpMW6iQROegTXG3VNW84VUl0bIV6PZx4VpuiYlwlljZVKncC9e9WWEFXcNVHWlXDGcH3aIYLNLwDSjs0rMqhITt1RgLGa8NPisu-D-G7XGS9yRYXArmyck1nr4VS92uer2SiwuySModb9LngXcJcFCJ3fRNDmGa7rSOwfOw-kertXUF_uAU2PLTSNpiv4SrBNRxfJp46oxZp-5DhU3wpnJK-SPxw8AO1N0gPKz8LFRmSKSWYmNVmyiuob5TzLEQ_DOXWIDNK6mWx-3n_x1fZyJCR872qaBhMD-H1asYJP0Iv-cwJNN6pw.jpg"
+          "url": "https://cdn1.telesco.pe/file/RGLvp6KYqji1RRCehAUOgvlLqXl6pmUkLK4PaCCvPvkojcEmhPXxKSnZ9YqTIWLAe-pO-CXKl5ivjvIKCVeIwC7FlrHFt7aYqV7KaCB4mRBfH14DMnkf8Kxiuo7U8gpJJ5WZO03sE-JQp8oV1XJfcQLsY1l4-I4bBVDRu-5nBoi25yR6jnhQbCyxaTDpLUEcmRd9IJsoAaFv45JX_6LzGzKb1oRTn_ClLNvXy9rE2eqycqOmkzmZo4Il_Cy7GcstmpDJIk4Ehz8Hl1sj7Y4V51-c4EF1ryYKBqqxTCyEMRkEsVaULI3Ikwt2uumJEJJrFBzGmNUfwuBaOvxtMdB9HA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔥 APP - Cupom 25% OFF Mercado Livre Full\n\n- Resgate no app para usar meia noite\n\n1. Abra o link no APP \nhttps://meli.la/2SCmsVf\n\n2. Clique em \"Mais\" no rodapé do APP\n3. Depois clique em \"Cupons relâmpago\"\n4. Resgate o cupom\n\nanuncio",
+      "text": "🔥 Novo Cupom Shopee VIP APP\n\n30% OFF limitado a R$20\n\nhttps://s.shopee.com.br/BTjyTAmW3\n\nanuncio",
       "links": [
         {
-          "label": "https://meli.la/2SCmsVf",
-          "url": "https://meli.la/2SCmsVf"
+          "label": "https://s.shopee.com.br/BTjyTAmW3",
+          "url": "https://s.shopee.com.br/BTjyTAmW3"
         }
       ],
-      "createdAt": "2026-09-11T23:22:17.011Z",
-      "expiresAt": "2026-09-13T23:22:17.011Z",
+      "createdAt": "2026-09-12T03:06:02.777Z",
+      "expiresAt": "2026-09-14T03:06:02.777Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:17.011Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:02.777Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -921,12 +1211,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:17.011Z"
+        "reviewedAt": "2026-09-12T03:06:02.777Z"
       }
     },
     {
-      "id": 162469056,
-      "postUrl": "https://t.me/iuriindica/112060?single",
+      "id": 2259141735,
+      "postUrl": "https://t.me/iuriindica/112070?single",
       "source": {
         "title": "IURI INDICA",
         "handle": "iuriindica",
@@ -940,26 +1230,32 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/qMBgsFDMkaIJKY9jOwxhWL-NascUbFeI_78HK3x2kdLITsamaAUYoNAUGE0X6q-0UTjSDUnmjjoqfLSIv3jbSqJlwz_LCIYXA70XNSwo7Qtk_3lzFpBhJlnil6dJtFophmPqlSbHGpvATrPfg4mo25aeLf2pGHwPCnF69M1Yml6HYBnPdKJB6ZWZTUlbp-SvsgYYYKjgb03Rb7_FO8ZHig39sXU2tPDVKLXX65diW76CwEG1wF-mycJSe-9ICSCpxzcQHVMBNs1WzH7F_bn6fa4T8rGIO7jnEbWdwpcMyphixisDlhFufBx5HsH-trDw9_3-OiCPm4Sbza_Igm8q0Q.jpg"
+          "url": "https://cdn1.telesco.pe/file/HPpI8vop3izxKOSWvWWLkV3TywwO5N9Oc31LVCVVjg2B5kjR-b52FdQTEPni-F1Y1uyg6MEbau72zhCVBbMceosV6DOeOK2Yheqy5W5ShNrPBfJETTyQWBTc6JEhznOTJb66Ur2aFDG4eS-mlfQNeRBfTqzeovm72ZTi4vKaIKd153UM0_a4KwOq2778vwkZU2YHWXcu07qOJr-oqkl3xZjGyqrwo0F_OQf35tkX2irZ3MzBsVB3HmojR3ojswISauporUKWiMyJytImDnmNo-msJgYiPdlQ4zK9B9ykTb36lygER0h97ZBppWaCe6rdHMRWKQJlteg-2wzBHPyC9Q.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "CUPOM 25% OFF MERCADO LIVRE PARA USAR 00:00 (12/09)\n\nEntre nesse link PELO APP, em seguida va na pagina inicial do APP (ou clique em Mais), abaixe um pouco e em seguida clique em \"CUPONS RELAMPAGO 9.9\" vai está la disponivel para resgate.\n\n✅  https://meli.la/2E5yAay",
+      "text": "Notebook Gamer Acer Nitro V15 ANV15-41-R6J0 AMD Ryzen™ 7 7735HS 8GB RAM 512GB SSD RTX 4050 Linux 15.6”\n\n💵  R$ 5299 EM 12X SEM JUROS!\n✅  https://www.amazon.com.br/dp/B0894J8SLQ/?tag=afiliado333-20\n\nFrete Grátis e outros beneficios para membros PRIME!! 30 dias grátis para testar aqui: https://link.amazon/B019iaVdl 🥳",
       "links": [
         {
-          "label": "https://meli.la/2E5yAay",
-          "url": "https://meli.la/2E5yAay"
+          "label": "https://www.amazon.com.br/dp/B0894J8SLQ/?tag=afiliado333-20",
+          "url": "https://www.amazon.com.br/dp/B0894J8SLQ/?tag=afiliado333-20"
+        },
+        {
+          "label": "https://link.amazon/B019iaVdl",
+          "url": "https://link.amazon/B019iaVdl"
         }
       ],
-      "createdAt": "2026-09-11T23:22:15.598Z",
-      "expiresAt": "2026-09-13T23:22:15.598Z",
+      "createdAt": "2026-09-12T03:06:01.527Z",
+      "expiresAt": "2026-09-14T03:06:01.527Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:15.598Z",
-      "tag": "technology_software",
+      "mediaRefreshedAt": "2026-09-12T03:06:01.527Z",
+      "tag": "transport_auto",
       "tags": [
-        "technology_software",
-        "technology"
+        "transport_auto",
+        "auto",
+        "electronics_pc",
+        "electronics"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -974,12 +1270,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:15.598Z"
+        "reviewedAt": "2026-09-12T03:06:01.527Z"
       }
     },
     {
-      "id": 3023108089,
-      "postUrl": "https://t.me/centraldeanimes_baltigo/7467?single",
+      "id": 1941460718,
+      "postUrl": "https://t.me/centraldeanimes_baltigo/7473?single",
       "source": {
         "title": "🍥 Central de Animes - QG BALTIGO ⚔",
         "handle": "centraldeanimes_baltigo",
@@ -994,10 +1290,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:14.311Z",
-      "expiresAt": "2026-09-13T23:22:14.311Z",
+      "createdAt": "2026-09-12T03:06:00.665Z",
+      "expiresAt": "2026-09-14T03:06:00.665Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:14.311Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:00.665Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1015,12 +1311,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:14.311Z"
+        "reviewedAt": "2026-09-12T03:06:00.665Z"
       }
     },
     {
-      "id": 771936945,
-      "postUrl": "https://t.me/buzzfilmes/1844?single",
+      "id": 1227432595,
+      "postUrl": "https://t.me/buzzfilmes/1846?single",
       "source": {
         "title": "Filmes e Séries - Desativado",
         "handle": "buzzfilmes",
@@ -1096,10 +1392,10 @@
           "url": "https://t.me/BuzzCripto"
         }
       ],
-      "createdAt": "2026-09-11T23:22:13.318Z",
-      "expiresAt": "2026-09-13T23:22:13.318Z",
+      "createdAt": "2026-09-12T03:05:59.727Z",
+      "expiresAt": "2026-09-14T03:05:59.727Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:13.318Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:59.727Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1117,12 +1413,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:13.318Z"
+        "reviewedAt": "2026-09-12T03:05:59.727Z"
       }
     },
     {
-      "id": 1257216054,
-      "postUrl": "https://t.me/a67bet/2709?single",
+      "id": 2796040144,
+      "postUrl": "https://t.me/a67bet/2710?single",
       "source": {
         "title": "67bet.cc | Canal Oficial ®",
         "handle": "a67bet",
@@ -1136,12 +1432,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/b076TOrpDu2bXS_z7DQOveLCY0NKmm5JxqyePIckDQTVStpsXipKvvB2-jNO2-x6YLsm6wHYIg_sxe0u47DglFUpk2wrEL4ms6pr6T3iMH_O09D-d3F7J0G1FopePLtPvYreIGvw7gY-Jj5jTbMLQhi1uYRT1B4m2t5IKT3fjXkE19UxUgc0c4JSR2qow3KlUh45NagnqlYjSw_K-mL8TUpjz2FjRqy5sv3M4lxbupDQgNbxWzgr4H_1G-2xDTMCwctmEao_NXpc4rVBjmx_66-TCVpGFSy7fYFK4wi0DH0GjHXfa8hnZhJ_j261UBKzu1XZ4PQ7OkxttF_Ut2_JRQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/u3ImIaUtmwH1f6HKFNsqEWJUT1pdkbxlt953PJLK7SH8w4PaiKsETQe2Mv5CnCd2yjfsbTxAv4z-sqIb9guj_RXT156RNI_DA_mNMWf4wGZQfb9sBc3RMYq0u5mHxt7hF9fj5srMqbBADjDTLdcgnyKK0U5x-f-BbZYM_M5jMh4U5LOayHyzUZT7pHjsDaFUGNNducrWhOVOYq2j1mAf712rDLL-GML3a_0epNX5FgwkyyT28zol5ZW7jL0bs4D59Xb0Xf_12DMesXWCh7YjKfwbc62ZdJQDV2hwKJ4UZjGdxJCRxS-xyWp2ShlVewzkT-8I2rvwTiNv4ybFakoSug.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "6️⃣7️⃣🅱️🔠🔠⚪️🔠🔠 \n\n✨PG Slots - Parceiro estratégico oficial✨\n\n🎁🎁O código de resgate para esta rodada é &lt; 6️⃣9️⃣8️⃣ &gt;, faça login no jogo imediatamente para resgatar,O valor máximo do bônus .é de R$ 5,555,00. 67BET deseja a você um bom jogo。⚡️⚡️\n\nEtapas da operação: faça login na conta/obtenha o código de resgate/vá ao centro de atividades para resgatar/todos os clientes estão limitados a 1 oportunidade de resgate [membros novos e antigos podem participar]\n\n ⏰Lembrete: Quantidade limitado  Horário final horário Brasil 20:00🇧🇷\n\n🔴🔴Lançaremos códigos de resgate e anúncios e eventos mais importantes no canal do Telegram ou na página inicial do Facebook de tempos em tempos. Preste mais atenção ao canal oficial da 67BET para não perder.\n\n😀 Site Oficial: 67bet.cc\n😀Baixar App: 67betapp.com",
+      "text": "💙 6️⃣7️⃣🅱️🔠🔠⚪️🔠🔠 💙\n\n✨PG Slots - Parceiro estratégico oficial✨\n\n🚀Embarque em uma jornada de jogo épica com jogabilidade da melhor qualidade e gráficos impressionantes, temos certeza que você vai adorar ainda mais.👑\n\nem 67BET ，Aposte facilmente e ganhe dinheiro facilmente📱\n\n🔘Ganhe prêmios mais emocionantes! Aja agora!👏\n\n😀 Site Oficial: 67bet.cc\n😀Baixar App: 67betapp.com",
       "links": [
         {
           "label": "67bet.cc",
@@ -1152,10 +1448,10 @@
           "url": "https://67betapp.com/"
         }
       ],
-      "createdAt": "2026-09-11T23:22:12.807Z",
-      "expiresAt": "2026-09-13T23:22:12.807Z",
+      "createdAt": "2026-09-12T03:05:59.216Z",
+      "expiresAt": "2026-09-14T03:05:59.216Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:12.807Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:59.216Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1174,7 +1470,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:12.807Z"
+        "reviewedAt": "2026-09-12T03:05:59.216Z"
       }
     },
     {
@@ -1194,10 +1490,10 @@
       "fallbackReason": null,
       "text": "o grafeno como uma interface neuromoduladora do comportamento humano, como obediência e agressividade, e protagonista do projeto de hibridização, ou  #transumanismo, do #FórumEconômicoMundial",
       "links": [],
-      "createdAt": "2026-09-11T23:22:12.102Z",
-      "expiresAt": "2026-09-13T23:22:12.102Z",
+      "createdAt": "2026-09-12T03:05:58.567Z",
+      "expiresAt": "2026-09-14T03:05:58.567Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:12.102Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:58.567Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1216,7 +1512,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:12.102Z"
+        "reviewedAt": "2026-09-12T03:05:58.567Z"
       }
     },
     {
@@ -1236,10 +1532,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:11.356Z",
-      "expiresAt": "2026-09-13T23:22:11.356Z",
+      "createdAt": "2026-09-12T03:05:57.893Z",
+      "expiresAt": "2026-09-14T03:05:57.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:11.356Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:57.893Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1258,7 +1554,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:11.356Z"
+        "reviewedAt": "2026-09-12T03:05:57.893Z"
       }
     },
     {
@@ -1286,10 +1582,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:10.718Z",
-      "expiresAt": "2026-09-13T23:22:10.718Z",
+      "createdAt": "2026-09-12T03:05:57.290Z",
+      "expiresAt": "2026-09-14T03:05:57.290Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:10.718Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:57.290Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1308,7 +1604,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:10.718Z"
+        "reviewedAt": "2026-09-12T03:05:57.290Z"
       }
     },
     {
@@ -1318,7 +1614,7 @@
         "title": "Notícias e Guerras 🌐",
         "handle": "noticiaseguerras",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/BtfSh9DEeqhUeFoYXv-Y0_BUgTKaUBZgxUnhNcbVrTIR9lUgxWnwaQnnFFoo9UU-dBCodft7N-hssoUYs03EkZutZcoLnLpKli3ogVrubiKG8QXUNfXFTEjhF3r2soyVYoA0tTHGqC7Ntql2cDtJjQS8wx_lm_abR8xo1BA8XOKucam3MQGO8-98eMim06PeIcuoUN9fHNwC5vY7aliBwennnWWm5LZY0skeRB_gf4Pu482C1ItZeAgPQs_SikMQu5XOE8r2rD4WvnDcddkaSbwwqJuPdWChKXwxe8p2r9yQmTRCqRMZSVy3O73DYijBs62-u6HYu-CX-EwpNQOOJw.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/ty_RNj2YsyyZBYc5SgYGYgqzynvmLnFKQ1qUE3E2013yWmOjrKuTX9gfdhr3qLLrTJBK6YejETaek77lDG4R9UzskXUHbKe-Uowrj2yT9PxG_TnkZPMJm3KbZnsTbGZ3agdGPMxlVxJaHfLuQBXsExmeGS_uU2dwvCiW1ubSnXsPXbTRjqCq0tUBlYHhD-E57fQaI7_6IhP_LoX1Donjb_6qLhdaz8VBMzr99677M8LUO87o0RH6xJPgCX2XHEAS2ZYfBC2yT7QalugPh9XuPVBcMB4V1cUIozvF8W_JDCaf1R4hDvTHChFNMyzAhnPuyZfjabwphsMQUMLtQ5NtUg.jpg"
       },
       "sourceId": "br:noticiaseguerras",
       "sourceCountryCode": "br",
@@ -1333,10 +1629,10 @@
           "url": "https://bit.ly/comunidade_noticiaseguerras"
         }
       ],
-      "createdAt": "2026-09-11T23:22:10.170Z",
-      "expiresAt": "2026-09-13T23:22:10.170Z",
+      "createdAt": "2026-09-12T03:05:56.765Z",
+      "expiresAt": "2026-09-14T03:05:56.765Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:10.170Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:56.765Z",
       "tag": "electronics_pc",
       "tags": [
         "electronics_pc",
@@ -1355,7 +1651,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:10.170Z"
+        "reviewedAt": "2026-09-12T03:05:56.765Z"
       }
     },
     {
@@ -1386,10 +1682,10 @@
           "url": "https://youtu.be/CRU-a-lH6kM"
         }
       ],
-      "createdAt": "2026-09-11T23:22:09.508Z",
-      "expiresAt": "2026-09-13T23:22:09.508Z",
+      "createdAt": "2026-09-12T03:05:56.080Z",
+      "expiresAt": "2026-09-14T03:05:56.080Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:09.508Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:56.080Z",
       "tag": "music",
       "tags": [
         "music",
@@ -1408,7 +1704,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:09.508Z"
+        "reviewedAt": "2026-09-12T03:05:56.080Z"
       }
     },
     {
@@ -1437,10 +1733,10 @@
           "url": "https://t.me/naoconsigorespirar"
         }
       ],
-      "createdAt": "2026-09-11T23:22:08.587Z",
-      "expiresAt": "2026-09-13T23:22:08.587Z",
+      "createdAt": "2026-09-12T03:05:55.169Z",
+      "expiresAt": "2026-09-14T03:05:55.169Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:08.587Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:55.169Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1459,12 +1755,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:08.587Z"
+        "reviewedAt": "2026-09-12T03:05:55.169Z"
       }
     },
     {
-      "id": 209930238,
-      "postUrl": "https://t.me/missaocefas/243299?single",
+      "id": 160515285,
+      "postUrl": "https://t.me/missaocefas/243304?single",
       "source": {
         "title": "Missão CEFAS †",
         "handle": "missaocefas",
@@ -1477,29 +1773,29 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "FIZ-ME TUDO PARA TODOS – Homilia – VI Feira – XXIII TC (2026) \n \nFonte: https://www.youtube.com/watch?v=eJV7YgV7Ozo\nPor Padre José Eduardo\n\nSe alguém quiser fazer uma oferta espontânea para a Paróquia, pode realizar um depósito/transferência em favor da:Mitra Diocesana de OsascoCNPJ 61.378.774/0035-94BradescoAG 2856CC 569.525-2PIX: CNPJ 61.378.774/0035-94Enviar o comprovante de transferência para: paroco.sao.domingos@gmail.comPARÓQUIA SÃO DOMINGOS - O PREGADOR\n\nt.me/missaocefas",
+      "text": "O Espírito Santo quer renovar a sua vida hoje! | Reinflama 2026 [AO VIVO] \n \nFonte: https://www.youtube.com/watch?v=vw-NpgkFQM8\nPor Canção Nova Play\n\nVocê sente que a sua fé esfriou diante das dificuldades? Que o medo e o desânimo tomaram o espaço da esperança no seu coração? O Senhor tem um convite urgente para você: \"Reaviva o dom de Deus que está em ti\" (2Tm 1,6).Seja muito bem-vindo(a) à transmissão oficial do Acampamento Reinflama o Dom de Deus que está em ti, direto da sede da Canção Nova em Cachoeira Paulista (SP). Prepare-se para dias de profunda efusão do Espírito Santo, onde aprenderemos a superar o cansaço e a viver com coragem e confiança!Como ensinava nosso fundador, Monsenhor Jonas Abib: \"A iniciativa é toda de Deus; a nossa parte é querer, pedir e nos abrir à ação do Espírito Santo\".🔥 O que você vai viver neste acampamento?● Renovação da Fé: Pregações ungidas que vão te ajudar a superar o desânimo e a resgatar os dons do seu Batismo.● Espírito de Fortaleza: Descubra que Deus não te deu um espírito de medo, mas de amor, sabedoria e força para enfrentar os desafios de hoje.● Cura e Libertação: Momentos poderosos de Adoração ao Santíssimo Sacramento e noites oracionais para reacender o fervor do seu coração.● Formação Sólida: Presenças confirmadas de Pe. Renné Viana, Pe. Sidney Dias, Lucas Reis, Guilherme Christóvão, Ivana Brandão e muito mais!📱 Assista sem interrupções no Canção Nova Play!Quer continuar alimentando a chama da sua fé todos os dias? No Canção Nova Play, você assiste a este acampamento e tem acesso exclusivo a pregações históricas, séries e documentários católicos.🕒 Programação Oficial e Capítulos (Acompanhe e Não Perca)(Dica: Atualize os horários de início 00:00 assim que o vídeo começar para criar a navegação por capítulos)SEXTA-FEIRA 11/09Santuário16h00 Santa Missa: Pe. Renné Viana21h00 Adoração ao Santíssimo Sacramento: Pe. Marcio Leandro22h25 Encerramento\n\nt.me/missaocefas",
       "links": [
         {
-          "label": "FIZ-ME TUDO PARA TODOS – Homilia – VI Feira – XXIII TC (2026)",
-          "url": "https://www.youtube.com/watch?v=eJV7YgV7Ozo"
+          "label": "O Espírito Santo quer renovar a sua vida hoje! | Reinflama 2026 [AO VIVO]",
+          "url": "https://www.youtube.com/watch?v=vw-NpgkFQM8"
         },
         {
-          "label": "https://www.youtube.com/watch?v=eJV7YgV7Ozo",
-          "url": "https://www.youtube.com/watch?v=eJV7YgV7Ozo"
+          "label": "https://www.youtube.com/watch?v=vw-NpgkFQM8",
+          "url": "https://www.youtube.com/watch?v=vw-NpgkFQM8"
         },
         {
           "label": "t.me/missaocefas",
           "url": "https://t.me/missaocefas"
         }
       ],
-      "createdAt": "2026-09-11T23:22:06.449Z",
-      "expiresAt": "2026-09-13T23:22:06.449Z",
+      "createdAt": "2026-09-12T03:05:53.763Z",
+      "expiresAt": "2026-09-14T03:05:53.763Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:06.449Z",
-      "tag": "sports_transfers",
+      "mediaRefreshedAt": "2026-09-12T03:05:53.763Z",
+      "tag": "news_breaking",
       "tags": [
-        "sports_transfers",
-        "sports"
+        "news_breaking",
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1514,7 +1810,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:06.449Z"
+        "reviewedAt": "2026-09-12T03:05:53.763Z"
       }
     },
     {
@@ -1534,10 +1830,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:05.191Z",
-      "expiresAt": "2026-09-13T23:22:05.191Z",
+      "createdAt": "2026-09-12T03:05:52.513Z",
+      "expiresAt": "2026-09-14T03:05:52.513Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:05.191Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:52.513Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1556,7 +1852,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:05.191Z"
+        "reviewedAt": "2026-09-12T03:05:52.513Z"
       }
     },
     {
@@ -1585,10 +1881,10 @@
           "url": "https://t.me/LoucosPelasVerdades"
         }
       ],
-      "createdAt": "2026-09-11T23:22:04.523Z",
-      "expiresAt": "2026-09-13T23:22:04.523Z",
+      "createdAt": "2026-09-12T03:05:51.957Z",
+      "expiresAt": "2026-09-14T03:05:51.957Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:04.523Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:51.957Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1607,7 +1903,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:04.523Z"
+        "reviewedAt": "2026-09-12T03:05:51.957Z"
       }
     },
     {
@@ -1633,10 +1929,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:03.770Z",
-      "expiresAt": "2026-09-13T23:22:03.770Z",
+      "createdAt": "2026-09-12T03:05:51.201Z",
+      "expiresAt": "2026-09-14T03:05:51.201Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:03.770Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:51.201Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1655,7 +1951,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:03.770Z"
+        "reviewedAt": "2026-09-12T03:05:51.201Z"
       }
     },
     {
@@ -1680,10 +1976,10 @@
           "url": "https://youtu.be/vi3sTA8MoCo?si=xQJ23qzrjt_ybAFc"
         }
       ],
-      "createdAt": "2026-09-11T23:22:03.123Z",
-      "expiresAt": "2026-09-13T23:22:03.123Z",
+      "createdAt": "2026-09-12T03:05:50.653Z",
+      "expiresAt": "2026-09-14T03:05:50.653Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:03.123Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:50.653Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1702,7 +1998,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:03.123Z"
+        "reviewedAt": "2026-09-12T03:05:50.653Z"
       }
     },
     {
@@ -1729,10 +2025,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:02.483Z",
-      "expiresAt": "2026-09-13T23:22:02.483Z",
+      "createdAt": "2026-09-12T03:05:49.958Z",
+      "expiresAt": "2026-09-14T03:05:49.958Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:02.483Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:49.958Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1751,7 +2047,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:02.483Z"
+        "reviewedAt": "2026-09-12T03:05:49.958Z"
       }
     },
     {
@@ -1771,10 +2067,10 @@
       "fallbackReason": null,
       "text": "ㅤ ㅤㅤ ㅤ⭐⭐⭐⭐⭐⭐.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:01.929Z",
-      "expiresAt": "2026-09-13T23:22:01.929Z",
+      "createdAt": "2026-09-12T03:05:49.375Z",
+      "expiresAt": "2026-09-14T03:05:49.375Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:01.929Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:49.375Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1793,7 +2089,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:01.929Z"
+        "reviewedAt": "2026-09-12T03:05:49.375Z"
       }
     },
     {
@@ -1818,10 +2114,10 @@
           "url": "https://youtu.be/pgIpPqpzFnI"
         }
       ],
-      "createdAt": "2026-09-11T23:22:01.407Z",
-      "expiresAt": "2026-09-13T23:22:01.407Z",
+      "createdAt": "2026-09-12T03:05:48.901Z",
+      "expiresAt": "2026-09-14T03:05:48.901Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:01.407Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:48.901Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1840,7 +2136,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:01.407Z"
+        "reviewedAt": "2026-09-12T03:05:48.901Z"
       }
     },
     {
@@ -1865,10 +2161,10 @@
           "url": "https://youtu.be/OzLApCD85C0"
         }
       ],
-      "createdAt": "2026-09-11T23:22:00.489Z",
-      "expiresAt": "2026-09-13T23:22:00.489Z",
+      "createdAt": "2026-09-12T03:05:48.252Z",
+      "expiresAt": "2026-09-14T03:05:48.252Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:00.489Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:48.252Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1887,7 +2183,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:00.489Z"
+        "reviewedAt": "2026-09-12T03:05:48.252Z"
       }
     },
     {
@@ -1907,10 +2203,10 @@
       "fallbackReason": null,
       "text": ".",
       "links": [],
-      "createdAt": "2026-09-11T23:21:59.310Z",
-      "expiresAt": "2026-09-13T23:21:59.310Z",
+      "createdAt": "2026-09-12T03:05:47.066Z",
+      "expiresAt": "2026-09-14T03:05:47.066Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:59.310Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:47.066Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1929,7 +2225,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:59.310Z"
+        "reviewedAt": "2026-09-12T03:05:47.066Z"
       }
     },
     {
@@ -1960,10 +2256,10 @@
           "url": "https://www.youtube.com/watch?v=BejkLke260M"
         }
       ],
-      "createdAt": "2026-09-11T23:21:58.538Z",
-      "expiresAt": "2026-09-13T23:21:58.538Z",
+      "createdAt": "2026-09-12T03:05:46.348Z",
+      "expiresAt": "2026-09-14T03:05:46.348Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:58.538Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:46.348Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1982,7 +2278,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:58.538Z"
+        "reviewedAt": "2026-09-12T03:05:46.348Z"
       }
     },
     {
@@ -2007,10 +2303,10 @@
           "url": "https://www.youtube.com/watch?v=FaIhZ4RKwhc"
         }
       ],
-      "createdAt": "2026-09-11T23:21:57.524Z",
-      "expiresAt": "2026-09-13T23:21:57.524Z",
+      "createdAt": "2026-09-12T03:05:45.352Z",
+      "expiresAt": "2026-09-14T03:05:45.352Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:57.524Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:45.352Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2029,7 +2325,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:57.524Z"
+        "reviewedAt": "2026-09-12T03:05:45.352Z"
       }
     },
     {
@@ -2055,10 +2351,10 @@
       "fallbackReason": null,
       "text": "ÚLTIMA NOTÍCIA: 🇷🇺 \nO presidente russo, Putin, afirmou que uma nova ordem mundial está se formando dentro do BRICS.",
       "links": [],
-      "createdAt": "2026-09-11T23:21:55.394Z",
-      "expiresAt": "2026-09-13T23:21:55.394Z",
+      "createdAt": "2026-09-12T03:05:43.974Z",
+      "expiresAt": "2026-09-14T03:05:43.974Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:55.394Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:43.974Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2077,12 +2373,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:55.394Z"
+        "reviewedAt": "2026-09-12T03:05:43.974Z"
       }
     },
     {
-      "id": 3647108168,
-      "postUrl": "https://t.me/falhadamatrix/96604?single",
+      "id": 3574115977,
+      "postUrl": "https://t.me/falhadamatrix/96605?single",
       "source": {
         "title": "A FALHA DA MATRIX",
         "handle": "falhadamatrix",
@@ -2091,29 +2387,16 @@
       },
       "sourceId": "br:falhadamatrix",
       "sourceCountryCode": "br",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/1d7fe06403.mp4?token=VtUgxax-1dNTK-MGXpC-8kffiS4zhNYIN6k5KTAMM4WAhx5Ojpt2ncA4hKG7RI-R-AkeUuaAOXPyvKPKlupV2N3OomeTZbF6s1-uo5lDTY4vVRJdilumc0Q8DWbfs051fvMRrT1CCMIHDL50ubvLIOeLRUywdqjC0yIGLHZNYzTN4gF4ufbS0Fd3jYKZfR2dlZ-WquYk8byvkDXXNAjG-UN21VF_bTSLvzQYJQpImvV3d9Gx3vp1XhToaA2-IakP3XH6U_75B18yJwm4Fd7WH8MCW-HfhQq0hgoYzZ5SayFNiJooyEbbShvswrfIT4znrseH_K4dPDwWqiX_lTdSQQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "@falhadamatrix",
-      "links": [
-        {
-          "label": "@falhadamatrix",
-          "url": "https://t.me/falhadamatrix"
-        }
-      ],
-      "createdAt": "2026-09-11T23:21:54.345Z",
-      "expiresAt": "2026-09-13T23:21:54.345Z",
+      "text": "",
+      "links": [],
+      "createdAt": "2026-09-12T03:05:43.012Z",
+      "expiresAt": "2026-09-14T03:05:43.012Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:54.345Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:43.012Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2132,7 +2415,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:54.345Z"
+        "reviewedAt": "2026-09-12T03:05:43.012Z"
       }
     },
     {
@@ -2157,10 +2440,10 @@
           "url": "https://www.instagram.com/reel/DVT3Gt-gGHc/?igsh=cmt6eW50b2t4YWp0"
         }
       ],
-      "createdAt": "2026-09-11T23:21:53.798Z",
-      "expiresAt": "2026-09-13T23:21:53.798Z",
+      "createdAt": "2026-09-12T03:05:42.453Z",
+      "expiresAt": "2026-09-14T03:05:42.453Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:53.798Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:42.453Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2179,7 +2462,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:53.798Z"
+        "reviewedAt": "2026-09-12T03:05:42.453Z"
       }
     },
     {
@@ -2204,10 +2487,10 @@
           "url": "https://www.facebook.com/edaldem2/photos/a.416546202111578/1301841476915375"
         }
       ],
-      "createdAt": "2026-09-11T23:21:52.391Z",
-      "expiresAt": "2026-09-13T23:21:52.391Z",
+      "createdAt": "2026-09-12T03:05:40.963Z",
+      "expiresAt": "2026-09-14T03:05:40.963Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:52.391Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:40.963Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2226,7 +2509,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:52.391Z"
+        "reviewedAt": "2026-09-12T03:05:40.963Z"
       }
     },
     {
@@ -2259,10 +2542,10 @@
           "url": "https://t.me/+QrXcbegOkTs0NDI0"
         }
       ],
-      "createdAt": "2026-09-11T23:21:51.737Z",
-      "expiresAt": "2026-09-13T23:21:51.737Z",
+      "createdAt": "2026-09-12T03:05:40.308Z",
+      "expiresAt": "2026-09-14T03:05:40.308Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:51.737Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:40.308Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2281,7 +2564,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:51.737Z"
+        "reviewedAt": "2026-09-12T03:05:40.308Z"
       }
     },
     {
@@ -2301,10 +2584,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:21:51.317Z",
-      "expiresAt": "2026-09-13T23:21:51.317Z",
+      "createdAt": "2026-09-12T03:05:39.870Z",
+      "expiresAt": "2026-09-14T03:05:39.870Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:51.317Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:39.870Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2323,7 +2606,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:51.317Z"
+        "reviewedAt": "2026-09-12T03:05:39.870Z"
       }
     },
     {
@@ -2348,10 +2631,10 @@
           "url": "https://t.me/diadurbano"
         }
       ],
-      "createdAt": "2026-09-11T23:21:50.778Z",
-      "expiresAt": "2026-09-13T23:21:50.778Z",
+      "createdAt": "2026-09-12T03:05:39.356Z",
+      "expiresAt": "2026-09-14T03:05:39.356Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:50.778Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:39.356Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2370,7 +2653,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:50.778Z"
+        "reviewedAt": "2026-09-12T03:05:39.356Z"
       }
     },
     {
@@ -2390,10 +2673,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:21:50.227Z",
-      "expiresAt": "2026-09-13T23:21:50.227Z",
+      "createdAt": "2026-09-12T03:05:38.782Z",
+      "expiresAt": "2026-09-14T03:05:38.782Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:50.227Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:38.782Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2412,7 +2695,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:50.227Z"
+        "reviewedAt": "2026-09-12T03:05:38.782Z"
       }
     },
     {
@@ -2443,10 +2726,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:21:48.959Z",
-      "expiresAt": "2026-09-13T23:21:48.959Z",
+      "createdAt": "2026-09-12T03:05:37.558Z",
+      "expiresAt": "2026-09-14T03:05:37.558Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:48.959Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:37.558Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2465,7 +2748,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:48.959Z"
+        "reviewedAt": "2026-09-12T03:05:37.558Z"
       }
     },
     {
@@ -2484,7 +2767,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/f33bdde037.mp4?token=olwMs81bPm7MfjpODwpYx4AFeE-pJBvKNcaaD6v4CN1EpyOGGENV4lyzfkBJW-vQ1u0jIyZaTSI7cOYRq0ZH-zF5NokEbbrjE6Mf2bO-Y4duQUorj4SeDrCqICyyrZEMs_22O86IBZ9RQUVojHE5bXAXw_kTwIA_ZoYBweX6-PoWfc1t3KgLIkbWwJcaGCjeXvgr_g0MC0jOAm6mmKb4WAJG8yslV4doYXGNamgvQpzv7WBWsaRbr8NTtVJWxkWTYrSqwsexSTavpMY0DmVZb1cE_079OJVJptek013fp3Rt086Cy3uq_kMA5h5JQ-IEFtdUD8YOEfNNf9xrf2zRYA",
+          "url": "https://cdn1.telesco.pe/file/f33bdde037.mp4?token=dPQHEk3nPlfNfvifU97O5xGNVOcJWeI_feMseaN7ZfZ1K3tKVnr-RrOM7b43dq9mSyfcCEYyf2iv6kf7ZkrN5gZWRcTiTkg7fXXgN0p6WVQSqj_OeOMPGrXEKi3xIlabjONOrkPfqj4zfde1XESR_xtIIVpT8DkYZOJ4G0-kZ6WH3hc-bE486BbbePC_FDd2QMU4KG7cbktnQ3i0AdkmST-VPxL-khmvJ_Y6Ru9B7K6iRe_TD_bTu72fZv5gvMxXFHt1YdA0IczDpFocOH4c3PNRXpAAgx6djIrDJy54X9hvWwiqX2X7XbTO4U6PHjIbeZsB9c4DqLEzAGcgMsutDA",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -2514,10 +2797,10 @@
           "url": "https://T.me/despertandoleoes"
         }
       ],
-      "createdAt": "2026-09-11T23:21:48.348Z",
-      "expiresAt": "2026-09-13T23:21:48.348Z",
+      "createdAt": "2026-09-12T03:05:37.009Z",
+      "expiresAt": "2026-09-14T03:05:37.009Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:48.348Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:37.009Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -2536,7 +2819,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:48.348Z"
+        "reviewedAt": "2026-09-12T03:05:37.009Z"
       }
     },
     {
@@ -2561,10 +2844,10 @@
           "url": "https://www.youtube.com/live/fHWedrFtmxM?si=ZzPaBsQf0kE62_Zi"
         }
       ],
-      "createdAt": "2026-09-11T23:21:47.214Z",
-      "expiresAt": "2026-09-13T23:21:47.214Z",
+      "createdAt": "2026-09-12T03:05:35.814Z",
+      "expiresAt": "2026-09-14T03:05:35.814Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:47.214Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:35.814Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -2583,7 +2866,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:47.214Z"
+        "reviewedAt": "2026-09-12T03:05:35.814Z"
       }
     },
     {
@@ -2612,10 +2895,10 @@
           "url": "https://t.me/CORONAVIRUS_Dra_Sonia"
         }
       ],
-      "createdAt": "2026-09-11T23:21:46.253Z",
-      "expiresAt": "2026-09-13T23:21:46.253Z",
+      "createdAt": "2026-09-12T03:05:34.856Z",
+      "expiresAt": "2026-09-14T03:05:34.856Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:46.253Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:34.856Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2634,7 +2917,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:21:46.253Z"
+        "reviewedAt": "2026-09-12T03:05:34.856Z"
       }
     },
     {
@@ -2659,10 +2942,10 @@
           "url": "https://t.me/despertabagaray2"
         }
       ],
-      "createdAt": "2026-09-11T23:22:39.113Z",
-      "expiresAt": "2026-09-13T23:22:39.113Z",
+      "createdAt": "2026-09-12T03:06:26.300Z",
+      "expiresAt": "2026-09-14T03:06:26.300Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:39.113Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:26.300Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2681,7 +2964,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:39.113Z"
+        "reviewedAt": "2026-09-12T03:06:26.300Z"
       }
     },
     {
@@ -2701,10 +2984,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:38.566Z",
-      "expiresAt": "2026-09-13T23:22:38.566Z",
+      "createdAt": "2026-09-12T03:06:25.773Z",
+      "expiresAt": "2026-09-14T03:06:25.773Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:38.566Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:25.773Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2723,36 +3006,38 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:38.566Z"
+        "reviewedAt": "2026-09-12T03:06:25.773Z"
       }
     },
     {
-      "id": 2881659521,
-      "postUrl": "https://t.me/demystifyingtruths/16470?single",
+      "id": 2852177123,
+      "postUrl": "https://t.me/demystifyingtruths/16472?single",
       "source": {
         "title": "Demystifying \"Truths\"",
         "handle": "demystifyingtruths",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/fwQD_bBU68rY2GzwJQtrIX5lDCSrIUkIV_ibJN4Sp8vw8IYDYpZ6eJdk0nz4NCQSLI0hcwNalPvCBs-2bee4dyB3SgshjIRPLkMHW6Ty8fDV-UbqVuL_EPDw1Xr5Q12tDTHRYPgAQGovbUVuc8y6v7V8vO2OUjraDx0EX66uD-waw0pOvc0F5o3IjHLNmJgPkcrCQIZYrNc21FWdd9J9MwRLpNfs3QfW6BwYCQlRHesEQ8-HRrN3LumZAJ_gQnQDUuwHHojHe3_Ky1A6Q21CzgZ4luDrk8rTOzB4pgi5WZlbTefEE-XpmTdZc0hCEeG09gMDOKQiCuchTjo7_Emg3Q.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/detA9NRQaezulGpshTCyIWrEt-yXpl-M83uFgzJ8Xl0heXWA1TFoHek46kkCNNMCVz4RhQqSMDvEphHMi-bd9BD4uLp-zp7DVsiKl-Wjr3zWOPHYvKB3d_Pjo2qZQAm8dSjgrOCKa9zCF5gW3ao3Bi8a-OvM8Hqpcig6V1Q8Z0N8HTbyvGt3TEd1yu54-tlyjvdpfj_BKUKac6XVgr7TKtL3Ta4sPrA7P1Zyx9CgQRuyYm_nUCYgYd5MBVzAXlyC7LPkhq_3NOz61TNvkF2t0kbD2atq4WszPDbcWM3LE6vXmmDfrpjoViZxGdVi_sgsjE8B1qD6Gv_rbXt6V2IYLw.jpg"
       },
       "sourceId": "br:demystifyingtruths",
       "sourceCountryCode": "br",
-      "contentType": "image",
+      "contentType": "video",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/WfAVMk-HeX8hK1kluIOB9PHB9Vvhc83DtCR3PHX07NhIkzGsvH9xrl6FFFVv-qotF0xEVNtaOBeePkP3ShK9tG-6VC9j7Pzp11TUQiKw_je64F0_1msZ5MxXFAR2WfCFYNTxfZtnAj9xvvuf8R-EaSutMUD955UZt4Xv7DpaHOKcH2XIeIEAsUboStFEZa8YG8_fHbXF8QGDJsA6iSMe2IXhlGrm2aHV_pXTwnIWIeBaThOPYKTzMk-vEe0dIEnjYSotELc2FQ_ajkN5AiPXa6yzKnzCK_o6sjZutWmIfOWLP0tbjYnKKZhMfef_voRxPDi7eUOQavZoqACEkUnuKg.jpg"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/b24c1e01f8.mp4?token=ZEkmng7I5vL2mdRS62fcCLdPRTSaZ9gh3Y0wspBiEXeGRP05xZaoeJBQnK14uRBArDdw1LlSv_W0DZY6BAmVnZpv8a9LFs95byvfWqLjCh_JTZy6dtKxlHCddN3TqBS7RrMkQyDoe2InKMtJ7FUjFQfth5dBDYTSwzJp9u8lSCyAGPrXN5mnTLrWSPJtcu7kbXGgwdPhkJoA097zyxtjn6GRdfysjK3D0Uqe69qxAWPe_0BWq2CoWMpDElSg1B8CzQEVJFyDMzi861oYnwPpP7oT3lNXv0rYqEk2D9kZGpEPSyak0YncCA6blLsUfsCHTn1XD5ej80WECeoSvRb4kQ",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:37.298Z",
-      "expiresAt": "2026-09-13T23:22:37.298Z",
+      "createdAt": "2026-09-12T03:06:24.445Z",
+      "expiresAt": "2026-09-14T03:06:24.445Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:37.298Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:24.445Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2771,7 +3056,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:37.298Z"
+        "reviewedAt": "2026-09-12T03:06:24.445Z"
       }
     },
     {
@@ -2791,10 +3076,10 @@
       "fallbackReason": null,
       "text": "08/09/2026 - Sou obrigada por causa da mnha consciencia repostar o tao urgente e necessario novamente:\n\n23/08/2026 - O povo brasileiro precisa URGENTEMENTE PARA ONTEM da misericordia e piedade de Deus e de Cristo para se salvar e se livrar da tirania. Precisam serem curados por Deus EM NOME DO SENHOR JESUS CRISTO das doencas espirituais graves que pegaram praticando pecados graves se tornando ESCRAVO DO PECADO E DO MALIGNO INIMIGO DE DEUS.\n\nSe a maioria do povo fosse mais humilde de coracao (nao to falando de pobreza material), menos materialista, menos apegado com a imagem da \"Cida\", menos obstinado, menos invejoso, menos falador, menos maldizente, menos idolatra, menos hipocrita, menos arrogante, menos orgulhoso, mais modesto, mais temente a Deus em geral no modo de viver talvez o Brasil nao estaria neste Bostil afundando cada vez mais nesta areia movedica para onde foi jogado desde 2002.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:35.604Z",
-      "expiresAt": "2026-09-13T23:22:35.604Z",
+      "createdAt": "2026-09-12T03:06:22.713Z",
+      "expiresAt": "2026-09-14T03:06:22.713Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:35.604Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:22.713Z",
       "tag": "news_breaking",
       "tags": [
         "news_breaking",
@@ -2813,7 +3098,97 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:35.604Z"
+        "reviewedAt": "2026-09-12T03:06:22.713Z"
+      }
+    },
+    {
+      "id": 1431823764,
+      "postUrl": "https://t.me/conservacore/1?single",
+      "source": {
+        "title": "Conservador Core (Entrada)",
+        "handle": "conservacore",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/KjE8Eav6ZobKu8m8knuaaiSAdbsECLvotqdBH76xHU9_rJgwHyeATuJEbuS1gdF9G8Et2MaryMwxsrG1TE0ba_Vk6FirCanCplYdVgmwyZkboKDtvTJMRpm_P7vAXHgqyCCBVqe07t99w0c3J06ZVxMtgE_D4-8wU3Ktb-PviY5nLL2Ugq8ZH6nevDalkHkX3G7EsONUlc37OCfQvFowPuWI-vCx-mLMtohQ1rPWHjtyBrZrO_NufqVvqwSr7zMOAtQFBMTheE9Ouzt6-y_8ixPuTDadrXscFbjgz5CUR5xaOhRKmkRybzt_rGt8WF6M_uYpFCXF6X201P8_-VrVig.jpg"
+      },
+      "sourceId": "br:conservacore",
+      "sourceCountryCode": "br",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:22.078Z",
+      "expiresAt": "2026-09-14T03:06:22.078Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:22.078Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:22.078Z"
+      }
+    },
+    {
+      "id": 3162673478,
+      "postUrl": "https://t.me/coleguinhasunivos/9547?single",
+      "source": {
+        "title": "Coleguinhas, Uni-vos",
+        "handle": "coleguinhasunivos",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/ZI2FKqrDTNGuBsk51W9mAfMGZrVXewfMEE9E2yvhr_MrHvoNMcvQd5hJjynOqxGuEX0aVM4q_k1M9CblHQpcAYODxCBvQYktMPsdjyj943OrI77y1QZJMOtnnCD89jfr4WPM2zsJBJwoLHe3zClC6dEfXEup5bKEp5Gg3_kMtOjG_xCdenK4D1-CpkDmnPHGaK2ajIdSaIas6b4hBiX5zjVwhZi-AlQIM3qdqgU6gSvwMMPZQUH7FYQvCwCqcpPlku1guml9MGtV2xgSySt1M3E6uQdG-Bn2uF_6bE_Px5vaWZn3LYsqEpuIR6xa01sOFc17jCUMyKuEraLt7j1tig.jpg"
+      },
+      "sourceId": "br:coleguinhasunivos",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/utgdTgv8EvcvHdslr40f2fdxFd6YEkSZboa7fbiVIL8mdhcEq5feOm3GgxElYPhNImf9bKZCRfApKqeI9dVKi1KBfCx-6wug2OZaKgGvAAXdJqNeFlqrpOd6xf7XOZAYbDEPJChyNJmSA4F05qDHZ1mWk5iP9LiBb4YSoTUSZjvJ4A7PRWO-lWvzBEwiTEVPPI2MRC87ht_9EkwX3aUjB7gqQHjUP4S9zWcEHBvZMkUrlAdhXfRXKdvyYJqjAp3pDKZF0GLx0CTDI90HtwpbMeozW233cjwBFpJc3qOapMxznAWpNVDjJq_HaEbSceqS41_B5tfuVUi_Xu2MxCR63A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Jorge Braga.",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:21.608Z",
+      "expiresAt": "2026-09-14T03:06:21.608Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:21.608Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:21.608Z"
       }
     },
     {
@@ -2833,10 +3208,10 @@
       "fallbackReason": null,
       "text": "Pegou Covid? \nComo você sabe?\n\n— \"Fiz o teste.\" — Os testes não dizem absolutamente nada. O teste com o método PCR não foi feito pra diagnosticar doenças e nem pode. Mesmo que se encontre alguma coisa nos testes - e isso vai depender muito do número de ciclos de ampliação que foram usados, e que nunca é revelado - essa “alguma coisa” nunca poderia determinar uma doença. Essa é a explicação do próprio criador do método, Kary Mullis, que infelizmente morreu antes do estouro desta plandemia. Os testes de antígeno também não diagnosticam doenças pois mesmo que seu organismo acuse a presença de anticorpos, estes não determinam que você está ou não está doente.\n\n— “Meu pulmão ficou com aquele aspecto de vidro fosco” — este aspecto de vidro fosco sempre existiu em diversos quadros de doença nos pulmões, incluindo pneumonite por radiação, pneumonia, câncer de pulmão, exposição a toxinas, etc. \n\n— “Minha oxigenação estava abaixo do normal” — Esta falta de ar “anormal” é típica reação a exposição a campos eletromagnéticos que diminuem a disponibilidade do oxigênio no ambiente e interferem no funcionamento normal das mitocôndrias e fazem com que não consigamos utilizar o oxigênio existente. \n\n— Tive sintomas esquisitos, nunca tinha tido uma gripe assim — Eu também tive, embora muito fraca. Sintomas realmente esquisitos, diferente das outras gripes. Por exemplo, muito cansaço e dores no corpo na pele, sem nenhuma coriza ou nariz escorrendo. Febre fraca e persistente, sem dor de garganta ou qualquer outro sinal de inflamação. Tive amigos que perderam olfato e paladar por meses, meu marido perdeu por quase um ano, sem nenhum outro sintoma de gripe, quase nem resfriado. Outras pessoas tiveram desenvolvimentos mais rápidos dos sintomas típicos da gripe, com agravamento nos pulmões, principalmente pessoas que já tinham outras comorbidades ou hábitos não muito saudáveis de vida e alimentação - obesidade, diabete, sedentarismo, dieta com muito açúcar, muita bebida alcoólica, tudo isso contribui pra que seu organismo fique mais propenso a desenvolver qualquer quadro de doenças diante de um estímulo tóxico. Nada disso comprova a existência de um vírus novo, muito menos contágio. O que não falta são estímulos tóxicos. Estamos recebendo por todos os lados: pelo ar (chemtrails, smartdusts), pela água (flúor, sabe-se lá o quê mais), pela comida (agrotóxicos a níveis nunca antes vistos, GMOs, grafeno, sabe-se lá o quê mais), pela pele (cosméticos, maquiagem, cremes, etc.), pela mídia (Covid, Covid, Covid, Covid, Covid…), pelo tecido social destroçado, famílias separadas, amizades desfeitas, brigas, disputas, ofensas, acusações, discriminações, preconceitos, ignorância — tudo isso é muito tóxico e está tudo aumentado com essa plandemia. \nE, talvez o mais significativo e mais invisível sejam as radiações eletromagnéticas às quais estamos expostos via antenas, aparelhos celulares, wi-fi, smartmeters, vacinados grafenados, etc. \n\n— — “Só sei que fiquei muito mal, então DEVE ter sido Covid”; \n“O médico achou que era”; \n“o hospital falou que era”; \n“Tive muito medo, então acho que era” \nNão, nada disso comprova que era “Covid” \n\n— Junte a tudo isso um tratamento inapropriado num hospital corrompido (pelo dinheiro ou pela mentalidade, ou pelos dois), que beleza, não?\n\n— O vírus não foi isolado. “Covid” foi um nome inventado para uma suposta doença causada por um vírus nunca provado, que não existe. Isso não é especulação. Isso já foi admitido em diversos países onde fizeram pedidos de informações via FOIA (Freedom of Information Act), até mesmo aqui no Brasil. Eles não podem apresentar evidências de isolamento do vírus, simplesmente porque eles não têm essas evidências. \nEstes sintomas esquisitos, REAIS, que muita gente teve, mesmo sem ter tomado a vacina, NÃO SÃO CAUSADOS POR UM VÍRUS. São reações do organismo a TOXINAS. Não sabemos exatamente quais, em que quantidade, de que natureza. Obviamente, a mídia e os governos não estão divulgando ESTAS notícias. Pelo contrário, estão censurando e desacreditando quem as divulga.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:33.648Z",
-      "expiresAt": "2026-09-13T23:22:33.648Z",
+      "createdAt": "2026-09-12T03:06:20.329Z",
+      "expiresAt": "2026-09-14T03:06:20.329Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:33.648Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:20.329Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2857,7 +3232,57 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:33.648Z"
+        "reviewedAt": "2026-09-12T03:06:20.329Z"
+      }
+    },
+    {
+      "id": 3170428015,
+      "postUrl": "https://t.me/coachpablao/10071?single",
+      "source": {
+        "title": "24h Matrix",
+        "handle": "coachpablao",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/Oq32RINO-LvuBwFWjAEjdQHE3zi6KE518QF6FwPcxietNo8hNiYHHLGr_bqmISpn63HNC7Fn_i4esATKoodmAiKO7Yga88lmDWfAV58WcHwvxC5fh745WkUbOZPxbtKn27PYtB56JEwkXPAv_YEdkufhim7i1qg7s2xtpEIiNdVmu23TW2Br0FWYvjSbCZfQrGs2rwvNCvngyPAMdvdjePCMLPITQdiDHsiUhZDagZYXe58kdU8yKhw3spr9xgLt2vkV-qMvzGYkQ8HlJcsMWTJ8KRc_czPsNfDhT5vaddsV8qOy7EP1tJZHIVJLjamDUEO6z_lAMHyTg1cq32da0w.jpg"
+      },
+      "sourceId": "br:coachpablao",
+      "sourceCountryCode": "br",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/ba2c15f7cc.mp4?token=CMibbeyo1XERSPFQBFjnnuwaad31B5mZ0nrOQlq819Qi-F-jIdLeGyD7vuZDSG_dTDbkH9iBxXhUL01W1-rGa_2ITOZzEVceWDWHG6jD7NS35Jz-vN-BXWPScdChlKRfSz7J5WwNNzGFz0huXkKoBIRJuTga8gUiM9XJLlKiInzCrCNh0pXtw_HxUxCf-vPpND0r2pYjxFvZ6epToUJcGBfyDOq0s4uGPw-ZT_PkNK9WDMfAwTZ8n5lU94-yJQIbxpRwKQPuDqBmPYbvDSUJJActzWLCAKHglqZZgH5Abxn1Z7DUwQDplo7Nlr9yWlxP0HZgsjubmUi72nW5LzbsYA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "2025 ⏰",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:19.724Z",
+      "expiresAt": "2026-09-14T03:06:19.724Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:19.724Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:19.724Z"
       }
     },
     {
@@ -2885,10 +3310,10 @@
       "fallbackReason": null,
       "text": "Ficou provado com o caso Epstein o que viemos dizendo, que a lei não chega nos culpados pois são acobertados e compostos pelas maiores autoridades.\n\nEles estão preparando um “dilúvio negro” contra os Cristãos, um período em que pretendem literalmente nos caçar e exterminar.\n\nEnquanto isso você fica na ignorância e querendo fazer tratos políticos com o mal. Com o mal não se negocia, não se faz coligação e nem acertos pragmáticos.\n\nPor outro lado, mal sabem eles que a caça virará caçador, quando o Messias retornar haverá um extermínio desse joio de cima da terra.\n\nEles encontraram 163 crianças, mas há 300 MIL crianças, imigrantes ilegais, que ninguém sabe onde estão.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:32.457Z",
-      "expiresAt": "2026-09-13T23:22:32.457Z",
+      "createdAt": "2026-09-12T03:06:18.622Z",
+      "expiresAt": "2026-09-14T03:06:18.622Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:32.457Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:18.622Z",
       "tag": "electronics_brands",
       "tags": [
         "electronics_brands",
@@ -2907,7 +3332,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:32.457Z"
+        "reviewedAt": "2026-09-12T03:06:18.622Z"
       }
     },
     {
@@ -2932,10 +3357,10 @@
           "url": "https://www.youtube.com/watch?v=2CGtERJPtbQ"
         }
       ],
-      "createdAt": "2026-09-11T23:22:31.717Z",
-      "expiresAt": "2026-09-13T23:22:31.717Z",
+      "createdAt": "2026-09-12T03:06:17.859Z",
+      "expiresAt": "2026-09-14T03:06:17.859Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:31.717Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:17.859Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -2954,7 +3379,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:31.717Z"
+        "reviewedAt": "2026-09-12T03:06:17.859Z"
       }
     },
     {
@@ -2979,10 +3404,10 @@
           "url": "https://pt.gatestoneinstitute.org/22759/o-pesadelo-nuclear-de-trump-com-a-arabia-saudita"
         }
       ],
-      "createdAt": "2026-09-11T23:22:30.965Z",
-      "expiresAt": "2026-09-13T23:22:30.965Z",
+      "createdAt": "2026-09-12T03:06:17.084Z",
+      "expiresAt": "2026-09-14T03:06:17.084Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:30.965Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:17.084Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3001,7 +3426,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:30.965Z"
+        "reviewedAt": "2026-09-12T03:06:17.084Z"
       }
     },
     {
@@ -3026,10 +3451,10 @@
           "url": "https://youtu.be/dMkyCn-QXWE?si=oKLpnOUERjdhUXBU"
         }
       ],
-      "createdAt": "2026-09-11T23:22:30.284Z",
-      "expiresAt": "2026-09-13T23:22:30.284Z",
+      "createdAt": "2026-09-12T03:06:16.483Z",
+      "expiresAt": "2026-09-14T03:06:16.483Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:30.284Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:16.483Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3048,12 +3473,65 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:30.284Z"
+        "reviewedAt": "2026-09-12T03:06:16.483Z"
       }
     },
     {
-      "id": 3885902118,
-      "postUrl": "https://t.me/bsbdf/150172?single",
+      "id": 1434956183,
+      "postUrl": "https://t.me/canal_ulrich/7?single",
+      "source": {
+        "title": "Ulrich",
+        "handle": "canal_ulrich",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/HPnd4uJpvhd6XAcFjsANkOrBrhDbYHDYdjOLanX1YHJJ5j9fr3mwow0cDlU-Z_UGR66aiBX3APNn_2mWmMWQwMNFOAeNL75SQe1VlEAJwiUNhTEiz36Y-wb5EvRfOyn67qFzhQks3bdzxgPK_e1_j5SZYda4YxToM8W2OWsVYvAwmPuwLIL-rLVEbodHyML-RKo4sPv19wCw1vhxM-pxaNhJVM1hupd1WFJv2byDPpKzAK6uwoEaBKrsUFxaVvJba6AnnxJnrD9qYwctDV3FIO4PTrMnCFoGG2wAFo4kbXItarTCTrEYws3lHl4BFm8ZtyP83NVIhbv664MPxwF1lQ.jpg"
+      },
+      "sourceId": "br:canal_ulrich",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Pm7f5QQQ5JPtMLOPoWq0PmFnZSUKCfaKOKg2KCKJjWVZNOPbU_mjrxVp3vWKVQs2Xh3kM2_uwo7Zvemo8kJgKXq8uZPnY751KKIuwDBQVQATmJ9OpnUx_-dW-xwM66rXs841nEDd3sLxL-0NtcoaPXiyMRfckTm6U-aNL9MnajShZGvvc7iDYIBCIQswkcetqI0ukE74Tfqh22IhK1y9tMB4mOZsFVM09mgsbbjVgtfcbKtzelo3SHNZCTP6S5dmuICvIgI07OBjcIZvDpAdNh-ZT14VfXof9KVL3DEmJLWBZ3btQQxRo6bL6JPo_5RLmS6kw_b6UFmacQwktdLaGQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Lily 🍓\n\nI just want sex, text me...\n\n👉🏼 https://datingz.city/girls-sex",
+      "links": [
+        {
+          "label": "https://datingz.city/girls-sex",
+          "url": "https://datingz.city/girls-sex"
+        }
+      ],
+      "createdAt": "2026-09-12T03:06:15.631Z",
+      "expiresAt": "2026-09-14T03:06:15.631Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:15.631Z",
+      "tag": "transport_auto",
+      "tags": [
+        "transport_auto",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:15.631Z"
+      }
+    },
+    {
+      "id": 3690706400,
+      "postUrl": "https://t.me/bsbdf/150174?single",
       "source": {
         "title": "Brasília DF",
         "handle": "bsbdf",
@@ -3067,22 +3545,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/VOrGu4sLW_He5elxGxGkRSyK6g7rK4yii-jKA3PqQB5aygLvQoxXtmsfFOSp8Fs9Q2uIVXyy0MbWNJmXXztQC-FXknw0FJbPltn9itg9IT9UzbJhPSQoSwu7tpQ8Q8lKboPJnBg3jE4vIoMmxT4lKXWDtbIe_9pnawUXgMnE-1EY_n_A8KoOw70mae_2zBChId9EfOCp0TjuxSUJ09iMiX7vC9SyroPBuDWRccnpu4ouDoLzHKVwznjtCfSPv5KvOYgwCSTcbSUPfUS_GQ8laibvTgK5JbN4k2dtk5R-n1zK2rQHjzXeLIzV1tzSCkTnMhMQ4hcBr5JnekpmQ7K4aQ.jpg"
+          "url": "https://cdn1.telesco.pe/file/YQkJy_pSFxnOwYWsx4RRiChgWU-hS0kPr56iv83zsY5t2xH_8q4XNulw1nvipOu2o_WuKTZmsEzqcVc_lSbq3PnasWXf7yDIhcc0I80BiB0WXGxDXbljvdmlaQz35fD4w49J7nC_yvnyGrLZZ5WL7x3Ljv7p47JoXFsbOi6Hxe1u5ezl_Mtm38dJkVwg_xMJjJzUKIn8DmQvMqG0fgeSC23GU_5GUecwpmZ5Yzw_QdAGxC20V-mLHG2X83rTXD_nCF4sMKKp5tWjwP-BlV-jhByi-ThnF9vcEDVB8hoUPag_5jwqsYPFapAV3udDq0lCFSHT_KqsKvh_MovHmQHhYQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔥 Queimadas no DF!\n\nQuantidade: 21 registros de focos\nSatélites:  🔴NPP 🟠GOES 🟡NOAA\nDados acumulados das últimas 6 horas\n[INPE]",
+      "text": "🔥 Queimadas no DF!\n\nQuantidade: 23 registros de focos\nSatélites:  🔴NPP 🟠GOES 🟡NOAA 🟢AQUA\nDados acumulados das últimas 6 horas\n[INPE]",
       "links": [
         {
           "label": "[INPE]",
           "url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/"
         }
       ],
-      "createdAt": "2026-09-11T23:22:29.087Z",
-      "expiresAt": "2026-09-13T23:22:29.087Z",
+      "createdAt": "2026-09-12T03:06:14.913Z",
+      "expiresAt": "2026-09-14T03:06:14.913Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:29.087Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:14.913Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3101,7 +3579,55 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:29.087Z"
+        "reviewedAt": "2026-09-12T03:06:14.913Z"
+      }
+    },
+    {
+      "id": 588109770,
+      "postUrl": "https://t.me/boomer_irrelevante/3354?single",
+      "source": {
+        "title": "Boomerang_Irrelevância Interativa ⚠️🔰⚠️",
+        "handle": "boomer_irrelevante",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/Xi3tUckGaZCz5Qoeh9e91DrX6z8d6J4YF4TE0qyLjgOBDGudgXEEO9N3NuHqnhUnqy6SDUXUlXTMR3AJ3UTvOWJK_A5O40GZZ3-GnsT8brx9ZYWXSFYDVpBoxQ5WVVEeEqcMX36HyA7-97OJ24PtytsCA3kkb1ZRx3yCOdRU1_wbJhbZNIMIeVzrSHpnx-rVYb0sAOBhBx-WMvNDic7TNAJS2AJgIaGpR06ArPHj76Nxc5Ssgf_x-y2hgiqm0lYo1FnfzV7ufvQMhhztFNEXby2NavHJg_3LI3LT3KoLxSERvwpeyZDzRP6QIdwWqzS_wv62K93I6hhHccBdWjpU_w.jpg"
+      },
+      "sourceId": "br:boomer_irrelevante",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/QA58tmN1PBEJj0POjyiQzQn1tcSkUtfL_uPLbLaYVmGpekYRBVLldbSj7ObZJqFclL5KZ7xjtalbnR7DC5X9WgyvP90wOIeDm96SGRf-4mzsFya3OqlHrZ0L-rSoXe43i2E5SKULNQJKl0Wn-t9hkPY4dCZWjCIryy--2mhc0SOMt6IJ7Gl7y7DxQRKm9DXvAV45c5FCUsIRu3FiMNOL0R6ILjePi7LShSK2QsjT4Rocc0Q5JhHkzCxOek5lEHzkHFLM9n3UwbokI9FVjDxGr48PqPq1xs72AgS1AHQty5JcveUG87E6MYxR9-9Ui5MecowYT_melYyGFYVxw9NQVA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "A soberba é assim chamada por nos fazer voluntariamente buscar o que está acima de nós. Por isso, diz Isidoro: O soberbo é assim chamado por querer passar por mais do que é; pois, quem quer subir acima do que é soberbo. Ora, a razão reta, por essência, impõe à nossa vontade buscar o que lhe é proporcional. Por onde e manifestamente, a soberba implica oposição à razão reta. Ora, isto constitui a essência mesma do pecado; pois, segundo Dionísio, o mal da alma consiste em desobedecer aos ditames da razão. Portanto, é claro que a soberba é pecado.\n\nSanto Tomás de Aquino. Suma Teológica, Questão 162 “Da soberba”, Art. 1.",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:13.536Z",
+      "expiresAt": "2026-09-14T03:06:13.536Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:13.536Z",
+      "tag": "transport_other",
+      "tags": [
+        "transport_other",
+        "auto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:13.536Z"
       }
     },
     {
@@ -3121,10 +3647,10 @@
       "fallbackReason": null,
       "text": "08/09/2026 - Sou obrigada por causa da mnha consciencia repostar o tao urgente e necessario novamente:\n\n23/08/2026 - O povo brasileiro precisa URGENTEMENTE PARA ONTEM da misericordia e piedade de Deus e de Cristo para se salvar e se livrar da tirania. Precisam serem curados por Deus EM NOME DO SENHOR JESUS CRISTO das doencas espirituais graves que pegaram praticando pecados graves se tornando ESCRAVO DO PECADO E DO MALIGNO INIMIGO DE DEUS.\n\nSe a maioria do povo fosse mais humilde de coracao (nao to falando de pobreza material), menos materialista, menos apegado com a imagem da \"Cida\", menos obstinado, menos invejoso, menos falador, menos maldizente, menos idolatra, menos hipocrita, menos arrogante, menos orgulhoso, mais modesto, mais temente a Deus em geral no modo de viver talvez o Brasil nao estaria neste Bostil afundando cada vez mais nesta areia movedica para onde foi jogado desde 2002.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:27.624Z",
-      "expiresAt": "2026-09-13T23:22:27.624Z",
+      "createdAt": "2026-09-12T03:06:12.881Z",
+      "expiresAt": "2026-09-14T03:06:12.881Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:27.624Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:12.881Z",
       "tag": "news_breaking",
       "tags": [
         "news_breaking",
@@ -3143,7 +3669,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:27.624Z"
+        "reviewedAt": "2026-09-12T03:06:12.881Z"
       }
     },
     {
@@ -3176,10 +3702,10 @@
           "url": "https://sahelstandard.com/2020/04/06/anti-malaria-drug-can-kill-coronavirus-novartis-chief/*"
         }
       ],
-      "createdAt": "2026-09-11T23:22:27.036Z",
-      "expiresAt": "2026-09-13T23:22:27.036Z",
+      "createdAt": "2026-09-12T03:06:12.328Z",
+      "expiresAt": "2026-09-14T03:06:12.328Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:27.036Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:12.328Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -3198,7 +3724,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:27.036Z"
+        "reviewedAt": "2026-09-12T03:06:12.328Z"
       }
     },
     {
@@ -3229,10 +3755,10 @@
           "url": "https://archive.is/20260910160450/https://www.economist.com/the-americas/2026/09/10/when-the-defenders-of-democracy-turn-their-backs-on-it-instead"
         }
       ],
-      "createdAt": "2026-09-11T23:22:25.714Z",
-      "expiresAt": "2026-09-13T23:22:25.714Z",
+      "createdAt": "2026-09-12T03:06:10.894Z",
+      "expiresAt": "2026-09-14T03:06:10.894Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:25.714Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:10.894Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3251,12 +3777,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:25.714Z"
+        "reviewedAt": "2026-09-12T03:06:10.894Z"
       }
     },
     {
-      "id": 3654069585,
-      "postUrl": "https://t.me/antivaxxx/115956?single",
+      "id": 590810918,
+      "postUrl": "https://t.me/antivaxxx/115964?single",
       "source": {
         "title": "🦠 ANTVXXX",
         "handle": "antivaxxx",
@@ -3269,12 +3795,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "▶️💥Mendonça retira o sigilo do caso Dark Horse, Claudio Castro, Ciro Nogueira e Jaques  Wagner.",
+      "text": "☄️▶️COAF APONTA QUE VORCARO RECEBEU US$ 26 MILHÕES NO EXTERIOR NA VÉSPERA DE PRISÃO",
       "links": [],
-      "createdAt": "2026-09-11T23:22:23.824Z",
-      "expiresAt": "2026-09-13T23:22:23.824Z",
+      "createdAt": "2026-09-12T03:06:09.224Z",
+      "expiresAt": "2026-09-14T03:06:09.224Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:23.824Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:09.224Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3293,7 +3819,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:23.824Z"
+        "reviewedAt": "2026-09-12T03:06:09.224Z"
       }
     },
     {
@@ -3344,10 +3870,10 @@
           "url": "https://mastodon.social/@AjTzilonel/117213759697223018"
         }
       ],
-      "createdAt": "2026-09-11T23:22:22.422Z",
-      "expiresAt": "2026-09-13T23:22:22.422Z",
+      "createdAt": "2026-09-12T03:06:07.850Z",
+      "expiresAt": "2026-09-14T03:06:07.850Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:22.422Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:07.850Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -3366,7 +3892,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:22.422Z"
+        "reviewedAt": "2026-09-12T03:06:07.850Z"
       }
     },
     {
@@ -3403,10 +3929,10 @@
           "url": "https://www.instagram.com/stories/brunatorlay/3983052927161985908?utm_source=ig_story_item_share&amp;amp;stkn=MWN4dnM1YXQxejhpcQ=="
         }
       ],
-      "createdAt": "2026-09-11T23:22:21.421Z",
-      "expiresAt": "2026-09-13T23:22:21.421Z",
+      "createdAt": "2026-09-12T03:06:06.872Z",
+      "expiresAt": "2026-09-14T03:06:06.872Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:21.421Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:06.872Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -3425,12 +3951,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:21.421Z"
+        "reviewedAt": "2026-09-12T03:06:06.872Z"
       }
     },
     {
-      "id": 994583480,
-      "postUrl": "https://t.me/aliancabrasil/266568?single",
+      "id": 4167072774,
+      "postUrl": "https://t.me/aliancabrasil/266618?single",
       "source": {
         "title": "Brasil",
         "handle": "aliancabrasil",
@@ -3443,29 +3969,49 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Xandão solta \"não vou cair sozinho\" e assina confissão de culpa, chantagem e prevaricação de uma vez \n \nFonte: https://www.youtube.com/watch?v=O2tGpXc43dE\nPor oiluiz TV\n\nSiga-me também no Twitter: https://twitter.com/oiIuiz",
+      "text": "PROVAS DA PF: MORAES MEXEU NO CONTRATO MILIONÁRIO? \n \nFonte: https://www.youtube.com/watch?v=RkLOk4RFY_s\npor Ana Paula Henkel\n\n#STF #AlexandreDeMoraes #BancoMasterNeste corte, analisamos os detalhes revelados após a queda do sigilo sobre o contrato milionário entre o Banco Master e o escritório de advocacia ligado a Viviane Barci, esposa do ministro Alexandre de Moraes.Entenda o que apontam as perícias e relatórios da Polícia Federal sobre os metadados do documento, os valores e prazos envolvidos, além dos impactos jurídicos e as discussões sobre o impedimento legal na votação decisiva do Supremo Tribunal Federal (STF).#STF #AlexandreDeMoraes #BancoMaster #PoliciaFederal #Brasil #Noticias👉 Não esqueça de: ✅ Se inscrever no canal para não perder as últimas notícias da política! https://www.youtube.com/@anapaula.henkel?sub_confirmation=1❤️ Entre para o clube de membros deste canal: https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join❤ Conheça a Bright Minds, a escola do futuro: https://ift.tt/2dEq4iw 🔴 Assista nossa playlist sobre a política no Brasil no link abaixo:https://www.youtube.com/watch?v=-9sdn63SNwA&list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-🔴 Assista nossa playlist sobre o Mundo no link abaixo:https://www.youtube.com/watch?v=nSbhhLBFPl0&list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&index=1\n\nt.me/s/AliancaBrasil\n#aliancabrasil",
       "links": [
         {
-          "label": "Xandão solta \"não vou cair sozinho\" e assina confissão de culpa, chantagem e prevaricação de uma vez",
-          "url": "https://www.youtube.com/watch?v=O2tGpXc43dE"
+          "label": "PROVAS DA PF: MORAES MEXEU NO CONTRATO MILIONÁRIO?",
+          "url": "https://www.youtube.com/watch?v=RkLOk4RFY_s"
         },
         {
-          "label": "https://www.youtube.com/watch?v=O2tGpXc43dE",
-          "url": "https://www.youtube.com/watch?v=O2tGpXc43dE"
+          "label": "https://www.youtube.com/watch?v=RkLOk4RFY_s",
+          "url": "https://www.youtube.com/watch?v=RkLOk4RFY_s"
         },
         {
-          "label": "https://twitter.com/oiIuiz",
-          "url": "https://twitter.com/oiIuiz"
+          "label": "https://www.youtube.com/@anapaula.henkel?sub_confirmation=1❤️",
+          "url": "https://www.youtube.com/@anapaula.henkel?sub_confirmation=1%E2%9D%A4%EF%B8%8F"
+        },
+        {
+          "label": "https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join❤",
+          "url": "https://www.youtube.com/channel/UCWw3TkJCY-BwfHVf7gfXvUw/join%E2%9D%A4"
+        },
+        {
+          "label": "https://ift.tt/2dEq4iw",
+          "url": "https://ift.tt/2dEq4iw"
+        },
+        {
+          "label": "https://www.youtube.com/watch?v=-9sdn63SNwA&list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-🔴",
+          "url": "https://www.youtube.com/watch?v=-9sdn63SNwA&amp;list=PLaiI2xyNvmthtbdTFfI-ZfmvmPv3QbHg-%F0%9F%94%B4"
+        },
+        {
+          "label": "https://www.youtube.com/watch?v=nSbhhLBFPl0&list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&index=1",
+          "url": "https://www.youtube.com/watch?v=nSbhhLBFPl0&amp;list=PLaiI2xyNvmthb-hksHdJjlfhFxmqWl0OH&amp;index=1"
+        },
+        {
+          "label": "t.me/s/AliancaBrasil",
+          "url": "https://t.me/s/AliancaBrasil"
         }
       ],
-      "createdAt": "2026-09-11T23:22:19.603Z",
-      "expiresAt": "2026-09-13T23:22:19.603Z",
+      "createdAt": "2026-09-12T03:06:05.040Z",
+      "expiresAt": "2026-09-14T03:06:05.040Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:19.603Z",
-      "tag": "transport_auto",
+      "mediaRefreshedAt": "2026-09-12T03:06:05.040Z",
+      "tag": "technology_software",
       "tags": [
-        "transport_auto",
-        "auto"
+        "technology_software",
+        "technology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3480,7 +4026,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:19.603Z"
+        "reviewedAt": "2026-09-12T03:06:05.040Z"
       }
     },
     {
@@ -3522,10 +4068,10 @@
       "fallbackReason": null,
       "text": "O MAR ESTÁ RECUANDO EM ALGUNS LUGARES\n\n A inversão está apenas começando a apresentar os primeiros sinais do que virá. Você está com sua “CASA” em ordem? O Rei está voltando.\n\nApocalipse 21\n1 E vi um novo céu, e uma nova terra. Porque já o primeiro céu e a primeira terra passaram, E O MAR JÁ NÃO EXISTE.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:18.772Z",
-      "expiresAt": "2026-09-13T23:22:18.772Z",
+      "createdAt": "2026-09-12T03:06:04.245Z",
+      "expiresAt": "2026-09-14T03:06:04.245Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:18.772Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:04.245Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3544,7 +4090,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:18.772Z"
+        "reviewedAt": "2026-09-12T03:06:04.245Z"
       }
     },
     {
@@ -3570,10 +4116,10 @@
       "fallbackReason": null,
       "text": "🎬 Título: Mensagens para Isabelle\n📆 Ano: 2026\n🎭 Gêneros: Comédia, Romance\n\n ℹ️ Sinopse: As mensagens de voz sinceronas de uma jovem para a irmã falecida acabam sendo enviadas para um estranho, que começa a se apaixonar por ela mesmo de longe.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:17.789Z",
-      "expiresAt": "2026-09-13T23:22:17.789Z",
+      "createdAt": "2026-09-12T03:06:03.317Z",
+      "expiresAt": "2026-09-14T03:06:03.317Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:17.789Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:03.317Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -3593,12 +4139,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:17.789Z"
+        "reviewedAt": "2026-09-12T03:06:03.317Z"
       }
     },
     {
-      "id": 1621300067,
-      "postUrl": "https://t.me/linksbrazil/81392?single",
+      "id": 208218749,
+      "postUrl": "https://t.me/linksbrazil/81394?single",
       "source": {
         "title": "LinksBR - Promoções",
         "handle": "linksbrazil",
@@ -3612,121 +4158,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/XCSbblCc15A7mVZwPyYmN3bqf6jzEHUWsswqmPFUAomha2_dbLwXLVvCfBD9cO5XXOJnPB0kz1sruXWrBM54GXjKTq8RVgVScwoED5J7q0RRgeA7Kg4TUY_R_KqfWPehqmG-826-apSQ1RgdU9zAt1q7jv1dL9SeOef9xzXcK7jzQk2P_3TneefuMqiAUO8FvygaOkIjmn8Cw0Y_RKlXI0pgg7IeGmJgoQHk4qSVTjRiGN8cxHlvr-wzf9LPBkUQNfOOKrNmcaUkBFA9v1UE3hajtIytXConWSyeNSQlEnzaZAtawrGjvERqt34drTSgBVdyhuu0NhHByDvgBHN_1A.jpg"
+          "url": "https://cdn1.telesco.pe/file/ZPo6Yl6osGRwEJrrONxHXoLs2AtzlfvnIt1P43S3aa1ORX0lfQ6ZXNnElhUi_aK4fg2XxqmmLLv9S1zS-hSxITUsolm_dHii8zPNpJKqGiOghjdmjtdKgrrqTjor7hKv_VBEVBzNisYHxGCy3SYCahuLRT-o1lRw15NPOV_ER67-jAPEQ9Al6gq3pH7Cgcmb6ce-UDo8R6utN53JxaQrGyDIyBdNfp8TnDc8PXJKFI4XHibyxeAOKk2E_uV1Um4sVigJJy8bg4CS-Rcga-yVVrM6sKB6OFgEnVehtyHQytIQNVBQ53C_7f9mLp_T6tywRYzaSvlegq1FYuo4FNueoQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔥 Voltou pra quem não pegou\n\nSamsung Combo Galaxy A57 5G (128GB) - Cinza + Galaxy Watch8 BT 40mm - Grafite - R$1998\n\n-12x sem juros\n\nhttps://link.amazon/B0aJEKg4W\n\nanuncio",
+      "text": "🔥 Cupom Mercado Livre pra quem resgatou\n\n🎟 25% OFF acima de R$79, limite R$35: RESGATEFULL\n\nhttps://mercadolivre.com/sec/1UMapgt\n\nanuncio",
       "links": [
         {
-          "label": "https://link.amazon/B0aJEKg4W",
-          "url": "https://link.amazon/B0aJEKg4W"
+          "label": "https://mercadolivre.com/sec/1UMapgt",
+          "url": "https://mercadolivre.com/sec/1UMapgt"
         }
       ],
-      "createdAt": "2026-09-11T23:22:17.011Z",
-      "expiresAt": "2026-09-13T23:22:17.011Z",
+      "createdAt": "2026-09-12T03:06:02.777Z",
+      "expiresAt": "2026-09-14T03:06:02.777Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:17.011Z",
-      "tag": "gadgets",
-      "tags": [
-        "gadgets",
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:22:17.011Z"
-      }
-    },
-    {
-      "id": 4156457728,
-      "postUrl": "https://t.me/iuriindica/112059?single",
-      "source": {
-        "title": "IURI INDICA",
-        "handle": "iuriindica",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/rnBizPN3muRx1fCWFclIEbuSG-NSmgHMmEaKOLk6DGPkVIpIhvLGnXhfbqMFVO4oHuSlc6sqTBFQ74f1-a5sqoFb9l5hYwUs5z6rNGF--3nNgjlX53RnXCAK4VdHFpsK_JgF4oN4K6l7rUWFQVVXkHjudndjKyE24fgm-lf05deC5AIsBijpni0rVS1cDov6tv1xygYdUeDUpOut7Y7xFGETYfBgaL1acMpmX1_mukL8BcFIBIT7CHcjr8LMq18mTPHceSVG5K362WK90X49DuL6_VsLJb7g6x_jpYOKhGrzj19W2PVednwd1Q7xwqWhXkXynNholqulzm0LvJ4puw.jpg"
-      },
-      "sourceId": "br:iuriindica",
-      "sourceCountryCode": "br",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/cw3kXWK078JIYEarvc2QXbPdGEXgrLlZajkk7bQomJSC__F0x2PcnYR45AlaQtRDg9OMAoGL3jh8wVQouDIRmbhfpKvgGsVrFpTKxzDQrNqKpXo7beBLrk4J-4ZlG825DkpwVX2yr9vw2kBnOLbN5NrsjCTzTilMuZ3PvLdYX5VDOuxIbw775vExWdbItgj-hHNfytwvLPCf9VWe1LDN2bQxGYKX49O5A2llitEvTpIs1RqwPGgTppPTa1hxGZq0GOR23b2iPU364wULS6P5b-SXhQ98z_mjRSYi1IoNV2Qn5p8UImHKdb0F0kHnMDxEkvRGv1VG8VSeYTX-SBVQMQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Samsung Combo Galaxy A57 5G (128GB) Cinza + Galaxy Watch8 BT 40mm Grafite\n\n💵  R$ 1998 EM 10X SEM JUROS!\n✅  https://www.amazon.com.br/dp/B0H34YS1ZZ/?tag=afiliado333-20\n\nFrete Grátis e outros beneficios para membros PRIME!! 30 dias grátis para testar aqui: https://link.amazon/B019iaVdl 🥳",
-      "links": [
-        {
-          "label": "https://www.amazon.com.br/dp/B0H34YS1ZZ/?tag=afiliado333-20",
-          "url": "https://www.amazon.com.br/dp/B0H34YS1ZZ/?tag=afiliado333-20"
-        },
-        {
-          "label": "https://link.amazon/B019iaVdl",
-          "url": "https://link.amazon/B019iaVdl"
-        }
-      ],
-      "createdAt": "2026-09-11T23:22:15.598Z",
-      "expiresAt": "2026-09-13T23:22:15.598Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:15.598Z",
-      "tag": "gadgets",
-      "tags": [
-        "gadgets",
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:22:15.598Z"
-      }
-    },
-    {
-      "id": 3743714296,
-      "postUrl": "https://t.me/centraldeanimes_baltigo/7466?single",
-      "source": {
-        "title": "🍥 Central de Animes - QG BALTIGO ⚔",
-        "handle": "centraldeanimes_baltigo",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/PiPquscfi15zknesH0Vk-EmMZLNfiNG7X-DSagS81d2O0aobVC8BxB8n80pEuwPK5L_5Ik8wVoFR5aPKjg7v8yina8xIfKTb1ZvRyvF5IXhCFOn89WAStNtEoYvozkMmeX0qNBCxx1Trksv7nIntg821ArVkc1Es43avB_ZRlchUUk1RDcn6RIJAm1YrfAZk8YhMFKbzV5XaIbQNCPplAAsslJfAJN35LWrnlUDrulpAANL_2_fnHD86-x3Re3KJz0LWRdJVO3GE-gMp5hYGsuhZSD4CCRO0cg5CGObCHU8cUMY0H2pk7DnYMXU_uBlS6Br87tsetU1UX5GiOLji3Q.jpg"
-      },
-      "sourceId": "br:centraldeanimes_baltigo",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-09-11T23:22:14.311Z",
-      "expiresAt": "2026-09-13T23:22:14.311Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:14.311Z",
+      "mediaRefreshedAt": "2026-09-12T03:06:02.777Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3744,12 +4191,106 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:14.311Z"
+        "reviewedAt": "2026-09-12T03:06:02.777Z"
       }
     },
     {
-      "id": 1574742326,
-      "postUrl": "https://t.me/buzzfilmes/1843?single",
+      "id": 93682345,
+      "postUrl": "https://t.me/iuriindica/112069?single",
+      "source": {
+        "title": "IURI INDICA",
+        "handle": "iuriindica",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/rnBizPN3muRx1fCWFclIEbuSG-NSmgHMmEaKOLk6DGPkVIpIhvLGnXhfbqMFVO4oHuSlc6sqTBFQ74f1-a5sqoFb9l5hYwUs5z6rNGF--3nNgjlX53RnXCAK4VdHFpsK_JgF4oN4K6l7rUWFQVVXkHjudndjKyE24fgm-lf05deC5AIsBijpni0rVS1cDov6tv1xygYdUeDUpOut7Y7xFGETYfBgaL1acMpmX1_mukL8BcFIBIT7CHcjr8LMq18mTPHceSVG5K362WK90X49DuL6_VsLJb7g6x_jpYOKhGrzj19W2PVednwd1Q7xwqWhXkXynNholqulzm0LvJ4puw.jpg"
+      },
+      "sourceId": "br:iuriindica",
+      "sourceCountryCode": "br",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/JMyPR1Lq2rEwOi-OqmYiE2P_4egEciVRkBCELa83MqrVKVwHS5e5FJaMdL0ZLLFeXPIWBSrr3saGMc0LE-hWL5E0GZVXFX9md9BVZ-xHL3JDAj9WUCk8Uoe-oRu1B87SoLIxfOibOMbR6QeIaFQYC0K9A6D9kLkhlo9ral-AAzO7ddc1slLF5vzMvAhsUIwl8Wr8c3PyJ8jjqmnVpZsbmKpK37D2lsWeVQG6HMZgltCDlAY3rcc58gZ4uJKYWIVQsrt9tC26EC0aZYlOIi7RrXcdYJE5cxZwFvHdXBk3q_RIe4XZfHr7MaKGJgoT9liUEOM1WzTdqxe_Xj5uFpQuPQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Monitor Gamer Asus Tuf 27 Qhd 210Hz 0 3Ms Fast Ips G Sync Comp Freesync Premium Hdr10 Som Integrado Vg27Aq5A\n\n💵  R$ 1124\n🎟  Cupom: CLIENTE10\n✅  https://tidd.ly/4coz2wU",
+      "links": [
+        {
+          "label": "https://tidd.ly/4coz2wU",
+          "url": "https://tidd.ly/4coz2wU"
+        }
+      ],
+      "createdAt": "2026-09-12T03:06:01.527Z",
+      "expiresAt": "2026-09-14T03:06:01.527Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:01.527Z",
+      "tag": "electronics_brands",
+      "tags": [
+        "electronics_brands",
+        "electronics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:01.527Z"
+      }
+    },
+    {
+      "id": 2088866727,
+      "postUrl": "https://t.me/centraldeanimes_baltigo/7472?single",
+      "source": {
+        "title": "🍥 Central de Animes - QG BALTIGO ⚔",
+        "handle": "centraldeanimes_baltigo",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/PiPquscfi15zknesH0Vk-EmMZLNfiNG7X-DSagS81d2O0aobVC8BxB8n80pEuwPK5L_5Ik8wVoFR5aPKjg7v8yina8xIfKTb1ZvRyvF5IXhCFOn89WAStNtEoYvozkMmeX0qNBCxx1Trksv7nIntg821ArVkc1Es43avB_ZRlchUUk1RDcn6RIJAm1YrfAZk8YhMFKbzV5XaIbQNCPplAAsslJfAJN35LWrnlUDrulpAANL_2_fnHD86-x3Re3KJz0LWRdJVO3GE-gMp5hYGsuhZSD4CCRO0cg5CGObCHU8cUMY0H2pk7DnYMXU_uBlS6Br87tsetU1UX5GiOLji3Q.jpg"
+      },
+      "sourceId": "br:centraldeanimes_baltigo",
+      "sourceCountryCode": "br",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-09-12T03:06:00.665Z",
+      "expiresAt": "2026-09-14T03:06:00.665Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-09-12T03:06:00.665Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-09-12T03:06:00.665Z"
+      }
+    },
+    {
+      "id": 2248940208,
+      "postUrl": "https://t.me/buzzfilmes/1845?single",
       "source": {
         "title": "Filmes e Séries - Desativado",
         "handle": "buzzfilmes",
@@ -3825,10 +4366,10 @@
           "url": "https://t.me/BuzzCripto"
         }
       ],
-      "createdAt": "2026-09-11T23:22:13.318Z",
-      "expiresAt": "2026-09-13T23:22:13.318Z",
+      "createdAt": "2026-09-12T03:05:59.727Z",
+      "expiresAt": "2026-09-14T03:05:59.727Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:13.318Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:59.727Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3846,12 +4387,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:13.318Z"
+        "reviewedAt": "2026-09-12T03:05:59.727Z"
       }
     },
     {
-      "id": 688203407,
-      "postUrl": "https://t.me/a67bet/2708?single",
+      "id": 1257216054,
+      "postUrl": "https://t.me/a67bet/2709?single",
       "source": {
         "title": "67bet.cc | Canal Oficial ®",
         "handle": "a67bet",
@@ -3865,12 +4406,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/itLEHpLJDey25L2xOtu5jPaMWhoBa1dfmtvK2Umbuh2oI5LgYae60OZ285VF2l6ASeVSPACzY8wiOQCAzV93aA1BENmoAIzk1_zMRttHDArjFhaJZGKyPoUKwx7jtMGmLYGJYqXFT1xkTQKczOgv3zhtnwk7izLy5TH1Ol3THPZWkt470CXMv-DNpwGaNFec6bEINVxAwBjl99FypBZwr21j8DyBIpbtcYXGFDc1wJrcBdT06XfyzSMDILGxpTrGsSBAwnB5rNNVUpteap5qDGVLjApMAwEWloDsu3mIeZY0hN0rgTepdafo62RcqnYrrPUP3S2Ud-8I9N_g-AkOew.jpg"
+          "url": "https://cdn5.telesco.pe/file/b076TOrpDu2bXS_z7DQOveLCY0NKmm5JxqyePIckDQTVStpsXipKvvB2-jNO2-x6YLsm6wHYIg_sxe0u47DglFUpk2wrEL4ms6pr6T3iMH_O09D-d3F7J0G1FopePLtPvYreIGvw7gY-Jj5jTbMLQhi1uYRT1B4m2t5IKT3fjXkE19UxUgc0c4JSR2qow3KlUh45NagnqlYjSw_K-mL8TUpjz2FjRqy5sv3M4lxbupDQgNbxWzgr4H_1G-2xDTMCwctmEao_NXpc4rVBjmx_66-TCVpGFSy7fYFK4wi0DH0GjHXfa8hnZhJ_j261UBKzu1XZ4PQ7OkxttF_Ut2_JRQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "💙 6️⃣7️⃣🅱️🔠🔠⚪️🔠🔠 💙\n\n⭐️ PG Slots - Parceiro estratégico oficial ⭐️\n\n➡️ Desconto em dinheiro em 10 de setembro 👈\n\n🔊🔊 Atividade 2 bônus foi enviado para a conta do membro, verifique o saldo. A 67BET deseja a você um feliz jogo e tudo de bom. Obrigado pelo seu forte apoio e confiança. Nossa plataforma tem mais promoções e recompensas esperando por você para participar. Contanto que você se registre como membro 67BET, sua conta lhe trará prêmios generosos ~ ✔️\n\n➡️➡️ Para quem ainda não se cadastrou/depositou ~ o que está esperando? Diga a seus amigos e parentes para virem juntos! Contanto que você se registre como membro do 67BET, poderá aproveitar o valor exclusivo de sua conta de membro.⭐️⭐️\n\n😀 Site Oficial: 67bet.cc\n😀Baixar App: 67betapp.com",
+      "text": "6️⃣7️⃣🅱️🔠🔠⚪️🔠🔠 \n\n✨PG Slots - Parceiro estratégico oficial✨\n\n🎁🎁O código de resgate para esta rodada é &lt; 6️⃣9️⃣8️⃣ &gt;, faça login no jogo imediatamente para resgatar,O valor máximo do bônus .é de R$ 5,555,00. 67BET deseja a você um bom jogo。⚡️⚡️\n\nEtapas da operação: faça login na conta/obtenha o código de resgate/vá ao centro de atividades para resgatar/todos os clientes estão limitados a 1 oportunidade de resgate [membros novos e antigos podem participar]\n\n ⏰Lembrete: Quantidade limitado  Horário final horário Brasil 20:00🇧🇷\n\n🔴🔴Lançaremos códigos de resgate e anúncios e eventos mais importantes no canal do Telegram ou na página inicial do Facebook de tempos em tempos. Preste mais atenção ao canal oficial da 67BET para não perder.\n\n😀 Site Oficial: 67bet.cc\n😀Baixar App: 67betapp.com",
       "links": [
         {
           "label": "67bet.cc",
@@ -3881,14 +4422,14 @@
           "url": "https://67betapp.com/"
         }
       ],
-      "createdAt": "2026-09-11T23:22:12.807Z",
-      "expiresAt": "2026-09-13T23:22:12.807Z",
+      "createdAt": "2026-09-12T03:05:59.216Z",
+      "expiresAt": "2026-09-14T03:05:59.216Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:12.807Z",
-      "tag": "finance_banks",
+      "mediaRefreshedAt": "2026-09-12T03:05:59.216Z",
+      "tag": "technology_software",
       "tags": [
-        "finance_banks",
-        "finance"
+        "technology_software",
+        "technology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3903,7 +4444,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:12.807Z"
+        "reviewedAt": "2026-09-12T03:05:59.216Z"
       }
     },
     {
@@ -3931,10 +4472,10 @@
       "fallbackReason": null,
       "text": "É claro que o Neo-Liberalismo veio forte nas décadas de 80 e 90 pra evitar essa corrente nacionalista e soberana dos países emergentes, como Brasil 🇧🇷, e América Latina, e países africanos.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:12.102Z",
-      "expiresAt": "2026-09-13T23:22:12.102Z",
+      "createdAt": "2026-09-12T03:05:58.567Z",
+      "expiresAt": "2026-09-14T03:05:58.567Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:12.102Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:58.567Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -3953,7 +4494,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:12.102Z"
+        "reviewedAt": "2026-09-12T03:05:58.567Z"
       }
     },
     {
@@ -3986,10 +4527,10 @@
           "url": "https://t.me/averdadeforadamidia"
         }
       ],
-      "createdAt": "2026-09-11T23:22:11.356Z",
-      "expiresAt": "2026-09-13T23:22:11.356Z",
+      "createdAt": "2026-09-12T03:05:57.893Z",
+      "expiresAt": "2026-09-14T03:05:57.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:11.356Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:57.893Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4008,7 +4549,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:11.356Z"
+        "reviewedAt": "2026-09-12T03:05:57.893Z"
       }
     },
     {
@@ -4033,10 +4574,10 @@
           "url": "https://g1.globo.com/sc/santa-catarina/noticia/2026/09/10/rompimento-cabo-aco-investigado-morte-vereador-batatas-treze-maio.ghtml"
         }
       ],
-      "createdAt": "2026-09-11T23:22:10.718Z",
-      "expiresAt": "2026-09-13T23:22:10.718Z",
+      "createdAt": "2026-09-12T03:05:57.290Z",
+      "expiresAt": "2026-09-14T03:05:57.290Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:10.718Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:57.290Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4055,7 +4596,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:10.718Z"
+        "reviewedAt": "2026-09-12T03:05:57.290Z"
       }
     },
     {
@@ -4065,7 +4606,7 @@
         "title": "Notícias e Guerras 🌐",
         "handle": "noticiaseguerras",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/BtfSh9DEeqhUeFoYXv-Y0_BUgTKaUBZgxUnhNcbVrTIR9lUgxWnwaQnnFFoo9UU-dBCodft7N-hssoUYs03EkZutZcoLnLpKli3ogVrubiKG8QXUNfXFTEjhF3r2soyVYoA0tTHGqC7Ntql2cDtJjQS8wx_lm_abR8xo1BA8XOKucam3MQGO8-98eMim06PeIcuoUN9fHNwC5vY7aliBwennnWWm5LZY0skeRB_gf4Pu482C1ItZeAgPQs_SikMQu5XOE8r2rD4WvnDcddkaSbwwqJuPdWChKXwxe8p2r9yQmTRCqRMZSVy3O73DYijBs62-u6HYu-CX-EwpNQOOJw.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/ty_RNj2YsyyZBYc5SgYGYgqzynvmLnFKQ1qUE3E2013yWmOjrKuTX9gfdhr3qLLrTJBK6YejETaek77lDG4R9UzskXUHbKe-Uowrj2yT9PxG_TnkZPMJm3KbZnsTbGZ3agdGPMxlVxJaHfLuQBXsExmeGS_uU2dwvCiW1ubSnXsPXbTRjqCq0tUBlYHhD-E57fQaI7_6IhP_LoX1Donjb_6qLhdaz8VBMzr99677M8LUO87o0RH6xJPgCX2XHEAS2ZYfBC2yT7QalugPh9XuPVBcMB4V1cUIozvF8W_JDCaf1R4hDvTHChFNMyzAhnPuyZfjabwphsMQUMLtQ5NtUg.jpg"
       },
       "sourceId": "br:noticiaseguerras",
       "sourceCountryCode": "br",
@@ -4080,10 +4621,10 @@
           "url": "https://bit.ly/comunidade_noticiaseguerras"
         }
       ],
-      "createdAt": "2026-09-11T23:22:10.170Z",
-      "expiresAt": "2026-09-13T23:22:10.170Z",
+      "createdAt": "2026-09-12T03:05:56.765Z",
+      "expiresAt": "2026-09-14T03:05:56.765Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:10.170Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:56.765Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4102,7 +4643,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:10.170Z"
+        "reviewedAt": "2026-09-12T03:05:56.765Z"
       }
     },
     {
@@ -4148,10 +4689,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-11T23:22:09.508Z",
-      "expiresAt": "2026-09-13T23:22:09.508Z",
+      "createdAt": "2026-09-12T03:05:56.080Z",
+      "expiresAt": "2026-09-14T03:05:56.080Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:09.508Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:56.080Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4170,7 +4711,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:09.508Z"
+        "reviewedAt": "2026-09-12T03:05:56.080Z"
       }
     },
     {
@@ -4199,10 +4740,10 @@
           "url": "https://t.me/naoconsigorespirar"
         }
       ],
-      "createdAt": "2026-09-11T23:22:08.587Z",
-      "expiresAt": "2026-09-13T23:22:08.587Z",
+      "createdAt": "2026-09-12T03:05:55.169Z",
+      "expiresAt": "2026-09-14T03:05:55.169Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:08.587Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:55.169Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4221,12 +4762,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:08.587Z"
+        "reviewedAt": "2026-09-12T03:05:55.169Z"
       }
     },
     {
-      "id": 1889898487,
-      "postUrl": "https://t.me/missaocefas/243298?single",
+      "id": 2730220482,
+      "postUrl": "https://t.me/missaocefas/243303?single",
       "source": {
         "title": "Missão CEFAS †",
         "handle": "missaocefas",
@@ -4239,37 +4780,41 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Campanha mobiliza passageiros em solidariedade para dia das crianças \n \nhttps://ift.tt/QsOrwxi\n \nvia Notícias\n \nNa correria do cotidiano, a pressa muitas vezes nos impede de olhar pro lado. Mas, há um mês do Dia das Crianças, uma campanha quer transformar as plataformas de trem em pontos de solidariedade.Reportagem de Sidinei Fernandes e Antonio MatosO post Campanha mobiliza passageiros em solidariedade para dia das crianças apareceu primeiro em Notícias.\n\n\nmissaocefas.t.me\n\n†",
+      "text": "Coroa das Lágrimas | 12/09/2026 | Quaresma de São Miguel Arcanjo \n \nFonte: https://www.youtube.com/watch?v=YlmTLCyIz-8\nPor Déia e Tiba\n\n✅ https://ift.tt/0gzXA1E______________________________________________👉 Nos siga nas REDES SOCIAISINSTAGRAM:Déia: https://ift.tt/W4j2B8qTiba: https://ift.tt/o7qp2YS\n\nt.me/missaocefas",
       "links": [
         {
-          "label": "Campanha mobiliza passageiros em solidariedade para dia das crianças",
-          "url": "https://noticias.cancaonova.com/brasil/campanha-mobiliza-passageiros-em-solidariedade-para-dia-das-criancas/"
+          "label": "Coroa das Lágrimas | 12/09/2026 | Quaresma de São Miguel Arcanjo",
+          "url": "https://www.youtube.com/watch?v=YlmTLCyIz-8"
         },
         {
-          "label": "https://ift.tt/QsOrwxi",
-          "url": "https://ift.tt/QsOrwxi"
+          "label": "https://www.youtube.com/watch?v=YlmTLCyIz-8",
+          "url": "https://www.youtube.com/watch?v=YlmTLCyIz-8"
         },
         {
-          "label": "Campanha mobiliza passageiros em solidariedade para dia das crianças",
-          "url": "https://noticias.cancaonova.com/brasil/campanha-mobiliza-passageiros-em-solidariedade-para-dia-das-criancas/"
+          "label": "https://ift.tt/0gzXA1E______________________________________________👉",
+          "url": "https://ift.tt/0gzXA1E______________________________________________%F0%9F%91%89"
         },
         {
-          "label": "Notícias",
-          "url": "https://noticias.cancaonova.com/"
+          "label": "https://ift.tt/W4j2B8qTiba",
+          "url": "https://ift.tt/W4j2B8qTiba"
         },
         {
-          "label": "missaocefas.t.me",
-          "url": "https://missaocefas.t.me/"
+          "label": "https://ift.tt/o7qp2YS",
+          "url": "https://ift.tt/o7qp2YS"
+        },
+        {
+          "label": "t.me/missaocefas",
+          "url": "https://t.me/missaocefas"
         }
       ],
-      "createdAt": "2026-09-11T23:22:06.449Z",
-      "expiresAt": "2026-09-13T23:22:06.449Z",
+      "createdAt": "2026-09-12T03:05:53.763Z",
+      "expiresAt": "2026-09-14T03:05:53.763Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:06.449Z",
-      "tag": "transport_auto",
+      "mediaRefreshedAt": "2026-09-12T03:05:53.763Z",
+      "tag": "telegram_ton",
       "tags": [
-        "transport_auto",
-        "auto"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4284,7 +4829,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:06.449Z"
+        "reviewedAt": "2026-09-12T03:05:53.763Z"
       }
     },
     {
@@ -4309,10 +4854,10 @@
           "url": "https://youtu.be/S6IXcRCMTfM"
         }
       ],
-      "createdAt": "2026-09-11T23:22:05.191Z",
-      "expiresAt": "2026-09-13T23:22:05.191Z",
+      "createdAt": "2026-09-12T03:05:52.513Z",
+      "expiresAt": "2026-09-14T03:05:52.513Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:05.191Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:52.513Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4331,7 +4876,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:05.191Z"
+        "reviewedAt": "2026-09-12T03:05:52.513Z"
       }
     },
     {
@@ -4359,10 +4904,10 @@
       "fallbackReason": null,
       "text": "Ficou provado com o caso Epstein o que viemos dizendo, que a lei não chega nos culpados pois são acobertados e compostos pelas maiores autoridades.\n\nEles estão preparando um “dilúvio negro” contra os Cristãos, um período em que pretendem literalmente nos caçar e exterminar.\n\nEnquanto isso você fica na ignorância e querendo fazer tratos políticos com o mal. Com o mal não se negocia, não se faz coligação e nem acertos pragmáticos.\n\nPor outro lado, mal sabem eles que a caça virará caçador, quando o Messias retornar haverá um extermínio desse joio de cima da terra.\n\nEles encontraram 163 crianças, mas há 300 MIL crianças, imigrantes ilegais, que ninguém sabe onde estão.",
       "links": [],
-      "createdAt": "2026-09-11T23:22:04.523Z",
-      "expiresAt": "2026-09-13T23:22:04.523Z",
+      "createdAt": "2026-09-12T03:05:51.957Z",
+      "expiresAt": "2026-09-14T03:05:51.957Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:04.523Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:51.957Z",
       "tag": "electronics_brands",
       "tags": [
         "electronics_brands",
@@ -4381,7 +4926,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:04.523Z"
+        "reviewedAt": "2026-09-12T03:05:51.957Z"
       }
     },
     {
@@ -4401,10 +4946,10 @@
       "fallbackReason": null,
       "text": "Pensar que meses atrás tínhamos Paulo Guedes",
       "links": [],
-      "createdAt": "2026-09-11T23:22:03.770Z",
-      "expiresAt": "2026-09-13T23:22:03.770Z",
+      "createdAt": "2026-09-12T03:05:51.201Z",
+      "expiresAt": "2026-09-14T03:05:51.201Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:03.770Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:51.201Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4423,7 +4968,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:03.770Z"
+        "reviewedAt": "2026-09-12T03:05:51.201Z"
       }
     },
     {
@@ -4443,10 +4988,10 @@
       "fallbackReason": null,
       "text": "As frases do Pai Nosso se relacionam com os chakras de cima para baixo :\n\n✓Pai nosso que estais no céu\n\nAtive o chakra coronário , onde entra a energia divina no corpo, irradiando luz, amor, fé e esperança para todos os outros centros energéticos .\n\n✓Santificado seja o seu nome\n\nAtive o chakra do terceiro olho , despertando a visão interior, a consciência profunda e a revelação da luz divina em nossa vida .\n\n✓Venha o Teu Reino\n\nAtive o chakra laríngeo , o centro do verbo criador, para manifestar o elevado e o sublime através da palavra consciente .\n\n✓Seja feita a sua vontade, assim no céu como na terra\n\nAtive o chakra do coração , permitindo que eles governem o amor, a empatia, a compreensão e o perdão .\n\n✓O pão nosso de cada dia nos dai hoje\n\nAtive o chakra do plexo solar , fortalecendo a autoestima, a confiança e o poder pessoal necessários para servir com equilíbrio e segurança .\n\n✓E perdoai as nossas ofensas assim como nós perdoamos a quem nos tem ofendido\n\nAtive o plexo esplênico , liberando rancores, ódio e pesos emocionais, limpando o interior através do perdão sincero .\n\n✓Não nos deixeis cair em tentação e livrai-nos de todo mal\n\nAtive o chakra raiz , ajudando a superar medos e inseguranças, transformando a energia instintiva em força criadora e consciência através do livre arbítrio .\n\nO Pai Nosso purifica e desperta os centros energéticos do corpo, entendido como o Templo do EU SOU . Não deve ser repetido como um robô, mas pensado, meditado e vivido, pois é uma ponte entre o ser humano e o seu Deus interior, uma oração de proteção, cura e transformação integral .\n\nAmém\n\nSe este ensinamento ressoou com você, compartilhe esta imagem para que mais pessoas se lembrem do poder espiritual do Pai Nosso e sua conexão com os 7 chakras.\n\nTer consciência desse poder é outro nível de manifestação no mundo físico.🙏",
       "links": [],
-      "createdAt": "2026-09-11T23:22:03.123Z",
-      "expiresAt": "2026-09-13T23:22:03.123Z",
+      "createdAt": "2026-09-12T03:05:50.653Z",
+      "expiresAt": "2026-09-14T03:05:50.653Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:03.123Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:50.653Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -4465,7 +5010,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:03.123Z"
+        "reviewedAt": "2026-09-12T03:05:50.653Z"
       }
     },
     {
@@ -4490,10 +5035,10 @@
           "url": "https://zacue.com/"
         }
       ],
-      "createdAt": "2026-09-11T23:22:02.483Z",
-      "expiresAt": "2026-09-13T23:22:02.483Z",
+      "createdAt": "2026-09-12T03:05:49.958Z",
+      "expiresAt": "2026-09-14T03:05:49.958Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:02.483Z",
+      "mediaRefreshedAt": "2026-09-12T03:05:49.958Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -4512,482 +5057,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-11T23:22:02.483Z"
-      }
-    },
-    {
-      "id": 2107372936,
-      "postUrl": "https://t.me/insolentes/1?single",
-      "source": {
-        "title": "N!GhTㅤ ㅤ / %𝟢𝟥:𝟤𝟩𝖠𝖬.",
-        "handle": "insolentes",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/MM-hMq_M908HGLUrllTG86JTwqlhoumNNLNW2o_6gdI8CvHPES98NERUzUas3sBwiz3MS9jdwhFi9tVsNzZwAp0Dw5-OfIn7zWKYkfEm2NvJHyPey_w-Movk7-B2-n8aILZVtKPIo2RDbrAqPfjNH3G290SA15Qt51h7yDyMA0lgccAMMZoTZw0PllItHYUMGGhWev_Co12BuES9w4SSQ1Se8OneFhX5sd3d6eV-EJYsHH4wXWIEg8y1laLsDYbhDyO9BxXoQ4ZahyriE_YSHXEKzWWV-SSaTHrGMDLecXQhyAK1N1I9GQjbAtj-5fHpA_Cs1Ygcmd7UQsFbuE2nLQ.jpg"
-      },
-      "sourceId": "br:insolentes",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-09-11T23:22:01.929Z",
-      "expiresAt": "2026-09-13T23:22:01.929Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:01.929Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:22:01.929Z"
-      }
-    },
-    {
-      "id": 2506259672,
-      "postUrl": "https://t.me/homossexuais/243?single",
-      "source": {
-        "title": "A LOUCURA DA IDEOLOGIA DE GÊNERO",
-        "handle": "homossexuais",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/UmT476gFHrjrQ13fyq8GuB4XBEOsrLgc8FKNeK5abuzwOPCP39wHzpSbr50V-gEveYslILnDeYQ1dY19GFPi5m6mUKTHOefRkKGDyI8LepSMyyv13gihYcUYxN7vCwSg0i7FsjQWFBow1gxxQMRt1iE4t1n5BlrQok2uV_X_2KPI0Ft0eEAJzH0BbtpbqF1p2PibLMDevhyUIqbDNSj9DsHlNnc5n7OmZS9eQ0t8uC_EQeWB_-ImDYWClLyh7oMwpe4IWBI3E3abZqklRmHagv_IL1NgD-tEvuE_bge1xtlXCUDiWBKN--yrqigs-7zxHOz40wvsosYqy7VJj6u_0Q.jpg"
-      },
-      "sourceId": "br:homossexuais",
-      "sourceCountryCode": "br",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/08ef162cdb.mp4?token=PBBeg5qNS1yQWgxC0fY6pqVeO5kYeDWbt0c4WIACCEMfaAbw6LCBJYCB2v0RX6TwgjH5aHsx3vLUwXn6wgCQP8abt7oNxvGYEf-W_HDWcDojYziLH7EEBByhMc5o9VGXTIVXecSBCkf-z2zCTimU_na-lSePq6tRxZQ3Uz5UtCVSquxMn-kbrc4yl3JarXAFdJkGTnnLdzC_oBy7n_aGtYqFfvAOfKgcQrFpuHWUMLoblZu6VkSSsLPCPfH6NGeE36VAM5-rPXilG93u-hj3ERV0f3dyelHooAMW3EcsFyy7uk148njJQ5BbtwC0e0gh9UD7-TYU1i39WnN5cIaLGjEFKxJ6k1eYfMvEplPJtrvjNDqUZKHraaH2lEX5FS5D24HRoz2xYTU9HwGE1QryiNRUAiyBnBheYTxeDtXTlQ203sSe-BQl_uP_6Lid0C2DrpHW_5GcBKFVtheouEoF5pZ0GLgTIT2rTHfdwMduCsbqJnSRQ6oThousf8mPvhAK38iwPOKEWQeFJAvL6WV8y5wz4RCHlNgjdC0XCV-_g8Ago8BvHNuqBnZHCcOUARvTwKkrSBQ_BLkzgCiFCdjTZDodssJBVYybS7uqhK7cThFUn2ZMZhWXtGrToB-U3SFdm4F6YXNl5qgzA36syr7m9u-_SjghxYjDNNVgzd-vzvA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-09-11T23:22:01.407Z",
-      "expiresAt": "2026-09-13T23:22:01.407Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:01.407Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:22:01.407Z"
-      }
-    },
-    {
-      "id": 4001555014,
-      "postUrl": "https://t.me/hojeno_mundomilitar/30018?single",
-      "source": {
-        "title": "Hoje no Mundo Militar - Canal",
-        "handle": "hojeno_mundomilitar",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/YgiZO_eSRl6kwvnhdu4LLPacOzN0OZNgsKN8CJehtm9Jd9vio8VtsZ_FJ3aSNMvklmaTE10GXf5zXDauKao1FXXb2BIuDODBkPb-hsn9PcAUVv8KpIFzNtrFYwg_uzunFWUoCnwnAAerWDiPh4Qo3bnPAFvUpmFAAsFMnonPX9sYkn4E6KfrI3DSjQCmDlvxhiuhkgNdS9RTRJrCutXiN6I1j5sIn9wHEwB5zo-i4ZezT1ou3SPediWLoct1U62kEEXaQVwl5pQCkGVW63FGbQ0lgQK7JsBFI5ttkW2Z-BpneNST9_dkpDcVHdT0QaOd6KzsLuIoNZDz9IhxVuCcvA.jpg"
-      },
-      "sourceId": "br:hojeno_mundomilitar",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Dois Estreitos em Risco – Irã fecha Ormuz e Houthis pressionam Mar Vermelho: Briefing 11-Set\nhttps://youtu.be/RmOz0041bCw",
-      "links": [
-        {
-          "label": "https://youtu.be/RmOz0041bCw",
-          "url": "https://youtu.be/RmOz0041bCw"
-        }
-      ],
-      "createdAt": "2026-09-11T23:22:00.489Z",
-      "expiresAt": "2026-09-13T23:22:00.489Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:22:00.489Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:22:00.489Z"
-      }
-    },
-    {
-      "id": 756582219,
-      "postUrl": "https://t.me/guardioesdanacao/24?single",
-      "source": {
-        "title": "Guardiões da Nação +18",
-        "handle": "guardioesdanacao",
-        "verified": false,
-        "avatar": null
-      },
-      "sourceId": "br:guardioesdanacao",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-09-11T23:21:59.310Z",
-      "expiresAt": "2026-09-13T23:21:59.310Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:59.310Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:59.310Z"
-      }
-    },
-    {
-      "id": 328026335,
-      "postUrl": "https://t.me/geneticista/3250?single",
-      "source": {
-        "title": "Eli Vieira",
-        "handle": "geneticista",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gXghhpucvMiaYGkPpZefdu-i0tp279naR-Dfq7YmaOmv2Kugl8X82xHhi8gug7_4hUC598DXceeD4FKWe7K-izW_1x4IF_l7nz-QSnXH9O4p8rmoUVu65KMrADAYE1yYG1Tu9e9ZiMSJc_Up67SeNB1Hq7fGjLglH4NRtpNw5jcHSLdTTiDSf5IK1m_AVDpDaSz8UizcMfS7xzTtZ2-mrcVFQ4M27vm6XsR6youZvL4dpTrbWBqIQ94KqxDFj1t_xehI9FqacX2R_F_VoDoBWsd9TtKYGJ0NAHbHj0121UFT-SxSpWwOktEzqH4tau56Wn1-PG_UREQ6B9cfRvCjzQ.jpg"
-      },
-      "sourceId": "br:geneticista",
-      "sourceCountryCode": "br",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/hObCsg3JwQRi8BDvJuBEeyoZoJLJEosODPrF7fKl4eDwQ8b4Hj3np232HNiSj9oGaWH550vrtk9Xald-9NlaYR5ViPs8dtKcfq-ROLcjDf1cEVRz5bRd1EYkcgql3dQf3bbJyJ2zm0OvPqiThqMYBddjLUp6jrCtS5PCILg8EPU0KFTr650vRkEkpdnrJoQHOMHK4K13YC6mn5aLXTmLxiya4tiIa1RSNolYq_G-JZOnJJJhy3Y3IQnlgzaIbAGo6vJw2QE9fFykTSMP-Xez_VPYqnOXo7VLUGe_Ry9IKejkrE4xt0NSZedMNsx8BTNUf2F1nwUH1gASSXvydnjiZw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Hoje, às 20h, eu e Felipe Novaes comentaremos o rescaldo da tragédia de Jason Arday e como ela foi usada pelos picaretas das universidades para deteriorar ainda mais a confiança pública nessas instituições. Podcast Tôblock.",
-      "links": [],
-      "createdAt": "2026-09-11T23:21:58.538Z",
-      "expiresAt": "2026-09-13T23:21:58.538Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:58.538Z",
-      "tag": "people_interviews",
-      "tags": [
-        "people_interviews",
-        "people"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:58.538Z"
-      }
-    },
-    {
-      "id": 1734490116,
-      "postUrl": "https://t.me/furiaetradicao/4794?single",
-      "source": {
-        "title": "Fúria e Tradição",
-        "handle": "furiaetradicao",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/HavMOv-mDfyj8xAbk710slTx7SJJ6fVlAA5p0oMoEP94VjYq1NaOLNZ9YFmDWH7B7CYx20IrEbvaEDli9mUO_YvOjjEMj8Qly-5n1UbsFIgiw6Bp3YYSBGFZORBzCHdzQDXj26MyxIh05REsBcr9KQdI6QIG_Kaj6NQUYhFMlKbodPiWoRPEKK34VhiPhx8VCXpYnAG9xtfHkrEKGl9f6a5bBo12NDocTkyCBixKtEBTSYT7Um6Wlq4F2hMV7e_gZO6vh_GCO463w7R7-TOlBZASeUjiQ7mbyiMi5FxiGrLc7rEVnTSCuypMSxy8RniCqLyaMl1P2MrDSOJ8_I3QXA.jpg"
-      },
-      "sourceId": "br:furiaetradicao",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Bora pra live, pessoal! Link: https://www.youtube.com/watch?v=_o6Aj9GU4YE",
-      "links": [
-        {
-          "label": "https://www.youtube.com/watch?v=_o6Aj9GU4YE",
-          "url": "https://www.youtube.com/watch?v=_o6Aj9GU4YE"
-        }
-      ],
-      "createdAt": "2026-09-11T23:21:57.524Z",
-      "expiresAt": "2026-09-13T23:21:57.524Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:57.524Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:57.524Z"
-      }
-    },
-    {
-      "id": 3242917209,
-      "postUrl": "https://t.me/fimdostemposbrasil/79777?single",
-      "source": {
-        "title": "Fim dos Tempos | Notícias Globais",
-        "handle": "fimdostemposbrasil",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/d_9zXDOgMEidp0-yWDdXlGDTtxhP5rfhOd7dgxng50lnW-Hp_DoQSrrexw8MDIlKy_qWpgt_Ou-IqMN0-c3ci_4rPyn3sGZ1BX9MJS0VkFJ0ddm-X8f-fT4onwpERjaiZbUQVVzK_ByVN28kzm8-1Z2u8VxZ4VL8AsKe-BjGQxSNR7OyBwGAGAy2tpLBz5Ud_uHEraepkGRbkBeG0Gkj25kT1UxMKlbX30r9PwJKudYcofAAzEEI-d1AepIT5YkDGqzitdfHt3rgyasROiSZvPCGg0EYxmdWQ1Z_zgy8Oo12YdjWz2_jYmMArCMIMo0n22U1K0y3l4Cz6JSDYghieg.jpg"
-      },
-      "sourceId": "br:fimdostemposbrasil",
-      "sourceCountryCode": "br",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/45c1b31162.mp4?token=rZdVnatFO4BVJdaU-Q6S7x87P6bOEQQiCN2ZqtrMJbE1Xonme9pLNHa3IrcKoxe686wYLXSU9X7ZGsWyui8yJjXRKRfPIpTX__d2-Asj8VgyUmQmOQ-yFkjaHgH1T9ppGFc-G0xK1N44Vn69FWN2530PMKG5auoUbPNWwK61vciVuSim2UFCCWipVw9kwaPMYvFvcnGpGrGZC17eUpDqSHVCU4b6mmB3Bz5_y85RqRVcTMMpo-I2h4v-izRdJ99PbCr9ealMxECpb2glaOP-6sFyWigTBC-tgMZoc8pSjpi_BQ5Vp8JJbifUg9WtF_lHybAjBtWYezQCffPUJQXNpQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "\"Alá é o maior\" foi gritado em Nova York no dia 11 de setembro, durante protestos.",
-      "links": [],
-      "createdAt": "2026-09-11T23:21:55.394Z",
-      "expiresAt": "2026-09-13T23:21:55.394Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:55.394Z",
-      "tag": "politics_conflicts",
-      "tags": [
-        "politics_conflicts",
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:55.394Z"
-      }
-    },
-    {
-      "id": 1884673639,
-      "postUrl": "https://t.me/falhadamatrix/96603?single",
-      "source": {
-        "title": "A FALHA DA MATRIX",
-        "handle": "falhadamatrix",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/DUgZPjxfbxWuoUjkq6Vc3ItLdBUANlaX5h0QLqNcoUmba40aldwZQLcyAHSvgK3_VIHvrNLcg0tkbdCtwM1QBJTNPCKCSbe-vB3tc9uZ0V0w-PFpXkEl6-igGzXu474_jORCGnEx6PkCtR-ERojYAmZqN2VoHRbVy8uJZVgw1bMizwm5W0AiIBrYRRT6_epC3srxgV8KElxDl0_GRDl_KUXOibjEdxlqnplmDBdVl5poxkCEyIZ_INS0RF7XHRazcIt_WU8xE2AkSFg_he0Z6jFhiTXEUSMqjgKw_MeiCVTK-js0STwaLIjiMbFHi0402NSJNF-XvqMhaTD-ygXqIg.jpg"
-      },
-      "sourceId": "br:falhadamatrix",
-      "sourceCountryCode": "br",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/8a14107e07.mp4?token=kmZLzI1t11tlAWsirRRfqeQXGoR3cAdRlC6hDQCy2fGXPxsLW2TwLywBHEtDhiMKXeFAAqUKcQqiwNlJB3NLtDIKtk-VY3YCH5U2_PBGDWVl87QXtp3y09pV6szMLdT082WEFegHFsTsa-ocyRIJMa2r88mtPHFvF6lIlmRb2vyjRLrj8R_iTiC1-HfZOPfzxOmJr2n0o9HO286LlZzCkUJcSbFA4pe5kz4SL94Hkp4CKvdwn40_vuF2lXP1guVaZQ21x7nypOlCesfeOsroGhr2G1KXb69CZUrwwQqcw0Ze4FH-lUBjFkYVf0mHLVpDFKENpH6JPL19QHwg0s5Gbw",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "@falhadamatrix",
-      "links": [
-        {
-          "label": "@falhadamatrix",
-          "url": "https://t.me/falhadamatrix"
-        }
-      ],
-      "createdAt": "2026-09-11T23:21:54.345Z",
-      "expiresAt": "2026-09-13T23:21:54.345Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:54.345Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:54.345Z"
-      }
-    },
-    {
-      "id": 2473302132,
-      "postUrl": "https://t.me/fabianabarroso/4933?single",
-      "source": {
-        "title": "Fabiana Barroso Canal",
-        "handle": "fabianabarroso",
-        "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/FXUzib3lk-pHEq-MCQJBqsuSdPlNrvLDECslN5A_a5Whku1QqyPCIawLaMhZSAvt--ZplT4Tg_7YUx6aeCCcEpR0BMHmx7wEYlZcjb6TOg-49jUfnZCnbuwF61gq2kMY-N7vDL38TAxskIIcphNb-Wt7IuHneMbaV2FmTVTMfhLJabI04p_ntSYve8xc3W5BGljNgdMGw7TEvsvex1_OIPMDpEEM10To2YKTiZtTj5oLAkII32cdwvSlfv65qZZa6c5mEpVDQNgu5ml3sFM_71Z79HeKYVrPcMTRU9FJXmx8IJMn_CL3ii-9KM9SL-SiML239oY6Hi7zpy1uGzPShw.jpg"
-      },
-      "sourceId": "br:fabianabarroso",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "https://youtube.com/shorts/9Wd9MQ9JRwg?si=3gmDPe8FBuqManMk",
-      "links": [
-        {
-          "label": "https://youtube.com/shorts/9Wd9MQ9JRwg?si=3gmDPe8FBuqManMk",
-          "url": "https://youtube.com/shorts/9Wd9MQ9JRwg?si=3gmDPe8FBuqManMk"
-        }
-      ],
-      "createdAt": "2026-09-11T23:21:53.798Z",
-      "expiresAt": "2026-09-13T23:21:53.798Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:53.798Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:53.798Z"
-      }
-    },
-    {
-      "id": 1877028061,
-      "postUrl": "https://t.me/edaldem/776?single",
-      "source": {
-        "title": "Liberdade de Expressão",
-        "handle": "edaldem",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/rCUj8AhNoi-LCPDMSZg0DB6ur6GWClK09CNA-vQ79SzwzlFa6KqozG4Jm19pa5LU3JAYMkbwbr_5izaYIS_uZZAFvIoloIsZtuEYpXen5yrGD31jt3vF-6AOAkfqZwH7Vldkli4QR3djYxuCatoZ9QzssEfHDPhe7XEwd_OZLoP4f5wJru_cJM5mqXrTUsTS4s14QSTnRCWHd7aU43sHZva5P0X4hbG8c0o5cl9u7nLaxcQgsvWfQ7ygpV8Rjt1Pl5DJMJpO0XKd4RNRDx5pVJ0MbEull1zlhRmCEGYXO1YndcjBXn61L23l4EYy8vZKPedOCw6rwG0nmx0tDHAA6Q.jpg"
-      },
-      "sourceId": "br:edaldem",
-      "sourceCountryCode": "br",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "O festival de Yulin começou mais uma vez. Nele, milhares de cães e gatos são abatidos a cada edição. Mas precisamos lembrar que, por aqui, o Festival de Yulin também é uma realidade.\n\nhttps://youtu.be/32519Jlr_pk",
-      "links": [
-        {
-          "label": "https://youtu.be/32519Jlr_pk",
-          "url": "https://youtu.be/32519Jlr_pk"
-        }
-      ],
-      "createdAt": "2026-09-11T23:21:52.391Z",
-      "expiresAt": "2026-09-13T23:21:52.391Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-11T23:21:52.391Z",
-      "tag": "design",
-      "tags": [
-        "design",
-        "culture"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-09-11T23:21:52.391Z"
+        "reviewedAt": "2026-09-12T03:05:49.958Z"
       }
     }
   ]
