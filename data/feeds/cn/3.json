@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T21:21:35.360Z",
+  "updatedAt": "2026-09-21T00:35:35.749Z",
   "posts": [
     {
       "id": 1079826844,
@@ -33,10 +33,10 @@
           "url": "https://t.me/jpz567777777"
         }
       ],
-      "createdAt": "2026-09-20T20:39:52.797Z",
-      "expiresAt": "2026-09-22T20:39:52.797Z",
+      "createdAt": "2026-09-20T23:49:13.698Z",
+      "expiresAt": "2026-09-22T23:49:13.698Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:52.797Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:13.698Z",
       "tag": "other",
       "tags": [
         "other"
@@ -54,7 +54,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:52.797Z"
+        "reviewedAt": "2026-09-20T23:49:13.698Z"
       }
     },
     {
@@ -99,10 +99,10 @@
           "url": "https://t.me/axxx/22456"
         }
       ],
-      "createdAt": "2026-09-20T20:39:52.143Z",
-      "expiresAt": "2026-09-22T20:39:52.143Z",
+      "createdAt": "2026-09-20T23:49:12.891Z",
+      "expiresAt": "2026-09-22T23:49:12.891Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:52.143Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:12.891Z",
       "tag": "other",
       "tags": [
         "other"
@@ -120,7 +120,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:52.143Z"
+        "reviewedAt": "2026-09-20T23:49:12.891Z"
       }
     },
     {
@@ -130,7 +130,7 @@
         "title": "即刻精选",
         "handle": "jike_collection",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/PUSP55ALkGSLHpbkUxKOiVAkbqrW9gH3Elc577HHijaKn5PphFSipM81V5Rm3E64S6H9ZP6NldL-yO9wjmORBxCYFsY8W-AWiAsRpNrI-JtfsaAJoPbfaqUAnnM1LuJyPv0BwqNYO0DCSm2dqdOubhDN3EwR46xDwKVT7yI1wySaJ0jeWhfv0xDlx76acSV-Pyw0qH3IC5wFeBpTpkxV64zdCOT3mBpfBvFkYCaJN9VLey055ef5l-_wPRqEy8bq7q-6BhBovInVjaPosptOC0iwThunercrQ5iKkNy5xR-5uYvOLpCNc3Obr_52k1DnsBagHtqqJG2NOgVHkbdKVQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/K67_D43I0HyU2N-2ESD-3vkp5voBt23kDRbBcZI1vZ1-5nRk3znKyi55gwBd5S_yNGDCVY116ZpkM3x33ta-AyoTLeyvkneJh96XXVXhFwAQdsz60tqOskFBjGJ7TsRpg_qeS4QfBIhdz6ziZpzCIohVYZTXylCNTIcdush0HXIwLSmyHCIAmxyhxMdYIpOOfHMJ6Iw5lHUqekUujGZP5P_F0A2ZP-Uo82YPInY0EMWfYjx6D9lUHeSN7S6BxDiu4yjNj6uqe-byVwqCqJcVjwUMcYaoSbe58Nz2Dsr1J32BDZnzg-RZ4_mepX7WeM2sUcdqY7oDgogkBYSd0k1XoQ.jpg"
       },
       "sourceId": "cn:jike_collection",
       "sourceCountryCode": "cn",
@@ -140,10 +140,10 @@
       "fallbackReason": null,
       "text": "不是所有事情都值得让大模型想一想\n\n过去两年，整个AI行业陷入了一场集体幻觉，仿佛所有任务都应该交给大模型去完成。\n\n写代码、做PPT、查资料、订机票、回邮件、分析数据......默认路径永远是打开一个对话框，输入指令，等一个结果回来。\n\n而Jev的出现，第一次让这场幻觉出现了巨大的裂缝。\n\n它的核心限制乍看很奇葩，不生成任何自然语言，只输出结构化的判断。比如你问它“这封邮件是否紧急”，它只回答是或否，同时告诉你它有多确定。你问它“这笔交易该不该执行”，它只回答该或不该，同时附上成功概率。\n\n这个限制之所以重要，是因为它强迫我们重新问一个问题，这件事真的需要大模型吗？\n\n过去所有AI产品默认的答案是“需要”，但在我们交给它的任务里并非所有都需要生成一大段文字，真正要的只是一个判断而已。Jev想做的事情就是把这个浪费砍掉，由此换来的是速度比大模型快20-200倍，成本低40-400倍。\n\n为什么过去我们会觉得所有任务都该交给大模型？答案不在技术，在交互惯性。ChatGPT的经典界面就是一个对话框，你在对话框里输入问题或指令，它输出结果。这个交互模式太典型，以至于很多人都默认了“AI就是聊天，聊天就是AI”。当你手里只有一把锤子，所有问题看起来都像钉子。\n\n但真实世界里的任务主要可以分成两类，一类需要理解和泛化，需要处理模糊的、开放的、没有标准答案的问题。比如写一份行业分析，做一个产品方案，构思一个营销创意。这类任务天然适合大模型，因为大模型很擅长处理这种开放性的输入和输出。\n\n另一类只需要判断，输入是结构化的，输出是有限选项的，任务本质是在几个可能性里选一个。比如“这封邮件该分给谁”、“这笔订单风险高不高”、“这个Agent步骤该并行还是串行”，这类任务用大模型来做就像用起重机去拧螺丝，干是能干，但慢、贵且用力过猛了。\n\n过去这类任务是怎么解决的？答案是规则引擎。如果用户点击了A就推荐B，如果订单金额超过某个阈值就标记为风险订单。规则引擎又快又便宜但缺乏泛化能力，一旦遇到没见过的场景就失效了。大模型补上了泛化能力，但引入了速度和成本问题。结果就是很多场景被迫二选一，要么用规则引擎精度不够，要么用大模型成本扛不住。\n\nJev填补的正是中间那个空档，它保留了泛化能力但把输出限制在预设的结构里，所以它才既有大模型的泛化能力，又有规则引擎的速度和成本。我们不应把它视作一个更小的大模型，而是一个新的物种。\n\n它意味着我们该停止问“这个任务能不能用大模型做”，而是先思考“这个任务需要的是理解还是判断”。理解交给大模型，判断交给Jev这样的专用模型。这个分工一旦建立，很多此前在经济上不成立的事情就会跨越鸿沟。\n\n一个Agent工作流可能有几十个步骤，其中大部分只需要“往左还是往右”的判断，却被迫调用一个前沿模型来生成一段JSON再解析出来用。现在这些判断可以交给Jev，用一个HTTP往返就能回答一批问题，前沿模型的注意力可以留在真正需要推理的地方。\n\n一个游戏AI每秒需要做出十几次决策，用大模型延迟太高，用规则引擎又太死板，Jev可以在毫秒级完成“这个敌人该进攻还是撤退”的判断。一个推荐系统每天需要处理数十亿次候选筛选，用大模型的话成本无法承受。Jev可以把每次筛选的成本压到几乎为零，让推荐系统第一次可以围绕“确定性”来设计逻辑。\n\n这些变化的前提是接受一个反直觉的判断，不是所有事情都值得让大模型想一想。有些判断需要泛化能力，但不需要文字生成。有些任务需要智能，但不需要慢思考。把这些问题交给一个更专用、更轻量、更快的模型，才是正确的工程选择。\n\n过去所有人都在讨论大模型能做什么，但我们是否也该好好想想哪些事情其实并不需要大模型？\n\nby @莫唯书Mark  #AI探索站",
       "links": [],
-      "createdAt": "2026-09-20T20:39:51.522Z",
-      "expiresAt": "2026-09-22T20:39:51.522Z",
+      "createdAt": "2026-09-20T23:49:12.186Z",
+      "expiresAt": "2026-09-22T23:49:12.186Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:51.522Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:12.186Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -162,7 +162,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:51.522Z"
+        "reviewedAt": "2026-09-20T23:49:12.186Z"
       }
     },
     {
@@ -172,7 +172,7 @@
         "title": "机场列表 机场频道 🆅",
         "handle": "jichang_list",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/kstfII0bHWhhXH9u55TuMvhel-Ma-W2i-u6jZs25q3uZZms-TYtpwwWfM2bU7VAt1aSMBkky1MaUKZWN3ImrZxunCwrWrqA64TKYjoFp7Xm2BWsDkbVDCfVDsIiJUnhRoED30TUVJHtmsCx5qKmZDKmqRM4js1CmYe2KQn2yrXiHsNOwn77vi5cQTO0FNANaUliIamsiSSc4ACL3sygD1Bo0u8SZGyuJ3CI3LoRGXu5mYRmBAZENUWVVX8x4Vs5u2OKjUuWoWx4icQclL7_SPSyPJgKXFVgZcwdrWTOBzdmfNdlm79w-jj-_rB4qeRkdLiaQA7P09ZJ4Jg8sfukBvA.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/Rp3M3K9zGN6_rrE4tcoj_29tM3eB2E93ATuENlg9fFuGU4z8wiD5XCJHlprIX1bioqCTLZwu0pShIdgQuAvXgFxheNae7TaXPyycN_8k5x6eBovowV5TI9QIoMO_GgdHnET0qR59JT5JkxUCcVNEOuGdAkAqitV_WTvKS-cJmjGIPqT2x1OLfTDv3g0aJctUAHZLKYMPvvcXIlrbPbmT-NzerkZbx1XMRuvtz1rIF_eedJoqZMxHQD8KzApel-kM2q0iC31zlzUgmrb1XoPj0EABa_4o6WKNwrU9boG0H-k6Czsx1mPC9i3Ns3W6EUH4eO2J5BrsyKgqnB1esU7bsw.jpg"
       },
       "sourceId": "cn:jichang_list",
       "sourceCountryCode": "cn",
@@ -199,10 +199,10 @@
           "url": "https://t.me/jichang_list"
         }
       ],
-      "createdAt": "2026-09-20T20:39:51.005Z",
-      "expiresAt": "2026-09-22T20:39:51.005Z",
+      "createdAt": "2026-09-20T23:49:11.450Z",
+      "expiresAt": "2026-09-22T23:49:11.450Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:51.005Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:11.450Z",
       "tag": "transport_other",
       "tags": [
         "transport_other",
@@ -221,7 +221,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:51.005Z"
+        "reviewedAt": "2026-09-20T23:49:11.450Z"
       }
     },
     {
@@ -269,10 +269,10 @@
           "url": "https://t.me/idid"
         }
       ],
-      "createdAt": "2026-09-20T20:39:50.255Z",
-      "expiresAt": "2026-09-22T20:39:50.255Z",
+      "createdAt": "2026-09-20T23:49:10.515Z",
+      "expiresAt": "2026-09-22T23:49:10.515Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:50.255Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:10.515Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -291,7 +291,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:50.255Z"
+        "reviewedAt": "2026-09-20T23:49:10.515Z"
       }
     },
     {
@@ -301,7 +301,7 @@
         "title": "西港日记|柬埔寨大事件",
         "handle": "jianpuzhaidashijian",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/eGunFabgfywToAFIGWzjb9bi8sbPaSNY6Q3mCwWjn7_6ngpy01GiblhAX5aTI1-sWU62jk5lqcLWOZCcfFbJNB3a70xvR5mfwSgkJswoXleDBAI9-xSP2i5YPZE8P1-AYeEVpBqUq-tQGhzmDV1tJdLr2_F0IoOD979QWnUefa14gW0TflMAWFTqpmA4Z0UVy61Vp7aK5Mu6ebYCp2zJDpjd_4r0XHXL-baDAHhE8K7FbEqCFNK-pks0r6-rYDFeYkv9EcwcAW2zv4NKqJMz5G_QBagTkMgGLdvDuT1Cw9mzwp4-dj7gvOFaQ7XVCA5qTO5uVeO_6lfJ83twgqmHbw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/pytqE632x3oUEivQoGriuLW8iPsDizEZ9-4m76ZOGeECSttAywtHoOLNwrXQk5S_nQT4uLKXTJPSCfAVKbszbaKCY5h8WW3OSpBzEWBQkysKyxOMpwmb6q-vOkxIQFA1xh-KcjWRQ0pylNdt8IojDDSXwUxdMbNjYeJ-MzDbrVSAbFXe5iQ00Kgau-UhhMeIfkYSBKrZGLXrwqLFfpR3jwHAuNK0qOQZNJeZDKAp8ik4OUOv_ThFSzUsVVQ97SgS-y0EB-R8DQnNJF4YdYSvOA0BCjnUM8nAa9PMH0_T-WfBxOxAoDORIIXWR6UxASDRz9Vg0mqbMJ-niwKWMtPhzw.jpg"
       },
       "sourceId": "cn:jianpuzhaidashijian",
       "sourceCountryCode": "cn",
@@ -340,10 +340,10 @@
           "url": "https://t.me/LB222"
         }
       ],
-      "createdAt": "2026-09-20T20:39:49.567Z",
-      "expiresAt": "2026-09-22T20:39:49.567Z",
+      "createdAt": "2026-09-20T23:49:09.717Z",
+      "expiresAt": "2026-09-22T23:49:09.717Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:49.567Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:09.717Z",
       "tag": "other",
       "tags": [
         "other"
@@ -361,17 +361,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:49.567Z"
+        "reviewedAt": "2026-09-20T23:49:09.717Z"
       }
     },
     {
-      "id": 3990080649,
-      "postUrl": "https://t.me/jianpuzhai_001/24085?single",
+      "id": 1831054027,
+      "postUrl": "https://t.me/jianpuzhai_001/24087?single",
       "source": {
         "title": "西港日记 SEA NEWS",
         "handle": "jianpuzhai_001",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/B38hcGCuE4-spRkjD2Q6GzpKuRRmvi0N0Ytqtq2C4bGuamSqVdIz-tENz5LvHnw2gKe66mw1zxFdz_mxyILqM9e2pg4KnYVAooqSzIC2QgxRgq8Ku34sKz_UjEwlne15ONn422UMY12uV2COAbsB7CKGw4DqyhD8SG9fAp8w-V2l97zxq27oI3CMyK46t4b4SL9NtA2f7kRaJWuxnrU1412JI0ydn5j3L75HRTK85h7aYsHaUjo8K_iKpWA1ocQKU5hLeRf1IizfFlfNOAKBPG69hGhLE0ickNaPM9nFfy3MRb_3s1xLrr-xKKOinj584NCNMVvbtebiM81urFIQXw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eQ4Hdxu2tAwBjbN3s4Zei5dfdSWFo4USoqdDn_fZPq2jND64RZoodtpQ2yKspb_pMZNE1NQPUW0EYLv0o4Im22Dl6uJ_R0mHi9v8pzvKFfRbVseks3HMFzgtc2B0usA_TjQSynckx0KuysWvW-L2GN52msPfbiIs3Z7D9LVofrMKxYx71YqaT_CNCnZCu-lk3AuzFZ1ObHVPiN-D7HrdPSC5mRXBXjPjep7XASNQDOCSGpHPKMzZL0jhbSd5mhfDcXm8uBzAkga5TqpsTTNWFpHK0J8aGQ9xXnI_1OKXXtU71MUkCwYzUJqfU0asyFBlc4qihh-LfV179maJtguWng.jpg"
       },
       "sourceId": "cn:jianpuzhai_001",
       "sourceCountryCode": "cn",
@@ -380,7 +380,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/V4zQ_c51VeYJ9q5fGT8_N54NkGgjCD9UZBWBqCj5rUyAayl0oX_oG12BBa9ef4yamZsNLaaJs2vbqf8I_wshRnVN-dEFDfJKKpqajsVkv-DGuHP0_TqL-CMHzEzJvPCD_YpbheLRuJSI3O2XTMXu06DeU0QttHhyxYy-hByI4h3IVt2xzo_xtQZnbnA8MbN9HvwfFZoSDB1e_1kGkQtlFg8jjEH-iVbJeovpaFJaLSdHwX-QvkSsLyCQVg1EYf90JJ8j70mAg9frMrAr5I0Ut_clzvrG-FQKUvyaVio-ppbWz5tfCy9jMpSqu6gvzefx3sip1euXXvp2nz4ttIsBpQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/vG_FfQ7sI6zV6c-Je31FFfZhKBM656heeTz7kJI7axSz9gEZeWKKgwkgrOgWzSxy5qbdJqHzemdWBNV5iXExUwMnBo4NreqHBPh4gdIx6r8atJuO4XGG6-cmQQ1MZESVs06f3WgpuedDm6AGsRd1CBCHBaWVjvedqOZZb0nagzlCZSNnULgckjGo4iRyLTJebjX_gaY3Bcc7CQyPctmRX8zpn9vvnLs4A0NsvXjqjLOmSHGDf2czL0FyGG1oILj8dKMBo36hhCTUw1oUtm-jZWHT9OelBAWF_BRLvm_NedETuL9-uv9UdIOiKOAZcsPX9Q3SpHIosKJf5PhuA-FC-A.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -448,10 +448,10 @@
           "url": "https://t.me/uw99wxyj"
         }
       ],
-      "createdAt": "2026-09-20T20:39:48.730Z",
-      "expiresAt": "2026-09-22T20:39:48.730Z",
+      "createdAt": "2026-09-20T23:49:08.670Z",
+      "expiresAt": "2026-09-22T23:49:08.670Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:48.730Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:08.670Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -470,7 +470,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:48.730Z"
+        "reviewedAt": "2026-09-20T23:49:08.670Z"
       }
     },
     {
@@ -535,10 +535,10 @@
           "url": "https://t.me/sosoo?start=htjoin_-1001514693433_2375723f"
         }
       ],
-      "createdAt": "2026-09-20T20:39:48.049Z",
-      "expiresAt": "2026-09-22T20:39:48.049Z",
+      "createdAt": "2026-09-20T23:49:07.391Z",
+      "expiresAt": "2026-09-22T23:49:07.391Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:48.049Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:07.391Z",
       "tag": "other",
       "tags": [
         "other"
@@ -556,7 +556,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:48.049Z"
+        "reviewedAt": "2026-09-20T23:49:07.391Z"
       }
     },
     {
@@ -603,10 +603,10 @@
           "url": "https://t.me/ioskktougaobot"
         }
       ],
-      "createdAt": "2026-09-20T20:39:47.446Z",
-      "expiresAt": "2026-09-22T20:39:47.446Z",
+      "createdAt": "2026-09-20T23:49:06.626Z",
+      "expiresAt": "2026-09-22T23:49:06.626Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:47.446Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:06.626Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -625,7 +625,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:47.446Z"
+        "reviewedAt": "2026-09-20T23:49:06.626Z"
       }
     },
     {
@@ -656,10 +656,10 @@
           "url": "https://inme.cc/vMUsF0"
         }
       ],
-      "createdAt": "2026-09-20T20:39:46.658Z",
-      "expiresAt": "2026-09-22T20:39:46.658Z",
+      "createdAt": "2026-09-20T23:49:05.656Z",
+      "expiresAt": "2026-09-22T23:49:05.656Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:46.658Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:05.656Z",
       "tag": "other",
       "tags": [
         "other"
@@ -677,12 +677,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:46.658Z"
+        "reviewedAt": "2026-09-20T23:49:05.656Z"
       }
     },
     {
-      "id": 3283262062,
-      "postUrl": "https://t.me/illilliiillii/4840?single",
+      "id": 1559351134,
+      "postUrl": "https://t.me/illilliiillii/4839?single",
       "source": {
         "title": "东南亚大家庭",
         "handle": "illilliiillii",
@@ -696,29 +696,30 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/X9omnPnrQsouqsOwNoD5HP0zk2DS4ub-q8kCHAxomzMKspQzyfRi1XIcvzx8xgLSmYcU4f1by9wLzsvJglgWS2-8Xd8Os98uvg1rs0wFSdijSU2tuS68_wUKaxMl0eIqFH0dK3WGAPsMIMIuhdBfJdL-dH-OyXMcrXury3RojohsSTWRP6YKrjve2rmWqcOVAEjI5-WxZ8dhjpo4aHPLouHFt6BgbCu9In5amP0PmSA0m3PH7PhhdXlwkgiXxJ7uZl3YUuvbfeoS1oIJMJ_F_9_nVjlNyYFWb0wOwootndMXavozWsEoykviwjRBDFNxLOgom21JJMthBR4_mqVl9w.jpg"
+          "url": "https://cdn5.telesco.pe/file/WnB80uyqjRh1CVWTika1XeuitGkl3agHo_tVSl11lX_GTNMGwHoZIfffCMjuLvsB3s8mCRr1mlfWnusWeBa_2KKlCKZlSaX2lccH6lTs4NQOokc_b3ioGmZG628D_d2aUJ6Q9fpaCaMPPMsGYo5VLX7IZEK9UWMBpd_ukekhIQ0lurDDqmmUSkq3rC_FnN8W0RbTzP-82bFF68_AogZ14Wrv8HpNGaTqaHzio_rY2952XHAsqtu8lDw12u_Xi6BaiTvt19O8-qxm2gy567uxItVZpw1iN-IB_Rjah3jkT-JImYdq3m936CTwBF2aJJ2SUByFQlrM7WBxJ-60JJUDRw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "TG必备搜索引擎，新必搜🔍@xbso  @xbso 轻松帮您找到有趣的群、频道、视频、音乐、电影、新闻。\n\n👇👇点击下方按钮，快速搜索👇👇",
+      "text": "#泰国新闻 9月20日，泰国苏梅岛警方通报一起离奇事件，一名36岁法国籍男子萨沙身穿蜘蛛侠套装，擅自闯入当地SAMUI EXOTIC PARK动物园，引发现场骚动。\n事发期间，他当众扯下园内以色列国旗横幅，四处抛撒宝可梦卡片与玩偶，打出“拯救宝可梦、呼吁和平”的怪异诉求。\n经查，萨沙持有泰国非移民签证，在苏梅岛任职市场经理，合法居留许可至2027年7月。另有背景信息显示，其父亲斯蒂芬曾因酒店代持问题被泰国移民局举报。\n面对审讯，萨沙对非法闯入行为供认不讳，辩称入园闹事是因不满园内悬挂国旗横幅，认为此举会引发游客对立、制造分裂。\n警方现场依法扣押全部涉案物品，包括蜘蛛侠服装、80张宝可梦卡片、2个玩偶、和平标语布幅、被拆除的以色列国旗横幅以及作案摩托车，后续将依法对其进行处罚。\n\n关注大家庭频道➡️ @wk555  投稿：@xingfu",
       "links": [
         {
-          "label": "新必搜🔍@xbso",
-          "url": "https://t.me/xbso?start=g_7151149207"
+          "label": "@wk555",
+          "url": "https://t.me/wk555"
         },
         {
-          "label": "@xbso",
-          "url": "https://t.me/xbso?start=g_7151149207"
+          "label": "@xingfu",
+          "url": "https://t.me/xingfu"
         }
       ],
-      "createdAt": "2026-09-20T20:39:45.913Z",
-      "expiresAt": "2026-09-22T20:39:45.913Z",
+      "createdAt": "2026-09-20T23:49:03.492Z",
+      "expiresAt": "2026-09-22T23:49:03.492Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:45.913Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-09-20T23:49:03.492Z",
+      "tag": "design",
       "tags": [
-        "other"
+        "design",
+        "culture"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -733,7 +734,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:45.913Z"
+        "reviewedAt": "2026-09-20T23:49:03.492Z"
       }
     },
     {
@@ -776,10 +777,10 @@
           "url": "https://t.me/idc158"
         }
       ],
-      "createdAt": "2026-09-20T20:39:45.311Z",
-      "expiresAt": "2026-09-22T20:39:45.311Z",
+      "createdAt": "2026-09-20T23:49:02.580Z",
+      "expiresAt": "2026-09-22T23:49:02.580Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:45.311Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:02.580Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -798,7 +799,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:45.311Z"
+        "reviewedAt": "2026-09-20T23:49:02.580Z"
       }
     },
     {
@@ -927,10 +928,10 @@
           "url": "https://t.me/zhinifacai"
         }
       ],
-      "createdAt": "2026-09-20T20:39:44.306Z",
-      "expiresAt": "2026-09-22T20:39:44.306Z",
+      "createdAt": "2026-09-20T23:49:01.367Z",
+      "expiresAt": "2026-09-22T23:49:01.367Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:44.306Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:01.367Z",
       "tag": "other",
       "tags": [
         "other"
@@ -948,7 +949,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:44.306Z"
+        "reviewedAt": "2026-09-20T23:49:01.367Z"
       }
     },
     {
@@ -968,10 +969,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-20T20:39:43.574Z",
-      "expiresAt": "2026-09-22T20:39:43.574Z",
+      "createdAt": "2026-09-20T23:49:00.530Z",
+      "expiresAt": "2026-09-22T23:49:00.530Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:43.574Z",
+      "mediaRefreshedAt": "2026-09-20T23:49:00.530Z",
       "tag": "other",
       "tags": [
         "other"
@@ -989,7 +990,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:43.574Z"
+        "reviewedAt": "2026-09-20T23:49:00.530Z"
       }
     },
     {
@@ -1015,10 +1016,10 @@
       "fallbackReason": null,
       "text": "🐴 神马搜索 🔍 👉 精准搜索，极速匹配，给你超高效的搜索体验！快来试试吧！\n\n💡 点击下方按钮快速打开机器人开始搜索 👇",
       "links": [],
-      "createdAt": "2026-09-20T20:39:42.873Z",
-      "expiresAt": "2026-09-22T20:39:42.873Z",
+      "createdAt": "2026-09-20T23:48:59.652Z",
+      "expiresAt": "2026-09-22T23:48:59.652Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:42.873Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:59.652Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1036,7 +1037,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:42.873Z"
+        "reviewedAt": "2026-09-20T23:48:59.652Z"
       }
     },
     {
@@ -1069,10 +1070,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-09-20T20:39:42.338Z",
-      "expiresAt": "2026-09-22T20:39:42.338Z",
+      "createdAt": "2026-09-20T23:48:58.989Z",
+      "expiresAt": "2026-09-22T23:48:58.989Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:42.338Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:58.989Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1090,7 +1091,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:42.338Z"
+        "reviewedAt": "2026-09-20T23:48:58.989Z"
       }
     },
     {
@@ -1147,10 +1148,10 @@
           "url": "https://t.me/+E_rlYzqfCrpkM2Y0"
         }
       ],
-      "createdAt": "2026-09-20T20:39:41.594Z",
-      "expiresAt": "2026-09-22T20:39:41.594Z",
+      "createdAt": "2026-09-20T23:48:58.033Z",
+      "expiresAt": "2026-09-22T23:48:58.033Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:41.594Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:58.033Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1168,7 +1169,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:41.594Z"
+        "reviewedAt": "2026-09-20T23:48:58.033Z"
       }
     },
     {
@@ -1194,10 +1195,10 @@
       "fallbackReason": null,
       "text": "老挝推进全国收缴非法枪支弹药\n\n为维护社会安全及促进国家发展，老挝正全面落实总理及主管部门指示，在全国范围内强力推进非法枪支、军用武器及爆炸物的收缴工作。\n\n此前，非法使用武器引发的抢劫、恐吓及暴力杀人等案事件严重威胁民众生命财产安全。官方强调，收缴和严格管控非法武器对预防犯罪、降低暴力风险及保障人民安全至关重要。",
       "links": [],
-      "createdAt": "2026-09-20T20:39:40.667Z",
-      "expiresAt": "2026-09-22T20:39:40.667Z",
+      "createdAt": "2026-09-20T23:48:57.230Z",
+      "expiresAt": "2026-09-22T23:48:57.230Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:40.667Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:57.230Z",
       "tag": "health_advice",
       "tags": [
         "health_advice",
@@ -1216,12 +1217,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:40.667Z"
+        "reviewedAt": "2026-09-20T23:48:57.230Z"
       }
     },
     {
-      "id": 3656489119,
-      "postUrl": "https://t.me/huaerjie1/14638?single",
+      "id": 363151199,
+      "postUrl": "https://t.me/huaerjie1/14641?single",
       "source": {
         "title": "华尔街日报",
         "handle": "huaerjie1",
@@ -1234,12 +1235,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "特朗普下令将华盛顿在建的凯旋门改建为军事设施\n\n 美国总统特朗普表示，应美国军方要求，他已下令将华盛顿在建的凯旋门改建为能部署无人机和狙击手的军事设施。\n特朗普在社交媒体“真实社交”上发文称：“应美国武装部队的紧急要求，并出于国家安全考虑，我已同意将这座自南北战争时期就已规划的宏伟的凯旋门改建为一流的军事设施。该设施将用于部署和储存大量无人机，以确保能够快速应用它们。此外，屋顶和广场区域还将部署狙击手，并储存大量狙击弹药。”",
+      "text": "俄中选委公布统计58.42%选票后的选举结果\n\n根据俄罗斯中央选举委员会统计58.42%选票后的数据，统一俄罗斯党在国家杜马选举中获得57.88%的选票，俄罗斯联邦共产党获得13.81%，自由民主党8.67%，新人党7.84%，公正俄罗斯党5.10%。\n此外，中央选举委员会宣布，退休人员党获得2.21%，绿党1.09%，俄罗斯共产党人0.90%，祖国党0.72%，直接民主党0.32%。\n第九届国家杜马议员选举将于2026年9月举行。投票将于9月18日至20日举行。俄罗斯总统普京此前表示，即将举行的国家杜马选举是俄罗斯最重要的国内政治事件。",
       "links": [],
-      "createdAt": "2026-09-20T20:39:40.089Z",
-      "expiresAt": "2026-09-22T20:39:40.089Z",
+      "createdAt": "2026-09-20T23:48:56.421Z",
+      "expiresAt": "2026-09-22T23:48:56.421Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:40.089Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:56.421Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1257,7 +1258,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:40.089Z"
+        "reviewedAt": "2026-09-20T23:48:56.421Z"
       }
     },
     {
@@ -1309,10 +1310,10 @@
           "url": "https://t.me/boost/hrtt"
         }
       ],
-      "createdAt": "2026-09-20T20:39:39.457Z",
-      "expiresAt": "2026-09-22T20:39:39.457Z",
+      "createdAt": "2026-09-20T23:48:55.634Z",
+      "expiresAt": "2026-09-22T23:48:55.634Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:39.457Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:55.634Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -1331,7 +1332,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:39.457Z"
+        "reviewedAt": "2026-09-20T23:48:55.634Z"
       }
     },
     {
@@ -1366,10 +1367,10 @@
           "url": "https://t.me/jisou2?start=a_1471417837"
         }
       ],
-      "createdAt": "2026-09-20T20:39:38.732Z",
-      "expiresAt": "2026-09-22T20:39:38.732Z",
+      "createdAt": "2026-09-20T23:48:54.707Z",
+      "expiresAt": "2026-09-22T23:48:54.707Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:38.732Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:54.707Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -1388,17 +1389,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:38.732Z"
+        "reviewedAt": "2026-09-20T23:48:54.707Z"
       }
     },
     {
-      "id": 798093432,
-      "postUrl": "https://t.me/hrdsj668/33893?single",
+      "id": 2007105291,
+      "postUrl": "https://t.me/hrdsj668/33906?single",
       "source": {
         "title": "华人大事件丨爆料丨",
         "handle": "hrdsj668",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/HPiXfn1CjmYsBcxP8GJKWA88q3on-tfxILsB9GFt76YZT9Tznd9NMvmESbNjipfFBWiZpjZ9wYdDrFYPjZwMDK_O08l0XA94iQ8L4wP5y-Qy52kmNcMGIln6Grn_S0QEul87HXnA7nhVKnBoGwGikW5ot5A1VTYx2p5DDBZmRTwEhaomYrw_goKFTVf0zMSaI5qtba6Jaw8wZARuKt4ZCL9q9IdA07kkG4cSegAHvDXmdYZUzbD5nZaFmGj3qLNi6qp3nYMEicAhFZdv-DMO2e48wVGZc0PJ5tqX8S9s6eamNMvZDhiLplHBIBG666ZQHwSxzetacik3omLTnzSOTQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/b1fUYZKhe8tPnisUIYx5ht40mmMr79WPaX9d-eVuCJWWXfxf_d93eBqhvboePZSrC73Y5ADK-BvviLXojcuovus19zkWo7w6M7w-gNWzk6AJc8wzsY7Z3VlTORDaLUoVtJFHYy-PUhv-3Ul5fNLpSAzoUsv2Dv8XejOIpzvi0pZxs3mXkAlp95qJjfHBLcEz0WXvZL-uTSq--0UoH29njD2inZH5Gw5rRDCRUI1L27P54CbdHG2yLZuNIyFPyJJ1rt3ZSfu-eNJAyZ04pqr1o0eUo3QlGS8vZGR6LiLZxo0mLgop-RkSgQjDyjGMNQUB3eZ1Qnoz0tPmB-0IuewdMw.jpg"
       },
       "sourceId": "cn:hrdsj668",
       "sourceCountryCode": "cn",
@@ -1407,25 +1408,36 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/TqO1Ejuzsp-ZKL2FcZJGUjAf2D8ILobghCZ8pYx2FUv0L2-lGyGVUP6hbFbfFWCzCZ-DvVpWBPTcCKT-ZrwLWq7b2jr9tCsfuuMu5hnCHT4PPOn6UYN5N5tv1iab8MRG3b8WrX886u723DCvs9SWLJnDNiahD_HH_fZnsxlaZaOybbLvlp-GJkM7Jwr9vWcHIDnLxSOB-IfE6vaT5VTEJoBa8lGSW7w-Vq_coCxOnAGGFCJkpIcUHNhcFg98kjRKEoPcAWD2I0hhky7J8QGzkBCEKUE3YkHrFPT1f1A8rS1ktePaxgaZbpRomVLga5SkUUwbxuXqEiSw1yh3lw_ceQ.jpg"
+          "url": "https://cdn1.telesco.pe/file/Vei3Ee8F6QG3HaKjc975Pvt4EApCEwc_y2RRe_tfha4RiLDZ6DE1KRmAAt6hQ6l3ax9eDgiv9zyT9SdipVXRH8HiBQHjHQtKnqpaqWT5VdSAtVw6Jhn2RotYGvuYYxBCN5ZOO5PwjbwS6_rGrfbv2n4qeVLxSsFOHc5KK1sOD_1aOsMRp95jLrOf9snmn73FlEUzw_9DZrfNabF9rB6R31319dzQnoRS3Liqs6k1svzHBkB2Z8tAsCzmJvz-3YCVzA_CPLGBThZqpuqSJZ1tiqKNn9sNIuJcoZwn64WmLEGA7ertL9hsb7gjfUS6sp3HCCGGzykwuhJham8UinuTqA.jpg"
         },
         {
           "id": "image-2",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/lCyPj1KnRFpoCdppF_o-pmhsYH720YF7uvMjTWIAfSXhPEPmPqcY7NNEQfgcMhMD32RVvSdVzLPJ7GPpQHQ058M1XJYKJOzkBr-DNas-ixCrChTJvzT26aI9xrPkYXaKmThCl-L5rxyVf5FdqLuvF8dLCn4klHmUKkGWLUGFfInehC4rdBpB2SL2NaJ2hSMBjcOUmVYESiSwJWJwmf78Nq8DakouWo5CTbOuYtMH7pAq3RXbp9fIEAIgG7P9xc-1BKTHXukFRpuE1NWbuotTqvGFTAKKoHGdkcEQV5vT-IQvU3Y0zm8sNO9LURug8BvB2dt7wPl3AIT11jBpJPZVYg.jpg"
+          "url": "https://cdn1.telesco.pe/file/BCxVWhTCQUTXyvoSnbpr-gyfCdfvzTJG4jZsb1rR6FcehfWbaGSw1q6G3QQHhaETMY6V9W7pTPZ73XcULc8qCQjHmgdrFdnvxhEsAM_j9PwKfbWsgfOB89iMaakcd7TfV7V5qgLj12DJh3qPRUfJljQxxv_jTgavLKXIs5ednRvu8HFvvle3ifpp6CwNn4m-kh89U9hzKXOJMNnyAvEm18mhPitGILoNFOm1ehUN-JlTmvHkWS3PwbzlK_EhsYuPwaHL6E3_DddCYSsDCRKqLeZlRruZUSJytxpZIAL306Lk9yMzxRk-N-f1uSp_QEx1eOHAJiSgT6jdpV8Qks-_yg.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/fRwwrmJYmD5W35pxRsPCJEFhyEYj75GBURMxdeZCUUbDdcXQMY6781iQcWu6hmc0QM89w-8QEXSpQ3bgYSbEUbZ8zyq2OMzAggZsnWaopZ4PO9ZFCAANVxSBkfHGfPZuPw32b2i-ZHV2fI3U84zB4FeOjB11UcupAWPN1aklfYcqskgDTWsHn6qZeRfaHe-UrfgQjhx0dwzHs9kzNUpkTxa2JSDM3FoUHW-klT7yHpTzjQBo-uBWetNk0NX_bHRwM-k5I1gUct35hsfMXiEJhnjGS7gcZGBNva9lZnixHnRpiBhHFQ6FpnamJjZTxR8t_3TIpbZGrYPtow59bb-0gw.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/JN2y5Y54Fw1_wuj3mrHcPAMqfhm5aGfVxXCHC5st9apYW1_JaLz5kroFkLaYxgfl2foYG0857P8teQdrYk6UhCKljd1hM28aJaUt_w2Ce4esp8ec-PmNSpd3x7ZtDfJNRoHsH6jvNfABWerIo7tH5RkBmEjmzWz8xAbeouUqUPpmz1M8IlVf9tHOkt7jeR2qZVxau4WEOYl0R6XGVFlMVSe8gyeeRrFQsmfCC-C7hTWU0WqcgFcaVepBhPPVHv8NG9nU2qSWRfjkTXy-pgD5WQyA9gMnE2KlRvhuASRQZWLML5sRjIjKmMGE_cxLSNfsBnM1Jfa3lS2HVl6MV8II4g.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "在十二码头 富力 认识照片上的这两个可以联系我 谢谢 有偿",
+      "text": "网友投稿：曝光“独角兽翻译器”偷客户，这个翻译器我们公司使用一年多了，不存在下载错误或者是点陌生链接被入侵电脑。\n\n因为我们电脑只有这个独角兽翻译器，谷歌浏览器几个软件，也不存在连接什么陌生wifi的风险！\n\n今天休息时间，我们还在熟睡之际\n，独角兽就使用我们的whatsapp给客户发消息，说加另外一个ws，客户都发给我们看了，然后独角兽客服还装模作样问我们有下载杀毒软件吗，我们都没中毒，怎么需要下载？\n\n大家小心独角兽翻译偷客户，还会用我们的whatsapp骂客户！！！",
       "links": [],
-      "createdAt": "2026-09-20T20:39:38.130Z",
-      "expiresAt": "2026-09-22T20:39:38.130Z",
+      "createdAt": "2026-09-20T23:48:53.621Z",
+      "expiresAt": "2026-09-22T23:48:53.621Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:38.130Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-09-20T23:48:53.621Z",
+      "tag": "electronics_pc",
       "tags": [
-        "other"
+        "electronics_pc",
+        "electronics"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1440,7 +1452,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:38.130Z"
+        "reviewedAt": "2026-09-20T23:48:53.621Z"
       }
     },
     {
@@ -1480,10 +1492,10 @@
           "url": "https://t.me/AAA198932"
         }
       ],
-      "createdAt": "2026-09-20T20:39:37.454Z",
-      "expiresAt": "2026-09-22T20:39:37.454Z",
+      "createdAt": "2026-09-20T23:48:52.732Z",
+      "expiresAt": "2026-09-22T23:48:52.732Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:37.454Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:52.732Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1501,17 +1513,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:37.454Z"
+        "reviewedAt": "2026-09-20T23:48:52.732Z"
       }
     },
     {
-      "id": 2852525899,
-      "postUrl": "https://t.me/hq858/32838?single",
+      "id": 4146267210,
+      "postUrl": "https://t.me/hq858/32840?single",
       "source": {
         "title": "东南亚大事件｜华人吃瓜曝光",
         "handle": "hq858",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/ZlO6jMwy_2EjHoFueifgcm6P78Htfke94gVtIO8R2AllKYQ40au1OqydNEQ5UrO-15ZVJ4hNlWrX0q6Ikclm5qN7kAx1oDvH3REVyoolGhFhzL0LQesjzO0aw4zrMVov4y59YAgU-RpDTW_F8xznB9SPLNyPhyPl_guGaUsTvpPk8QdXZIpzF3vQ4pBflKKONGZgRdwronlDDNp_ogy8SShFAfrJJUl83pqxIGIIdtzBfNKyPnXzawxoPYZtdUjb4od5JsObAd11uEGRAaK1mv3pdHK4y5D-1fzFPHlUdjWNZ38IE1sO91n2K-ukVu6W_zLV_gX6n5vd48OPLpLutw.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/np2n3ji1omIzrZGx-LClyDbmohzeCsFlqnDouAPFJBCHb0xMpn-7zXta1oQKeTxYLBRoS9xZKsk0fJrCYO2bl9Tw2_4QCp7-QvK26EU7Li2vs5YJUYVuF5-EQaSpzZ88E8E4cvoySEzUaTdgiU4ate8a7f4jaBNv0GEylbCAotlt_GuIu1-OsykrY7qMw0qco7G3gLeQ5daXJDRv9cGQixmMQH1WYI1tKZ935hIVXmL8AA_a8rx_44A8tU6tjeuerVJdqsOtoIEZQLmakmW6a0ctb5rVM3LzZZIVkWY8bEGALMAJFpWlGV1YY63WJB_N3Nd9aMCDCv2FKmYyPY8ooQ.jpg"
       },
       "sourceId": "cn:hq858",
       "sourceCountryCode": "cn",
@@ -1520,12 +1532,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/hMqDAZwEvI5Z92hhDCnbxsfiqzgADvGhEw7eMQqZaXKsb5pNcHtlUJeY61MU5OsojGOdqxFLH6EI5AU-QuIBudHI9NNZeNaJGiF8BRC9omrGCcItbMGgdFX8LN0cjnKr06r3KP-wS7vS6U7abXCexgoehb7UIOqEUPKUntLz62Iq4Xyd-Zu9SHg2SSHa-PJfvGn0Y6zoOLgkHxHx2RbfOUXihp916MBowGI837QTDNq-DvS0fK_g_XgqM7uRR8eI7dKsNDdiskXeSLCteeAJVfnlOjaBjoedZDw1xIOz6EVX5FVZXM-d2mVkimT-lJg0M0e-G1qoAOV3UJhYLrxf2Q.jpg"
+          "url": "https://cdn5.telesco.pe/file/mXGe4gbjRiyZSrkRxI_L7x3YsiYm5lu_Qn2RfdQf2UFKr6daEG8Mgq5VOaGJZjutaWfCvAXv3IQ-a9Z4gWAlOAEtnOUh2ZY51zjuntCotSufPFQD9rU9gVD-bLk6zoqK6KvwhhULVcLoMMwwJG3Ul1bRI0s-zKVLvOfzG1jzsXGzEwKBhDJK2eZ0T_6yReWPI5QqebTPtAacYHIZ5zWfajh5JY4oy532jMkHy5hiBOPSjvthiJmDYZRmeaDIzMg2DUazxd88cNmzyPKXH3P1E2sDbUNC6n1R_lqw3wf8-E9odyO4EOc5NVjgHBwDNqMHsdZmHaItmKTIhgx-YIKcUw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "#泰国新闻\n44岁男子网络“变身”陆军上尉，盗用军警素材吸粉索财，原系涉毒通缉犯落网\n2026年9月20日消息，泰国打击犯罪部门持春武里府法院签发的逮捕令，在曼谷邦科廉区抓获44岁男子乌东。该男子在脸书、TikTok运营账号，盗用枪械照片以及边境任务相关视频，对外谎称自己是陆军上尉，甚至编造驾驶F-16战机的虚假经历，还发布内容挑衅公职人员，以此吸引网友关注。\n他依靠伪造军人身份获取他人信任，假借执行任务需要油费为由向女性索要钱财，被捕后辩称收到的钱款属于对方自愿赠与，目前暂未接到受害人报案。警方进一步核查发现，乌东本身是涉毒通缉人员，曾因持有冰毒获缓刑，却没有遵守相关监管要求。落网后，乌东承认所有身份造假行为，现已被押送至春武里府法院等候审理。\n在网络上假冒军警身份属于违法行为，借助虚假人设骗取他人信任索要财物，潜藏极大的诈骗风险。警方持续打击网络假冒公职人员的犯罪行为，提醒广大网友仔细甄别社交平台账号信息，提高警惕避免上当受骗。\n\n环球新闻 @HQ858 \n交流大群 @HQ856",
+      "text": "#泰国新闻\n43岁男子出狱后屡教不改，跨区连环盗窃十余辆摩托换毒，多数赃车走私老挝终落网\n\n2026年9月20日，泰国四色菊府警方精准布控，在派汶警局辖区抓获43岁男子阿通，抓捕时其正实施摩托车盗窃。经审讯查明，阿通出狱后不思悔改，流窜四色菊府多区域连环作案，累计盗窃摩托车至少12辆。\n\n据嫌疑人供述，其盗窃所得的摩托车全部用于兑换毒品，每辆摩托仅换取30粒毒品，牟利方式极其荒唐，且被捕前他刚吸食过毒品。经查，该案大部分被盗赃车均被非法转运至老挝境内销售。目前警方已锁定嫌疑人犯罪事实，同时扩线深挖收赃人员、车辆走私运输整条犯罪链条，全力固定案件证据。\n\n嫌疑人刑满释放后再度作案，涉盗窃、运赃、涉毒多重违法行为，性质恶劣。警方将从严查办全链条涉案人员，依法追究所有人的法律责任，严厉打击跨区域盗毒勾结犯罪。\n\n环球新闻 @HQ858 \n交流大群 @HQ856",
       "links": [
         {
           "label": "@HQ858",
@@ -1536,10 +1548,10 @@
           "url": "https://t.me/HQ856"
         }
       ],
-      "createdAt": "2026-09-20T20:39:36.660Z",
-      "expiresAt": "2026-09-22T20:39:36.660Z",
+      "createdAt": "2026-09-20T23:48:51.910Z",
+      "expiresAt": "2026-09-22T23:48:51.910Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:36.660Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:51.910Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1557,7 +1569,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:36.660Z"
+        "reviewedAt": "2026-09-20T23:48:51.910Z"
       }
     },
     {
@@ -1577,10 +1589,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-20T20:39:36.009Z",
-      "expiresAt": "2026-09-22T20:39:36.009Z",
+      "createdAt": "2026-09-20T23:48:50.427Z",
+      "expiresAt": "2026-09-22T23:48:50.427Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:36.009Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:50.427Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1598,12 +1610,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:36.009Z"
+        "reviewedAt": "2026-09-20T23:48:50.427Z"
       }
     },
     {
-      "id": 908823271,
-      "postUrl": "https://t.me/hk_traffic_news/225916?single",
+      "id": 1183595400,
+      "postUrl": "https://t.me/hk_traffic_news/225928?single",
       "source": {
         "title": "全港交通消息",
         "handle": "hk_traffic_news",
@@ -1616,12 +1628,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "大埔吐露港公路道路工程：由01:00至05:30，往九龍方向，近雲匯的慢線封閉，禁止所有車輛駛入。\n2026-09-21 HKT 00:30",
+      "text": "元朗公路往九龍方向，近兆康港鐵站一段車多，龍尾：新界西北廢物轉運站。\n2026-09-21 HKT 07:44",
       "links": [],
-      "createdAt": "2026-09-20T20:39:35.010Z",
-      "expiresAt": "2026-09-22T20:39:35.010Z",
+      "createdAt": "2026-09-20T23:48:46.929Z",
+      "expiresAt": "2026-09-22T23:48:46.929Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:35.010Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:46.929Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -1640,7 +1652,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:35.010Z"
+        "reviewedAt": "2026-09-20T23:48:46.929Z"
       }
     },
     {
@@ -1699,10 +1711,10 @@
           "url": "https://t.me/usdtag8"
         }
       ],
-      "createdAt": "2026-09-20T20:39:34.511Z",
-      "expiresAt": "2026-09-22T20:39:34.511Z",
+      "createdAt": "2026-09-20T23:48:46.304Z",
+      "expiresAt": "2026-09-22T23:48:46.304Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:34.511Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:46.304Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1721,12 +1733,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:34.511Z"
+        "reviewedAt": "2026-09-20T23:48:46.304Z"
       }
     },
     {
-      "id": 2261909226,
-      "postUrl": "https://t.me/hhlgx/36221?single",
+      "id": 3986211169,
+      "postUrl": "https://t.me/hhlgx/36222?single",
       "source": {
         "title": "大事件曝光/吃瓜热点/搞笑视频",
         "handle": "hhlgx",
@@ -1735,89 +1747,30 @@
       },
       "sourceId": "cn:hhlgx",
       "sourceCountryCode": "cn",
-      "contentType": "video",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/74e343a18f.mp4?token=Zl5dGoj4vYXwIuDYn3KYZBC_MLxKn5LV7jtg5Xo2aLYwHz7eiput05jmPyY_mubfjGj73-NcYCyW3ARpEl5-GRqSHppGhpnhcEss1l7jzISLr_tbnhzvYbW39XL6vxsjCnmBi_9AuXApboSRx4bqLAJvId9dAOmbUXYdHGdXuGDAqAmlw1GL4meF6sw5pFNa3i4eIOe6a-j0LdJiO54JAIpZ7NiUeUOmvhBpszoiIwfaA64AeAXdjO2c9QLD9a2Q047EOV7h4HDe9F_0UQTX8Wfr-VYFD6mpo3WQQTKKUOV00bXFeIZ_hCm9bkG5bTY2by6OKPL4Uub29ATVmYytHQ",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/E3pLmCHeAiJ0qizUIrpz2EvsEiCFNcOhG4j9ibBap145kz2VwOuKt4x8P7f6hEefdS0gk-jmOrLyHVMtAM_n-S_iZRgDSMrCBbqIlHxiA76syKWiqhbwTIeoaiuUo_pjr9RgTbRA6r2xwJhrIFihoQIbka_yeaTZhHp-wYaG9vRKkGpsa2OTvGaYYmDe52JcDU1khsl39qAW502bjBFIpDGpbizw8zZOYuVSVl-AmHIkWQXG8WdQd0W8nm3EeBls6pHvKUmuvMCAjpf-xS960pEQaOJKTCwK3f0vY1o7ZJTtE7dc7yJNL-FwgLTgz4qsFDlQMOUyB_kXdLcG9kHeKA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🫥🫥🫥🫥🫥🫥🫥🫥🫥🫥🫥🫥\n\n🏆🏆🏆🏆🏆🏆🏆🏆🏆\n🏆🏆🏆🏆🏆🏆🏆🏆🏆\n\n🫥🫥🫥🫥🫥🫥🫥🫥🫥\n🫥🫥🫥🫥🫥🫥🫥🫥🫥\n\n🌐官方网址 ➔   NG.VIP\n🤖官方飞投 ➔  @NN88 @NG66\n📢官方频道 ➔  @NN55 @NG99\n👥官方客服 ➔  @NN66 @NN77\n\n🇨🇳免注册 · 免实名｜点击一键登录\n🇨🇳南宫娱乐PG电子掀起百万狂潮\n\n🫥🫥🫥🫥🫥🫥🫥🫥🫥\n➡️南宫PC2.0满赔  OK上押300万U\n➡️南宫综合娱乐平台 OK上押80万U\n➡️南宫集团PC2.0满赔 上押200万U\n➡️南宫集团PC 网盘群  上押100万U\n⭐️南宫集团德州扑克➔  @NGDZ\n 🫥🫥🫥🫥🫥🫥🫥🫥🫥🫥\n 🫥🫥🫥🫥🫥🫥🫥🫥🫥🫥",
+      "text": "刷到一个频道后，通常还想找更多同类入口。\n\nSOSO 精选频道会随机推荐一批已收录频道。\n适合继续发现相近内容。\n\n🔗 本频道专属邀请链接\nhttps://t.me/sosoo?start=autopromo_-1001886991964_7510371085_channels_fa30ee1b",
       "links": [
         {
-          "label": "NG.VIP",
-          "url": "https://NG.VIP/"
-        },
-        {
-          "label": "@NN88",
-          "url": "https://t.me/NN88"
-        },
-        {
-          "label": "@NG66",
-          "url": "https://t.me/NG66"
-        },
-        {
-          "label": "@NN55",
-          "url": "https://t.me/NN55"
-        },
-        {
-          "label": "@NG99",
-          "url": "https://t.me/NG99"
-        },
-        {
-          "label": "@NN66",
-          "url": "https://t.me/NN66"
-        },
-        {
-          "label": "@NN77",
-          "url": "https://t.me/NN77"
-        },
-        {
-          "label": "免注册 · 免实名｜点击一键登录",
-          "url": "https://t.me/nn88"
-        },
-        {
-          "label": "南宫娱乐PG电子掀起百万狂潮",
-          "url": "https://t.me/nn88"
-        },
-        {
-          "label": "️南宫PC2.0满赔  OK上押300万U",
-          "url": "https://t.me/+UI6HsASrtWs5N2Y0"
-        },
-        {
-          "label": "️南宫综合娱乐平台 OK上押80万U",
-          "url": "https://t.me/+FH9j3KfDjrIxOGQx"
-        },
-        {
-          "label": "️南宫集团PC2.0满赔 上押200万U",
-          "url": "https://t.me/+_mBI5d5OZuQ1MmE0"
-        },
-        {
-          "label": "️南宫集团PC",
-          "url": "https://t.me/+1QSkxQ6Q-NtjYjM9"
-        },
-        {
-          "label": "网盘群  上押100万U",
-          "url": "https://t.me/+1QSkxQ6Q-NtjYjM9"
-        },
-        {
-          "label": "@NGDZ",
-          "url": "https://t.me/NGDZ"
+          "label": "https://t.me/sosoo?start=autopromo_-1001886991964_7510371085_channels_fa30ee1b",
+          "url": "https://t.me/sosoo?start=autopromo_-1001886991964_7510371085_channels_fa30ee1b"
         }
       ],
-      "createdAt": "2026-09-20T20:39:33.646Z",
-      "expiresAt": "2026-09-22T20:39:33.646Z",
+      "createdAt": "2026-09-20T23:48:44.868Z",
+      "expiresAt": "2026-09-22T23:48:44.868Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:33.646Z",
-      "tag": "electronics_pc",
+      "mediaRefreshedAt": "2026-09-20T23:48:44.868Z",
+      "tag": "other",
       "tags": [
-        "electronics_pc",
-        "electronics"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1832,7 +1785,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:33.646Z"
+        "reviewedAt": "2026-09-20T23:48:44.868Z"
       }
     },
     {
@@ -1897,10 +1850,10 @@
           "url": "https://t.me/soso?start=htjoin_-1001936206151_0aaf7574"
         }
       ],
-      "createdAt": "2026-09-20T20:39:33.007Z",
-      "expiresAt": "2026-09-22T20:39:33.007Z",
+      "createdAt": "2026-09-20T23:48:43.860Z",
+      "expiresAt": "2026-09-22T23:48:43.860Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:33.007Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:43.860Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1918,12 +1871,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:33.007Z"
+        "reviewedAt": "2026-09-20T23:48:43.860Z"
       }
     },
     {
-      "id": 382293304,
-      "postUrl": "https://t.me/hh9915/149922?single",
+      "id": 3256567353,
+      "postUrl": "https://t.me/hh9915/149923?single",
       "source": {
         "title": "东南亚大事件（吃瓜）",
         "handle": "hh9915",
@@ -1932,19 +1885,31 @@
       },
       "sourceId": "cn:hh9915",
       "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/LHPW7V3EoJk8qriimT8jb3WWYQAB8VYSfUeJXMXQrbiXs5hUkvMYXTlU8o5iguOaYj3J5MuPf7deFfubCmJ3P_LfuDhYUuNJaUUGkgFfclogYkMuSwA8uAhgXSl_e28StXjQzm2UEX0XSp-ftssBwWpUJkfgai8g9VuAQwEf6e5IOoXP1iyf-ec4RVFwt3M-KQ1rJfed9YSMlpY5veECU_OfY3YB1awYajK24qi1-Rie-5UCNdWNNEwCHfAtvGX0hmSfKk8TSplgcuzAzX3eHf7nSi7Ty2ZBFWhnk8qbaDGeUNXEJk3aP0ICzpnJxmxgbtvTDrUkxiEkKL-hon6hFQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-09-20T20:39:32.191Z",
-      "expiresAt": "2026-09-22T20:39:32.191Z",
+      "text": "在 Telegram 里找内容，先打开 SOSO 搜搜。\n\n频道、群组、帖子、贴纸都可以搜；也可以从发现页继续浏览。\n\n🔗 本频道专属邀请链接\nhttps://t.me/sososo?start=autopromo_-1002029286823_6219431250_d19d6bd0",
+      "links": [
+        {
+          "label": "https://t.me/sososo?start=autopromo_-1002029286823_6219431250_d19d6bd0",
+          "url": "https://t.me/sososo?start=autopromo_-1002029286823_6219431250_d19d6bd0"
+        }
+      ],
+      "createdAt": "2026-09-20T23:48:42.777Z",
+      "expiresAt": "2026-09-22T23:48:42.777Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:32.191Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-09-20T23:48:42.777Z",
+      "tag": "telegram_ton",
       "tags": [
-        "other"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1959,7 +1924,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:32.191Z"
+        "reviewedAt": "2026-09-20T23:48:42.777Z"
       }
     },
     {
@@ -1979,10 +1944,10 @@
       "fallbackReason": null,
       "text": "#联合会员 ，88vip，网易云音乐年付45，优酷/芒果35，2027年9月20日到期，0人车补0人，只招长期车友，短期勿扰，跳车不退，翻车按比例退尾款。UID：969033768",
       "links": [],
-      "createdAt": "2026-09-20T20:39:31.552Z",
-      "expiresAt": "2026-09-22T20:39:31.552Z",
+      "createdAt": "2026-09-20T23:48:41.970Z",
+      "expiresAt": "2026-09-22T23:48:41.970Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:31.552Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:41.970Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2002,7 +1967,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:31.552Z"
+        "reviewedAt": "2026-09-20T23:48:41.970Z"
       }
     },
     {
@@ -2041,10 +2006,10 @@
           "url": "https://t.me/HDaries"
         }
       ],
-      "createdAt": "2026-09-20T20:39:31.049Z",
-      "expiresAt": "2026-09-22T20:39:31.049Z",
+      "createdAt": "2026-09-20T23:48:41.344Z",
+      "expiresAt": "2026-09-22T23:48:41.344Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:31.049Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:41.344Z",
       "tag": "sports_news",
       "tags": [
         "sports_news",
@@ -2063,7 +2028,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:31.049Z"
+        "reviewedAt": "2026-09-20T23:48:41.344Z"
       }
     },
     {
@@ -2094,10 +2059,10 @@
       "fallbackReason": null,
       "text": "以色列强占黎巴嫩领土，农民被一条线隔断，田在眼前，人过不去\n\n联合国驻黎巴嫩临时部队的装甲车缓缓行驶在黎巴嫩南部的实际边界上。车速放慢的原因并非因为路况，也不仅仅是因为炮击和无人机的威胁，而是因为巡逻人员每前行一段，就要重新辨认这片被战争彻底改变的土地。\n联合国驻黎巴嫩临时部队成立于1978年，最初的任务是核查以色列在首次占领黎巴嫩后撤军的情况。20年前，联合国扩大了该部队的授权范围，要求其监督以色列与伊朗支持的黎巴嫩真主党之间停火安排的执行如今，这支维和部队的授权将于2026年年底到期。由于美国和以色列的反对，授权不会续期，但持久停火仍未实现。\n今年6月，以色列和黎巴嫩达成的协议，只为冲突带来短暂的停歇。黎巴嫩政府表示，自真主党在3月向以色列发射火箭弹以来，冲突已导致超过4300人死亡、逾120万人流离失所，彻底改变了黎巴嫩南部的地理格局。以色列称，真主党发动的袭击已造成39名士兵、1名军方承包商和2名平民死亡。联合国驻黎巴嫩临时部队表示，今年战争爆发以来，已有7名联合国维和人员牺牲。\n“蓝线”由联合国在2000年划定，以色列当时结束了对黎巴嫩南部长达18年的占领并撤军。这条线现在用蓝色金属或塑料路障标示，长期以来是两国之间的实际边界，尽管双方从未正式就边界达成一致。如今，“蓝线”依然存在于地图上，但已无法反映地面的现实。\n数月的轰炸模糊了旧有边界，新的控制线和限制区随之出现，改变了当地人的出行、工作和返家的方式。以色列的军事存在曾使联合国驻黎巴嫩临时部队无法进入东部责任区的部分地带；在经历数月限制后，该部队重新获得进入这些地区的权限。\n法国营中士奥德里克表示：“这是数月来我们第一次前往东部责任区，对我们而言是一个机会。”出于安全原因，法国军方在黎巴嫩不允许公开士兵的名字。“谈判开始后，我们得以重新进入这一地区，并在停火后终于恢复行动自由。”\n这一变化也使联合国安理会第1701号决议的执行面临新的挑战。该决议于2006年通过，旨在结束以色列与真主党之间的战争，并为黎巴嫩南部建立安全框架。联合国驻黎巴嫩临时部队1978年首次部署，最初任务是恢复安全、监督以色列撤军，并协助黎巴嫩政府恢复对南部地区的管辖权。如今，这支部队可能在近50年后结束使命，并预计于2026年12月31日结束行动，随后撤离黎巴嫩。\n以色列在新划定的“黄线”之外设立了一片限制缓冲区。“黄线”在停火后不久出现，部分地段宽约5英里，以色列军队仍在这一范围内占据黎巴嫩领土。以色列禁止黎巴嫩平民进入该限制区，并拆除了多个边境城镇的民宅和基础设施。法国维和人员7月26日沿“黄线”巡逻，途经霍拉、卡法尔基拉和奥代塞等几乎被夷平的城镇。该区域唤起人们对以色列2000年结束的18年占领的记忆，面积约占黎巴嫩国土的6%。\n联合国驻黎巴嫩临时部队西班牙分队公共信息官、多拉多·桑托斯中校表示：“对我们来说，‘黄线’并不存在，但我们必须在地图上标出来，以便看清它的位置。”他说：“它扰乱了正常生活。许多平民无法上班，也无法从事日常活动。收获季即将到来，但他们无法进入农田。”\n越过这条线，冲突留下的痕迹随处可见。道路被以色列坦克碾成崎岖土路，曾为家庭遮风避雨的房屋沦为混凝土残块和瓦砾。一些废墟上方飘扬着以色列国旗。\n霍拉、奥代塞、卡法尔基拉等一连串被清空、夷平的村庄，构成了各责任区之间的路线。曾是黎以过境点的法蒂玛门，如今只剩开放的框架。该过境点位于黎巴嫩卡法尔基拉村附近、与以色列梅图拉相对一侧，以色列军队2000年撤离黎巴嫩南部后关闭了这里。法蒂玛门上的一处涂鸦已被划掉。\n对当地平民而言，这些并非地图上的抽象线条，而是将住房与农田、社区与工作地点、家庭与其生活根基分隔开来。通行大体仍被禁止。距离受损最严重地区仅数英里的部分基督教村庄仍有人居住，但与外界隔绝，基本公共服务也十分有限。\n人道主义车队运来食品、药品和其他必需品，但它们的存在也具有象征意义。天主教组织网络协调人哈尼·陶克神父说：“他们看到我们，就知道自己并不孤单。”陶克说，许多居民至今仍被困在自己无法掌控的边界、有限的政府存在以及看不到明确终点的占领之间。\n当地政府则将进入农田视为最紧迫的问题之一。马里市长萨勒曼·阿布·奥拉说：“农业仍是主要收入来源，也是地方发展的重要动力。农民需要进入田地，收获庄稼。”\n限制措施也让社区与基本服务隔绝。由于战事中断数月后，联合国驻黎巴嫩临时部队恢复了部分非军事活动，在通行仍受严格限制的地区提供基础医疗援助。西班牙维和人员和印度维和人员在马里开设诊所、运送医疗物资，为脆弱社区提供医疗服务。西班牙武装部队自2006年9月起部署在黎巴嫩，多年来开展多项军民合作活动，以加强与当地社区的联系。\n在艾因阿拉伯接受一名西班牙医生诊治的叙利亚居民法耶兹·哈立德说：“这里没有医生，人道援助也不够。我们像住在监狱里一样。”通往纳巴提耶的主干道仍然关闭。哈立德说，他母亲生病时，当地没有足够的医疗服务。\n西班牙分队少校赫苏斯·费尔南德斯·曼查多说：“这个地区长期缺少就业机会，近来又发生严重火灾。”他说，分队今年3月暂停活动，近期才恢复。黎巴嫩政府指责以色列故意在森林和农业地区纵火，以阻止村民返回。以色列军方拒绝就此置评。曼查多说：“‘黄线’影响我们所有活动，因为它代表着地面上的新现实。对平民而言，它意味着住房与土地被分隔开来。对我们而言，这条线既未获承认，也没有标记和正式划定。”\n“黄线”并非重塑黎巴嫩南部边界的唯一变化。新的“试点区”体系也随之出现：在这些明确划定的区域，以色列军队和真主党武装人员应撤离，黎巴嫩军队则接替进驻。\n在扎乌塔尔加尔比耶镇，这种变化中的地理格局直接体现在居民家中。伊赫桑·亚吉从其流离失所的贝鲁特南郊返回家乡，查看受损严重的房屋。她有6个女儿，丈夫已经退休。亚吉听说以色列军队7月底撤出村庄后决定返回，但她先在村庄外围等待了一周，获得黎巴嫩军队许可后才得以进入。\n7月22日，黎巴嫩军队士兵在扎乌塔尔加尔比耶入口处驻守。数月前被迫离家的居民正缓慢返回这座满目疮痍、缺乏供电和自来水的小镇。冲突后，黎巴嫩军队重新部署至黎巴嫩南部各地。这是美国斡旋、黎巴嫩、以色列和美国三方参与的框架的一部分，旨在让国家重新在长期由真主党争夺控制权的地区恢复权威。\n镇内仍能看到占领留下的痕迹。一排以色列坦克停在住宅后方。数米外，另一所房屋曾被以色列士兵用作临时住所。脏乱的房间里散落着罐头、水容器、床垫和十字架，显示这户人家原本是基督徒。墙上画满了包括大卫星在内的图案，是曾在此驻扎的士兵留下的痕迹。\n7月28日，一名黎巴嫩妇女穿过扎乌塔尔加尔比耶遭破坏的街区。这是美国斡旋的试点项目中首个由以色列军队撤出、黎巴嫩军队进驻维持安全的村庄。\n玛哈森·法基赫此前流离失所至舒夫地区，数日前返回扎乌塔尔加尔比耶，却发现家园已被毁。镇上依旧没有电和自来水。她说：“爆炸整夜不停，尤其来自阿里·塔赫尔。我几乎无法入睡。”她所说的阿里·塔赫尔是一处山地地标，以色列军队正试图在那里清除真主党武装人员。\n黎巴嫩南部各地，数千人正试图回到已不复存在的家园。\n“蓝线”仍在原处，但地面上已形成一种新的地理格局：无人机持续嗡鸣，限制区不断出现，村庄被遗弃，道路遭摧毁，田地的主人无法抵达自己的土地。每天发生的空袭提醒着当地居民：战争尚未结束。地图上的边界或许没有改变，但地面上的一切都已不同。",
       "links": [],
-      "createdAt": "2026-09-20T20:39:30.312Z",
-      "expiresAt": "2026-09-22T20:39:30.312Z",
+      "createdAt": "2026-09-20T23:48:40.270Z",
+      "expiresAt": "2026-09-22T23:48:40.270Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:30.312Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:40.270Z",
       "tag": "food_products",
       "tags": [
         "food_products",
@@ -2116,12 +2081,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:30.312Z"
+        "reviewedAt": "2026-09-20T23:48:40.270Z"
       }
     },
     {
-      "id": 1869770285,
-      "postUrl": "https://t.me/hcxmh/23432?single",
+      "id": 1949427196,
+      "postUrl": "https://t.me/hcxmh/23433?single",
       "source": {
         "title": "灰产|项目|出海",
         "handle": "hcxmh",
@@ -2135,26 +2100,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/vderJCBopWhLG2fdSk4dlhSzKLTl8KpH-2uJDNgISCmxSNV-TsNnHx6fyQqNGiZGxaUDmSZ7k0gi2K-oiEqyl8zS_5j9Wd7_Pbiid2w_E3WF1kY3r5Qt0Avbnov6ZbCeZxzmQqxfUhI-w6aW_39ZDgjip6H2Ud6JujpQmieX0yc7UNAgFcosMBJEG01Qrk2TEe3GO6rJhF85UJWJEQH7c7JPFcw7giNs7WeU_eLjkJPHwLDOR9sAaULGlaDK7E8cI8PiEcPVBbliM6Dj3NOVPrTudGXnMRhDxe1-J_2qlefUubDNemnLOdtuIVLbHMV1LGnm3iDx0z4p22AUXoaBjg.jpg"
+          "url": "https://cdn5.telesco.pe/file/IVMGOW4RbUy8QzKeun6_clzXXU_k3G-59s0-HvmgeHNXfncAm7Q_spYzGm-1YBSLaz0HKZwGWQVGTxjeYrqjegjNmyPTBuigjrILJPQpQR22JX6YFJsWfgun73UAhWe8_TMUpkDjFFj2JIngiQYcI6W7nrkqQp4CIqJerm2Rvsd_xaaZVxOt3S6d45MdTeJmHCAhk87MaqE8kMtMkGW4Dv03UnAY_TUvQDniu_ViLnLyKf47TVv-gzW0mpvhOKpWT1E5F_MffgQoXuvhfbAAhW40_8BVgP4y99WNqbTXxJZHQF-h0NYtt4ZXQWe-StZbMoVKeX4TYXWYdmxkIhU7dQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "这片子看完，爽不爽你自己心里有数\n\n观片有感，说白了就是一句话：爽不爽？爽就完了，别想太多。这年头能让你看完不骂娘的片子，那就是爷们儿了。\n\n别管那些影评人怎么掰扯，老百姓的观影体验就俩字——过瘾。你要是也看着带劲，咱就是一路人。\n\n「这片子要是都让你觉得不爽，那估计得是导演给你下药了——还是那种没解药的。」\n\n#观片有感 #爽不爽 #电影评论 #老江湖\n\n🔔频道订阅｜实时资讯推送: @hcxmh\n😍爆料投稿｜联系在线客服: @Myguoguobot",
+      "text": "频道适合看内容，群组更适合继续交流。\n\nSOSO 可以直接找热门群组，也能按关键词搜同类圈子。\n先打开看看当前推荐。\n\n🔗 本频道专属邀请链接\nhttps://t.me/soso?start=autopromo_-1001558823898_6122852530_groups_9ac8a763",
       "links": [
         {
-          "label": "@hcxmh",
-          "url": "https://t.me/hcxmh"
-        },
-        {
-          "label": "@Myguoguobot",
-          "url": "https://t.me/Myguoguobot"
+          "label": "https://t.me/soso?start=autopromo_-1001558823898_6122852530_groups_9ac8a763",
+          "url": "https://t.me/soso?start=autopromo_-1001558823898_6122852530_groups_9ac8a763"
         }
       ],
-      "createdAt": "2026-09-20T20:39:29.562Z",
-      "expiresAt": "2026-09-22T20:39:29.562Z",
+      "createdAt": "2026-09-20T23:48:39.335Z",
+      "expiresAt": "2026-09-22T23:48:39.335Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:29.562Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:39.335Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2172,31 +2133,56 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:29.562Z"
+        "reviewedAt": "2026-09-20T23:48:39.335Z"
       }
     },
     {
-      "id": 4176441845,
-      "postUrl": "https://t.me/hcvv9/17976?single",
+      "id": 2173789267,
+      "postUrl": "https://t.me/hcvv9/17978?single",
       "source": {
         "title": "灰产热门项目",
         "handle": "hcvv9",
         "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/S0-8NnnUkykkhBtES16-SbjzAPGzQlwzawDxYcbkWCqtKSaapaDu4xamzqWnH3cmxXRuFBbcwvohJt22_5wEoTrXfn3iscKqj0TDKHowcj4m044yFATyQMiYUjQS4Q2akatnWbHdXu8Bk8uJc9WcQG58jSOSjO9H31D5wk4aqsrMUz7Ffil-j8X2eZGKkppHfE_F8k1Lfy3kKXxSyKgrGYqajAF3WA1Y5CiTC-WMzKCA4b_Iidu5m2_uaHaesOVYUthAo1hG8eO_NrzPkVpeumB-5JsHIDxGnJAEzDJ-37bXNNRjK9mCopCSkGcN9E6Vy8f6Dgzp6WZOa-hbXLdUYA.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/oKBjqTW-2I4BMHa8EWhFp5XFGtXDnsB0BarMyjHceCMouqjqLjWPILY_6Ch-tUpadP7f2BNEBUuYGXGOlcleMcdjNpvxayQBL8riHtB09_Mo7B43P_6xBQOUHD7jRbCpwyPtWlzLjknRfqR27vxx5e1sxy06zk_L2GaqYKTCW12AfEUYCKoHrDUjtzNCePUIluvZmKgO_qEhSAULYNbCULByRpve2VgKBHe-B9oR6XeQRuSpcdntJNVr89wCgEcQZ8J9_l1yCDJ9r7auiKMbmi7SFGw4ASu53yigtfIEihJvvrNv7YkKyxruUOD_KBpf7O3GGz2_grIISzylGqf4JA.jpg"
       },
       "sourceId": "cn:hcvv9",
       "sourceCountryCode": "cn",
-      "contentType": "image",
+      "contentType": "gallery",
       "media": [
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/dFRv7TH1vTC01TORHSa2bw-HKbWC3-qXft5VSaHxgM1BvGB_0S80g711mykX8p_NlOvda09XCz38rzAsYRwuJWq4uI5S29-WoBZRx1tjwAiuECnWvqzW4wxd81Xu8TO5JvcE7Az6g4cyAoUewjsw6fRWc7ovFjOL2NEckqXWdS6fuZMk0iKpfKBRWKEwAXmpVTOB2MkXF3YvhpZ1G-4bGIjwvteQC1iuPMzDqOHyM4RO-Jtqd_qKCubuZjq8ldd6VayIV8V6Y2pEkI84z-iK_Jcc17kaSh8xzqj9Bwys5Dr3CDkKOORz8uAudGmG2JfEcSuhG_K6pTiq759vyzQ4qQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/T9pG_Bvo4QpgUQb2UILxcuodn6sQ3mziEXeC8WpU8XmUddP2e3v_0nxXXy7O1j2tTgyyyQykMABntZx3Fn0hvH9JSVZr5h4jSU__p-yQpxxeD6XV2YrDdA8j05LrdDxIfJHmecCXvtUJ6-O78rv3WSq6gqTBxr012p2tv0ChnH4bqERKRqGq7X-lrg_nw_qoYPoLCwtRDpQ_8bK_RdYj6vIAHgCREFlTbf6dP4dMPMfkjDVtSadVYPe08I_tLVxnIC7bGOqg7fkn2J3CQuOlvEoiup1M9_3OK_kTpNdchxCV771uwLvzCmmtow04b4JML9OgrN9h_jS9MUnolrXRqg.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Hbh0968lqGnZEw9xZH_XqrxfpNHMYQ3-UFvekaNSYuwud8kjI99sxShJmggOIlV0FS9AX1Fnhho7FJkGaPNfE7JqiNj09EgBSnqcMbG_51mZXYgOvPRWc9PRvdlghHlXeW8a0y-VHwN0rj4p8UtGnBngv0W4IuW9MXXt5qwM3Gydzzt6MeixNo6PAxGvhUp5YWwiPa20Uh8OfFWSie98HY-h0XYdpj2dfe2v3huombndfUAH7YNItpSZknJifoaVtPGmrvUYWRW2z7TMBoNK4DctqEv_kkBihIAJGr_NncXRpbZNE5R_W2dbDZFO2ZG3SYoZh3DsaQi9aLuxgRFAfA.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/AgV6nU14fPe-UevEFaT1KXZu_CCpoFZuJqgVGGnchDSUZvfadDUJJDwMZ9fRuTw_BEQKtBa95erLk1R3yvw4x-Sr4zRsOJEiLQnHAvIud053hwMoyv7F2suAC5nFE37JPjdIJdvxOf3FTlB0D711679i_Ckc9bFxgTLyJsjHfSNfhDfYmbF_RKneFb6LfDfe1CD4OR3uBY_26KPqUuX07gnXyOLIsZkGpyY9RR0_qXNpgv0JfUH8Ag_4Gsfb6lhCrwIs5K43DFP44g--4x8F8LSbvWD9mhmOlGiKzIk5gl1YCOgy0_TC7oGP5L5L5IXoFHHZNBNzjAWJQ8CR8rTkxg.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/aiZvqlYozJodWwnoyFdevBCix2T5zOF5LYra9BdMOXkAt27R5a0XA3VtPy-5gDRdPvmIr1ovATQTmsJCYQQHVq4X_1iIEW3Sw_TxpWS1G0QqokjdAIBZ7iqm2XvMAiL--rGoYbaSJe6GfGv81lxny_TnHoi5jfO6p_iegq8YJqw1uD3frvCh_Pq5dxuyI-qdSYusLq-AOeKRfuZVKjiEbdnaE54RWaJJaBu6aRgAlHRN3bk8OMYGWZsn9zX7v7z-2ivam1wcT_ufahaBiKz1meA-ACvUWvOQQUbualjJAQcdsPFmWSSCWECG2taDyXaXTMCugWOz1suIXDhWBiWYgA.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/A9vS-d2iNUfxGdIk-18p93yhqs1ZW3jXEnop3vQptM5MXw1KC7S2SI9KsRmHuGDYByGA1xn7cHCzOFo1RnI0VGvhBo3__m0M5yCdUmDVvHy-A1IEUxSVQmogWnTBurFWV2a2S-JTbHNwW7irnZJziBjzSxplGdpNBo10g49uacpdH5cYSBT6nqbuxi8yqcshMFigmdA8lzSIE2jZ8q2VkWKww4JGBrkOQhyzMsGEfAAvvGEWA-CagMxcL0t8y6_zsc9mlDG3BWApwv-j5pYOiDiSpS6278IRwzvxZQoUMkqkbez0_MhDdJTJn1dpNPj-RJyUUHx1dUxOdlziwOQ-Zg.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/oUfdlF3nM4nPdGi-4K5dkKAzOZ8lylGrZkpUI_e88pGmVjFZlWihPmNmWprkB_fn6eNZDqgHuQra8XxgU6cVtRROdFbTvtvYdxSp_yVSOTkCTRwLeSKbhO0p09jmL5ZzKnnXzmIBuhjwrC0r-pSFCKAI6e6KMmea5YvUZ14k4GUEjhzy8gUVOf9hrqTMkzlm3NtORAQFkwgcdxNwgFrZDoqb3DC9KNF8LfLAf3hXBmeKBbbd94w6zBh1PqdcFShSmiizBM5ay2SNSiLVpaJuzdZFFSbzU8FDnCdYAw8Av51yXosKnb-fbaJO4xu1lH30MNqAIVJIVEhsHOodKbnl1A.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "狗熊传奇：三天一小吊，五天一大吊，吊完接着赌\n\n这位湖北老哥，网逃+瘾君子+烂赌鬼，三大BUFF叠一身，人生直接进入地狱难度。早年在缅北搞诈骗，骗亲戚骗朋友，钱全送上赌桌，结果在波哥山被打到屁股开花；后来骗大哥朋友的钱去赌，又被吊打三天三夜——死都不改，赌瘾比命还硬。\n\n缅甸严打他跑路柬埔寨，包装人设接着忽悠，骗不到了又跑去老挝碰运气，被识破打了个半死，进了监狱被狱警“照顾”，出来就把自己卖进园区做台湾盘。回到柬埔寨继续坑蒙拐骗，朋友救他好几次，他倒好，直接升级做绑架杀人，西港好几单“生意”都有他。这已经不是烂人，是人型祸害。\n\n提醒还在犹豫的朋友：远离狗熊，多看一眼都是功德-1。\n\n#狗熊 #烂赌鬼 #缅北 #柬埔寨 #远离烂人\n\n🤩🤩🤩🤩🤩🤩🤩🤩🤩\n香港六合彩特码49倍｜真人返水1%｜电子/棋牌/捕鱼返水1.5%｜十三水/德州 无抽佣\n\n✈️投稿/商务广告：@dnysusubot\n🧪东南亚华人/吃瓜群：@dnyses",
+      "text": "数百万美元的顶级iOS武器，被用来撸5U空投？这波是“屠龙刀割韭菜”还是“钓鱼钓到鲨鱼”？\n\n当初看到FomoPeek的事，第一反应是地铁老人手机.jpg——你用着国家级间谍攻击套件，就为了偷我5U的邀请奖励？这套DarkSword的履历拿出来，够写一本情报机构反目指南：俄罗斯用来打乌克兰、土耳其用来盯马来西亚、中东用来监控沙特异议人士，结果今年3月源码一泄露，直接被东南亚盗U圈捡走，还做了个功能删减版——取消地理限制，强化钱包窃取。（毕竟真正的买家是菠菜和通道，技术适配当然要“因地制宜”）\n\n真正的恐怖之处在于，以前盗U起码还给你来个假客服演双簧，或者一个“连接钱包”的钓鱼页面，属于需要你手动配合的诈骗。现在这套玩意直接支持网页端投递，用Safari打开就触发，全程零点击。（连拒绝同意的机会都不给你，就问你怕不怕）\n\nFomoPeek大概率不是唯一，毕竟这套源码现在已经在圈子里流通成公共共享资源了。说到底，这是给所有撸毛党的一记提醒：安全不是靠不转账就能解决的，有些坑，你踩进去之前根本看不到。\n\n以前是钓鱼要你咬钩，现在是鱼自己跳进网里。\n\n#盗U #iOS零点击 #DarkSword #撸毛需谨慎 #狗哥神评\n\n🤩🤩🤩🤩🤩🤩🤩🤩🤩\n香港六合彩特码49倍｜真人返水1%｜电子/棋牌/捕鱼返水1.5%｜十三水/德州 无抽佣\n\n✈️投稿/商务广告：@dnysusubot\n🧪东南亚华人/吃瓜群：@dnyses",
       "links": [
         {
           "label": "香港六合彩特码49倍｜真人返水1%｜电子/棋牌/捕鱼返水1.5%｜十三水/德州 无抽佣",
@@ -2211,13 +2197,14 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-09-20T20:39:28.859Z",
-      "expiresAt": "2026-09-22T20:39:28.859Z",
+      "createdAt": "2026-09-20T23:48:38.482Z",
+      "expiresAt": "2026-09-22T23:48:38.482Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:28.859Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-09-20T23:48:38.482Z",
+      "tag": "technology_software",
       "tags": [
-        "other"
+        "technology_software",
+        "technology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2232,7 +2219,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:28.859Z"
+        "reviewedAt": "2026-09-20T23:48:38.482Z"
       }
     },
     {
@@ -2276,10 +2263,10 @@
           "url": "https://tv.ci/"
         }
       ],
-      "createdAt": "2026-09-20T20:39:28.097Z",
-      "expiresAt": "2026-09-22T20:39:28.097Z",
+      "createdAt": "2026-09-20T23:48:37.730Z",
+      "expiresAt": "2026-09-22T23:48:37.730Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:28.097Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:37.730Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2298,7 +2285,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:28.097Z"
+        "reviewedAt": "2026-09-20T23:48:37.730Z"
       }
     },
     {
@@ -2333,10 +2320,10 @@
           "url": "https://t.me/DNYnn911"
         }
       ],
-      "createdAt": "2026-09-20T20:39:26.975Z",
-      "expiresAt": "2026-09-22T20:39:26.975Z",
+      "createdAt": "2026-09-20T23:48:36.363Z",
+      "expiresAt": "2026-09-22T23:48:36.363Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:26.975Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:36.363Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2354,7 +2341,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:26.975Z"
+        "reviewedAt": "2026-09-20T23:48:36.363Z"
       }
     },
     {
@@ -2380,10 +2367,10 @@
       "fallbackReason": null,
       "text": "#马来西亚新闻 马来西亚古晋一名巫裔男子9月16日下午4时许在旺阿威路某商场手扶梯出入口处突发心梗倒地不省人事。现场民众进行心肺复苏抢救，商场工作人员也给予援助。古晋中央医院急诊部安排救护车到现场，医护人员接手抢救并将其送入救护车，送抵急诊部后安排入红区抢救，最终抢救无效证实死亡。",
       "links": [],
-      "createdAt": "2026-09-20T20:39:26.326Z",
-      "expiresAt": "2026-09-22T20:39:26.326Z",
+      "createdAt": "2026-09-20T23:48:35.434Z",
+      "expiresAt": "2026-09-22T23:48:35.434Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:26.326Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:35.434Z",
       "tag": "health_medicine",
       "tags": [
         "health_medicine",
@@ -2402,7 +2389,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:26.326Z"
+        "reviewedAt": "2026-09-20T23:48:35.434Z"
       }
     },
     {
@@ -2422,10 +2409,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-20T20:39:25.704Z",
-      "expiresAt": "2026-09-22T20:39:25.704Z",
+      "createdAt": "2026-09-20T23:48:34.717Z",
+      "expiresAt": "2026-09-22T23:48:34.717Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:25.704Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:34.717Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -2445,12 +2432,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:25.704Z"
+        "reviewedAt": "2026-09-20T23:48:34.717Z"
       }
     },
     {
-      "id": 563255324,
-      "postUrl": "https://t.me/gtkj01/464?single",
+      "id": 3384218829,
+      "postUrl": "https://t.me/gtkj01/465?single",
       "source": {
         "title": "机器人定制【狗腿科技】",
         "handle": "gtkj01",
@@ -2464,27 +2451,26 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/fwPeHunxhnCkpLlwbVYDwNKbM-B-4M_3m7uECxR_Hati7GUdxFNkMZZcKvQLAughHyxtSwf5Y6kKxXNQL9puFfxWUK3gv3yu3dpbxCPewRVCNo_QlZPa3EjlagQq92B1Yg9jTTXL2nAAeP_jkUTmknvz9TnwlMZ-kL9cTo5DjjDKqy0l1wBA9VAkClwdQlXdjmMn8DJzM1_E73GZC-01s1aEQR5K64JKoZCdHZfGl6-cOIKoP3qNiZ6i-C4AAoxO5z81d_pUQXXYpHOnUIktaKx3GZmM5Abpy5vdIjMH0ZJWUbRju53XG0wODQnPP7uWFvL2Ta1bpxeQIFT1aLHlcw.jpg"
+          "url": "https://cdn5.telesco.pe/file/o8pqATtbdVvCdF8e5igGvncoKSsC1YNjbbeB28Zwpg3LZbM5h5b2jOJXTBMKHzwgJZe7Iir9TxA0LDf0YQdWnutucsWJqLcBFyYS93mBDfUZmm8G_EtqkbzhtqilJKxt4zt2GAz2ZdRGrDl3Ud0N31-BO42M8k6x5Lj40N66UqMWy-Vsk6LLJT09ZaTF4_NIwc-WbuMxz8ji3l9-myFuNJzbNJWxYCrS8uYU8dLyVLB3swtG8-8U2fYCrmk4LYLy2NK70qXsmBtmDU-qvGQWJNFG7H5dKPYOG6F_aHlSqOEFE8s2Z573c9eVXOZjXGfHPFoI1d0XotwAdxI4TTFHyg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "新群变化快，手动找很容易漏。\n\nSOSO 会展示最近同步的新群入口，适合快速补充新的群组来源。\n\n🔗 本频道专属邀请链接\nhttps://t.me/sososo?start=autopromo_-1001216695607_5996586698_newgroups_fac06663",
+      "text": "SOSO 搜搜 把 Telegram 搜索和发现放在一个入口。\n\n想继续找频道、群组、帖子或贴纸，直接输入关键词。\n也可以从发现页继续浏览同类入口。\n\n🔗 本频道专属邀请链接\nhttps://t.me/sososo?start=autopromo_-1001216695607_5996586698_soso_32fb6707",
       "links": [
         {
-          "label": "https://t.me/sososo?start=autopromo_-1001216695607_5996586698_newgroups_fac06663",
-          "url": "https://t.me/sososo?start=autopromo_-1001216695607_5996586698_newgroups_fac06663"
+          "label": "https://t.me/sososo?start=autopromo_-1001216695607_5996586698_soso_32fb6707",
+          "url": "https://t.me/sososo?start=autopromo_-1001216695607_5996586698_soso_32fb6707"
         }
       ],
-      "createdAt": "2026-09-20T20:39:25.089Z",
-      "expiresAt": "2026-09-22T20:39:25.089Z",
+      "createdAt": "2026-09-20T23:48:33.926Z",
+      "expiresAt": "2026-09-22T23:48:33.926Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:25.089Z",
-      "tag": "telegram_all",
+      "mediaRefreshedAt": "2026-09-20T23:48:33.926Z",
+      "tag": "telegram_ton",
       "tags": [
-        "telegram_all",
-        "telegram",
-        "telegram_channels"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2499,12 +2485,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:25.089Z"
+        "reviewedAt": "2026-09-20T23:48:33.926Z"
       }
     },
     {
-      "id": 4275501962,
-      "postUrl": "https://t.me/godlynews1/16238?single",
+      "id": 2826047715,
+      "postUrl": "https://t.me/godlynews1/16239?single",
       "source": {
         "title": "Yummy 😋",
         "handle": "godlynews1",
@@ -2518,38 +2504,21 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/o4IUG0i6-pmTDXBvQiT-c7CF8fDBKS3wnhBOggC6TQWhUGMQMJV9osDl0NWdOaxUCTfIQSttNdro_63MsVNe8WRZYE2WTx-Iq1ImCO2O8_QK82_d0GaMjq9XTmWpym3ombTFoBaYy_Vs_IoIzAtw2GqHUwcPaWP9-mNRe7hLGVYYCymemQoQXgjgpXz6-o2VWhCBKbwg1LbfN2u67vq2sF2raHskd7nHQSZ2zaMtXH-JR8oIiHKSqo08FSUnP0dcdJdvJroKs7r0naTbv6ny15ZX_845M9wDaWVNEeHCk8cUpcqB6GjZq9byLDw8cjSflHuErjGcnRH2uJJktN1Saw.jpg"
+          "url": "https://cdn5.telesco.pe/file/gkufyqLsA-ZrU8oXu3zGMvd9WnHggdw3rGHxutl9KtdFU_nz6Fd2AbIdW5TtItnyNrOvpliMxDPPZIRLiyOkszS1yKRFPgZu8DOKwT2ooHsH0Oq1332AhKndDq3tfhnhoiyEqJBY2ww1IkiTDYVjKsnQoE0BKBJ02RuKLB8-_8P7dIAFaeQl1BRy_FtuIJGvwD23V-zWTZFFSEqnkTMvEoK4ZRFKPZAFbroCw-tqJ2igxiak9bBzFIuGz2352gt92bxCd1SKbs-n0vrccABCUVmH95Mo8RYRn0N9jnHYG7MbLQsSXyJgs1iX7Elc4r9ei2PNauOyzUAR4LHWfUr-Lg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "A20 Pro 芯片端侧 AI 实测：苹果 iPhone 18 Pro 可本地跑 270 亿参数模型，速度较 iPhone 17 Pro 翻倍\n\n苹果最新的 A20 Pro 芯片搭载双 16 核神经网络引擎，这在苹果自研 Apple Silicon 发展史上尚属首次。该神经网络引擎专为处理人工智能运算负载打造，性能超越此前所有苹果 SoC。\n\n最新演示显示，一台 iPhone 18 Pro 运行 270 亿参数模型时，运行速度可达 iPhone 17 Pro 的两倍。\n\niPhone 18 Pro 以及 iPhone 18 Pro Max 均配备 12GB、96 位位宽的 LPDDR5X 内存，内存速度相比 iPhone 17 Pro、iPhone 17 Pro Max 的有明显提升。内存升级再加上这套双 16 核神经网络引擎，将手机端本地 AI 性能推上了全新台阶。X 网友阿德里安 · 格龙丁（Adrien Grondin）在 iPhone 18 Pro 上运行 Bonsai‑27B 模型，直观展示了性能提升效果。\n\nvia 匿名\n\n🗒 标签:  #Apple #iPhone #AI\n📢 频道: @GodlyNews1\n🤖 投稿: @GodlyNewsBot",
-      "links": [
-        {
-          "label": "A20 Pro 芯片端侧 AI 实测：苹果 iPhone 18 Pro 可本地跑 270 亿参数模型，速度较 iPhone 17 Pro 翻倍",
-          "url": "https://www.ithome.com/1/004/909.htm"
-        },
-        {
-          "label": "演示",
-          "url": "https://x.com/adrgrondin/status/2101397684753949078"
-        },
-        {
-          "label": "@GodlyNews1",
-          "url": "https://t.me/GodlyNews1"
-        },
-        {
-          "label": "@GodlyNewsBot",
-          "url": "https://t.me/GodlyNewsBot"
-        }
-      ],
-      "createdAt": "2026-09-20T20:39:24.459Z",
-      "expiresAt": "2026-09-22T20:39:24.459Z",
+      "text": "小岛秀夫与索尼终止合作，并在工作室接待新任Xbox  CEO  此前，据《彭博社》报道，索尼PlayStation正式终止与小岛工作室《Physint》项目的全部合作。小岛工作室耗时整整三个月四处对接、寻找全新合作方，经过多方洽谈筛选，最终敲定与Xbox再度联手，继续推进《Physint》的开发工作。  🗒 标签: #小岛秀夫 #小岛工作室 #Physint 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot",
+      "links": [],
+      "createdAt": "2026-09-20T23:48:33.160Z",
+      "expiresAt": "2026-09-22T23:48:33.160Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:24.459Z",
-      "tag": "ai",
+      "mediaRefreshedAt": "2026-09-20T23:48:33.160Z",
+      "tag": "gaming_console",
       "tags": [
-        "ai",
-        "technology"
+        "gaming_console",
+        "gaming"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2564,12 +2533,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:24.459Z"
+        "reviewedAt": "2026-09-20T23:48:33.160Z"
       }
     },
     {
-      "id": 1707675154,
-      "postUrl": "https://t.me/gengarcheats/23404?single",
+      "id": 3997113269,
+      "postUrl": "https://t.me/gengarcheats/23410?single",
       "source": {
         "title": "耿鬼 Gengar 官方频道",
         "handle": "gengarcheats",
@@ -2583,7 +2552,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/cI4VtGa0IdZzty28g8PMPrhbpgXZR98FGPh9kPnsv8kHX7p4bk7AH7cBdXr6uewE-b-CJO2b8UesnSaZHtreO_UWP2sxl3fhfXBn3XfHoX2756WB7t7z2VjBg1sCYrjx14yzB7yKPfiVCAiOiI3ykftXFSEAMnH_YZU6GEPPLLu_kXRVPLBJO92iFLA6E_5ub_rkGSa4Q6wrL-AOHxRbCK8fQ8rfZupGldBwsCBaPi2wNMQB5R_svI8Os5rRD_LnQ8jFOS84X8UGRjuwJtbO_dmoQKDa3MIg0cXQANx6QVEIDy6IFXma2M0FNI5jX4FaCG68Y6KTZ5hJBDnQHZ5aCA.jpg"
+          "url": "https://cdn5.telesco.pe/file/ox0t-g_VdTrgAfxBpIlHJvSJ25LfNyojYnOFjD7TM88oNjcbK_gPkWawDZ4dhSFw9tdldHHcD63vsBm7BgCovhTUfp8DBDVvSu2Ozj4rRCO_0TUlaHGAx0KReO-zK9QY6EwHc2_82dRMYmK7J__Q5YIlnrVZh3oRxCeGOdvb19PJDgCxJa9OTB0wCNBoHBC5Do8vE3VjHO6sAEUmuzTSaadrz60fYPHq9wnat6PkUGIM5wnOHWl-pWdTzxKlJhRn47YgJ8pXHygtgPZUZowG6zR_5ZASi7KyNGATWqt1BcGOdY1vr8v5g5Bo0S7-h-0pobJdocrUnyGjn64jWOCyZw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -2607,10 +2576,10 @@
           "url": "https://t.me/raxguang"
         }
       ],
-      "createdAt": "2026-09-20T20:39:23.706Z",
-      "expiresAt": "2026-09-22T20:39:23.706Z",
+      "createdAt": "2026-09-20T23:48:32.370Z",
+      "expiresAt": "2026-09-22T23:48:32.370Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:23.706Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:32.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2628,7 +2597,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:23.706Z"
+        "reviewedAt": "2026-09-20T23:48:32.370Z"
       }
     },
     {
@@ -2663,10 +2632,10 @@
           "url": "https://t.me/JL9801"
         }
       ],
-      "createdAt": "2026-09-20T20:39:23.086Z",
-      "expiresAt": "2026-09-22T20:39:23.086Z",
+      "createdAt": "2026-09-20T23:48:31.643Z",
+      "expiresAt": "2026-09-22T23:48:31.643Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:23.086Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:31.643Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2684,12 +2653,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:23.086Z"
+        "reviewedAt": "2026-09-20T23:48:31.643Z"
       }
     },
     {
-      "id": 4069921300,
-      "postUrl": "https://t.me/gaosuwang/17391?single",
+      "id": 2279796071,
+      "postUrl": "https://t.me/gaosuwang/17392?single",
       "source": {
         "title": "🪩TG代理高速网-免费公益高速代理节点VPN",
         "handle": "gaosuwang",
@@ -2702,15 +2671,61 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "今日最新代理已更新完毕\n\n评论区回复“签到”即可获得SOCK限时免费代理\n\n由于使用的人比较多，为了防止代理速度被一直占用所以每天更新\n白嫖代理使用的人比较多，失效快且不稳定",
-      "links": [],
-      "createdAt": "2026-09-20T20:39:22.433Z",
-      "expiresAt": "2026-09-22T20:39:22.433Z",
+      "text": "#频道互推 #相似推荐\n------------------------------\n📢 高速代理-VPN-加速器\n📢 小白教程-免费vpn代理分享\n📢 免费VPN翻墙｜加速器节点｜高速代理分享\n📢 免费代理 高速代理 飞机代理 免费VPN 高速VPN 公\n📢 VPN机场-中文破解软件🅥\n📢 🥇高速代理- VPN -加速器直连\n📢 老司机AppTool破解软件-老司机基地📱\n📢 加拿大🇨🇦/顶尖算法\n📢 小王子机房 line WS 协议\n📢 TG卡商-刷粉/账号-下单/对接\n------------------------------\n🤝 加入互推 · 获得曝光，赚邀请奖励",
+      "links": [
+        {
+          "label": "高速代理-VPN-加速器",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001882746467_1fd986fa"
+        },
+        {
+          "label": "小白教程-免费vpn代理分享",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001549347026_1980d984"
+        },
+        {
+          "label": "免费VPN翻墙｜加速器节点｜高速代理分享",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001167822702_42736dd8"
+        },
+        {
+          "label": "免费代理 高速代理 飞机代理 免费VPN 高速VPN 公",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001898784677_7f7c60cb"
+        },
+        {
+          "label": "VPN机场-中文破解软件🅥",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001597498137_5a6d51b5"
+        },
+        {
+          "label": "🥇高速代理- VPN -加速器直连",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1001096901175_924a2144"
+        },
+        {
+          "label": "老司机AppTool破解软件-老司机基地📱",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1002175364232_a884e9f0"
+        },
+        {
+          "label": "加拿大🇨🇦/顶尖算法",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1004332580928_358bf842"
+        },
+        {
+          "label": "小王子机房 line WS 协议",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1002042912180_c311a50d"
+        },
+        {
+          "label": "TG卡商-刷粉/账号-下单/对接",
+          "url": "https://t.me/jiso?start=hutui_-1002117383942_-1002120236079_01103366"
+        },
+        {
+          "label": "加入互推",
+          "url": "https://t.me/jiso?start=htjoin_-1002117383942_c711e90e"
+        }
+      ],
+      "createdAt": "2026-09-20T23:48:30.722Z",
+      "expiresAt": "2026-09-22T23:48:30.722Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:22.433Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-09-20T23:48:30.722Z",
+      "tag": "technology_software",
       "tags": [
-        "other"
+        "technology_software",
+        "technology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2725,7 +2740,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:22.433Z"
+        "reviewedAt": "2026-09-20T23:48:30.722Z"
       }
     },
     {
@@ -2744,17 +2759,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/X6wXQFJoWy4XwLVKqOBLSMyE5JbJJDawOmeeNHZZBUUi0OCVbT414mzZxZlYgwlzVflPu0BspFnffQxO1XFJyaLqI6X7AMGvCl3BmALipSflq_dRVP7TFfb888QhrrHQANuPMoVjRJkiBi7XoDhDIgiBdFU83EZ2F1yPzLm37SlKgnxv66IsfMYyedg7J3f2ztEmbMa75djsMs2PvWuKJ4bxbaqgBdzhWmpvmqpaefEpLXco8oOLLpzVUH--pLhdhrrzVfj2vzlKQ3V9Swx_MxZNNiJ-ai_ICnqq39DvviVzCunF8N_6FZ6rlQWxTM_f3V-NEiQxl88Effh8UrM3BA.jpg"
+          "url": "https://cdn4.telesco.pe/file/N11kXYyzjkTSSn64lhFPZb1MNKeiSQuUVkoxgUSYbQxBSiSMuKBQm912kGJE3-FzsdBx3lG1CTWN1sgjkWM0uelPJ9QBX5AGNZ7XicyvgGV_Eg5AlChHXatAA3qbA9ZkEP7H_DI7CxM4aPbus_Emg7DAEJIvGMv0nkj8t-gv3fiW3o_VQ5JHPWv998XC021hGe_WvdWMDQSjtTdRwl77WrioQPua3aG94yhXozCiPKVfvSn0wddUmPdSFTMdElGRlQo4oQORJmqCxIDeMcIFg4rYuWhUfZt-JM3GmwB4v4dJfIh8yaNl1-7AFSvGQ2Otg-Dbm1zJKWK_ddqey88aNA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "🔍 超级搜索\n\nTG必备搜索神器，帮你精准找到，想要的群组，频道，视频，音乐。\n\n👇👇 点击下方按钮，进行搜索！",
       "links": [],
-      "createdAt": "2026-09-20T20:39:21.794Z",
-      "expiresAt": "2026-09-22T20:39:21.794Z",
+      "createdAt": "2026-09-20T23:48:29.976Z",
+      "expiresAt": "2026-09-22T23:48:29.976Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:21.794Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:29.976Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2772,7 +2787,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:21.794Z"
+        "reviewedAt": "2026-09-20T23:48:29.976Z"
       }
     },
     {
@@ -2815,10 +2830,10 @@
           "url": "https://t.me/Flwzx"
         }
       ],
-      "createdAt": "2026-09-20T20:39:21.144Z",
-      "expiresAt": "2026-09-22T20:39:21.144Z",
+      "createdAt": "2026-09-20T23:48:28.915Z",
+      "expiresAt": "2026-09-22T23:48:28.915Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:21.144Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:28.915Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2836,7 +2851,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:21.144Z"
+        "reviewedAt": "2026-09-20T23:48:28.915Z"
       }
     },
     {
@@ -2877,10 +2892,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-09-20T20:39:20.376Z",
-      "expiresAt": "2026-09-22T20:39:20.376Z",
+      "createdAt": "2026-09-20T23:48:28.055Z",
+      "expiresAt": "2026-09-22T23:48:28.055Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:20.376Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:28.055Z",
       "tag": "transport_other",
       "tags": [
         "transport_other",
@@ -2899,12 +2914,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:20.376Z"
+        "reviewedAt": "2026-09-20T23:48:28.055Z"
       }
     },
     {
-      "id": 3460969820,
-      "postUrl": "https://t.me/flbnw/16254?single",
+      "id": 2411526669,
+      "postUrl": "https://t.me/flbnw/16255?single",
       "source": {
         "title": "菲律宾新闻社区",
         "handle": "flbnw",
@@ -2913,16 +2928,27 @@
       },
       "sourceId": "cn:flbnw",
       "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/Z_oL1v0EPLQeEqeAUejxjThOZaj1hlPM_H91TA_pi53kXX457uTht021rvNrJ6ob2NlCJVXQBT2fPBDYtTpGHSvc4tfM66-amXlV6DdOW7zMzdEoMWVnIbJfowt2SZ8Q3WxyzStjOPicTaWNldJTe7fH0I5l4271cUzhghQfNaheOV2g4mhZHnBgM8zJiNOXTqaD5kFvQP4JgTwDp92bUxmMmSAM10uTxdRI6VAxn45TecZgac9arwGiB812umVpLwljNe20yyB8hQc8XBIYL2pZ96n69SsJIKPbugrZ_IzqM5Yw_jWU5TIubO9YHSwNHXxAjXH6KLNh6dQ3c8ItIA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/svJ8PCVg3gUCYnArOkw_tH6tbPWzDnsTIcuFHN2xSmSV-CGUcP7EZf8mJfU0wMMXVlR47KpxjWy84Qsmqa6UlHjtGc5vANl62MHYNo0L6_lKgcbP01jaOY6kSPdnUWcOtL57fj1mUWCmRBuBHFOWIRnUi2lqp98UkoTYt1gwQ2h2Pym42_P7OqyuMw8IxzSkhIa0VcTKYzXTOq2yDGgiSKYY2gUfkGBaDIsD5qSIr4taWQKRkmshdEpmWJthvNESmRRoBTgxj2tdCt3lc0NP4ivpy-OLozWzeDApz9-ATjRJlSUsDzoK6ujOdcVYLEswbc_cgOQHN_srImUZ3uCbbw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "森美兰移民局一夜连查7处 41名非法移民被扣\n\n凌晨突击检查178人 41人因证件问题当场扣留\n9月19日凌晨，森美兰移民局在芙蓉、汝来一带连续扫荡7处地点。被查178名外籍人员中，41人无有效准证或涉逾期居留，年龄18至58岁，含33男8女。最大单批在汝来工人宿舍一次性扣下17人。\n\n国籍结构曝光 7名中国籍人员被带走调查\n扣留人员中缅甸籍18人居首，孟加拉籍8人，中国籍7人并列其次，其余为印尼3人及巴、越、印、菲各1人，另有1名无国籍者。全部人员已移送冷冷移民拘留中心。\n\n表面是证件扫查，实为对雇佣黑工的本地产业链定点施压，后续恐有雇主被顺藤追责。\n\n#马来西亚 #非法移民 #森美兰",
+      "text": "换汇收诈骗款，10万9821美金被冻结\n\n以换汇为名，转来诈骗款\n9月5日，对方以工地开工需换美金为由，转来的钱被证实为诈骗款。银行卡随即被国内警察冻结，卡内资金无法使用，涉及款项10万9821美金已全部原路退回。\n\n催款时拖延撒谎，家人行踪被锁定\n当事人多次要求退款，对方满口谎言一拖再拖。目前已掌握对方老婆坐月子地点及父母住址，若继续逃避，将动用一切手段解决。\n\n诈骗款换汇，最终冻结的是收款人的全部信任。\n\n#换汇 #诈骗款 #银行卡冻结 #资金追讨",
       "links": [],
-      "createdAt": "2026-09-20T20:39:19.541Z",
-      "expiresAt": "2026-09-22T20:39:19.541Z",
+      "createdAt": "2026-09-20T23:48:27.138Z",
+      "expiresAt": "2026-09-22T23:48:27.138Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:19.541Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:27.138Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2940,7 +2966,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:19.541Z"
+        "reviewedAt": "2026-09-20T23:48:27.138Z"
       }
     },
     {
@@ -2995,10 +3021,10 @@
           "url": "https://t.me/tougaonbbot"
         }
       ],
-      "createdAt": "2026-09-20T20:39:18.903Z",
-      "expiresAt": "2026-09-22T20:39:18.903Z",
+      "createdAt": "2026-09-20T23:48:26.273Z",
+      "expiresAt": "2026-09-22T23:48:26.273Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:18.903Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:26.273Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3019,7 +3045,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:18.903Z"
+        "reviewedAt": "2026-09-20T23:48:26.273Z"
       }
     },
     {
@@ -3104,10 +3130,10 @@
           "url": "https://t.me/DL78com"
         }
       ],
-      "createdAt": "2026-09-20T20:39:18.199Z",
-      "expiresAt": "2026-09-22T20:39:18.199Z",
+      "createdAt": "2026-09-20T23:48:25.402Z",
+      "expiresAt": "2026-09-22T23:48:25.402Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:18.199Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:25.402Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3125,7 +3151,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:18.199Z"
+        "reviewedAt": "2026-09-20T23:48:25.402Z"
       }
     },
     {
@@ -3151,10 +3177,10 @@
       "fallbackReason": null,
       "text": "🔍 超级搜索\n\nTG必备搜索神器，帮你精准找到，想要的群组，频道，视频，音乐。\n\n👇👇 点击下方按钮，进行搜索！",
       "links": [],
-      "createdAt": "2026-09-20T20:39:17.353Z",
-      "expiresAt": "2026-09-22T20:39:17.353Z",
+      "createdAt": "2026-09-20T23:48:24.520Z",
+      "expiresAt": "2026-09-22T23:48:24.520Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:17.353Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:24.520Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3172,7 +3198,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:17.353Z"
+        "reviewedAt": "2026-09-20T23:48:24.520Z"
       }
     },
     {
@@ -3237,10 +3263,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-09-20T20:39:16.635Z",
-      "expiresAt": "2026-09-22T20:39:16.635Z",
+      "createdAt": "2026-09-20T23:48:22.963Z",
+      "expiresAt": "2026-09-22T23:48:22.963Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:16.635Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:22.963Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3258,7 +3284,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:16.635Z"
+        "reviewedAt": "2026-09-20T23:48:22.963Z"
       }
     },
     {
@@ -3289,10 +3315,10 @@
           "url": "https://t.me/CJYQ"
         }
       ],
-      "createdAt": "2026-09-20T20:39:15.982Z",
-      "expiresAt": "2026-09-22T20:39:15.982Z",
+      "createdAt": "2026-09-20T23:48:22.196Z",
+      "expiresAt": "2026-09-22T23:48:22.196Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:15.982Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:22.196Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3311,7 +3337,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:15.982Z"
+        "reviewedAt": "2026-09-20T23:48:22.196Z"
       }
     },
     {
@@ -3389,10 +3415,10 @@
           "url": "https://www.ffqla.net/thread-920-1-1.html"
         }
       ],
-      "createdAt": "2026-09-20T20:39:15.181Z",
-      "expiresAt": "2026-09-22T20:39:15.181Z",
+      "createdAt": "2026-09-20T23:48:21.274Z",
+      "expiresAt": "2026-09-22T23:48:21.274Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:15.181Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:21.274Z",
       "tag": "transport_other",
       "tags": [
         "transport_other",
@@ -3411,7 +3437,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:15.181Z"
+        "reviewedAt": "2026-09-20T23:48:21.274Z"
       }
     },
     {
@@ -3437,10 +3463,10 @@
       "fallbackReason": null,
       "text": "#泰国新闻\n\n【四色菊府 43 岁男子流窜多县盗摩托车，偷车换取毒品，涉案车辆被走私运往老挝】\n\n四色菊府警方经过线索研判部署埋伏抓捕，抓获 43 岁男子阿通。该男子流窜辖区多个县份专门盗窃摩托车，作案至少 12 起，偷来的车辆用来交换毒品，每台摩托车仅换取 30 粒冰毒，失窃摩托大多被转运到老挝。\n\n警方布控发现嫌疑人潜入派汶警局辖区作案，当场实施逮捕。审讯中阿通交代作案记录，在四色菊市警局辖区作案 3 次、南格连警局辖区 2 次、帕育警局辖区 1 次、本查拉警局辖区 1 次、派汶警局辖区 2 次、甘他拉叻警局辖区 3 次。被捕前不久，他刚吸食过 2 粒毒品。经查实，该嫌犯属于刚出狱就重新作案。\n\n目前警方扩大侦查，追查接收被盗摩托车的下线，查清车辆跨境走私运输路线，深挖这条 “盗车换毒” 的跨境链条。\n⚡️🐏😊🤓😚😙🙃😙🤩",
       "links": [],
-      "createdAt": "2026-09-20T20:39:14.574Z",
-      "expiresAt": "2026-09-22T20:39:14.574Z",
+      "createdAt": "2026-09-20T23:48:20.433Z",
+      "expiresAt": "2026-09-22T23:48:20.433Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:14.574Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:20.433Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3458,7 +3484,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:14.574Z"
+        "reviewedAt": "2026-09-20T23:48:20.433Z"
       }
     },
     {
@@ -3503,10 +3529,10 @@
           "url": "https://t.me/huohu?start=i_je30vPxHC"
         }
       ],
-      "createdAt": "2026-09-20T20:39:13.839Z",
-      "expiresAt": "2026-09-22T20:39:13.839Z",
+      "createdAt": "2026-09-20T23:48:19.589Z",
+      "expiresAt": "2026-09-22T23:48:19.589Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:13.839Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:19.589Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3525,7 +3551,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:13.839Z"
+        "reviewedAt": "2026-09-20T23:48:19.589Z"
       }
     },
     {
@@ -3586,10 +3612,10 @@
           "url": "https://2028vip168.com/"
         }
       ],
-      "createdAt": "2026-09-20T20:39:13.102Z",
-      "expiresAt": "2026-09-22T20:39:13.102Z",
+      "createdAt": "2026-09-20T23:48:18.689Z",
+      "expiresAt": "2026-09-22T23:48:18.689Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:13.102Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:18.689Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3608,7 +3634,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:13.102Z"
+        "reviewedAt": "2026-09-20T23:48:18.689Z"
       }
     },
     {
@@ -3643,10 +3669,10 @@
           "url": "https://t.me/xiaoxin0588"
         }
       ],
-      "createdAt": "2026-09-20T20:39:11.646Z",
-      "expiresAt": "2026-09-22T20:39:11.646Z",
+      "createdAt": "2026-09-20T23:48:16.640Z",
+      "expiresAt": "2026-09-22T23:48:16.640Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:11.646Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:16.640Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3664,7 +3690,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:11.646Z"
+        "reviewedAt": "2026-09-20T23:48:16.640Z"
       }
     },
     {
@@ -3713,10 +3739,10 @@
           "url": "https://t.me/SpyDefiLive/2010"
         }
       ],
-      "createdAt": "2026-09-20T20:39:11.039Z",
-      "expiresAt": "2026-09-22T20:39:11.039Z",
+      "createdAt": "2026-09-20T23:48:15.820Z",
+      "expiresAt": "2026-09-22T23:48:15.820Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:11.039Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:15.820Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3734,12 +3760,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:11.039Z"
+        "reviewedAt": "2026-09-20T23:48:15.820Z"
       }
     },
     {
-      "id": 777575625,
-      "postUrl": "https://t.me/e9149/12771?single",
+      "id": 2213532427,
+      "postUrl": "https://t.me/e9149/12773?single",
       "source": {
         "title": "【博彩供需资源】棋牌l彩票l盘口🆅",
         "handle": "e9149",
@@ -3753,7 +3779,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/nLCoOrHlOC0iFwL4zIcfCvYQKdohTJIMYv9ltxaHvD-hdeohtLGnS6K43ovIUSoWr_dyk7cRF2yrEEHZFwZ0KVhSjbJgoezilGPbvs8ifHFQapG6HTtdlJfkuS7Q7NwAbCPM5Q4B0M79g5Dl4HNmQKnigj_thBNY3U7w6RZqZLxyHIoHADOmrxvfEeN8AQQ49pufGzhr0qJAh4lgDPNNdT-AbLqsQUnOm7c5c23XkyocNMvEdrzvEwQfCafqzK_LboYAt4YTrSUZOupRaz3LOlSoscIXbKDLkYcnI_pjjxvOpCly-6KocL8Wi0g0H890-LxLU6_AXZpeS8QYkGRhbQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/STqiqrW63gWbb44A4OabEum09p18DibNpqbhm0ytciSbiJnwzEMBoWg8PZj5WZrLEY_hVAnqi_hYV-aezwxYPvXfEdH6xqCVfzu8oYKNlpezPHABZecbeDsZpX3RiMZUPFbNdg--BUCntRjmDhqHaKGUKj51gEhVv7g1EsqETyRzqpLnk5aGayrTX7THdzQdA7Ps_gv5D9GPuw3SjSgedP8pFb10_tzrcVU6MvPbUAM8PZnKim2aYTSozwOALipP9kpywRF0Oejq1nqScCJCoAxnRZE12aBEPT7vnYc-lteKFWiAJEowz9xk_gZ-hgcVYcngSnjSCBQSeuw-Y9jYig.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -3765,10 +3791,10 @@
           "url": "https://75.x9.fun/"
         }
       ],
-      "createdAt": "2026-09-20T20:39:10.495Z",
-      "expiresAt": "2026-09-22T20:39:10.495Z",
+      "createdAt": "2026-09-20T23:48:15.150Z",
+      "expiresAt": "2026-09-22T23:48:15.150Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:10.495Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:15.150Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3786,7 +3812,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:10.495Z"
+        "reviewedAt": "2026-09-20T23:48:15.150Z"
       }
     },
     {
@@ -3827,10 +3853,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-09-20T20:39:09.888Z",
-      "expiresAt": "2026-09-22T20:39:09.888Z",
+      "createdAt": "2026-09-20T23:48:14.420Z",
+      "expiresAt": "2026-09-22T23:48:14.420Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:09.888Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:14.420Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3848,12 +3874,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:09.888Z"
+        "reviewedAt": "2026-09-20T23:48:14.420Z"
       }
     },
     {
-      "id": 4133584475,
-      "postUrl": "https://t.me/dynnn/72804?single",
+      "id": 1927659416,
+      "postUrl": "https://t.me/dynnn/72807?single",
       "source": {
         "title": "东南亚吃瓜日记",
         "handle": "dynnn",
@@ -3862,153 +3888,31 @@
       },
       "sourceId": "cn:dynnn",
       "sourceCountryCode": "cn",
-      "contentType": "gallery",
+      "contentType": "image",
       "media": [
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/c_BPx3WY-zKYxjQYK_aKDUJAlrhvObLlZpDV0S3q_tO1yqcd0Dpis309at_D79US1UZZThjRf47v4HhZTgNN2qd85zWTU9KMIkh1OlXiW2wTJFT5U9P_tb5IzCAtUAt6wc5_DdEMRH-aDA41dvhxvmjkt0LzVs3BiD9yRHei98HNclVMunZ-Ji8r6DBfQjZI9Q-3GL_o8HhxGegynHsYlQNXr4ucF2s9HYpQwS5OYbNeKJ7XVX-PV4RMlcRW9FoazrRfhRyqsL_iIzV5GAuquXc-0Dy2fB1kucWN-BoqWYg5k5Cdjl2JKjr45vmAX5qEyu9yrCjIVpcG0lka0QcV9Q.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/uUjzPy1r141BOxSDK0Sdwk2SRTYvalPiLl8cmA8Pie_tDX2pjePmD5qxL3e_Dph7DO8iOhvDt3xhfb5AtdaPcSLlEmWzC4gkIrPFj1nVYljZ32KGHDa6McVpNuVfb8ZG39_P2EJUmyKJR38AD4mVeMQQAA0jug6TzSFMBj_1fZ_YiLpKQnWTvG735ua9azjAEbr3oQqtgRar3d7vu_MScin5-gaeBZ63PM0h-HPvoK5bSsNvIUTAWYOAEfDHGooaVu-4FALlyitDole0AFxx22_059yG-jZZiIQo4Z8rimxaF8TbeT_8KsTfpGFFrXYjKNgALuKvHqINgUKvqYV3HQ.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/a0pURS2PpfuA8iLZH9TIqvL11JiPYUHxyFOky29tXD9hD301dXMYbc3FAAR4STz_xoPMU2D3lpdgM70y_hTk8VAio5W0vrvtoTyswZehE-4fb8DjoEeIgUWTYXVYCxWpCX_sXJ6gHV7wqQmkQI632ButNVGjH0p4Plqw0QEtRyD0ivbpoSkn-MnUzYZdecZ-C62jlkIpC6JWibPzvx4fNF9qqqz2Hx_KBa6DKabZBrqnt2ubMWtXQchbKg5Wcni6UA9EKTy8iIO87_xMWfLgjLBeNFZHwgBCv6rds5oAAyRVaBGJhzK94kUWtmZsNQ6QjONkAZVwhsJpaZ7-6nky2A.jpg"
+          "url": "https://cdn5.telesco.pe/file/pKzA-O7cSTV4oluWxIKnrw04JPAIFhZYQ-RKAvk7t5Kip_xrMTzqKaLJ8CarIpaqHRvrIggvK6VeSK6mHbcABDxPL1GUxboRNlod197CafaZPWz0X7TVQT0tPBYmZJ8MQa3mpqK35C-Preg0AqOAreZYIeCiTwR1akAPM2Hv2Pix_4P7IM4b_u_IfAgP-px7u86ouR2YEoWm7uKl4EHx7s8WSH7ctge3rPXpSEOpKkjsYRZ2cTMjAvsW8fyTF5R8k-xA-uRsjbiOHIi7qVbUBo7NsejtkV42yLceZnqelRk2uzhXbuk5EZKQFDVdU-QmmO6lWiAgi5YEGYP3zZ_iZw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "#老挝资讯：占巴塞警方捣毁疑似网络诈骗窝点，22名中国籍人员被控制\n\n9月18日上午11时，老挝占巴塞省公安厅根据群众提供的线索，对巴江县（Bachieng Chaleunsouk）Houaxae村一处出租屋展开突击检查，查获一个涉嫌利用计算机实施网络犯罪的窝点。\n\n据当地警方通报，行动由占巴塞省公安厅外国人管理部门联合巴江县有关部门及当地行政人员实施。现场共控制22名中国籍嫌疑人，其中包括1名女性。\n\n执法人员同时查获大量电子设备，包括49台台式电脑、237部手机、27台电脑主机（CPU）、7台稳压/供电设备以及其他相关物品。\n\n警方表示，目前案件仍处于调查取证阶段，22人的具体分工、涉嫌实施的诈骗类型、受害者情况及涉案金额尚未公布，最终违法犯罪事实仍有待进一步调查确认。\n\n🎁🎁 频道广告赞助商 🎁🎁\n\n😁😁😁😁😁😁😁😁😁 实力赌场官方直营，大额无忧，首充签到领100%！\n\n🌈🌈🌈 零风控，包出款，反水无上限，电子大水！爆庄网址 8k207.com\n\n🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷 新人注册送38U\n\n🤩🤩🤩🤩🤩🤩🤩🤩🤩\n香港六合彩特码49倍｜真人返水1%｜电子/棋牌/捕鱼返水1.5%｜十三水/德州 无抽佣\n\n😀😀😀每日返水高达🇺🇦☹️😀😀😀😀😀N1国际无风控 免实名不限IP 玩家首选\n\n😑🫤😐🫥😶🤥🫠🤫🫡🫢⚡️ 人民币注册 ⚡️ USDT注册😑彩票注册\n\n🎮🎮🎮🎮😀😃😄😁😆 🤯😳🥵🥶实力信誉老台 强力推荐包出款\n\n😀😀😀😀😀9G.COM 全球布局 实力保障\n\n😀😀😀😀😀7T.COM全球最稳的USDT娱乐城\n\n😁😁千万域名 百亿大盘 顶奢品牌 大户首选 入款笔笔加赠3%  \n\n铂莱娱乐城 全网担保上押1300万U，勿伤玩家利益，勿毁博彩信誉\n\n西湖娱乐城 全网担保上押1300万U 电子百家乐0审核0风控包出款 盘总聚集地\n\n✅【金贝娱乐jinbei.com】东南亚上押500万u 全网上押 5000万U 资金储备5亿U\n\n✅新全迅网 · 娱乐平台风向标 💎查信誉 · 💎看曝光 · 💎找优惠，让数据说话，让信誉可查，💎你了解娱乐平台信息的第一站\n\n辉煌娱乐城 93.CC全网上押5500万u，大集团，大品牌，实力派。别人怕你赢，我们怕你不敢赢！亿级储备金硬核坐镇，稳定出款就是最大底气\n\nKK娱乐城 18.VIP 东南亚华人专属银行，敢赢就敢出，累计出款突破10亿U！资金雄厚，极速到账，专为全球华人打造，致力成为东南亚最大的线上娱乐品牌\n\n😎😎😎😎😎  全球布局 · 100%保障出款 · 秒充秒提\n\n✅PG集团（92.cc）耗资百亿打造全网最顶级娱乐城，业界龙头行业第一，PG直营仅此一站\n\n✅投稿爆料：@M6777\n☀️吃瓜日记：@DYNNN",
+      "text": "SOSO 搜搜 把 Telegram 搜索和发现放在一个入口。\n\n想继续找频道、群组、帖子或贴纸，直接输入关键词。\n也可以从发现页继续浏览同类入口。\n\n🔗 本频道专属邀请链接\nhttps://t.me/sooo?start=autopromo_-1001336518500_7383163023_soso_79b60a65",
       "links": [
         {
-          "label": "实力赌场官方直营，大额无忧，首充签到领100%！",
-          "url": "https://blde7.com/"
-        },
-        {
-          "label": "零风控，包出款，反水无上限，电子大水！爆庄网址",
-          "url": "https://8k207.com/"
-        },
-        {
-          "label": "8k207.com",
-          "url": "https://8k207.com/"
-        },
-        {
-          "label": "新人注册送38U",
-          "url": "https://t.me/bot8gyl?start=P1233"
-        },
-        {
-          "label": "香港六合彩特码49倍｜真人返水1%｜电子/棋牌/捕鱼返水1.5%｜十三水/德州 无抽佣",
-          "url": "https://153.43.183.116:5012/?id=805069176"
-        },
-        {
-          "label": "每日返水高达",
-          "url": "https://n1020.com/"
-        },
-        {
-          "label": "N1国际无风控 免实名不限IP 玩家首选",
-          "url": "https://n1020.com/"
-        },
-        {
-          "label": "人民币注册",
-          "url": "https://266366.vip/?id=980147449"
-        },
-        {
-          "label": "USDT注册",
-          "url": "https://266366.vip/?id=638009931"
-        },
-        {
-          "label": "彩票注册",
-          "url": "https://share.yiwumu.com/MZf7rQ8F"
-        },
-        {
-          "label": "实力信誉老台 强力推荐包出款",
-          "url": "https://8888u.top/"
-        },
-        {
-          "label": "9G.COM 全球布局 实力保障",
-          "url": "https://153.43.182.233:18029/?id=969825647"
-        },
-        {
-          "label": "7T.COM全球最稳的USDT娱乐城",
-          "url": "https://153.43.84.8:18025/?id=437975872"
-        },
-        {
-          "label": "千万域名 百亿大盘 顶奢品牌 大户首选 入款笔笔加赠3%",
-          "url": "https://8cc71.cc/"
-        },
-        {
-          "label": "铂莱娱乐城",
-          "url": "https://bolai220.cc/"
-        },
-        {
-          "label": null,
-          "url": "https://bolai220.cc/"
-        },
-        {
-          "label": "全网担保上押1300万U，勿伤玩家利益，勿毁博彩信誉",
-          "url": "https://bolai220.cc/"
-        },
-        {
-          "label": "西湖娱乐城",
-          "url": "https://xh8157.cc/"
-        },
-        {
-          "label": null,
-          "url": "https://xh8157.cc/"
-        },
-        {
-          "label": "全网担保上押1300万U 电子百家乐0审核0风控包出款 盘总聚集地",
-          "url": "https://xh8157.cc/"
-        },
-        {
-          "label": "✅【金贝娱乐jinbei.com】东南亚上押500万u 全网上押 5000万U 资金储备5亿U",
-          "url": "https://jinbei172.cc/"
-        },
-        {
-          "label": "✅",
-          "url": "https://t.me/xinquanxunwang"
-        },
-        {
-          "label": "新全迅网 · 娱乐平台风向标 💎查信誉 · 💎看曝光 · 💎找优惠，让数据说话，让信誉可查，💎你了解娱乐平台信息的第一站",
-          "url": "https://t.me/xinquanxunwang"
-        },
-        {
-          "label": "辉煌娱乐城 93.CC全网上押5500万u，大集团，大品牌，实力派。别人怕你赢，我们怕你不敢赢！亿级储备金硬核坐镇，稳定出款就是最大底气",
-          "url": "https://hh6793.vip/"
-        },
-        {
-          "label": "KK娱乐城 18.VIP 东南亚华人专属银行，敢赢就敢出，累计出款突破10亿U！资金雄厚，极速到账，专为全球华人打造，致力成为东南亚最大的线上娱乐品牌",
-          "url": "https://188085.vip/"
-        },
-        {
-          "label": "全球布局 · 100%保障出款 · 秒充秒提",
-          "url": "https://2g43.cc/"
-        },
-        {
-          "label": "✅PG集团（92.cc）耗资百亿打造全网最顶级娱乐城，业界龙头行业第一，PG直营仅此一站",
-          "url": "https://pgyl293.cc/"
-        },
-        {
-          "label": "@M6777",
-          "url": "https://t.me/M6777"
-        },
-        {
-          "label": "@DYNNN",
-          "url": "https://t.me/DYNNN"
+          "label": "https://t.me/sooo?start=autopromo_-1001336518500_7383163023_soso_79b60a65",
+          "url": "https://t.me/sooo?start=autopromo_-1001336518500_7383163023_soso_79b60a65"
         }
       ],
-      "createdAt": "2026-09-20T20:39:09.025Z",
-      "expiresAt": "2026-09-22T20:39:09.025Z",
+      "createdAt": "2026-09-20T23:48:13.412Z",
+      "expiresAt": "2026-09-22T23:48:13.412Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:09.025Z",
-      "tag": "electronics_pc",
+      "mediaRefreshedAt": "2026-09-20T23:48:13.412Z",
+      "tag": "telegram_ton",
       "tags": [
-        "electronics_pc",
-        "electronics"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4023,7 +3927,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:09.025Z"
+        "reviewedAt": "2026-09-20T23:48:13.412Z"
       }
     },
     {
@@ -4086,10 +3990,10 @@
           "url": "https://t.me/Millergobot"
         }
       ],
-      "createdAt": "2026-09-20T20:39:07.663Z",
-      "expiresAt": "2026-09-22T20:39:07.663Z",
+      "createdAt": "2026-09-20T23:48:12.199Z",
+      "expiresAt": "2026-09-22T23:48:12.199Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:07.663Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:12.199Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4107,12 +4011,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:07.663Z"
+        "reviewedAt": "2026-09-20T23:48:12.199Z"
       }
     },
     {
-      "id": 3045199554,
-      "postUrl": "https://t.me/dubaihuarenzixun/66900?single",
+      "id": 3510139699,
+      "postUrl": "https://t.me/dubaihuarenzixun/66909?single",
       "source": {
         "title": "迪拜新闻|华人资讯曝光|dubai news",
         "handle": "dubaihuarenzixun",
@@ -4127,10 +4031,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-20T20:39:06.942Z",
-      "expiresAt": "2026-09-22T20:39:06.942Z",
+      "createdAt": "2026-09-20T23:48:10.452Z",
+      "expiresAt": "2026-09-22T23:48:10.452Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:06.942Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:10.452Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -4152,7 +4056,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:06.942Z"
+        "reviewedAt": "2026-09-20T23:48:10.452Z"
       }
     },
     {
@@ -4178,10 +4082,10 @@
       "fallbackReason": null,
       "text": "马来西亚新闻 【马来西亚男子失踪4天 被发现卡在岩石间身亡】\n\n古晋9月20日讯：一名男子自9月16日在石隆门甘榜法里附近家族农场失踪后，昨日在距农场约500米处被发现身亡。砂拉越消防与拯救局表示，死者于下午约2时50分被发现卡在约20米高的岩石之间。救援人员使用担架完成遗体回收，随后移交警方进一步处理。死者身份确认为Clement Chimiet Conos，搜救行动结束后，石隆门消防局人员已返回站点。",
       "links": [],
-      "createdAt": "2026-09-20T20:39:06.230Z",
-      "expiresAt": "2026-09-22T20:39:06.230Z",
+      "createdAt": "2026-09-20T23:48:09.167Z",
+      "expiresAt": "2026-09-22T23:48:09.167Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:06.230Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:09.167Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4199,7 +4103,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:06.230Z"
+        "reviewedAt": "2026-09-20T23:48:09.167Z"
       }
     },
     {
@@ -4248,10 +4152,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-09-20T20:39:05.603Z",
-      "expiresAt": "2026-09-22T20:39:05.603Z",
+      "createdAt": "2026-09-20T23:48:08.333Z",
+      "expiresAt": "2026-09-22T23:48:08.333Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:05.603Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:08.333Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4269,7 +4173,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:05.603Z"
+        "reviewedAt": "2026-09-20T23:48:08.333Z"
       }
     },
     {
@@ -4306,10 +4210,10 @@
           "url": "https://t.me/dsj112"
         }
       ],
-      "createdAt": "2026-09-20T20:39:04.869Z",
-      "expiresAt": "2026-09-22T20:39:04.869Z",
+      "createdAt": "2026-09-20T23:48:07.521Z",
+      "expiresAt": "2026-09-22T23:48:07.521Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:04.869Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:07.521Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4327,7 +4231,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:04.869Z"
+        "reviewedAt": "2026-09-20T23:48:07.521Z"
       }
     },
     {
@@ -4382,10 +4286,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-09-20T20:39:04.152Z",
-      "expiresAt": "2026-09-22T20:39:04.152Z",
+      "createdAt": "2026-09-20T23:48:06.479Z",
+      "expiresAt": "2026-09-22T23:48:06.479Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:04.152Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:06.479Z",
       "tag": "education_all",
       "tags": [
         "education_all",
@@ -4404,7 +4308,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:04.152Z"
+        "reviewedAt": "2026-09-20T23:48:06.479Z"
       }
     },
     {
@@ -4414,7 +4318,7 @@
         "title": "东南亚黑料曝光",
         "handle": "dongnanya2999",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/hZbId-QLoIoprTKxylGuDMC68qrjZqHfIsZSp9PNRAOTDpF8ToLR1tP7fUIzDaDNjNVRzuNHGSqQyj3J0aHdmratZ7HiMrZtVDhsoyUxF07znCsFWqc6UD8-LdsIUnION7BZK1RyUknSN2WCktWlI7csp6NiupRkoF2-n8mRXwV1-jnG4hUiRNq1ncj3UQmIboHUzjN0Ky3nxIMcHTzGqwZLlVep2GavW2rgaTzyuWKdP7JcB-Z41PcUhDrO6P9jwqmsTt4KWeJdqQ6EK3sws4A6mHYmQIERJKN3owCJDa0tFkFyH7NB6G7KPkvBcVZm6K0kczo1s80S8mBSF1ipUg.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/kttCq5eDg16Z_9FuhTWx341z3PlgTU_nTAAx9VfrpD7sV_D7pNQjg7ZpoisyR7DV3TZm15B4H-_c7sQQKT9zRZZqOc1ZVJbOdzYB8f1iFXYaPLV4jKy2ghSOdkah7vIOkZ__hj1ESr9Jmcxhc5KQTuHjNJUE7PUc6NemF90bTSe8-kEI5MxDgY02ly2hgwEoLk5u2R5PTqS-rE6os_ZoyERj23RenMvhYMzfnOI_w6rDtLpZaDCq6o8ubLtMM7phYrSKFHpvPWwOpn1_elyUdWTDFKkoltSfnzjtlSLFQjZHS8O-Ue3ybKUPd-UsL-KpuJzo1fuEMqdyo5yZNB6kaQ.jpg"
       },
       "sourceId": "cn:dongnanya2999",
       "sourceCountryCode": "cn",
@@ -4435,10 +4339,10 @@
           "url": "https://t.me/souso?start=autopromo_-1003565915267_7589851369_groups_dcba38e0"
         }
       ],
-      "createdAt": "2026-09-20T20:39:03.470Z",
-      "expiresAt": "2026-09-22T20:39:03.470Z",
+      "createdAt": "2026-09-20T23:48:05.740Z",
+      "expiresAt": "2026-09-22T23:48:05.740Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:03.470Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:05.740Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4456,7 +4360,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:03.470Z"
+        "reviewedAt": "2026-09-20T23:48:05.740Z"
       }
     },
     {
@@ -4466,7 +4370,7 @@
         "title": "东南亚安危曝光",
         "handle": "dnyzph",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uarbn8JWAyO41PaKRHimWWWXbWD8RTpewjnCPlIi4pqEUmtkxwnO-xgtgRjvFR3a8KYAKUSklkVpWByiNiyVLUg0jV8Y6NcVesTKQyvYGKcKJjQhB9L07TWg5Y2dpcH_bWzowwOXu4__yP0zDca1c3AorH65v2f20qXyymeAKbbNfqXUM-MP8ZG5o41vgHOusiwCs1-ud_5IwGEsYiB_gL4UUcHHhmuNZ6Zf_Y5tuRlsGN0UrvjMKWU9gd-j-rj0rdt02kDdrQRQ6k6YsSqI5IkjSfTTXxaULeytMHH8J1Z-e9xtsN0xvIYMeoZgLFIgbXMc6ZAOgJkFkUM5ludBNw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eUFclDwrvT5BK7uZToEMZtoJe1HMoelGDsV8nqMbVv9kzfMQZ5rNHLSRMIcp4BNpjyxuu254BwoYAVvss7GiEuxQ2ciJIZCuMDJmmqH1Y1t2DrnMsf9U-GSXezhoQs9E_H4xbnr645lLimKszVNcpIa3mJvhFTt3e3SqJf69SX7VzCZ9rnwjIf2qBseBPQS1F1Ij1G7OrEVUEJzGgTQK4iCEXcCCBuL4Yq1GovmfDchSbnbGem7eoBCNBqavSP07JcbYUEv4Dziu4pwlGAH1R-9KoBsabSIGOMgoMKF6YGx6UfYKC59cauP27TFuEWqPjxXvcfDPcBaopzmfnwVyTg.jpg"
       },
       "sourceId": "cn:dnyzph",
       "sourceCountryCode": "cn",
@@ -4545,10 +4449,10 @@
           "url": "https://t.me/DL78com"
         }
       ],
-      "createdAt": "2026-09-20T20:39:02.890Z",
-      "expiresAt": "2026-09-22T20:39:02.890Z",
+      "createdAt": "2026-09-20T23:48:04.998Z",
+      "expiresAt": "2026-09-22T23:48:04.998Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:02.890Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:04.998Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4566,7 +4470,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:02.890Z"
+        "reviewedAt": "2026-09-20T23:48:04.998Z"
       }
     },
     {
@@ -4737,10 +4641,10 @@
           "url": "https://hcc95533.com/?cid=9800413"
         }
       ],
-      "createdAt": "2026-09-20T20:39:02.102Z",
-      "expiresAt": "2026-09-22T20:39:02.102Z",
+      "createdAt": "2026-09-20T23:48:04.082Z",
+      "expiresAt": "2026-09-22T23:48:04.082Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:02.102Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:04.082Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4758,7 +4662,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:02.102Z"
+        "reviewedAt": "2026-09-20T23:48:04.082Z"
       }
     },
     {
@@ -4797,10 +4701,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-09-20T20:39:01.244Z",
-      "expiresAt": "2026-09-22T20:39:01.244Z",
+      "createdAt": "2026-09-20T23:48:03.112Z",
+      "expiresAt": "2026-09-22T23:48:03.112Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:01.244Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:03.112Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4818,12 +4722,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:01.244Z"
+        "reviewedAt": "2026-09-20T23:48:03.112Z"
       }
     },
     {
-      "id": 2916381913,
-      "postUrl": "https://t.me/dnyuu01/35121?single",
+      "id": 3299319652,
+      "postUrl": "https://t.me/dnyuu01/35124?single",
       "source": {
         "title": "东南亚吃瓜大事件（新闻资讯曝光）",
         "handle": "dnyuu01",
@@ -4832,44 +4736,27 @@
       },
       "sourceId": "cn:dnyuu01",
       "sourceCountryCode": "cn",
-      "contentType": "mixed",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/582356a550.mp4?token=ex8ez6tE3DY_uZSsTx_vP5wkNylfIi-2bYtJP2jIOC075R4avQ-IUIaxrf2U49BGAIsfHMNKnQw2HDr0Z1iv38Cb2uQWSvhLZyWF5D56mNaLJpkTavcUfUAB3-MdxhwXPyRPVPtAxkur6aSLZxNz-NNmh8rHFLVSuFt0mGYOa-yDdjP-O4e0262Zpfu5umPc2VV9kVBq2pe0iIvaS8zqpTy03eJLC5xECtACkWlsJYNKUXyMmj-E3_RS-97pJd5NE1Os0vQ1tYB66ia5gKFzEcOAoU-kzgj1r5n8458oCCdsyupih07i5I9mPAJgR0cbqwVjxEV4-8ahB9RHGkF_1A",
-          "poster": null,
-          "mimeType": "video/mp4"
-        },
-        {
-          "id": "video-2",
-          "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/7f590cf5f2.mp4?token=ZNABlSDoj5Nd08TfXzlqtR-8rDqNGrphkHbBCnAKnSIKV2Aqk4tVg4v2vZ2JSwbHaO87Y2kuOc0gaSweNl-ohF2g5D_D8-dewppBuTCxE4zFhds2U3J8Z2oqYrilMZNcOGBCGRxsiTpa9g3PC_tLRC0Kk-MYL7lIs8BWIvCYTo1Uc26M9N2jj0AtbtLAjcva6Q-47MtwHrqa14mLTdrixM07kjkfmZ0ttbiIfdsuESlpxE9UgE1qvQyqfjUyvnrajLlh7fs1U14UgF62r38nDgPCbiQHZCfcX42gvJ6L0I_xNdtsJNAmwq1wJirZLnfpv0EE5Z69lxR1hz2R362QSw",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/FpgmSv4vLUWy3KWjYmbGsx4-R4ciejmx2k8YWECxqV7FsZZP0O28Z-ztyI2iTr0B6a5nH1X96-GdJNfKwvsJpxhkI8QTuBoEwG7T2yGdu6uER7dHQjUHcG_Xb8w6cs4TuJNcHh5AL_k43i_Csz_lUGSUrNAn31fVWrecp8HeflVRuVmmvIEBi1RVzHEgyy6bpHqwrBOeE1MRZq3o40EIPzXgZ2XcIuvnXjXByvLe7Sni-nTB2WV9ZfQwPt_QJ-eL1ACy0j0xyaAm2wZ6AcwOomO387k3RkaXJfxdSDDzwDiegqrC6AnTAninwGFE-6LrTxPNCHAF4TJqT0ONvzfbzw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "#缅甸今日头条 若开军(AA)与缅甸政府军的战斗中，他们俘获了缅军士兵和武器装备。此外被俘的缅军士兵还声称，军方下令对若开邦进行“种族灭绝”‼️\n\n若开军(AA)称：9月16日在蒲都岛地区的昆塔翁和阿明琼村之间的战斗中，他们俘获了驻扎在勃固的缅军第101师下属的第252步兵营的缅军士兵和武器装备。\n\n被俘的缅军士兵奥普宗和迈凯尔承认，缅甸军方在若开邦境内下令“不留活口”地屠杀妇女、儿童和成年人，包括若开族人。\n\n“他们下达的命令是，要彻底清除整个若开邦，在各个城镇和地区部署军队，然后进行军事行动。他们命令说，无论遇到什么，都不要放过任何人，包括妇女、男人、儿童，都要彻底清除。”被俘士兵迈凯尔承认。\n\n此外，被俘士兵奥普宗还承认，在向蒲都岛地区进军的军官只命令下属进行自杀式攻击，而他们自己却逃跑。\n\n由于军官威胁说如果逃跑就会被处决，因此，剩余的士兵希望如果他们要逃跑，就应该尽力逃脱。他还表示，缅甸军方的上级既没有忠诚，也没有同情心。\n\n被俘士兵奥普宗表示，他对缅甸军方感到失望，希望能够加入“若开军”(AA)服役。\n\n⬇️⬇️⬇️⬇️⬇️ 本 频 道 赞 助 商⬇️⬇️⬇️⬇️⬇️\n\n➡️佳运支付 EBPAY全球领先\n\n➡️🤩🤩🤩🤩  🤩🤩🤩🤩🤩🔥香港六合彩 · 独家盈利无上限！\n🔎东南亚吃瓜大事件（新闻资讯曝光）\n💬投稿澄清爆料：@Godny123",
+      "text": "频道适合看内容，群组更适合继续交流。\n\nSOSO 可以直接找热门群组，也能按关键词搜同类圈子。\n先打开看看当前推荐。\n\n🔗 本频道专属邀请链接\nhttps://t.me/SosoCnBot?start=autopromo_-1001400414301_7888802559_groups_2b31d9b8",
       "links": [
         {
-          "label": "佳运支付 EBPAY全球领先",
-          "url": "https://t.me/jyzf27"
-        },
-        {
-          "label": "香港六合彩 · 独家盈利无上限！",
-          "url": "https://153.43.183.116:5012/?id=826198625"
-        },
-        {
-          "label": "@Godny123",
-          "url": "https://t.me/Godny123"
+          "label": "https://t.me/SosoCnBot?start=autopromo_-1001400414301_7888802559_groups_2b31d9b8",
+          "url": "https://t.me/SosoCnBot?start=autopromo_-1001400414301_7888802559_groups_2b31d9b8"
         }
       ],
-      "createdAt": "2026-09-20T20:39:00.275Z",
-      "expiresAt": "2026-09-22T20:39:00.275Z",
+      "createdAt": "2026-09-20T23:48:02.280Z",
+      "expiresAt": "2026-09-22T23:48:02.280Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:39:00.275Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:02.280Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4887,7 +4774,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:39:00.275Z"
+        "reviewedAt": "2026-09-20T23:48:02.280Z"
       }
     },
     {
@@ -4922,10 +4809,10 @@
           "url": "https://t.me/dnytv01"
         }
       ],
-      "createdAt": "2026-09-20T20:38:59.564Z",
-      "expiresAt": "2026-09-22T20:38:59.564Z",
+      "createdAt": "2026-09-20T23:48:01.437Z",
+      "expiresAt": "2026-09-22T23:48:01.437Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:59.564Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:01.437Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4943,7 +4830,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:59.564Z"
+        "reviewedAt": "2026-09-20T23:48:01.437Z"
       }
     },
     {
@@ -4963,10 +4850,10 @@
       "fallbackReason": null,
       "text": "#马来西亚 森美兰连查7处扣41名非法移民 7名中国人被带走调查\n\n9月19日凌晨，马来西亚森美兰州移民局在芙蓉、汝来一带连续检查7处地点，共检查178名外籍人员，最终扣留41人。\n\n41人年龄18至58岁，包括33名男性、8名女性。缅甸籍18人、孟加拉国籍8人、中国籍7人、印度尼西亚籍3人，巴基斯坦、越南、印度和菲律宾籍各1人，另有1名无国籍人士。\n其中17人在汝来一处工人宿舍被扣。主要问题包括没有有效准证或旅行证件、逾期居留等。41人随后被送往森美兰冷冷移民拘留中心接受进一步调查。",
       "links": [],
-      "createdAt": "2026-09-20T20:38:58.862Z",
-      "expiresAt": "2026-09-22T20:38:58.862Z",
+      "createdAt": "2026-09-20T23:48:00.659Z",
+      "expiresAt": "2026-09-22T23:48:00.659Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:58.862Z",
+      "mediaRefreshedAt": "2026-09-20T23:48:00.659Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4984,7 +4871,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:58.862Z"
+        "reviewedAt": "2026-09-20T23:48:00.659Z"
       }
     },
     {
@@ -5075,10 +4962,10 @@
           "url": "https://www.6633.ceo/"
         }
       ],
-      "createdAt": "2026-09-20T20:38:58.200Z",
-      "expiresAt": "2026-09-22T20:38:58.200Z",
+      "createdAt": "2026-09-20T23:47:59.890Z",
+      "expiresAt": "2026-09-22T23:47:59.890Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:58.200Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:59.890Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5097,7 +4984,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:58.200Z"
+        "reviewedAt": "2026-09-20T23:47:59.890Z"
       }
     },
     {
@@ -5134,10 +5021,10 @@
           "url": "https://t.me/flwph66/69377"
         }
       ],
-      "createdAt": "2026-09-20T20:38:57.168Z",
-      "expiresAt": "2026-09-22T20:38:57.168Z",
+      "createdAt": "2026-09-20T23:47:59.014Z",
+      "expiresAt": "2026-09-22T23:47:59.014Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:57.168Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:59.014Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5155,7 +5042,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:57.168Z"
+        "reviewedAt": "2026-09-20T23:47:59.014Z"
       }
     },
     {
@@ -5181,10 +5068,10 @@
       "fallbackReason": null,
       "text": "🔍 超级搜索\n\nTG必备搜索神器，帮你精准找到，想要的群组，频道，视频，音乐。\n\n👇👇 点击下方按钮，进行搜索！",
       "links": [],
-      "createdAt": "2026-09-20T20:38:55.705Z",
-      "expiresAt": "2026-09-22T20:38:55.705Z",
+      "createdAt": "2026-09-20T23:47:57.742Z",
+      "expiresAt": "2026-09-22T23:47:57.742Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:55.705Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:57.742Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5202,12 +5089,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:55.705Z"
+        "reviewedAt": "2026-09-20T23:47:57.742Z"
       }
     },
     {
-      "id": 3089181344,
-      "postUrl": "https://t.me/dnykx_888/16397?single",
+      "id": 2774791854,
+      "postUrl": "https://t.me/dnykx_888/16399?single",
       "source": {
         "title": "东南亚快讯「泰国新闻」",
         "handle": "dnykx_888",
@@ -5221,7 +5108,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/MxBtIKW1X_4D_0xjFQbO069Pa-ktD7UV4SNvpmI24eD2irONaLshlZ0U8ZWOdGqZ1sylVpbznl78BqocVO2nfZsiSnqCMSvUWqFhE9uoBVhdkcqQiXfCwvw5GGL-fYqxk8Rvpg226IviJtsEs9QswkOQTxy57Qik5yKSn8RvztBzBCWpzWOC77UoD__jDS7NZ9eyY4CGCYLT_ysZZ0qG4d1Nj2WFI0wk1TdkDcvFEVAJsguzj8wpSCPxOVVgBNrJfsraWJMgD_3snNyKu1TId3xAj31BGtmd-C8_0vMejynBEMkDL4sUTwDw5_S2FTtUYDNtGPDhS_Zo7gyDEX9rkA.jpg"
+          "url": "https://cdn5.telesco.pe/file/pehOnTKpzfn37UPYh1XhfjVbOfpbUlKxpmLgrENXcktirJv7vADM7Y5l88RF-TGvYDn1OaSEitMuIYweriyjhHfy9cW4DQbnNsmMx_rjQBw2hz1SgCfZZyrBuDfbGMU6jAscUKQF1b60g6pc9kcYjgZUjwHLLbnBHz26VwjimkNE4rt5WBLmLAg6ArkroKSDCNCUeiBW91kmludjVD5eLz30rw80bdjGK7UmNQFHiVfbQUzJ0vSOISoyr0nzwX5t_T-edHlqQsF4-ajD6PcA1GvDGPTonQ-XZUiq0i77CpLugMxF7y0_cafiFbQ97Ng-pXWlASu3yLMT_zj17UazJg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -5289,10 +5176,10 @@
           "url": "https://t.me/uw99wxyj"
         }
       ],
-      "createdAt": "2026-09-20T20:38:55.045Z",
-      "expiresAt": "2026-09-22T20:38:55.045Z",
+      "createdAt": "2026-09-20T23:47:57.077Z",
+      "expiresAt": "2026-09-22T23:47:57.077Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:55.045Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:57.077Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5310,7 +5197,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:55.045Z"
+        "reviewedAt": "2026-09-20T23:47:57.077Z"
       }
     },
     {
@@ -5375,10 +5262,10 @@
           "url": "https://t.me/SosoCnBot?start=htjoin_-1001475499362_de03b571"
         }
       ],
-      "createdAt": "2026-09-20T20:38:54.321Z",
-      "expiresAt": "2026-09-22T20:38:54.321Z",
+      "createdAt": "2026-09-20T23:47:56.213Z",
+      "expiresAt": "2026-09-22T23:47:56.213Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:54.321Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:56.213Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5396,7 +5283,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:54.321Z"
+        "reviewedAt": "2026-09-20T23:47:56.213Z"
       }
     },
     {
@@ -5447,10 +5334,10 @@
           "url": "https://t.me/dayingjia66888"
         }
       ],
-      "createdAt": "2026-09-20T20:38:53.635Z",
-      "expiresAt": "2026-09-22T20:38:53.635Z",
+      "createdAt": "2026-09-20T23:47:55.409Z",
+      "expiresAt": "2026-09-22T23:47:55.409Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:53.635Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:55.409Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5468,12 +5355,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:53.635Z"
+        "reviewedAt": "2026-09-20T23:47:55.409Z"
       }
     },
     {
-      "id": 2619547980,
-      "postUrl": "https://t.me/dnydv/60192?single",
+      "id": 2813563079,
+      "postUrl": "https://t.me/dnydv/60199?single",
       "source": {
         "title": "东南亚【简报】",
         "handle": "dnydv",
@@ -5487,12 +5374,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/MX0DOOXwtPZQD0kHj1UIrc_Pf2zd_AglCZMAJn3Y_qSlkBjnE8BBtq7TbUa8lGgU70h10-YN24oKqwrYVXEtJvPR7Pp7pT4-dOGebc0o3kHHczW-DPkQxwhlbTsPJumbdKQyX3VsRXDHm0z5cw0szvHqc0EmPWqVEX1y_qC-kWGAa8H0HzdYZ0zxA0qNovCb5jiTh-oX2gwD166Il_FIxEad-2zd-BSEIV8F3V3fK2tzygN_ZhSDe3k53Esg9_a01OJfk2M0d7PL5K7TyqFQRh0N7VKx-uUtXdB4N6p8CWFpN_sQk86RFEm3LBJ82piePgyFDyJyQ3BU-2lK7xl7jQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/iDnK33GnQhZ_bQyDQMf4-WCuuueqT4CrB58ALIzVl17MTeFabqC8l4LpqjjD_amjqkTTbvApZRjtzTedU5J0sLwQmiVBcessD3hfGmEzj_M3ox1tlvTA_y8WoWFfY4OdRlMf7sRAJ5LcSjbD7r1xRqwX_HtDnDhd4wyWjCLljvU3wHxNtfrR75-laohDucd4VQfOSuN4gi0imnuy1xjOkeprwdW_o1Zkbh7_Zxk1nsW4cAB96JZTfWZvXXjNL1zdNUtgi8t-06nY5N24oub38QFHaKcfJe166c5XGIXEVT2Ki1Bbm3y7lvhDCFmoMdlHGwoJcwo0sTmdeRBfUWh97A.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "校园安全法的灵感，总是来得比枪声晚一步。\n\n菲律宾南哥打巴托省邦加国立高中发生校园枪击，3名学生死亡、8人受伤。\n\n第二国会教育委员会随即呼吁通过《综合校园安全法》：标准化实体安保、出入管控、跨机构威胁监测，外加反霸凌细则、心理辅导、枪支管制和数字保护。教育部说要排查隐患，菲国警准备对全国公立学校搞安全审计。每一条都写得很对——就是没赶在枪声之前落地。\n\n💬 网友：等枪击发生才谈校园安全，像等房子塌了才谈抗震。不晚，就是代价有点大。\n\n#菲律宾新闻 #校园安全 #枪支管控 #校园枪击\n\n🔔频道订阅｜实时资讯推送: @dnydv\n😍爆料投稿｜联系在线客服: @Millergobot",
+      "text": "马来人跑到越南开印度饭馆，还带四个厨师，图啥？\n\n富国岛终于有马来餐厅了，开业近三个月，老板纳什说食材全从认证渠道拿，马来当局还月月来查。\n\n52岁的纳什在越南最大岛上开了首家马来餐厅，主打混合咖喱汁的印度香饭，配炸包菜和蜜糖鸡拉茶。厨房里四个厨师是坐飞机从马来西亚带来的，本地只聘了11个员工。鸡和肉必须走Halal Mart，伊斯兰发展局每月上门检查一次，比某些外卖平台核查商家还勤。\n\n富国岛游客还没吃明白越南粉，先被印度香饭截胡了。\n\n这餐厅最妙的地方在于：马来西亚风味、印度菜式、越南选址、清真认证，四国混血愣是凑成一盘Nasi Kandar。老板说7月28日开业，算算时间，正好赶上越南雨季尾巴——下雨天，咖喱和拉茶确实比阳光更配。\n\n评论区金句：厨师坐飞机来，鸡坐船来，就我是走路来的。\n\n#马来西亚 #餐饮出海 #清真认证 #富国岛\n\n🔔频道订阅｜实时资讯推送: @dnydv\n😍爆料投稿｜联系在线客服: @Millergobot",
       "links": [
         {
           "label": "@dnydv",
@@ -5503,10 +5390,10 @@
           "url": "https://t.me/Millergobot"
         }
       ],
-      "createdAt": "2026-09-20T20:38:52.866Z",
-      "expiresAt": "2026-09-22T20:38:52.866Z",
+      "createdAt": "2026-09-20T23:47:53.968Z",
+      "expiresAt": "2026-09-22T23:47:53.968Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:52.866Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:53.968Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5524,12 +5411,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:52.866Z"
+        "reviewedAt": "2026-09-20T23:47:53.968Z"
       }
     },
     {
-      "id": 2166731755,
-      "postUrl": "https://t.me/dnydsjcom/3301?single",
+      "id": 2093822410,
+      "postUrl": "https://t.me/dnydsjcom/3308?single",
       "source": {
         "title": "东南亚大事件｜大事件曝光",
         "handle": "dnydsjcom",
@@ -5538,176 +5425,64 @@
       },
       "sourceId": "cn:dnydsjcom",
       "sourceCountryCode": "cn",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/R9qZkAD9c3ZbwHVHVqP7-Duy1EWJpk59Q-Wm7iSlgrZkYoK5YRB4lGPuYMQG627EfSOJfUmadGH2HpvSUme1z0TGRWxhbPTbc-1f9a1chsQXjtgigqTLJS_KKSwMVe5VvSZ8u72_8hhpmyvgQrLcmBIDipFpJ0QDzf7tjNY24kAHDEtcD-gQxnPDHXbMqIHSUO1aWBxCKDHREL1cCiBaweSJJlsne8Wek-50g-7cGojX5tPN4j_BhH8t4fIAYY_xyC-a7TGubp7GKh502xh394d7RUrOtaeDC7I8-woXttKBO6S3lZaHnD9XihFw0aZx4ZUbQSl0fZIZsAusYHqHKg.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/tmyuCk3TIiN4iJ7Ev2i_H2me7q7E1kRv8pYNKIRsAMnLupG43oZ0_5QTu-O8_rO5ZOVLLG65_nL41Sd6faBYxVtaBf8j8ttKrFYLkgj3uRVrSYcssf_1k917RdUcTDm1-lfNnYiz9JS-pzJiAmJqCHYjtqF9Im8SFhJvsoTqZuZhsHYjJv66QBf0bASzGu-RA6ieLlEJFNF2fyUyg906FR_a-AuSKkX_B90q0wZTIv3oyFbdWsLI_oLua8vHxePXV6x8aeyOsn5A5kPwgejyr75D8JOzTcNvasH0NLuoF33QqS5NqyvJt4QR9Xb_z0JmHltcTDGwoI07RSGogZKl0Q.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Ybg6HYgnyjKFhyyDKhGs_ntscNz_6ZSNU75FWOQ1ktHwlhZ5f34fgvtWcnLKtQaY_oStINsfgK8E5JWeuEb9x5P5ebVIYSxoSbajIyXcJt8vyv-utxw_V93dkEftvR4nwUK4DLM9eWKKoAp_FKZIaS_l9M4hbW7B3hldYIXSnbyR2hpsIQc5Dh7u-2cWYKmjFwHKdMeodEGggXwuPDXkNF650qzZy9HtoBLgg3T6PdvLGY7vNpzhaKeU7SUn140-djk3dAg0lyKOJy48x5gLXO_elcywjU8w1QV1cYtHpWuVJAL5IJTmdhGrhMdW69Q7Oq5ASabXrKetuYmr1XtAdw.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/WXsEvMN_AO4MFE2AMOyUB7DF69A7pYIZNnkU6mYTmeAnh_G3Nt-PQ2ueEz3_H5qS4fJdPIwHCrF5-C4ezt5FPeYCeq8GRSzconQy22FQaQ7inXLSZ6HRBsRxo35O6r6XxtLfN7MHhYG1eBKM5UCfAkD1ISzrooyin8lHIGVYChS28SP0k5EeRj2lN4Pkulklm36ZQWhjuC0PGGsFnnyGN3ZvtlULHzFPmURsES9FF9f-FT5nfs7-Zwo3hRXM9qaSVznVj_j2I_PSqCdjaIKmj7V7cZHfCbShy_aXeVGhZ996jWFK3Yxcx3LmKC-7GhA_FLHygsDV4PUvQcxm8Nmtww.jpg"
-        },
-        {
-          "id": "image-5",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/NiJMEQRcldBMTP7iPQEaVuJKUKQxuf0M1m2L8OMXxGFyVZWJct-3Ci_h3lQm-aoqBWXwymWcqv017kRV2OHyWQY3PNl70iKMluDksQZtcv9WmXusy2okpQzG9OCP10OGUDKtmmGpltNeBXuMD-0yGQICr8TgvwQQ8jtMR9_bTVDQk-i0-ffx9HnVoSihsUDRje6UX9oeV20B39aD6CXFeGhSeJ9l13LE9mbegAp3j3b9ZrzT1e8kN_sL5ebd-A9YMIlLSvdp8xSpALgEJuh_gKGW0X6j1um9xLNR2PmZaLEf1btZNkWU-v73-Hpk9RocX1AjMOQBcf9hp_FP1p-v2g.jpg"
-        },
-        {
-          "id": "image-6",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/cF4X-8yuEnQ6hKtBWubxVuCyVKgdGwWIGeqfDJ-Jk9edbp_693AoJB_O19tTG673-2XRP-rR8abI8wKmbIVPku864uWR0hvz_lHZjklhw1Ub5zhBj1EcxEvROtfa3kyT5It13EjTQD_SYVAVvhi1mMRfuqZRGDJL9zesunK8CuUFbKNobbgAm1q8uvCAkOIZ7Itn7_w4fZ-hvhDTsToew4Ho-KEU5KtLCO5SNFbS2LZcjlQZ2d8S2b7stA0Mtp-skSV0YguKKw9DB8wKFLS2LRphluFZeRJaYvAxCNUcTVtXO4a_U8HYUs4n0zbgTW955kipdAly-PzizG2W5mlqpg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "#东南亚曝光 #银河娱乐城 #黑款5000U\n柬埔寨银河娱乐城黑平台不出款，我充值了3次 前面两次分别充值1000，玩PG电子输了，在存3千，一直盈利到4万，提款就给我出问题，各种借口，，找各种理由说我套利，如果能套利我朋友的几千u你还给出了？人在做天在看，你造的孽，你父母会替你偿还的\n😃😃😃😃😃 要玩就选实力大台，大额无忧！\n😀😀😀😀   首周100%包赢，亏损全额返还！\n😅😂☺️😉    NO钱包担保1000万U，信誉保障\n😀😀😀😀   7T.COM 全球，最稳USDT娱乐城\n😇😉😍🥰   电子首周亏损包赔，100%放心赢！\n⚡️⚡️⚡️⚡️   爆分不停 · 大奖来袭｜PG电子火力全开 \n🤩🤩🤩🤩  NO钱包担保3亿U，大额无忧",
+      "text": "#频道互推 #相似推荐\n------------------------------\n📢 缅甸缅北东南亚新闻曝光\n📢 越南🫰胡志明市·河内·旅游攻略［新闻资讯］\n📢 泰国华人柬埔寨新闻曝光\n📢 东南亚新闻吃瓜\n📢 泰国越南马来西亚新闻曝光\n📢 柬埔寨新闻《柬埔寨曝光》\n📢 西港日记 柬埔寨快讯\n📢 东南亚风云大小事\n📢 菲律宾快报\n📢 东南亚快讯\n------------------------------\n🤝 加入互推 · 获得曝光，赚邀请奖励",
       "links": [
         {
-          "label": "要玩就选实力大台，大额无忧",
-          "url": "https://153.43.181.126:18027/?cid=3173584"
+          "label": "缅甸缅北东南亚新闻曝光",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1001523597553_6ea4442b"
         },
         {
-          "label": "首周",
-          "url": "https://153.43.182.233:18029/?id=200413788"
+          "label": "越南🫰胡志明市·河内·旅游攻略［新闻资讯］",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1002883297221_9b94220e"
         },
         {
-          "label": "100%",
-          "url": "https://153.43.182.233:18029/?id=200413788"
+          "label": "泰国华人柬埔寨新闻曝光",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1002363136035_90f6a81d"
         },
         {
-          "label": "包赢，亏损全额返还",
-          "url": "https://153.43.182.233:18029/?id=200413788"
+          "label": "东南亚新闻吃瓜",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1001822138203_c36f1c72"
         },
         {
-          "label": "NO",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "泰国越南马来西亚新闻曝光",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1001028930303_7aa8a194"
         },
         {
-          "label": "钱包担保",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "柬埔寨新闻《柬埔寨曝光》",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1001467171352_e062db02"
         },
         {
-          "label": "1000",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "西港日记 柬埔寨快讯",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1002301717430_f4ecd83b"
         },
         {
-          "label": "万",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "东南亚风云大小事",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1003867314887_5da70ce3"
         },
         {
-          "label": "U",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "菲律宾快报",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1004373231220_c0c9ce4d"
         },
         {
-          "label": "，信誉保障",
-          "url": "https://8t7788.com/?cid=3649175"
+          "label": "东南亚快讯",
+          "url": "https://t.me/souso?start=hutui_-1002143092907_-1003698728077_9140accf"
         },
         {
-          "label": "7T.COM",
-          "url": "https://153.43.84.8:18025/?id=466860600"
-        },
-        {
-          "label": "全球，最稳",
-          "url": "https://153.43.84.8:18025/?id=466860600"
-        },
-        {
-          "label": "USDT",
-          "url": "https://153.43.84.8:18025/?id=466860600"
-        },
-        {
-          "label": "娱乐城",
-          "url": "https://153.43.84.8:18025/?id=466860600"
-        },
-        {
-          "label": "电子首周亏损包赔，",
-          "url": "https://hq88899.com/?cid=8120633"
-        },
-        {
-          "label": "100%",
-          "url": "https://hq88899.com/?cid=8120633"
-        },
-        {
-          "label": "放心赢",
-          "url": "https://hq88899.com/?cid=8120633"
-        },
-        {
-          "label": "爆分不停",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": null,
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "·",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": null,
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "大奖来袭",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "｜",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "PG",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "电子火力全开",
-          "url": "https://153.43.82.240:5012/?cid=2277664"
-        },
-        {
-          "label": "NO",
-          "url": "https://www.da000.vip/?id=868325547"
-        },
-        {
-          "label": "钱包担保",
-          "url": "https://www.da000.vip/?id=868325547"
-        },
-        {
-          "label": "3",
-          "url": "https://www.da000.vip/?id=868325547"
-        },
-        {
-          "label": "亿",
-          "url": "https://www.da000.vip/?id=868325547"
-        },
-        {
-          "label": "U",
-          "url": "https://www.da000.vip/?id=868325547"
-        },
-        {
-          "label": "，大额无忧",
-          "url": "https://www.da000.vip/?id=868325547"
+          "label": "加入互推",
+          "url": "https://t.me/souso?start=htjoin_-1002143092907_76491d03"
         }
       ],
-      "createdAt": "2026-09-20T20:38:51.981Z",
-      "expiresAt": "2026-09-22T20:38:51.981Z",
+      "createdAt": "2026-09-20T23:47:53.165Z",
+      "expiresAt": "2026-09-22T23:47:53.165Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:51.981Z",
-      "tag": "crypto",
+      "mediaRefreshedAt": "2026-09-20T23:47:53.165Z",
+      "tag": "other",
       "tags": [
-        "crypto",
-        "finance"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -5722,7 +5497,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:51.981Z"
+        "reviewedAt": "2026-09-20T23:47:53.165Z"
       }
     },
     {
@@ -5753,10 +5528,10 @@
       "fallbackReason": null,
       "text": "#网友投稿\n\n⚠️ 提醒大家！这个人叫 Ng Kok Woon，马来西亚人🇲🇾传说是妥妥的JB区大哥🤣😂 -外号「疯子/风子」。之前找我借了 11,000 USDT 一直没还，后来又找我们帮忙换币，说他给马币、我们给他USDT，结果我们转了 1,700 USDT 过去，直接失联不回复！听说拿到钱就跑去KTV潇洒了！有找到这个人的话请马上通知我们，有回报哦！反正找到他的人 必须安排大红包🧧大家千万小心，别再上当！",
       "links": [],
-      "createdAt": "2026-09-20T20:38:51.132Z",
-      "expiresAt": "2026-09-22T20:38:51.132Z",
+      "createdAt": "2026-09-20T23:47:52.307Z",
+      "expiresAt": "2026-09-22T23:47:52.307Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:51.132Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:52.307Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5775,7 +5550,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:51.132Z"
+        "reviewedAt": "2026-09-20T23:47:52.307Z"
       }
     },
     {
@@ -5810,10 +5585,10 @@
           "url": "https://t.me/DuoZhuTG1"
         }
       ],
-      "createdAt": "2026-09-20T20:38:50.473Z",
-      "expiresAt": "2026-09-22T20:38:50.473Z",
+      "createdAt": "2026-09-20T23:47:51.477Z",
+      "expiresAt": "2026-09-22T23:47:51.477Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:50.473Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:51.477Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5831,7 +5606,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:50.473Z"
+        "reviewedAt": "2026-09-20T23:47:51.477Z"
       }
     },
     {
@@ -5868,10 +5643,10 @@
           "url": "https://t.me/bfgjkf1"
         }
       ],
-      "createdAt": "2026-09-20T20:38:49.627Z",
-      "expiresAt": "2026-09-22T20:38:49.627Z",
+      "createdAt": "2026-09-20T23:47:50.338Z",
+      "expiresAt": "2026-09-22T23:47:50.338Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:49.627Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:50.338Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5889,7 +5664,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:49.627Z"
+        "reviewedAt": "2026-09-20T23:47:50.338Z"
       }
     },
     {
@@ -5980,10 +5755,10 @@
           "url": "https://www.6633.ceo/"
         }
       ],
-      "createdAt": "2026-09-20T20:38:48.734Z",
-      "expiresAt": "2026-09-22T20:38:48.734Z",
+      "createdAt": "2026-09-20T23:47:49.360Z",
+      "expiresAt": "2026-09-22T23:47:49.360Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:48.734Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:49.360Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -6002,7 +5777,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:48.734Z"
+        "reviewedAt": "2026-09-20T23:47:49.360Z"
       }
     },
     {
@@ -6055,10 +5830,10 @@
           "url": "https://t.me/tx5666"
         }
       ],
-      "createdAt": "2026-09-20T20:38:48.013Z",
-      "expiresAt": "2026-09-22T20:38:48.013Z",
+      "createdAt": "2026-09-20T23:47:48.370Z",
+      "expiresAt": "2026-09-22T23:47:48.370Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:48.013Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:48.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6076,7 +5851,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:48.013Z"
+        "reviewedAt": "2026-09-20T23:47:48.370Z"
       }
     },
     {
@@ -6145,10 +5920,10 @@
           "url": "https://xh8138.cc/"
         }
       ],
-      "createdAt": "2026-09-20T20:38:47.203Z",
-      "expiresAt": "2026-09-22T20:38:47.203Z",
+      "createdAt": "2026-09-20T23:47:47.512Z",
+      "expiresAt": "2026-09-22T23:47:47.512Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:47.203Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:47.512Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -6170,7 +5945,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:47.203Z"
+        "reviewedAt": "2026-09-20T23:47:47.512Z"
       }
     },
     {
@@ -6220,10 +5995,10 @@
           "url": "https://t.me/PP111"
         }
       ],
-      "createdAt": "2026-09-20T20:38:45.375Z",
-      "expiresAt": "2026-09-22T20:38:45.375Z",
+      "createdAt": "2026-09-20T23:47:45.247Z",
+      "expiresAt": "2026-09-22T23:47:45.247Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:45.375Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:45.247Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6241,7 +6016,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:45.375Z"
+        "reviewedAt": "2026-09-20T23:47:45.247Z"
       }
     },
     {
@@ -6261,10 +6036,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-09-20T20:38:44.714Z",
-      "expiresAt": "2026-09-22T20:38:44.714Z",
+      "createdAt": "2026-09-20T23:47:44.517Z",
+      "expiresAt": "2026-09-22T23:47:44.517Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:44.714Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:44.517Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6282,7 +6057,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:44.714Z"
+        "reviewedAt": "2026-09-20T23:47:44.517Z"
       }
     },
     {
@@ -6306,7 +6081,7 @@
         {
           "id": "image-2",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/TykcJOxL3HyYO5tJesc1SRlRLIYTGlZoFJDJbnvb4rFe7A5i2bES4QOq7nHMqqQHdiLWFmXpSsCX3kX_rIoysoFypHaKAEW00cpIOGzVoq-lhuA9OUBedgw9XKBIGr5zWhRXsW-U6af_cU5m3lJuXJItJgY2xNSzmuu8lmz1NKEp50sMcYpM85O1vq0LvDitJmZeqhen2deD8TvXvdyrjy8B3QGBBgWjM2L8sjeAXoNSJDlb7sPSB2MwRuBMAZTsPSZ99ycKSDjojTcUBCe64Mr6i60ZqTb8TX650UnII3RHJCkYfMGhhJWl497wqX1KLGVmunfNI7u4F4A95y2tSw.jpg"
+          "url": "https://cdn5.telesco.pe/file/INOTLHJttMToIs61oPqtjqyxt1tExe_Bynv3k5j19g23ziIm37umqFwYqXop_zxQxkmf7LY1HWrL6JhmTLxNl5mb2dPQb97FUUv_Us4Cs0ujmN4DhN_2DiPvUd15O0_YM62RgpqErXLC7LQxIrhKKcfHxC2zdlB28znuplxOYiQ9BsYWmCxMZ2rR6ICeIMSdrsgn03NgHCQTmIqB6YDtVNKLTxsHkNomqVhA9fMmdmBvSEEFRXM95TYHY0NlJPfZ2mWSV3QmwPZLzDRPJ5ROvHAkREkJ1wz5ZKIzb9FjuRld2kw9xPitraQraCGjyY2T_DWhA-WhYJbIOxIyuHs_Yg.jpg"
         },
         {
           "id": "image-3",
@@ -6323,10 +6098,10 @@
           "url": "https://t.me/tt789v"
         }
       ],
-      "createdAt": "2026-09-20T20:38:43.934Z",
-      "expiresAt": "2026-09-22T20:38:43.934Z",
+      "createdAt": "2026-09-20T23:47:43.792Z",
+      "expiresAt": "2026-09-22T23:47:43.792Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:43.934Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:43.792Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6344,7 +6119,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:43.934Z"
+        "reviewedAt": "2026-09-20T23:47:43.792Z"
       }
     },
     {
@@ -6375,10 +6150,10 @@
       "fallbackReason": null,
       "text": "一个上了 App Store 的 App，居然能藏着 iOS 内核攻击框架，突破沙盒读其他 App 的数据，还能等上架后再接收远程指令动手。  这已经属于既打穿了苹果系统，又击穿了苹果应用的审核风控机制。这事后面肯定会发酵。  不过利用的都是苹果已知漏洞，iOS 最新版本修复了，虽然不排除未来还会被继续突破。  另外，上架审核确实没想象的那么严格    📣 东南亚大事件:  @kk888 📣 东南亚吃瓜群:  @kk999 📣 东南亚素材库:  @zhaopian ☎️ 投稿澄清爆料:  @kk7888bot",
       "links": [],
-      "createdAt": "2026-09-20T20:38:43.266Z",
-      "expiresAt": "2026-09-22T20:38:43.266Z",
+      "createdAt": "2026-09-20T23:47:42.640Z",
+      "expiresAt": "2026-09-22T23:47:42.640Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:43.266Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:42.640Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -6397,7 +6172,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:43.266Z"
+        "reviewedAt": "2026-09-20T23:47:42.640Z"
       }
     },
     {
@@ -6407,7 +6182,7 @@
         "title": "东南亚大事件-头条新闻",
         "handle": "dny377",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/kvztA1TmxqWMtWBLm6BK-SXXY_Uq_r74YnmpPfkg-HUbrllD0amXw7p52w7529cwAYniaGvGqnAh4ksbWOT0R45rkvlBQtbOZjo2cbUtnVs4PfQ8ejbwptQSe-u2CJhGgFsA3WDH1_AVWdYzcPlMIGmwSOGSDnydsMBYzC25YPnuD7Ejw38BGCk-O2vHqLN-lFeTIxKmjw6WNN1B85W6k0qHfyTdEH8vRneR-R4RDV_FUxtril8nod4NBGq1xrzTTozK5cmf5KRPvcZmSrqXliy2UkEYMTDn_x1W68cOYtyOrBcrsqwL-aqpAWpiNVDdfigD17H1sEixPpOBu5WL-w.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/MiXhIh4g-14GJr7-iEzcruWmoBAZczwfbd3USHWDHg0DvoaO3jrxka6VVStPdL2C9F5qXg8075uQzK_ngC70pOvLW0eYSCvJCo4Afsu9K5OPi0ZzfCgQl4nXDx5daviZcU7CTt8aGQ-LfU_OfzvHidomOX4ZV6wQwsCeyno9pxuugv2FZFMNPTvIIjpSZ14bbmD85xWFe_CWPTfiWmPfYQSuqgQGYEic3o75vBNBBaLfO4EoB5hKxJGjPIkbKNt7qoeD1IyWti6IBfOWxIEklqDQt9S3-zIjQx0z4blAEoNg62V5gDDm9tFY6IaA9Kck0uzkMxpoBytlDuGTdQsv5g.jpg"
       },
       "sourceId": "cn:dny377",
       "sourceCountryCode": "cn",
@@ -6436,10 +6211,10 @@
           "url": "https://t.me/dny525"
         }
       ],
-      "createdAt": "2026-09-20T20:38:42.504Z",
-      "expiresAt": "2026-09-22T20:38:42.504Z",
+      "createdAt": "2026-09-20T23:47:41.878Z",
+      "expiresAt": "2026-09-22T23:47:41.878Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:42.504Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:41.878Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6457,7 +6232,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:42.504Z"
+        "reviewedAt": "2026-09-20T23:47:41.878Z"
       }
     },
     {
@@ -6467,7 +6242,7 @@
         "title": "东南亚大事件",
         "handle": "dny339",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/pXJNvHWGNAj8boH_CZJfhtKNq7_A_pFUFmfi9jGfYCd3JHJLX3BZ3qzPKppt0iSjiag3GXDEFVC47F_gHEnBBB7raMf6c877DDtax_V6u2pJOKkwxI3Wp7uIK4HJmHRiHwwWRXuCHhJxfHY7cx5mThPhHYZeRk8sk_zXbLtOZpym8ezD4ts5F4DMpIC-x_JjlwmOScXshMgyOk6QVzwl0tbRWxJacBZ_Fyy9h-rcdE04y4wIK_kkqnoO7X93enDjC-TAGUwfeJQ5N_G3Jogdi9Vm40WAxzAk3lvZV1CxFllkXq6M5PCij-FRCs0-r3BFxtqa3d42CBu2R_JV8tFpWw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/dvAbOrN-RRsKAkz5OMyjMoA79Pif6E1MiHIvx-H6SkrudYkJwdnORNwlmKOp1uAMLBTU9um2BdtkIlPhQey6w4T5zd3URsZnhkjUOSGXBAwDmWIcnK9b4RurTuClzoSayBTo-sdUBGR3df59VfJukYlbJLqKpRdt7BbJLzv38Ca0CN1seHYUyC5ODlKknLIEG6uaZLGX3FOlboKVxdyt4r6yFVQqzjWkYMLLvnyWaHi6zxDtLcUanMYNgdtlFfB-cGn7aaXQYIb-J0DywVYlcER8HvueDO-Wwp7wEoDltRfaNxz7-ICkrRcu2i6za52bWdxCz5w2q4aQhN7_fJMa7Q.jpg"
       },
       "sourceId": "cn:dny339",
       "sourceCountryCode": "cn",
@@ -6534,10 +6309,10 @@
           "url": "https://t.me/pgdzr"
         }
       ],
-      "createdAt": "2026-09-20T20:38:41.717Z",
-      "expiresAt": "2026-09-22T20:38:41.717Z",
+      "createdAt": "2026-09-20T23:47:41.088Z",
+      "expiresAt": "2026-09-22T23:47:41.088Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:41.717Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:41.088Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -6556,7 +6331,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:41.717Z"
+        "reviewedAt": "2026-09-20T23:47:41.088Z"
       }
     },
     {
@@ -6641,10 +6416,10 @@
           "url": "https://t.me/DL78com"
         }
       ],
-      "createdAt": "2026-09-20T20:38:40.750Z",
-      "expiresAt": "2026-09-22T20:38:40.750Z",
+      "createdAt": "2026-09-20T23:47:40.271Z",
+      "expiresAt": "2026-09-22T23:47:40.271Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:40.750Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:40.271Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6662,7 +6437,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:40.750Z"
+        "reviewedAt": "2026-09-20T23:47:40.271Z"
       }
     },
     {
@@ -6747,10 +6522,10 @@
           "url": "https://t.me/DL78com"
         }
       ],
-      "createdAt": "2026-09-20T20:38:39.897Z",
-      "expiresAt": "2026-09-22T20:38:39.897Z",
+      "createdAt": "2026-09-20T23:47:39.353Z",
+      "expiresAt": "2026-09-22T23:47:39.353Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:39.897Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:39.353Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6768,7 +6543,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:39.897Z"
+        "reviewedAt": "2026-09-20T23:47:39.353Z"
       }
     },
     {
@@ -6803,10 +6578,10 @@
           "url": "https://t.me/v5387"
         }
       ],
-      "createdAt": "2026-09-20T20:38:38.671Z",
-      "expiresAt": "2026-09-22T20:38:38.671Z",
+      "createdAt": "2026-09-20T23:47:38.171Z",
+      "expiresAt": "2026-09-22T23:47:38.171Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:38.671Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:38.171Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6824,7 +6599,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:38.671Z"
+        "reviewedAt": "2026-09-20T23:47:38.171Z"
       }
     },
     {
@@ -6864,10 +6639,10 @@
           "url": "https://t.me/awen88"
         }
       ],
-      "createdAt": "2026-09-20T20:38:37.598Z",
-      "expiresAt": "2026-09-22T20:38:37.598Z",
+      "createdAt": "2026-09-20T23:47:37.124Z",
+      "expiresAt": "2026-09-22T23:47:37.124Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:37.598Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:37.124Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -6886,7 +6661,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:37.598Z"
+        "reviewedAt": "2026-09-20T23:47:37.124Z"
       }
     },
     {
@@ -6921,10 +6696,10 @@
           "url": "https://t.me/Seven_07r"
         }
       ],
-      "createdAt": "2026-09-20T20:38:36.933Z",
-      "expiresAt": "2026-09-22T20:38:36.933Z",
+      "createdAt": "2026-09-20T23:47:36.351Z",
+      "expiresAt": "2026-09-22T23:47:36.351Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-09-20T20:38:36.933Z",
+      "mediaRefreshedAt": "2026-09-20T23:47:36.351Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6942,7 +6717,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-09-20T20:38:36.933Z"
+        "reviewedAt": "2026-09-20T23:47:36.351Z"
       }
     }
   ]
