@@ -1,142 +1,142 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-24T20:10:24.786Z",
+  "updatedAt": "2026-09-25T01:16:55.247Z",
   "countries": {
     "uz": {
       "code": "uz",
-      "posts": 271,
-      "chunks": 3,
+      "posts": 189,
+      "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/uz.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "us": {
       "code": "us",
-      "posts": 775,
+      "posts": 766,
       "chunks": 8,
       "mode": "chunked",
       "path": "/feeds/us.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "ua": {
       "code": "ua",
-      "posts": 96,
-      "chunks": 1,
-      "mode": "single",
-      "path": "/feeds/ua.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
-    },
-    "tr": {
-      "code": "tr",
-      "posts": 329,
-      "chunks": 4,
-      "mode": "chunked",
-      "path": "/feeds/tr.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
-    },
-    "ru": {
-      "code": "ru",
-      "posts": 5970,
-      "chunks": 60,
-      "mode": "chunked",
-      "path": "/feeds/ru.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
-    },
-    "kz": {
-      "code": "kz",
       "posts": 93,
       "chunks": 1,
       "mode": "single",
+      "path": "/feeds/ua.json",
+      "updatedAt": "2026-09-25T01:16:55.247Z"
+    },
+    "tr": {
+      "code": "tr",
+      "posts": 231,
+      "chunks": 3,
+      "mode": "chunked",
+      "path": "/feeds/tr.json",
+      "updatedAt": "2026-09-25T01:16:55.247Z"
+    },
+    "ru": {
+      "code": "ru",
+      "posts": 5028,
+      "chunks": 51,
+      "mode": "chunked",
+      "path": "/feeds/ru.json",
+      "updatedAt": "2026-09-25T01:16:55.247Z"
+    },
+    "kz": {
+      "code": "kz",
+      "posts": 86,
+      "chunks": 1,
+      "mode": "single",
       "path": "/feeds/kz.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "ir": {
       "code": "ir",
-      "posts": 1056,
-      "chunks": 11,
+      "posts": 886,
+      "chunks": 9,
       "mode": "chunked",
       "path": "/feeds/ir.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "in": {
       "code": "in",
-      "posts": 391,
+      "posts": 366,
       "chunks": 4,
       "mode": "chunked",
       "path": "/feeds/in.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "de": {
       "code": "de",
-      "posts": 2080,
-      "chunks": 21,
+      "posts": 2186,
+      "chunks": 22,
       "mode": "chunked",
       "path": "/feeds/de.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "cn": {
       "code": "cn",
-      "posts": 2080,
-      "chunks": 21,
+      "posts": 1555,
+      "chunks": 16,
       "mode": "chunked",
       "path": "/feeds/cn.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "br": {
       "code": "br",
-      "posts": 214,
-      "chunks": 3,
+      "posts": 194,
+      "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/br.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "it": {
       "code": "it",
-      "posts": 402,
-      "chunks": 5,
+      "posts": 382,
+      "chunks": 4,
       "mode": "chunked",
       "path": "/feeds/it.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "fr": {
       "code": "fr",
-      "posts": 187,
+      "posts": 180,
       "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/fr.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "my": {
       "code": "my",
-      "posts": 27,
+      "posts": 30,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/my.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "id": {
       "code": "id",
-      "posts": 395,
+      "posts": 389,
       "chunks": 4,
       "mode": "chunked",
       "path": "/feeds/id.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "eg": {
       "code": "eg",
-      "posts": 76,
+      "posts": 79,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/eg.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     },
     "ae": {
       "code": "ae",
-      "posts": 331,
+      "posts": 314,
       "chunks": 4,
       "mode": "chunked",
       "path": "/feeds/ae.json",
-      "updatedAt": "2026-09-24T20:10:24.786Z"
+      "updatedAt": "2026-09-25T01:16:55.247Z"
     }
   }
 }
