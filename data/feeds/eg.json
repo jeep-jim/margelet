@@ -1,7 +1,7 @@
 {
   "countryCode": "eg",
-  "updatedAt": "2026-10-23T00:54:48.227Z",
-  "totalPosts": 96,
+  "updatedAt": "2026-10-23T04:24:17.462Z",
+  "totalPosts": 89,
   "chunks": 1,
   "items": [
     {
@@ -21,10 +21,10 @@
       "fallbackReason": null,
       "text": "🎯 🤖 مقابلة تجريبية في علم البيانات (مع الإجابات)\n\n🧠 1️⃣ حدثني عن نفسك\n✅ إجابة نموذجية:\n\"لدي أكثر من ٣ سنوات كعالم بيانات أعمل بـ Python ونماذج تعلم الآلة والبيانات الضخمة. المهارات الأساسية: Pandas، Scikit-learn، SQL، والنمذجة الإحصائية. بنيت مؤخرًا نماذج التنبؤ بتوقف العملاء مما رفع الاحتفاظ بنسبة ١٥٪. أحب تحويل البيانات المعقدة إلى استراتيجيات تجارية قابلة للتنفيذ.\"\n\n📊 2️⃣ ما الفرق بين التعلم الموجه وغير الموجه؟\n✅ الإجابة:\nالموجه: يستخدم بيانات مُصنَّفة للتنبؤات (تصنيف/انحدار).\nغير الموجه: يجد أنماطًا في بيانات غير مُصنَّفة (تجميع/تقليل أبعاد).\nمثال: الغابة العشوائية (موجه) مقابل K-means (غير موجه).\n\n🔗 3️⃣ ما هو الإفراط في التخصيص وكيف تعالجه؟\n✅ الإجابة:\nالإفراط في التخصيص: النموذج يحفظ بيانات التدريب ويفشل في البيانات الجديدة.\nالعلاج: التحقق المتقاطع، التنظيم (L1/L2)، التوقف المبكر، الإسقاط (Dropout).\n👉 افحص الفجوة بين أداء التدريب والاختبار.\n\n🧠 4️⃣ كيف تتعامل مع مجموعات البيانات غير المتوازنة؟\n✅ الإجابة:\nSMOTE للإفراط في أخذ العينات، النقصان، أوزان الفئات، طرق التجميع.\nمثال: كشف الاحتيال (٩٩٪ معاملات طبيعية).\n👉 تحقق دائمًا بمقاييس مناسبة (AUC، F1).\n\n📈 5️⃣ ما هي دوال النوافذ في SQL؟\n✅ الإجابة:\nتحسب عبر مجموعات من الصفوف دون طي الصفوف (ROW_NUMBER()، RANK()، LAG()).\nمثال: RANK() OVER(ORDER BY salary DESC) لترتيب الموظفين.\n\n📊 6️⃣ ما هي مقايضة التحيز والتباين؟\n✅ الإجابة:\nتحيز عالٍ = نقص التخصيص (نموذج بسيط). تباين عالٍ = الإفراط في التخصيص (نموذج معقد).\nالهدف: التوازن للحصول على خطأ تعميم أمثل.\n👉 استخدم منحنيات التعلم للتشخيص.\n\n📉 7️⃣ ما الفرق بين Bagging و Boosting؟\n✅ الإجابة:\nBagging: نماذج متوازية (الغابة العشوائية)، تقلل التباين.\nBoosting: نماذج متسلسلة (XGBoost)، تقلل التحيز بالتركيز على الأخطاء.\n\n📊 8️⃣ ما هي مصفوفة الارتباك؟ أعط مثالاً\n✅ الإجابة:\nجدول: الإيجابيات الحقيقية، الإيجابيات الكاذبة، السلبيات الحقيقية، السلبيات الكاذبة.\nالمقاييس الرئيسية: الإحكام، الاستدعاء، F1، الدقة.\nمثال: تقييم نموذج التشخيص الطبي.\n\n🧠 9️⃣ كيف تجد ثاني أعلى راتب في SQL؟\n✅ الإجابة:\nSELECT MAX(salary) FROM employees \nWHERE salary &lt; (SELECT MAX(salary) FROM employees);\n\n📊 🔟 اشرح أحد مشاريع تعلم الآلة الخاصة بك\n✅ إجابة قوية:\n\"بنيت التنبؤ بتوقف العملاء باستخدام XGBoost على بيانات شركة اتصالات. هندست أكثر من ٢٠ ميزة، وعالجت عدم توازن الفئات باستخدام SMOTE، وحققت ٨٨٪ AUC-ROC. نشرته عبر Flask API، مما قلل التوقف بنسبة ١٨٪.\"\n\n🔥 1️⃣1️⃣ ما هي هندسة الخصائص؟\n✅ الإجابة:\nإنشاء/تحويل متغيرات لتحسين أداء النموذج.\nأمثلة: تقسيم المتغيرات المستمرة، شروط التفاعل، الميزات متعددة الحدود، التضمينات.\n👉 غالبًا ما يكون تأثيرها أكبر من اختيار الخوارزمية.\n\n📊 1️⃣2️⃣ ما هو التحقق المتقاطع ولماذا نستخدمه؟\n✅ الإجابة:\nK-fold CV: تقسيم البيانات K مرات، تدريب/اختبار كل طية، ومتوسط النتائج.\nيمنع الإفراط في التخصيص، ويعطي تقديرًا قويًا للأداء.\nمثال: 5-fold CV ممارسة قياسية.\n\n🧠 1️⃣3️⃣ ما هو الانحدار المتدرج (Gradient Descent)؟\n✅ الإجابة:\nخوارزمية تحسين تقلل دالة الخسارة عبر تحديثات تكرارية للأوزان.\nالأنواع: الدفعي، العشوائي، المصغر (Mini-batch). معدل التعلم حرج.\n\n📈 1️⃣4️⃣ كيف تشرح تعلم الآلة لأصحاب المصلحة التجاريين؟\n✅ الإجابة:\n\"استخدم تشبيهات: 'النموذج = توقعات الطقس. الميزات = السحب/درجة الحرارة. التنبؤ = احتمال المطر.' ركز على التأثير التجاري بدلاً من التفاصيل التقنية.\"\n\n📊 1️⃣5️⃣ ما الأدوات والتقنيات التي عملت بها؟\n✅ الإجابة:\nPython (Pandas، NumPy، Scikit-learn، XGBoost)، SQL، Git، Docker، AWS/GCP، Jupyter، Tableau.\n\n💼 1️⃣6️⃣ حدثني عن مشروع صعب عملت عليه\n✅ الإجابة:\n\"انحرف نموذج الإنتاج بعد ٣ أشهر. أعدت التدريب مع كشف انحراف المفهوم، وأضفت خط أنابيب تعلم عبر الإنترنت. قللت خطأ التنبؤ بنسبة ٢٥٪، وحافظت على دقة تتجاوز ٩٠٪.\"\n\nاضغط مرتين ❤️ للمزيد",
       "links": [],
-      "createdAt": "2026-10-23T00:30:25.938Z",
-      "expiresAt": "2026-10-25T00:30:25.938Z",
+      "createdAt": "2026-10-23T03:49:19.061Z",
+      "expiresAt": "2026-10-25T03:49:19.061Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.938Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:19.061Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -43,7 +43,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.938Z"
+        "reviewedAt": "2026-10-23T03:49:19.061Z"
       }
     },
     {
@@ -63,10 +63,10 @@
       "fallbackReason": null,
       "text": "XAUUSD BUY NOW 4026\nSl : 4016\nTp : 4036",
       "links": [],
-      "createdAt": "2026-10-23T00:30:25.398Z",
-      "expiresAt": "2026-10-25T00:30:25.398Z",
+      "createdAt": "2026-10-23T03:49:18.164Z",
+      "expiresAt": "2026-10-25T03:49:18.164Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.398Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:18.164Z",
       "tag": "other",
       "tags": [
         "other"
@@ -84,12 +84,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.398Z"
+        "reviewedAt": "2026-10-23T03:49:18.164Z"
       }
     },
     {
-      "id": 773249205,
-      "postUrl": "https://t.me/summaryegypt/5462?single",
+      "id": 1511828763,
+      "postUrl": "https://t.me/summaryegypt/5464?single",
       "source": {
         "title": "Summary Egypt",
         "handle": "summaryegypt",
@@ -98,24 +98,16 @@
       },
       "sourceId": "eg:summaryegypt",
       "sourceCountryCode": "eg",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/9698848971.mp4?token=HhxoMA7v3Rt5W-UWhgY2_r5SdDkPrNT0rwLat1_OpfHhf-ZXUKbv1mKhqQbaDUKwxBxP-wQy74BF5sIvFiFUtiQPZw87kwRQoNvkCbgGHEy9MfD_u0ubX9c_mR9MK2vBwlSNdBut9JLYBnrXkI9qsQVEcbyogxzUXUq4l_8TVJIzVZz41i6puvH2r_UVvoREhPpQN0Xxe5m5_vw2xkm8c5Pp2agh0R2GE4y3o3I56_L8TJicChRora-9nlIq_LmSpFsGUIL5yJD_bd07rIdsutAuGmnZjWKmYcFbNljdzD2KvAFA5LCzh7Vni5xii_C5c8XrMz2w4qTusHmVOA3MSrXOu3TN4jfMhaXPzRblEQXPIM0cfLa0DSXOV59y_FGRwLBsZizpidWihyHz_lhSkXVO185Nr3XfR4jeEaSS7CiffCFGiZB5aJ44BAMjcY5GJQ2CNbtmPVVUdcGD7rhe7YgrUwRdkokADH9ztH0AXxa5mPao90Ekj-WlGGvhoKj30ME7GAeEyOOj0_nuXKPjfeKTfrfcuL3GctxM-nwAGskcUZhla4bpg4S1Ho4_yZIm4JP9jAhDYkQoe0LUW_uNVcVjpAvGdYNS1-F2Dhr_UvaOAA7glmzXR9PB-Jaw_i-CTOKFMBAbVqAphooodJ6wzRKQv4yaxMLFpqapPFimz7g",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "✍️ مين بيحاول يطلع #محمود_السيسي رئيسًا لمصر.. ومين المستفيد من حكاية #التوريث؟ 🕵️‍♂️🇪🇬\n\nبعد تصريحات #السيسي عن الدستور بـ24 ساعة بس.. موقع رئاسي ورسائل واتساب باسم حملة «كمّل المشوار» توصل لشخصيات معارضة\n\nطب لو الحملة هدفها ترشيح #نجل_الرئيس فعلًا.. ليه بتدور على الانتشار من بوابة المعارضين؟ ومين عايز يحوّل اسم محمود السيسي نجل #الرئيس_المصري لقنبلة سياسية في التوقيت ده؟",
+      "text": "🛑 لايـــــف  - #LIVE | #مصر تعلن الحرب | اخلاء #الرياض | مهزلة #امريكا | انسحاب #روسيا | انفجار #فرنسا 📌 شــــــاهد الآن..👇 https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi   https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi",
       "links": [],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
+      "createdAt": "2026-10-23T03:49:17.413Z",
+      "expiresAt": "2026-10-25T03:49:17.413Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:17.413Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -135,7 +127,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
+        "reviewedAt": "2026-10-23T03:49:17.413Z"
       }
     },
     {
@@ -160,10 +152,10 @@
           "url": "https://buymeacoffee.com/emadseed"
         }
       ],
-      "createdAt": "2026-10-23T00:30:23.686Z",
-      "expiresAt": "2026-10-25T00:30:23.686Z",
+      "createdAt": "2026-10-23T03:49:16.655Z",
+      "expiresAt": "2026-10-25T03:49:16.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.686Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:16.655Z",
       "tag": "startups_invest",
       "tags": [
         "startups_invest",
@@ -182,7 +174,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.686Z"
+        "reviewedAt": "2026-10-23T03:49:16.655Z"
       }
     },
     {
@@ -228,10 +220,10 @@
       "fallbackReason": null,
       "text": "🌍 في 22 أكتوبر، انضمت السفارة الروسية في مصر والبيت الروسي في القاهرة إلى مؤتمر عبر الهاتف دولي مخصص للوضع في منطقة زابوريزهيا، والهجمات التي شنتها القوات المسلحة الأوكرانية على البنية التحتية المدنية، وقضايا سلامة المدنيين.\n\n🕊️ خلال الاجتماع، عُرضت موادٌ حول جرائم القوات المسلحة الأوكرانية ضد المدنيين، جُمعت خلال زيارة عمل قام بها روديون ميروشنيك إلى منطقة زابوروجيا. وعُرضت على المشاركين صورٌ ومقاطع فيديو، وتحدث شهود عيان عن آثار القصف وهجمات الطائرات المسيّرة.\n\n#زابوريزهيا",
       "links": [],
-      "createdAt": "2026-10-23T00:30:23.139Z",
-      "expiresAt": "2026-10-25T00:30:23.139Z",
+      "createdAt": "2026-10-23T03:49:15.749Z",
+      "expiresAt": "2026-10-25T03:49:15.749Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.139Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:15.749Z",
       "tag": "other",
       "tags": [
         "other"
@@ -249,12 +241,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.139Z"
+        "reviewedAt": "2026-10-23T03:49:15.749Z"
       }
     },
     {
-      "id": 4120401411,
-      "postUrl": "https://t.me/rassd/205758?single",
+      "id": 4246826054,
+      "postUrl": "https://t.me/rassd/205773?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -263,24 +255,16 @@
       },
       "sourceId": "eg:rassd",
       "sourceCountryCode": "eg",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/3c07ad2832.mp4?token=STigUxM1j1jUN_d3I3-WB8FXyOg_2DnHN43Lp1MwrNAEh4e2-331C0VrJX_yEgnKkbBYGBlIv5fLvhVw9JshWUz3sukc-zrqv-ePm813HZ7DzVnqwy4tF6P6YgbEz-LDVkM7QnRps-vLSyyhNXrJup3XfdjH7XvLLJKu2dA_4yRjxqHhs2MC6kdy2zQ7zJV4HXvJGECvL-gxRkY5UuG5_ruawdMpAyvovzhmy-JTVJ7KvfpooU0X4oOUOPgkiSzB6abgap8DSBoggOtPJPnJGkLvV37jlBvVuhTkuT441bcHbhupdL5dQITq3VD5jH4ro4hliDiD6gry_mXztN6oUQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "يحدث الان خلى كل المنطقة الشرقية تصحى من النوم",
+      "text": "&rlm;﴿‌&rlm;إِلَّا تَنْصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا﴾.",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
       "tag": "other",
       "tags": [
         "other"
@@ -298,7 +282,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
       }
     },
     {
@@ -318,10 +302,10 @@
       "fallbackReason": null,
       "text": "⬅️دخول كميات كبيرة من الشاحنات المحملة بالبضائع والمساعدات من المعابر الجنوبية لقطاع  غزة اليوم",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.264Z",
-      "expiresAt": "2026-10-25T00:30:21.264Z",
+      "createdAt": "2026-10-23T03:49:12.979Z",
+      "expiresAt": "2026-10-25T03:49:12.979Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.264Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.979Z",
       "tag": "other",
       "tags": [
         "other"
@@ -339,7 +323,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.264Z"
+        "reviewedAt": "2026-10-23T03:49:12.979Z"
       }
     },
     {
@@ -374,10 +358,10 @@
           "url": "https://rebrand.ly/hliajfh"
         }
       ],
-      "createdAt": "2026-10-23T00:30:20.786Z",
-      "expiresAt": "2026-10-25T00:30:20.786Z",
+      "createdAt": "2026-10-23T03:49:12.207Z",
+      "expiresAt": "2026-10-25T03:49:12.207Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.786Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.207Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -397,12 +381,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.786Z"
+        "reviewedAt": "2026-10-23T03:49:12.207Z"
       }
     },
     {
-      "id": 3409982831,
-      "postUrl": "https://t.me/ngmsr/20663?single",
+      "id": 1130616848,
+      "postUrl": "https://t.me/ngmsr/20664?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -415,17 +399,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "تطلق جامعة طيبة بالمدينة المنورة مسابقة «منبر طيبة» لاكتشاف المواهب الشابة في فنون الحديث والإلقاء! 🎤✨  \nتضم المسابقة مسارين: الخطابة العربية والإنجليزية، لتمنحك فرصة للتعبير بأسلوب مؤثر وبثقة أمام الجمهور.  \nهدفها صقل مهارات التواصل والإقناع وتعزيز الحضور والكاريزما لديك 💬🔥  \nسجّل عبر حسابات الجامعة على منصات التواصل وكن جزءًا من بيئة تنافسية تشجع الإبداع والتميز 🏆  \n#منبر_طيبة #جامعة_طيبة #خطابة\n\nhttps://www.ngmisr.com/?p=3868807",
+      "text": "🌳 أمانة منطقة الرياض تدعوكم للمشاركة في تسمية 17 حديقة ضمن مبادرة «أهلها يسمّونها» لتعزيز الهوية المحلية والانتماء!  \n🗓️ آخر موعد لتقديم الاقتراحات 24 أكتوبر 2026، وتُعلن النتائج 27 أكتوبر 2026.  \n✨ شاركوا باسمين يرويان تاريخ المكان ويحفظان هويته—كل حيّ له حكاية!  \n🔗 قدموا اقتراحكم عبر رابط التسجيل.  \n#حدائق_الرياض #أمانة_منطقة_الرياض #المشاركة_المجتمعية\n\nhttps://www.ngmisr.com/?p=3869057",
       "links": [
         {
-          "label": "https://www.ngmisr.com/?p=3868807",
-          "url": "https://www.ngmisr.com/?p=3868807"
+          "label": "https://www.ngmisr.com/?p=3869057",
+          "url": "https://www.ngmisr.com/?p=3869057"
         }
       ],
-      "createdAt": "2026-10-23T00:30:20.287Z",
-      "expiresAt": "2026-10-25T00:30:20.287Z",
+      "createdAt": "2026-10-23T03:49:11.415Z",
+      "expiresAt": "2026-10-25T03:49:11.415Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.287Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:11.415Z",
       "tag": "other",
       "tags": [
         "other"
@@ -443,7 +427,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.287Z"
+        "reviewedAt": "2026-10-23T03:49:11.415Z"
       }
     },
     {
@@ -469,10 +453,10 @@
       "fallbackReason": null,
       "text": "🗯 التجارة بين المغرب والجزائر تتراجع 89% خلال خمس سنوات\n\nتراجعت المبادلات التجارية بين المغرب والجزائر بنحو 89% خلال خمس سنوات، لتبلغ 740 مليون درهم، أي نحو 74 مليون دولار في عام 2025، مقارنة بمستويات أعلى في 2021، وسط استمرار التوترات السياسية وقطع الجزائر علاقاتها الدبلوماسية مع المغرب في العام نفسه.\n\nوانخفضت الصادرات المغربية إلى الجزائر من نحو مليار درهم عام 2021 إلى مليون درهم فقط في 2025، فيما هبطت واردات المغرب من الجزائر إلى 739 مليون درهم، وتصدرت التمور قائمة الواردات بقيمة تجاوزت 481 مليون درهم، أي نحو 65% من إجماليها.\n\n#المغرب #الجزائر #التجارة_الخارجية",
       "links": [],
-      "createdAt": "2026-10-23T00:30:19.747Z",
-      "expiresAt": "2026-10-25T00:30:19.747Z",
+      "createdAt": "2026-10-23T03:49:10.544Z",
+      "expiresAt": "2026-10-25T03:49:10.544Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.747Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:10.544Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -491,17 +475,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.747Z"
+        "reviewedAt": "2026-10-23T03:49:10.544Z"
       }
     },
     {
-      "id": 211774845,
-      "postUrl": "https://t.me/n1nnnn3/54980?single",
+      "id": 1654338561,
+      "postUrl": "https://t.me/n1nnnn3/54984?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Mk6U0_0eTxqUKQcUsB-fWWnCAFExtW9oR3OIfyXea5lufZoM5iXmSQDJINqvxQ3vfBwRpHQSmIhcckODJEzD0v5g7ro6Ithu9qrE3bziSdcDOUakLp1u6hwxI6hHtPaHcfU8Bzjj5W8dQEMSYSPfeLqucdKGX0fQWMRyvssF5hZIwVBcUizAdsPf8aiOuaNlyyOt9_x9tza-feBQqu4E0lGvEXhDNjDaJHJSNNQ-Zg09uAQCgciSpCM3vMHQgU8xnxQWTtwkw6qYRcZUs1fuq0wQU6y9mJNyQjiGzP3wOembF_WvzQ27mNa2v_NYr5fJAtBG2KszdLV_Le7k21At9g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Fy9VZ-MDasS-czQ3elEzROeoA2TKef_MOi3GOGYdGrrTNWZp5xPgvGdnDmImd28AiOh2X23l5NCA_lZ70MQjmjVzLjqDrtOGtptqTcTPq4AbepFiEfCkDgzTM2EwnHYb-JZEvoChKWEfumufueymYuUSxJs6gNlPgD9poaPzYddZ3AWRirniSlw7-gGnAAz0V-ipl8k6dwSROzP5F-faRubjAEOpAM3I_j9qbj_jnmhb2cQi1ASXCJsu95NzZEnY-Y-R9Vy3Pq_EuygnO0jl0eY2u55VrIBgSGyo8Sf0zZZUVEONYh6K3ZekR1fs7ydm7VhN6XfLMuWkzueiPQonMQ.jpg"
       },
       "sourceId": "eg:n1nnnn3",
       "sourceCountryCode": "eg",
@@ -509,17 +493,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🔎 تمت إضافتك",
+      "text": "⚠️ 10 علامات تدل على ضعف الشخصية:\n1️⃣تسعى لإرضاء الجميع حتى على حساب نفسك\n2️⃣لا تستطيع قول لـا خوفاً من خسارة الآخرين\n...قراءة المزيد",
       "links": [
         {
-          "label": "تمت إضافتك",
+          "label": "قراءة المزيد",
           "url": "https://t.me/addlist/RHl3ids8f4A5Yjc0"
         }
       ],
-      "createdAt": "2026-10-23T00:30:19.202Z",
-      "expiresAt": "2026-10-25T00:30:19.202Z",
+      "createdAt": "2026-10-23T03:49:09.727Z",
+      "expiresAt": "2026-10-25T03:49:09.727Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.202Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:09.727Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -539,7 +523,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.202Z"
+        "reviewedAt": "2026-10-23T03:49:09.727Z"
       }
     },
     {
@@ -564,10 +548,10 @@
           "url": "https://t.me/m/FJwAhhLhNGY0"
         }
       ],
-      "createdAt": "2026-10-23T00:30:18.710Z",
-      "expiresAt": "2026-10-25T00:30:18.710Z",
+      "createdAt": "2026-10-23T03:49:08.923Z",
+      "expiresAt": "2026-10-25T03:49:08.923Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.710Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.923Z",
       "tag": "other",
       "tags": [
         "other"
@@ -585,7 +569,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.710Z"
+        "reviewedAt": "2026-10-23T03:49:08.923Z"
       }
     },
     {
@@ -620,10 +604,10 @@
           "url": "https://t.me/M_iraculousLR"
         }
       ],
-      "createdAt": "2026-10-23T00:30:18.176Z",
-      "expiresAt": "2026-10-25T00:30:18.176Z",
+      "createdAt": "2026-10-23T03:49:08.090Z",
+      "expiresAt": "2026-10-25T03:49:08.090Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.176Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.090Z",
       "tag": "other",
       "tags": [
         "other"
@@ -641,12 +625,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.176Z"
+        "reviewedAt": "2026-10-23T03:49:08.090Z"
       }
     },
     {
-      "id": 3716876169,
-      "postUrl": "https://t.me/medmannews/46889?single",
+      "id": 3657519147,
+      "postUrl": "https://t.me/medmannews/46894?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
@@ -659,18 +643,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚡🇺🇸🇦🇪 Led by Coatue and investors based in the United Arab Emirates, OpenAI is closing in on a round of up to $30 billion that would value it at $1.25 trillion, CNBC reports. The financing is being framed as an \"opportunistic\" move to bridge the company toward…",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:17.161Z",
-      "expiresAt": "2026-10-25T00:30:17.161Z",
+      "text": "⚡️🇺🇸 A man of hispanic ancestry attempted to destroy a Iwo Jima flag raiser monument outside of the Marine Corps base in Quantico.\n\nHe managed to detach a bayonet and two heads off the limestone monument before getting apprehended.\n\n@medmannews",
+      "links": [
+        {
+          "label": "@medmannews",
+          "url": "https://t.me/medmannews"
+        }
+      ],
+      "createdAt": "2026-10-23T03:49:06.973Z",
+      "expiresAt": "2026-10-25T03:49:06.973Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:17.161Z",
-      "tag": "war",
+      "mediaRefreshedAt": "2026-10-23T03:49:06.973Z",
+      "tag": "marketing_ads",
       "tags": [
-        "war",
-        "politics",
-        "ai",
-        "technology"
+        "marketing_ads",
+        "marketing"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -685,12 +672,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:17.161Z"
+        "reviewedAt": "2026-10-23T03:49:06.973Z"
       }
     },
     {
-      "id": 3218941448,
-      "postUrl": "https://t.me/mabowaged_eg/18228?single",
+      "id": 2025435263,
+      "postUrl": "https://t.me/mabowaged_eg/18227?single",
       "source": {
         "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
         "handle": "mabowaged_eg",
@@ -703,16 +690,15 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "بوست شامل بأغلب الثغرراات المتاحة على القناة حتى الآن🔥 👇👇👇👇  =====  دى ثغرة واى فاى وى روتر للألعاب 150 جيجا ب 75 جنية وتحويل جيجات الألعاب لجميع المواقع( ثغرة pc وى باقات الألعاب) 👇  https://t.me/mabowaged_eg/2304  ودا كونفج tls تحويل ميجات الالعاب pc لجميع…",
+      "text": "صلى على سيدنا محمد ❤️",
       "links": [],
-      "createdAt": "2026-10-23T00:30:16.551Z",
-      "expiresAt": "2026-10-25T00:30:16.551Z",
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:16.551Z",
-      "tag": "electronics_pc",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
       "tags": [
-        "electronics_pc",
-        "electronics"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -727,7 +713,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:16.551Z"
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
       }
     },
     {
@@ -762,10 +748,10 @@
           "url": "https://maps.app.goo.gl/sPUT2BUqJGwaZfSb7"
         }
       ],
-      "createdAt": "2026-10-23T00:30:15.992Z",
-      "expiresAt": "2026-10-25T00:30:15.992Z",
+      "createdAt": "2026-10-23T03:49:04.076Z",
+      "expiresAt": "2026-10-25T03:49:04.076Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:15.992Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.076Z",
       "tag": "other",
       "tags": [
         "other"
@@ -783,7 +769,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:15.992Z"
+        "reviewedAt": "2026-10-23T03:49:04.076Z"
       }
     },
     {
@@ -803,10 +789,10 @@
       "fallbackReason": null,
       "text": "❤️❤️ كل مسابقات الجهاز المركزي للتنظيم والإدارة 💥💥 \n 🟢 مسابقات الحصه ➡️\n\n🤔 مسابقات التربيه والتعليم\n🤔 مسابقات الازهر كله\n🤔 مسابقات الوظائف الإداريه\n\n🗣️ مسابقات الحصه 🗣️\n\nوكل المسابقات🎤🎤",
       "links": [],
-      "createdAt": "2026-10-23T00:30:14.957Z",
-      "expiresAt": "2026-10-25T00:30:14.957Z",
+      "createdAt": "2026-10-23T03:49:02.482Z",
+      "expiresAt": "2026-10-25T03:49:02.482Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.957Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:02.482Z",
       "tag": "other",
       "tags": [
         "other"
@@ -824,7 +810,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.957Z"
+        "reviewedAt": "2026-10-23T03:49:02.482Z"
       }
     },
     {
@@ -844,10 +830,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-10-23T00:30:14.169Z",
-      "expiresAt": "2026-10-25T00:30:14.169Z",
+      "createdAt": "2026-10-23T03:49:01.307Z",
+      "expiresAt": "2026-10-25T03:49:01.307Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.169Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:01.307Z",
       "tag": "other",
       "tags": [
         "other"
@@ -865,7 +851,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.169Z"
+        "reviewedAt": "2026-10-23T03:49:01.307Z"
       }
     },
     {
@@ -891,10 +877,10 @@
       "fallbackReason": null,
       "text": "📊 USD/CAD | Daily  يتداول الزوج حاليًا بالقرب من 1.4250 – 1.4300، وهي منطقة مقاومة قوية تتزامن مع الحد العلوي للقناة السعرية الصاعدة، مما يعزز احتمالية ظهور ضغوط بيعية  السيناريو المرجح 📉 نتوقع احتمالية حدوث انعكاس هبوطي من المستويات الحالية، مستهدفين منطقة…",
       "links": [],
-      "createdAt": "2026-10-23T00:30:13.318Z",
-      "expiresAt": "2026-10-25T00:30:13.318Z",
+      "createdAt": "2026-10-23T03:48:59.931Z",
+      "expiresAt": "2026-10-25T03:48:59.931Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:13.318Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.931Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -913,7 +899,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:13.318Z"
+        "reviewedAt": "2026-10-23T03:48:59.931Z"
       }
     },
     {
@@ -923,7 +909,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tAXEzSAGnQ2l_MLXhhJ4b2PLWwlfwjXH_D5GyN2hqvsz5ritQz-Uf4wzLaqyWhrbYxDOBkbRjWA_3iJalXMXeJzUUYqczduE7bjkM36OtHYsDTVd7bbaByvqVwNQqI_TtMatZfMay6aJgLxNyHNx3PdR6PaAFrh0X0H68Y03xfQAu-FyQAwHU3-tWjfZqsL-qTOUWBgJH8pAH0fFemKC8Lk3TrGwYY0noR3JjwyXspOSnX7wAMQVlYyDzyb1-EURIGeSILh-PUkCG9ek4JKQEVlqgSVeVoQbNqWFd5qTXuVfRMRwNdrzJ-1fxLcK6AQIQ42T8FVOinmXpt0KZudohw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/bcrtxcfkhbauulsisX399InZwnOcnG5H1MQDEC7ctx9t1ovVrALAM67avDnHgg2UJaiTb5wpaHq_6tE2ezXAbFSevDidsbXKUkQ9zluoFgmka3pCUaJ4o1NxsaENiYxK480p5yCYC8epcR-AhTlYueJjXAfmNNcH2caJqR5oLSL_8vRfpfCNcU_zhwMrze_w50QaA30qMUyzoYVl9aAV_2FOnJFe9obIz9Nk1jkpm2KZFETXHtFjCmJ7vERY-VuoU0bJMN3y3-YCfxWUAMRU6fchpLP5KMULauIw0RQCOyPm-YmvObG16Kh-_oJWjfzml67pxmnycPQ1BXOXFAcV_A.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -933,10 +919,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-10-23T00:30:12.821Z",
-      "expiresAt": "2026-10-25T00:30:12.821Z",
+      "createdAt": "2026-10-23T03:48:59.151Z",
+      "expiresAt": "2026-10-25T03:48:59.151Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:12.821Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.151Z",
       "tag": "other",
       "tags": [
         "other"
@@ -954,7 +940,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:12.821Z"
+        "reviewedAt": "2026-10-23T03:48:59.151Z"
       }
     },
     {
@@ -974,10 +960,10 @@
       "fallbackReason": null,
       "text": "في كرتونات جديدة نزلت ؟",
       "links": [],
-      "createdAt": "2026-10-23T00:30:11.811Z",
-      "expiresAt": "2026-10-25T00:30:11.811Z",
+      "createdAt": "2026-10-23T03:48:57.642Z",
+      "expiresAt": "2026-10-25T03:48:57.642Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.811Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:57.642Z",
       "tag": "other",
       "tags": [
         "other"
@@ -995,7 +981,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.811Z"
+        "reviewedAt": "2026-10-23T03:48:57.642Z"
       }
     },
     {
@@ -1005,7 +991,7 @@
         "title": "Агнабея.info",
         "handle": "agnabeyainfo_media",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/TPXy2sn7lgtYxWsYm5IvmTS56CbnrocnxlePMnJDjB2vC7SRcTi1yI0HyIcpFw0qX9ofLMZUKYDvZTXlRHYFbn2D1a23JMwA-klnkyhlpWraH4Ojh-95xSg1fiLWSNUZ86epGK-gQunTy9GVIVQBLuH3UzH16B6Lxx_W6Wx5AohusZeB-O3ViXe2-nXT8UBA_i8F_uJUgYH-O1jZ1uKKH7kmQLMX3CHQ5zQ-d6SblkQ5GymUAlkeVS4AY8f5xVmQnp9gAhYsR3nri63SZeqghZa1BkflQb1zDkKZnSAuYFblV-sAAKi62bWiG18259J9scE02lxJ2UrdVUW-dNWTdQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/oIPOijxlDGrlHahAR4CpBkmddOMqJfVdO_ksoI_sJgUm0xCy_Mo3zi_vBL4-VHOsQBEbpJOT2iVb2oe798RweO07B_N1gNBVM-INAxsFGi4wrZd9p_fdjkot6ev7HHIPkEbzOMHI5LA0lvLb9ozzWsAkvnCVbLTzBT1CZUMvWD6xuOQn4h6yBaa1x-yn67jRkTXyDIBfCCLwh682QwN66BGQKk6PzbvOn6of4h_EhV0izeTpsJt31I7aP9qHMZh6nyzldCD6bu_ZNf4QN6DmpbjTpOaPR72lVdNXBm-JHLJd5MYG6lGWdAmYaj0AyVbfqpJBin7iy0RFUVJ6q_AEIg.jpg"
       },
       "sourceId": "eg:agnabeyainfo_media",
       "sourceCountryCode": "eg",
@@ -1015,10 +1001,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-10-23T00:30:11.278Z",
-      "expiresAt": "2026-10-25T00:30:11.278Z",
+      "createdAt": "2026-10-23T03:48:56.835Z",
+      "expiresAt": "2026-10-25T03:48:56.835Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.278Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:56.835Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1036,12 +1022,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.278Z"
+        "reviewedAt": "2026-10-23T03:48:56.835Z"
       }
     },
     {
-      "id": 1555170052,
-      "postUrl": "https://t.me/naf3_ch/3147?single",
+      "id": 683029683,
+      "postUrl": "https://t.me/naf3_ch/3148?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -1054,12 +1040,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "﴿ ادعوا رَبَّكُم تَضَرُّعًا وَخُفيَةً ﴾",
+      "text": "﴿ وَاتَّقُوا اللَّهَ وَاعلَموا أَنَّكُم مُلاقوهُ ﴾",
       "links": [],
-      "createdAt": "2026-10-23T00:30:10.553Z",
-      "expiresAt": "2026-10-25T00:30:10.553Z",
+      "createdAt": "2026-10-23T03:48:55.713Z",
+      "expiresAt": "2026-10-25T03:48:55.713Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:10.553Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:55.713Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1077,12 +1063,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:10.553Z"
+        "reviewedAt": "2026-10-23T03:48:55.713Z"
       }
     },
     {
-      "id": 2366767419,
-      "postUrl": "https://t.me/deals_trackers/19591?single",
+      "id": 1653773141,
+      "postUrl": "https://t.me/deals_trackers/19597?single",
       "source": {
         "title": "ملك الخصومات - Deals King",
         "handle": "deals_trackers",
@@ -1096,22 +1082,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/U_AZzx8Ue4lzJ10g0qCFL2aRqkjYV4zhad52Yem48A3BzXYzIgOxoiWDMWDho8dH-wn0_3hNVKgtX4_hn8-1l_PeuQgTXU4jSCwNSWrvUYZgH5BV3qsqzUTNAov9QArqox5p8RWynVuL2P8DSYTLpbYl24SeRCaSjBz_sj_PD7K3ESVSRpmMWaF4c4OJIlbRJ3I0-PYn9VbNWIgiQtJI8b4onWnjKJMim3bGuha-0C-ED69VttqQpSMmM7IosrCd-a9ArAKKM3cFfIiRWjLWVobKC66Kr6Pf91E7khbV7J37Z_FChzNvdbcOAo_CBaG6iayXyrjl4v81jzLVIF1Djw.jpg"
+          "url": "https://cdn4.telesco.pe/file/Du3GFKAnNEPRT1TNtcSKfnK6cJELp0RzTJOuYL8kKNLlzXZM84ZPl7iu2rfIAa6coQWn2unj_OsTu00kkwvo1Svs8cTg-tf1cak8CppxeKA_1-DEePXu24YQ-FmMBDjegCguddRNze0Mtap8OJYCSo0Fzp9S9UTGE8Rybyue8oKocnNg9JKutkypCZpCj5F-GxcbU0MtTYFPMea5Mm3x4SU6HfnDU-TMRHVQZdO0AVhnpa_0ppN3yGuNDdDjb_ax0hDr-yg9YQDff_aID26tPPtmJ8f70TPaKvzJTEHCmbkteEowhN79zqSLtqzajQW8zewlDYfFUDDTwtjBhTHWbA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "شاشة ألعاب VU249CFE للعناية بالعين من اسوس، مقاس 24 بوصة، FHD (1920×10\nبـسعر 7,461 جنيه 💥\nhttps://amazn.im/DLlZKK",
+      "text": "فستان صوف متوسط الطول من ترنديول \nبـ 207  جنيه\nhttps://amazn.im/ShfnpC",
       "links": [
         {
-          "label": "https://amazn.im/DLlZKK",
-          "url": "https://amazn.im/DLlZKK"
+          "label": "https://amazn.im/ShfnpC",
+          "url": "https://amazn.im/ShfnpC"
         }
       ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
+      "createdAt": "2026-10-23T03:48:54.571Z",
+      "expiresAt": "2026-10-25T03:48:54.571Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:54.571Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1129,7 +1115,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
+        "reviewedAt": "2026-10-23T03:48:54.571Z"
       }
     },
     {
@@ -1154,10 +1140,10 @@
           "url": "https://t.me/sqlanalyst"
         }
       ],
-      "createdAt": "2026-10-23T00:30:25.938Z",
-      "expiresAt": "2026-10-25T00:30:25.938Z",
+      "createdAt": "2026-10-23T03:49:19.061Z",
+      "expiresAt": "2026-10-25T03:49:19.061Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.938Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:19.061Z",
       "tag": "animals",
       "tags": [
         "animals",
@@ -1176,7 +1162,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.938Z"
+        "reviewedAt": "2026-10-23T03:49:19.061Z"
       }
     },
     {
@@ -1196,10 +1182,10 @@
       "fallbackReason": null,
       "text": "XAUUSD BUY NOW 4085 Sl : 4074 Tp : 4095 لوت عالي",
       "links": [],
-      "createdAt": "2026-10-23T00:30:25.398Z",
-      "expiresAt": "2026-10-25T00:30:25.398Z",
+      "createdAt": "2026-10-23T03:49:18.164Z",
+      "expiresAt": "2026-10-25T03:49:18.164Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.398Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:18.164Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1217,12 +1203,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.398Z"
+        "reviewedAt": "2026-10-23T03:49:18.164Z"
       }
     },
     {
-      "id": 3375251326,
-      "postUrl": "https://t.me/summaryegypt/5461?single",
+      "id": 1111303652,
+      "postUrl": "https://t.me/summaryegypt/5463?single",
       "source": {
         "title": "Summary Egypt",
         "handle": "summaryegypt",
@@ -1235,17 +1221,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "📌 شــــــاهد الآن..👇\nhttps://youtu.be/2Nu4y9Z31Vk",
+      "text": "🛑 لايـــــف  - #LIVE | #مصر تعلن الحرب | اخلاء #الرياض | مهزلة #امريكا | انسحاب #روسيا | انفجار #فرنسا\n📌 شــــــاهد الآن..👇\nhttps://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi \n\nhttps://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi",
       "links": [
         {
-          "label": "https://youtu.be/2Nu4y9Z31Vk",
-          "url": "https://youtu.be/2Nu4y9Z31Vk"
+          "label": "https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi",
+          "url": "https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi"
+        },
+        {
+          "label": "https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi",
+          "url": "https://www.youtube.com/live/qpfgyVt4dm8?si=3eQkv_2fjfH2N_xi"
         }
       ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
+      "createdAt": "2026-10-23T03:49:17.413Z",
+      "expiresAt": "2026-10-25T03:49:17.413Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:17.413Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -1265,7 +1255,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
+        "reviewedAt": "2026-10-23T03:49:17.413Z"
       }
     },
     {
@@ -1320,10 +1310,10 @@
           "url": "https://t.me/SeedOSS"
         }
       ],
-      "createdAt": "2026-10-23T00:30:23.686Z",
-      "expiresAt": "2026-10-25T00:30:23.686Z",
+      "createdAt": "2026-10-23T03:49:16.655Z",
+      "expiresAt": "2026-10-25T03:49:16.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.686Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:16.655Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -1342,7 +1332,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.686Z"
+        "reviewedAt": "2026-10-23T03:49:16.655Z"
       }
     },
     {
@@ -1373,10 +1363,10 @@
           "url": "https://youthy.ru/"
         }
       ],
-      "createdAt": "2026-10-23T00:30:23.139Z",
-      "expiresAt": "2026-10-25T00:30:23.139Z",
+      "createdAt": "2026-10-23T03:49:15.749Z",
+      "expiresAt": "2026-10-25T03:49:15.749Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.139Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:15.749Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1394,12 +1384,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.139Z"
+        "reviewedAt": "2026-10-23T03:49:15.749Z"
       }
     },
     {
-      "id": 3519878932,
-      "postUrl": "https://t.me/rassd/205757?single",
+      "id": 2919230879,
+      "postUrl": "https://t.me/rassd/205772?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -1408,22 +1398,16 @@
       },
       "sourceId": "eg:rassd",
       "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/mPwqd9wotNwnQ1BuhZfG86EJ6sgu0m0ogYZ82ts8mcWyU6L6_h8h4QzBzH_I8idiBYDTBBBPyUYfNlYQHQwQZVpOLEQyszouBjg1eHvJ1udkiHUcuSOR8HDHu5n4LHkQWmNmjqHMdTWLUeZ5IiMAsvLuDhJqCV27ktXX8BeWzsSRwvXkYC2mzpAvb1z6xlnYp_rvvmh50o6VbW-11yD2a0nej3Cseo3wSbNt-NBX09qo8_XXsKoCrKuSTg4QlOmj-3wPYfShRRFx37ysAxtjWhzVV6PU1cX1KZkfs0XVEzA69V5dxpIRvl--bYe34q7IyrbjN01m0YzTOT7zTwMzpQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🟥🔴تسجيل حالات اعتقال في مخيم بلاطة الان",
+      "text": "جماعة الفجر هم تاج الراس🙆🏼  \nمن كان من اهل الفجر يحكي الحمد لله🤲🏻",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1441,7 +1425,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
       }
     },
     {
@@ -1461,10 +1445,10 @@
       "fallbackReason": null,
       "text": "هيئة البترول في غزة: \nنعلمكم انه تم اليوم الخميس الموافق 22/10/2026 دخول حمولة 5 شاحنات غاز طهي  ، وسيتم توزيع 4 شاحنات على المواطنين من كشف 15/10 الموحد لجميع محافظات القطاع و تأجيل توزيع الشاحنة الخامسة لأسباب فنية.\nوذلك لقرابة 9450 مستفيد .",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.264Z",
-      "expiresAt": "2026-10-25T00:30:21.264Z",
+      "createdAt": "2026-10-23T03:49:12.979Z",
+      "expiresAt": "2026-10-25T03:49:12.979Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.264Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.979Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1482,7 +1466,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.264Z"
+        "reviewedAt": "2026-10-23T03:49:12.979Z"
       }
     },
     {
@@ -1509,10 +1493,10 @@
       "fallbackReason": null,
       "text": "اسم اللعبة :- Car Parking مهكرة 🎮\n\nلعبة محاكاة قيادة ثلاثية الأبعاد واقعية. تتيح لك اللعبة قيادة العديد من السيارات المختلفة والتنقل في عالم مفتوح مليء بالحركة والأسرار. كما تمكنك اللعبة من التفاعل مع لاعبين آخرين في وضع اللعب الجماعي والمنافسة في سباقات وتعديل سياراتك - تعمل بدون إنترنت ☑️\n\nنقود غير محدودة - النقود تزداد عندما تنفق 💎",
       "links": [],
-      "createdAt": "2026-10-23T00:30:20.786Z",
-      "expiresAt": "2026-10-25T00:30:20.786Z",
+      "createdAt": "2026-10-23T03:49:12.207Z",
+      "expiresAt": "2026-10-25T03:49:12.207Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.786Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.207Z",
       "tag": "transport_auto",
       "tags": [
         "transport_auto",
@@ -1531,12 +1515,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.786Z"
+        "reviewedAt": "2026-10-23T03:49:12.207Z"
       }
     },
     {
-      "id": 426358806,
-      "postUrl": "https://t.me/ngmsr/20662?single",
+      "id": 3409982831,
+      "postUrl": "https://t.me/ngmsr/20663?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -1549,17 +1533,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚀 شركة مسار للأنظمة الكهربائية Line Tech تعلن عن فرصة عمل لمهندس متخصص في صيانة أجهزة الطاقة الشمسية واللوحات الإلكترونية!  \n🔧 ستتولى تشخيص الأعطال وصيانة الإنفرترات والدوائر الإلكترونية وأنظمة الشحن والبطاريات (BMS) مع فريق فني وإشرافي.  \n📄 التقديم متاح الآن عبر نموذج إلكتروني مع إرفاق CV حديث وشهادات الخبرة—قدّم بسرعة قبل غلق باب التسجيل!  \n💡 إذا كنت تمتلك خبرة لا تقل عن 3 سنوات ودقة عالية، هذه فرصتك لتكون جزءًا من فريق يشتغل على حلول الطاقة البديلة 🌞  \n#وظائف_طاقة_شمسية #هندسة_كهربائية #فرص_عمل\n\nhttps://www.ngmisr.com/?p=3869030",
+      "text": "تطلق جامعة طيبة بالمدينة المنورة مسابقة «منبر طيبة» لاكتشاف المواهب الشابة في فنون الحديث والإلقاء! 🎤✨  \nتضم المسابقة مسارين: الخطابة العربية والإنجليزية، لتمنحك فرصة للتعبير بأسلوب مؤثر وبثقة أمام الجمهور.  \nهدفها صقل مهارات التواصل والإقناع وتعزيز الحضور والكاريزما لديك 💬🔥  \nسجّل عبر حسابات الجامعة على منصات التواصل وكن جزءًا من بيئة تنافسية تشجع الإبداع والتميز 🏆  \n#منبر_طيبة #جامعة_طيبة #خطابة\n\nhttps://www.ngmisr.com/?p=3868807",
       "links": [
         {
-          "label": "https://www.ngmisr.com/?p=3869030",
-          "url": "https://www.ngmisr.com/?p=3869030"
+          "label": "https://www.ngmisr.com/?p=3868807",
+          "url": "https://www.ngmisr.com/?p=3868807"
         }
       ],
-      "createdAt": "2026-10-23T00:30:20.287Z",
-      "expiresAt": "2026-10-25T00:30:20.287Z",
+      "createdAt": "2026-10-23T03:49:11.415Z",
+      "expiresAt": "2026-10-25T03:49:11.415Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.287Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:11.415Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1577,7 +1561,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.287Z"
+        "reviewedAt": "2026-10-23T03:49:11.415Z"
       }
     },
     {
@@ -1603,10 +1587,10 @@
       "fallbackReason": null,
       "text": "🗯 تركيا ترحب بموافقة البرلمان الليبي على مذكرة ترسيم الحدود البحرية\n\nرحبت وزارة الدفاع التركية بموافقة مجلس النواب الليبي على مذكرة التفاهم لترسيم الحدود البحرية بين البلدين، الموقعة عام 2019، معتبرةً أن القرار يعزز المذكرة المبرمة على أساس القانون الدولي ومبادئ الإنصاف، ويدعم التعاون الاستراتيجي بين أنقرة وطرابلس.\n\nوأكد المتحدث باسم الوزارة زكي آكتورك أن تحديد مناطق الولاية البحرية حق سيادي للدول الساحلية المعنية، رداً على مواقف الاتحاد الأوروبي واليونان، مشدداً على أن تركيا ستواصل حماية حقوقها ومصالحها في شرق المتوسط، وفق القانون الدولي.\n\n#تركيا #ليبيا #شرق_المتوسط #الحدود_البحرية",
       "links": [],
-      "createdAt": "2026-10-23T00:30:19.747Z",
-      "expiresAt": "2026-10-25T00:30:19.747Z",
+      "createdAt": "2026-10-23T03:49:10.544Z",
+      "expiresAt": "2026-10-25T03:49:10.544Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.747Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:10.544Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -1625,17 +1609,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.747Z"
+        "reviewedAt": "2026-10-23T03:49:10.544Z"
       }
     },
     {
-      "id": 4030461616,
-      "postUrl": "https://t.me/n1nnnn3/54978?single",
+      "id": 3402338502,
+      "postUrl": "https://t.me/n1nnnn3/54983?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Mk6U0_0eTxqUKQcUsB-fWWnCAFExtW9oR3OIfyXea5lufZoM5iXmSQDJINqvxQ3vfBwRpHQSmIhcckODJEzD0v5g7ro6Ithu9qrE3bziSdcDOUakLp1u6hwxI6hHtPaHcfU8Bzjj5W8dQEMSYSPfeLqucdKGX0fQWMRyvssF5hZIwVBcUizAdsPf8aiOuaNlyyOt9_x9tza-feBQqu4E0lGvEXhDNjDaJHJSNNQ-Zg09uAQCgciSpCM3vMHQgU8xnxQWTtwkw6qYRcZUs1fuq0wQU6y9mJNyQjiGzP3wOembF_WvzQ27mNa2v_NYr5fJAtBG2KszdLV_Le7k21At9g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Fy9VZ-MDasS-czQ3elEzROeoA2TKef_MOi3GOGYdGrrTNWZp5xPgvGdnDmImd28AiOh2X23l5NCA_lZ70MQjmjVzLjqDrtOGtptqTcTPq4AbepFiEfCkDgzTM2EwnHYb-JZEvoChKWEfumufueymYuUSxJs6gNlPgD9poaPzYddZ3AWRirniSlw7-gGnAAz0V-ipl8k6dwSROzP5F-faRubjAEOpAM3I_j9qbj_jnmhb2cQi1ASXCJsu95NzZEnY-Y-R9Vy3Pq_EuygnO0jl0eY2u55VrIBgSGyo8Sf0zZZUVEONYh6K3ZekR1fs7ydm7VhN6XfLMuWkzueiPQonMQ.jpg"
       },
       "sourceId": "eg:n1nnnn3",
       "sourceCountryCode": "eg",
@@ -1643,17 +1627,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿",
+      "text": "🔎 تمت إضافتك",
       "links": [
         {
-          "label": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿",
-          "url": "https://t.me/+Ixa34ZfIxf5kMTQ0"
+          "label": "تمت إضافتك",
+          "url": "https://t.me/addlist/RHl3ids8f4A5Yjc0"
         }
       ],
-      "createdAt": "2026-10-23T00:30:19.202Z",
-      "expiresAt": "2026-10-25T00:30:19.202Z",
+      "createdAt": "2026-10-23T03:49:09.727Z",
+      "expiresAt": "2026-10-25T03:49:09.727Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.202Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:09.727Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -1673,7 +1657,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.202Z"
+        "reviewedAt": "2026-10-23T03:49:09.727Z"
       }
     },
     {
@@ -1693,10 +1677,10 @@
       "fallbackReason": null,
       "text": "+120 نقطة لشراء الذهب هل منطقة اذا كسرها راح يكمل لل4100 غير هل كلام ممكن ينزل 🔥💎",
       "links": [],
-      "createdAt": "2026-10-23T00:30:18.710Z",
-      "expiresAt": "2026-10-25T00:30:18.710Z",
+      "createdAt": "2026-10-23T03:49:08.923Z",
+      "expiresAt": "2026-10-25T03:49:08.923Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.710Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.923Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1714,7 +1698,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.710Z"
+        "reviewedAt": "2026-10-23T03:49:08.923Z"
       }
     },
     {
@@ -1742,10 +1726,10 @@
       "fallbackReason": null,
       "text": "What are you doing, Thomas ?! 😕",
       "links": [],
-      "createdAt": "2026-10-23T00:30:18.176Z",
-      "expiresAt": "2026-10-25T00:30:18.176Z",
+      "createdAt": "2026-10-23T03:49:08.090Z",
+      "expiresAt": "2026-10-25T03:49:08.090Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.176Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.090Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1763,12 +1747,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.176Z"
+        "reviewedAt": "2026-10-23T03:49:08.090Z"
       }
     },
     {
-      "id": 3789868360,
-      "postUrl": "https://t.me/medmannews/46888?single",
+      "id": 2746805876,
+      "postUrl": "https://t.me/medmannews/46893?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
@@ -1781,23 +1765,16 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚡🇺🇸🇦🇪 Led by Coatue and investors based in the United Arab Emirates, OpenAI is closing in on a round of up to $30 billion that would value it at $1.25 trillion, CNBC reports. The financing is being framed as an \"opportunistic\" move to bridge the company toward a potential IPO.\n\n@medmannews",
-      "links": [
-        {
-          "label": "@medmannews",
-          "url": "https://t.me/medmannews"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:17.161Z",
-      "expiresAt": "2026-10-25T00:30:17.161Z",
+      "text": "⚡️🇮🇱🇸🇾 Last night Israeli troops shot and killed a man in the town of Jamla, which is located on the outskirts of Daraa, Syria. The victim had Down’s syndrome and posed no threat to anyone. Attached videos show his funeral procession.  @MedmanNews",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:06.973Z",
+      "expiresAt": "2026-10-25T03:49:06.973Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:17.161Z",
-      "tag": "war",
+      "mediaRefreshedAt": "2026-10-23T03:49:06.973Z",
+      "tag": "animals",
       "tags": [
-        "war",
-        "politics",
-        "ai",
-        "technology"
+        "animals",
+        "nature"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1812,12 +1789,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:17.161Z"
+        "reviewedAt": "2026-10-23T03:49:06.973Z"
       }
     },
     {
-      "id": 2025435263,
-      "postUrl": "https://t.me/mabowaged_eg/18227?single",
+      "id": 439327252,
+      "postUrl": "https://t.me/mabowaged_eg/18215?single",
       "source": {
         "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
         "handle": "mabowaged_eg",
@@ -1830,12 +1807,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "صلى على سيدنا محمد ❤️",
+      "text": "Httpcustom AbowagedDevX.apk",
       "links": [],
-      "createdAt": "2026-10-23T00:30:16.551Z",
-      "expiresAt": "2026-10-25T00:30:16.551Z",
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:16.551Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1853,7 +1830,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:16.551Z"
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
       }
     },
     {
@@ -1884,10 +1861,10 @@
           "url": "https://www.egyptindependent.com/us-dollar-jumps-by-60-piasters-in-egyptian-banks/"
         }
       ],
-      "createdAt": "2026-10-23T00:30:15.992Z",
-      "expiresAt": "2026-10-25T00:30:15.992Z",
+      "createdAt": "2026-10-23T03:49:04.076Z",
+      "expiresAt": "2026-10-25T03:49:04.076Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:15.992Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.076Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -1906,7 +1883,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:15.992Z"
+        "reviewedAt": "2026-10-23T03:49:04.076Z"
       }
     },
     {
@@ -1942,10 +1919,10 @@
           "url": "https://t.me/kero_875"
         }
       ],
-      "createdAt": "2026-10-23T00:30:14.957Z",
-      "expiresAt": "2026-10-25T00:30:14.957Z",
+      "createdAt": "2026-10-23T03:49:02.482Z",
+      "expiresAt": "2026-10-25T03:49:02.482Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.957Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:02.482Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1963,7 +1940,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.957Z"
+        "reviewedAt": "2026-10-23T03:49:02.482Z"
       }
     },
     {
@@ -1983,10 +1960,10 @@
       "fallbackReason": null,
       "text": "ده مش محتوي القناة الي هينزل الايام دي ده عبارة عن محتوي ترويجي",
       "links": [],
-      "createdAt": "2026-10-23T00:30:14.169Z",
-      "expiresAt": "2026-10-25T00:30:14.169Z",
+      "createdAt": "2026-10-23T03:49:01.307Z",
+      "expiresAt": "2026-10-25T03:49:01.307Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.169Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:01.307Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2004,7 +1981,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.169Z"
+        "reviewedAt": "2026-10-23T03:49:01.307Z"
       }
     },
     {
@@ -2030,10 +2007,10 @@
       "fallbackReason": null,
       "text": "📊 GBP/USD | Daily  يتداول الزوج حاليًا عند منطقة دعم محورية بين 1.3150 – 1.3200، بالتزامن مع ملامسة خط الاتجاه الصاعد الممتد من قيعان نوفمبر 2025  السيناريو المرجح 📈 نرجح احتمالية ارتداد السعر من المنطقة الحالية واستئناف الحركة الصاعدة، مستهدفين منطقة 1.3650…",
       "links": [],
-      "createdAt": "2026-10-23T00:30:13.318Z",
-      "expiresAt": "2026-10-25T00:30:13.318Z",
+      "createdAt": "2026-10-23T03:48:59.931Z",
+      "expiresAt": "2026-10-25T03:48:59.931Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:13.318Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.931Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2051,7 +2028,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:13.318Z"
+        "reviewedAt": "2026-10-23T03:48:59.931Z"
       }
     },
     {
@@ -2061,7 +2038,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tAXEzSAGnQ2l_MLXhhJ4b2PLWwlfwjXH_D5GyN2hqvsz5ritQz-Uf4wzLaqyWhrbYxDOBkbRjWA_3iJalXMXeJzUUYqczduE7bjkM36OtHYsDTVd7bbaByvqVwNQqI_TtMatZfMay6aJgLxNyHNx3PdR6PaAFrh0X0H68Y03xfQAu-FyQAwHU3-tWjfZqsL-qTOUWBgJH8pAH0fFemKC8Lk3TrGwYY0noR3JjwyXspOSnX7wAMQVlYyDzyb1-EURIGeSILh-PUkCG9ek4JKQEVlqgSVeVoQbNqWFd5qTXuVfRMRwNdrzJ-1fxLcK6AQIQ42T8FVOinmXpt0KZudohw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/bcrtxcfkhbauulsisX399InZwnOcnG5H1MQDEC7ctx9t1ovVrALAM67avDnHgg2UJaiTb5wpaHq_6tE2ezXAbFSevDidsbXKUkQ9zluoFgmka3pCUaJ4o1NxsaENiYxK480p5yCYC8epcR-AhTlYueJjXAfmNNcH2caJqR5oLSL_8vRfpfCNcU_zhwMrze_w50QaA30qMUyzoYVl9aAV_2FOnJFe9obIz9Nk1jkpm2KZFETXHtFjCmJ7vERY-VuoU0bJMN3y3-YCfxWUAMRU6fchpLP5KMULauIw0RQCOyPm-YmvObG16Kh-_oJWjfzml67pxmnycPQ1BXOXFAcV_A.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -2070,17 +2047,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XpIiGK-7p9r_V8Kj82vFfPcUDkH584wIJGrEJ_hcgrMSiVopFnl5C6elEjUlku6_8_ZKctVoLNNjUiecGiI1sA51G6wZZFzJQqrN-HAb9ZiMlLO1J0QxP0AwaG5rD-y8L-5zp9DSTd5O1CX4rqWUdFGNdkjLLWGj5-jXeqY6pqtP83RnVfdE7AC1qXx7cokMtop5ByfOb_LMbV_YKGwf501eZCLeHhPjDZZDszVMRS2JtGEZl1296XCz6j9f3Jr26BUsFhBAOi6QQKAWOC6W8sRzjqkYBjOtb0DSDkcL1tfwzhBJsNTG0_zOHrl5ampZsjyBX6nuPRdI2OGVdf1V1w.jpg"
+          "url": "https://cdn4.telesco.pe/file/ucQRQy3uEYYkuzgxsVDKEMfhoWyLQAmzpZQLDGcDv_WGNnneafFUHX_hKVvzssVwUJhlV1d9Uoxu14dhjwYT_SZp5A_gBZ1RcD2vT5tVgcUeiyDGOYXLvXSUmvi8vV1UW56jNDMp87wLpCypVzsnqbLjxgkSBpxxlG4tzqUsK3JzzoTPKzqmniNSq1rnr2_R8OphhJUo1w5dlq55yAf98PkcvCB0vnn-4rbJQX-1Is-QYXtCYRn0SA3lFfn3PhAXiI9rQ9qTh15UoM2IHDaMD0HvR9vaR61XiBjiKvWyMjjzvp25BGwYZnFzkFqXhMNvbzgA-pVZyFyGIjg7F7y4Wg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "Thursday 25/06/2026  Free single   17:00 Jyvaskyla 🆚 Inter II   Total odds: 1.44  Bet Responsibly",
       "links": [],
-      "createdAt": "2026-10-23T00:30:12.821Z",
-      "expiresAt": "2026-10-25T00:30:12.821Z",
+      "createdAt": "2026-10-23T03:48:59.151Z",
+      "expiresAt": "2026-10-25T03:48:59.151Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:12.821Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.151Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2098,7 +2075,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:12.821Z"
+        "reviewedAt": "2026-10-23T03:48:59.151Z"
       }
     },
     {
@@ -2129,10 +2106,10 @@
           "url": "https://t.me/+la8wcYptGhkyOWY0"
         }
       ],
-      "createdAt": "2026-10-23T00:30:11.811Z",
-      "expiresAt": "2026-10-25T00:30:11.811Z",
+      "createdAt": "2026-10-23T03:48:57.642Z",
+      "expiresAt": "2026-10-25T03:48:57.642Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.811Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:57.642Z",
       "tag": "transport_other",
       "tags": [
         "transport_other",
@@ -2151,7 +2128,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.811Z"
+        "reviewedAt": "2026-10-23T03:48:57.642Z"
       }
     },
     {
@@ -2161,7 +2138,7 @@
         "title": "Агнабея.info",
         "handle": "agnabeyainfo_media",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/TPXy2sn7lgtYxWsYm5IvmTS56CbnrocnxlePMnJDjB2vC7SRcTi1yI0HyIcpFw0qX9ofLMZUKYDvZTXlRHYFbn2D1a23JMwA-klnkyhlpWraH4Ojh-95xSg1fiLWSNUZ86epGK-gQunTy9GVIVQBLuH3UzH16B6Lxx_W6Wx5AohusZeB-O3ViXe2-nXT8UBA_i8F_uJUgYH-O1jZ1uKKH7kmQLMX3CHQ5zQ-d6SblkQ5GymUAlkeVS4AY8f5xVmQnp9gAhYsR3nri63SZeqghZa1BkflQb1zDkKZnSAuYFblV-sAAKi62bWiG18259J9scE02lxJ2UrdVUW-dNWTdQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/oIPOijxlDGrlHahAR4CpBkmddOMqJfVdO_ksoI_sJgUm0xCy_Mo3zi_vBL4-VHOsQBEbpJOT2iVb2oe798RweO07B_N1gNBVM-INAxsFGi4wrZd9p_fdjkot6ev7HHIPkEbzOMHI5LA0lvLb9ozzWsAkvnCVbLTzBT1CZUMvWD6xuOQn4h6yBaa1x-yn67jRkTXyDIBfCCLwh682QwN66BGQKk6PzbvOn6of4h_EhV0izeTpsJt31I7aP9qHMZh6nyzldCD6bu_ZNf4QN6DmpbjTpOaPR72lVdNXBm-JHLJd5MYG6lGWdAmYaj0AyVbfqpJBin7iy0RFUVJ6q_AEIg.jpg"
       },
       "sourceId": "eg:agnabeyainfo_media",
       "sourceCountryCode": "eg",
@@ -2171,10 +2148,10 @@
       "fallbackReason": null,
       "text": "🚇 В Александрии тестирование метро планируют начать в мае 2027 года\n\nПробный запуск метро в Александрии планируется в мае 2027 года на участке между Абу-Киром и станцией Миср. Об этом сообщил глава Национального управления тоннелей Египта доктор Тарек Гвейли.\n\n🚆 Протяжённость линии составит 21,7 км. Она соединит железнодорожную станцию Абу-Кир со станцией Миср в Александрии.\n\n🛣️ Проект призван увеличить пропускную способность общественного транспорта, снизить загруженность дорог и повысить безопасность движения. Для этого вдоль линии устранят железнодорожные переезды в одном уровне, несанкционированные переходы и пересечения с автомобильными дорогами.\n\n🌱 Новое метро также рассматривается как более экологичный вид массового транспорта. Проект является частью масштабных усилий по модернизации транспортной системы Александрии и улучшению условий передвижения по городу.\n\n#Египет #Александрия #Метро #Транспорт #НовостиЕгипта #АгнабеяИнфо",
       "links": [],
-      "createdAt": "2026-10-23T00:30:11.278Z",
-      "expiresAt": "2026-10-25T00:30:11.278Z",
+      "createdAt": "2026-10-23T03:48:56.835Z",
+      "expiresAt": "2026-10-25T03:48:56.835Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.278Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:56.835Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2192,12 +2169,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.278Z"
+        "reviewedAt": "2026-10-23T03:48:56.835Z"
       }
     },
     {
-      "id": 1943351637,
-      "postUrl": "https://t.me/naf3_ch/3146?single",
+      "id": 1555170052,
+      "postUrl": "https://t.me/naf3_ch/3147?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -2210,12 +2187,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "﴿ إِنَّ هذِهِ تَذكِرَةٌ فَمَن شاءَ اتَّخَذَ إِلى رَبِّهِ سَبيلًا ﴾",
+      "text": "﴿ ادعوا رَبَّكُم تَضَرُّعًا وَخُفيَةً ﴾",
       "links": [],
-      "createdAt": "2026-10-23T00:30:10.553Z",
-      "expiresAt": "2026-10-25T00:30:10.553Z",
+      "createdAt": "2026-10-23T03:48:55.713Z",
+      "expiresAt": "2026-10-25T03:48:55.713Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:10.553Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:55.713Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2233,12 +2210,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:10.553Z"
+        "reviewedAt": "2026-10-23T03:48:55.713Z"
       }
     },
     {
-      "id": 4223478338,
-      "postUrl": "https://t.me/deals_trackers/19590?single",
+      "id": 1265591556,
+      "postUrl": "https://t.me/deals_trackers/19596?single",
       "source": {
         "title": "ملك الخصومات - Deals King",
         "handle": "deals_trackers",
@@ -2252,22 +2229,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/SCJQp2XQvgggzwHrmQ94VKCP3wY1PNxfkpItVpJ1e2WY_BSR_Vgsq4vghLoTV7356jkTw9-DsL78O5NV1Zfml5GklmZTJIawdZj7p8mPq0i2GKIMAn4TP4enCdNu5EGtAmefvqQnMYw8GiF4VHrjhBrPT6wZhnJAsZL3xLehYMUGs8lTs9C6s9FGXaqVzcDaHzSCOelPyxAq6BuOF9oYTUWtAfRs21LUcncWciLmmuR0M1t2d-Qubksanq02pxQOY8VwQ9p0q3o-m9_PZqX3x0G_hjpwYEvaEaC0LJodOs6evgH4g85nJLy2ATtvJzMY-1fOPMNYdGYnJGSwxyMkrQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/uykz8H5bRZrfxgy10dnpaX97EetIoHMt4nQzBo0KOYE7-w2Ni-fjawuseaC-1s4YpXhZprxnYFC09C8utH00vvJeQeN5H6LOPnrWUDKekCNT3MlUDMeWUu4dFM7XFE7PL2xgW8umDwgBwpcOrqigULBv7mFU9Ly6kN9vanhXB9o4OWk32uO6zPL4_g5zk_CvaVI1SC95_lX-Qf2e33cMQ_jWaz7yovUNXPlAmw2sN0vbcxOnU_hhg-a9EVaLgoNA586WD1EOmCSmRXSzZxcrUG7OLJ5y5fcRCyk0uRovYtogleSKO2qWqlR8oEzQt0p6CHZhQyiPhA14FiPy7XSX-w.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "عرض علي فرن ميكروويف لايف ستايل سعة 30 ل مع شواية بلمسة نهائية عاكسة\nبـ 7533 جنيه\nhttps://amazn.im/9BrbU7",
+      "text": "ماكينة صنع الوافل بقدرة 1000W من سونيفر، فضي - SF-6084 \nبـ 986 جنيه🔥\nhttps://amazn.im/eefI7K",
       "links": [
         {
-          "label": "https://amazn.im/9BrbU7",
-          "url": "https://amazn.im/9BrbU7"
+          "label": "https://amazn.im/eefI7K",
+          "url": "https://amazn.im/eefI7K"
         }
       ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
+      "createdAt": "2026-10-23T03:48:54.571Z",
+      "expiresAt": "2026-10-25T03:48:54.571Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:54.571Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2285,7 +2262,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
+        "reviewedAt": "2026-10-23T03:48:54.571Z"
       }
     },
     {
@@ -2310,10 +2287,10 @@
           "url": "https://topmate.io/coding/914624"
         }
       ],
-      "createdAt": "2026-10-23T00:30:25.938Z",
-      "expiresAt": "2026-10-25T00:30:25.938Z",
+      "createdAt": "2026-10-23T03:49:19.061Z",
+      "expiresAt": "2026-10-25T03:49:19.061Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.938Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:19.061Z",
       "tag": "sports_matches",
       "tags": [
         "sports_matches",
@@ -2332,7 +2309,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.938Z"
+        "reviewedAt": "2026-10-23T03:49:19.061Z"
       }
     },
     {
@@ -2352,10 +2329,10 @@
       "fallbackReason": null,
       "text": "XAUUSD BUY NOW 4085\nSl : 4074\nTp : 4095\nلوت عالي",
       "links": [],
-      "createdAt": "2026-10-23T00:30:25.398Z",
-      "expiresAt": "2026-10-25T00:30:25.398Z",
+      "createdAt": "2026-10-23T03:49:18.164Z",
+      "expiresAt": "2026-10-25T03:49:18.164Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:25.398Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:18.164Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2373,12 +2350,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:25.398Z"
+        "reviewedAt": "2026-10-23T03:49:18.164Z"
       }
     },
     {
-      "id": 760252279,
-      "postUrl": "https://t.me/summaryegypt/5460?single",
+      "id": 773249205,
+      "postUrl": "https://t.me/summaryegypt/5462?single",
       "source": {
         "title": "Summary Egypt",
         "handle": "summaryegypt",
@@ -2387,21 +2364,24 @@
       },
       "sourceId": "eg:summaryegypt",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 محمود السيسي رئيساً لمصر؟ حملة غامضة تظهر بعد تصريحات السيسي عن الدستور ..من هوالمقدم \"اشرف سعيد\"\n📌 شــــــاهد ..👇\nhttps://youtu.be/2Nu4y9Z31Vk",
-      "links": [
+      "contentType": "video",
+      "media": [
         {
-          "label": "https://youtu.be/2Nu4y9Z31Vk",
-          "url": "https://youtu.be/2Nu4y9Z31Vk"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/9698848971.mp4?token=HhxoMA7v3Rt5W-UWhgY2_r5SdDkPrNT0rwLat1_OpfHhf-ZXUKbv1mKhqQbaDUKwxBxP-wQy74BF5sIvFiFUtiQPZw87kwRQoNvkCbgGHEy9MfD_u0ubX9c_mR9MK2vBwlSNdBut9JLYBnrXkI9qsQVEcbyogxzUXUq4l_8TVJIzVZz41i6puvH2r_UVvoREhPpQN0Xxe5m5_vw2xkm8c5Pp2agh0R2GE4y3o3I56_L8TJicChRora-9nlIq_LmSpFsGUIL5yJD_bd07rIdsutAuGmnZjWKmYcFbNljdzD2KvAFA5LCzh7Vni5xii_C5c8XrMz2w4qTusHmVOA3MSrXOu3TN4jfMhaXPzRblEQXPIM0cfLa0DSXOV59y_FGRwLBsZizpidWihyHz_lhSkXVO185Nr3XfR4jeEaSS7CiffCFGiZB5aJ44BAMjcY5GJQ2CNbtmPVVUdcGD7rhe7YgrUwRdkokADH9ztH0AXxa5mPao90Ekj-WlGGvhoKj30ME7GAeEyOOj0_nuXKPjfeKTfrfcuL3GctxM-nwAGskcUZhla4bpg4S1Ho4_yZIm4JP9jAhDYkQoe0LUW_uNVcVjpAvGdYNS1-F2Dhr_UvaOAA7glmzXR9PB-Jaw_i-CTOKFMBAbVqAphooodJ6wzRKQv4yaxMLFpqapPFimz7g",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "✍️ مين بيحاول يطلع #محمود_السيسي رئيسًا لمصر.. ومين المستفيد من حكاية #التوريث؟ 🕵️‍♂️🇪🇬\n\nبعد تصريحات #السيسي عن الدستور بـ24 ساعة بس.. موقع رئاسي ورسائل واتساب باسم حملة «كمّل المشوار» توصل لشخصيات معارضة\n\nطب لو الحملة هدفها ترشيح #نجل_الرئيس فعلًا.. ليه بتدور على الانتشار من بوابة المعارضين؟ ومين عايز يحوّل اسم محمود السيسي نجل #الرئيس_المصري لقنبلة سياسية في التوقيت ده؟",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:17.413Z",
+      "expiresAt": "2026-10-25T03:49:17.413Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:17.413Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -2421,7 +2401,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
+        "reviewedAt": "2026-10-23T03:49:17.413Z"
       }
     },
     {
@@ -2441,10 +2421,10 @@
       "fallbackReason": null,
       "text": "I don't know why, I just can't seem to do it anymore, I really apologise to anyone who liked the channel.",
       "links": [],
-      "createdAt": "2026-10-23T00:30:23.686Z",
-      "expiresAt": "2026-10-25T00:30:23.686Z",
+      "createdAt": "2026-10-23T03:49:16.655Z",
+      "expiresAt": "2026-10-25T03:49:16.655Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.686Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:16.655Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2462,7 +2442,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.686Z"
+        "reviewedAt": "2026-10-23T03:49:16.655Z"
       }
     },
     {
@@ -2487,10 +2467,10 @@
           "url": "https://kremlin.ru/events/president/news/81044"
         }
       ],
-      "createdAt": "2026-10-23T00:30:23.139Z",
-      "expiresAt": "2026-10-25T00:30:23.139Z",
+      "createdAt": "2026-10-23T03:49:15.749Z",
+      "expiresAt": "2026-10-25T03:49:15.749Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:23.139Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:15.749Z",
       "tag": "politics_government",
       "tags": [
         "politics_government",
@@ -2509,12 +2489,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:23.139Z"
+        "reviewedAt": "2026-10-23T03:49:15.749Z"
       }
     },
     {
-      "id": 3560817125,
-      "postUrl": "https://t.me/rassd/205756?single",
+      "id": 3863964471,
+      "postUrl": "https://t.me/rassd/205769?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -2523,16 +2503,37 @@
       },
       "sourceId": "eg:rassd",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/icOjJL2GVeKAn7nbwASbnXOHusLT2aAsN_yErTCx-iIVgbRJ9GpWuUzNNO6OEID1Rli6LUJhfZ1_Z6aXqLUBLRh_R3ocZpmVjjnNLvn1BGJJ6Oe1BhwMYJdBObaR7n2_61aWGbylU4h3Ss2_FHdG5mklH9epKc-c0RgIS1SxsD1-TFD5fOdeWPgF68dGQkOgjLZ1C9bkgb8WHIMnA13BaEE1SmvkXPQRjNIE-wSuyT_hQ82qbWwiUCIxrv4eGOZ0sVM_VgPKwT6Af4l-lQ5R1T2D6boNheBkQoc7xwewu-Y15YSmVEape-nfLB430gsohpDR_-zoSzogLgrXtn1f-w.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/MRQoNCO12PoyNecic5mxPFxA0bMYW4XTTC7ue7eUXxwIyVhuSD8TlWZ6ZOtIq2QB2_XYDYUKJqfxn939xhLVCDIf1-GxWaKAmEnSWE8c-tQ4sWffOrkoPOobHk_ri09QqE9XtD0H3RogthTrOd3DV3wCaZWYwWtlsxJLsdi0io66kKbsKDzl0g6oD04XNf4FthUyI2BejGwLYKI_cprVLsgF1qhLADnOUdPGbg2oaFVqKVm9DBltoIZvrrPgmeZK5qZutnwMkvPgdYTCQy-FsIW0Fq4nMDcLK8fq-wRMdGbduk89Sk5j6gpJRa4EIJVDkgX2OsKpqbnG58hEaVzepQ.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/mleyXLrlSaUho6Z_c2VGb-xG0zmJuLjQWVxXmrpjuOWuzC904kSEPXwTLp1OuE4j70Xzi8DfwukMJRSIzlxmsXnLJDUk-ZivZPZY0ZTe9YBVpvHzrCOkaprfnb3UlLuH-fsbK_0y7U5KlitXf3VlTnvcO16Zs_ZohF1wdogCleE7_iaDAsMNxCZT-cRbeSD2DDmaOJv-0XNByNGTilm8JjXY21hBn7AcDBLVcugRfPLha7_iyX6ECtejw3Y9bRibxqiMZ1t_SzvwKkU3uZd0H1w_yIFHGTlezPoBY4OnOOGrWG9Ag74xf1QCJ6Vzg5FCKL-fVH252OFAU4Va_AeRbw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🟥🚨اقتحام جديد من الون موريه الأن",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
+      "text": "🔴بحاجة الي ٢٥٠ ابرة طوال فترة الحمل وبعدها .مناشدة من سيدة للحصول على ابر علاجية  موضح في الصور لأهل الخير والكرم .\n\nلمن اراد تقديم المساعدة يمكنه التواصل معي لتزويده برقم الاتصال مباشرة بلعائلة . \n\nاو يمكنكم التبرع بما تيسر لو 10 شواكل عبر الوسائل التالية \n\nتطبيق بنكي بنك فلسطين \nخدمة اي براق \nريفليكت \nوجزاكم الله خيرا ❤️\nللاستفسار: المشرفة نور \n@Noorqadre\n.",
+      "links": [
+        {
+          "label": "@Noorqadre",
+          "url": "https://t.me/Noorqadre"
+        }
+      ],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2550,7 +2551,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
       }
     },
     {
@@ -2570,10 +2571,10 @@
       "fallbackReason": null,
       "text": "اعتقال المواطن أحمد كمال الشاعر أثناء عودته لغزة عبر معبر رفح البري",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.264Z",
-      "expiresAt": "2026-10-25T00:30:21.264Z",
+      "createdAt": "2026-10-23T03:49:12.979Z",
+      "expiresAt": "2026-10-25T03:49:12.979Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.264Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.979Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2591,7 +2592,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.264Z"
+        "reviewedAt": "2026-10-23T03:49:12.979Z"
       }
     },
     {
@@ -2626,10 +2627,10 @@
           "url": "https://rebrand.ly/hua6zp8"
         }
       ],
-      "createdAt": "2026-10-23T00:30:20.786Z",
-      "expiresAt": "2026-10-25T00:30:20.786Z",
+      "createdAt": "2026-10-23T03:49:12.207Z",
+      "expiresAt": "2026-10-25T03:49:12.207Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.786Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:12.207Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2649,12 +2650,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.786Z"
+        "reviewedAt": "2026-10-23T03:49:12.207Z"
       }
     },
     {
-      "id": 1995055309,
-      "postUrl": "https://t.me/ngmsr/20661?single",
+      "id": 426358806,
+      "postUrl": "https://t.me/ngmsr/20662?single",
       "source": {
         "title": "نجوم مصرية",
         "handle": "ngmsr",
@@ -2667,17 +2668,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "📢 الاتحاد الفلسطيني يفتح باب التسجيل الإلكتروني وتحديث بيانات ذوي الإعاقة في قطاع غزة لضمان وصول المساعدات لمستحقيها.  \n🧾 المنظومة تهدف لإعادة بناء قاعدة بيانات دقيقة عبر تحديد أماكن التواجد وحصر الاحتياجات وتنسيق إدراج الأسماء في برامج الدعم.  \n📍 يمكنك التسجيل جديدًا أو تحديث بياناتك بسهولة عبر الرابط الرسمي، مع الحفاظ على سرية البيانات.  \n🤝 وإذا تعذر التسجيل، يمكن لأحد أفراد الأسرة إدخال البيانات بالنيابة.  \n✨ شاركوا المنشور وكونوا جزءًا من وصول الدعم في هذه الظروف الصعبة.  \n\n#ذوي_الإعاقة #غزة #المساعدات\n\nhttps://www.ngmisr.com/?p=3869024",
+      "text": "🚀 شركة مسار للأنظمة الكهربائية Line Tech تعلن عن فرصة عمل لمهندس متخصص في صيانة أجهزة الطاقة الشمسية واللوحات الإلكترونية!  \n🔧 ستتولى تشخيص الأعطال وصيانة الإنفرترات والدوائر الإلكترونية وأنظمة الشحن والبطاريات (BMS) مع فريق فني وإشرافي.  \n📄 التقديم متاح الآن عبر نموذج إلكتروني مع إرفاق CV حديث وشهادات الخبرة—قدّم بسرعة قبل غلق باب التسجيل!  \n💡 إذا كنت تمتلك خبرة لا تقل عن 3 سنوات ودقة عالية، هذه فرصتك لتكون جزءًا من فريق يشتغل على حلول الطاقة البديلة 🌞  \n#وظائف_طاقة_شمسية #هندسة_كهربائية #فرص_عمل\n\nhttps://www.ngmisr.com/?p=3869030",
       "links": [
         {
-          "label": "https://www.ngmisr.com/?p=3869024",
-          "url": "https://www.ngmisr.com/?p=3869024"
+          "label": "https://www.ngmisr.com/?p=3869030",
+          "url": "https://www.ngmisr.com/?p=3869030"
         }
       ],
-      "createdAt": "2026-10-23T00:30:20.287Z",
-      "expiresAt": "2026-10-25T00:30:20.287Z",
+      "createdAt": "2026-10-23T03:49:11.415Z",
+      "expiresAt": "2026-10-25T03:49:11.415Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:20.287Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:11.415Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2695,7 +2696,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:20.287Z"
+        "reviewedAt": "2026-10-23T03:49:11.415Z"
       }
     },
     {
@@ -2721,10 +2722,10 @@
       "fallbackReason": null,
       "text": "🗯 مصرع الطفل المصري ياسين \"محارب السرطان\" ووالدته في حادث سير\n\nلقي الطفل ياسين محمد، المعروف بلقب \"محارب السرطان\"، ووالدته سالي مصطفى مصرعهما في حادث سير على الطريق الإقليمي باتجاه الجيزة، أثناء توجههما من المنيا إلى القاهرة لتلقي العلاج، إثر اصطدام حافلة بسيارة نقل ثقيل محمّلة بالإسمنت، ما أسفر أيضاً عن وفيات ومصابين.\n\nوكان ياسين، الطالب بالصف الخامس الابتدائي، يتلقى العلاج من السرطان منذ نحو 7 سنوات، فيما كانت أسرته تستعد لإجراء عملية زرع نخاع له. واشتهر الطفل بعد مشاركته الفنان أحمد سعد غناء أغنية \"صاحبي يا جدع\" على المسرح في المنيا الجديدة عام 2022، دعماً لأطفال مستشفى 57357.\n\n#مصر #ياسين_محارب_السرطان #أحمد_سعد",
       "links": [],
-      "createdAt": "2026-10-23T00:30:19.747Z",
-      "expiresAt": "2026-10-25T00:30:19.747Z",
+      "createdAt": "2026-10-23T03:49:10.544Z",
+      "expiresAt": "2026-10-25T03:49:10.544Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.747Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:10.544Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -2743,17 +2744,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.747Z"
+        "reviewedAt": "2026-10-23T03:49:10.544Z"
       }
     },
     {
-      "id": 1521578786,
-      "postUrl": "https://t.me/n1nnnn3/54972?single",
+      "id": 237041612,
+      "postUrl": "https://t.me/n1nnnn3/54981?single",
       "source": {
         "title": "اقتباسات عبارات ستوريات",
         "handle": "n1nnnn3",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Mk6U0_0eTxqUKQcUsB-fWWnCAFExtW9oR3OIfyXea5lufZoM5iXmSQDJINqvxQ3vfBwRpHQSmIhcckODJEzD0v5g7ro6Ithu9qrE3bziSdcDOUakLp1u6hwxI6hHtPaHcfU8Bzjj5W8dQEMSYSPfeLqucdKGX0fQWMRyvssF5hZIwVBcUizAdsPf8aiOuaNlyyOt9_x9tza-feBQqu4E0lGvEXhDNjDaJHJSNNQ-Zg09uAQCgciSpCM3vMHQgU8xnxQWTtwkw6qYRcZUs1fuq0wQU6y9mJNyQjiGzP3wOembF_WvzQ27mNa2v_NYr5fJAtBG2KszdLV_Le7k21At9g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Fy9VZ-MDasS-czQ3elEzROeoA2TKef_MOi3GOGYdGrrTNWZp5xPgvGdnDmImd28AiOh2X23l5NCA_lZ70MQjmjVzLjqDrtOGtptqTcTPq4AbepFiEfCkDgzTM2EwnHYb-JZEvoChKWEfumufueymYuUSxJs6gNlPgD9poaPzYddZ3AWRirniSlw7-gGnAAz0V-ipl8k6dwSROzP5F-faRubjAEOpAM3I_j9qbj_jnmhb2cQi1ASXCJsu95NzZEnY-Y-R9Vy3Pq_EuygnO0jl0eY2u55VrIBgSGyo8Sf0zZZUVEONYh6K3ZekR1fs7ydm7VhN6XfLMuWkzueiPQonMQ.jpg"
       },
       "sourceId": "eg:n1nnnn3",
       "sourceCountryCode": "eg",
@@ -2761,12 +2762,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": ".\nيا ربّ أرزقنا من المعجزات اللي تغير أحوالنا ، أنت تفعل ، وأنت تعطي من تشاء",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:19.202Z",
-      "expiresAt": "2026-10-25T00:30:19.202Z",
+      "text": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿",
+      "links": [
+        {
+          "label": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿",
+          "url": "https://t.me/+Ixa34ZfIxf5kMTQ0"
+        }
+      ],
+      "createdAt": "2026-10-23T03:49:09.727Z",
+      "expiresAt": "2026-10-25T03:49:09.727Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:19.202Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:09.727Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -2786,7 +2792,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:19.202Z"
+        "reviewedAt": "2026-10-23T03:49:09.727Z"
       }
     },
     {
@@ -2806,10 +2812,10 @@
       "fallbackReason": null,
       "text": "اغلاااااق كامل على +350 نقطة لبيع الذهب الان 🔽🔽🔽🔽💎🔥",
       "links": [],
-      "createdAt": "2026-10-23T00:30:18.710Z",
-      "expiresAt": "2026-10-25T00:30:18.710Z",
+      "createdAt": "2026-10-23T03:49:08.923Z",
+      "expiresAt": "2026-10-25T03:49:08.923Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.710Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.923Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2827,7 +2833,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.710Z"
+        "reviewedAt": "2026-10-23T03:49:08.923Z"
       }
     },
     {
@@ -2856,10 +2862,10 @@
           "url": "https://t.me/M_iraculousLR"
         }
       ],
-      "createdAt": "2026-10-23T00:30:18.176Z",
-      "expiresAt": "2026-10-25T00:30:18.176Z",
+      "createdAt": "2026-10-23T03:49:08.090Z",
+      "expiresAt": "2026-10-25T03:49:08.090Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:18.176Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:08.090Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2877,12 +2883,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:18.176Z"
+        "reviewedAt": "2026-10-23T03:49:08.090Z"
       }
     },
     {
-      "id": 3337922751,
-      "postUrl": "https://t.me/medmannews/46887?single",
+      "id": 1536280718,
+      "postUrl": "https://t.me/medmannews/46891?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
@@ -2891,25 +2897,33 @@
       },
       "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/9f659dd460.mp4?token=Cpaer-8fqMrKckySj6hBFS0G9DIqVLKjrEuIxfZ9QrJ4nKu-uCG--kVuNW-Sl3cnF3uVCpGmLiXhcg2Kl01fsOnZ9Tjw06Kju0iTDTVcKNfywOio9s6GXEp2GhF4hMZ0Ol9Op9P-4vLSpYYidICtkgQlLzeHgCgWgtJnqkqImj6bYi_SjpNED_RAowTq7hg8v5Az4RYbxsKpCaOKgcEOF4Eb1hMrsEywZbfysZKwXLlqV6YBfYktcUtSrIbXHUC91mK5Zvjd3wzEs85gTRLcjVYKnzg1KxRwvVgdNq8h62OV9Lz9cxLJdcwh0yy7PULviLDQx3lHlZj5qkMLJUSO4pENd0pMHUVylM6H1-zHfwzXQAwzmnO6ammBIuTIZyuR1Q86qCYDHWea6tVRaG01YeyP-qWDnVqXyGv-CFgRnCx3LK0jmzt5G_S7j4EBD9cV182jK3Wk7JkCnHC6FE9vE9D-cRJWPlHxxZ_4XTq6v6f3DVAZc5tKB4d9G4yh-BM6gj6CNe5Ww3ms__s5S7ntbY7cq6phqcNVTo3bYDrxIVfuh8eH9TDdxzSQwDseGdcXTEqhODZ9HZUPdJvJOX3az2aiC6rJYanGqGJxpNozpXk5m2wF6EqMUA5prELRaOIg47qAmVntc5O3Eekwl9TqsXv12Ya9eR47XSRvJOBDK0I",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "⚡️🇺🇸 US ELECTIONS UPDATE: On November 3rd, the United States midterm elections are happening. As things stand, the Democrats are likely to win a majority in the Senate and the House. Here are the Senate races to watch:\n\nGOP seats in play (Toss Up):\n\nOHIO \nJon Husted (R) vs. \nSherrod Brown (D)\n\nIOWA \nAshley Hinson (R) vs. \nJosh Turek (D)\n\nMAINE \nSusan Collins (R) vs. \nTroy Jackson (D)\n\nALASKA \nDan Sullivan (R) vs. \nMary Peltola (D)\n\nTEXAS \nKen Paxton (R) vs. \nJames Talarico (D)\n\nKANSAS \nRoger Marshall (R) vs. \nAdam Hamilton (D)\n\nNEBRASKA \nPete Ricketts (R) vs. \nDan Osborn (I)\n\nNORTH CAROLINA \nMichael Whatley (R) vs. \nRoy Cooper (D)\n\nDemocratic seats to defend:\n\nMICHIGAN \nMike Rogers (R) vs. \nAbdul El-Sayed (D)\n\nMINNESOTA \nMichele Tafoya (R) vs. \nPeggy Flanagan (D)\n\nNEW HAMPSHIRE \nJohn Sununu (R) vs. \nChris Pappas (D)\n\nGEORGIA \nMike Collins (R) vs. \nJon Ossoff (D)\n\nLong shots:\n\nFLORIDA \nAshley Moody (R) vs. \nAngie Nixon (D)\n\nSOUTH CAROLINA \nDarline Graham (R) vs. \nAnnie Andrews (D)\n\nMONTANA \nKurt Alme (R) vs. \nSeth Bodnar (Ind)\n\n@MedmanNews",
+      "text": "⚡️🇮🇱🇸🇾 Last night Israeli troops shot and killed a man in the town of Jamla, which is located on the outskirts of Daraa, Syria. The victim had Down’s syndrome and posed no threat to anyone. Attached videos show his funeral procession.\n\n@MedmanNews",
       "links": [
         {
           "label": "@MedmanNews",
           "url": "https://t.me/MedmanNews"
         }
       ],
-      "createdAt": "2026-10-23T00:30:17.161Z",
-      "expiresAt": "2026-10-25T00:30:17.161Z",
+      "createdAt": "2026-10-23T03:49:06.973Z",
+      "expiresAt": "2026-10-25T03:49:06.973Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:17.161Z",
-      "tag": "crypto",
+      "mediaRefreshedAt": "2026-10-23T03:49:06.973Z",
+      "tag": "animals",
       "tags": [
-        "crypto",
-        "finance"
+        "animals",
+        "nature"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2924,12 +2938,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:17.161Z"
+        "reviewedAt": "2026-10-23T03:49:06.973Z"
       }
     },
     {
-      "id": 439327252,
-      "postUrl": "https://t.me/mabowaged_eg/18215?single",
+      "id": 480265445,
+      "postUrl": "https://t.me/mabowaged_eg/18214?single",
       "source": {
         "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
         "handle": "mabowaged_eg",
@@ -2938,16 +2952,32 @@
       },
       "sourceId": "eg:mabowaged_eg",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "file",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/mabowaged_eg/18214",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Httpcustom AbowagedDevX.apk",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:16.551Z",
-      "expiresAt": "2026-10-25T00:30:16.551Z",
+      "text": "نسخة قديمة من تطبيق  كاستم \n\n httpcustom 🌀⚙️✨\n\nالإصدار القديم من تطبيق الكاستم 🏃‍♂️\n\nOld-version httpcustom build\n\nكاستم اصدار قديم \n====\n\nhttps://t.me/AbowagedDevX\n\n===\n\nBy @mabowaged ✅\n\n#محمد_عبواجد",
+      "links": [
+        {
+          "label": "https://t.me/AbowagedDevX",
+          "url": "https://t.me/AbowagedDevX"
+        },
+        {
+          "label": "@mabowaged",
+          "url": "https://t.me/mabowaged"
+        }
+      ],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:16.551Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2965,7 +2995,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:16.551Z"
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
       }
     },
     {
@@ -3021,10 +3051,10 @@
           "url": "https://maps.app.goo.gl/9cVvA48kYZni49nx9"
         }
       ],
-      "createdAt": "2026-10-23T00:30:15.992Z",
-      "expiresAt": "2026-10-25T00:30:15.992Z",
+      "createdAt": "2026-10-23T03:49:04.076Z",
+      "expiresAt": "2026-10-25T03:49:04.076Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:15.992Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.076Z",
       "tag": "recipes",
       "tags": [
         "recipes",
@@ -3043,7 +3073,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:15.992Z"
+        "reviewedAt": "2026-10-23T03:49:04.076Z"
       }
     },
     {
@@ -3063,10 +3093,10 @@
       "fallbackReason": null,
       "text": "اكتر من ٥ الالف اجابه صحيحه النهارده \n\nامبارح وصلنا ل 7 مليون ومكملين 💪💪\n\nشاطرين  عاش ✅",
       "links": [],
-      "createdAt": "2026-10-23T00:30:14.957Z",
-      "expiresAt": "2026-10-25T00:30:14.957Z",
+      "createdAt": "2026-10-23T03:49:02.482Z",
+      "expiresAt": "2026-10-25T03:49:02.482Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.957Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:02.482Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3084,7 +3114,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.957Z"
+        "reviewedAt": "2026-10-23T03:49:02.482Z"
       }
     },
     {
@@ -3104,10 +3134,10 @@
       "fallbackReason": null,
       "text": ".",
       "links": [],
-      "createdAt": "2026-10-23T00:30:14.169Z",
-      "expiresAt": "2026-10-25T00:30:14.169Z",
+      "createdAt": "2026-10-23T03:49:01.307Z",
+      "expiresAt": "2026-10-25T03:49:01.307Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:14.169Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:01.307Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3125,7 +3155,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:14.169Z"
+        "reviewedAt": "2026-10-23T03:49:01.307Z"
       }
     },
     {
@@ -3145,10 +3175,10 @@
       "fallbackReason": null,
       "text": "+100 pips",
       "links": [],
-      "createdAt": "2026-10-23T00:30:13.318Z",
-      "expiresAt": "2026-10-25T00:30:13.318Z",
+      "createdAt": "2026-10-23T03:48:59.931Z",
+      "expiresAt": "2026-10-25T03:48:59.931Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:13.318Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.931Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3166,7 +3196,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:13.318Z"
+        "reviewedAt": "2026-10-23T03:48:59.931Z"
       }
     },
     {
@@ -3176,7 +3206,7 @@
         "title": "Pronostics",
         "handle": "elhaj_1999",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tAXEzSAGnQ2l_MLXhhJ4b2PLWwlfwjXH_D5GyN2hqvsz5ritQz-Uf4wzLaqyWhrbYxDOBkbRjWA_3iJalXMXeJzUUYqczduE7bjkM36OtHYsDTVd7bbaByvqVwNQqI_TtMatZfMay6aJgLxNyHNx3PdR6PaAFrh0X0H68Y03xfQAu-FyQAwHU3-tWjfZqsL-qTOUWBgJH8pAH0fFemKC8Lk3TrGwYY0noR3JjwyXspOSnX7wAMQVlYyDzyb1-EURIGeSILh-PUkCG9ek4JKQEVlqgSVeVoQbNqWFd5qTXuVfRMRwNdrzJ-1fxLcK6AQIQ42T8FVOinmXpt0KZudohw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/bcrtxcfkhbauulsisX399InZwnOcnG5H1MQDEC7ctx9t1ovVrALAM67avDnHgg2UJaiTb5wpaHq_6tE2ezXAbFSevDidsbXKUkQ9zluoFgmka3pCUaJ4o1NxsaENiYxK480p5yCYC8epcR-AhTlYueJjXAfmNNcH2caJqR5oLSL_8vRfpfCNcU_zhwMrze_w50QaA30qMUyzoYVl9aAV_2FOnJFe9obIz9Nk1jkpm2KZFETXHtFjCmJ7vERY-VuoU0bJMN3y3-YCfxWUAMRU6fchpLP5KMULauIw0RQCOyPm-YmvObG16Kh-_oJWjfzml67pxmnycPQ1BXOXFAcV_A.jpg"
       },
       "sourceId": "eg:elhaj_1999",
       "sourceCountryCode": "eg",
@@ -3185,17 +3215,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/SDlWOuPFonQLfja3fkieCh4QyMfuEzYj5XDhFqsmhxb-JM3cJ9CqWZO-tK9socls4A_oO_S1WCSLrQnm-zIhPwC4C7hOBwVs0jIJxUmk8vHHfqQRHj6KL0FEDkYJF0Hn4-vmBV5IiSVEnc9D0lYplztSyPaDc3SWwFuxbB1mAQaSg6-SpZrEgyrPWIrvxDMoKNbRauUdNGm-Ffx7J4H6AURN0Ofxt7WRnMxdFu33lx_QLn3lhXv6gkAnDpTkzMXY4EKMT3Naio8pRvyO9qcWywrQsA0FVmN046nXhYcYPHgRJXPVgV4eolO9J-uYpNHcTzXPHSgqU5WQE7TK2mQ0fw.jpg"
+          "url": "https://cdn4.telesco.pe/file/UecdMkqFdzGZ39GNa7BPW0eSmn-OcnP_kYvdqoIzc_3tmrsCiWscGhx1IsR_KcFH33MPjw3oCfctozsMKoI9RNkqkRzX5cUfe-QrlLj0R8SLYHNc-6-df5PrEPGwCujOKljNIJwWfHroiDSbTqjkfCzb6NGncwIY2GvXEbR6rFx20rE20dNwSmGvp-V-__HQdXD0nFvkEmC_Sy5s6bdiAdvecoh0uu6vGQF760K48Ucrc2eyFvIvVuvb3tCJVFfvXTsIR20dnZugWomPPYw20i31hhCLveHstLauLv8rdeNBuU1ySAuW-d04Do1DA9o8pMWxjttq61VkrzylZBfElg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "Thursday 25/06/2026  Free single   15:00 Grobina 🆚 Auda  Total odds: 1.38  Bet Responsibly",
       "links": [],
-      "createdAt": "2026-10-23T00:30:12.821Z",
-      "expiresAt": "2026-10-25T00:30:12.821Z",
+      "createdAt": "2026-10-23T03:48:59.151Z",
+      "expiresAt": "2026-10-25T03:48:59.151Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:12.821Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:59.151Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3213,7 +3243,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:12.821Z"
+        "reviewedAt": "2026-10-23T03:48:59.151Z"
       }
     },
     {
@@ -3244,10 +3274,10 @@
           "url": "https://t.me/+4qKKP2NqccAyZjI0"
         }
       ],
-      "createdAt": "2026-10-23T00:30:11.811Z",
-      "expiresAt": "2026-10-25T00:30:11.811Z",
+      "createdAt": "2026-10-23T03:48:57.642Z",
+      "expiresAt": "2026-10-25T03:48:57.642Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.811Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:57.642Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3265,7 +3295,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.811Z"
+        "reviewedAt": "2026-10-23T03:48:57.642Z"
       }
     },
     {
@@ -3275,7 +3305,7 @@
         "title": "Агнабея.info",
         "handle": "agnabeyainfo_media",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/TPXy2sn7lgtYxWsYm5IvmTS56CbnrocnxlePMnJDjB2vC7SRcTi1yI0HyIcpFw0qX9ofLMZUKYDvZTXlRHYFbn2D1a23JMwA-klnkyhlpWraH4Ojh-95xSg1fiLWSNUZ86epGK-gQunTy9GVIVQBLuH3UzH16B6Lxx_W6Wx5AohusZeB-O3ViXe2-nXT8UBA_i8F_uJUgYH-O1jZ1uKKH7kmQLMX3CHQ5zQ-d6SblkQ5GymUAlkeVS4AY8f5xVmQnp9gAhYsR3nri63SZeqghZa1BkflQb1zDkKZnSAuYFblV-sAAKi62bWiG18259J9scE02lxJ2UrdVUW-dNWTdQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/oIPOijxlDGrlHahAR4CpBkmddOMqJfVdO_ksoI_sJgUm0xCy_Mo3zi_vBL4-VHOsQBEbpJOT2iVb2oe798RweO07B_N1gNBVM-INAxsFGi4wrZd9p_fdjkot6ev7HHIPkEbzOMHI5LA0lvLb9ozzWsAkvnCVbLTzBT1CZUMvWD6xuOQn4h6yBaa1x-yn67jRkTXyDIBfCCLwh682QwN66BGQKk6PzbvOn6of4h_EhV0izeTpsJt31I7aP9qHMZh6nyzldCD6bu_ZNf4QN6DmpbjTpOaPR72lVdNXBm-JHLJd5MYG6lGWdAmYaj0AyVbfqpJBin7iy0RFUVJ6q_AEIg.jpg"
       },
       "sourceId": "eg:agnabeyainfo_media",
       "sourceCountryCode": "eg",
@@ -3290,10 +3320,10 @@
           "url": "https://t.me/agnabeyainfo_media"
         }
       ],
-      "createdAt": "2026-10-23T00:30:11.278Z",
-      "expiresAt": "2026-10-25T00:30:11.278Z",
+      "createdAt": "2026-10-23T03:48:56.835Z",
+      "expiresAt": "2026-10-25T03:48:56.835Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:11.278Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:56.835Z",
       "tag": "recipes",
       "tags": [
         "recipes",
@@ -3312,12 +3342,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:11.278Z"
+        "reviewedAt": "2026-10-23T03:48:56.835Z"
       }
     },
     {
-      "id": 3061359390,
-      "postUrl": "https://t.me/naf3_ch/3145?single",
+      "id": 1943351637,
+      "postUrl": "https://t.me/naf3_ch/3146?single",
       "source": {
         "title": "🌴 نفع & استنفع Ch",
         "handle": "naf3_ch",
@@ -3330,12 +3360,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "﴿ إِنَّا أَنذَرناكُم عَذابًا قَريبًا يَومَ يَنظُرُ المَرءُ ما قَدَّمَت يَداهُ وَيَقولُ الكافِرُ يا لَيتَني كُنتُ تُرابًا ﴾",
+      "text": "﴿ إِنَّ هذِهِ تَذكِرَةٌ فَمَن شاءَ اتَّخَذَ إِلى رَبِّهِ سَبيلًا ﴾",
       "links": [],
-      "createdAt": "2026-10-23T00:30:10.553Z",
-      "expiresAt": "2026-10-25T00:30:10.553Z",
+      "createdAt": "2026-10-23T03:48:55.713Z",
+      "expiresAt": "2026-10-25T03:48:55.713Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:10.553Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:55.713Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3353,12 +3383,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:10.553Z"
+        "reviewedAt": "2026-10-23T03:48:55.713Z"
       }
     },
     {
-      "id": 1224409568,
-      "postUrl": "https://t.me/deals_trackers/19589?single",
+      "id": 2771780894,
+      "postUrl": "https://t.me/deals_trackers/19594?single",
       "source": {
         "title": "ملك الخصومات - Deals King",
         "handle": "deals_trackers",
@@ -3372,22 +3402,26 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/eNdVFIOYpTmFJywHcldo84IPYU1Gvsga2Tr9l7bw9E0jxAFZc_eTKf9kOwE7PNde4oyaNJ1nQBrouTKFuQXM36GXwER8vSIxcujsl9hST3QVrqj6moL2d015fqGQgI2A0_mS6XGBy3N91iBhm5fNqhsFRqtjF1_OcrFOkE4BizS7Kf474Xgnz2s263d5J6KS0NNSfyihhfV_rIlpJYw9amZ4RVh4vDEhcbzEd8_1aihrBt_qhuI8TdR-S4sg6i6ejzC7cU5k1Pe8joMYb0eu9S-tbaUtTasK8Y7O1oIXwgYAg4u07EEus0zqv1n2cFEQBKnHe7jaOXmUSXOxWWmxYw.jpg"
+          "url": "https://cdn4.telesco.pe/file/fo8mfiBlZir_QwxPKSc06ERPUALE6PJXJZVglmm8shpl4D4x-MTGaD-GO-2FDBh8yNBurFr-7oYk4tXEI4tRlD72uU8TzRlAbzHDjD96koYw8P97NpNb7ZLBAv4FE_hpQ2qdD6QIa-KoxP0w5fpf2v4skIG_f9s3IBc9hMrcXbSb_ptB4gD6x4n7kzhI3p6C26Eqzpk8kTPBbUaks5LlSfPfSyNl0nh070tOcALfkh_ClQOZpwlKVGnz-HP2MD5rOwnzKd6DyerVcvJxUVi-x9yr3iYj0HOf1NJ6xw6olVAvkg7Bm3ItUoGNSrXYOJSXSsmPM0o-Am6FR9TV_Rk0MA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "ماوس ألعاب 8 أزرارM607 من ريدراجون، (ار جي بي، 7200DPI) \nبـ 567 جنيه🔥\nhttps://amazn.im/q7QQeI",
+      "text": "علي امازون ناو🔥\n ايزيس ينسون 20 فلتر \nبـ 20 جنيه\nhttps://amazn.im/N4GO5U \n\nنعناع من ايزيس، 20 كيس \nبـ 23 جنيه🔥\nhttps://amazn.im/UxoQVg",
       "links": [
         {
-          "label": "https://amazn.im/q7QQeI",
-          "url": "https://amazn.im/q7QQeI"
+          "label": "https://amazn.im/N4GO5U",
+          "url": "https://amazn.im/N4GO5U"
+        },
+        {
+          "label": "https://amazn.im/UxoQVg",
+          "url": "https://amazn.im/UxoQVg"
         }
       ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
+      "createdAt": "2026-10-23T03:48:54.571Z",
+      "expiresAt": "2026-10-25T03:48:54.571Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
+      "mediaRefreshedAt": "2026-10-23T03:48:54.571Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3405,60 +3439,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
+        "reviewedAt": "2026-10-23T03:48:54.571Z"
       }
     },
     {
-      "id": 1475953699,
-      "postUrl": "https://t.me/summaryegypt/5459?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 محمود السيسي رئيساً لمصر؟ حملة غامضة تظهر بعد تصريحات السيسي عن الدستور ..من هوالمقدم \"اشرف سعيد\"\n📌 شــــــاهد الآن..👇\nhttps://youtu.be/2Nu4y9Z31Vk",
-      "links": [
-        {
-          "label": "https://youtu.be/2Nu4y9Z31Vk",
-          "url": "https://youtu.be/2Nu4y9Z31Vk"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 4149873582,
-      "postUrl": "https://t.me/rassd/205755?single",
+      "id": 2926223678,
+      "postUrl": "https://t.me/rassd/205768?single",
       "source": {
         "title": "رصد نابلس",
         "handle": "rassd",
@@ -3471,12 +3457,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🟥🔴انتشار قوة مشاة قرب صيدليه ابو وردة سابقا في مخيم بلاطة",
+      "text": "🔴انسحاب كامل من مدينة نابلس اتجاه حاجز عورتا",
       "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3494,12 +3480,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
       }
     },
     {
-      "id": 662171622,
-      "postUrl": "https://t.me/medmannews/46886?single",
+      "id": 2429825351,
+      "postUrl": "https://t.me/medmannews/46890?single",
       "source": {
         "title": "Mediterranean Man",
         "handle": "medmannews",
@@ -3508,25 +3494,35 @@
       },
       "sourceId": "eg:medmannews",
       "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "⚡️ On October 30th, a coalition of dockworker unions at over 100 ports across the world are coordinating a strike in protest against the genocide in Gaza.\n\n@MedmanNews",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "@MedmanNews",
-          "url": "https://t.me/MedmanNews"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/uCWUHEkJ2c2eoVFGBfObRuzkl3fhp5bo311s2Wsu0EoHkFcUuAr2Q7SFku65SkVlmeVDTb0y4-WziN4WSmyo2BTn1FQK8h36HguSktkpAOTHXDulZTqMYo88_2ESP0DMXHKrCWLVNapw-4TTHXouzJJPNMYJp2AMxG0YyXnBU-oiEgfupd5ooNhFCb06J5B7dFXvuWPOwnoVVqnDfT8o-bNQEPVF3uTck1-OHBv6BKqdsxfq00_uzaaYHvIjUhDrcxG8BrrDuvoFyjH7ySaJt-onsqarG9aM9S54WPJmxpnvoTN9L1VkR7KZ6hs3-BpaPiAdeJZvKX6q7_EUlOtASA.jpg"
         }
       ],
-      "createdAt": "2026-10-23T00:30:17.161Z",
-      "expiresAt": "2026-10-25T00:30:17.161Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️🇦🇺 Huge clouds of methane have been detected by satellite over Chevron's Gorgon LNG project in northern WA, prompting a warning from the United Nations.\n\n@medmannews",
+      "links": [
+        {
+          "label": "@medmannews",
+          "url": "https://t.me/medmannews"
+        }
+      ],
+      "createdAt": "2026-10-23T03:49:06.973Z",
+      "expiresAt": "2026-10-25T03:49:06.973Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:17.161Z",
-      "tag": "politics_conflicts",
+      "mediaRefreshedAt": "2026-10-23T03:49:06.973Z",
+      "tag": "war",
       "tags": [
-        "politics_conflicts",
-        "politics"
+        "war",
+        "politics",
+        "crypto",
+        "finance",
+        "space",
+        "science"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3541,12 +3537,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:17.161Z"
+        "reviewedAt": "2026-10-23T03:49:06.973Z"
       }
     },
     {
-      "id": 480265445,
-      "postUrl": "https://t.me/mabowaged_eg/18214?single",
+      "id": 3180138450,
+      "postUrl": "https://t.me/mabowaged_eg/18213?single",
       "source": {
         "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
         "handle": "mabowaged_eg",
@@ -3555,32 +3551,623 @@
       },
       "sourceId": "eg:mabowaged_eg",
       "sourceCountryCode": "eg",
-      "contentType": "file",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "وعجبى عليكم بردوا بتزعلوا منى .. جماعة بيع انتوا متابعين عبواجد بس ولما يتكلم يبقا وحش لكن مش بتتابعوا ال بينشر على فيس ولا تيك توك ولا يوتيوت ولا غيروا.. انا وحش وخلاص 👍\n\nالفرق أن كرهكم لينا مبالغ فية رغم انكم عارفين كويس مين هدفة يضر ومين هدفة يساعد 👌\n\nمع ذلك هبقا جدع للاخر وهنكون اخر ناس ننشر مش لحاجة بس فى ناس تستاهل تقدير حاجات كتير استغنيت عن نشرها للأنكم بسترزقوا لكن فك تطبيق وملفات وانكم تضرونى حلال 😁 ماشى هكبر دماغى 👍\n\n#محمد_عبواجد",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 124895481,
+      "postUrl": "https://t.me/deals_trackers/19593?single",
+      "source": {
+        "title": "ملك الخصومات - Deals King",
+        "handle": "deals_trackers",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
+      },
+      "sourceId": "eg:deals_trackers",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
       "media": [
         {
-          "id": "file-1",
-          "kind": "file",
-          "url": "https://t.me/mabowaged_eg/18214",
-          "fileName": null
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/RWAeY_fQST0Cqy85C5qAS8n7BUT5rN0LClnWlBTpw-3dWmkAqEQ1gII7xlMIfg7_JDGToPoaY7UspTPZlXrhFiXxUdvuZhs9mg-g6h9UA9Pn-OcCyDtyF-uV5Ehjd5mJ_awqqL2gELdrY0oYREaD1-3oYTN5e7ZR6UpTnGn1D-YAOf1RCdmeW0ieHtnYeeD7KdZ_StWl2X2qhVH_d_0pManw0vC6HE_YFaURNd2Z3DH_kJhKHjmvBzsprOmjBZHVpdb3vr8eHmwSidz_HnXh6hfd9LOU86xC5VxcADDDwNW4yNdQYzLv8SLdq6p161ab5IszN8y9Ft9Z6AxvDUiyrg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "نسخة قديمة من تطبيق  كاستم \n\n httpcustom 🌀⚙️✨\n\nالإصدار القديم من تطبيق الكاستم 🏃‍♂️\n\nOld-version httpcustom build\n\nكاستم اصدار قديم \n====\n\nhttps://t.me/AbowagedDevX\n\n===\n\nBy @mabowaged ✅\n\n#محمد_عبواجد",
+      "text": "الحق بسرعة اتوفر علي امازون ناو \n بسكويت كلاسيك كوكيز برقائق الشوكولاتة، وزن 1 كيلوجرام \nب 55 جنية😱🔥\nhttps://amazn.im/PP75VY",
       "links": [
         {
-          "label": "https://t.me/AbowagedDevX",
-          "url": "https://t.me/AbowagedDevX"
-        },
+          "label": "https://amazn.im/PP75VY",
+          "url": "https://amazn.im/PP75VY"
+        }
+      ],
+      "createdAt": "2026-10-23T03:48:54.571Z",
+      "expiresAt": "2026-10-25T03:48:54.571Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:48:54.571Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:48:54.571Z"
+      }
+    },
+    {
+      "id": 792382193,
+      "postUrl": "https://t.me/rassd/205767?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴اعتقال الشاب احمد محمود عبيد من حي الضاحية",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 1298788467,
+      "postUrl": "https://t.me/mabowaged_eg/18209?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "سبحان الله وبحمده سبحان الله العظيم",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 845501688,
+      "postUrl": "https://t.me/deals_trackers/19592?single",
+      "source": {
+        "title": "ملك الخصومات - Deals King",
+        "handle": "deals_trackers",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
+      },
+      "sourceId": "eg:deals_trackers",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ll9M7aCtAjMwZ9hNs2UlVLYA5CLpsgqxQknPeNVYb_5pFpFe5FSJajQlg7OM2EQLiEV1-eYqTtDVXL2-aljExaWLctdNLzyskgO7eWpiO9Qz5ytUqtaRRKLXOmWuAItjk91zWyTC_nUUYYCnmlWqHD2eni8qw6fX5x-Q5EWQmkEOOfc2mSXte4bCl4rU0xBU4vAjhXD4baktNub4461Jc9fzb_LmYcJrzwZleZNRG8uMY0vUa1kAi6ZWgT_YnTQuNfSkpu7b5QVdWGiQv_b_xJHxA_ZXyhQOJ0sjmqIYUY2t5zoiKaQ6Ez-5QFp26RkaRZiM0CbTtVp6PN7QikCi0w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "اللي صاحي يلحق علي بريدفاست \nاسعار لقطة بنص سعرها🔥\nhttps://brdfst.app/BoGL8ibk",
+      "links": [
+        {
+          "label": "https://brdfst.app/BoGL8ibk",
+          "url": "https://brdfst.app/BoGL8ibk"
+        }
+      ],
+      "createdAt": "2026-10-23T03:48:54.571Z",
+      "expiresAt": "2026-10-25T03:48:54.571Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:48:54.571Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:48:54.571Z"
+      }
+    },
+    {
+      "id": 3716278000,
+      "postUrl": "https://t.me/rassd/205766?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴انسحاب القوة من الضاحية اتجاه مدرسة الاسلامية",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 3809560538,
+      "postUrl": "https://t.me/mabowaged_eg/18208?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "مسحت فديو وكل حاجة واعتبر أ منزلتش حاجة ضغط رسايل رهيب على شيئ مشروح فديو 👍",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 4100530643,
+      "postUrl": "https://t.me/rassd/205765?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴اقتحام منزل في محيط دار عبيد وسعادة في الضاحية الوسطى",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 1812971797,
+      "postUrl": "https://t.me/mabowaged_eg/18207?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "سبحان الله وبحمده سبحان الله العظيم",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 157839290,
+      "postUrl": "https://t.me/rassd/205764?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴اقتحام محيط مدرسة سمير عبد الهادي في الضاحية الأن",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 885589243,
+      "postUrl": "https://t.me/mabowaged_eg/18201?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "صلى على سيدنا محمد",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 1721569581,
+      "postUrl": "https://t.me/rassd/205763?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴اقتحام الضاحية الأن",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 3484527618,
+      "postUrl": "https://t.me/mabowaged_eg/18200?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "متعدد شبكات  AbowagedDevX .awg",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
+      }
+    },
+    {
+      "id": 1801226492,
+      "postUrl": "https://t.me/rassd/205762?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🟥🔴 ترمب: لم يعد لدي الآن أحد أتفاوض معه بعد استهداف مستويات القيادة الإيرانية",
+      "links": [],
+      "createdAt": "2026-10-23T03:49:13.740Z",
+      "expiresAt": "2026-10-25T03:49:13.740Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-10-23T03:49:13.740Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-10-23T03:49:13.740Z"
+      }
+    },
+    {
+      "id": 3865923274,
+      "postUrl": "https://t.me/mabowaged_eg/18198?single",
+      "source": {
+        "title": "تيم عبواجد للثغرات|العتاولة نت | free internet Egypt |free esim انترنت مجاني",
+        "handle": "mabowaged_eg",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/JpwGAdHQlEn1Bq5luTWINC0ezkApGERNGd8DIFHEdA9qyP_XGSe_FJkYDO-Uc7zHfQrU3ESIFlwO74O9VpoLtn7ROLbLSR4R2anyjr8WOAZPyxDvMdF72ivlwfEZS9xQ0XOfPFv20oJb-KKIzM6wbRpX-OQpasBbk4hgvlSZaNykqUstdElIvDL8NPtDkS5a824BlEgakd-0uDdzXuWo_Lz1U9f17UAei-fwJvcvSKOZrXU39niN_eOHbDW4LihM2OHV2k1ZyO7FWjQ3Xp6gLZVzSBh6HT-jTlotKyiB4KWJ6nhkpRpUUWphxncQFCpYhXQ49-_UFU5GNdP9yKNciA.jpg"
+      },
+      "sourceId": "eg:mabowaged_eg",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/tZKDAF2MIPhTRgvgj3EHekH_tF5OAwnx18urG0MCekW6Q3aO35g4uCL2lR9VMMsInOvIK-4o0AD-l-BbA2QiIS5VuyB8OUv-cbbE4CC4XVeFnJJz4Ov4mycufmvzNq8DntgpZ9cPMCeo_FehtqNiRJNePo-uLE5nLY4Qbn9VWlpajViu_00e835vFL-hIP9c8jvJq8_LSiVIjifO29b0qOFyy1uagBSblscj723lWCPYkrIRA7WwHnbmjUKqwKFyG97wsH8r29dMQZJILyRQyOQOz_JzHhHlSGinw60i8I2e-BJA7cLiIR0OQWQT1ZWVFTNWyUuXioYeTRStHRFzOQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "زعلت صح طب شوف سكرين دى كدة.. \n\nفاهم حاجة 👍\n\n@mabowaged\n\nاشتم وقول كل ال فى نفسك بس صعب تبقا الاصل👌\n\n\n#محمد_عبواجد",
+      "links": [
         {
           "label": "@mabowaged",
           "url": "https://t.me/mabowaged"
         }
       ],
-      "createdAt": "2026-10-23T00:30:16.551Z",
-      "expiresAt": "2026-10-25T00:30:16.551Z",
+      "createdAt": "2026-10-23T03:49:04.925Z",
+      "expiresAt": "2026-10-25T03:49:04.925Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:16.551Z",
+      "mediaRefreshedAt": "2026-10-23T03:49:04.925Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3598,977 +4185,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-10-23T00:30:16.551Z"
-      }
-    },
-    {
-      "id": 3266691937,
-      "postUrl": "https://t.me/deals_trackers/19588?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/KdHVeQPuZLR3OEjHHrbvFn9JU0l-xKOP0-Dx062LKywp66Jy1u8Xek0LExM7qn0ez-lDQ8YstSPRnyF8uxXxEnAL0EoF0vW3B0IP3b7gHWinETAEW8zVeJej8AtrHPGAhpeZsRsPFsKAcTvPpOtB0jha_S5xE-Ez3qdf30BZXgzrew_caKkXUHzZi8zKOrZut-E_QS4pUGlYAD2Xc3vMfTvN9VshKi2K_xIgEObObKCHp9KVgVqaCSavCct5QLXE2E1dbdJwDPVT1-Ralo3GmDyp7jW2zw5EoSReObSwdP_HR1v_LlTnUzgbQ8SMPvH2vqMttgBnW8gqjAZEH_pQhw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "عروض لقطة علي منتجات SKY🔥\nhttps://amazn.im/Ssjz8f",
-      "links": [
-        {
-          "label": "https://amazn.im/Ssjz8f",
-          "url": "https://amazn.im/Ssjz8f"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 773612234,
-      "postUrl": "https://t.me/summaryegypt/5458?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 80 غارة سعودية على الحوثي ومصر تتدخل.. وأمريكا تجهز «أم القنابل» لضرب إيران التي تهدد بقطع الإنترنت 📌 شــــــاهد الآن..👇 https://youtu.be/8UrVFUEqbDk   https://youtu.be/8UrVFUEqbDk",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 1729753703,
-      "postUrl": "https://t.me/rassd/205754?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🟥🔴اقتحام مخيم بلاطة الأن",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 3208889757,
-      "postUrl": "https://t.me/medmannews/46885?single",
-      "source": {
-        "title": "Mediterranean Man",
-        "handle": "medmannews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/KDvXi0ogB4gHTag9OtYQIpBpPjWw1T53SX63hJv6w6tqsvHshFeGd5VUUevzrEfRyZffzSwA3trh-yxSr20giRN3lFHniAPyN1PSZKTxgdnKikKXUFiGckCIYoW1dGx0Afqr5Ygfk_6hNBq2BvN1MHQniNHGLzjnsdWqU5MhylmXMSVQirlDfi4WDGDoEf7gMuzji1VPSvWdRVXqXLsIWgYB3LGeF_YIC-fmuRnZwB3nQlX8_KRY2aDsYqZGFLh8YqDqi2eutVJBDLvC6By2Vnx9B8kugYIhck97su1QGeZPhGY05XoyV5ABw2B31vic6PSjQtd-0j-4JI-7EKVStQ.jpg"
-      },
-      "sourceId": "eg:medmannews",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "⚡️🇺🇸 Nearly all of the United States Embassies around the Middle East continue to be evacuated in advance of what we expect to be another violent escalation with Iran. It remains unclear what will be different about this time compared to the last time… or…",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:17.161Z",
-      "expiresAt": "2026-10-25T00:30:17.161Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:17.161Z",
-      "tag": "news_all",
-      "tags": [
-        "news_all",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:17.161Z"
-      }
-    },
-    {
-      "id": 3338215406,
-      "postUrl": "https://t.me/deals_trackers/19587?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/vDow9k3CGoOMacR2O_fjv49oGY7S50bkkWEnzJaTfI_J8lC6rb5U5kisfNIS0yvv6-M1_GMJSOlM8lhLJxJDdfqKmgGQZs8qF0jq2xdYtMmvkMRPGiM39rXR018moahi4K6OeXij1sZNu7iOWZAvjyETCDhi19WlTgA4938YUHf-3amb5N7HWcTQdq48hUMu5UlFYJZL-t47p7FmYLZayLyx-9wPeOtURLVas4KE9i1wQaQq0Oned6b9gL6e59bSMSCtKVMTY638ZpsQ1_qO4L30_DErUvLTLiiTG9qasdVd-UBiUqjoMDjFkwkH3Zn-851cJzfl8s_S7EG6B9GtxA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "عرض علي شواية صحية 2000 واط بغطاء زجاجي من كينوود، فضي - ضمان دولي - HG266 \nب 2990 جنية🔥\nhttps://amazn.im/q1rH3o",
-      "links": [
-        {
-          "label": "https://amazn.im/q1rH3o",
-          "url": "https://amazn.im/q1rH3o"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 2404838661,
-      "postUrl": "https://t.me/summaryegypt/5457?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 80 غارة سعودية على الحوثي ومصر تتدخل.. وأمريكا تجهز «أم القنابل» لضرب إيران التي تهدد بقطع الإنترنت\n📌 شــــــاهد الآن..👇\nhttps://youtu.be/8UrVFUEqbDk \n\nhttps://youtu.be/8UrVFUEqbDk",
-      "links": [
-        {
-          "label": "https://youtu.be/8UrVFUEqbDk",
-          "url": "https://youtu.be/8UrVFUEqbDk"
-        },
-        {
-          "label": "https://youtu.be/8UrVFUEqbDk",
-          "url": "https://youtu.be/8UrVFUEqbDk"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 3492188232,
-      "postUrl": "https://t.me/rassd/205753?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🟥🔴 نشاط تخريبي لجيش الاحتلال على المنطقة الشرقية للمدينة",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 3485621415,
-      "postUrl": "https://t.me/deals_trackers/19586?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/nM7rzEjanfAauyqRue5lVdRBuJr0ZknkQOZNXJHLQlYl3sklxyrPm703fEDenn1Ejx-mCt5c8vrYV7EwpgSiKeCrEKbUdFsk2_NAfE18xKZvTdcEZAIjMgW4p6fQdliHzXpXXufdifsd6TcaAChx5addUPWe4XTK5bKUe1otNzWeGNojMl37_7kAfJKgfzIx_nMwNJwlijxygk6C-gOVO7XTLq0W9dqPhv7iKotrACLrhWg57w2FaD7qUaiTPt31tW122Gtzq4mb0VwUl6QjMZVaRUHY-i52kc1CWX_1CCOW5l49NIZ8V9oQs_tbSkBfRoeu7MH7svwUd1-kleMQ0Q.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "عرض علي طقم كسرولة من تروفال من الألومنيوم بسعة 2.0 لتر، لون مارون \nبـ 78.02 جنيه\nhttps://amazn.im/amPKjC",
-      "links": [
-        {
-          "label": "https://amazn.im/amPKjC",
-          "url": "https://amazn.im/amPKjC"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 2364003636,
-      "postUrl": "https://t.me/summaryegypt/5456?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 80 غارة سعودية على الحوثي ومصر تتدخل.. وأمريكا تجهز «أم القنابل» لضرب إيران التي تهدد بقطع الإنترنت 📌 شــــــاهد الآن..👇 https://youtu.be/8UrVFUEqbDk   https://youtu.be/8UrVFUEqbDk",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 3419196041,
-      "postUrl": "https://t.me/rassd/205752?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🟥😊🔴اقتحام نابلس من حاجز عورتا الأن",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 238551892,
-      "postUrl": "https://t.me/deals_trackers/19585?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/S6fEUOxf7Uw_jPMfVJFkv7GbshaDWa5xDuVBCbOoSLEEJNpv16K_oFoDcQC23pPMBw5s6_wnQruflqvYIz9h6cq1nKpPx44Bh_USjIRBBOTexca8xJX_HbdvFDB0Askw3BowXcUcCEUVIoRYnmNyyfbw32o-X-8I4SikimA9zO2soR1EmfK7mbUApICcPp_6tpQ_6U7pG_-RLccHFNaaGEFKaQ7iNhKeNMGqk6quq10-rJAheQs5kMJMmRX0hVbFTggIrD-FUfnKaOvlMRfpaP8PHFuylr6m1QGEq2STcXYR63UkPIlaOv2Lz3nvKIx4QqGxQiaERaoB75oTtinbpA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "الحق بسرعة\n طقم طاسات قلي من تروفال، ألومنيوم، أحمر، عدد القطع: 3 \nبـ 193  جنيه🔥\nhttps://amazn.im/2DeQMe",
-      "links": [
-        {
-          "label": "https://amazn.im/2DeQMe",
-          "url": "https://amazn.im/2DeQMe"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 1300011271,
-      "postUrl": "https://t.me/summaryegypt/5455?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 80 غارة سعودية على الحوثي ومصر تتدخل.. وأمريكا تجهز «أم القنابل» لضرب إيران التي تهدد بقطع الإنترنت\n📌 شــــــاهد الآن..👇\nhttps://youtu.be/8UrVFUEqbDk \n\nhttps://youtu.be/8UrVFUEqbDk",
-      "links": [
-        {
-          "label": "https://youtu.be/8UrVFUEqbDk",
-          "url": "https://youtu.be/8UrVFUEqbDk"
-        },
-        {
-          "label": "https://youtu.be/8UrVFUEqbDk",
-          "url": "https://youtu.be/8UrVFUEqbDk"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 1965722834,
-      "postUrl": "https://t.me/rassd/205751?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "😊❤️الي سهران لهسا هالمنشور الك خص نص ..\nروح الله يفرج همك .. ويحلي أيامك مثل حلا عيونك الي سهرانة لهسا وماتشوف الزعل بعمرك .. 🤲🌹\n\nسمعونا يارب 🤲🏻",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 4149999909,
-      "postUrl": "https://t.me/deals_trackers/19584?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/G3RHnD7JgDx6FRxnMIb8O6NqcYR9VV4W3C97oTlM7NTUzeTQBolB60K2GAV_xLd1bSbBbz6TZzmupfayH7LtrN2NUXSRyp4f0Ad2ZdSaV5n5n1LmB9gPeJbFpTA8-FkkZjREjPgtYotmvibk61WAdkfHW2SxvtS2PfXhiRAJzTYjSK3tQXLIaQmhYqjkg1Jfo7ZJXFgHHfNqYDehMXxbH8TkatEnZed2jLSljrjfWQPQceqnulkf_hdUxiRsIPCzMTtClaeKsWnEcSalcACjgTE3vIRURPw_oZsqKpLDDUVNeKJudy4-bW0BaLblschOlasx1qq8_Vn6xXWnk8jGLQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "علي بريدفاست🔥\nخصم 30% علي اجهزة ملاي بالكود BTK30\nجهاز ملاي T14 هيبقي ب 5845 جنية بعد تطبيق الكود🔥\nhttps://brdfst.app/BT-t-2Wq",
-      "links": [
-        {
-          "label": "https://brdfst.app/BT-t-2Wq",
-          "url": "https://brdfst.app/BT-t-2Wq"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 2277816654,
-      "postUrl": "https://t.me/summaryegypt/5454?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/ca07dca639.mp4?token=oCsgx5x8kdpzxRwBMOeQVYGg4JBK9xduGt9-9yGz3AQCXlNkqOY7goBq-Q3QuSvcctGef0yZGuAdPMePUKhNTi8DkfJ4PjNjLESfapIQwFNt4icRa3bMzkIaQ2oNl8SLgo0Jw0n2EMhXWuLl9sYYiE_seTTd9fTkrl0PGTJUo9N9QnfoTbhUdcL58ztwWVeI8eOCuckI4HOXYF0EZz4HofmjjOFF63R4vSOm8jJeHZ6-AkS29Q24Uwc-nnv4QuWU1PbnukA4_OeS9K47g5vRPiW5Od6C0mMLz8fdVsPKV2AmlNggFdY_AJw-spKfKwDevog08UnbCzn_VA2NL5zC0A",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "يبدو أن #زيلينسكي بصق نحو قدمي ملك #السويد كارل السادس عشر غوستاف بعد أن رفض #الملك مصافحته.",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 1260169419,
-      "postUrl": "https://t.me/rassd/205750?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/aeecea8a6c.mp4?token=g17_x9oMO0pbiyOmt9Ms99STETWCm1oo4jlu5mDD7GOZoxx6y8DsFRuMjVIiExFoZpSkttYsqHneofQRa5-zxvDg2pkslqvBSOch_e9N0n5OIgc1lQAMdegfl5aWfEdFIBW12ZPkCsKl5MZdh9yap_TGx3mFWnYtX2aU-sOKFfWAYsj6nN-jqxQ5F1Wx0s6VfebjgcAcjVUspSHnazcIH1uxmWiieY6Cl4wWMPjnBwNLUZYGoXHLEac5Wfu6ne_7_o2MnrSZQiGPS8Hkl7U85pxdoT_R5YkuvDkPZ0ADUxrYeYNy6pw4sEHjUWKWHP8O4B1K1ud0gaQ_8y2oukgY7w",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "توثيق: إلقاء زجاجة باتجاه موكب نتنياهو  بالقرب من سوق محانيه يهودا في القدس المحتلة .",
-      "links": [],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 1896498450,
-      "postUrl": "https://t.me/deals_trackers/19583?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/R-jpywslkVPstcF6lA3aYpFejCFgyYc3-48990SiCeqXdsozlT1uncRgmow86pyEYHNM92OyvmKDjH1Yty2SjCKYcNGhIt-hvptYJ9v8n1eAbQ5kvvXWmZlIkthLbEjrZp-pnCCqC5i3scNpCE8TLvtXvpkfo5d9kbdT86zmqi31y6zhyJdpyuMV1F6ORS026jsRSLgpAXbzshF14GKQNj4CnehNM6I09V5Z4dbWiW3i4nng9y1G1fS3HGYgE6o0K3nsRFZi2X332WXcWyXVgr1DaSdiy0-U5IAS_O5585GHe8kHEd2EBT2PUE2DMtKbcdBCqEtmUwqDfv6gZxHrdg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "مسحوق غسيل برسيل أكتيف يونيفرسال ، \n8 كجم بـ 394 جنيه \nبعد كود الخصم أسفل المنتج\nhttps://amazn.im/uTZ7cK",
-      "links": [
-        {
-          "label": "https://amazn.im/uTZ7cK",
-          "url": "https://amazn.im/uTZ7cK"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
-      }
-    },
-    {
-      "id": 2564996137,
-      "postUrl": "https://t.me/summaryegypt/5453?single",
-      "source": {
-        "title": "Summary Egypt",
-        "handle": "summaryegypt",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/VP9Jzek8R-in_zYgucIWGB5kpgDFpg5dRr3T-BVFI2yCOrxa6OV_j9m-9bfBoU_b9QpsqFogbexJGVAOmX9876ijiEnwhes2616g_2TKwqGB3grbU0mkaeWlKXDWGLRmB6vhkTmsW3-owWKIHOZV552F9bfi-XCyIvlySk1xkK6OCxc5At8NVGyvEY8is98LpN8tIMEVSnwycxr7Mc9ZiEJUY1z7xNU1XbHGl6BBnzwnx_A33jELnK-hcgRYs-gXAYX2fSZYlmMCpuKuGbm9y6LvVUs3TkUNqSQvdiLM1HI7Ya91xwKI1ZSTDEX7EA1-BVYK3jBeiPVcx9OH_yj2Jw.jpg"
-      },
-      "sourceId": "eg:summaryegypt",
-      "sourceCountryCode": "eg",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔔 محمود السيسي رئيساً لمصر؟ حملة غامضة تظهر بعد تصريحات السيسي عن الدستور ..من هوالمقدم \"اشرف سعيد\"\n📌 شــــــاهد الآن..👇\nhttps://youtu.be/2Nu4y9Z31Vk",
-      "links": [
-        {
-          "label": "https://youtu.be/2Nu4y9Z31Vk",
-          "url": "https://youtu.be/2Nu4y9Z31Vk"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:24.183Z",
-      "expiresAt": "2026-10-25T00:30:24.183Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:24.183Z",
-      "tag": "sports_all",
-      "tags": [
-        "sports_all",
-        "sports",
-        "sports_news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:24.183Z"
-      }
-    },
-    {
-      "id": 3966140923,
-      "postUrl": "https://t.me/rassd/205747?single",
-      "source": {
-        "title": "رصد نابلس",
-        "handle": "rassd",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/mIFjUTOrimhDKq3jx1WfU2sU7pnHGtAMQL0rXGHIle9i8Gu-BJgRFN4M1cjlqJX20TFKp9FHfwxmSdZNzBhvU1n4yPwOs87zMlcVl7a3ZEqaWbaPgbdCwSoV83aes-fRl1wkE1GX3ljMqvmViQ2PlvI9x1r25phPRK_fQqX28Amy-oAxDOGTWOQNo7cbMJ7tP5D2OYnsTJ-csGedTIFgcGRbGv91oxxHi_FA19CVYPToFfO1sdxqUtSHlZaNGOKhotWxshZeaYal8f4HS7h-JcSNsfKWYJcoU7V1sgKhWc31933_g-5rfYGMkFhf9dhCaEmh9Phe8tSgjYgerWZSXQ.jpg"
-      },
-      "sourceId": "eg:rassd",
-      "sourceCountryCode": "eg",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ptR0Lupsedr2wo-287MX4_ocuOa6eWslheopn4UCENqfx4lZEG_BnR0e51xqv8_eLE7uUY4DO0AtiMlpDGicswlpla7v7MOBEVGLrvL7bnRsYUSWwyO95uQWfihx9_X0jPEYYgdeWH6LDjZN4auE9nbckX3Js5kmHxivtIh-gqmZbhmDZUu65Sf5ZI-LNsyCnpe00GAwlF2HPNJJWKyCMNOnC3fdS__GE3UUB2khDOpMZxCZwRkhvux1-eexUOBt13Mzy14CrIONBrFN_w33BxCBwsLpcdlG0UFBktRWjzCmNCUVGQTel5_pythXuHzEq0S-fvtQBTbbYFTBZUrsSA.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ExCNYqJN6DQ1bzEQPOrBBPKJ_DlGhr5AjuqJcNsJZEAniZ1mOnObaD9XUza2yM0NfUTvaUq4P4Z-eL0122pZfZSXUi1oHqdRsThcR8L03pPCZRXWpkKs7aC8W4ntDDX52Xz6OqsKf8Mxbo31XgBIFE2K7p24K-5CTgVtTs6Bsw9CKSBl-C7vuk87vrcz8traiX26TXr8AK3gNLKsuEzraN6HUhCUDsXGB7HOR4c0pwYvFgjHv3VbY1OT8qVW7YxvsRfX3E7pXMuXcNUxBsLysHXcIdD3xLBXOabTmM2AFyqKFVssDD-L_GKKsbRuhHZpAURMzyo0kp3Gm7VNqHGfuA.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/BsbR-RdPm1rSNy696kWv71rdoEFdiUNlpuMtN4V6pDKuXhrPTr8bgcGBGr4ySXTdKKyu4jjxJNbEq28FUpxvmURwGvzlHnCZRTQblkBXCmoJZt1S8RckvvK0vegoNd_n267wq2z4x2uaUop9NN_NgnBJdqsQnW6wgjvJ75dg8RMljodwlfDONdZUPr_ePKXWW5P1HVX4Pk9IOtWQi7TrBf5uJn7sCRGsNKcKAPap9otRuarpT_780qsolHLtzJpPfYMeafsd2LZC75Ivut2HGNi6mOeKdrWVz2BrdM_We06tgva_bnQCPePlfE_vepJUwD6pTdZnRYwDb5n37ZUu6w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🔴بحاجة الي ٢٥٠ ابرة طوال فترة الحمل وبعدها .مناشدة من سيدة للحصول على ابر علاجية  موضح في الصور لأهل الخير والكرم .\n\nلمن اراد تقديم المساعدة يمكنه التواصل معي لتزويده برقم الاتصال مباشرة بلعائلة . \n\nاو يمكنكم التبرع بما تيسر لو 10 شواكل عبر الوسائل التالية \n\nتطبيق بنكي بنك فلسطين \nخدمة اي براق \nريفليكت \nوجزاكم الله خيرا ❤️\nللاستفسار: المشرفة نور \n@Noorqadre\n.",
-      "links": [
-        {
-          "label": "@Noorqadre",
-          "url": "https://t.me/Noorqadre"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:21.720Z",
-      "expiresAt": "2026-10-25T00:30:21.720Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:21.720Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:21.720Z"
-      }
-    },
-    {
-      "id": 1149265163,
-      "postUrl": "https://t.me/deals_trackers/19582?single",
-      "source": {
-        "title": "ملك الخصومات - Deals King",
-        "handle": "deals_trackers",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/ed2BooY3-P6sX_5HS1Vdmahd3SQLBAkCiBZqpvRlEiAiMZ6X9Aro_oBSdRxhiCkEq3vaSCCP8WJU_dot6gVmgjUJ2JLUc63YLxHRc7LkHGbFVwVhpTyy63efUNaYZk4RdWV6ZhN4Huy2dJWRY5nvsw5QpCh0dBtnEln44JPGwGsZcw-x2vkXOgk-r0ybP8MyRaVt9oLH0VK1tzqcr80cMriaguKAYA9j3mGWKsJbY50ZEts28w_D4R6o-onVaFnRDEzI4E_-5tq7uj2FSvmE0WN9cDMA8g5ARTBWaIt1e5KqUP8Afqh4oPJCjtVAVk0B75nZg7zpJkd759YL4bUfjQ.jpg"
-      },
-      "sourceId": "eg:deals_trackers",
-      "sourceCountryCode": "eg",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/vIquhDVqJLGZmcH5WuW1A_POvMHj5ZAp39FcAOYwPsVQHGytXKNUwnpdudL4hahXkhoXCTs_jFB1QsUVwkqSWr6IZfqVToWlaBe2JkonLEM5vHsjKdvUJ--1KW6YBPeSF1dNYFVYfoR8cnIr8zzOxi3Egy3RJ97o-Me7FFeEnGT-pqkW628Qolikz0HshISYiTyS7ECZ8GwOCGqOrhLSe0Us0LK3KL7DPFu9YvA0zLkw9NGdm-jeSKZ51ToViwTbGTVjPi_Qrhyv4IjMN7BvYXmAfv30eMu1B94383iysgiHMNSZNZJ3uc-99lv5QG4XzeeQ4MA0AMkhMq4t-RKzgQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "اشتري 2 و وفر 50% علي قطعه منهم \nhttps://amazn.im/3I2xjp",
-      "links": [
-        {
-          "label": "https://amazn.im/3I2xjp",
-          "url": "https://amazn.im/3I2xjp"
-        }
-      ],
-      "createdAt": "2026-10-23T00:30:09.267Z",
-      "expiresAt": "2026-10-25T00:30:09.267Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-10-23T00:30:09.267Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-10-23T00:30:09.267Z"
+        "reviewedAt": "2026-10-23T03:49:04.925Z"
       }
     }
   ]
