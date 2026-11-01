@@ -1,7 +1,7 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-11-01T04:58:09.452Z",
-  "totalPosts": 2004,
+  "updatedAt": "2026-11-01T13:51:08.521Z",
+  "totalPosts": 2228,
   "chunks": [
     {
       "id": 1,
@@ -106,7 +106,17 @@
     {
       "id": 21,
       "path": "/feeds/de/21.json",
-      "posts": 4
+      "posts": 100
+    },
+    {
+      "id": 22,
+      "path": "/feeds/de/22.json",
+      "posts": 100
+    },
+    {
+      "id": 23,
+      "path": "/feeds/de/23.json",
+      "posts": 28
     }
   ]
 }
