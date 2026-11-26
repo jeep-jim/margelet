@@ -1,7 +1,7 @@
 {
   "countryCode": "id",
-  "updatedAt": "2026-11-26T02:42:59.763Z",
-  "totalPosts": 420,
+  "updatedAt": "2026-11-26T13:06:12.207Z",
+  "totalPosts": 512,
   "chunks": [
     {
       "id": 1,
@@ -26,7 +26,12 @@
     {
       "id": 5,
       "path": "/feeds/id/5.json",
-      "posts": 20
+      "posts": 100
+    },
+    {
+      "id": 6,
+      "path": "/feeds/id/6.json",
+      "posts": 12
     }
   ]
 }
